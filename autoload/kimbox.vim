@@ -1,5 +1,4 @@
 " =============================================================================
-" URL: https://github.com/sainnhe/gruvbox-material
 " URL: https://github.com/burnsac5040/kimbox
 " Filename: autoload/kimbox.vim
 " Author: sainnhe / burnsac5040
@@ -9,7 +8,7 @@
 
 function! kimbox#get_configuration() "{{{
   return {
-        \ 'background': get(g:, 'kimbox_background', 'medium'),
+        \ 'background': get(g:, 'kimbox_background', 'hard'),
         \ 'palette': get(g:, 'kimbox_palette', 'material'),
         \ 'transparent_background': get(g:, 'kimbox_transparent_background', 0),
         \ 'disable_italic_comment': get(g:, 'kimbox_disable_italic_comment', 0),
@@ -35,11 +34,11 @@ function! kimbox#get_palette(background, palette) "{{{
     if &background ==# 'dark'
       let palette1 = {
             \ 'bg0':              ['#221a02',   '234'],
-            \ 'bg1':              ['#291804',   '235'],
+            \ 'bg1':              ['#362712',   '235'],
             \ 'bg2':              ['#291804',   '235'],
-            \ 'bg3':              ['#291804',   '237'],
-            \ 'bg4':              ['#291804',   '237'],
-            \ 'bg5':              ['#291804',   '239'],
+            \ 'bg3':              ['#5e452b',   '237'],
+            \ 'bg4':              ['#5e452b',   '237'],
+            \ 'bg5':              ['#5e452b',   '239'],
             \ 'bg_statusline1':   ['#282828',   '235'],
             \ 'bg_statusline2':   ['#32302f',   '235'],
             \ 'bg_statusline3':   ['#504945',   '239'],
@@ -50,111 +49,111 @@ function! kimbox#get_palette(background, palette) "{{{
             \ 'bg_diff_blue':     ['#1b60a5',   '17'],
             \ 'bg_visual_blue':   ['#5b7e7a',   '17'],
             \ 'bg_visual_yellow': ['#7e602c',   '94'],
-            \ 'bg_current_word':  ['#32302f',   '236']
+            \ 'bg_current_word':  ['#5e452b',   '236']
             \ }
     else
       let palette1 = {
-            \ 'bg0':              ['#f9f5d7',   '230'],
-            \ 'bg1':              ['#f5edca',   '229'],
-            \ 'bg2':              ['#f3eac7',   '229'],
-            \ 'bg3':              ['#f2e5bc',   '228'],
-            \ 'bg4':              ['#eee0b7',   '223'],
-            \ 'bg5':              ['#ebdbb2',   '223'],
-            \ 'bg_statusline1':   ['#f5edca',   '223'],
-            \ 'bg_statusline2':   ['#f3eac7',   '223'],
-            \ 'bg_statusline3':   ['#eee0b7',   '250'],
-            \ 'bg_diff_green':    ['#e3f6b4',   '194'],
-            \ 'bg_visual_green':  ['#dde5c2',   '194'],
-            \ 'bg_diff_red':      ['#ffdbcc',   '217'],
-            \ 'bg_visual_red':    ['#f6d2ba',   '217'],
-            \ 'bg_diff_blue':     ['#cff1f6',   '117'],
-            \ 'bg_visual_blue':   ['#d9e1cc',   '117'],
-            \ 'bg_visual_yellow': ['#f1e2b7',   '226'],
-            \ 'bg_current_word':  ['#f3eac7',   '229']
+            \ 'bg0':              ['#221a02',   '234'],
+            \ 'bg1':              ['#362712',   '235'],
+            \ 'bg2':              ['#291804',   '235'],
+            \ 'bg3':              ['#5e452b',   '237'],
+            \ 'bg4':              ['#5e452b',   '237'],
+            \ 'bg5':              ['#5e452b',   '239'],
+            \ 'bg_statusline1':   ['#282828',   '235'],
+            \ 'bg_statusline2':   ['#32302f',   '235'],
+            \ 'bg_statusline3':   ['#504945',   '239'],
+            \ 'bg_diff_green':    ['#32361a',   '22'],
+            \ 'bg_visual_green':  ['#088649',   '22'],
+            \ 'bg_diff_red':      ['#5f0d0d',   '52'],
+            \ 'bg_visual_red':    ['#98676a',   '52'],
+            \ 'bg_diff_blue':     ['#1b60a5',   '17'],
+            \ 'bg_visual_blue':   ['#5b7e7a',   '17'],
+            \ 'bg_visual_yellow': ['#7e602c',   '94'],
+            \ 'bg_current_word':  ['#5e452b',   '236']
             \ }
     endif "}}}
   elseif a:background ==# 'medium' "{{{
     if &background ==# 'dark'
       let palette1 = {
-            \ 'bg0':              ['#282828',   '235'],
-            \ 'bg1':              ['#32302f',   '236'],
-            \ 'bg2':              ['#32302f',   '236'],
-            \ 'bg3':              ['#45403d',   '237'],
-            \ 'bg4':              ['#45403d',   '237'],
-            \ 'bg5':              ['#5a524c',   '239'],
-            \ 'bg_statusline1':   ['#32302f',   '236'],
-            \ 'bg_statusline2':   ['#3a3735',   '236'],
-            \ 'bg_statusline3':   ['#504945',   '240'],
-            \ 'bg_diff_green':    ['#34381b',   '22'],
-            \ 'bg_visual_green':  ['#3b4439',   '22'],
-            \ 'bg_diff_red':      ['#402120',   '52'],
-            \ 'bg_visual_red':    ['#4c3432',   '52'],
-            \ 'bg_diff_blue':     ['#0e363e',   '17'],
-            \ 'bg_visual_blue':   ['#374141',   '17'],
-            \ 'bg_visual_yellow': ['#4f422e',   '94'],
-            \ 'bg_current_word':  ['#3c3836',   '237']
+            \ 'bg0':              ['#221a02',   '234'],
+            \ 'bg1':              ['#362712',   '235'],
+            \ 'bg2':              ['#291804',   '235'],
+            \ 'bg3':              ['#5e452b',   '237'],
+            \ 'bg4':              ['#5e452b',   '237'],
+            \ 'bg5':              ['#5e452b',   '239'],
+            \ 'bg_statusline1':   ['#282828',   '235'],
+            \ 'bg_statusline2':   ['#32302f',   '235'],
+            \ 'bg_statusline3':   ['#504945',   '239'],
+            \ 'bg_diff_green':    ['#32361a',   '22'],
+            \ 'bg_visual_green':  ['#088649',   '22'],
+            \ 'bg_diff_red':      ['#5f0d0d',   '52'],
+            \ 'bg_visual_red':    ['#98676a',   '52'],
+            \ 'bg_diff_blue':     ['#1b60a5',   '17'],
+            \ 'bg_visual_blue':   ['#5b7e7a',   '17'],
+            \ 'bg_visual_yellow': ['#7e602c',   '94'],
+            \ 'bg_current_word':  ['#5e452b',   '236']
             \ }
     else
       let palette1 = {
-            \ 'bg0':              ['#fbf1c7',   '229'],
-            \ 'bg1':              ['#f4e8be',   '228'],
-            \ 'bg2':              ['#f2e5bc',   '228'],
-            \ 'bg3':              ['#eee0b7',   '223'],
-            \ 'bg4':              ['#e5d5ad',   '223'],
-            \ 'bg5':              ['#ddccab',   '250'],
-            \ 'bg_statusline1':   ['#f2e5bc',   '223'],
-            \ 'bg_statusline2':   ['#f2e5bc',   '223'],
-            \ 'bg_statusline3':   ['#e5d5ad',   '250'],
-            \ 'bg_diff_green':    ['#daf0a7',   '194'],
-            \ 'bg_visual_green':  ['#dee2b6',   '194'],
-            \ 'bg_diff_red':      ['#fbcdb9',   '217'],
-            \ 'bg_visual_red':    ['#f7cfae',   '217'],
-            \ 'bg_diff_blue':     ['#c6eaf0',   '117'],
-            \ 'bg_visual_blue':   ['#dadec0',   '117'],
-            \ 'bg_visual_yellow': ['#f2dfab',   '226'],
-            \ 'bg_current_word':  ['#f2e5bc',   '228']
+            \ 'bg0':              ['#221a02',   '234'],
+            \ 'bg1':              ['#362712',   '235'],
+            \ 'bg2':              ['#291804',   '235'],
+            \ 'bg3':              ['#5e452b',   '237'],
+            \ 'bg4':              ['#5e452b',   '237'],
+            \ 'bg5':              ['#5e452b',   '239'],
+            \ 'bg_statusline1':   ['#282828',   '235'],
+            \ 'bg_statusline2':   ['#32302f',   '235'],
+            \ 'bg_statusline3':   ['#504945',   '239'],
+            \ 'bg_diff_green':    ['#32361a',   '22'],
+            \ 'bg_visual_green':  ['#088649',   '22'],
+            \ 'bg_diff_red':      ['#5f0d0d',   '52'],
+            \ 'bg_visual_red':    ['#98676a',   '52'],
+            \ 'bg_diff_blue':     ['#1b60a5',   '17'],
+            \ 'bg_visual_blue':   ['#5b7e7a',   '17'],
+            \ 'bg_visual_yellow': ['#7e602c',   '94'],
+            \ 'bg_current_word':  ['#5e452b',   '236']
             \ }
     endif "}}}
   elseif a:background ==# 'soft' "{{{
     if &background ==# 'dark'
       let palette1 = {
-            \ 'bg0':              ['#32302f',   '236'],
-            \ 'bg1':              ['#3c3836',   '237'],
-            \ 'bg2':              ['#3c3836',   '237'],
-            \ 'bg3':              ['#504945',   '239'],
-            \ 'bg4':              ['#504945',   '239'],
-            \ 'bg5':              ['#665c54',   '241'],
-            \ 'bg_statusline1':   ['#3c3836',   '237'],
-            \ 'bg_statusline2':   ['#46413e',   '237'],
-            \ 'bg_statusline3':   ['#5b534d',   '241'],
-            \ 'bg_diff_green':    ['#3d4220',   '22'],
-            \ 'bg_visual_green':  ['#424a3e',   '22'],
-            \ 'bg_diff_red':      ['#472322',   '52'],
-            \ 'bg_visual_red':    ['#543937',   '52'],
-            \ 'bg_diff_blue':     ['#0f3a42',   '17'],
-            \ 'bg_visual_blue':   ['#404946',   '17'],
-            \ 'bg_visual_yellow': ['#574833',   '94'],
-            \ 'bg_current_word':  ['#45403d',   '238']
+            \ 'bg0':              ['#221a02',   '234'],
+            \ 'bg1':              ['#362712',   '235'],
+            \ 'bg2':              ['#291804',   '235'],
+            \ 'bg3':              ['#5e452b',   '237'],
+            \ 'bg4':              ['#5e452b',   '237'],
+            \ 'bg5':              ['#5e452b',   '239'],
+            \ 'bg_statusline1':   ['#282828',   '235'],
+            \ 'bg_statusline2':   ['#32302f',   '235'],
+            \ 'bg_statusline3':   ['#504945',   '239'],
+            \ 'bg_diff_green':    ['#32361a',   '22'],
+            \ 'bg_visual_green':  ['#088649',   '22'],
+            \ 'bg_diff_red':      ['#5f0d0d',   '52'],
+            \ 'bg_visual_red':    ['#98676a',   '52'],
+            \ 'bg_diff_blue':     ['#1b60a5',   '17'],
+            \ 'bg_visual_blue':   ['#5b7e7a',   '17'],
+            \ 'bg_visual_yellow': ['#7e602c',   '94'],
+            \ 'bg_current_word':  ['#5e452b',   '236']
             \ }
     else
       let palette1 = {
-            \ 'bg0':              ['#f2e5bc',   '228'],
-            \ 'bg1':              ['#eddeb5',   '223'],
-            \ 'bg2':              ['#ebdbb2',   '228'],
-            \ 'bg3':              ['#e6d5ae',   '223'],
-            \ 'bg4':              ['#dac9a5',   '250'],
-            \ 'bg5':              ['#d5c4a1',   '250'],
-            \ 'bg_statusline1':   ['#ebdbb2',   '223'],
-            \ 'bg_statusline2':   ['#ebdbb2',   '223'],
-            \ 'bg_statusline3':   ['#dac9a5',   '250'],
-            \ 'bg_diff_green':    ['#d1ea9b',   '194'],
-            \ 'bg_visual_green':  ['#d7d9ae',   '194'],
-            \ 'bg_diff_red':      ['#fbcab5',   '217'],
-            \ 'bg_visual_red':    ['#f0c6a6',   '217'],
-            \ 'bg_diff_blue':     ['#bee4ea',   '117'],
-            \ 'bg_visual_blue':   ['#d3d5b8',   '117'],
-            \ 'bg_visual_yellow': ['#ecd6a3',   '226'],
-            \ 'bg_current_word':  ['#ebdbb2',   '227']
+            \ 'bg0':              ['#221a02',   '234'],
+            \ 'bg1':              ['#362712',   '235'],
+            \ 'bg2':              ['#291804',   '235'],
+            \ 'bg3':              ['#5e452b',   '237'],
+            \ 'bg4':              ['#5e452b',   '237'],
+            \ 'bg5':              ['#5e452b',   '239'],
+            \ 'bg_statusline1':   ['#282828',   '235'],
+            \ 'bg_statusline2':   ['#32302f',   '235'],
+            \ 'bg_statusline3':   ['#504945',   '239'],
+            \ 'bg_diff_green':    ['#32361a',   '22'],
+            \ 'bg_visual_green':  ['#088649',   '22'],
+            \ 'bg_diff_red':      ['#5f0d0d',   '52'],
+            \ 'bg_visual_red':    ['#98676a',   '52'],
+            \ 'bg_diff_blue':     ['#1b60a5',   '17'],
+            \ 'bg_visual_blue':   ['#5b7e7a',   '17'],
+            \ 'bg_visual_yellow': ['#7e602c',   '94'],
+            \ 'bg_current_word':  ['#5e452b',   '236']
             \ }
     endif
   endif "}}}
@@ -232,7 +231,7 @@ function! kimbox#highlight(group, fg, bg, ...) "{{{
 endfunction "}}}
 function! kimbox#ft_gen(path, last_modified, msg) "{{{
   " Generate the `after/ftplugin` directory.
-  let full_content = join(readfile(a:path), "\n") " Get the content of `colors/gruvbox-material.vim`
+  let full_content = join(readfile(a:path), "\n") " Get the content of `colors/kimbox.vim`
   let ft_content = []
   let rootpath = kimbox#ft_rootpath(a:path) " Get the path to place the `after/ftplugin` directory.
   call substitute(full_content, '" ft_begin.\{-}ft_end', '\=add(ft_content, submatch(0))', 'g') " Search for 'ft_begin.\{-}ft_end' (non-greedy) and put all the search results into a list.
@@ -245,9 +244,9 @@ function! kimbox#ft_gen(path, last_modified, msg) "{{{
   endfor
   call kimbox#ft_write(rootpath, 'text', "let g:kimbox_last_modified = '" . a:last_modified . "'") " Write the last modified time to `after/ftplugin/text/kimbox.vim`
   if a:msg ==# 'update'
-    echohl WarningMsg | echom '[gruvbox-material] Updated ' . rootpath . '/after/ftplugin' | echohl None
+    echohl WarningMsg | echom '[kimbox] Updated ' . rootpath . '/after/ftplugin' | echohl None
   else
-    echohl WarningMsg | echom '[gruvbox-material] Generated ' . rootpath . '/after/ftplugin' | echohl None
+    echohl WarningMsg | echom '[kimbox] Generated ' . rootpath . '/after/ftplugin' | echohl None
   endif
 endfunction "}}}
 function! kimbox#ft_write(rootpath, ft, content) "{{{
@@ -257,10 +256,10 @@ function! kimbox#ft_write(rootpath, ft, content) "{{{
   if !filereadable(ft_path)
     call mkdir(a:rootpath . '/after/ftplugin/' . a:ft, 'p')
     call writefile([
-          \ "if !exists('g:colors_name') || g:colors_name !=# 'gruvbox-material'",
+          \ "if !exists('g:colors_name') || g:colors_name !=# 'kimbox'",
           \ '    finish',
           \ 'endif'
-          \ ], ft_path, 'a') " Abort if the current color scheme is not gruvbox-material.
+          \ ], ft_path, 'a') " Abort if the current color scheme is not kimbox.
     call writefile([
           \ "if index(g:kimbox_loaded_file_types, '" . a:ft . "') ==# -1",
           \ "    call add(g:kimbox_loaded_file_types, '" . a:ft . "')",
@@ -297,7 +296,7 @@ function! kimbox#ft_rootpath(path) "{{{
   endif
 endfunction "}}}
 function! kimbox#ft_newest(path, last_modified) "{{{
-  " Determine whether the current ftplugin files are up to date by comparing the last modified time in `colors/gruvbox-material.vim` and `after/ftplugin/text/kimbox.vim`.
+  " Determine whether the current ftplugin files are up to date by comparing the last modified time in `colors/kimbox.vim` and `after/ftplugin/text/kimbox.vim`.
   let rootpath = kimbox#ft_rootpath(a:path)
   execute 'source ' . rootpath . '/after/ftplugin/text/kimbox.vim'
   return a:last_modified ==# g:kimbox_last_modified ? 1 : 0
@@ -324,7 +323,7 @@ function! kimbox#ft_clean(path, msg) "{{{
     call delete(rootpath . '/after', 'd')
   endif
   if a:msg
-    echohl WarningMsg | echom '[gruvbox-material] Cleaned ' . rootpath . '/after/ftplugin' | echohl None
+    echohl WarningMsg | echom '[kimbox] Cleaned ' . rootpath . '/after/ftplugin' | echohl None
   endif
 endfunction "}}}
 function! kimbox#ft_exists(path) "{{{
