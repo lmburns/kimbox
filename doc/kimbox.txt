@@ -1,0 +1,569 @@
+*kimbox.txt*     Gruvbox with Material Palette
+
+CONTENTS                                     *kimbox-contents*
+
+Introduction                                 |kimbox-introduction|
+Installation                                 |kimbox-installation|
+Usage                                        |kimbox-usage|
+Configuration                                |kimbox-configuration|
+FAQ                                          |kimbox-faq|
+
+Note: Type |gO| to show the outline of contents.
+
+==============================================================================
+INTRODUCTION                                     *kimbox-introduction*
+
+Gruvbox Material is a modified version of Gruvbox, the contrast is adjusted to
+be softer in order to protect developers' eyes.
+
+There are 3 palettes available in this color scheme:
+
+- `material`: Carefully designed to have a soft contrast.
+- `mix`: Color palette obtained by calculating the mean of the other two.
+- `original`: The color palette used in the original gruvbox.
+
+This color scheme uses the `material` palette by default, you can use
+|g:kimbox_palette| to switch to another palette.
+
+Features~
+
+- Carefully designed color palette for eye protection.
+- Switch back to the original color palette whenever you like.
+- Highly customizable.
+- Rich support for common file types and plugins.
+- Italic support 🎉
+
+==============================================================================
+INSTALLATION                                     *kimbox-installation*
+
+------------------------------------------------------------------------------
+
+Via Plugin Manager~
+
+    Take [vim-plug](https://github.com/junegunn/vim-plug) for example:
+>
+        Plug 'sainnhe/kimbox'
+<
+    For better syntax highlighting support, please install
+    https://github.com/sheerun/vim-polyglot or https://github.com/nvim-treesitter/nvim-treesitter.
+
+------------------------------------------------------------------------------
+
+Manually~
+
+    1. Clone the repository: `git clone --depth 1 https://github.com/sainnhe/kimbox.git`
+
+    2. Copy `/path/to/kimbox/autoload/kimbox.vim` to
+    `~/.vim/autoload/`.
+
+    3. Copy `/path/to/kimbox/colors/kimbox.vim` to
+    `~/.vim/colors/` .
+
+    4. Copy `/path/to/kimbox/doc/kimbox.txt` to
+    `~/.vim/doc/` and execute `:helptags ~/.vim/doc/` to generate help tags.
+
+    5. To install [airline](https://github.com/vim-airline/vim-airline) theme,
+    copy `/path/to/kimbox/autoload/airline/themes/kimbox.vim`
+    to `~/.vim/autoload/airline/themes/` .
+
+    6. To install [lightline](https://github.com/itchyny/lightline.vim) theme,
+    copy `/path/to/kimbox/autoload/lightline/colorscheme/kimbox.vim`
+    to `~/.vim/autoload/lightline/colorscheme/` .
+
+------------------------------------------------------------------------------
+
+AUR~
+
+    There are some packages available for Arch Linux users in AUR:
+
+    - [vim-kimbox-git](https://aur.archlinux.org/pkgbase/vim-kimbox-git/)
+    - [neovim-kimbox-git](https://aur.archlinux.org/pkgbase/neovim-kimbox-git/)
+
+==============================================================================
+USAGE                                                   *kimbox-usage*
+
+------------------------------------------------------------------------------
+
+Vim~
+
+    Put something like this in your vimrc:
+>
+        " Important!!
+        if has('termguicolors')
+          set termguicolors
+        endif
+
+        " For dark version.
+        set background=dark
+
+        " For light version.
+        set background=light
+
+        " Set contrast.
+        " This configuration option should be placed before `colorscheme kimbox`.
+        " Available values: 'hard', 'medium'(default), 'soft'
+        let g:kimbox_background = 'soft'
+
+        colorscheme kimbox
+<
+    See |kimbox-configuration| for more configuration options.
+
+    If you want to apply this color scheme temporarily, run this command in
+    vim(this may cause broken colors):
+>
+        :colorscheme kimbox
+<
+------------------------------------------------------------------------------
+
+Airline~
+
+    To enable [airline](https://github.com/vim-airline/vim-airline) color
+    scheme, put this in your vimrc:
+>
+        let g:airline_theme = 'kimbox'
+<
+    To apply it without reloading:
+>
+        :AirlineTheme kimbox
+<
+------------------------------------------------------------------------------
+
+Lightline~
+
+    To enable [lightline](https://github.com/itchyny/lightline.vim) color
+    scheme, put this in your vimrc:
+>
+        let g:lightline = {}
+        let g:lightline.colorscheme = 'kimbox'
+
+        " Or this line:
+        let g:lightline = {'colorscheme' : 'kimbox'}
+<
+    To apply it without reloading:
+>
+        :let g:lightline.colorscheme = 'kimbox'
+        :call lightline#init()
+        :call lightline#colorscheme()
+<
+==============================================================================
+CONFIGURATION                                   *kimbox-configuration*
+
+Note: the configuration options should be placed before `colorscheme kimbox`
+
+E.g.
+>
+    if has('termguicolors')
+      set termguicolors
+    endif
+    set background=light
+
+    let g:kimbox_background = 'soft'
+    let g:kimbox_enable_italic = 1
+    let g:kimbox_disable_italic_comment = 1
+
+    colorscheme kimbox
+    let g:lightline.colorscheme = 'kimbox'
+<
+------------------------------------------------------------------------------
+                                                 *g:kimbox_background*
+g:kimbox_background~
+
+The background contrast used in this color scheme.
+
+    Available values: `'hard'`, `'medium'`, `'soft'`
+    Default value: `'medium'`
+
+E.g.
+>
+    let g:kimbox_background = 'hard'
+<
+------------------------------------------------------------------------------
+                                     *g:kimbox_disable_italic_comment*
+g:kimbox_disable_italic_comment~
+
+By default, italic is enabled in `Comment`. To disable italic in `Comment`, set
+this option to `1`.
+
+E.g.
+>
+    let g:kimbox_disable_italic_comment = 1
+<
+Note: Some terminal emulators don't support italics, which may cause the
+comment color looks weird. See https://github.com/sainnhe/kimbox/issues/5#issuecomment-729586348
+
+------------------------------------------------------------------------------
+                                                *g:kimbox_enable_bold*
+g:kimbox_enable_bold~
+
+To enable bold in function name just like the original gruvbox, set this
+option to `1`.
+
+E.g.
+>
+    let g:kimbox_enable_bold = 1
+<
+------------------------------------------------------------------------------
+                                              *g:kimbox_enable_italic*
+g:kimbox_enable_italic~
+
+To enable italic in this color scheme, set this option to `1`.
+
+E.g.
+>
+    let g:kimbox_enable_italic = 1
+<
+Note: This option is designed to use with fonts that support cursive italics.
+See |kimbox-faq| for more information.
+
+------------------------------------------------------------------------------
+                                                     *g:kimbox_cursor*
+g:kimbox_cursor~
+
+Customize the cursor color, only works in GUI clients.
+
+    Available values: `'auto'`, `'red'`, `'orange'`, `'yellow'`, `'green'`,
+    `'aqua'`, `'blue'`, `'purple'`
+    Default value: `'auto'`
+
+E.g.
+>
+    let g:kimbox_cursor = 'green'
+<
+------------------------------------------------------------------------------
+                                     *g:kimbox_transparent_background*
+g:kimbox_transparent_background~
+
+To use transparent background, set this option to `1`.
+
+E.g.
+>
+    let g:kimbox_transparent_background = 1
+<
+------------------------------------------------------------------------------
+                                                     *g:kimbox_visual*
+g:kimbox_visual~
+
+Control the |hl-Visual| and the |hl-VisualNOS| highlight group.
+
+    Available values: `'grey background'`, `'green background'`,
+    `'blue background'`, `'red background'`, `'reverse'`
+    Default value: `'grey background'`
+
+E.g.
+>
+    let g:kimbox_visual = 'reverse'
+<
+------------------------------------------------------------------------------
+                                  *g:kimbox_menu_selection_background*
+g:kimbox_menu_selection_background~
+
+Customize the background color of |hl-PmenuSel| and |hl-WildMenu|.
+
+    Available values: `'grey'`, `'red'`, `'orange'`, `'yellow'`, `'green'`,
+    `'aqua'`, `'blue'`, `'purple'`
+    Default value: `'grey'`
+
+E.g.
+>
+    let g:kimbox_menu_selection_background = 'green'
+<
+------------------------------------------------------------------------------
+                                     *g:kimbox_sign_column_background*
+g:kimbox_sign_column_background~
+
+By default, the background color of sign column is different from normal text.
+If you want to make it the same as normal text, set this option to `'none'`.
+
+    Available values: `'default'`, `'none'`
+    Default value: `'default'`
+
+E.g.
+>
+    let g:kimbox_sign_column_background = 'none'
+<
+------------------------------------------------------------------------------
+                                  *g:kimbox_diagnostic_text_highlight*
+g:kimbox_diagnostic_text_highlight~
+
+Whether to highlight the background of error/warning/info/hint text.
+
+    Available values: `0`, `1`
+    Default value: `0`
+
+E.g.
+>
+    let g:kimbox_diagnostic_text_highlight = 1
+<
+------------------------------------------------------------------------------
+                                  *g:kimbox_diagnostic_line_highlight*
+g:kimbox_diagnostic_line_highlight~
+
+Some plugins support highlighting error/warning/info/hint lines, but this
+feature is disabled by default in this color scheme. To enable this feature,
+set this option to `1`.
+
+E.g.
+>
+    let g:kimbox_diagnostic_line_highlight = 1
+<
+Currently, the following plugins are supported:
+
+- https://github.com/neoclide/coc.nvim
+- https://github.com/ycm-core/YouCompleteMe
+- https://github.com/dense-analysis/ale
+- https://github.com/vim-syntastic/syntastic
+
+------------------------------------------------------------------------------
+                                               *g:kimbox_current_word*
+g:kimbox_current_word~
+
+Some plugins can highlight the word under current cursor, you can use this
+option to control their behavior.
+
+Currently support:
+
+- https://github.com/neoclide/coc-highlight
+- https://github.com/dominikduda/vim_current_word
+- https://github.com/RRethy/vim-illuminate
+- https://github.com/itchyny/vim-cursorword
+- https://github.com/prabirshrestha/vim-lsp
+
+    Available values: `'grey background'`, `'bold'`, `'underline'`, `'italic'`
+    Default value: `'grey background'` when not in transparent mode, `'bold'`
+    when in transparent mode.
+
+E.g.
+>
+    let g:kimbox_current_word = 'bold'
+<
+------------------------------------------------------------------------------
+                                           *g:kimbox_statusline_style*
+g:kimbox_statusline_style~
+
+Determine the style of statusline/airline/lightline. Set this option to
+`'original'` to use the original gruvbox style.
+
+    Available values: `'default'`, `'original'`
+    Default value: `'default'`
+
+E.g.
+>
+    let g:kimbox_statusline_style = 'original'
+<
+------------------------------------------------------------------------------
+                                     *g:kimbox_lightline_disable_bold*
+g:kimbox_lightline_disable_bold~
+
+By default, bold is enabled in lightline color scheme. To disable bold in
+lightline color scheme, set this option to `1`.
+
+E.g.
+>
+    let g:kimbox_lightline_disable_bold = 1
+<
+Note: this configuration option doesn't need to be placed before `colorscheme kimbox`
+
+------------------------------------------------------------------------------
+                                         *g:kimbox_better_performance*
+g:kimbox_better_performance~
+
+The loading time of this color scheme is very long because too many file types
+and plugins are optimized. This feature allows you to load part of the code on
+demand by placing them in the `after/ftplugin` directory.
+
+Enabling this option will reduce loading time by approximately 50%.
+
+E.g.
+>
+    let g:kimbox_better_performance = 1
+<
+------------------------------------------------------------------------------
+                                                    *g:kimbox_palette*
+g:kimbox_palette~
+
+All the colors in this color scheme are fully controlled by this variable, you
+can set them to whatever you like through it.
+
+There are 3 built-in palettes:
+
+- `material`: Carefully designed to have a soft contrast.
+- `mix`: Color palette obtained by calculating the mean of the other two.
+- `original`: The color palette used in the original gruvbox.
+
+    Available values: `'material'`, `'mix'`, `'original'` or a custom palette
+    Default value: `'material'`
+
+E.g.
+>
+    " Use the color palette of the original gruvbox.
+    let g:kimbox_palette = 'original'
+
+    " If you prefer a darker background, for example: '#101010'.
+    " See `autoload/kimbox.vim` for the definition of all built-in palettes.
+    " {{{
+    let g:kimbox_palette = {
+          \ 'bg0':              ['#101010',   '234'],
+          \ 'bg1':              ['#262727',   '235'],
+          \ 'bg2':              ['#282828',   '235'],
+          \ 'bg3':              ['#3c3836',   '237'],
+          \ 'bg4':              ['#3c3836',   '237'],
+          \ 'bg5':              ['#504945',   '239'],
+          \ 'bg_statusline1':   ['#282828',   '235'],
+          \ 'bg_statusline2':   ['#32302f',   '235'],
+          \ 'bg_statusline3':   ['#504945',   '239'],
+          \ 'bg_diff_green':    ['#32361a',   '22'],
+          \ 'bg_visual_green':  ['#333e34',   '22'],
+          \ 'bg_diff_red':      ['#3c1f1e',   '52'],
+          \ 'bg_visual_red':    ['#442e2d',   '52'],
+          \ 'bg_diff_blue':     ['#0d3138',   '17'],
+          \ 'bg_visual_blue':   ['#2e3b3b',   '17'],
+          \ 'bg_visual_yellow': ['#473c29',   '94'],
+          \ 'bg_current_word':  ['#32302f',   '236'],
+          \ 'fg0':              ['#d4be98',   '223'],
+          \ 'fg1':              ['#ddc7a1',   '223'],
+          \ 'red':              ['#ea6962',   '167'],
+          \ 'orange':           ['#e78a4e',   '208'],
+          \ 'yellow':           ['#d8a657',   '214'],
+          \ 'green':            ['#a9b665',   '142'],
+          \ 'aqua':             ['#89b482',   '108'],
+          \ 'blue':             ['#7daea3',   '109'],
+          \ 'purple':           ['#d3869b',   '175'],
+          \ 'bg_red':           ['#ea6962',   '167'],
+          \ 'bg_green':         ['#a9b665',   '142'],
+          \ 'bg_yellow':        ['#d8a657',   '214'],
+          \ 'grey0':            ['#7c6f64',   '243'],
+          \ 'grey1':            ['#928374',   '245'],
+          \ 'grey2':            ['#a89984',   '246'],
+          \ 'none':             ['NONE',      'NONE']
+          \ }
+    " }}}
+
+    " Colors based on https://github.com/soft-aesthetic/soft-era
+    " There are some problems in the original one but I'm too lazy to maintain a fork.
+    " However, I successfully obtained a palette based on soft-era, and I'd like to share it here.
+    " Preview: https://user-images.githubusercontent.com/37491630/82816097-0c76a900-9e8a-11ea-9d99-73573b0f0afb.png
+    " {{{
+    let g:kimbox_palette = {
+          \ 'bg0':              ['#f9f5f5',   '229'],
+          \ 'bg1':              ['#f4f0f0',   '228'],
+          \ 'bg2':              ['#f4f0f0',   '228'],
+          \ 'bg3':              ['#f2edec',   '223'],
+          \ 'bg4':              ['#efeae9',   '223'],
+          \ 'bg5':              ['#ebe6e4',   '250'],
+          \ 'bg_statusline1':   ['#f4f0f0',   '223'],
+          \ 'bg_statusline2':   ['#f4f0f0',   '223'],
+          \ 'bg_statusline3':   ['#ebe6e4',   '250'],
+          \ 'bg_diff_green':    ['#eaf3ce',   '194'],
+          \ 'bg_visual_green':  ['#eaf3ce',   '194'],
+          \ 'bg_diff_red':      ['#fae1d7',   '217'],
+          \ 'bg_visual_red':    ['#fae1d7',   '217'],
+          \ 'bg_diff_blue':     ['#e0f0f3',   '117'],
+          \ 'bg_visual_blue':   ['#e0f0f3',   '117'],
+          \ 'bg_visual_yellow': ['#f6ead0',   '226'],
+          \ 'bg_current_word':  ['#efeae9',   '228'],
+          \ 'fg0':              ['#be9898',   '237'],
+          \ 'fg1':              ['#be9898',   '237'],
+          \ 'red':              ['#f165bd',   '88'],
+          \ 'orange':           ['#f165bd',   '130'],
+          \ 'yellow':           ['#ec9157',   '136'],
+          \ 'green':            ['#96ad01',   '100'],
+          \ 'aqua':             ['#25b7b8',   '165'],
+          \ 'blue':             ['#75a9d9',   '24'],
+          \ 'purple':           ['#aea6e1',   '96'],
+          \ 'bg_red':           ['#f165bd',   '88'],
+          \ 'bg_green':         ['#96ad01',   '100'],
+          \ 'bg_yellow':        ['#ec9157',   '130'],
+          \ 'grey0':            ['#e3cbcb',   '246'],
+          \ 'grey1':            ['#dfc5c5',   '245'],
+          \ 'grey2':            ['#dabfbf',   '243'],
+          \ 'none':             ['NONE',      'NONE']
+          \ }
+    " }}}
+<
+==============================================================================
+FAQ                                                       *kimbox-faq*
+
+------------------------------------------------------------------------------
+
+It doesn't work as expected.~
+
+1. This color scheme is mainly designed for true colors, `set termguicolors`
+is required. Check output of `vim --version`, maybe your vim doesn't support
+`termguicolors`.
+
+2. Maybe your terminal emulator doesn't support true colors, you can test it
+using [this script](https://unix.stackexchange.com/questions/404414/print-true-color-24-bit-test-pattern).
+
+3. If you are running vim in tmux, you need to override default true colors of
+tmux, as tmux cannot display true colors properly:
+[#1246 How to use true colors in vim under tmux?](https://github.com/tmux/tmux/issues/1246)
+
+4. There are many highlight group links in syntax files while a color scheme
+may change them, enabling one color scheme based on another color scheme
+enabled is very likely to cause colors to break. If any color is broken, you
+can enable the color scheme in your vimrc instead of after vim startup.
+
+------------------------------------------------------------------------------
+
+I can't apply airline/lightline color scheme.~
+
+The name is `kimbox` instead of `kimbox`. I have to use
+underline for some grammatical reasons.
+
+------------------------------------------------------------------------------
+
+How to enable cursive italic keywords?~
+
+1. Install a font that supports cursive italics, for example [icursive-nerd-font](https://github.com/sainnhe/icursive-nerd-font).
+
+2. Enable italic keywords in this color scheme: `let g:kimbox_enable_italic = 1`
+
+3. Disable italic comment(optional): `let g:kimbox_disable_italic_comment = 1`
+
+------------------------------------------------------------------------------
+
+How to use custom colors?~
+>
+    function! s:kimbox_custom() abort
+      " Link a highlight group to a predefined highlight group.
+      " See `colors/kimbox.vim` for all predefined highlight groups.
+      highlight! link groupA groupB
+      highlight! link groupC groupD
+    
+      " Initialize the color palette.
+      " The first parameter is a valid value for `g:kimbox_background`,
+      " and the second parameter is a valid value for `g:kimbox_palette`.
+      let l:palette = kimbox#get_palette('hard', 'mix')
+      " Define a highlight group.
+      " The first parameter is the name of a highlight group,
+      " the second parameter is the foreground color,
+      " the third parameter is the background color,
+      " the fourth parameter is for UI highlighting which is optional,
+      " and the last parameter is for `guisp` which is also optional.
+      " See `autoload/kimbox.vim` for the format of `l:palette`.
+      call kimbox#highlight('groupE', l:palette.red, l:palette.none, 'undercurl', l:palette.red)
+    endfunction
+    
+    augroup GruvboxMaterialCustom
+      autocmd!
+      autocmd ColorScheme kimbox call s:kimbox_custom()
+    augroup END
+    
+    colorscheme kimbox
+<
+Note: Make sure to define the `augroup` before declare the `colorscheme`.
+
+------------------------------------------------------------------------------
+
+What's your status line configuration?~
+
+See this [article](https://www.sainnhe.dev/post/status-line-config/).
+
+------------------------------------------------------------------------------
+
+What's the font used here?~
+
+[Fira Code iCursive Op](https://github.com/sainnhe/icursive-nerd-font).
+
+==============================================================================
+vim:tw=78:nosta:noet:ts=8:sts=0:ft=help:et:sw=4:fen:fdm=marker:fmr={{{,}}}:
