@@ -2,7 +2,7 @@
 " Theme: Oceanice_Material
 " Author: Glepnir
 " License: MIT
-" Source: http://github.com/hardcoreplayers/oceanic_material
+" Source: http://github.com/hardcoreplayers/kimbox
 " ===============================================================
 
 " Initialization: {{{
@@ -15,49 +15,49 @@ endif
 
 set background=dark
 
-let g:colors_name = "oceanic_material"
-let s:oceanic_material_version = '0.2.2'
+let g:colors_name = "kimbox"
+let s:kimbox_version = '0.2.2'
 
 if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
   finish
 endif
 
-let s:oceanic_material_transparent_background = get(g:,'oceanic_material_transparent_background',0)
+let s:kimbox_transparent_background = get(g:,'kimbox_transparent_background',0)
 
-let s:oceanic_material_background = get(g:,'oceanic_material_background','ocean')
+let s:kimbox_background = get(g:,'kimbox_background','ocean')
 
-let s:oceanic_material_allow_bold = get(g:,'oceanic_material_allow_bold', 0)
+let s:kimbox_allow_bold = get(g:,'kimbox_allow_bold', 0)
 
-let s:oceanic_material_allow_italic = get(g:,'oceanic_material_allow_italic',0)
+let s:kimbox_allow_italic = get(g:,'kimbox_allow_italic',0)
 
-let s:oceanic_material_allow_underline = get(g:,'oceanic_material_allow_underline',0)
+let s:kimbox_allow_underline = get(g:,'kimbox_allow_underline',0)
 
-let s:oceanic_material_allow_reverse = get(g:,'oceanic_material_allow_reverse',0)
+let s:kimbox_allow_reverse = get(g:,'kimbox_allow_reverse',0)
 
-let s:oceanic_material_allow_undercurl = get(g:,'oceanic_material_allow_undercurl',0)
+let s:kimbox_allow_undercurl = get(g:,'kimbox_allow_undercurl',0)
 
 let s:bold = ''
-if s:oceanic_material_allow_bold == 1
+if s:kimbox_allow_bold == 1
   let s:bold = ' cterm=bold gui=bold '
 endif
 
 let s:italic = ''
-if s:oceanic_material_allow_italic == 1
+if s:kimbox_allow_italic == 1
   let s:italic = ' cterm=italic gui=italic '
 endif
 
 let s:underline = ''
-if s:oceanic_material_allow_underline == 1
+if s:kimbox_allow_underline == 1
   let s:underline = ' cterm=underline gui=underline '
 endif
 
 let s:reverse = ''
-if s:oceanic_material_allow_reverse == 1
+if s:kimbox_allow_reverse == 1
   let s:reverse = ' cterm=reverse gui=reverse '
 endif
 
 let s:undercurl = ''
-if s:oceanic_material_allow_undercurl == 1
+if s:kimbox_allow_undercurl == 1
   let s:undercurl = ' cterm=undercurl gui=undercurl '
 endif
 
@@ -69,7 +69,7 @@ let s:background = {
       \}
 
 let s:colors = {
-      \ 'bg0':              s:background[s:oceanic_material_background],
+      \ 'bg0':              s:background[s:kimbox_background],
       \ 'bg1':              ['#221a02',   '237'],
       \ 'bg2':              ['#362712',   '235'],
       \ 'bg3':              ['#291804',   '237'],
@@ -100,7 +100,7 @@ function! g:OceanicMaterialPalette()
 endfunction
 
 function! g:OceanicMaterial()
-  echo s:oceanic_material_version
+  echo s:kimbox_version
 endfunction
 
 function! s:create_color_variables() abort
@@ -150,7 +150,7 @@ endfunction
 
 " Oceanic Material Transparent BackGround
 function! s:apply_syntax_highlightings()
-  if s:oceanic_material_transparent_background
+  if s:kimbox_transparent_background
     exec 'hi Normal' . s:fg_fg0 . s:bg_none
     exec 'hi Terminal' . s:fg_fg0 . s:bg_none
     exec 'hi FoldColumn' . s:fg_grey0 . s:bg_none
