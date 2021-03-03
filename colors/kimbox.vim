@@ -79,19 +79,19 @@ let s:colors = {
       \ 'fg1':              ['#D3AF86',   '223'],
       \ 'fg3':              ['#4f5b66',   '17'],
       \ 'red':              ['#f73759',   '203'],
-      \ 'magenta':          ['#d16d9e',   '205'],
-      \ 'orange':           ['#d3859a',   '208'],
+      \ 'magenta':          ['#d3859a',   '205'],
+      \ 'orange':           ['#F06431',   '208'],
       \ 'yellow':           ['#889B4A',   '214'],
       \ 'green':            ['#F79A32',   '111'],
-      \ 'aqua':             ['#F06431',   '73'],
+      \ 'aqua':             ['#4C96A8',   '73'],
       \ 'blue':             ['#719190',   '68'],
-      \ 'purple':           ['#98676a',   '176'],
+      \ 'purple':           ['#d3859a',   '176'],
       \ 'black':            ['#000000',    '0'],
       \ 'bg_red':           ['#F14A68',   '167'],
-      \ 'grey0':            ['#7c6f64',   '243'],
-      \ 'grey1':            ['#928374',   '245'],
+      \ 'grey0':            ['#7f5d38',   '243'],
+      \ 'grey1':            ['#7f5d38',   '245'],
       \ 'grey2':            ['#a89984',   '246'],
-      \ 'operator_base05':  ['#c0c5ce',   '251'],
+      \ 'operator_base05':  ['#e8c097',   '251'],
       \ 'none':             ['NONE',      'NONE']
   \ }
 
@@ -147,6 +147,14 @@ function! s:set_color_variables() abort
   let g:terminal_color_14 = s:terminal.cyan[0]
   let g:terminal_color_15 = s:terminal.white[0]
 endfunction
+
+" function! oceanic#highlight(group, fg, bg, ...) "{{{
+"   execute 'highlight' a:group
+"         \ 'guifg=' . s:fg_fg0
+"         \ 'guibg=' . s:bg_bg0
+"         \ 'ctermfg=' . s:fg_fg0
+"         \ 'ctermbg=' . s:bg_bg1
+" endfunction "}}}
 
 " Oceanic Material Transparent BackGround
 function! s:apply_syntax_highlightings()
@@ -254,7 +262,8 @@ function! s:apply_syntax_highlightings()
   " Comment
   exec 'hi Comment'. s:fg_grey1. s:italic
   exec 'hi SpecialComment'. s:fg_grey1. s:italic
-  exec 'hi Todo'. s:fg_purple. s:italic
+  exec 'hi Todo'. s:fg_purple. s:italic. s:bg_none
+  " NOTE:
 
   exec 'hi Delimiter'. s:fg_fg0
   exec 'hi Ignore'. s:fg_grey1
@@ -934,7 +943,9 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   " VimL:
   "===============================================================
-  exec 'hi vimCommentTitle'. s:fg_grey1. s:bold
+  " call oceanic#highlight('vimCommentTitle', s:fg_grey1, s:none, 'bold')
+  " exec 'hi vimCommentTitle'. s:fg_grey1. s:bold
+  exec 'hi vimCommentTitle' . s:fg_grey1. s:bold. s:bg_none
   exec 'hi vimLet' . s:fg_orange
   exec 'hi vimVar' . s:fg_aqua
   exec 'hi vimFunction' . s:fg_magenta  . s:bold
