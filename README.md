@@ -1,121 +1,133 @@
 ## Kimbox
-## Kimbie Dark - Gruvbox Material - Vim Theme
+## Kimbie Dark - Oceanic Material - Vim Theme
 
-Modified colors of gruvbox-material Vim theme.
+Modified [Oceanic Material](https://github.com/glepnir/oceanic-material) theme with Kimbie Dark colors.
 
 ----
 
 ## Original
+# Oceanic Material
 
-## Introduction
+![OceaniceMaterial](https://user-images.githubusercontent.com/41671631/87221070-e9ea1200-c39b-11ea-90c9-582d2b50ac40.png)
 
-Gruvbox Material is a modified version of [Gruvbox](https://github.com/morhetz/gruvbox), the contrast is adjusted to be softer in order to protect developers' eyes.
-
-There are 3 palettes available in this color scheme:
-
-<details>
-  <summary><code>material</code>: Carefully designed to have a soft contrast(<b>click on this line to preview</b>)</summary>
-
-|        |                                                             𝐃𝐚𝐫𝐤                                                              |                                                             𝐋𝐢𝐠𝐡𝐭                                                              |
-| :----: | :---------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
-|  𝐇𝐚𝐫𝐝  |  ![material-hard-dark](https://user-images.githubusercontent.com/37491630/75227134-891fbb80-57a5-11ea-878e-b8b2972cfd6e.png)  |  ![material-hard-light](https://user-images.githubusercontent.com/37491630/75227137-8a50e880-57a5-11ea-90dc-b2646d8b0b55.png)  |
-| 𝐌𝐞𝐝𝐢𝐮𝐦 | ![material-medium-dark](https://user-images.githubusercontent.com/37491630/75227139-8cb34280-57a5-11ea-86d6-3d3f6a2475eb.png) | ![material-medium-light](https://user-images.githubusercontent.com/37491630/75227141-8de46f80-57a5-11ea-820a-9394ab9d09aa.png) |
-|  𝐒𝐨𝐟𝐭  |  ![material-soft-dark](https://user-images.githubusercontent.com/37491630/75227149-9046c980-57a5-11ea-8633-bf4f31e533d0.png)  |  ![material-soft-light](https://user-images.githubusercontent.com/37491630/75227157-92108d00-57a5-11ea-8b13-b2130bff60d8.png)  |
-
-</details>
-
-<details>
-  <summary><code>mix</code>: Color palette obtained by calculating the mean of the other two(<b>click on this line to preview</b>)</summary>
-
-|        |                                                           𝐃𝐚𝐫𝐤                                                           |                                                           𝐋𝐢𝐠𝐡𝐭                                                           |
-| :----: | :----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
-|  𝐇𝐚𝐫𝐝  |  ![mix-hard-dark](https://user-images.githubusercontent.com/37491630/76383368-826f7780-6353-11ea-8094-b593eb5f1e10.png)  |  ![mix-hard-light](https://user-images.githubusercontent.com/37491630/76383372-88655880-6353-11ea-9441-78d159600faf.png)  |
-| 𝐌𝐞𝐝𝐢𝐮𝐦 | ![mix-medium-dark](https://user-images.githubusercontent.com/37491630/76383370-84393b00-6353-11ea-88de-804a781d3142.png) | ![mix-medium-light](https://user-images.githubusercontent.com/37491630/76383375-8ac7b280-6353-11ea-94a8-62e3845203bc.png) |
-|  𝐒𝐨𝐟𝐭  |  ![mix-soft-dark](https://user-images.githubusercontent.com/37491630/76383371-869b9500-6353-11ea-923d-9011bbe6bcad.png)  |  ![mix-soft-light](https://user-images.githubusercontent.com/37491630/76383380-8c917600-6353-11ea-8530-a67932a6a2ec.png)  |
-
-</details>
-
-<details>
-  <summary><code>original</code>: The color palette used in the original gruvbox(<b>click on this line to preview</b>)</summary>
-
-|        |                                                             𝐃𝐚𝐫𝐤                                                              |                                                             𝐋𝐢𝐠𝐡𝐭                                                              |
-| :----: | :---------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
-|  𝐇𝐚𝐫𝐝  |  ![original-hard-dark](https://user-images.githubusercontent.com/37491630/76383382-8e5b3980-6353-11ea-9398-08d31b1ed32d.png)  |  ![original-hard-light](https://user-images.githubusercontent.com/37491630/76383389-931fed80-6353-11ea-905f-47b35c0cac39.png)  |
-| 𝐌𝐞𝐝𝐢𝐮𝐦 | ![original-medium-dark](https://user-images.githubusercontent.com/37491630/76383385-9024fd00-6353-11ea-99c1-7bba4f796115.png) | ![original-medium-light](https://user-images.githubusercontent.com/37491630/76383393-94511a80-6353-11ea-84ea-551b44f0d5bd.png) |
-|  𝐒𝐨𝐟𝐭  |  ![original-soft-dark](https://user-images.githubusercontent.com/37491630/76383387-91562a00-6353-11ea-90a0-daac8653dfd0.png)  |  ![original-soft-light](https://user-images.githubusercontent.com/37491630/76383396-95824780-6353-11ea-9b36-302b88fef429.png)  |
-
-</details>
-
-This color scheme uses the `material` palette by default, you can use a global variable to switch to another palette.
-
-### Features
-
-- Carefully designed color palette for eye protection.
-- Switch back to the original color palette whenever you like.
-- Highly customizable.
-- Rich support for common file types and plugins.
-- [Italic support](https://github.com/sainnhe/icursive-nerd-font) 🎉
+Oceanice_Material is a dark colorscheme for vim/neovim
 
 ## Installation
 
-### Via Plugin Manager
+- vim-plug
+  ```viml
+  Plug 'glepnir/oceanic-material'
+  ```
+- dein
+  ```viml
+  call dein#add('glepnir/oceanic-material')
+  ```
+  Then add this on your vimrc
 
-Take [vim-plug](https://github.com/junegunn/vim-plug) for example:
-
-```vim
-Plug 'sainnhe/gruvbox-material'
+```viml
+set background=dark
+colorscheme oceanic_material
 ```
 
-For better syntax highlighting support, please install [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot) or [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
+## Color
 
-### Manually
+| #282c34                                                         | #1b2b34                                                         | #EC5f67                                                         | #d16d92                                                         | #e78a4e                                                         | #d8a657                                                         | #a9b665                                                         |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| ![#282c34](https://via.placeholder.com/80/282c34/000000?text=+) | ![#1b2b34](https://via.placeholder.com/80/1b2b34/000000?text=+) | ![#EC5f67](https://via.placeholder.com/80/EC5f67/000000?text=+) | ![#d16d92](https://via.placeholder.com/80/d16d92/000000?text=+) | ![#e78a4e](https://via.placeholder.com/80/e78a4e/000000?text=+) | ![#d8a657](https://via.placeholder.com/80/d8a657/000000?text=+) | ![#a9b665](https://via.placeholder.com/80/a9b665/000000?text=+) |
+| #62b3b2                                                         | #6699cc                                                         | #c594c5                                                         | #5faf5f                                                         | #c0c5ce                                                         | #7c6f64                                                         | #d4be98                                                         |
+| ![#62b3b2](https://via.placeholder.com/80/62b3b2/000000?text=+) | ![#6699cc](https://via.placeholder.com/80/6699cc/000000?text=+) | ![#c594c5](https://via.placeholder.com/80/c594c5/000000?text=+) | ![#5faf5f](https://via.placeholder.com/80/5faf5f/000000?text=+) | ![#c0c5ce](https://via.placeholder.com/80/c0c5ce/000000?text=+) | ![#7c6f64](https://via.placeholder.com/80/7c6f64/000000?text=+) | ![#d4be98](https://via.placeholder.com/80/d4be98/000000?text=+) |
 
-1. Clone this repository.
-2. Copy `/path/to/gruvbox-material/autoload/gruvbox_material.vim` to `~/.vim/autoload/`.
-3. Copy `/path/to/gruvbox-material/colors/gruvbox-material.vim` to `~/.vim/colors/` .
-4. Copy `/path/to/gruvbox-material/doc/gruvbox-material.txt` to `~/.vim/doc/` and execute `:helptags ~/.vim/doc/` to generate help tags.
-5. To install [airline](https://github.com/vim-airline/vim-airline) theme, copy `/path/to/gruvbox-material/autoload/airline/themes/gruvbox_material.vim` to `~/.vim/autoload/airline/themes/` .
-6. To install [lightline](https://github.com/itchyny/lightline.vim) theme, copy `/path/to/gruvbox-material/autoload/lightline/colorscheme/gruvbox_material.vim` to `~/.vim/autoload/lightline/colorscheme/` .
+## Options
 
-### AUR
+| option                                      | value                                     | default                                             |
+| ------------------------------------------- | ----------------------------------------- | --------------------------------------------------- |
+| `g:oceanic_material_transparent_background` | 1: enable transparent background          | 0:disable transparent background                    |
+| `g:oceanic_material_background`             | 'medium' use `#282c34` color as background | ocean: `#1b2b34` medium: `#282C34` deep:#212112 darker:`#1d1f21` |
+| `g:oceanic_material_allow_bold`             | 1: use bold for certain text              | 0: not at all                                       |
+| `g:oceanic_material_allow_italic`           | 1: use italic for certain text            | 0: not at all                                       |
+| `g:oceanic_material_allow_underline`        | 1: use underline for certain text         | 0: not at all                                       |
+| `g:oceanic_material_allow_undercurl`        | 1: use undercurl for certain text         | 0: not at all                                       |
+| `g:oceanic_material_allow_reverse`          | 1: use reverse for certain text           | 0: not at all                                       |
 
-There are some packages available for Arch Linux users in AUR:
+## Support Filetype
 
-- [vim-gruvbox-material-git](https://aur.archlinux.org/pkgbase/vim-gruvbox-material-git/)
-- [neovim-gruvbox-material-git](https://aur.archlinux.org/pkgbase/neovim-gruvbox-material-git/)
+- Markdown
+- vim-restructuredtext
+- Html
+- Latex
+- Xml
+- css
+- Sass
+- scss
+- Less
+- Javascript
+- Typescript
+- JavascriptReact TypescriptReact
+- Dart
+- CoffeeScript
+- C/C++
+- chromatica
+- vim-lsp-cxx-highlight
+- ObjectiveC
+- Python
+- semshi
+- lua
+- java
+- kotlin
+- Scala
+- Go
+- Rust
+- Swift
+- PHP
+- Ruby
+- Haskell
+- Perl
+- Ocaml
+- Erlang
+- Elixir
+- Clojure
+- Matlab
+- Vimscript
+- Makefile
+- Json/Toml/Yaml/Ini
+- Diff/Git commit
 
-## Usage
+## Support Plugin
 
-See [`:help gruvbox-material.txt`](https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt)
+- neoclide/coc.nvim
+- dense-analysis/ale
+- neomake/neomake
+- Shougo/denite.nvim
+- liuchengxu/vista.vim
+- scrooloose/nerdtree
+- andymass/vim-matchup
+- easymotion/vim-easymotion
+- justinmk/vim-sneak
+- luochen1990/rainbow
+- itchyny/vim-cursorword
+- mhinz/vim-startify
+- liuchengxu/vim-which-key
+- machakann/vim-sandwich
+- kristijanhusak/vim-dadbod-ui
+- Shougo/defx.nvim
+- glepnir/dashboard-nvim
 
-## Related Projects
+# Donate
 
-See this [wiki page](https://github.com/sainnhe/gruvbox-material/wiki/Related-Projects).
+Do you like oceanic_material? buy me a coffe 😘!
 
-## More Color Schemes
+[![Support via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://www.paypal.me/bobbyhub)
 
-- [Forest Night](https://github.com/sainnhe/forest-night)
-- [Edge](https://github.com/sainnhe/edge)
-- [Sonokai](https://github.com/sainnhe/sonokai)
+| Wechat                                                                                                          | AliPay                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| ![wechat](https://user-images.githubusercontent.com/41671631/84404718-c8312a00-ac39-11ea-90d7-ee679fbb3705.png) | ![ali](https://user-images.githubusercontent.com/41671631/84403276-1a714b80-ac38-11ea-8607-8492df84e516.png) |
 
-## Credits
+## Thanks to
 
-- The color palette is based on [gruvbox](https://github.com/morhetz/gruvbox) by [@morhetz](https://github.com/morhetz)
-- The color palette is adjusted by [@sainnhe](https://github.com/sainnhe)
+- [equinusocio/material-theme](https://github.com/equinusocio/material-theme)
 
-## Inspirations
+- [NLKNguyen/papercolor-theme](https://github.com/NLKNguyen/papercolor-theme)
 
-- [morhetz/gruvbox](https://github.com/morhetz/gruvbox): original gruvbox
-- [atom.io](https://atom.io): the `white` color in the dark variant
-- [zefei/cake16](https://github.com/zefei/cake16): the `black` color in the light variant
-- [Google Material Design](https://www.material.io)
+- [mhartington/oceanic-next](https://github.com/mhartington/oceanic-next)
 
-## Maintainers
-
-| [![Sainnhe Park](https://avatars1.githubusercontent.com/u/37491630?s=70&u=14e72916dcf467f393c532536387ec72a23747ec&v=4)](https://github.com/sainnhe) | [![Zixin Yin](https://avatars2.githubusercontent.com/u/33487417?s=70&u=c6acee32fad2edb8c3bc3f7e0f436f1e8b8024c6&v=4)](https://github.com/zxYin) |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Sainnhe Park](https://github.com/sainnhe)                                                                                                           | [Zixin Yin](https://github.com/zxYin)                                                                                                           |
-
-## License
-
-[MIT License](./LICENSE)
+- [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material)
