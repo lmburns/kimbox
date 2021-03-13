@@ -1,8 +1,8 @@
 " ===============================================================
-" Theme: Oceanice_Material
-" Author: Glepnir
+" Theme: Kimbox
+" Author: Glepnir | lmburns
 " License: MIT
-" Source: http://github.com/hardcoreplayers/kimbox
+" Source: http://github.com/lmburns/kimbox
 " ===============================================================
 
 " Initialization: {{{
@@ -62,10 +62,10 @@ if s:kimbox_allow_undercurl == 1
 endif
 
 let s:background = {
-      \'medium': ['#291804', '235'],
+      \'medium': ['#231A0C', '235'],
       \'ocean' : ['#221a02', '235'],
       \'deep': ['#0f111b', 'NONE'],
-      \'darker': ['#1d1f21', '234'],
+      \'darker': ['#291804', '234'],
       \}
 
 let s:colors = {
@@ -75,19 +75,19 @@ let s:colors = {
       \ 'bg3':              ['#291804',   '237'],
       \ 'bg4':              ['#5e452b',   '237'],
       \ 'bg5':              ['#5e452b',   '239'],
-      \ 'fg0':              ['#e8c097',   '223'],
-      \ 'fg1':              ['#D3AF86',   '223'],
+      \ 'fg0':              ['#D9AE80',   '255'],
+      \ 'fg1':              ['#C2A383',   '255'],
       \ 'fg3':              ['#4f5b66',   '17'],
-      \ 'red':              ['#f73759',   '203'],
-      \ 'magenta':          ['#d3859a',   '205'],
-      \ 'orange':           ['#F06431',   '208'],
-      \ 'yellow':           ['#889B4A',   '214'],
-      \ 'green':            ['#F79A32',   '111'],
-      \ 'aqua':             ['#4C96A8',   '73'],
-      \ 'blue':             ['#719190',   '68'],
-      \ 'purple':           ['#d3859a',   '176'],
+      \ 'red':              ['#EF1D55',   '255'],
+      \ 'magenta':          ['#A06469',   '255'],
+      \ 'orange':           ['#FF5813',   '255'],
+      \ 'yellow':           ['#819C3B',   '255'],
+      \ 'green':            ['#FF9500',   '255'],
+      \ 'aqua':             ['#7EB2B1',   '255'],
+      \ 'blue':             ['#4C96A8',   '255'],
+      \ 'purple':           ['#98676A',   '176'],
       \ 'black':            ['#000000',    '0'],
-      \ 'bg_red':           ['#F14A68',   '167'],
+      \ 'bg_red':           ['#DC3958',   '167'],
       \ 'grey0':            ['#7f5d38',   '243'],
       \ 'grey1':            ['#7f5d38',   '245'],
       \ 'grey2':            ['#a89984',   '246'],
@@ -1115,7 +1115,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi NERDTreeDir' . s:fg_green
   exec 'hi NERDTreeDirSlash' . s:fg_aqua
   exec 'hi NERDTreeOpenable' . s:fg_orange
-  exec 'hi NERDTreeClosable' . s:fg_orange
+  exec 'hi NERDTreeClosable' . sfg_orange
   exec 'hi NERDTreeFile' . s:fg_fg0
   exec 'hi NERDTreeExecFile' . s:fg_yellow
   exec 'hi NERDTreeUp' . s:fg_grey1
@@ -1179,3 +1179,4 @@ call s:set_color_variables()
 call s:apply_syntax_highlightings()
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker fmr={{{,}}}:
+:
