@@ -70,13 +70,13 @@ let s:background = {
 
 let s:colors = {
       \ 'bg0':              s:background[s:kimbox_background],
-      \ 'bg1':              ['#221a02',   '237'],
+      \ 'bg1':              ['#39260E',   '237'],
       \ 'bg2':              ['#362712',   '235'],
       \ 'bg3':              ['#291804',   '237'],
       \ 'bg4':              ['#5e452b',   '237'],
       \ 'bg5':              ['#5e452b',   '239'],
       \ 'fg0':              ['#D9AE80',   '255'],
-      \ 'fg1':              ['#C2A383',   '255'],
+      \ 'fg1':              ['#7E602C',   '255'],
       \ 'fg3':              ['#4f5b66',   '17'],
       \ 'red':              ['#EF1D55',   '255'],
       \ 'magenta':          ['#A06469',   '255'],
@@ -1115,7 +1115,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi NERDTreeDir' . s:fg_green
   exec 'hi NERDTreeDirSlash' . s:fg_aqua
   exec 'hi NERDTreeOpenable' . s:fg_orange
-  exec 'hi NERDTreeClosable' . sfg_orange
+  exec 'hi NERDTreeClosable' . s:fg_orange
   exec 'hi NERDTreeFile' . s:fg_fg0
   exec 'hi NERDTreeExecFile' . s:fg_yellow
   exec 'hi NERDTreeUp' . s:fg_grey1
@@ -1179,4 +1179,3 @@ call s:set_color_variables()
 call s:apply_syntax_highlightings()
 
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker fmr={{{,}}}:
-:
