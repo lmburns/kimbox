@@ -88,10 +88,10 @@ let s:colors = {
       \ 'purple':           ['#98676A',   '176'],
       \ 'black':            ['#000000',    '0'],
       \ 'bg_red':           ['#DC3958',   '167'],
-      \ 'grey0':            ['#7f5d38',   '243'],
-      \ 'grey1':            ['#7f5d38',   '245'],
-      \ 'grey2':            ['#a89984',   '246'],
-      \ 'operator_base05':  ['#e8c097',   '251'],
+      \ 'grey0':            ['#7F5D38',   '243'],
+      \ 'grey1':            ['#7F5D38',   '245'],
+      \ 'grey2':            ['#A89984',   '246'],
+      \ 'operator_base05':  ['#E8C097',   '251'],
       \ 'none':             ['NONE',      'NONE']
   \ }
 
@@ -851,8 +851,12 @@ function! s:apply_syntax_highlightings()
   exec 'hi perlVarSimpleMemberName' . s:fg_aqua
   exec 'hi perlVarSimpleMember' . s:fg_fg0
   exec 'hi perlMethod' . s:fg_green  . s:bold
+  exec 'hi perlOperator' . s:fg_red
   exec 'hi podVerbatimLine' . s:fg_green
   exec 'hi podCmdText' . s:fg_yellow
+  exec 'hi perlDATA' . s:fg_orange . s:italic
+  exec 'hi perlBraces' . s:fg_purple
+
   "===============================================================
   " OCaml:
   " builtin: https://github.com/rgrinberg/vim-ocaml
