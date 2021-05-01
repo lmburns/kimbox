@@ -88,10 +88,10 @@ let s:colors = {
       \ 'purple':           ['#98676A',   '176'],
       \ 'black':            ['#000000',    '0'],
       \ 'bg_red':           ['#DC3958',   '167'],
-      \ 'grey0':            ['#7F5D38',   '243'],
-      \ 'grey1':            ['#7F5D38',   '245'],
-      \ 'grey2':            ['#A89984',   '246'],
-      \ 'operator_base05':  ['#E8C097',   '251'],
+      \ 'grey0':            ['#7E602C',   '243'],
+      \ 'grey1':            ['#7E602C',   '245'],
+      \ 'grey2':            ['#a89984',   '246'],
+      \ 'operator_base05':  ['#e8c097',   '251'],
       \ 'none':             ['NONE',      'NONE']
   \ }
 
@@ -956,6 +956,21 @@ function! s:apply_syntax_highlightings()
   exec 'hi vimIsCommand' . s:fg_fg0
   exec 'hi vimUserFunc' . s:fg_yellow  . s:bold
   exec 'hi vimFuncName' . s:fg_yellow  . s:bold
+  exec 'hi vimMap' . s:fg_purple . s:italic
+  exec 'hi vimNotation' . s:fg_aqua
+  exec 'hi vimMapLhs' . s:fg_green
+  exec 'hi vimMapRhs' . s:fg_green
+  exec 'hi vimSetEqual' . s:fg_yellow
+  exec 'hi vimSetSep' . s:fg_fg0
+  exec 'hi vimOption' . s:fg_aqua
+  exec 'hi vimUserAttrbKey' . s:fg_yellow
+  exec 'hi vimUserAttrb' . s:fg_green
+  exec 'hi vimAutoCmdSfxList' . s:fg_aqua
+  exec 'hi vimSynType' . s:fg_orange
+  exec 'hi vimHiBang' . s:fg_orange
+  exec 'hi vimSet' . s:fg_yellow
+  exec 'hi vimSetSep' . s:fg_grey0
+  exec 'hi vimContinue' . s:fg_grey1
   "===============================================================
   " Makefile:
   "===============================================================
@@ -1174,6 +1189,34 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   exec 'hi Floaterm' .s:fg_none . s:bg_bg0
   exec 'hi FloatermBorder' .s:fg_blue . s:bg_none
+  "===============================================================
+  " shell
+  "===============================================================
+  exec 'hi shRange' . s:fg_fg0
+  exec 'hi shTestOpr' . s:fg_orange
+  exec 'hi shOption' . s:fg_aqua
+  exec 'hi bashStatement' . s:fg_orange
+  exec 'hi shOperator' . s:fg_orange
+  exec 'hi shQuote' . s:fg_green
+  exec 'hi shSet' . s:fg_orange
+  exec 'hi shSetList' . s:fg_blue
+  exec 'hi shSnglCase' . s:fg_orange
+  exec 'hi shVariable' . s:fg_blue
+  exec 'hi shVarAssign' . s:fg_orange
+  exec 'hi shCmdSubRegion' . s:fg_green
+  exec 'hi shCommandSub' . s:fg_orange
+  exec 'hi shFunctionOne' . s:fg_green . s:bold
+  exec 'hi shFunctionKey' . s:fg_red . s:italic
+  "===============================================================
+  " zsh
+  "===============================================================
+  exec 'hi zshOptStart' . s:fg_purple .s:italic
+  exec 'hi zshOption' . s:fg_blue
+  exec 'hi zshSubst' . s:fg_yellow
+  exec 'hi zshFunction' . s:fg_purple .s:bold
+  exec 'hi zshDeref' . s:fg_blue
+  exec 'hi zshTypes' . s:fg_orange
+  exec 'hi zshVariableDef' . s:fg_blue
 
 endfunction
 
