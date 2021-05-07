@@ -95,11 +95,11 @@ let s:colors = {
       \ 'none':             ['NONE',      'NONE']
   \ }
 
-function! g:OceanicMaterialPalette()
+function! g:KimboxPalette()
   return copy(s:colors)
 endfunction
 
-function! g:OceanicMaterial()
+function! g:Kimbox()
   echo s:kimbox_version
 endfunction
 
@@ -156,7 +156,7 @@ endfunction
 "         \ 'ctermbg=' . s:bg_bg1
 " endfunction "}}}
 
-" Oceanic Material Transparent BackGround
+" Transparent BackGround
 function! s:apply_syntax_highlightings()
   if s:kimbox_transparent_background
     exec 'hi Normal' . s:fg_fg0 . s:bg_none
@@ -1194,7 +1194,7 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   exec 'hi shRange' . s:fg_fg0
   exec 'hi shTestOpr' . s:fg_orange
-  exec 'hi shOption' . s:fg_aqua
+  exec 'hi shOption' . s:fg_orange
   exec 'hi bashStatement' . s:fg_orange
   exec 'hi shOperator' . s:fg_orange
   exec 'hi shQuote' . s:fg_green
@@ -1217,10 +1217,13 @@ function! s:apply_syntax_highlightings()
   exec 'hi zshDeref' . s:fg_blue
   exec 'hi zshTypes' . s:fg_orange
   exec 'hi zshVariableDef' . s:fg_blue
+  exec 'hi zshNumber' . s:fg_purple
+  " exec 'hi zshFlag' . s:fg_green
+  exec 'hi zshSubstDelim' . s:fg_purple
 
 endfunction
 
-command! -nargs=0 OceanicMaterial :call g:OceanicMaterial()
+command! -nargs=0 Kimbox :call g:Kimbox()
 
 call s:set_color_variables()
 call s:apply_syntax_highlightings()
