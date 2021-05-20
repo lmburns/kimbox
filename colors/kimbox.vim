@@ -1,8 +1,8 @@
 " ===============================================================
-" Theme: Kimbox
-" Author: Glepnir | lmburns
-" License: MIT
-" Source: http://github.com/lmburns/kimbox
+" Theme: Kimbox                                                 "
+" Author: Glepnir | lmburns                                     "
+" License: MIT                                                  "
+" Source: http://github.com/lmburns/kimbox                      "
 " ===============================================================
 
 " Initialization: {{{
@@ -64,10 +64,11 @@ endif
 let s:background = {
       \'medium': ['#231A0C', '235'],
       \'ocean' : ['#221a02', '235'],
-      \'deep': ['#0f111b', 'NONE'],
+      \'deep'  : ['#0f111b', 'NONE'],
       \'darker': ['#291804', '234'],
       \}
 
+" #733e8b
 let s:colors = {
       \ 'bg0':              s:background[s:kimbox_background],
       \ 'bg1':              ['#39260E',   '237'],
@@ -75,9 +76,9 @@ let s:colors = {
       \ 'bg3':              ['#291804',   '237'],
       \ 'bg4':              ['#5e452b',   '237'],
       \ 'bg5':              ['#5e452b',   '239'],
-      \ 'fg0':              ['#D9AE80',   '255'],
-      \ 'fg1':              ['#7E602C',   '255'],
-      \ 'fg3':              ['#4f5b66',   '17'],
+      \ 'fg0':              ['#D9AE80',   '223'],
+      \ 'fg1':              ['#7E602C',   '225'],
+      \ 'fg3':              ['#231A0C',    '17'],
       \ 'red':              ['#EF1D55',   '255'],
       \ 'magenta':          ['#A06469',   '255'],
       \ 'orange':           ['#FF5813',   '255'],
@@ -152,8 +153,8 @@ endfunction
 "   execute 'highlight' a:group
 "         \ 'guifg=' . s:fg_fg0
 "         \ 'guibg=' . s:bg_bg0
-"         \ 'ctermfg=' . s:fg_fg0
 "         \ 'ctermbg=' . s:bg_bg1
+"         \ 'ctermfg=' . s:fg_fg0
 " endfunction "}}}
 
 " Transparent BackGround
@@ -203,8 +204,8 @@ function! s:apply_syntax_highlightings()
   exec 'hi SpecialKey'. s:fg_bg5
   exec 'hi Pmenu'. s:fg_fg1. s:bg_bg1
   exec 'hi PmenuSbar'. s:fg_none. s:bg_fg3
-  exec 'hi PmenuSel'. s:fg_bg3. s:bg_blue
-  exec 'hi PmenuThumb'. s:fg_none. s:bg_operator_base05
+  exec 'hi PmenuSel'. s:fg_bg3. s:bg_none. s:fg_orange. s:bold
+  exec 'hi PmenuThumb'. s:fg_none. s:bg_green
   exec 'hi WildMenu'. s:fg_bg3. s:bg_green
   exec 'hi Question'. s:fg_yellow
   exec 'hi NormalFloat' .s:fg_fg1 . s:bg_bg3
