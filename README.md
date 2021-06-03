@@ -5,7 +5,7 @@ Fork of [Oceanic Material](https://github.com/glepnir/oceanic-material) theme wi
 
 ----
 
-![Kimbox](https://burnsac.xyz/gallery/media/large/kimbox.png)
+![Kimbox](https://lmburns.com/gallery/media/large/kimbox.png)
 
 KimBox is a dark colorscheme for vim/neovim
 

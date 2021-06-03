@@ -1223,6 +1223,9 @@ function! s:apply_syntax_highlightings()
   " exec 'hi zshFlag' . s:fg_green
   exec 'hi zshSubstDelim' . s:fg_purple
 
+  exec 'hi rOperator' . s:fg_orange
+  exec 'hi rOTag' . s:fg_blue
+
 endfunction
 
 command! -nargs=0 Kimbox :call g:Kimbox()
