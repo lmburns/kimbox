@@ -313,6 +313,25 @@ function! s:apply_syntax_highlightings()
   exec 'hi texDocType'.s:fg_purple
   exec 'hi texDocTypeArgs'.s:fg_orange
   "===============================================================
+  " Vimtex: https://github.com/lervag/vimtex
+  "===============================================================
+  exec 'hi texCmd'.s:fg_green
+  exec 'hi texCmdClass'.s:fg_purple
+  exec 'hi texCmdTitle'.s:fg_purple
+  exec 'hi texCmdAuthor'.s:fg_purple
+  exec 'hi texCmdPart'.s:fg_purple
+  exec 'hi texCmdBib'.s:fg_purple
+  exec 'hi texCmdPackage'.s:fg_yellow
+  exec 'hi texCmdNew'.s:fg_yellow
+  exec 'hi texArgNew'.s:fg_orange
+  exec 'hi texPartArgTitle'.s:fg_blue. s:italic
+  exec 'hi texFileArg' .s:fg_blue. s:italic
+  exec 'hi texEnvArgName' .s:fg_blue. s:italic
+  exec 'hi texMathEnvArgName' .s:fg_blue. s:italic
+  exec 'hi texTitleArg' .s:fg_blue. s:italic
+  exec 'hi texAuthorArg' .s:fg_blue. s:italic
+" }}}
+  "===============================================================
   " Javascript:
   " https://github.com/pangloss/vim-javascript
   exec 'hi jsThis' . s:fg_purple
