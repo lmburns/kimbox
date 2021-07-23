@@ -814,6 +814,8 @@ function! s:apply_syntax_highlightings()
   exec 'hi rustAssert' . s:fg_aqua
   exec 'hi rustPanic' . s:fg_aqua
   exec 'hi rustPubScopeCrate' . s:fg_purple  . s:italic
+  exec 'hi rustArrowCharacter' . s:fg_orange
+  exec 'hi rustOperator' . s:fg_orange
   "===============================================================
   " Swift:
   " swift.vim: https://github.com/keith/swift.vim
