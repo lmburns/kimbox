@@ -1244,8 +1244,73 @@ function! s:apply_syntax_highlightings()
   " exec 'hi zshFlag' . s:fg_green
   exec 'hi zshSubstDelim' . s:fg_purple
 
+  "??
   exec 'hi rOperator' . s:fg_orange
   exec 'hi rOTag' . s:fg_blue
+  "===============================================================
+  " treesitter
+  "===============================================================
+  exec 'hi TSStrong' . s:bold
+  exec 'hi TSEmphasis' . s:bold
+  " exec 'hi TSUnderline' . s:underline
+  exec 'hi TSNote' . s:bg_bg0 . s:fg_blue. s:bold
+  exec 'hi TSWarning' . s:fg_yellow. s:bold
+  exec 'hi TSDanger' . s:fg_red. s:bold
+  exec 'hi TSAnnotation' . s:fg_blue. s:italic
+  exec 'hi TSAttribute' . s:fg_yellow. s:italic
+  exec 'hi TSBoolean' . s:fg_orange
+  exec 'hi TSCharacter' . s:fg_green
+  exec 'hi TSComment' . s:fg_grey1 .s:italic
+  exec 'hi TSConditional' . s:fg_purple .s:italic
+  exec 'hi TSConstBuiltin' . s:fg_orange .s:italic
+  exec 'hi TSConstMacro' . s:fg_orange .s:italic
+  exec 'hi TSConstant' . s:fg_aqua
+  exec 'hi TSConstructor' . s:fg_green
+  exec 'hi TSException' . s:fg_red .s:italic
+  exec 'hi TSField' . s:fg_green
+  exec 'hi TSFloat' . s:fg_purple
+  exec 'hi TSFuncBuiltin' . s:fg_magenta . s:bold
+  exec 'hi TSFuncMacro' . s:fg_magenta . s:bold
+  exec 'hi TSFunction' . s:fg_magenta . s:bold
+  exec 'hi TSInclude' . s:fg_purple .s:italic
+  exec 'hi TSKeyword' . s:fg_red
+  exec 'hi TSKeywordFunction' . s:fg_red
+  exec 'hi TSKeywordOperator' . s:fg_red
+  exec 'hi TSLabel' . s:fg_orange
+  exec 'hi TSMethod' . s:fg_blue
+  exec 'hi TSNamespace' . s:fg_blue . s:italic
+  exec 'hi TSNone' . s:fg_fg0
+  exec 'hi TSNumber' . s:fg_purple
+  exec 'hi TSOperator' . s:fg_orange
+
+  " fg_fg0 // orange
+  exec 'hi TSParameter' . s:fg_fg0
+  exec 'hi TSParameterReference' . s:fg_fg0
+
+  exec 'hi TSProperty' . s:fg_green
+
+  " fg_grey1
+  exec 'hi TSPunctBracket' . s:fg_orange
+  exec 'hi TSPunctDelimiter' . s:fg_grey1
+  exec 'hi TSPunctSpecial' . s:fg_yellow
+
+  exec 'hi TSRepeat' . s:fg_purple
+  exec 'hi TSString' . s:fg_green
+  exec 'hi TSStringEscape' . s:fg_green
+  exec 'hi TSStringRegex' . s:fg_green
+  exec 'hi TSStructure' . s:fg_orange . s:italic
+  exec 'hi TSSymbol' . s:fg_fg0
+  exec 'hi TSTag' . s:fg_blue . s:italic
+  exec 'hi TSTagDelimiter' . s:fg_magenta
+  exec 'hi TSText' . s:fg_green
+  exec 'hi TSStrike' . s:fg_grey1
+  exec 'hi TSMath' . s:fg_yellow
+  exec 'hi TSType' . s:fg_yellow
+  exec 'hi TSTypeBuiltin' . s:fg_yellow
+  exec 'hi TSUri' . s:fg_fg1 .s:underline
+  exec 'hi TSVariable' . s:fg_fg0
+  exec 'hi TSVariableBuiltin' . s:fg_magenta
+" }}}
 
 endfunction
 
