@@ -1309,8 +1309,166 @@ function! s:apply_syntax_highlightings()
   exec 'hi TSTypeBuiltin' . s:fg_yellow
   exec 'hi TSUri' . s:fg_fg1 .s:underline
   exec 'hi TSVariable' . s:fg_fg0
-  exec 'hi TSVariableBuiltin' . s:fg_magenta
-" }}}
+  exec 'hi TSVariableBuiltin' . s:fg_blue
+
+  " exec 'hi rustTSKeyword' . s:fg_magenta
+  exec 'hi rustTSConstant' . s:fg_magenta
+  exec 'hi rustTSField' . s:fg_fg0
+  exec 'hi rustTSFuncMacro' . s:fg_aqua
+  exec 'hi rustTSInclude' . s:fg_red .s:italic
+  exec 'hi rustTSNamespace' . s:fg_orange
+  exec 'hi rustTSParameter' . s:fg_orange
+  exec 'hi rustTSPunctBracket' . s:fg_fg0
+  exec 'hi rustTSStringEscape' . s:fg_yellow
+  exec 'hi rustTSType' . s:fg_yellow .s:bold
+  exec 'hi rustTSVariableBuiltin' . s:fg_blue
+"call sonokai#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
+
+" highlight! link CocSem_angle TSTagDelimiter
+" highlight! link CocSem_annotation TSOperator
+" highlight! link CocSem_attribute TSAttribute
+" highlight! link CocSem_bitwise TSOperator
+" highlight! link CocSem_boolean TSBoolean
+" highlight! link CocSem_brace TSPunctBracket
+" highlight! link CocSem_bracket TSPunctBracket
+" highlight! link CocSem_builtinAttribute TSAttribute
+" highlight! link CocSem_builtinType TSTypeBuiltin
+" highlight! link CocSem_character TSCharacter
+" highlight! link CocSem_class TSType
+" highlight! link CocSem_colon TSPunctDelimiter
+" highlight! link CocSem_comma TSPunctDelimiter
+" highlight! link CocSem_comment TSComment
+" highlight! link CocSem_comparison TSOperator
+" highlight! link CocSem_constParameter TSParameter
+" highlight! link CocSem_dependent TSInclude
+" highlight! link CocSem_dot TSOperator
+" highlight! link CocSem_enum TSStructure
+" highlight! link CocSem_enumMember TSVariable
+" highlight! link CocSem_escapeSequence TSStringEscape
+" highlight! link CocSem_event TSType
+" highlight! link CocSem_formatSpecifier TSStringEscape
+" highlight! link CocSem_function TSFunction
+" highlight! link CocSem_interface TSType
+" highlight! link CocSem_keyword TSKeyword
+" highlight! link CocSem_label TSLabel
+" highlight! link CocSem_logical TSOperator
+" highlight! link CocSem_macro TSConstMacro
+" highlight! link CocSem_method TSMethod
+" highlight! link CocSem_modifier TSKeywordOperator
+" highlight! link CocSem_namespace TSNamespace
+" highlight! link CocSem_number TSNumber
+" highlight! link CocSem_operator TSOperator
+" highlight! link CocSem_parameter TSParameter
+" highlight! link CocSem_parenthesis TSPunctBracket
+" highlight! link CocSem_property TSVariable
+" highlight! link CocSem_punctuation TSOperator
+" highlight! link CocSem_regexp TSStringRegex
+" highlight! link CocSem_selfKeyword TSConstBuiltin
+" highlight! link CocSem_semicolon TSPunctDelimiter
+" highlight! link CocSem_string TSString
+" highlight! link CocSem_struct TSStructure
+" highlight! link CocSem_type TSType
+" highlight! link CocSem_typeAlias TSType
+" highlight! link CocSem_typeParameter TSType
+" highlight! link CocSem_variable TSVariable
+" highlight! link CocErrorFloat ErrorFloat
+" highlight! link CocWarningFloat WarningFloat
+" highlight! link CocInfoFloat InfoFloat
+" highlight! link CocHintFloat HintFloat
+" highlight! link CocErrorHighlight ErrorText
+" highlight! link CocWarningHighlight WarningText
+" highlight! link CocInfoHighlight InfoText
+" highlight! link CocHintHighlight HintText
+" highlight! link CocHighlightText CurrentWord
+" highlight! link CocHoverRange CurrentWord
+" highlight! link CocErrorSign RedSign
+" highlight! link CocWarningSign YellowSign
+" highlight! link CocInfoSign BlueSign
+" highlight! link CocHintSign GreenSign
+" highlight! link CocWarningVirtualText VirtualTextWarning
+" highlight! link CocErrorVirtualText VirtualTextError
+" highlight! link CocInfoVirtualText VirtualTextInfo
+" highlight! link CocHintVirtualText VirtualTextHint
+" highlight! link CocErrorLine ErrorLine
+" highlight! link CocWarningLine WarningLine
+" highlight! link CocInfoLine InfoLine
+" highlight! link CocHintLine HintLine
+" highlight! link CocCodeLens Grey
+" highlight! link CocFadeOut Grey
+" highlight! link CocStrikeThrough Grey
+" highlight! link CocListMode StatusLine
+" highlight! link CocListPath StatusLine
+" highlight! link CocTreeOpenClose Grey
+" highlight! link HighlightedyankRegion Visual
+" highlight! link CocSymbolFile Fg
+" highlight! link CocSymbolModule TSNamespace
+" highlight! link CocSymbolNamespace TSNamespace
+" highlight! link CocSymbolPackage TSNamespace
+" highlight! link CocSymbolClass TSType
+" highlight! link CocSymbolMethod TSMethod
+" highlight! link CocSymbolProperty TSProperty
+" highlight! link CocSymbolField TSField
+" highlight! link CocSymbolConstructor TSConstructor
+" highlight! link CocSymbolEnum TSStructure
+" highlight! link CocSymbolInterface TSType
+" highlight! link CocSymbolFunction TSFunction
+" highlight! link CocSymbolVariable TSVariable
+" highlight! link CocSymbolConstant TSConstant
+" highlight! link CocSymbolString TSString
+" highlight! link CocSymbolNumber TSNumber
+" highlight! link CocSymbolBoolean TSBoolean
+" highlight! link CocSymbolArray TSVariable
+" highlight! link CocSymbolObject TSVariable
+" highlight! link CocSymbolKey TSKeyword
+" highlight! link CocSymbolNull TSVariableBuiltin
+" highlight! link CocSymbolEnumMember TSProperty
+" highlight! link CocSymbolStruct TSStructure
+" highlight! link CocSymbolEvent TSLabel
+" highlight! link CocSymbolOperator TSOperator
+" highlight! link CocSymbolTypeParameter TSType
+" highlight! link CocSymbolDefault TSNone
+" highlight! link CocGitAddedSign GreenSign
+" highlight! link CocGitChangeRemovedSign PurpleSign
+" highlight! link CocGitChangedSign BlueSign
+" highlight! link CocGitRemovedSign RedSign
+" highlight! link CocGitTopRemovedSign RedSign
+" highlight! link CocExplorerBufferRoot Red
+" highlight! link CocExplorerBufferExpandIcon Blue
+" highlight! link CocExplorerBufferBufnr Yellow
+" highlight! link CocExplorerBufferModified Yellow
+" highlight! link CocExplorerBufferReadonly Red
+" highlight! link CocExplorerBufferBufname Grey
+" highlight! link CocExplorerBufferFullpath Grey
+" highlight! link CocExplorerFileRoot Red
+" highlight! link CocExplorerFileRootName Green
+" highlight! link CocExplorerFileExpandIcon Blue
+" highlight! link CocExplorerFileFullpath Grey
+" highlight! link CocExplorerFileDirectory Green
+" highlight! link CocExplorerFileGitStaged Purple
+" highlight! link CocExplorerFileGitUnstaged Yellow
+" highlight! link CocExplorerFileGitRootStaged Purple
+" highlight! link CocExplorerFileGitRootUnstaged Yellow
+" highlight! link CocExplorerGitPathChange Fg
+" highlight! link CocExplorerGitContentChange Fg
+" highlight! link CocExplorerGitRenamed Purple
+" highlight! link CocExplorerGitCopied Fg
+" highlight! link CocExplorerGitAdded Green
+" highlight! link CocExplorerGitUntracked Blue
+" highlight! link CocExplorerGitUnmodified Fg
+" highlight! link CocExplorerGitUnmerged Orange
+" highlight! link CocExplorerGitMixed Fg
+" highlight! link CocExplorerGitModified Yellow
+" highlight! link CocExplorerGitDeleted Red
+" highlight! link CocExplorerGitIgnored Grey
+" highlight! link CocExplorerFileSize Blue
+" highlight! link CocExplorerTimeAccessed Purple
+" highlight! link CocExplorerTimeCreated Purple
+" highlight! link CocExplorerTimeModified Purple
+" highlight! link CocExplorerFileRootName Orange
+" highlight! link CocExplorerBufferNameVisible Green
+" highlight! link CocExplorerIndentLine Conceal
+" highlight! link CocExplorerHelpDescription Grey
+" highlight! link CocExplorerHelpHint Grey }}}
 
 endfunction
 
