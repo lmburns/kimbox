@@ -79,12 +79,12 @@ let s:colors = {
       \ 'bg5':              ['#5e452b',   '239'],
       \ 'fg0':              ['#D9AE80',   '223'],
       \ 'fg1':              ['#7E602C',   '225'],
-      \ 'fg3':              ['#231A0C',    '17'],
+      \ 'fg3':              ['#5e452b',    '17'],
       \ 'red':              ['#EF1D55',   '255'],
       \ 'magenta':          ['#A06469',   '255'],
       \ 'orange':           ['#FF5813',   '255'],
-      \ 'yellow':           ['#819C3B',   '255'],
-      \ 'green':            ['#FF9500',   '255'],
+      \ 'green':            ['#819C3B',   '255'],
+      \ 'yellow':           ['#FF9500',   '255'],
       \ 'aqua':             ['#7EB2B1',   '255'],
       \ 'blue':             ['#4C96A8',   '255'],
       \ 'purple':           ['#98676A',   '176'],
@@ -196,9 +196,9 @@ function! s:apply_syntax_highlightings()
   exec 'hi DiffText'. s:fg_black . s:bg_fg0
   exec 'hi Directory'. s:fg_bg5. s:bg_none
   exec 'hi ErrorMsg'. s:fg_red. s:bg_none. s:bold . s:underline
-  exec 'hi WarningMsg'. s:fg_yellow. s:bg_none. s:bold
+  exec 'hi WarningMsg'. s:fg_green. s:bg_none. s:bold
   exec 'hi ModeMsg'. s:fg_fg0. s:bg_none. s:bold
-  exec 'hi MoreMsg'. s:fg_yellow. s:bg_none. s:bold
+  exec 'hi MoreMsg'. s:fg_green. s:bg_none. s:bold
   exec 'hi MatchParen'. s:fg_none. s:bg_bg4
   exec 'hi NonText'. s:fg_bg5
   exec 'hi Whitespace'. s:fg_bg5
@@ -208,7 +208,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi PmenuSel'. s:fg_bg3. s:bg_none. s:fg_orange. s:bold
   exec 'hi PmenuThumb'. s:fg_none. s:bg_green
   exec 'hi WildMenu'. s:fg_bg3. s:bg_green
-  exec 'hi Question'. s:fg_yellow
+  exec 'hi Question'. s:fg_green
   exec 'hi NormalFloat' .s:fg_fg1 . s:bg_bg3
   " Tabline
   exec 'hi TabLineFill' . ' gui=NONE cterm=NONE'
@@ -251,12 +251,12 @@ function! s:apply_syntax_highlightings()
   exec 'hi Structure'. s:fg_orange
   exec 'hi Operator'. s:fg_operator_base05
   exec 'hi Title'. s:fg_orange. s:bold
-  exec 'hi Special'. s:fg_yellow
-  exec 'hi SpecialChar'. s:fg_yellow
-  exec 'hi Type'. s:fg_yellow
+  exec 'hi Special'. s:fg_green
+  exec 'hi SpecialChar'. s:fg_green
+  exec 'hi Type'. s:fg_green
   exec 'hi Function'. s:fg_magenta. s:bold
-  exec 'hi String'. s:fg_green
-  exec 'hi Character'. s:fg_green
+  exec 'hi String'. s:fg_yellow
+  exec 'hi Character'. s:fg_yellow
   exec 'hi Constant'. s:fg_aqua
   exec 'hi Macro'. s:fg_aqua
   exec 'hi Identifier'. s:fg_blue
@@ -275,15 +275,15 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   exec 'hi markdownH1'. s:fg_red. s:bold
   exec 'hi markdownH2'. s:fg_orange. s:bold
-  exec 'hi markdownH3'. s:fg_yellow. s:bold
-  exec 'hi markdownH4'. s:fg_green. s:bold
+  exec 'hi markdownH3'. s:fg_green. s:bold
+  exec 'hi markdownH4'. s:fg_yellow. s:bold
   exec 'hi markdownH5'. s:fg_blue. s:bold
   exec 'hi markdownH6'. s:fg_purple. s:bold
   exec 'hi markdownUrl'. s:fg_blue. s:underline
   exec 'hi markdownItalic'. s:fg_none. s:italic
   exec 'hi markdownBold'. s:fg_none. s:bold
   exec 'hi markdownItalicDelimiter'. s:fg_grey1. s:italic
-  exec 'hi markdownCode' .s:fg_green
+  exec 'hi markdownCode' .s:fg_yellow
   exec 'hi markdownCodeBlock' .s:fg_aqua
   exec 'hi markdownCodeDelimiter' .s:fg_aqua
   exec 'hi markdownBlockquote'.s:fg_grey1
@@ -296,16 +296,16 @@ function! s:apply_syntax_highlightings()
   exec 'hi markdownLinkTextDelimiter'. s:fg_grey1
   exec 'hi markdownHeadingDelimiter'. s:fg_grey1
   exec 'hi markdownLinkText'. s:fg_purple
-  exec 'hi markdownUrlTitleDelimiter'. s:fg_green
+  exec 'hi markdownUrlTitleDelimiter'. s:fg_yellow
   exec 'hi markdownIdDeclaration'. s:fg_purple
   exec 'hi markdownBoldDelimiter'. s:fg_grey1
-  exec 'hi markdownId'. s:fg_yellow
+  exec 'hi markdownId'. s:fg_green
   "===============================================================
   " Latex: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_TEX
   "===============================================================
-  exec 'hi texStatement'.s:fg_green
+  exec 'hi texStatement'.s:fg_yellow
   exec 'hi texOnlyMath'.s:fg_grey1
-  exec 'hi texDefName'.s:fg_yellow
+  exec 'hi texDefName'.s:fg_green
   exec 'hi texNewCmd'.s:fg_orange
   exec 'hi texCmdName'.s:fg_blue
   exec 'hi texBeginEnd'.s:fg_red
@@ -315,14 +315,14 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   " Vimtex: https://github.com/lervag/vimtex
   "===============================================================
-  exec 'hi texCmd'.s:fg_green
+  exec 'hi texCmd'.s:fg_yellow
   exec 'hi texCmdClass'.s:fg_purple
   exec 'hi texCmdTitle'.s:fg_purple
   exec 'hi texCmdAuthor'.s:fg_purple
   exec 'hi texCmdPart'.s:fg_purple
   exec 'hi texCmdBib'.s:fg_purple
-  exec 'hi texCmdPackage'.s:fg_yellow
-  exec 'hi texCmdNew'.s:fg_yellow
+  exec 'hi texCmdPackage'.s:fg_green
+  exec 'hi texCmdNew'.s:fg_green
   exec 'hi texArgNew'.s:fg_orange
   exec 'hi texPartArgTitle'.s:fg_blue. s:italic
   exec 'hi texFileArg' .s:fg_blue. s:italic
@@ -342,7 +342,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi jsPrototype' . s:fg_purple
   exec 'hi jsFunction' . s:fg_red  . s:italic
   exec 'hi jsGlobalNodeObjects' . s:fg_purple  . s:italic
-  exec 'hi jsGlobalObjects' . s:fg_yellow
+  exec 'hi jsGlobalObjects' . s:fg_green
   exec 'hi jsArrowFunction' . s:fg_purple
   exec 'hi jsArrowFuncArgs' . s:fg_blue
   exec 'hi jsFuncArgs' . s:fg_blue
@@ -356,16 +356,16 @@ function! s:apply_syntax_highlightings()
   exec 'hi jsParenCatch' . s:fg_blue
   exec 'hi jsBracket' . s:fg_blue
   exec 'hi jsBlockLabel' . s:fg_aqua
-  exec 'hi jsFunctionKey' . s:fg_green  . s:bold
-  exec 'hi jsClassDefinition' . s:fg_yellow
+  exec 'hi jsFunctionKey' . s:fg_yellow  . s:bold
+  exec 'hi jsClassDefinition' . s:fg_green
   exec 'hi jsDot' . s:fg_grey1
   exec 'hi jsDestructuringBlock' . s:fg_blue
   exec 'hi jsSpreadExpression' . s:fg_purple
-  exec 'hi jsSpreadOperator' . s:fg_green
-  exec 'hi jsModuleKeyword' . s:fg_yellow
+  exec 'hi jsSpreadOperator' . s:fg_yellow
+  exec 'hi jsModuleKeyword' . s:fg_green
   exec 'hi jsObjectValue' . s:fg_blue
-  exec 'hi jsTemplateExpression' . s:fg_yellow
-  exec 'hi jsTemplateBraces' . s:fg_yellow
+  exec 'hi jsTemplateExpression' . s:fg_green
+  exec 'hi jsTemplateBraces' . s:fg_green
   exec 'hi jsClassMethodType'. s:fg_orange
   " yajs: https://github.com/othree/yajs.vim
   exec 'hi javascriptEndColons' . s:fg_fg0
@@ -379,15 +379,15 @@ function! s:apply_syntax_highlightings()
   exec 'hi javascriptFuncArg' . s:fg_blue
   exec 'hi javascriptIdentifier' . s:fg_purple
   exec 'hi javascriptArrowFunc' . s:fg_purple
-  exec 'hi javascriptTemplate' . s:fg_yellow
-  exec 'hi javascriptTemplateSubstitution' . s:fg_yellow
-  exec 'hi javascriptTemplateSB' . s:fg_yellow
+  exec 'hi javascriptTemplate' . s:fg_green
+  exec 'hi javascriptTemplateSubstitution' . s:fg_green
+  exec 'hi javascriptTemplateSB' . s:fg_green
   exec 'hi javascriptNodeGlobal' . s:fg_purple  . s:italic
   exec 'hi javascriptDocTags' . s:fg_purple  . s:italic
   exec 'hi javascriptDocNotation' . s:fg_purple
   exec 'hi javascriptClassSuper' . s:fg_purple
-  exec 'hi javascriptClassName' . s:fg_yellow
-  exec 'hi javascriptClassSuperName' . s:fg_yellow
+  exec 'hi javascriptClassName' . s:fg_green
+  exec 'hi javascriptClassSuperName' . s:fg_green
   exec 'hi javascriptBrackets' . s:fg_fg0
   exec 'hi javascriptBraces' . s:fg_fg0
   exec 'hi javascriptLabel' . s:fg_purple
@@ -404,66 +404,66 @@ function! s:apply_syntax_highlightings()
   exec 'hi javascriptGlobalStringDot' . s:fg_grey1
   exec 'hi javascriptGlobalSymbolDot' . s:fg_grey1
   exec 'hi javascriptGlobalURLDot' . s:fg_grey1
-  exec 'hi javascriptMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptMethodName' . s:fg_green  . s:bold
-  exec 'hi javascriptObjectMethodName' . s:fg_green  . s:bold
-  exec 'hi javascriptGlobalMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptDOMStorageMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptFileMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptFileReaderMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptFileListMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptBlobMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptURLStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptNumberStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptNumberMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptDOMNodeMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptES6BigIntStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptBOMWindowMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptHeadersMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptRequestMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptResponseMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptES6SetMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptReflectMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptPaymentMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptPaymentResponseMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptTypedArrayStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptGeolocationMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptES6MapMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptServiceWorkerMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptCacheMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptFunctionMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptXHRMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptBOMNavigatorMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptServiceWorkerMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptDOMEventTargetMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptDOMEventMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptIntlMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptDOMDocMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptStringStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptStringMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptSymbolStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptRegExpMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptObjectStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptObjectMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptBOMLocationMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptJSONStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptGeneratorMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptEncodingMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptPromiseStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptPromiseMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptBOMHistoryMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptDOMFormMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptClipboardMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptTypedArrayStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptBroadcastMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptDateStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptDateMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptConsoleMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptArrayStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptArrayMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptMathStaticMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptSubtleCryptoMethod' . s:fg_green  . s:bold
-  exec 'hi javascriptCryptoMethod' . s:fg_green  . s:bold
+  exec 'hi javascriptMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptMethodName' . s:fg_yellow  . s:bold
+  exec 'hi javascriptObjectMethodName' . s:fg_yellow  . s:bold
+  exec 'hi javascriptGlobalMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptDOMStorageMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptFileMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptFileReaderMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptFileListMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptBlobMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptURLStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptNumberStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptNumberMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptDOMNodeMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptES6BigIntStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptBOMWindowMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptHeadersMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptRequestMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptResponseMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptES6SetMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptReflectMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptPaymentMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptPaymentResponseMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptTypedArrayStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptGeolocationMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptES6MapMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptServiceWorkerMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptCacheMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptFunctionMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptXHRMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptBOMNavigatorMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptServiceWorkerMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptDOMEventTargetMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptDOMEventMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptIntlMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptDOMDocMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptStringStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptStringMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptSymbolStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptRegExpMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptObjectStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptObjectMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptBOMLocationMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptJSONStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptGeneratorMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptEncodingMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptPromiseStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptPromiseMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptBOMHistoryMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptDOMFormMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptClipboardMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptTypedArrayStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptBroadcastMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptDateStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptDateMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptConsoleMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptArrayStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptArrayMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptMathStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptSubtleCryptoMethod' . s:fg_yellow  . s:bold
+  exec 'hi javascriptCryptoMethod' . s:fg_yellow  . s:bold
   exec 'hi javascriptProp' . s:fg_aqua
   exec 'hi javascriptBOMWindowProp' . s:fg_aqua
   exec 'hi javascriptDOMStorageProp' . s:fg_aqua
@@ -484,7 +484,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi javascriptRegExpStaticProp' . s:fg_aqua
   exec 'hi javascriptRegExpProp' . s:fg_aqua
   exec 'hi javascriptXHRProp' . s:fg_aqua
-  exec 'hi javascriptBOMNavigatorProp' . s:fg_green  . s:bold
+  exec 'hi javascriptBOMNavigatorProp' . s:fg_yellow  . s:bold
   exec 'hi javascriptDOMEventProp' . s:fg_aqua
   exec 'hi javascriptBOMNetworkProp' . s:fg_aqua
   exec 'hi javascriptDOMDocProp' . s:fg_aqua
@@ -504,10 +504,10 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   exec 'hi jsxTagName' . s:fg_orange  . s:italic
   exec 'hi jsxTag' . s:fg_purple . s:bold
-  exec 'hi jsxOpenPunct' . s:fg_green
+  exec 'hi jsxOpenPunct' . s:fg_yellow
   exec 'hi jsxClosePunct' . s:fg_blue
   exec 'hi jsxEscapeJs' . s:fg_blue
-  exec 'hi jsxAttrib' . s:fg_yellow
+  exec 'hi jsxAttrib' . s:fg_green
   exec 'hi jsxCloseTag' . s:fg_aqua . s:bold
   exec 'hi jsxComponentName' . s:fg_blue . 'gui=bold'
   "===============================================================
@@ -515,10 +515,10 @@ function! s:apply_syntax_highlightings()
   " vim-typescript: https://github.com/leafgarland/typescript-vim {{{
   "===============================================================
   exec 'hi typescriptSource' . s:fg_purple  . s:italic
-  exec 'hi typescriptMessage' . s:fg_yellow
+  exec 'hi typescriptMessage' . s:fg_green
   exec 'hi typescriptGlobalObjects' . s:fg_aqua
-  exec 'hi typescriptInterpolation' . s:fg_yellow
-  exec 'hi typescriptInterpolationDelimiter' . s:fg_yellow
+  exec 'hi typescriptInterpolation' . s:fg_green
+  exec 'hi typescriptInterpolationDelimiter' . s:fg_green
   exec 'hi typescriptBraces' . s:fg_fg0
   exec 'hi typescriptParens' . s:fg_fg0
   "===============================================================
@@ -529,18 +529,18 @@ function! s:apply_syntax_highlightings()
   exec 'hi typescriptMethodAccessor' . s:fg_orange  . s:italic
   exec 'hi typescriptVariable' . s:fg_orange
   exec 'hi typescriptVariableDeclaration' . s:fg_aqua
-  exec 'hi typescriptTypeReference' . s:fg_yellow
+  exec 'hi typescriptTypeReference' . s:fg_green
   exec 'hi typescriptBraces' . s:fg_fg0
   exec 'hi typescriptBoolean' .s:fg_orange
   exec 'hi typescriptCase' .s:fg_purple
   exec 'hi typescriptRepeat' .s:fg_purple
   exec 'hi typescriptEnumKeyword' . s:fg_red  . s:italic
-  exec 'hi typescriptEnum' . s:fg_yellow
+  exec 'hi typescriptEnum' . s:fg_green
   exec 'hi typescriptIdentifierName' . s:fg_aqua
   exec 'hi typescriptProp' . s:fg_aqua
   exec 'hi typescriptCall' . s:fg_aqua
   exec 'hi typescriptConditional' . s:fg_purple
-  exec 'hi typescriptInterfaceName' . s:fg_yellow
+  exec 'hi typescriptInterfaceName' . s:fg_green
   exec 'hi typescriptEndColons' . s:fg_fg0
   exec 'hi typescriptMember' . s:fg_aqua
   exec 'hi typescriptMemberOptionality' . s:fg_orange
@@ -553,9 +553,9 @@ function! s:apply_syntax_highlightings()
   exec 'hi typescriptBinaryOp' . s:fg_operator_base05
   exec 'hi typescriptUnaryOp' . s:fg_orange
   exec 'hi typescriptFuncComma' . s:fg_fg0
-  exec 'hi typescriptClassName' . s:fg_yellow
-  exec 'hi typescriptClassHeritage' . s:fg_yellow
-  exec 'hi typescriptInterfaceHeritage' . s:fg_yellow
+  exec 'hi typescriptClassName' . s:fg_green
+  exec 'hi typescriptClassHeritage' . s:fg_green
+  exec 'hi typescriptInterfaceHeritage' . s:fg_green
   exec 'hi typescriptIdentifier' . s:fg_purple
   exec 'hi typescriptGlobal' . s:fg_purple
   exec 'hi typescriptOperator' . s:fg_red  . s:italic
@@ -563,13 +563,13 @@ function! s:apply_syntax_highlightings()
   exec 'hi typescriptExport' . s:fg_purple  . s:italic
   exec 'hi typescriptDefaultParam' . s:fg_orange
   exec 'hi typescriptImport' . s:fg_red  . s:italic
-  exec 'hi typescriptTypeParameter' . s:fg_yellow
+  exec 'hi typescriptTypeParameter' . s:fg_green
   exec 'hi typescriptReadonlyModifier' . s:fg_orange
   exec 'hi typescriptAccessibilityModifier' . s:fg_orange
   exec 'hi typescriptAmbientDeclaration' . s:fg_red  . s:italic
-  exec 'hi typescriptTemplateSubstitution' . s:fg_yellow
-  exec 'hi typescriptTemplateSB' . s:fg_yellow
-  exec 'hi typescriptExceptions' . s:fg_yellow
+  exec 'hi typescriptTemplateSubstitution' . s:fg_green
+  exec 'hi typescriptTemplateSB' . s:fg_green
+  exec 'hi typescriptExceptions' . s:fg_green
   exec 'hi typescriptCastKeyword' . s:fg_red  . s:italic
   exec 'hi typescriptOptionalMark' . s:fg_orange
   exec 'hi typescriptNull' . s:fg_aqua
@@ -590,59 +590,59 @@ function! s:apply_syntax_highlightings()
   exec 'hi typescriptGlobalRegExpDot' . s:fg_grey1
   exec 'hi typescriptGlobalPromiseDot' . s:fg_grey1
   exec 'hi typescriptGlobalURLDot' . s:fg_grey1
-  exec 'hi typescriptGlobalMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptDOMStorageMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptFileMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptFileReaderMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptFileListMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptBlobMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptURLStaticMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptNumberStaticMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptNumberMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptDOMNodeMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptPaymentMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptPaymentResponseMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptHeadersMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptRequestMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptResponseMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptES6SetMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptReflectMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptBOMWindowMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptGeolocationMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptServiceWorkerMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptCacheMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptES6MapMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptFunctionMethod' . s:fg_green  . s:bold
+  exec 'hi typescriptGlobalMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptDOMStorageMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptFileMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptFileReaderMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptFileListMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptBlobMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptURLStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptNumberStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptNumberMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptDOMNodeMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptPaymentMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptPaymentResponseMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptHeadersMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptRequestMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptResponseMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptES6SetMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptReflectMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptBOMWindowMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptGeolocationMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptServiceWorkerMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptCacheMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptES6MapMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptFunctionMethod' . s:fg_yellow  . s:bold
   exec 'hi typescriptFuncName' . s:fg_magenta
   exec 'hi typescriptFuncKeyword' . s:fg_blue
-  exec 'hi typescriptRegExpMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptXHRMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptBOMNavigatorMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptServiceWorkerMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptIntlMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptDOMEventTargetMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptDOMEventMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptDOMDocMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptStringStaticMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptStringMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptSymbolStaticMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptObjectStaticMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptObjectMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptJSONStaticMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptEncodingMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptBOMLocationMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptPromiseStaticMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptPromiseMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptSubtleCryptoMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptCryptoMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptBOMHistoryMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptDOMFormMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptConsoleMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptDateStaticMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptDateMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptArrayStaticMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptArrayMethod' . s:fg_green  . s:bold
-  exec 'hi typescriptMathStaticMethod' . s:fg_green  . s:bold
+  exec 'hi typescriptRegExpMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptXHRMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptBOMNavigatorMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptServiceWorkerMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptIntlMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptDOMEventTargetMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptDOMEventMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptDOMDocMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptStringStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptStringMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptSymbolStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptObjectStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptObjectMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptJSONStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptEncodingMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptBOMLocationMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptPromiseStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptPromiseMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptSubtleCryptoMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptCryptoMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptBOMHistoryMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptDOMFormMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptConsoleMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptDateStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptDateMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptArrayStaticMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptArrayMethod' . s:fg_yellow  . s:bold
+  exec 'hi typescriptMathStaticMethod' . s:fg_yellow  . s:bold
   exec 'hi typescriptStringProperty' . s:fg_aqua
   exec 'hi typescriptDOMStorageProp' . s:fg_aqua
   exec 'hi typescriptFileReaderProp' . s:fg_aqua
@@ -661,7 +661,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi typescriptES6MapProp' . s:fg_aqua
   exec 'hi typescriptRegExpStaticProp' . s:fg_aqua
   exec 'hi typescriptRegExpProp' . s:fg_aqua
-  exec 'hi typescriptBOMNavigatorProp' . s:fg_green  . s:bold
+  exec 'hi typescriptBOMNavigatorProp' . s:fg_yellow  . s:bold
   exec 'hi typescriptXHRProp' . s:fg_aqua
   exec 'hi typescriptDOMEventProp' . s:fg_aqua
   exec 'hi typescriptDOMDocProp' . s:fg_aqua
@@ -723,17 +723,17 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   " Python:
   "===============================================================
-  exec 'hi pythonBuiltin' . s:fg_yellow
+  exec 'hi pythonBuiltin' . s:fg_green
   exec 'hi pythonExceptions' . s:fg_purple
   exec 'hi pythonDecoratorName' . s:fg_blue
   "===============================================================
   " python-syntax: https://github.com/vim-python/python-syntax
   "===============================================================
   exec 'hi pythonExClass' . s:fg_purple
-  exec 'hi pythonBuiltinType' . s:fg_yellow
+  exec 'hi pythonBuiltinType' . s:fg_green
   exec 'hi pythonBuiltinObj' . s:fg_blue
   exec 'hi pythonDottedName' . s:fg_purple  . s:italic
-  exec 'hi pythonBuiltinFunc' . s:fg_green  . s:bold
+  exec 'hi pythonBuiltinFunc' . s:fg_yellow  . s:bold
   exec 'hi pythonFunction' . s:fg_aqua  . s:bold
   exec 'hi pythonDecorator' . s:fg_orange
   exec 'hi pythonInclude'. s:fg_purple. s:italic
@@ -749,13 +749,13 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   " semshi: https://github.com/numirias/semshi
   "===============================================================
-  exec 'hi semshiUnresolved' . s:fg_yellow. s:undercurl
+  exec 'hi semshiUnresolved' . s:fg_green. s:undercurl
   exec 'hi semshiImported' . s:fg_purple
   exec 'hi semshiParameter' . s:fg_blue
   exec 'hi semshiParameterUnused' . s:fg_grey1
   exec 'hi semshiSelf' . s:fg_purple  . s:italic
-  exec 'hi semshiGlobal' . s:fg_yellow
-  exec 'hi semshiBuiltin' . s:fg_yellow
+  exec 'hi semshiGlobal' . s:fg_green
+  exec 'hi semshiBuiltin' . s:fg_green
   exec 'hi semshiAttribute' . s:fg_aqua
   exec 'hi semshiLocal' . s:fg_red
   exec 'hi semshiFree' . s:fg_red
@@ -766,9 +766,9 @@ function! s:apply_syntax_highlightings()
   " Kotlin:
   " kotlin-vim: https://github.com/udalov/kotlin-vim
   "===============================================================
-  exec 'hi ktSimpleInterpolation' . s:fg_yellow
-  exec 'hi ktComplexInterpolation' . s:fg_yellow
-  exec 'hi ktComplexInterpolationBrace' . s:fg_yellow
+  exec 'hi ktSimpleInterpolation' . s:fg_green
+  exec 'hi ktComplexInterpolation' . s:fg_green
+  exec 'hi ktComplexInterpolationBrace' . s:fg_green
   exec 'hi ktStructure' . s:fg_red  . s:italic
   exec 'hi ktKeyword' . s:fg_aqua
   "===============================================================
@@ -776,7 +776,7 @@ function! s:apply_syntax_highlightings()
   " builtin: https://github.com/derekwyatt/vim-scala
   "===============================================================
   exec 'hi scalaNameDefinition' . s:fg_aqua
-  exec 'hi scalaInterpolationBoundary' . s:fg_yellow
+  exec 'hi scalaInterpolationBoundary' . s:fg_green
   exec 'hi scalaInterpolation' . s:fg_blue
   exec 'hi scalaTypeOperator' . s:fg_orange
   exec 'hi scalaOperator' . s:fg_orange
@@ -788,7 +788,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi goConstants' . s:fg_aqua
   exec 'hi goTypeDecl' . s:fg_purple  . s:italic
   exec 'hi goDeclType' . s:fg_orange  . s:italic
-  exec 'hi goFunctionCall' . s:fg_yellow  . s:bold
+  exec 'hi goFunctionCall' . s:fg_green  . s:bold
   exec 'hi goSpaceError'. s:fg_grey1. s:bg_red
   exec 'hi goVarArgs' . s:fg_blue
   exec 'hi goBuiltins' . s:fg_purple
@@ -820,7 +820,7 @@ function! s:apply_syntax_highlightings()
   " Swift:
   " swift.vim: https://github.com/keith/swift.vim
   "===============================================================
-  exec 'hi swiftInterpolatedWrapper' . s:fg_yellow
+  exec 'hi swiftInterpolatedWrapper' . s:fg_green
   exec 'hi swiftInterpolatedString' . s:fg_blue
   exec 'hi swiftProperty' . s:fg_aqua
   exec 'hi swiftTypeDeclaration' . s:fg_orange
@@ -830,31 +830,31 @@ function! s:apply_syntax_highlightings()
   " php.vim: https://github.com/StanAngeloff/php.vim
   "===============================================================
   exec 'hi phpParent' . s:fg_fg0
-  exec 'hi phpNowDoc' . s:fg_green
-  exec 'hi phpFunction' . s:fg_green  . s:bold
-  exec 'hi phpMethod' . s:fg_green  . s:bold
+  exec 'hi phpNowDoc' . s:fg_yellow
+  exec 'hi phpFunction' . s:fg_yellow  . s:bold
+  exec 'hi phpMethod' . s:fg_yellow  . s:bold
   exec 'hi phpClass' . s:fg_orange
   exec 'hi phpSuperglobals' . s:fg_purple
   "===============================================================
   " Ruby:
   " builtin: https://github.com/vim-ruby/vim-ruby
   "===============================================================
-  exec 'hi rubyKeywordAsMethod' . s:fg_green  . s:bold
-  exec 'hi rubyInterpolation' . s:fg_yellow
-  exec 'hi rubyInterpolationDelimiter' . s:fg_yellow
-  exec 'hi rubyStringDelimiter' . s:fg_green
+  exec 'hi rubyKeywordAsMethod' . s:fg_yellow  . s:bold
+  exec 'hi rubyInterpolation' . s:fg_green
+  exec 'hi rubyInterpolationDelimiter' . s:fg_green
+  exec 'hi rubyStringDelimiter' . s:fg_yellow
   exec 'hi rubyBlockParameterList' . s:fg_blue
   exec 'hi rubyDefine' . s:fg_red  . s:italic
   exec 'hi rubyModuleName' . s:fg_purple
   exec 'hi rubyAccess' . s:fg_orange
-  exec 'hi rubyAttribute' . s:fg_yellow
+  exec 'hi rubyAttribute' . s:fg_green
   exec 'hi rubyMacro' . s:fg_red  . s:italic
   "===============================================================
   " Haskell:
   " haskell-vim: https://github.com/neovimhaskell/haskell-vim
   "===============================================================
   exec 'hi haskellBrackets' . s:fg_blue
-  exec 'hi haskellIdentifier' . s:fg_yellow
+  exec 'hi haskellIdentifier' . s:fg_green
   exec 'hi haskellAssocType' . s:fg_aqua
   exec 'hi haskellQuotedType' . s:fg_aqua
   exec 'hi haskellType' . s:fg_aqua
@@ -873,10 +873,10 @@ function! s:apply_syntax_highlightings()
   exec 'hi perlMatchStartEnd' . s:fg_orange
   exec 'hi perlVarSimpleMemberName' . s:fg_aqua
   exec 'hi perlVarSimpleMember' . s:fg_fg0
-  exec 'hi perlMethod' . s:fg_green  . s:bold
+  exec 'hi perlMethod' . s:fg_yellow  . s:bold
   exec 'hi perlOperator' . s:fg_red
-  exec 'hi podVerbatimLine' . s:fg_green
-  exec 'hi podCmdText' . s:fg_yellow
+  exec 'hi podVerbatimLine' . s:fg_yellow
+  exec 'hi podCmdText' . s:fg_green
   exec 'hi perlDATA' . s:fg_orange . s:italic
   exec 'hi perlBraces' . s:fg_purple
 
@@ -888,12 +888,12 @@ function! s:apply_syntax_highlightings()
   exec 'hi ocamlEqual' . s:fg_orange
   exec 'hi ocamlOperator' . s:fg_orange
   exec 'hi ocamlKeyChar' . s:fg_orange
-  exec 'hi ocamlModPath' . s:fg_green
-  exec 'hi ocamlFullMod' . s:fg_green
+  exec 'hi ocamlModPath' . s:fg_yellow
+  exec 'hi ocamlFullMod' . s:fg_yellow
   exec 'hi ocamlModule' . s:fg_purple
   exec 'hi ocamlConstructor' . s:fg_aqua
-  exec 'hi ocamlFuncWith' . s:fg_yellow
-  exec 'hi ocamlWith' . s:fg_yellow
+  exec 'hi ocamlFuncWith' . s:fg_green
+  exec 'hi ocamlWith' . s:fg_green
   exec 'hi ocamlModParam' . s:fg_fg0
   exec 'hi ocamlModParam1' . s:fg_fg0
   exec 'hi ocamlAnyVar' . s:fg_blue
@@ -907,20 +907,20 @@ function! s:apply_syntax_highlightings()
   " builtin: https://github.com/vim-erlang/vim-erlang-runtime
   "===============================================================
   exec 'hi erlangAtom' . s:fg_aqua
-  exec 'hi erlangLocalFuncRef' . s:fg_green  . s:bold
-  exec 'hi erlangLocalFuncCall' . s:fg_green  . s:bold
-  exec 'hi erlangGlobalFuncRef' . s:fg_green  . s:bold
-  exec 'hi erlangGlobalFuncCall' . s:fg_green  . s:bold
+  exec 'hi erlangLocalFuncRef' . s:fg_yellow  . s:bold
+  exec 'hi erlangLocalFuncCall' . s:fg_yellow  . s:bold
+  exec 'hi erlangGlobalFuncRef' . s:fg_yellow  . s:bold
+  exec 'hi erlangGlobalFuncCall' . s:fg_yellow  . s:bold
   exec 'hi erlangAttribute' . s:fg_purple  . s:italic
   exec 'hi erlangPipe' . s:fg_orange
   "===============================================================
   " Elixir:
   " vim-elixir: https://github.com/elixir-editors/vim-elixir
   "===============================================================
-  exec 'hi elixirStringDelimiter' . s:fg_green
+  exec 'hi elixirStringDelimiter' . s:fg_yellow
   exec 'hi elixirKeyword' . s:fg_orange
-  exec 'hi elixirInterpolation' . s:fg_yellow
-  exec 'hi elixirInterpolationDelimiter' . s:fg_yellow
+  exec 'hi elixirInterpolation' . s:fg_green
+  exec 'hi elixirInterpolationDelimiter' . s:fg_green
   exec 'hi elixirSelf' . s:fg_purple
   exec 'hi elixirPseudoVariable' . s:fg_purple
   exec 'hi elixirModuleDefine' . s:fg_purple  . s:italic
@@ -947,21 +947,21 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   exec 'hi clojureMacro' . s:fg_purple  . s:italic
   exec 'hi clojureFunc' . s:fg_aqua  . s:bold
-  exec 'hi clojureConstant' . s:fg_yellow
+  exec 'hi clojureConstant' . s:fg_green
   exec 'hi clojureSpecial' . s:fg_red  . s:italic
   exec 'hi clojureDefine' . s:fg_red  . s:italic
   exec 'hi clojureKeyword' . s:fg_orange
   exec 'hi clojureVariable' . s:fg_blue
-  exec 'hi clojureMeta' . s:fg_yellow
-  exec 'hi clojureDeref' . s:fg_yellow
+  exec 'hi clojureMeta' . s:fg_green
+  exec 'hi clojureDeref' . s:fg_green
   "===============================================================
   " Matlab:
   "===============================================================
   exec 'hi matlabSemicolon' . s:fg_fg0
   exec 'hi matlabFunction' . s:fg_red  . s:italic
-  exec 'hi matlabImplicit' . s:fg_green  . s:bold
+  exec 'hi matlabImplicit' . s:fg_yellow  . s:bold
   exec 'hi matlabDelimiter' . s:fg_fg0
-  exec 'hi matlabOperator' . s:fg_green  . s:bold
+  exec 'hi matlabOperator' . s:fg_yellow  . s:bold
   exec 'hi matlabArithmeticOperator' . s:fg_orange
   exec 'hi matlabArithmeticOperator' . s:fg_orange
   exec 'hi matlabRelationalOperator' . s:fg_orange
@@ -977,28 +977,28 @@ function! s:apply_syntax_highlightings()
   exec 'hi vimVar' . s:fg_aqua
   exec 'hi vimFunction' . s:fg_magenta  . s:bold
   exec 'hi vimIsCommand' . s:fg_fg0
-  exec 'hi vimUserFunc' . s:fg_yellow  . s:bold
-  exec 'hi vimFuncName' . s:fg_yellow  . s:bold
+  exec 'hi vimUserFunc' . s:fg_green  . s:bold
+  exec 'hi vimFuncName' . s:fg_green  . s:bold
   exec 'hi vimMap' . s:fg_purple . s:italic
   exec 'hi vimNotation' . s:fg_aqua
-  exec 'hi vimMapLhs' . s:fg_green
-  exec 'hi vimMapRhs' . s:fg_green
-  exec 'hi vimSetEqual' . s:fg_yellow
+  exec 'hi vimMapLhs' . s:fg_yellow
+  exec 'hi vimMapRhs' . s:fg_yellow
+  exec 'hi vimSetEqual' . s:fg_green
   exec 'hi vimSetSep' . s:fg_fg0
   exec 'hi vimOption' . s:fg_aqua
-  exec 'hi vimUserAttrbKey' . s:fg_yellow
-  exec 'hi vimUserAttrb' . s:fg_green
+  exec 'hi vimUserAttrbKey' . s:fg_green
+  exec 'hi vimUserAttrb' . s:fg_yellow
   exec 'hi vimAutoCmdSfxList' . s:fg_aqua
   exec 'hi vimSynType' . s:fg_orange
   exec 'hi vimHiBang' . s:fg_orange
-  exec 'hi vimSet' . s:fg_yellow
+  exec 'hi vimSet' . s:fg_green
   exec 'hi vimSetSep' . s:fg_grey0
   exec 'hi vimContinue' . s:fg_grey1
   "===============================================================
   " Makefile:
   "===============================================================
   exec 'hi makeIdent' . s:fg_aqua
-  exec 'hi makeSpecTarget' . s:fg_yellow
+  exec 'hi makeSpecTarget' . s:fg_green
   exec 'hi makeTarget' . s:fg_blue
   exec 'hi makeCommands' . s:fg_orange
   "===============================================================
@@ -1022,10 +1022,10 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   " Diff:
   "===============================================================
-  exec 'hi diffAdded' . s:fg_green
+  exec 'hi diffAdded' . s:fg_yellow
   exec 'hi diffRemoved' . s:fg_red
   exec 'hi diffChanged' . s:fg_blue
-  exec 'hi diffOldFile' . s:fg_yellow
+  exec 'hi diffOldFile' . s:fg_green
   exec 'hi diffNewFile' . s:fg_orange
   exec 'hi diffFile' . s:fg_aqua
   exec 'hi diffLine' . s:fg_grey1
@@ -1040,19 +1040,19 @@ function! s:apply_syntax_highlightings()
   exec 'hi gitcommitUnmerged' . s:fg_grey1
   exec 'hi gitcommitOnBranch' . s:fg_grey1
   exec 'hi gitcommitArrow' . s:fg_grey1
-  exec 'hi gitcommitFile' . s:fg_green
+  exec 'hi gitcommitFile' . s:fg_yellow
   "===============================================================
   " neoclide/coc.nvim
   "===============================================================
   exec 'hi CocHoverRange'. s:fg_none. s:bold . s:underline
   exec 'hi CocHintHighlight'. s:fg_none. s:undercurl. s:sp_aqua .s:underline
   exec 'hi CocErrorFloat'. s:fg_red. s:bg_bg3
-  exec 'hi CocWarningFloat'. s:fg_yellow. s:bg_bg3
+  exec 'hi CocWarningFloat'. s:fg_green. s:bg_bg3
   exec 'hi CocInfoFloat'. s:fg_blue. s:bg_bg3
   exec 'hi CocHintFloat'. s:fg_aqua. s:bg_bg3
   exec 'hi CocHighlightText'. s:bg_fg3
   exec 'hi CocErrorSign' . s:fg_red
-  exec 'hi CocWarningSign' . s:fg_yellow
+  exec 'hi CocWarningSign' . s:fg_green
   exec 'hi CocInfoSign' . s:fg_blue
   exec 'hi CocHintSign' . s:fg_aqua
   exec 'hi CocErrorHighlight' . s:fg_none  . s:undercurl . s:sp_red . s:underline
@@ -1064,7 +1064,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi CocHintVirtualText' . s:fg_grey1
   exec 'hi CocCodeLens' . s:fg_grey1
   exec 'hi HighlightedyankRegion'. s:fg_none. s:reverse
-  exec 'hi CocGitAddedSign' . s:fg_green
+  exec 'hi CocGitAddedSign' . s:fg_yellow
   exec 'hi CocGitChangeRemovedSign' . s:fg_purple
   exec 'hi CocGitChangedSign' . s:fg_blue
   exec 'hi CocGitRemovedSign' . s:fg_red
@@ -1079,9 +1079,9 @@ function! s:apply_syntax_highlightings()
   exec 'hi CocExplorerFileRoot' . s:fg_orange
   exec 'hi CocExplorerFileExpandIcon' . s:fg_aqua
   exec 'hi CocExplorerFileFullpath' . s:fg_grey0
-  exec 'hi CocExplorerFileDirectory' .  s:fg_green
+  exec 'hi CocExplorerFileDirectory' .  s:fg_yellow
   exec 'hi CocExplorerFileGitStage' . s:fg_purple
-  exec 'hi CocExplorerFileGitUnstage' . s:fg_yellow
+  exec 'hi CocExplorerFileGitUnstage' . s:fg_green
   exec 'hi CocExplorerFileSize' . s:fg_blue
   exec 'hi CocExplorerTimeAccessed' . s:fg_aqua
   exec 'hi CocExplorerTimeCreated' . s:fg_aqua
@@ -1093,7 +1093,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi ALEWarning'. s:fg_none. s:undercurl. s:sp_yellow
   exec 'hi ALEInfo'. s:fg_none. s:undercurl. s:sp_blue
   exec 'hi ALEErrorSign' . s:fg_red
-  exec 'hi ALEWarningSign' . s:fg_yellow
+  exec 'hi ALEWarningSign' . s:fg_green
   exec 'hi ALEInfoSign' . s:fg_blue
   exec 'hi ALEVirtualTextError' . s:fg_grey1
   exec 'hi ALEVirtualTextWarning' . s:fg_grey1
@@ -1106,7 +1106,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi NeomakeError' . s:fg_none  . s:undercurl . s:sp_red
   exec 'hi NeomakeErrorSign' . s:fg_red
   exec 'hi NeomakeWarning' . s:fg_none  . s:undercurl . s:sp_yellow
-  exec 'hi NeomakeWarningSign' . s:fg_yellow
+  exec 'hi NeomakeWarningSign' . s:fg_green
   exec 'hi NeomakeInfo'. s:fg_none. s:undercurl. s:sp_blue
   exec 'hi NeomakeInfoSign' . s:fg_blue
   exec 'hi NeomakeMessage' . s:fg_aqua
@@ -1118,12 +1118,12 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   " Shougo/denite.nvim
   "===============================================================
-  exec 'hi deniteMatchedChar'. s:fg_green. s:bold
-  exec 'hi deniteMatchedRange'. s:fg_green. s:bold.s:underline
-  exec 'hi deniteInput'. s:fg_green. s:bg_bg4. s:bold
+  exec 'hi deniteMatchedChar'. s:fg_yellow. s:bold
+  exec 'hi deniteMatchedRange'. s:fg_yellow. s:bold.s:underline
+  exec 'hi deniteInput'. s:fg_yellow. s:bg_bg4. s:bold
   exec 'hi deniteStatusLineNumber'. s:fg_purple. s:bg_bg4
   exec 'hi deniteStatusLinePath'. s:fg_fg0. s:bg_bg4
-  exec 'hi deniteSelectedLin' . s:fg_green
+  exec 'hi deniteSelectedLin' . s:fg_yellow
   "===============================================================
   " liuchengxu/vista.vim
   "===============================================================
@@ -1132,41 +1132,41 @@ function! s:apply_syntax_highlightings()
   exec 'hi VistaKind' . s:fg_purple
   exec 'hi VistaScope' . s:fg_red
   exec 'hi VistaScopeKind' . s:fg_blue
-  exec 'hi VistaTag' . s:fg_green . s:bold
+  exec 'hi VistaTag' . s:fg_yellow . s:bold
   exec 'hi VistaPrefix' . s:fg_grey1
-  exec 'hi VistaColon' . s:fg_green
-  exec 'hi VistaIcon' . s:fg_yellow
+  exec 'hi VistaColon' . s:fg_yellow
+  exec 'hi VistaIcon' . s:fg_green
   exec 'hi VistaLineNr' . s:fg_fg0
   "===============================================================
   " airblade/vim-gitgutter
   "===============================================================
-  exec 'hi GitGutterAdd' . s:fg_green  . s:bold
+  exec 'hi GitGutterAdd' . s:fg_yellow  . s:bold
   exec 'hi GitGutterChange' . s:fg_blue  . s:bold
   exec 'hi GitGutterDelete' . s:fg_red  . s:bold
   exec 'hi GitGutterChangeDelete' . s:fg_purple  .s:bold
   "===============================================================
   " mhinz/vim-signify
   "===============================================================
-  exec 'hi SignifySignAdd' . s:fg_green
+  exec 'hi SignifySignAdd' . s:fg_yellow
   exec 'hi SignifySignChange' . s:fg_blue
   exec 'hi SignifySignDelete' . s:fg_red
   exec 'hi SignifySignChangeDelete' . s:fg_purple
   "===============================================================
   " scrooloose/nerdtree
   "===============================================================
-  exec 'hi NERDTreeDir' . s:fg_green
+  exec 'hi NERDTreeDir' . s:fg_yellow
   exec 'hi NERDTreeDirSlash' . s:fg_aqua
   exec 'hi NERDTreeOpenable' . s:fg_orange
   exec 'hi NERDTreeClosable' . s:fg_orange
   exec 'hi NERDTreeFile' . s:fg_fg0
-  exec 'hi NERDTreeExecFile' . s:fg_yellow
+  exec 'hi NERDTreeExecFile' . s:fg_green
   exec 'hi NERDTreeUp' . s:fg_grey1
   exec 'hi NERDTreeCWD' . s:fg_aqua
-  exec 'hi NERDTreeToggleOn' . s:fg_green
+  exec 'hi NERDTreeToggleOn' . s:fg_yellow
   exec 'hi NERDTreeToggleOff' . s:fg_red
   exec 'hi NERDTreeFlags' . s:fg_orange
   exec 'hi NERDTreeLinkFile' . s:fg_grey1
-  exec 'hi NERDTreeLinkTarget' . s:fg_green
+  exec 'hi NERDTreeLinkTarget' . s:fg_yellow
   "===============================================================
   " easymotion/vim-easymotion
   "===============================================================
@@ -1178,8 +1178,8 @@ function! s:apply_syntax_highlightings()
   exec 'hi StartifyBracket' . s:fg_grey1
   exec 'hi StartifyFile' . s:fg_fg0
   exec 'hi StartifyNumber' . s:fg_red
-  exec 'hi StartifyPath' . s:fg_green
-  exec 'hi StartifySlash' . s:fg_green
+  exec 'hi StartifyPath' . s:fg_yellow
+  exec 'hi StartifySlash' . s:fg_yellow
   exec 'hi StartifySection' . s:fg_blue
   exec 'hi StartifyHeader' . s:fg_orange
   exec 'hi StartifySpecial' . s:fg_grey1
@@ -1188,8 +1188,8 @@ function! s:apply_syntax_highlightings()
   " liuchengxu/vim-which-key
   "===============================================================
   exec 'hi WhichKey' . s:fg_red
-  exec 'hi WhichKeySeperator' . s:fg_green
-  exec 'hi WhichKeyGroup' . s:fg_yellow
+  exec 'hi WhichKeySeperator' . s:fg_yellow
+  exec 'hi WhichKeyGroup' . s:fg_green
   exec 'hi WhichKeyDesc' . s:fg_blue
   "===============================================================
   "kristijanhusak/vim-dadbod-ui
@@ -1220,28 +1220,28 @@ function! s:apply_syntax_highlightings()
   exec 'hi shOption' . s:fg_orange
   exec 'hi bashStatement' . s:fg_orange
   exec 'hi shOperator' . s:fg_orange
-  exec 'hi shQuote' . s:fg_green
+  exec 'hi shQuote' . s:fg_yellow
   exec 'hi shSet' . s:fg_orange
   exec 'hi shSetList' . s:fg_blue
   exec 'hi shSnglCase' . s:fg_orange
   exec 'hi shVariable' . s:fg_blue
   exec 'hi shVarAssign' . s:fg_orange
-  exec 'hi shCmdSubRegion' . s:fg_green
+  exec 'hi shCmdSubRegion' . s:fg_yellow
   exec 'hi shCommandSub' . s:fg_orange
-  exec 'hi shFunctionOne' . s:fg_green . s:bold
+  exec 'hi shFunctionOne' . s:fg_yellow . s:bold
   exec 'hi shFunctionKey' . s:fg_red . s:italic
   "===============================================================
   " zsh
   "===============================================================
   exec 'hi zshOptStart' . s:fg_purple .s:italic
   exec 'hi zshOption' . s:fg_blue
-  exec 'hi zshSubst' . s:fg_yellow
+  exec 'hi zshSubst' . s:fg_green
   exec 'hi zshFunction' . s:fg_purple .s:bold
   exec 'hi zshDeref' . s:fg_blue
   exec 'hi zshTypes' . s:fg_orange
   exec 'hi zshVariableDef' . s:fg_blue
   exec 'hi zshNumber' . s:fg_purple
-  " exec 'hi zshFlag' . s:fg_green
+  " exec 'hi zshFlag' . s:fg_yellow
   exec 'hi zshSubstDelim' . s:fg_purple
 
   "??
@@ -1254,25 +1254,25 @@ function! s:apply_syntax_highlightings()
   exec 'hi TSEmphasis' . s:bold
   " exec 'hi TSUnderline' . s:underline
   exec 'hi TSNote' . s:bg_bg0 . s:fg_blue. s:bold
-  exec 'hi TSWarning' . s:fg_yellow. s:bold
+  exec 'hi TSWarning' . s:fg_green. s:bold
   exec 'hi TSDanger' . s:fg_red. s:bold
   exec 'hi TSAnnotation' . s:fg_blue. s:italic
-  exec 'hi TSAttribute' . s:fg_yellow. s:italic
+  exec 'hi TSAttribute' . s:fg_green. s:italic
   exec 'hi TSBoolean' . s:fg_orange
-  exec 'hi TSCharacter' . s:fg_green
+  exec 'hi TSCharacter' . s:fg_yellow
   exec 'hi TSComment' . s:fg_grey1 .s:italic
   exec 'hi TSConditional' . s:fg_purple .s:italic
   exec 'hi TSConstBuiltin' . s:fg_orange .s:italic
   exec 'hi TSConstMacro' . s:fg_orange .s:italic
   exec 'hi TSConstant' . s:fg_aqua
-  exec 'hi TSConstructor' . s:fg_green
+  exec 'hi TSConstructor' . s:fg_yellow
   exec 'hi TSException' . s:fg_red .s:italic
-  exec 'hi TSField' . s:fg_green
+  exec 'hi TSField' . s:fg_yellow
   exec 'hi TSFloat' . s:fg_purple
   exec 'hi TSFuncBuiltin' . s:fg_magenta . s:bold
-  exec 'hi TSFuncMacro' . s:fg_magenta . s:bold
+  exec 'hi TSFuncMacro' . s:fg_aqua
   exec 'hi TSFunction' . s:fg_magenta . s:bold
-  exec 'hi TSInclude' . s:fg_purple .s:italic
+  exec 'hi TSInclude' . s:fg_red .s:italic
   exec 'hi TSKeyword' . s:fg_red
   exec 'hi TSKeywordFunction' . s:fg_red
   exec 'hi TSKeywordOperator' . s:fg_red
@@ -1287,26 +1287,26 @@ function! s:apply_syntax_highlightings()
   exec 'hi TSParameter' . s:fg_fg0
   exec 'hi TSParameterReference' . s:fg_fg0
 
-  exec 'hi TSProperty' . s:fg_green
+  exec 'hi TSProperty' . s:fg_yellow
 
   " fg_grey1
-  exec 'hi TSPunctBracket' . s:fg_orange
+  exec 'hi TSPunctBracket' . s:fg_fg0
   exec 'hi TSPunctDelimiter' . s:fg_grey1
-  exec 'hi TSPunctSpecial' . s:fg_yellow
+  exec 'hi TSPunctSpecial' . s:fg_green
 
   exec 'hi TSRepeat' . s:fg_purple
-  exec 'hi TSString' . s:fg_green
-  exec 'hi TSStringEscape' . s:fg_green
-  exec 'hi TSStringRegex' . s:fg_green
+  exec 'hi TSString' . s:fg_yellow
+  exec 'hi TSStringEscape' . s:fg_yellow
+  exec 'hi TSStringRegex' . s:fg_yellow
   exec 'hi TSStructure' . s:fg_orange . s:italic
   exec 'hi TSSymbol' . s:fg_fg0
   exec 'hi TSTag' . s:fg_blue . s:italic
   exec 'hi TSTagDelimiter' . s:fg_magenta
-  exec 'hi TSText' . s:fg_green
+  exec 'hi TSText' . s:fg_yellow
   exec 'hi TSStrike' . s:fg_grey1
-  exec 'hi TSMath' . s:fg_yellow
-  exec 'hi TSType' . s:fg_yellow
-  exec 'hi TSTypeBuiltin' . s:fg_yellow
+  exec 'hi TSMath' . s:fg_green
+  exec 'hi TSType' . s:fg_green
+  exec 'hi TSTypeBuiltin' . s:fg_green
   exec 'hi TSUri' . s:fg_fg1 .s:underline
   exec 'hi TSVariable' . s:fg_fg0
   exec 'hi TSVariableBuiltin' . s:fg_blue
@@ -1316,159 +1316,28 @@ function! s:apply_syntax_highlightings()
   exec 'hi rustTSField' . s:fg_fg0
   exec 'hi rustTSFuncMacro' . s:fg_aqua
   exec 'hi rustTSInclude' . s:fg_red .s:italic
+  exec 'hi rustTSLabel' . s:fg_green
   exec 'hi rustTSNamespace' . s:fg_orange
   exec 'hi rustTSParameter' . s:fg_orange
   exec 'hi rustTSPunctBracket' . s:fg_fg0
-  exec 'hi rustTSStringEscape' . s:fg_yellow
-  exec 'hi rustTSType' . s:fg_yellow .s:bold
+  exec 'hi rustTSPunctSpecial' . s:fg_magenta
+  exec 'hi rustTSStringEscape' . s:fg_green
+  exec 'hi rustTSType' . s:fg_green .s:bold
+  exec 'hi rustTSTypeBuiltin' . s:fg_green .s:bold
   exec 'hi rustTSVariableBuiltin' . s:fg_blue
-"call sonokai#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
 
-" highlight! link CocSem_angle TSTagDelimiter
-" highlight! link CocSem_annotation TSOperator
-" highlight! link CocSem_attribute TSAttribute
-" highlight! link CocSem_bitwise TSOperator
-" highlight! link CocSem_boolean TSBoolean
-" highlight! link CocSem_brace TSPunctBracket
-" highlight! link CocSem_bracket TSPunctBracket
-" highlight! link CocSem_builtinAttribute TSAttribute
-" highlight! link CocSem_builtinType TSTypeBuiltin
-" highlight! link CocSem_character TSCharacter
-" highlight! link CocSem_class TSType
-" highlight! link CocSem_colon TSPunctDelimiter
-" highlight! link CocSem_comma TSPunctDelimiter
-" highlight! link CocSem_comment TSComment
-" highlight! link CocSem_comparison TSOperator
-" highlight! link CocSem_constParameter TSParameter
-" highlight! link CocSem_dependent TSInclude
-" highlight! link CocSem_dot TSOperator
-" highlight! link CocSem_enum TSStructure
-" highlight! link CocSem_enumMember TSVariable
-" highlight! link CocSem_escapeSequence TSStringEscape
-" highlight! link CocSem_event TSType
-" highlight! link CocSem_formatSpecifier TSStringEscape
-" highlight! link CocSem_function TSFunction
-" highlight! link CocSem_interface TSType
-" highlight! link CocSem_keyword TSKeyword
-" highlight! link CocSem_label TSLabel
-" highlight! link CocSem_logical TSOperator
-" highlight! link CocSem_macro TSConstMacro
-" highlight! link CocSem_method TSMethod
-" highlight! link CocSem_modifier TSKeywordOperator
-" highlight! link CocSem_namespace TSNamespace
-" highlight! link CocSem_number TSNumber
-" highlight! link CocSem_operator TSOperator
-" highlight! link CocSem_parameter TSParameter
-" highlight! link CocSem_parenthesis TSPunctBracket
-" highlight! link CocSem_property TSVariable
-" highlight! link CocSem_punctuation TSOperator
-" highlight! link CocSem_regexp TSStringRegex
-" highlight! link CocSem_selfKeyword TSConstBuiltin
-" highlight! link CocSem_semicolon TSPunctDelimiter
-" highlight! link CocSem_string TSString
-" highlight! link CocSem_struct TSStructure
-" highlight! link CocSem_type TSType
-" highlight! link CocSem_typeAlias TSType
-" highlight! link CocSem_typeParameter TSType
-" highlight! link CocSem_variable TSVariable
-" highlight! link CocErrorFloat ErrorFloat
-" highlight! link CocWarningFloat WarningFloat
-" highlight! link CocInfoFloat InfoFloat
-" highlight! link CocHintFloat HintFloat
-" highlight! link CocErrorHighlight ErrorText
-" highlight! link CocWarningHighlight WarningText
-" highlight! link CocInfoHighlight InfoText
-" highlight! link CocHintHighlight HintText
-" highlight! link CocHighlightText CurrentWord
-" highlight! link CocHoverRange CurrentWord
-" highlight! link CocErrorSign RedSign
-" highlight! link CocWarningSign YellowSign
-" highlight! link CocInfoSign BlueSign
-" highlight! link CocHintSign GreenSign
-" highlight! link CocWarningVirtualText VirtualTextWarning
-" highlight! link CocErrorVirtualText VirtualTextError
-" highlight! link CocInfoVirtualText VirtualTextInfo
-" highlight! link CocHintVirtualText VirtualTextHint
-" highlight! link CocErrorLine ErrorLine
-" highlight! link CocWarningLine WarningLine
-" highlight! link CocInfoLine InfoLine
-" highlight! link CocHintLine HintLine
-" highlight! link CocCodeLens Grey
-" highlight! link CocFadeOut Grey
-" highlight! link CocStrikeThrough Grey
-" highlight! link CocListMode StatusLine
-" highlight! link CocListPath StatusLine
-" highlight! link CocTreeOpenClose Grey
-" highlight! link HighlightedyankRegion Visual
-" highlight! link CocSymbolFile Fg
-" highlight! link CocSymbolModule TSNamespace
-" highlight! link CocSymbolNamespace TSNamespace
-" highlight! link CocSymbolPackage TSNamespace
-" highlight! link CocSymbolClass TSType
-" highlight! link CocSymbolMethod TSMethod
-" highlight! link CocSymbolProperty TSProperty
-" highlight! link CocSymbolField TSField
-" highlight! link CocSymbolConstructor TSConstructor
-" highlight! link CocSymbolEnum TSStructure
-" highlight! link CocSymbolInterface TSType
-" highlight! link CocSymbolFunction TSFunction
-" highlight! link CocSymbolVariable TSVariable
-" highlight! link CocSymbolConstant TSConstant
-" highlight! link CocSymbolString TSString
-" highlight! link CocSymbolNumber TSNumber
-" highlight! link CocSymbolBoolean TSBoolean
-" highlight! link CocSymbolArray TSVariable
-" highlight! link CocSymbolObject TSVariable
-" highlight! link CocSymbolKey TSKeyword
-" highlight! link CocSymbolNull TSVariableBuiltin
-" highlight! link CocSymbolEnumMember TSProperty
-" highlight! link CocSymbolStruct TSStructure
-" highlight! link CocSymbolEvent TSLabel
-" highlight! link CocSymbolOperator TSOperator
-" highlight! link CocSymbolTypeParameter TSType
-" highlight! link CocSymbolDefault TSNone
-" highlight! link CocGitAddedSign GreenSign
-" highlight! link CocGitChangeRemovedSign PurpleSign
-" highlight! link CocGitChangedSign BlueSign
-" highlight! link CocGitRemovedSign RedSign
-" highlight! link CocGitTopRemovedSign RedSign
-" highlight! link CocExplorerBufferRoot Red
-" highlight! link CocExplorerBufferExpandIcon Blue
-" highlight! link CocExplorerBufferBufnr Yellow
-" highlight! link CocExplorerBufferModified Yellow
-" highlight! link CocExplorerBufferReadonly Red
-" highlight! link CocExplorerBufferBufname Grey
-" highlight! link CocExplorerBufferFullpath Grey
-" highlight! link CocExplorerFileRoot Red
-" highlight! link CocExplorerFileRootName Green
-" highlight! link CocExplorerFileExpandIcon Blue
-" highlight! link CocExplorerFileFullpath Grey
-" highlight! link CocExplorerFileDirectory Green
-" highlight! link CocExplorerFileGitStaged Purple
-" highlight! link CocExplorerFileGitUnstaged Yellow
-" highlight! link CocExplorerFileGitRootStaged Purple
-" highlight! link CocExplorerFileGitRootUnstaged Yellow
-" highlight! link CocExplorerGitPathChange Fg
-" highlight! link CocExplorerGitContentChange Fg
-" highlight! link CocExplorerGitRenamed Purple
-" highlight! link CocExplorerGitCopied Fg
-" highlight! link CocExplorerGitAdded Green
-" highlight! link CocExplorerGitUntracked Blue
-" highlight! link CocExplorerGitUnmodified Fg
-" highlight! link CocExplorerGitUnmerged Orange
-" highlight! link CocExplorerGitMixed Fg
-" highlight! link CocExplorerGitModified Yellow
-" highlight! link CocExplorerGitDeleted Red
-" highlight! link CocExplorerGitIgnored Grey
-" highlight! link CocExplorerFileSize Blue
-" highlight! link CocExplorerTimeAccessed Purple
-" highlight! link CocExplorerTimeCreated Purple
-" highlight! link CocExplorerTimeModified Purple
-" highlight! link CocExplorerFileRootName Orange
-" highlight! link CocExplorerBufferNameVisible Green
-" highlight! link CocExplorerIndentLine Conceal
-" highlight! link CocExplorerHelpDescription Grey
-" highlight! link CocExplorerHelpHint Grey }}}
+  exec 'hi bashTSFuncBuiltin' . s:fg_red
+  exec 'hi bashTSParameter' . s:fg_green
+  exec 'hi bashTSConstant' . s:fg_blue
+  exec 'hi bashTSVariable' . s:fg_orange
+
+  exec 'hi tomlTSTypeBuiltin' . s:fg_purple . s:bold
+  exec 'hi tomlTSProperty' . s:fg_orange
+  exec 'hi tomlTSNumber' . s:fg_green
+
+  exec 'hi yamlTSField' . s:fg_green
+
+" }}}
 
 endfunction
 
