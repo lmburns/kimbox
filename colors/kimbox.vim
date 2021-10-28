@@ -97,6 +97,8 @@ let s:colors = {
       \ 'none':             ['NONE',      'NONE']
   \ }
 
+# #418292
+
 function! g:KimboxPalette()
   return copy(s:colors)
 endfunction
