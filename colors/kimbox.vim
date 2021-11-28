@@ -65,6 +65,7 @@ endif
 let s:background = {
       \'medium': ['#231A0C', '235'],
       \'ocean' : ['#221a02', '235'],
+      \'vscode' : ['#221a0f', '235'],
       \'deep'  : ['#0f111b', 'NONE'],
       \'darker': ['#291804', '234'],
       \}
