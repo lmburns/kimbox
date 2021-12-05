@@ -65,6 +65,7 @@ endif
 let s:background = {
       \'medium': ['#231A0C', '235'],
       \'ocean' : ['#221a02', '235'],
+      \'vscode' : ['#221a0f', '235'],
       \'deep'  : ['#0f111b', 'NONE'],
       \'darker': ['#291804', '234'],
       \}
@@ -97,7 +98,7 @@ let s:colors = {
       \ 'none':             ['NONE',      'NONE']
   \ }
 
-# #418292
+" #418292
 
 function! g:KimboxPalette()
   return copy(s:colors)
@@ -1252,8 +1253,8 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   " treesitter
   "===============================================================
-  exec 'hi TSStrong' . s:bold
-  exec 'hi TSEmphasis' . s:bold
+  " exec 'hi TSStrong' . s:bold
+  " exec 'hi TSEmphasis' . s:bold
   " exec 'hi TSUnderline' . s:underline
   exec 'hi TSNote' . s:bg_bg0 . s:fg_blue. s:bold
   exec 'hi TSWarning' . s:fg_green. s:bold
