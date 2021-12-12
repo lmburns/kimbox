@@ -1338,6 +1338,8 @@ function! s:apply_syntax_highlightings()
   exec 'hi tomlTSProperty' . s:fg_orange
   exec 'hi tomlTSNumber' . s:fg_green
 
+  exec 'hi luaTSProperty' . s:fg_green
+
   exec 'hi yamlTSField' . s:fg_green
 
 " }}}
