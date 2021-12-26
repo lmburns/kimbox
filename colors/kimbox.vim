@@ -1329,6 +1329,15 @@ function! s:apply_syntax_highlightings()
   exec 'hi rustTSTypeBuiltin' . s:fg_green .s:bold
   exec 'hi rustTSVariableBuiltin' . s:fg_blue
 
+  exec 'hi cppTSConstMacro' . s:fg_aqua
+  exec 'hi cppTSNamespace' . s:fg_orange
+  exec 'hi cppTSType' . s:fg_green .s:bold
+  exec 'hi cppTSTypeBuiltin' . s:fg_green .s:bold
+  exec 'hi cppTSKeyword' . s:fg_red
+  exec 'hi cppTSInclude' . s:fg_red .s:italic
+  exec 'hi cppTSMethod' . s:fg_blue
+  exec 'hi cppTSField' . s:fg_yellow
+
   exec 'hi bashTSFuncBuiltin' . s:fg_red
   exec 'hi bashTSParameter' . s:fg_green
   exec 'hi bashTSConstant' . s:fg_blue
@@ -1338,9 +1347,13 @@ function! s:apply_syntax_highlightings()
   exec 'hi tomlTSProperty' . s:fg_orange
   exec 'hi tomlTSNumber' . s:fg_green
 
+  exec 'hi yamlTSField' . s:fg_green
+
+  exec 'hi goTSProperty' . s:fg_blue
+  exec 'hi goTSMethod' . s:fg_purple . s:bold
+
   exec 'hi luaTSProperty' . s:fg_green
 
-  exec 'hi yamlTSField' . s:fg_green
 
 " }}}
 
