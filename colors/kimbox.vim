@@ -842,16 +842,19 @@ function! s:apply_syntax_highlightings()
   " Ruby:
   " builtin: https://github.com/vim-ruby/vim-ruby
   "===============================================================
-  exec 'hi rubyKeywordAsMethod' . s:fg_yellow  . s:bold
-  exec 'hi rubyInterpolation' . s:fg_green
-  exec 'hi rubyInterpolationDelimiter' . s:fg_green
   exec 'hi rubyStringDelimiter' . s:fg_yellow
-  exec 'hi rubyBlockParameterList' . s:fg_blue
-  exec 'hi rubyDefine' . s:fg_red  . s:italic
   exec 'hi rubyModuleName' . s:fg_purple
-  exec 'hi rubyAccess' . s:fg_orange
-  exec 'hi rubyAttribute' . s:fg_green
   exec 'hi rubyMacro' . s:fg_red  . s:italic
+  exec 'hi rubyKeywordAsMethod' . s:fg_yellow  . s:bold
+  exec 'hi rubyInterpolationDelimiter' . s:fg_green
+  exec 'hi rubyInterpolation' . s:fg_green
+  exec 'hi rubyDefinedOperator' . s:fg_orange
+  exec 'hi rubyDefine' . s:fg_red  . s:italic
+  exec 'hi rubyBlockParameterList' . s:fg_blue
+  exec 'hi rubyAttribute' . s:fg_green
+  exec 'hi rubyArrayDelimiter' . s:fg_orange
+  exec 'hi rubyCurlyBlockDelimiter' . s:fg_orange
+  exec 'hi rubyAccess' . s:fg_orange
   "===============================================================
   " Haskell:
   " haskell-vim: https://github.com/neovimhaskell/haskell-vim
@@ -1342,6 +1345,8 @@ function! s:apply_syntax_highlightings()
   exec 'hi bashTSParameter' . s:fg_green
   exec 'hi bashTSConstant' . s:fg_blue
   exec 'hi bashTSVariable' . s:fg_orange
+
+  exec 'hi rubyTSLabel' . s:fg_blue
 
   exec 'hi tomlTSTypeBuiltin' . s:fg_purple . s:bold
   exec 'hi tomlTSProperty' . s:fg_orange
