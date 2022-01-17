@@ -1346,7 +1346,14 @@ function! s:apply_syntax_highlightings()
   exec 'hi bashTSConstant' . s:fg_blue
   exec 'hi bashTSVariable' . s:fg_orange
 
+  " Needs global variable customization
   exec 'hi rubyTSLabel' . s:fg_blue
+  exec 'hi rubyTSString' . s:fg_yellow
+  exec 'hi rubyTSPunctSpecial' . s:fg_green
+  exec 'hi rubyTSParameter' . s:fg_orange
+  exec 'hi rubyTSSymbol' . s:fg_aqua
+  exec 'hi rubyTSNone' . s:fg_blue
+  " exec 'hi rubyTSGlobalVariable' . s:fg_blue
 
   exec 'hi tomlTSTypeBuiltin' . s:fg_purple . s:bold
   exec 'hi tomlTSProperty' . s:fg_orange
