@@ -5,7 +5,6 @@
 " Source: http://github.com/lmburns/kimbox                      "
 " ===============================================================
 
-
 " Initialization: {{{
 "
 hi clear
@@ -1302,7 +1301,7 @@ function! s:apply_syntax_highlightings()
 
   exec 'hi TSRepeat' . s:fg_purple
   exec 'hi TSString' . s:fg_yellow
-  exec 'hi TSStringEscape' . s:fg_yellow
+  exec 'hi TSStringEscape' . s:fg_green
   exec 'hi TSStringRegex' . s:fg_yellow
   exec 'hi TSStructure' . s:fg_orange . s:italic
   exec 'hi TSSymbol' . s:fg_fg0
@@ -1317,6 +1316,9 @@ function! s:apply_syntax_highlightings()
   exec 'hi TSVariable' . s:fg_fg0
   exec 'hi TSVariableBuiltin' . s:fg_blue
 
+  "===============================================================
+  " treesitter rust
+  "===============================================================
   " exec 'hi rustTSKeyword' . s:fg_magenta
   exec 'hi rustTSConstant' . s:fg_magenta
   exec 'hi rustTSField' . s:fg_fg0
@@ -1332,6 +1334,9 @@ function! s:apply_syntax_highlightings()
   exec 'hi rustTSTypeBuiltin' . s:fg_green .s:bold
   exec 'hi rustTSVariableBuiltin' . s:fg_blue
 
+  "===============================================================
+  " treesitter cpp
+  "===============================================================
   exec 'hi cppTSConstMacro' . s:fg_aqua
   exec 'hi cppTSNamespace' . s:fg_orange
   exec 'hi cppTSType' . s:fg_green .s:bold
@@ -1341,11 +1346,26 @@ function! s:apply_syntax_highlightings()
   exec 'hi cppTSMethod' . s:fg_blue
   exec 'hi cppTSField' . s:fg_yellow
 
+  "===============================================================
+  " treesitter python
+  "===============================================================
+  " exec 'hi pythonTSParameter' . s:fg_orange
+  exec 'hi pythonTSType' . s:fg_green . s:bold
+  exec 'hi pythonTSConstructor' . s:fg_magenta
+  exec 'hi pythonTSKeywordFunction' . s:fg_red . s:bold
+  exec 'hi pythonTSPunctBracket' . s:fg_fg0
+
+  "===============================================================
+  " treesitter bash
+  "===============================================================
   exec 'hi bashTSFuncBuiltin' . s:fg_red
   exec 'hi bashTSParameter' . s:fg_green
   exec 'hi bashTSConstant' . s:fg_blue
   exec 'hi bashTSVariable' . s:fg_orange
 
+  "===============================================================
+  " treesitter ruby
+  "===============================================================
   " Needs global variable customization
   exec 'hi rubyTSLabel' . s:fg_blue
   exec 'hi rubyTSString' . s:fg_yellow
@@ -1355,18 +1375,35 @@ function! s:apply_syntax_highlightings()
   exec 'hi rubyTSNone' . s:fg_blue
   " exec 'hi rubyTSGlobalVariable' . s:fg_blue
 
+  "===============================================================
+  " treesitter perl
+  "===============================================================
+  exec 'hi perlTSVariable' . s:fg_blue
+
+  "===============================================================
+  " treesitter go
+  "===============================================================
+  exec 'hi goTSProperty' . s:fg_blue
+  exec 'hi goTSMethod' . s:fg_purple . s:bold
+  exec 'hi goTSType' . s:fg_green . s:bold
+  exec 'hi goTSTypeBuiltin' . s:fg_green . s:bold
+
+  "===============================================================
+  " treesitter lua
+  "===============================================================
+  exec 'hi luaTSProperty' . s:fg_green
+
+  "===============================================================
+  " treesitter toml
+  "===============================================================
   exec 'hi tomlTSTypeBuiltin' . s:fg_purple . s:bold
   exec 'hi tomlTSProperty' . s:fg_orange
   exec 'hi tomlTSNumber' . s:fg_green
 
+  "===============================================================
+  " treesitter yaml
+  "===============================================================
   exec 'hi yamlTSField' . s:fg_green
-
-  exec 'hi goTSProperty' . s:fg_blue
-  exec 'hi goTSMethod' . s:fg_purple . s:bold
-
-  exec 'hi luaTSProperty' . s:fg_green
-
-
 " }}}
 
 endfunction
