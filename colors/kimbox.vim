@@ -22,19 +22,19 @@ if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 
   finish
 endif
 
-let s:kimbox_transparent_background = get(g:,'kimbox_transparent_background',0)
+let s:kimbox_transparent_background = get(g:,'kimbox_transparent_background', 0)
 
 let s:kimbox_background = get(g:,'kimbox_background','ocean')
 
 let s:kimbox_allow_bold = get(g:,'kimbox_allow_bold', 0)
 
-let s:kimbox_allow_italic = get(g:,'kimbox_allow_italic',0)
+let s:kimbox_allow_italic = get(g:,'kimbox_allow_italic', 0)
 
-let s:kimbox_allow_underline = get(g:,'kimbox_allow_underline',0)
+let s:kimbox_allow_underline = get(g:,'kimbox_allow_underline', 0)
 
-let s:kimbox_allow_reverse = get(g:,'kimbox_allow_reverse',0)
+let s:kimbox_allow_reverse = get(g:,'kimbox_allow_reverse', 0)
 
-let s:kimbox_allow_undercurl = get(g:,'kimbox_allow_undercurl',0)
+let s:kimbox_allow_undercurl = get(g:,'kimbox_allow_undercurl', 0)
 
 let s:bold = ''
 if s:kimbox_allow_bold == 1
@@ -1000,6 +1000,13 @@ function! s:apply_syntax_highlightings()
   exec 'hi vimSetSep' . s:fg_grey0
   exec 'hi vimContinue' . s:fg_grey1
   "===============================================================
+  " Dosini:
+  "===============================================================
+  exec 'hi dosiniLabel' . s:fg_yellow
+  exec 'hi dosiniValue' . s:fg_green
+  exec 'hi dosiniNumber' . s:fg_purple
+  exec 'hi dosiniHeader' . s:fg_red . s:bold
+  "===============================================================
   " Makefile:
   "===============================================================
   exec 'hi makeIdent' . s:fg_aqua
@@ -1016,7 +1023,22 @@ function! s:apply_syntax_highlightings()
   " Yaml:
   "===============================================================
   exec 'hi yamlKey' . s:fg_orange
-  exec 'hi yamlConstant' . s:fg_purple
+  exec 'hi yamlConstant' . s:fg_red . s:bold
+  exec 'hi yamlBlockMappingKey' . s:fg_blue
+  exec 'hi yamlFloat' . s:fg_purple
+  exec 'hi yamlInteger' . s:fg_purple
+  exec 'hi yamlKeyValueDelimiter' . s:fg_green
+  exec 'hi yamlDocumentStart' . s:fg_orange . s:bold
+  exec 'hi yamlDocumentEnd' . s:fg_orange . s:bold
+  exec 'hi yamlPlainScalar' . s:fg_fg0
+  exec 'hi yamlBlockCollectionItemStart' . s:fg_orange
+  exec 'hi yamlAnchor' . s:fg_green . s:bold
+  exec 'hi yamlAlias' . s:fg_green . s:bold
+  exec 'hi yamlNodeTag' . s:fg_green . s:bold
+  exec 'hi yamlBlockMappingMerge' . s:fg_green
+  exec 'hi yamlDirective' . s:fg_red . s:bold
+  exec 'hi yamlYAMLDirective' . s:fg_red . s:bold
+  exec 'hi yamlYAMLVersion' . s:fg_magenta
   "===============================================================
   " Toml:
   "===============================================================
@@ -1024,6 +1046,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi tomlKey' . s:fg_orange
   exec 'hi tomlBoolean' . s:fg_aqua
   exec 'hi tomlTableArray'. s:fg_purple. s:bold
+  exec 'hi tomlKeyValueArray'. s:fg_purple. s:bold
   "===============================================================
   " Diff:
   "===============================================================
@@ -1149,13 +1172,25 @@ function! s:apply_syntax_highlightings()
   exec 'hi GitGutterChange' . s:fg_blue  . s:bold
   exec 'hi GitGutterDelete' . s:fg_red  . s:bold
   exec 'hi GitGutterChangeDelete' . s:fg_purple  .s:bold
+  exec 'hi GitGutterAddLineNr' . s:fg_green
+  exec 'hi GitGutterChangeLineNr' . s:fg_blue
+  exec 'hi GitGutterDeleteLineNr' . s:fg_red
+  exec 'hi GitGutterChangeDeleteLineNr' . s:fg_purple
+  " exec 'hi GitGutterAddLine' . s:fg_purple  .s:bold
+  " exec 'hi GitGutterChangeLine' . s:fg_purple  .s:bold
+  " exec 'hi GitGutterDeleteLine' . s:fg_purple  .s:bold
+  " exec 'hi GitGutterChangeDeleteLine' . s:fg_purple  .s:bold
   "===============================================================
   " mhinz/vim-signify
   "===============================================================
-  exec 'hi SignifySignAdd' . s:fg_yellow
+  exec 'hi SignifySignAdd' . s:fg_green
   exec 'hi SignifySignChange' . s:fg_blue
   exec 'hi SignifySignDelete' . s:fg_red
   exec 'hi SignifySignChangeDelete' . s:fg_purple
+  " exec 'hi SignifyLineAdd' . s:fg_purple
+  " exec 'hi SignifyLineChange' . s:fg_purple
+  " exec 'hi SignifyLineChangeDelete' . s:fg_purple
+  " exec 'hi SignifyLineDelete' . s:fg_purple
   "===============================================================
   " scrooloose/nerdtree
   "===============================================================
@@ -1333,6 +1368,9 @@ function! s:apply_syntax_highlightings()
   exec 'hi rustTSType' . s:fg_green .s:bold
   exec 'hi rustTSTypeBuiltin' . s:fg_green .s:bold
   exec 'hi rustTSVariableBuiltin' . s:fg_blue
+
+  " exec 'hi CocRustChainingHint' . s:fg_grey1
+  " exec 'hi CocRustTypeHint' . s:fg_grey1
 
   "===============================================================
   " treesitter cpp
