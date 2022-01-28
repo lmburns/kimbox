@@ -960,6 +960,17 @@ function! s:apply_syntax_highlightings()
   exec 'hi clojureMeta' . s:fg_green
   exec 'hi clojureDeref' . s:fg_green
   "===============================================================
+  " R:
+  "===============================================================
+  exec 'hi rFunction' . s:fg_purple . s:bold
+  exec 'hi rType' . s:fg_green . s:bold
+  exec 'hi rRegion' . s:fg_purple . s:bold
+  exec 'hi rAssign' . s:fg_red . s:bold
+  exec 'hi rBoolean' . s:fg_orange
+  exec 'hi rOperator' . s:fg_orange
+  exec 'hi rSection' . s:fg_orange
+  exec 'hi rRepeat' . s:fg_purple
+  "===============================================================
   " Matlab:
   "===============================================================
   exec 'hi matlabSemicolon' . s:fg_fg0
