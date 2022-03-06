@@ -1373,7 +1373,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi rustTSLabel' . s:fg_green
   exec 'hi rustTSNamespace' . s:fg_orange
   exec 'hi rustTSParameter' . s:fg_orange
-  exec 'hi rustTSPunctBracket' . s:fg_fg0
+  exec 'hi rustTSPunctBracket' . s:fg_purple
   exec 'hi rustTSPunctSpecial' . s:fg_magenta
   exec 'hi rustTSStringEscape' . s:fg_green
   exec 'hi rustTSType' . s:fg_green .s:bold
@@ -1394,6 +1394,11 @@ function! s:apply_syntax_highlightings()
   exec 'hi cppTSInclude' . s:fg_red .s:italic
   exec 'hi cppTSMethod' . s:fg_blue
   exec 'hi cppTSField' . s:fg_yellow
+
+  "===============================================================
+  " treesitter c
+  "===============================================================
+  exec 'hi cTSType' . s:fg_green .s:bold
 
   "===============================================================
   " treesitter python
@@ -1419,6 +1424,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi rubyTSLabel' . s:fg_blue
   exec 'hi rubyTSString' . s:fg_yellow
   exec 'hi rubyTSPunctSpecial' . s:fg_green
+  exec 'hi rubyTSPunctBracket' . s:fg_green
   exec 'hi rubyTSParameter' . s:fg_orange
   exec 'hi rubyTSSymbol' . s:fg_aqua
   exec 'hi rubyTSNone' . s:fg_blue
@@ -1441,6 +1447,7 @@ function! s:apply_syntax_highlightings()
   " treesitter lua
   "===============================================================
   exec 'hi luaTSProperty' . s:fg_green
+  exec 'hi luaTSField' . s:fg_aqua
 
   "===============================================================
   " treesitter toml
