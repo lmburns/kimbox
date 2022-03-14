@@ -1366,6 +1366,7 @@ function! s:apply_syntax_highlightings()
   " treesitter rust
   "===============================================================
   " exec 'hi rustTSKeyword' . s:fg_magenta
+  exec 'hi rustTSConstBuiltin' . s:fg_purple
   exec 'hi rustTSConstant' . s:fg_magenta
   exec 'hi rustTSField' . s:fg_fg0
   exec 'hi rustTSFuncMacro' . s:fg_aqua
@@ -1460,6 +1461,11 @@ function! s:apply_syntax_highlightings()
   " treesitter yaml
   "===============================================================
   exec 'hi yamlTSField' . s:fg_green
+
+  "===============================================================
+  " treesitter zig
+  "===============================================================
+  exec 'hi zigTSTypeBuiltin' . s:fg_green . s:bold
 " }}}
 
 endfunction
