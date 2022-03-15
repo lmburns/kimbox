@@ -1408,7 +1408,16 @@ function! s:apply_syntax_highlightings()
   exec 'hi pythonTSType' . s:fg_green . s:bold
   exec 'hi pythonTSConstructor' . s:fg_magenta
   exec 'hi pythonTSKeywordFunction' . s:fg_red . s:bold
-  exec 'hi pythonTSPunctBracket' . s:fg_fg0
+  exec 'hi pythonTSConstBuiltin' . s:fg_purple
+  exec 'hi pythonTSMethod' . s:fg_purple . s:bold
+  exec 'hi pythonTSParameter' . s:fg_orange
+  exec 'hi pythonTSConstant' . s:fg_aqua
+  exec 'hi pythonTSField' . s:fg_fg0
+  exec 'hi pythonTSStringEscape' . s:fg_green
+
+  exec 'hi pythonTSPunctBracket' . s:fg_purple
+  " exec 'hi pythonTSPunctBracket' . s:fg_green
+  " exec 'hi pythonTSPunctBracket' . s:fg_fg0
 
   "===============================================================
   " treesitter bash
