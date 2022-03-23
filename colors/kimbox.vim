@@ -1395,11 +1395,14 @@ function! s:apply_syntax_highlightings()
   exec 'hi cppTSInclude' . s:fg_red .s:italic
   exec 'hi cppTSMethod' . s:fg_blue
   exec 'hi cppTSField' . s:fg_yellow
+  exec 'hi cppTSConstructor' . s:fg_blue
 
   "===============================================================
   " treesitter c
   "===============================================================
   exec 'hi cTSType' . s:fg_green .s:bold
+  exec 'hi cTSPunctBracket' . s:fg_purple
+  " exec 'hi cTSProperty' . s:fg_blue
 
   "===============================================================
   " treesitter python
@@ -1458,6 +1461,9 @@ function! s:apply_syntax_highlightings()
   "===============================================================
   exec 'hi luaTSProperty' . s:fg_green
   exec 'hi luaTSField' . s:fg_aqua
+  exec 'hi luaTSPunctBracket' . s:fg_purple
+  exec 'hi luaTSConstructor' . s:fg_green . s:bold
+  exec 'hi luaTSConstant' . s:fg_green . s:bold
 
   "===============================================================
   " treesitter toml
