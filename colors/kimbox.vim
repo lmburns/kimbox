@@ -1481,6 +1481,21 @@ function! s:apply_syntax_highlightings()
   " treesitter zig
   "===============================================================
   exec 'hi zigTSTypeBuiltin' . s:fg_green . s:bold
+
+  "===============================================================
+  " telescope
+  "===============================================================
+  exec 'hi TelescopeSelection' . s:fg_yellow . s:bold
+  exec 'hi TelescopeSelectionCaret' . s:fg_green
+  exec 'hi TelescopeMultiSelection' . s:fg_blue
+  exec 'hi TelescopeBorder' . s:fg_magenta
+  exec 'hi TelescopePromptBorder' . s:fg_magenta
+  exec 'hi TelescopeResultsBorder' . s:fg_magenta
+  exec 'hi TelescopePreviewBorder' . s:fg_magenta
+  exec 'hi TelescopeMatching' . s:fg_orange
+  exec 'hi TelescopePromptPrefix' . s:fg_red
+
+  highlight TelescopeNormal         guibg=#00000
 " }}}
 
 endfunction
