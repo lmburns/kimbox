@@ -1488,12 +1488,14 @@ function! s:apply_syntax_highlightings()
   exec 'hi TelescopeSelection' . s:fg_yellow . s:bold
   exec 'hi TelescopeSelectionCaret' . s:fg_green
   exec 'hi TelescopeMultiSelection' . s:fg_blue
+  exec 'hi TelescopeMultiIcon' . s:fg_aqua
   exec 'hi TelescopeBorder' . s:fg_magenta
   exec 'hi TelescopePromptBorder' . s:fg_magenta
   exec 'hi TelescopeResultsBorder' . s:fg_magenta
   exec 'hi TelescopePreviewBorder' . s:fg_magenta
   exec 'hi TelescopeMatching' . s:fg_orange
   exec 'hi TelescopePromptPrefix' . s:fg_red
+  exec 'hi TelescopeTitle' . s:fg_purple . s:bold
 
   highlight TelescopeNormal         guibg=#00000
 " }}}
