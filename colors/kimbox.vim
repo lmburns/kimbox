@@ -1385,6 +1385,21 @@ function! s:apply_syntax_highlightings()
   " exec 'hi CocRustTypeHint' . s:fg_grey1
 
   "===============================================================
+  " treesitter typescript
+  "===============================================================
+  exec 'hi typescriptTSParameter' . s:fg_aqua
+  exec 'hi typescriptTSTypeBuiltin' . s:fg_green . s:bold
+  exec 'hi typescriptTSKeywordReturn' . s:fg_red . s:bold
+  exec 'hi typescriptTSPunctBracket' . s:fg_purple
+  exec 'hi typescriptTSVariableBuiltin' . s:fg_magenta
+  exec 'hi typescriptTSException' . s:fg_green
+  exec 'hi typescriptTSConstructor' . s:fg_blue . s:bold
+  " aqua/orange
+  exec 'hi typescriptTSProperty' . s:fg_orange
+  " orange/red
+  exec 'hi typescriptTSKeyword' . s:fg_red
+
+  "===============================================================
   " treesitter cpp
   "===============================================================
   exec 'hi cppTSConstMacro' . s:fg_aqua
@@ -1496,8 +1511,6 @@ function! s:apply_syntax_highlightings()
   exec 'hi TelescopeMatching' . s:fg_orange
   exec 'hi TelescopePromptPrefix' . s:fg_red
   exec 'hi TelescopeTitle' . s:fg_purple . s:bold
-
-  highlight TelescopeNormal         guibg=#00000
 " }}}
 
 endfunction
