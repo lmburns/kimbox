@@ -9,7 +9,7 @@ local reverse = cfg.allow_reverse and "reverse" or "none"
 local bold = cfg.allow_bold and "bold" or "none"
 local italic = cfg.allow_italic and "italic" or "none"
 local underline = cfg.allow_underline and "underline" or "none"
-local undercurl = cfg.allow_underline and "undercurl" or "none"
+local undercurl = cfg.allow_undercurl and "undercurl" or "none"
 
 local function underbold()
   if cfg.allow_bold and cfg.allow_underline then
@@ -27,10 +27,9 @@ local function vim_highlights(highlights)
   for group_name, group_settings in pairs(highlights) do
     vim.api.nvim_command(
         string.format(
-            "highlight %s guifg=%s guibg=%s guisp=%s gui=%s cterm=%s",
-            group_name, group_settings.fg or "none",
-            group_settings.bg or "none", group_settings.sp or "none",
-            group_settings.fmt or "none", group_settings.ct or "none"
+            "hi %s guifg=%s guibg=%s guisp=%s gui=%s", group_name,
+            group_settings.fg or "none", group_settings.bg or "none",
+            group_settings.sp or "none", group_settings.fmt or "none"
         )
     )
   end
@@ -64,10 +63,10 @@ hl.common = {
   FoldColumn = { fg = c.grey0, bg = trans and c.none or c.bg2 },
   SignColumn = { fg = c.fg0, bg = trans and c.none or c.bg0 },
   ToolbarLine = { fg = trans and c.fg0 or c.fg1, bg = trans and c.none or c.bg3 },
-  VertSplit = { fg = trans and c.grey0 or c.bg0, bg = trans and c.none or c.fg1 },
+  VertSplit = { fg = c.fg1, bg = c.none },
 
   Folded = { fg = c.grey1, bg = c.bg2 },
-  EndOfBuffer = { fg = cfg.ending_tildes and c.bg2 or c.bg0, bg = c.none },
+  EndOfBuffer = { fg = c.orange, bg = c.none },
   IncSearch = { fg = c.bg1, bg = c.orange },
   Search = { fg = c.bg0, bg = c.green },
   ColorColumn = { bg = c.bg1 },
@@ -78,7 +77,7 @@ hl.common = {
   lCursor = { fmt = reverse },
   CursorIM = { fmt = reverse },
   CursorColumn = { bg = c.bg1 },
-  CursorLine = { bg = c.bg1 },
+  CursorLine = { fg = c.none, bg = c.bg1 },
   CursorLineNr = { fg = c.fg1 },
   LineNr = { fg = c.grey0 },
 
@@ -115,9 +114,16 @@ hl.common = {
   NonText = { fg = c.bg5 },
   Whitespace = { fg = c.bg5 },
   SpecialKey = { fg = c.bg5 },
+
   Pmenu = { fg = c.operator_base05, bg = c.bg1 },
-  PmenuSbar = { fg = c.none, bg = c.fg2 },
-  PmenuSel = { fg = c.bg3, bg = c.fg_orange, fmt = bold },
+  PmenuSel = { fg = c.red, bg = c.bg4, fmt = bold },
+
+  -- Pmenu = { fg = c.operator_base05, bg = c.bg0 },
+  -- PmenuSel = { fg = c.red, bg = c.bg1, fmt = bold },
+
+  PmenuSbar = { fg = c.none, bg = c.fg3 },
+  -- PmenuSel = { fg = c.fg0, bg = c.fg1 },
+  -- PmenuSel = { fg = c.bg3, bg = c.orange },
   PmenuThumb = { fg = c.none, bg = c.green },
   WildMenu = { fg = c.bg3, bg = c.green },
   Question = { fg = c.green },
@@ -129,13 +135,14 @@ hl.common = {
   TabLineFill = { fmt = "none" },
 
   -- Statusline
-  StatusLine = { fg = c.fg1, bg = c.none },
+  -- When last status=2 or 3
+  StatusLine = { fg = c.none, bg = c.none },
   StatusLineNC = { fg = c.grey1, bg = c.none },
-  -- StatusLineTerm = { fg = c.fg, bg = c.bg2 },
-  -- StatusLineTermNC = { fg = c.grey, bg = c.bg1 },
+  StatusLineTerm = { fg = c.fg0, bg = c.bg2 },
+  StatusLineTermNC = { fg = c.grey1, bg = c.bg1 },
 
   -- Spell
-  SpellBad = { fg = c.red, fmt = undercurl, sp = c.red },
+  SpellBad = { fg = c.red, fmt = "undercurl", sp = c.red },
   SpellCap = { fg = c.blue, fmt = undercurl, sp = c.blue },
   SpellLocal = { fg = c.aqua, fmt = undercurl, sp = c.aqua },
   SpellRare = { fg = c.purple, fmt = undercurl, sp = c.purple },
@@ -166,7 +173,9 @@ hl.syntax = {
   Keyword = { fg = c.red, fmt = italic },
   Typedef = { fg = c.red, fmt = italic },
   Exception = { fg = c.red, fmt = italic },
-  Statement = { fg = c.red, fmt = italic },
+  -- NOTE: Why is vim Statement no longer bold after lua upgrade?
+  --       This is `italic` in vimscript
+  Statement = { fg = c.red, fmt = bold },
   Error = fgs.red,
   StorageClass = fgs.orange,
   Tag = fgs.orange,
@@ -208,7 +217,7 @@ hl.treesitter = {
   TSConstMacro = { fg = c.orange, fmt = italic },
   TSConstructor = { fg = c.yellow, fmt = bold },
   TSException = { fg = c.red, fmt = italic },
-  TSError = { fg = c.red, fmt = italic },
+  -- TSError = { fg = c.red, fmt = italic },
   TSField = fgs.yellow,
   TSFloat = fgs.purple,
   TSFuncBuiltin = { fg = c.magenta, fmt = bold },
@@ -1070,7 +1079,7 @@ hl.langs.matlab = {
 }
 
 hl.langs.vim = {
-  vimMapModKey = fgs.orange,
+  -- vimMapModKey = fgs.orange,
   vimCommentTitle = { fg = c.grey1, bg = c.none, fmt = bold },
   vimLet = fgs.orange,
   vimVar = fgs.aqua,
@@ -1501,6 +1510,18 @@ hl.plugins.hop = {
   HopUnmatched = fgs.grey,
 }
 
+hl.plugins.vimwiki = {
+  VimwikiBold = { fg = c.burple, fmt = "bold" },
+  VimwikiCode = { fg = c.gruv_magenta },
+  VimwikiItalic = { fg = "#83a598", fmt = "italic" },
+  VimwikiHeader1 = { fg = "#F14A68", fmt = "bold" },
+  VimwikiHeader2 = { fg = "#F06431", fmt = "bold" },
+  VimwikiHeader3 = { fg = "#689d6a", fmt = "bold" },
+  VimwikiHeader4 = { fg = c.green, fmt = "bold" },
+  VimwikiHeader5 = { fg = c.purple, fmt = "bold" },
+  VimwikiHeader6 = { fg = "#458588", fmt = "bold" },
+}
+
 -- comment
 hl.plugins.diffview = {
   DiffviewFilePanelTitle = { fg = c.blue, fmt = bold },
@@ -1638,8 +1659,7 @@ function M.setup()
             replace_color("guifg", group_settings.fg),
             replace_color("guibg", group_settings.bg),
             replace_color("guisp", group_settings.sp),
-            replace_color("gui", group_settings.fmt),
-            replace_color("cterm", group_settings.ct)
+            replace_color("gui", group_settings.fmt)
         )
     )
   end

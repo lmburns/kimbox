@@ -1,4 +1,35 @@
-## Kimbox
+# Table of Contents
+
+- [Table of Contents](#table-of-contents)
+  - [Kimbie Dark + More](#kimbie-dark--more)
+  - [Installation](#installation)
+  - [Color](#color)
+  - [Options](#options)
+  - [Options (Lua)](#options-lua)
+  - [Support Filetype](#support-filetype)
+  - [Support Plugin](#support-plugin)
+  - [Thanks to](#thanks-to)
+
+- [Table of Contents](#table-of-contents)
+  - [Kimbie Dark + More](#kimbie-dark--more)
+  - [Installation](#installation)
+  - [Color](#color)
+  - [Options](#options)
+  - [Options (Lua)](#options-lua)
+  - [Support Filetype](#support-filetype)
+  - [Support Plugin](#support-plugin)
+  - [Thanks to](#thanks-to)
+
+- [Table of Contents](#table-of-contents)
+  - [Kimbie Dark + More](#kimbie-dark--more)
+  - [Installation](#installation)
+  - [Color](#color)
+  - [Options](#options)
+  - [Options (Lua)](#options-lua)
+  - [Support Filetype](#support-filetype)
+  - [Support Plugin](#support-plugin)
+  - [Thanks to](#thanks-to)
+
 ## Kimbie Dark + More
 
 Fork of [Oceanic Material](https://github.com/glepnir/oceanic-material) theme with [Kimbie Dark](https://marketplace.visualstudio.com/items?itemName=dnamsons.kimbie-dark-plus) colors.
@@ -12,19 +43,65 @@ KimBox is a dark colorscheme for vim/neovim
 ## Installation
 
 - vim-plug
-  ```viml
+  ```vim
   Plug 'lmburns/kimbox'
-  ```
-- dein
-  ```viml
-  call dein#add('lmburns/kimbox')
-  ```
-  Then add this on your vimrc
 
-```viml
-set background=dark
-colorscheme kimbox
-```
+  lua <<EOF
+  require("kimbox").setup()
+  require("kimbox").colorscheme()
+  EOF
+
+  " or
+  let g:kimbox_config = {
+  ...
+  }
+  colorscheme kimbox
+  ```
+
+- Packer
+  ```lua
+  use({ "lmburns/kimbox", config = [[require("kimbox").load()]] })
+  -- or
+  use({
+    "lmburns/kimbox",
+    config = function()
+        require("kimbox").setup({
+            -- options
+        })
+        require("kimbox").load()
+      end
+  })
+  ```
+
+- Bufferline
+  ```lua
+  -- Colors can be accessed with
+  local c = require("kimbox.bufferline").colors()
+
+  -- Theme itself
+  local t = require("kimbox.bufferline").theme()
+
+  require("bufferline").setup(
+    ...
+    ...
+    highlights = require("kimbox.bufferline").theme()
+  )
+  ```
+
+- Lualine
+  ```lua
+  -- Colors can be accessed with
+  local c = require("kimbox.lualine").colors()
+
+  -- Theme itself
+  local t = require("kimbox.lualine").theme()
+
+  require("lualine").setup(
+    ...
+    ...
+    theme = 'kimbox'
+  )
+  ```
 
 ## Color
 
@@ -45,6 +122,47 @@ colorscheme kimbox
 | `g:kimbox_allow_underline`                  | 1: use underline for certain text          | 0: not at all                                                       |
 | `g:kimbox_allow_undercurl`                  | 1: use undercurl for certain text          | 0: not at all                                                       |
 | `g:kimbox_allow_reverse`                    | 1: use reverse for certain text            | 0: not at all                                                       |
+
+## Options (Lua)
+
+```lua
+-- These options can also be set using:
+vim.g.kimbox_config = {
+  -- ...options
+}
+
+require("kimbox").setup({
+  -- Main options --
+  style = "ocean", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+
+  -- TODO: Work on this
+  toggle_style_key = "<Leader>ts",
+  toggle_style_list = { "medium", "ocean", "vscode", "deep", "darker" }, -- or require("kimbox").bgs_list
+
+  transparent = false, -- don't set background
+  term_colors = true, -- if true enable the terminal
+
+  ending_tildes = false, -- show the end-of-buffer tildes
+
+  -- General formatting --
+  allow_bold = true,
+  allow_italic = false,
+  allow_underline = false,
+  allow_undercurl = true,
+  allow_reverse = false,
+
+  -- Custom Highlights --
+  colors = {}, -- Override default colors
+  highlights = {}, -- Override highlight groups
+
+  -- Plugins Related --
+  diagnostics = {
+    background = true, -- use background color for virtual text
+  }
+})
+
+require("kimbox").colorscheme()
+```
 
 ## Support Filetype
 

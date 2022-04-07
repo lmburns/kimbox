@@ -14,7 +14,7 @@ local colors = {
   dpurple = "#733e8b",
 }
 
-return {
+local kimbox = {
   -- Status background
   fill = { guifg = colors.magenta, guibg = colors.dbg },
   background = { guifg = colors.fg, guibg = colors.dbg },
@@ -114,3 +114,5 @@ return {
                    gui = "bold,italic" },
   pick = { guifg = colors.green, guibg = colors.dbg, gui = "bold,italic" },
 }
+
+return kimbox

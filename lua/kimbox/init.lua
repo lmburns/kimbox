@@ -6,7 +6,7 @@ local cmd = vim.cmd
 
 M.bgs_list = { "medium", "ocean", "vscode", "deep", "darker" }
 
-default_config = {
+local default_config = {
   -- Main options --
   style = "ocean", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 
@@ -24,7 +24,7 @@ default_config = {
   allow_bold = true,
   allow_italic = false,
   allow_underline = false,
-  allow_undercurl = false,
+  allow_undercurl = true,
   allow_reverse = false,
 
   -- Custom Highlights --
@@ -74,11 +74,8 @@ function M.toggle()
   M.set_options("style", g.kimbox_config.toggle_style_list[index])
   M.set_options("toggle_style_index", index)
 
-  M.load()
-end
-
-function M.testing()
-  return require("kimbox.colors")
+  vim.o.background = "dark"
+  vim.api.nvim_command("colorscheme kimbox")
 end
 
 ---Setup kimbox.nvim options, without applying colorscheme
@@ -113,7 +110,6 @@ function M.setup(opts)
 end
 
 function M.load()
-  vim.o.background = "dark"
   vim.api.nvim_command("colorscheme kimbox")
 end
 
