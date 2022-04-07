@@ -23,17 +23,11 @@ if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 
 endif
 
 let s:kimbox_transparent_background = get(g:,'kimbox_transparent_background', 0)
-
 let s:kimbox_background = get(g:,'kimbox_background','ocean')
-
 let s:kimbox_allow_bold = get(g:,'kimbox_allow_bold', 0)
-
 let s:kimbox_allow_italic = get(g:,'kimbox_allow_italic', 0)
-
 let s:kimbox_allow_underline = get(g:,'kimbox_allow_underline', 0)
-
 let s:kimbox_allow_reverse = get(g:,'kimbox_allow_reverse', 0)
-
 let s:kimbox_allow_undercurl = get(g:,'kimbox_allow_undercurl', 0)
 
 let s:bold = ''
@@ -168,14 +162,14 @@ function! s:apply_syntax_highlightings()
     exec 'hi FoldColumn' . s:fg_grey0 . s:bg_none
     exec 'hi SignColumn' . s:fg_fg0 . s:bg_none
     exec 'hi ToolbarLine' . s:fg_fg0 . s:bg_none
-    exec 'hi VertSplit' . s:fg_black . s:bg_none . 'gui=NONE cterm=NONE'
+    exec 'hi VertSplit' . s:fg_grey0. s:bg_none . 'gui=NONE cterm=NONE'
   else
     exec 'hi Normal' . s:fg_fg0 . s:bg_bg0
     exec 'hi Terminal' . s:fg_fg0 . s:bg_bg0
     exec 'hi ToolbarLine' . s:fg_fg1 . s:bg_bg3
     exec 'hi SignColumn' . s:fg_fg0 . s:bg_bg0
     exec 'hi FoldColumn' . s:fg_grey0 . s:bg_bg2
-    exec 'hi VertSplit' . s:fg_bg0 . s:bg_black
+    exec 'hi VertSplit' . s:fg_bg0 . s:bg_bg4
   endif
   exec 'hi Folded' . s:fg_grey1 . s:bg_bg2
   exec 'hi EndOfBuffer' . s:fg_bg0 . s:bg_none
@@ -522,7 +516,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi typescriptInterpolation' . s:fg_green
   exec 'hi typescriptInterpolationDelimiter' . s:fg_green
   exec 'hi typescriptBraces' . s:fg_fg0
-  exec 'hi typescriptParens' . s:fg_fg0
+  exec 'hi typescriptParens' . s:fg_purple
   "===============================================================
   " Typescript:
   " yats: https:github.com/HerringtonDarkholme/yats.vim
@@ -1391,11 +1385,13 @@ function! s:apply_syntax_highlightings()
   exec 'hi typescriptTSTypeBuiltin' . s:fg_green . s:bold
   exec 'hi typescriptTSKeywordReturn' . s:fg_red . s:bold
   exec 'hi typescriptTSPunctBracket' . s:fg_purple
+  exec 'hi typescriptTSPunctSpecial' . s:fg_green
   exec 'hi typescriptTSVariableBuiltin' . s:fg_magenta
   exec 'hi typescriptTSException' . s:fg_green
   exec 'hi typescriptTSConstructor' . s:fg_blue . s:bold
-  " aqua/orange
-  exec 'hi typescriptTSProperty' . s:fg_orange
+  " exec 'hi typescriptTSNone' . s:fg_blue . s:bold
+  exec 'hi typescriptTSProperty' . s:fg_aqua
+  exec 'hi typescriptTSMethod' . s:fg_blue
   " orange/red
   exec 'hi typescriptTSKeyword' . s:fg_red
 
@@ -1456,6 +1452,7 @@ function! s:apply_syntax_highlightings()
   exec 'hi rubyTSParameter' . s:fg_orange
   exec 'hi rubyTSSymbol' . s:fg_aqua
   exec 'hi rubyTSNone' . s:fg_blue
+  exec 'hi rubyTSType' . s:fg_green . s:bold
   " exec 'hi rubyTSGlobalVariable' . s:fg_blue
 
   "===============================================================
