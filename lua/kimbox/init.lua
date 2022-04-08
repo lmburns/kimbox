@@ -16,9 +16,12 @@ local default_config = {
 
   transparent = false, -- don't set background
   term_colors = true, -- if true enable the terminal
-
-  -- TODO: Work on this
   ending_tildes = false, -- show the end-of-buffer tildes
+
+  -- Used with popup menus (coc.nvim mainly) --
+  popup = {
+    background = false, -- use background color for pmenu
+  },
 
   -- General formatting --
   allow_bold = true,
@@ -33,7 +36,7 @@ local default_config = {
 
   -- Plugins Related --
   diagnostics = {
-    -- TODO: Check this
+    -- TODO: Check this for diagnostics specifically
     background = true, -- use background color for virtual text
   },
 }

@@ -66,7 +66,10 @@ hl.common = {
   VertSplit = { fg = c.fg1, bg = c.none },
 
   Folded = { fg = c.grey1, bg = c.bg2 },
-  EndOfBuffer = { fg = c.orange, bg = c.none },
+  EndOfBuffer = {
+    fg = cfg.ending_tildes and c.bg2 or c.bg0,
+    bg = trans and c.none or c.bg0,
+  },
   IncSearch = { fg = c.bg1, bg = c.orange },
   Search = { fg = c.bg0, bg = c.green },
   ColorColumn = { bg = c.bg1 },
@@ -106,7 +109,7 @@ hl.common = {
 
   Directory = { fg = c.bg5, bg = c.none },
   ErrorMsg = { fg = c.red, fmt = underbold() },
-  WarningMsg = { fg = c.yellow, fmt = bold },
+  WarningMsg = { fg = c.green, fmt = bold },
   ModeMsg = { fg = c.fg0, fmt = bold },
   MoreMsg = { fg = c.green, fmt = bold },
   MatchParen = { fg = c.none, bg = c.bg4 },
@@ -115,7 +118,9 @@ hl.common = {
   Whitespace = { fg = c.bg5 },
   SpecialKey = { fg = c.bg5 },
 
-  Pmenu = { fg = c.operator_base05, bg = c.bg1 },
+-- cfg.diagnostics.background and util.darken(c.red, 0.1, c.bg0) or c.none,
+
+  Pmenu = { fg = c.operator_base05, bg = cfg.popup.background and c.bg0 or c.bg1 },
   PmenuSel = { fg = c.red, bg = c.bg4, fmt = bold },
 
   -- Pmenu = { fg = c.operator_base05, bg = c.bg0 },
@@ -977,6 +982,9 @@ hl.langs.lua = {
   luaTSPunctBracket = fgs.purple,
   luaTSConstructor = { fg = c.green, fmt = bold },
   luaTSConstant = { fg = c.green, fmt = bold },
+
+  -- When cursorholding
+  luaFuncTable = { fg = c.red, fmt = bold },
 }
 
 hl.langs.ocaml = {
@@ -1108,10 +1116,15 @@ hl.langs.c = {
   cStorageClass = fgs.purple,
   cTypedef = fgs.purple,
   cDefine = fgs.aqua,
-  cTSInclude = fgs.blue,
+  -- cTSInclude = fgs.blue,
+  cTSInclude = fgs.red,
   cTSConstant = fgs.aqua,
-  cTSConstMacro = fgs.purple,
-  cTSOperator = fgs.purple,
+  cTSConstMacro = fgs.orange,
+  -- cTSFuncMacro = fgs.yellow,
+  cTSOperator = fgs.orange,
+
+  -- cTSRepeat = fgs.magenta,
+  cTSRepeat = fgs.blue,
 
   cTSType = { fg = c.green, fmt = bold },
   cTSPunctBracket = fgs.purple,
@@ -1367,7 +1380,7 @@ hl.plugins.coc = {
   CocInfoVirtualText = fgs.grey1,
   CocHintVirtualText = fgs.grey1,
   CocCodeLens = fgs.grey1,
-  HighlightedyankRegion = { fg = c.none, fmt = reverse },
+  -- HighlightedyankRegion = { fg = c.none, fmt = reverse },
   CocGitAddedSign = fgs.yellow,
   CocGitChangeRemovedSign = fgs.purple,
   CocGitChangedSign = fgs.blue,
