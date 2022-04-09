@@ -118,9 +118,10 @@ hl.common = {
   Whitespace = { fg = c.bg5 },
   SpecialKey = { fg = c.bg5 },
 
--- cfg.diagnostics.background and util.darken(c.red, 0.1, c.bg0) or c.none,
+  -- cfg.diagnostics.background and util.darken(c.red, 0.1, c.bg0) or c.none,
 
-  Pmenu = { fg = c.operator_base05, bg = cfg.popup.background and c.bg0 or c.bg1 },
+  Pmenu = { fg = c.operator_base05,
+            bg = cfg.popup.background and c.bg0 or c.bg1 },
   PmenuSel = { fg = c.red, bg = c.bg4, fmt = bold },
 
   -- Pmenu = { fg = c.operator_base05, bg = c.bg0 },
@@ -190,7 +191,7 @@ hl.syntax = {
   Title = { fg = c.orange, fmt = bold },
   Special = fgs.green,
   SpecialChar = fgs.green,
-  Type = fgs.green,
+  Type = { fg = c.green, fmt = bold },
   Function = { fg = c.magenta, fmt = bold },
   String = fgs.yellow,
   Character = fgs.yellow,
@@ -1179,6 +1180,7 @@ hl.langs.zsh = {
   zshTypes = fgs.orange,
   zshVariableDef = fgs.blue,
   zshNumber = fgs.purple,
+  zshCommand = { fg = c.red, fmt = bold },
   -- zshFlag = fgs.yellow,
   zshSubstDelim = fgs.purple,
   -- ??
