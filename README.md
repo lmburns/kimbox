@@ -1,4 +1,4 @@
-# Table of Contents
+## Table of Contents
 
 - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
@@ -15,6 +15,8 @@ This started out as a fork of [Oceanic Material](https://github.com/glepnir/ocea
 ![Kimbox](https://lmburns.com/gallery/media/large/kimbox-preview2.png)
 
 Kimbox is a dark colorscheme for vim/neovim
+
+**NOTE:** The documentation for the plugin isn't really that up to date. That is something that I may change in the future if I have time or if this plugin becomes a little bit more popular. With that said, information can be found in the README or in the source code
 
 ## Installation
 

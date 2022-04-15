@@ -81,7 +81,7 @@ hl.common = {
   CursorIM = { fmt = reverse },
   CursorColumn = { bg = c.bg1 },
   CursorLine = { fg = c.none, bg = c.bg1 },
-  CursorLineNr = { fg = c.fg1 },
+  CursorLineNr = { fg = c.purple, fmt = bold },
   LineNr = { fg = c.grey0 },
 
   -- NOTE: Possibly change
@@ -1520,8 +1520,8 @@ hl.plugins.floaterm = {
 
 hl.plugins.hop = {
   HopNextKey = { fg = c.red, fmt = bold },
-  HopNextKey1 = { fg = c.cyan, fmt = bold },
-  HopNextKey2 = { fg = util.darken(c.blue, 0.7) },
+  HopNextKey1 = { fg = c.bpurple, fmt = bold },
+  HopNextKey2 = { fg = util.darken(c.bpurple, 0.7) },
   HopUnmatched = fgs.grey,
 }
 
