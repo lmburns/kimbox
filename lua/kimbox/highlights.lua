@@ -50,6 +50,7 @@ local fgs = {
     grey1 = {fg = c.grey1},
     grey0 = {fg = c.grey0},
     red = {fg = c.red},
+    bg_red = {fg = c.bg_red},
     aqua = {fg = c.aqua},
     yellow = {fg = c.yellow},
     orange = {fg = c.orange},
@@ -822,7 +823,8 @@ hl.langs.go = {
     goTSProperty = fgs.blue,
     goTSMethod = {fg = c.purple, fmt = bold},
     goTSType = {fg = c.green, fmt = bold},
-    goTSTypeBuiltin = {fg = c.green, fmt = bold}
+    goTSTypeBuiltin = {fg = c.green, fmt = bold},
+    goTSPunctBracket = fgs.purple
 }
 
 hl.langs.rust = {
@@ -968,7 +970,7 @@ hl.langs.teal = {
     tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
     tealTSParameter = fgs.aqua,
     tealTSPunctBracket = fgs.purple,
-    tealTSFunction = {fg = c.magenta, fmt = bold}, -- doesn't pick up function definitions
+    tealTSFunction = {fg = c.magenta, fmt = bold} -- doesn't pick up function definitions
 }
 
 hl.langs.ocaml = {
@@ -1524,6 +1526,23 @@ hl.plugins.diffview = {
     DiffviewStatusUnknown = fgs.red,
     DiffviewStatusDeleted = fgs.red,
     DiffviewStatusBroken = fgs.red
+}
+
+hl.plugins.neogit = {
+    NeogitBranch = fgs.blue,
+    NeogitDiffAdd = fgs.green,
+    -- NeogitDiffAddHighlight = { bg = c.bg4 }
+    -- NeogitDiffContextHighlight = { bg = c.bg4 },
+    NeogitDiffDelete = fgs.red,
+    -- NeogitDiffDeleteHighlight
+    NeogitHunkHeader = {fg = c.orange, fmt = bold},
+    -- NeogitHunkHeaderHighlight
+    NeogitNotificationError = fgs.bg_red,
+    NeogitNotificationInfo = fgs.aqua,
+    NeogitNotificationWarning = fgs.yellow,
+    NeogitRemote = fgs.yellow
+    -- NeogitStashes
+    -- NeogitUnstagedChanges
 }
 
 hl.plugins.gitsigns = {

@@ -28,12 +28,6 @@ lua <<EOF
 require("kimbox").setup()
 require("kimbox").colorscheme()
 EOF
-
-" or
-let g:kimbox_config = {
-1.
-}
-colorscheme kimbox
 ```
 
 - Packer
@@ -60,8 +54,7 @@ local c = require("kimbox.bufferline").colors()
 local t = require("kimbox.bufferline").theme()
 
 require("bufferline").setup(
-  ...
-  ...
+  -- configuration stuff
   highlights = require("kimbox.bufferline").theme()
 )
 ```
@@ -75,9 +68,8 @@ local c = require("kimbox.lualine").colors()
 local t = require("kimbox.lualine").theme()
 
 require("lualine").setup(
-  ...
-  ...
-  theme = 'kimbox'
+  -- configuration stuff
+  theme = 'kimbox' -- 'auto' also works as well
 )
 ```
 
@@ -94,7 +86,7 @@ require("lualine").setup(
 ```lua
 -- These options can also be set using:
 vim.g.kimbox_config = {
-  -- ...options
+  -- ...options from above
 }
 
 require("kimbox").setup({
@@ -139,6 +131,39 @@ require("kimbox").setup({
 require("kimbox").colorscheme()
 ```
 
+### Options (vimscript)
+
+```vim
+" an example
+let g:kimbox_config = {
+    \ 'allow_reverse': v:false,
+    \ 'popup': {'background': v:false},
+    \ 'transparent': v:false,
+    \ 'allow_bold': v:true,
+    \ 'toggle_style_list': [
+    \   'medium',
+    \   'ocean',
+    \   'vscode',
+    \   'deep',
+    \   'darker'
+    \ ],
+    \ 'toggle_style_key': '<Leader>ts',
+    \ 'colors': [],
+    \ 'allow_italic': v:false,
+    \ 'diagnostics': {'background': v:true},
+    \ 'ending_tildes': v:false,
+    \ 'allow_underline': v:false,
+    \ 'toggle_style_index': 0,
+    \ 'allow_undercurl': v:false,
+    \ 'highlights': [],
+    \ 'style': 'ocean',
+    \ 'loaded': v:true,
+    \ 'term_colors': v:true
+\ }
+
+colorscheme kimbox
+```
+
 ### Overriding highlight groups
 
 ```lua
@@ -155,31 +180,21 @@ require("kimbox").setup({
 })
 ```
 
-## Support Filetype
+## Filetype Support
+
+Treesitter is preferred for most filetypes (not Zsh).
+All of the following languages have been manually configured.
 
 - Markdown
-- vim-restructuredtext
-- Html
 - Latex
-- Xml
-- css
-- Sass
-- scss
-- Less
 - Javascript
 - Typescript
 - JavascriptReact TypescriptReact
 - Dart
 - CoffeeScript
-- C/C++
-- chromatica
-- vim-lsp-cxx-highlight
 - ObjectiveC
 - Python
-- semshi
-- lua
-- java
-- kotlin
+- Kotlin
 - Scala
 - Go
 - Rust
@@ -188,44 +203,38 @@ require("kimbox").setup({
 - Ruby
 - Haskell
 - Perl
-- Ocaml
+- Lua
+- Teal
 - Erlang
+- Ocaml
 - Elixir
 - Clojure
+- R
 - Matlab
 - Vimscript
+- C/C++
+- Bash/Dash
+- Zsh
+- Zig
+- Dosini
 - Makefile
-- Json/Toml/Yaml/Ini
-- Diff/Git commit
+- Json
+- Yaml
+- Toml
+- Git commit
 
-## Support Plugin
+##### Todo
+- Html
+- Xml
+- CSS
+- SCSS
+- Less
+- Java
 
-- neoclide/coc.nvim
-- dense-analysis/ale
-- neomake/neomake
-- Shougo/denite.nvim
-- liuchengxu/vista.vim
-- scrooloose/nerdtree
-- andymass/vim-matchup
-- easymotion/vim-easymotion
-- justinmk/vim-sneak
-- luochen1990/rainbow
-- itchyny/vim-cursorword
-- mhinz/vim-startify
-- liuchengxu/vim-which-key
-- machakann/vim-sandwich
-- kristijanhusak/vim-dadbod-ui
-- Shougo/defx.nvim
-- glepnir/dashboard-nvim
+## Plugin Support
+* If any plugin is not supported and you would like for it to be, please let me know.
 
 ## Thanks to
 
 - [glepnir/oceanic-material](https://github.com/glepnir/oceanic-material)
-
-- [equinusocio/material-theme](https://github.com/equinusocio/material-theme)
-
-- [NLKNguyen/papercolor-theme](https://github.com/NLKNguyen/papercolor-theme)
-
-- [mhartington/oceanic-next](https://github.com/mhartington/oceanic-next)
-
-- [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material)
+- [navarasu/onedark.nvim](https://github.com/navarasu/onedark.nvim)
