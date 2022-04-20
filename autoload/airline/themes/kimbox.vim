@@ -32,7 +32,7 @@ let s:colors = {
       \ 'grey2':            ['#a89984',   '246'],
       \ 'operator_base05':  ['#e8c097',   '251'],
       \ 'none':             ['NONE',      'NONE']
-  \ }
+      \ }
 "}}}
 " Definition: {{{
 let s:accents = s:colors.red
