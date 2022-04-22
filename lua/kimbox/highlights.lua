@@ -959,6 +959,7 @@ hl.langs.lua = {
     luaTSPunctBracket = fgs.purple,
     luaTSConstructor = {fg = c.green, fmt = bold},
     luaTSConstant = {fg = c.green, fmt = bold},
+    luaTSKeywordFunction = fgs.red,
     -- When cursorholding
     luaFuncTable = {fg = c.red, fmt = bold}
 }

@@ -14,9 +14,9 @@ This started out as a fork of [Oceanic Material](https://github.com/glepnir/ocea
 
 ![Kimbox](https://lmburns.com/gallery/media/large/kimbox-preview2.png)
 
-Kimbox is a dark colorscheme for vim/neovim
+Kimbox is a dark colorscheme for Neovim. There is builtin treesitter support.
 
-**NOTE:** The documentation for the plugin isn't really that up to date. That is something that I may change in the future if I have time or if this plugin becomes a little bit more popular. With that said, information can be found in the README or in the source code
+The colors may look duller in the images provided, though they will not be whenever the colorscheme is actually loaded. I've noticed that many other colorschemes seem brighter than what their images show.
 
 ## Installation
 
@@ -223,16 +223,20 @@ All of the following languages have been manually configured.
 - Toml
 - Git commit
 
-##### Todo
+## Plugin Support
+- If any plugin is not supported and you would like for it to be, please let me know.
+
+### TODO
+- Create some sort of documentation
+
+#### Language
+- There is support for these file types; however, they haven't been specifically tailored to this theme
 - Html
 - Xml
 - CSS
 - SCSS
 - Less
 - Java
-
-## Plugin Support
-* If any plugin is not supported and you would like for it to be, please let me know.
 
 ## Thanks to
 
