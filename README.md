@@ -32,6 +32,7 @@ EOF
 
 - Packer
 ```lua
+-- require("kimbox").load() == colorscheme kimbox
 use({ "lmburns/kimbox", config = [[require("kimbox").load()]] })
 -- or
 use({
@@ -221,13 +222,74 @@ All of the following languages have been manually configured.
 - Json
 - Yaml
 - Toml
+- Ron (Rust Object Notation)
 - Git commit
 
 ## Plugin Support
 - If any plugin is not supported and you would like for it to be, please let me know.
 
+- [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [Vimtex](https://github.com/lervag/vimtex)
+- [Vim-Javascript](https://github.com/pangloss/vim-javascript)
+- [yajs](https://github.com/othree/yajs.vim,)
+- [vim-jsx-pretty](https://github.com/maxmellon/vim-jsx-pretty)
+- [vim-typescript](https://github.com/leafgarland/typescript-vim)
+- [yats](https:github.com/HerringtonDarkholme/yats.vim)
+- [dart-lang](https://github.com/dart-lang/dart-vim-plugin)
+- [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
+- [python-syntax](https://github.com/vim-python/python-syntax,)
+- [semshi](https://github.com/numirias/semshi,)
+- [kotlin-vim](https://github.com/udalov/kotlin-vim)
+- [vim-scala](https://github.com/derekwyatt/vim-scala)
+- [rust.vim](https://github.com/rust-lang/rust.vim)
+- [swift.vim](https://github.com/keith/swift.vim)
+- [php.vim](https://github.com/StanAngeloff/php.vim)
+- [vim-ruby](https://github.com/vim-ruby/vim-ruby)
+- [haskell-vim](https://github.com/neovimhaskell/haskell-vim)
+- [vim-perl](https://github.com/vim-perl/vim-perl)
+- [vim-ocaml](https://github.com/rgrinberg/vim-ocaml)
+- [vim-erlang-runtime](https://github.com/vim-erlang/vim-erlang-runtime)
+- [vim-elixir](https://github.com/elixir-editors/vim-elixir)
+- [vim-clojure-static](https://github.com/guns/vim-clojure-static)
+- [Nvim-R](https://github.com/jalvesaq/Nvim-R)
+- [vimwiki](https://github.com/vimwiki/vimwiki)
+- [ron.vim](https://github.com/ron-rs/ron.vim)
+- [LSP Diagnostics](https://neovim.io/doc/user/lsp.html)
+- [LSP Trouble](https://github.com/folke/lsp-trouble.nvim)
+- [LSP Saga](https://github.com/glepnir/lspsaga.nvim)
+- [Coc.nvim](https://github.com/neoclide/coc.nvim)
+- [Ale](https://github.com/dense-analysis/ale)
+- [Neomake](https://github.com/neomake/neomake)
+- [Vista.vim](https://github.com/liuchengxu/vista.vim)
+- [NerdTree](https://github.com/preservim/nerdtree)
+- [Coc-Explorer](https://github.com/weirongxu/coc-explorer)
+- [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
+- [Neogit](https://github.com/TimUntersberger/neogit)
+- [Git Signs](https://github.com/lewis6991/gitsigns.nvim)
+- [Git Gutter](https://github.com/airblade/vim-gitgutter)
+- [DiffView](https://github.com/sindrets/diffview.nvim)
+- [EasyMotion](https://github.com/easymotion/vim-easymotion)
+- [Startify](https://github.com/mhinz/vim-startify)
+- [Dashboard](https://github.com/glepnir/dashboard-nvim)
+- [Floaterm](https://github.com/voldikss/vim-floaterm)
+- [WhichKey](https://github.com/liuchengxu/vim-which-key)
+- [Hop](https://github.com/phaazon/hop.nvim)
+- [vim-sneak](https://github.com/justinmk/vim-sneak)
+- [Lightspeed](https://github.com/ggandor/lightspeed.nvim)
+- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [Treesitter Rainbow](https://github.com/p00f/nvim-ts-rainbow)
+- [Indent Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [Fern](https://github.com/lambdalisue/fern.vim)
+- [Barbar](https://github.com/romgrk/barbar.nvim)
+- [BufferLine](https://github.com/akinsho/nvim-bufferline.lua)
+- [Lualine](https://github.com/hoob3rt/lualine.nvim)
+- [Lightline](https://github.com/itchyny/lightline.vim)
+
 ### TODO
 - Create some sort of documentation
+- Create a precompiled version
+- Allow changing of backgrounds with keybinding
+- Allow disabling of languages
 
 #### Language
 - There is support for these file types; however, they haven't been specifically tailored to this theme

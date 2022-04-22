@@ -62,7 +62,8 @@ local fgs = {
 }
 
 hl.common = {
-    Normal = {fg = c.fg0, bg = trans and c.none or c.bg0},
+    Normal = {fg = c.fg0, bg = trans and c.none or c.bg0}, -- normal text
+    NormalNC = {fg = c.fg0, bg = trans and c.none or c.bg0}, -- normal text in non-current windows
     Terminal = {fg = c.fg0, bg = trans and c.none or c.bg0},
     FoldColumn = {fg = c.grey0, bg = trans and c.none or c.bg2},
     SignColumn = {fg = c.fg0, bg = trans and c.none or c.bg0},
@@ -75,15 +76,15 @@ hl.common = {
     },
     IncSearch = {fg = c.bg1, bg = c.orange},
     Search = {fg = c.bg0, bg = c.green},
-    ColorColumn = {bg = c.bg1},
-    Conceal = {fg = c.grey1, bg = c.none},
-    Cursor = {fmt = reverse},
+    ColorColumn = {bg = c.bg1}, -- used for the columns set with 'colorcolumn'
+    Conceal = {fg = c.grey1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')
+    Cursor = {fmt = reverse}, -- character under the cursor
     vCursor = {fmt = reverse},
     iCursor = {fmt = reverse},
-    lCursor = {fmt = reverse},
-    CursorIM = {fmt = reverse},
-    CursorColumn = {bg = c.bg1},
-    CursorLine = {fg = c.none, bg = c.bg1},
+    lCursor = {fmt = reverse}, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
+    CursorIM = {fmt = reverse}, -- like Cursor, but used when in IME mode |CursorIM|
+    CursorColumn = {bg = c.bg1}, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    CursorLine = {fg = c.none, bg = c.bg1}, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     CursorLineNr = {fg = c.purple, fmt = bold},
     LineNr = {fg = c.grey0},
     -- NOTE: Possibly change
@@ -99,12 +100,12 @@ hl.common = {
     diffFile = fgs.aqua,
     diffLine = fgs.grey1,
     diffIndexLine = fgs.purple,
-    DiffAdd = {fg = c.none, bg = util.darken(c.green, 0.5, c.bg0)},
-    DiffChange = {fg = c.none, bg = util.darken(c.yellow, 0.4, c.bg0)},
-    DiffDelete = {fg = c.none, bg = util.darken(c.red, 0.6, c.bg0)},
-    DiffText = {fg = c.none, bg = util.darken(c.blue, 0.5, c.bg0)},
+    DiffAdd = {fg = c.none, bg = util.darken(c.green, 0.5, c.bg0)}, -- diff mode: Added line |diff.txt|
+    DiffChange = {fg = c.none, bg = util.darken(c.yellow, 0.4, c.bg0)}, -- diff mode: Changed line |diff.txt|
+    DiffDelete = {fg = c.none, bg = util.darken(c.red, 0.6, c.bg0)}, -- diff mode: Deleted line |diff.txt|
+    DiffText = {fg = c.none, bg = util.darken(c.blue, 0.5, c.bg0)}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffFile = {fg = c.aqua},
-    Directory = {fg = c.bg5, bg = c.none},
+    Directory = {fg = c.bg5, bg = c.none}, -- directory names (and other special names in listings)
     ErrorMsg = {fg = c.red, fmt = underbold()},
     WarningMsg = {fg = c.green, fmt = bold},
     ModeMsg = {fg = c.fg0, fmt = bold},
@@ -130,7 +131,7 @@ hl.common = {
     PmenuThumb = {fg = c.none, bg = c.green},
     WildMenu = {fg = c.bg3, bg = c.green},
     Question = {fg = c.green},
-    NormalFloat = {fg = c.fg1, bg = c.bg3},
+    NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
     -- Tabline
     -- TabLine = { fg = c.fg, bg = c.bg1 },
     -- TabLineSel = { fg = c.bg0, bg = c.fg },
@@ -192,7 +193,7 @@ hl.syntax = {
     Delimiter = fgs.fg0,
     Ignore = fgs.grey1,
     Underlined = {fg = c.none, fmt = underline},
-    Comment = {fg = c.grey1, fmt = italic},
+    Comment = {fg = c.grey1, fmt = italic}, -- any comment
     SpecialComment = {fg = c.grey1, fmt = italic},
     Todo = {fg = c.purple, bg = c.none, fmt = italic}
 }
@@ -371,7 +372,7 @@ hl.langs.javascript = {
     jsTemplateExpression = fgs.green,
     jsTemplateBraces = fgs.green,
     jsClassMethodType = fgs.orange,
-    -- yajs: https://github =com/othree/yajs.vim,
+    -- yajs: https://github.com/othree/yajs.vim,
     javascriptEndColons = fgs.fg0,
     javascriptOpSymbol = fgs.orange,
     javascriptOpSymbols = fgs.orange,
@@ -524,7 +525,7 @@ hl.langs.typescript = {
     typescriptInterpolationDelimiter = fgs.green,
     typescriptBraces = fgs.fg0,
     typescriptParens = fgs.purple,
-    -- yats: https:github=com/HerringtonDarkholme/yats.vim
+    -- yats: https:github.com/HerringtonDarkholme/yats.vim
 
     typescriptMethodAccessor = {fg = c.orange, fmt = italic},
     typescriptVariable = fgs.orange,
@@ -732,7 +733,7 @@ hl.langs.python = {
     pythonBuiltin = fgs.green,
     pythonExceptions = fgs.purple,
     pythonDecoratorName = fgs.blue,
-    -- python-syntax: https://github=com/vim-python/python-syntax,
+    -- python-syntax: https://github.com/vim-python/python-syntax,
     pythonExClass = fgs.purple,
     pythonBuiltinType = fgs.green,
     pythonBuiltinObj = fgs.blue,
@@ -750,7 +751,7 @@ hl.langs.python = {
     pythonException = {fg = c.red, fmt = italic},
     pythonNone = fgs.aqua,
     pythonDot = fgs.grey1,
-    -- semshi: https://github=com/numirias/semshi,
+    -- semshi: https://github.com/numirias/semshi,
     semshiUnresolved = {fg = c.green, fmt = undercurl},
     semshiImported = fgs.purple,
     semshiParameter = fgs.blue,
@@ -793,7 +794,7 @@ hl.langs.kotlin = {
 
 hl.langs.scala = {
     -- Scala:
-    -- builtin: https://github.com/derekwyatt/vim-scala
+    -- vim-scala: https://github.com/derekwyatt/vim-scala
     scalaNameDefinition = fgs.aqua,
     scalaInterpolationBoundary = fgs.green,
     scalaInterpolation = fgs.blue,
@@ -826,7 +827,7 @@ hl.langs.go = {
 
 hl.langs.rust = {
     -- Rust:
-    -- builtin: https://github.com/rust-lang/rust.vim
+    -- rust.vim: https://github.com/rust-lang/rust.vim
     rustStructure = fgs.orange,
     rustIdentifier = fgs.purple,
     rustModPath = fgs.orange,
@@ -973,7 +974,7 @@ hl.langs.teal = {
 
 hl.langs.ocaml = {
     -- OCaml:
-    -- builtin: https://github=com/rgrinberg/vim-ocaml
+    -- builtin: https://github.com/rgrinberg/vim-ocaml
     ocamlArrow = fgs.orange,
     ocamlEqual = fgs.orange,
     ocamlOperator = fgs.orange,
@@ -995,7 +996,7 @@ hl.langs.ocaml = {
 
 hl.langs.erlang = {
     -- Erlang:
-    -- builtin: https://github=com/vim-erlang/vim-erlang-runtime
+    -- builtin: https://github.com/vim-erlang/vim-erlang-runtime
     erlangAtom = fgs.aqua,
     erlangLocalFuncRef = {fg = c.yellow, fmt = bold},
     erlangLocalFuncCall = {fg = c.yellow, fmt = bold},
@@ -1007,7 +1008,7 @@ hl.langs.erlang = {
 
 hl.langs.elixir = {
     -- Elixir:
-    -- vim-elixir: https://github=com/elixir-editors/vim-elixir
+    -- vim-elixir: https://github.com/elixir-editors/vim-elixir
     elixirStringDelimiter = fgs.yellow,
     elixirKeyword = fgs.orange,
     elixirInterpolation = fgs.green,
@@ -1036,7 +1037,7 @@ hl.langs.elixir = {
 
 hl.langs.clojure = {
     -- Clojure:
-    -- builtin: https://github=com/guns/vim-clojure-static
+    -- builtin: https://github.com/guns/vim-clojure-static
     clojureMacro = {fg = c.purple, fmt = italic},
     clojureFunc = {fg = c.aqua, fmt = bold},
     clojureConstant = fgs.green,
@@ -1167,6 +1168,8 @@ hl.langs.zsh = {
     rOTag = fgs.blue
 }
 
+hl.langs.zig = {zigTSTypeBuiltin = {fg = c.green, fmt = bold}}
+
 -- ========================== Config Formats ==========================
 
 hl.langs.dosini = {
@@ -1210,14 +1213,20 @@ hl.langs.yaml = {
     yamlTSField = fgs.green
 }
 
-hl.langs.zig = {zigTSTypeBuiltin = {fg = c.green, fmt = bold}}
-
 hl.langs.toml = {
     tomlTable = {fg = c.purple, fmt = bold},
     tomlKey = fgs.orange,
     tomlBoolean = fgs.aqua,
     tomlTableArray = {fg = c.purple, fmt = bold},
     tomlKeyValueArray = {fg = c.purple, fmt = bold}
+}
+
+hl.langs.ron = {
+    ronIdentifier = fgs.green,
+    ronKey = fgs.red,
+    ronInteger = fgs.purple,
+    ronString = fgs.yellow,
+    ronBoolean = fgs.orange
 }
 
 hl.langs.gitcommit = {
@@ -1286,6 +1295,31 @@ hl.plugins.lsp.LspDiagnosticsVirtualTextError = hl.plugins.lsp.DiagnosticVirtual
 hl.plugins.lsp.LspDiagnosticsVirtualTextWarning = hl.plugins.lsp.DiagnosticVirtualTextWarn
 hl.plugins.lsp.LspDiagnosticsVirtualTextInformation = hl.plugins.lsp.DiagnosticVirtualTextInfo
 hl.plugins.lsp.LspDiagnosticsVirtualTextHint = hl.plugins.lsp.DiagnosticVirtualTextHint
+
+hl.plugins.lsp_trouble = {
+    LspTroubleText = {fg = c.fg0},
+    LspTroubleCount = {fg = c.blue},
+    LspTroubleNormal = {fg = c.magenta}
+}
+
+hl.plugins.lsp_saga = {
+    -- LspFloatWinNormal = {bg = c.bg_float},
+    LspFloatWinBorder = {fg = c.magenta},
+    LspSagaBorderTitle = {fg = c.cyan},
+    LspSagaHoverBorder = {fg = c.blue},
+    LspSagaRenameBorder = {fg = c.green},
+    LspSagaDefPreviewBorder = {fg = c.green},
+    LspSagaCodeActionBorder = {fg = c.blue},
+    -- LspSagaFinderSelection = {fg = c.bg_visual},
+    LspSagaCodeActionTitle = {fg = c.aqua},
+    LspSagaCodeActionContent = {fg = c.purple},
+    LspSagaSignatureHelpBorder = {fg = c.red},
+    ReferencesCount = {fg = c.purple},
+    DefinitionCount = {fg = c.purple},
+    DefinitionIcon = {fg = c.blue},
+    ReferencesIcon = {fg = c.blue},
+    TargetWord = {fg = c.cyan}
+}
 
 hl.plugins.cmp = {
     CmpItemAbbr = fgs.fg0,
@@ -1468,22 +1502,9 @@ hl.plugins.defx = {
     Defx_filename_root = fgs.red
 }
 
-hl.plugins.dashboard = {
-    DashboardShortCut = {fg = c.red, fmt = bold},
-    DashboardFooter = {fg = c.purple, fmt = bold},
-    DashboardHeader = {fg = c.blue, fmt = bold}
-}
-
 hl.plugins.floaterm = {
     Floaterm = {fg = c.none, bg = c.bg0},
     FloatermBorder = {fg = c.magenta, bg = c.none}
-}
-
-hl.plugins.hop = {
-    HopNextKey = {fg = c.red, fmt = bold},
-    HopNextKey1 = {fg = c.bpurple, fmt = bold},
-    HopNextKey2 = {fg = util.darken(c.bpurple, 0.7)},
-    HopUnmatched = fgs.grey
 }
 
 hl.plugins.vimwiki = {
@@ -1589,10 +1610,10 @@ hl.plugins.telescope = {
 }
 
 hl.plugins.dashboard = {
-    DashboardShortCut = fgs.blue,
-    DashboardHeader = fgs.yellow,
-    DashboardCenter = fgs.aqua,
-    DashboardFooter = {fg = c.bg_red, fmt = italic}
+    DashboardShortCut = {fg = c.red, fmt = bold},
+    DashboardFooter = {fg = c.purple, fmt = bold},
+    DashboardHeader = {fg = c.blue, fmt = bold},
+    DashboardCenter = fgs.aqua
 }
 
 hl.plugins.symbols_outline = {
@@ -1607,6 +1628,62 @@ hl.plugins.ts_rainbow = {
     rainbowcol5 = fgs.purple,
     rainbowcol6 = fgs.green,
     rainbowcol7 = fgs.red
+}
+
+hl.plugins.indent_blankline = {
+    IndentBlanklineContextChar = {fg = c.bg_red, fmt = "nocombine"}
+}
+
+hl.plugins.hop = {
+    HopNextKey = {fg = c.red, fmt = bold},
+    HopNextKey1 = {fg = c.bpurple, fmt = bold},
+    HopNextKey2 = {fg = util.darken(c.bpurple, 0.7)},
+    HopUnmatched = fgs.grey
+}
+
+hl.plugins.sneak = {
+    Sneak = {fg = c.bpurple, fmt = bold},
+    SneakScope = {bg = c.bg4}
+}
+
+hl.plugins.lightspeed = {
+    -- LightspeedGreyWash = {fg = c.dark3},
+    LightspeedCursor = {link = "Cursor"}
+    -- LightspeedLabel = {fg = c.magenta2, style = "bold,underline"},
+    -- LightspeedLabelDistant = {fg = c.green1, style = "bold,underline"},
+    -- LightspeedLabelDistantOverlapped = {fg = c.green2, style = "underline"},
+    -- LightspeedLabelOverlapped = {fg = c.magenta2, style = "underline"},
+    -- LightspeedMaskedChar = {fg = c.orange},
+    -- LightspeedOneCharMatch = {bg = c.magenta2, fg = c.fg, style = "bold"},
+    -- LightspeedPendingOpArea = {bg = c.magenta2, fg = c.fg},
+    -- LightspeedShortcut = {bg = c.magenta2, fg = c.fg, style = "bold,underline"},
+    -- LightspeedShortcutOverlapped = { link = "LightspeedShortcut" },
+    -- LightspeedUniqueChar = { link = "LightspeedUnlabeledMatch" },
+    -- LightspeedUnlabeledMatch = {fg = c.blue2, style = "bold"}
+}
+
+hl.plugins.barbar = {
+    BufferCurrent = c.fg0
+    -- BufferCurrentIndex = {bg = c.fg_gutter, fg = c.info},
+    -- BufferCurrentMod = {bg = c.fg_gutter, fg = c.warning},
+    -- BufferCurrentSign = {bg = c.fg_gutter, fg = c.info},
+    -- BufferCurrentTarget = {bg = c.fg_gutter, fg = c.red},
+    -- BufferVisible = {bg = c.bg_statusline, fg = c.fg},
+    -- BufferVisibleIndex = {bg = c.bg_statusline, fg = c.info},
+    -- BufferVisibleMod = {bg = c.bg_statusline, fg = c.warning},
+    -- BufferVisibleSign = {bg = c.bg_statusline, fg = c.info},
+    -- BufferVisibleTarget = {bg = c.bg_statusline, fg = c.red},
+    -- BufferInactive = {bg = c.bg_statusline, fg = c.dark5},
+    -- BufferInactiveIndex = {bg = c.bg_statusline, fg = c.dark5},
+    -- BufferInactiveMod = {bg = c.bg_statusline, fg = util.darken(c.warning, 0.7)},
+    -- BufferInactiveSign = {bg = c.bg_statusline, fg = c.border_highlight},
+    -- BufferInactiveTarget = {bg = c.bg_statusline, fg = c.red},
+    -- BufferTabpages = {bg = c.bg_statusline, fg = c.none},
+    -- BufferTabpage = {bg = c.bg_statusline, fg = c.border_highlight}
+}
+
+hl.plugins.fern = {
+    FernBranchText = {fg = c.blue}
 }
 
 function M.setup()
@@ -1647,16 +1724,20 @@ function M.setup()
     end
 
     for group_name, group_settings in pairs(vim.g.kimbox_config.highlights) do
-        vim.api.nvim_command(
-            string.format(
-                "highlight %s %s %s %s %s",
-                group_name,
-                replace_color("guifg", group_settings.fg),
-                replace_color("guibg", group_settings.bg),
-                replace_color("guisp", group_settings.sp),
-                replace_color("gui", group_settings.fmt)
+        if group_settings.link then
+            vim.cmd("highlight! link " .. group_name .. " " .. color.link)
+        else
+            vim.cmd(
+                string.format(
+                    "highlight %s %s %s %s %s",
+                    group_name,
+                    replace_color("guifg", group_settings.fg),
+                    replace_color("guibg", group_settings.bg),
+                    replace_color("guisp", group_settings.sp),
+                    replace_color("gui", group_settings.fmt)
+                )
             )
-        )
+        end
     end
 end
 
