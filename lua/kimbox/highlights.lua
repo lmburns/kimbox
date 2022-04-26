@@ -75,7 +75,7 @@ hl.common = {
         bg = trans and c.none or c.bg0
     },
     IncSearch = {fg = c.bg1, bg = c.light_red},
-    Search = {fg = c.bg0, bg = c.green},
+    Search = {fg = c.bg0, bg = c.bviolet},
     ColorColumn = {bg = c.bg1}, -- used for the columns set with 'colorcolumn'
     Conceal = {fg = c.grey1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor = {fmt = reverse}, -- character under the cursor

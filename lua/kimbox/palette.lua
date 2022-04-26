@@ -28,6 +28,10 @@ return {
 
     dpurple = "#733e8b",
     bpurple = "#a25bc4",
+    bviolet = "#7E9CD8",
+    lviolet = "#938AA9",
+    salmon = "#ea6962",
+
     gruv_magenta = "#d3869b",
     dorange = "#fe8019",
     dyellow = "#e78a4e",
