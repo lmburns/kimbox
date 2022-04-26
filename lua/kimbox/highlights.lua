@@ -74,7 +74,7 @@ hl.common = {
         fg = cfg.ending_tildes and c.bg2 or c.bg0,
         bg = trans and c.none or c.bg0
     },
-    IncSearch = {fg = c.bg1, bg = c.orange},
+    IncSearch = {fg = c.bg1, bg = c.light_red},
     Search = {fg = c.bg0, bg = c.green},
     ColorColumn = {bg = c.bg1}, -- used for the columns set with 'colorcolumn'
     Conceal = {fg = c.grey1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')

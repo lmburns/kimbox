@@ -33,6 +33,7 @@ return {
     dyellow = "#e78a4e",
 
     bg_red = "#DC3958",
+    light_red = "#cc6666",
 
     grey0 = "#7E602C",
     grey1 = "#7E602C",
