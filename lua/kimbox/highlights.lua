@@ -1093,7 +1093,12 @@ hl.langs.vim = {
     vimHiBang = fgs.orange,
     vimSet = fgs.green,
     vimSetSep = fgs.grey0,
-    vimContinue = fgs.grey1
+    vimContinue = fgs.grey1,
+    -- Non-treesitter Vim looks much better IMO
+    vimTSKeyword = {fg = c.red, fmt = bold},
+    vimTSNamespace = {fg = c.blue, fmt = bold},
+    vimTSFunction = {fg = c.magenta, fmt = bold}
+    -- vimTSVariableBuiltin = {fg = c.green, fmt = bold},
 }
 
 hl.langs.c = {
