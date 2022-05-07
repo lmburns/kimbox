@@ -133,8 +133,8 @@ hl.common = {
     Question = {fg = c.green},
     NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
     -- Tabline
-    -- TabLine = { fg = c.fg, bg = c.bg1 },
     -- TabLineSel = { fg = c.bg0, bg = c.fg },
+    TabLine = { fg = c.fg, bg = c.bg1 },
     TabLineFill = {fmt = "none"},
     -- Statusline
     -- When last status=2 or 3
