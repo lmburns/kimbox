@@ -24,10 +24,7 @@ The colors may look duller in the images provided, though they will not be whene
 ```vim
 Plug 'lmburns/kimbox'
 
-lua <<EOF
-require("kimbox").setup()
-require("kimbox").colorscheme()
-EOF
+colorscheme kimbox
 ```
 
 - Packer
@@ -103,14 +100,15 @@ require("kimbox").setup({
   toggle_style_key = "<Leader>ts",
   toggle_style_list = { "medium", "ocean", "vscode", "deep", "darker" }, -- or require("kimbox").bgs_list
 
-  transparent = false, -- don't set background
-  term_colors = true, -- if true enable the terminal
-  ending_tildes = false, -- show the end-of-buffer tildes
-
   -- Used with popup menus (coc.nvim mainly) --
   popup = {
     background = false, -- use background color for pmenu
   },
+
+  -- Plugins Related --
+  diagnostics = {
+    background = true, -- use background color for virtual text
+  }
 
   -- General formatting --
   allow_bold = true,
@@ -119,17 +117,26 @@ require("kimbox").setup({
   allow_undercurl = true,
   allow_reverse = false,
 
+  transparent = false, -- don't set background
+  term_colors = true, -- if true enable the terminal
+  ending_tildes = false, -- show the end-of-buffer tildes
+
+
   -- Custom Highlights --
   colors = {}, -- Override default colors
   highlights = {}, -- Override highlight groups
+  -- Plugins or languages that can be disabled
+  -- View them with require("kimbox.highlights").{langs,plugins}
+  disabled = {
+      langs = {},
+      plugins = {}
+  },
 
-  -- Plugins Related --
-  diagnostics = {
-    background = true, -- use background color for virtual text
-  }
+  run_before = nil, -- Run a function before the colorscheme is loaded
+  run_after = nil -- Run a function after the colorscheme is loaded
 })
 
-require("kimbox").colorscheme()
+require("kimbox").load()
 ```
 
 ### Options (vimscript)

@@ -11,6 +11,9 @@ local italic = cfg.allow_italic and "italic" or "none"
 local underline = cfg.allow_underline and "underline" or "none"
 local undercurl = cfg.allow_undercurl and "undercurl" or "none"
 
+M.langs = hl.langs
+M.plugins = hl.plugins
+
 local function underbold()
     if cfg.allow_bold and cfg.allow_underline then
         return "bold,underline"
@@ -25,9 +28,8 @@ end
 
 local function vim_highlights(highlights)
     for group_name, group_settings in pairs(highlights) do
-        vim.api.nvim_command(
-            string.format(
-                "hi %s guifg=%s guibg=%s guisp=%s gui=%s",
+        vim.cmd(
+            ("hi %s guifg=%s guibg=%s guisp=%s gui=%s"):format(
                 group_name,
                 group_settings.fg or "none",
                 group_settings.bg or "none",
@@ -134,7 +136,7 @@ hl.common = {
     NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
     -- Tabline
     -- TabLineSel = { fg = c.bg0, bg = c.fg },
-    TabLine = { fg = c.fg, bg = c.bg1 },
+    TabLine = {fg = c.fg, bg = c.bg1},
     TabLineFill = {fmt = "none"},
     -- Statusline
     -- When last status=2 or 3
@@ -1697,11 +1699,15 @@ function M.setup()
     vim_highlights(hl.treesitter)
 
     for _, group in pairs(hl.langs) do
-        vim_highlights(group)
+        if not vim.tbl_contains(g.kimbox_config.disabled.langs, group) then
+            vim_highlights(group)
+        end
     end
 
     for _, group in pairs(hl.plugins) do
-        vim_highlights(group)
+        if not vim.tbl_contains(g.kimbox_config.disabled.plugins, group) then
+            vim_highlights(group)
+        end
     end
 
     -- user defined highlights: vim_highlights function cannot be used because it sets an attribute to none if not specified
@@ -1730,11 +1736,10 @@ function M.setup()
 
     for group_name, group_settings in pairs(vim.g.kimbox_config.highlights) do
         if group_settings.link then
-            vim.cmd("highlight! link " .. group_name .. " " .. color.link)
+            vim.cmd(("highlight! link %s %s"):format(group_name, group_settings.link))
         else
             vim.cmd(
-                string.format(
-                    "highlight %s %s %s %s %s",
+                ("highlight %s %s %s %s %s"):format(
                     group_name,
                     replace_color("guifg", group_settings.fg),
                     replace_color("guibg", group_settings.bg),

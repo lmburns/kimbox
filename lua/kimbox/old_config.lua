@@ -36,7 +36,6 @@ local function load_old_config()
       transparent = cfg.transparent_background,
       term_colors = cfg.disable_terminal_colors,
       ending_tildes = cfg.hide_ending_tildes,
-      code_style = {},
 
       allow_bold = cfg.allow_bold,
       allow_italic = cfg.allow_italic,
@@ -45,7 +44,6 @@ local function load_old_config()
       allow_reverse = cfg.allow_reverse,
 
       diagnostics = {
-        undercurl = cfg.diagnostics_undercurl,
         background = cfg.diagnostics_text_bg,
       },
     }
