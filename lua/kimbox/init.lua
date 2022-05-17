@@ -9,7 +9,6 @@ M.bgs_list = {"medium", "ocean", "vscode", "deep", "darker"}
 local default_config = {
     -- Main options --
     style = "ocean", -- choose between "medium", "ocean", "vscode", "deep", "darker"
-    -- TODO: Work on this
     toggle_style_key = "<Leader>ts",
     toggle_style_list = M.bgs_list,
     -- Used with popup menus (coc.nvim mainly) --

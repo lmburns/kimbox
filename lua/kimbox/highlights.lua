@@ -48,6 +48,7 @@ local fgs = {
     bg1 = {fg = c.bg1},
     bg2 = {fg = c.bg2},
     bg3 = {fg = c.bg3},
+    bg4 = {fg = c.bg4},
     grey2 = {fg = c.grey2},
     grey1 = {fg = c.grey1},
     grey0 = {fg = c.grey0},
@@ -60,7 +61,8 @@ local fgs = {
     blue = {fg = c.blue},
     purple = {fg = c.purple},
     magenta = {fg = c.magenta},
-    operator_base05 = {fg = c.operator_base05}
+    operator_base05 = {fg = c.operator_base05},
+    dark_green = {fg = c.dark_green}
 }
 
 hl.common = {
@@ -77,7 +79,7 @@ hl.common = {
         bg = trans and c.none or c.bg0
     },
     IncSearch = {fg = c.bg1, bg = c.light_red},
-    Search = {fg = c.bg0, bg = c.bviolet},
+    Search = {fg = c.bg0, bg = c.bright_violet},
     ColorColumn = {bg = c.bg1}, -- used for the columns set with 'colorcolumn'
     Conceal = {fg = c.grey1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor = {fmt = reverse}, -- character under the cursor
@@ -240,7 +242,7 @@ hl.treesitter = {
     TSPunctSpecial = fgs.green,
     TSRepeat = fgs.purple,
     TSString = fgs.yellow,
-    TSStringEscape = fgs.green,
+    TSStringEscape = fgs.dark_green,
     TSStringRegex = fgs.orange,
     TSSymbol = fgs.fg0,
     TSTag = {fg = c.blue, fmt = italic},
@@ -1363,34 +1365,70 @@ hl.plugins.cmp = {
 }
 
 hl.plugins.coc = {
-    CocHoverRange = {fg = c.none, fmt = underbold()},
-    -- underline
+    -- CocMenuSel = fgs.orange, -- current menu item in menu dialog
+    -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
+    CocHoverRange = {fg = c.none, fmt = underbold()}, -- range of current hovered symbol
+    CocHighlightText = {bg = c.fg2},
     CocHintHighlight = {fg = c.none, fmt = undercurl, sp = c.aqua},
+    CocErrorHighlight = {fg = c.none, fmt = undercurl, sp = c.red},
+    CocWarningHighlight = {fg = c.none, fmt = undercurl, sp = c.yellow},
+    CocInfoHighlight = {fg = c.none, fmt = undercurl, sp = c.blue},
+    CocFloating = {fg = c.fg1, bg = c.bg3},
     CocErrorFloat = {fg = c.red, bg = c.bg3},
     CocWarningFloat = {fg = c.green, bg = c.bg3},
     CocInfoFloat = {fg = c.blue, bg = c.bg3},
     CocHintFloat = {fg = c.aqua, bg = c.bg3},
-    CocHighlightText = {bg = c.fg2},
     CocErrorSign = fgs.red,
-    CocWarningSign = fgs.green,
+    CocWarningSign = fgs.yellow,
     CocInfoSign = fgs.blue,
     CocHintSign = fgs.aqua,
-    -- underline
-    CocErrorHighlight = {fg = c.none, fmt = undercurl, sp = c.red},
-    -- underline
-    CocWarningHighlight = {fg = c.none, fmt = undercurl, sp = c.yellow},
-    CocInfoHighlight = {fg = c.none, fmt = undercurl, sp = c.blue},
-    CocWarningVirtualText = fgs.grey1,
+    CocInlayHint = fgs.aqua, -- Things like Rust Analyzer (links to CocHintSign)
     CocErrorVirtualText = fgs.grey1,
+    CocWarningVirtualText = fgs.grey1,
     CocInfoVirtualText = fgs.grey1,
     CocHintVirtualText = fgs.grey1,
+    -- Maybe change back to comment
+    CocFadeOut = {fg = c.grey3}, -- faded text (i.e., not used)
+    -- CocUnusedHighlight
+    -- CocDeprecatedHighlight
     CocCodeLens = fgs.grey1,
     -- HighlightedyankRegion = { fg = c.none, fmt = reverse },
+
+    CocSymbolFile = fgs.green,
+    CocSymbolModule = fgs.red,
+    CocSymbolNamespace = fgs.orange,
+    CocSymbolPackage = fgs.red,
+    CocSymbolClass = fgs.blue,
+    CocSymbolMethod = fgs.magenta,
+    CocSymbolProperty = fgs.aqua,
+    CocSymbolField = fgs.aqua,
+    CocSymbolConstructor = fgs.red,
+    CocSymbolEnum = fgs.green,
+    CocSymbolInterface = fgs.red,
+    CocSymbolFunction = fgs.red,
+    CocSymbolVariable = fgs.fg1,
+    CocSymbolConstant = fgs.magenta,
+    CocSymbolString = fgs.yellow,
+    CocSymbolNumber = fgs.purple,
+    CocSymbolBoolean = fgs.orange,
+    CocSymbolArray = fgs.green,
+    CocSymbolObject = fgs.orange,
+    CocSymbolKey = fgs.purple,
+    CocSymbolNull = fgs.orange,
+    CocSymbolEnumMember = fgs.aqua,
+    CocSymbolStruct = fgs.red,
+    CocSymbolEvent = fgs.red,
+    CocSymbolOperator = fgs.orange,
+    CocSymbolTypeParameter = fgs.green,
+    -- CocSymbolDefault = {},
+
+    -- coc-git
     CocGitAddedSign = fgs.yellow,
     CocGitChangeRemovedSign = fgs.purple,
     CocGitChangedSign = fgs.blue,
     CocGitRemovedSign = fgs.red,
     CocGitTopRemovedSign = fgs.red,
+
     -- coc-explorer
     CocExplorerBufferRoot = fgs.orange,
     CocExplorerBufferExpandIcon = fgs.aqua,
@@ -1643,13 +1681,13 @@ hl.plugins.indent_blankline = {
 
 hl.plugins.hop = {
     HopNextKey = {fg = c.red, fmt = bold},
-    HopNextKey1 = {fg = c.bpurple, fmt = bold},
-    HopNextKey2 = {fg = util.darken(c.bpurple, 0.7)},
+    HopNextKey1 = {fg = c.bright_purple, fmt = bold},
+    HopNextKey2 = {fg = util.darken(c.bright_purple, 0.7)},
     HopUnmatched = fgs.grey
 }
 
 hl.plugins.sneak = {
-    Sneak = {fg = c.bpurple, fmt = bold},
+    Sneak = {fg = c.bright_purple, fmt = bold},
     SneakScope = {bg = c.bg4}
 }
 
