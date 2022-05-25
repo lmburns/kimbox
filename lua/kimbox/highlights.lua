@@ -134,6 +134,8 @@ hl.common = {
     -- PmenuSel = { fg = c.bg3, bg = c.orange },
     PmenuThumb = {fg = c.none, bg = c.green},
     WildMenu = {fg = c.bg3, bg = c.green},
+    WinBar = {fg = c.fg0, fmt = bold}, -- window bar of current window
+    WinBarNC = {fg = c.bg4, fmt = bold}, -- window bar of not-current windows
     Question = {fg = c.green},
     NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
     -- Tabline
@@ -1428,7 +1430,6 @@ hl.plugins.coc = {
     CocGitChangedSign = fgs.blue,
     CocGitRemovedSign = fgs.red,
     CocGitTopRemovedSign = fgs.red,
-
     -- coc-explorer
     CocExplorerBufferRoot = fgs.orange,
     CocExplorerBufferExpandIcon = fgs.aqua,
