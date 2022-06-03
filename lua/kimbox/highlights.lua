@@ -517,7 +517,22 @@ hl.langs.javascript = {
     jsxEscapeJs = fgs.blue,
     jsxAttrib = fgs.green,
     jsxCloseTag = {fg = c.aqua, fmt = bold},
-    jsxComponentName = {fg = c.blue, fmt = bold}
+    jsxComponentName = {fg = c.blue, fmt = bold},
+
+    -- Treesitter:
+    javascriptTSParameter = fgs.aqua,
+    javascriptTSTypeBuiltin = {fg = c.green, fmt = bold},
+    javascriptTSKeywordReturn = {fg = c.red, fmt = bold},
+    javascriptTSPunctBracket = fgs.purple,
+    javascriptTSPunctSpecial = fgs.green,
+    javascriptTSVariableBuiltin = fgs.magenta,
+    javascriptTSException = fgs.green,
+    javascriptTSConstructor = {fg = c.green, fmt = bold},
+    -- javascriptTSNone = { fg = c.blue, fmt = bold },
+    javascriptTSProperty = fgs.aqua,
+    javascriptTSMethod = fgs.blue,
+    -- orange/red,
+    javascriptTSKeyword = fgs.red
 }
 
 hl.langs.typescript = {
@@ -684,9 +699,12 @@ hl.langs.typescript = {
     typescriptTSKeywordReturn = {fg = c.red, fmt = bold},
     typescriptTSPunctBracket = fgs.purple,
     typescriptTSPunctSpecial = fgs.green,
-    typescriptTSVariableBuiltin = fgs.magenta,
-    typescriptTSException = fgs.green,
-    typescriptTSConstructor = {fg = c.blue, fmt = bold},
+    typescriptTSVariableBuiltin = fgs.orange,
+    typescriptTSException = fgs.orange,
+
+    typescriptTSConstructor = {fg = c.gruv_magenta, fmt = bold},
+    -- typescriptTSConstructor = {fg = c.yellow, fmt = bold},
+
     -- typescriptTSNone = { fg = c.blue, fmt = bold },
     typescriptTSProperty = fgs.aqua,
     typescriptTSMethod = fgs.blue,

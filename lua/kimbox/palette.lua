@@ -42,6 +42,7 @@ return {
         surimi_orange = "#FFA066",
         oni_violet = "#957FB8",
 
+        pink = "#bd798b",
         gruv_magenta = "#d3869b",
         dorange = "#fe8019",
         dyellow = "#e78a4e",

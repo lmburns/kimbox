@@ -29,7 +29,14 @@ local kimbox = {
     c = { fg = colors.fg, bg = colors.brown3 },
     x = { fg = colors.fg, bg = colors.bg },
   },
-  terminal = { a = { fg = colors.yellow, bg = colors.bg, gui = "bold" } },
+  terminal = {
+    a = { fg = colors.yellow, bg = colors.bg, gui = "bold" },
+    b = { fg = colors.fg, bg = colors.bg },
+    c = { fg = colors.fg, bg = colors.brown3 },
+    x = { fg = colors.fg, bg = colors.bg },
+    y = { fg = colors.fg, bg = colors.bg },
+    z = { fg = colors.fg, bg = colors.bg },
+  },
   visual = {
     a = { fg = colors.orange, bg = colors.bg, gui = "bold" },
     b = { fg = colors.fg, bg = colors.bg },
