@@ -699,7 +699,7 @@ hl.langs.typescript = {
     typescriptTSKeywordReturn = {fg = c.red, fmt = bold},
     typescriptTSPunctBracket = fgs.purple,
     typescriptTSPunctSpecial = fgs.green,
-    typescriptTSVariableBuiltin = fgs.orange,
+    typescriptTSVariableBuiltin = fgs.purple,
     typescriptTSException = fgs.orange,
 
     typescriptTSConstructor = {fg = c.gruv_magenta, fmt = bold},
@@ -1278,10 +1278,11 @@ hl.plugins.lsp = {
     LspCxxHlGroupEnumConstant = fgs.aqua,
     LspCxxHlGroupNamespace = fgs.purple,
     LspCxxHlGroupMemberVariable = fgs.aqua,
-    DiagnosticError = {fg = c.red},
-    DiagnosticHint = {fg = c.purple},
-    DiagnosticInfo = {fg = c.cyan},
-    DiagnosticWarn = {fg = c.yellow},
+
+    DiagnosticError = fgs.red,
+    DiagnosticWarn = fgs.yellow,
+    DiagnosticInfo = fgs.blue,
+    DiagnosticHint = fgs.aqua,
     DiagnosticVirtualTextError = {
         bg = cfg.diagnostics.background and util.darken(c.red, 0.1, c.bg0) or c.none,
         fg = c.red
@@ -1307,9 +1308,10 @@ hl.plugins.lsp = {
     DiagnosticUnderlineHint = {fmt = diag_under, sp = c.purple},
     DiagnosticUnderlineInfo = {fmt = diag_under, sp = c.aqua},
     DiagnosticUnderlineWarn = {fmt = diag_under, sp = c.yellow},
-    LspReferenceText = {fmt = "underline"},
-    LspReferenceWrite = {fmt = "underline"},
-    LspReferenceRead = {fmt = "underline"}
+
+    LspReferenceText = {bg = c.fg2},
+    LspReferenceWrite = {bg = c.fg2},
+    LspReferenceRead = {bg = c.fg2},
 }
 
 hl.plugins.lsp.LspDiagnosticsDefaultError = hl.plugins.lsp.DiagnosticError
