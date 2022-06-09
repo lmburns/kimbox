@@ -269,6 +269,14 @@ hl.treesitter = {
     TSEnviromentName = fgs.fg0
 }
 
+hl.langs.help = {
+    -- helpTSTitle = fgs.orange
+    helpTSTitle = fgs.red,
+    helpTSLabel = fgs.blue,
+    helpTSString = fgs.yellow,
+    helpTSURI = {fg = c.fg1, fmt = "underline"}
+}
+
 hl.langs.markdown = {
     markdownH1 = {fg = c.red, fmt = "bold"},
     markdownH2 = {fg = c.orange, fmt = "bold"},
@@ -518,7 +526,6 @@ hl.langs.javascript = {
     jsxAttrib = fgs.green,
     jsxCloseTag = {fg = c.aqua, fmt = bold},
     jsxComponentName = {fg = c.blue, fmt = bold},
-
     -- Treesitter:
     javascriptTSParameter = fgs.aqua,
     javascriptTSTypeBuiltin = {fg = c.green, fmt = bold},
@@ -701,7 +708,6 @@ hl.langs.typescript = {
     typescriptTSPunctSpecial = fgs.green,
     typescriptTSVariableBuiltin = fgs.purple,
     typescriptTSException = fgs.orange,
-
     typescriptTSConstructor = {fg = c.gruv_magenta, fmt = bold},
     -- typescriptTSConstructor = {fg = c.yellow, fmt = bold},
 
@@ -1278,7 +1284,6 @@ hl.plugins.lsp = {
     LspCxxHlGroupEnumConstant = fgs.aqua,
     LspCxxHlGroupNamespace = fgs.purple,
     LspCxxHlGroupMemberVariable = fgs.aqua,
-
     DiagnosticError = fgs.red,
     DiagnosticWarn = fgs.yellow,
     DiagnosticInfo = fgs.blue,
@@ -1308,10 +1313,9 @@ hl.plugins.lsp = {
     DiagnosticUnderlineHint = {fmt = diag_under, sp = c.purple},
     DiagnosticUnderlineInfo = {fmt = diag_under, sp = c.aqua},
     DiagnosticUnderlineWarn = {fmt = diag_under, sp = c.yellow},
-
     LspReferenceText = {bg = c.fg2},
     LspReferenceWrite = {bg = c.fg2},
-    LspReferenceRead = {bg = c.fg2},
+    LspReferenceRead = {bg = c.fg2}
 }
 
 hl.plugins.lsp.LspDiagnosticsDefaultError = hl.plugins.lsp.DiagnosticError
@@ -1387,10 +1391,9 @@ hl.plugins.cmp = {
 }
 
 hl.plugins.coc = {
-    -- CocMenuSel = fgs.orange, -- current menu item in menu dialog
     -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
     CocHoverRange = {fg = c.none, fmt = underbold()}, -- range of current hovered symbol
-    CocHighlightText = {bg = c.fg2},
+    CocHighlightText = {bg = c.fg2}, -- Coc cursorhold event
     CocHintHighlight = {fg = c.none, fmt = undercurl, sp = c.aqua},
     CocErrorHighlight = {fg = c.none, fmt = undercurl, sp = c.red},
     CocWarningHighlight = {fg = c.none, fmt = undercurl, sp = c.yellow},
@@ -1409,13 +1412,7 @@ hl.plugins.coc = {
     CocWarningVirtualText = fgs.grey1,
     CocInfoVirtualText = fgs.grey1,
     CocHintVirtualText = fgs.grey1,
-    -- Maybe change back to comment
-    CocFadeOut = {fg = c.grey3}, -- faded text (i.e., not used)
-    -- CocUnusedHighlight
-    -- CocDeprecatedHighlight
-    CocCodeLens = fgs.grey1,
-    -- HighlightedyankRegion = { fg = c.none, fmt = reverse },
-
+    --
     CocSymbolFile = fgs.green,
     CocSymbolModule = fgs.red,
     CocSymbolNamespace = fgs.orange,
@@ -1444,6 +1441,25 @@ hl.plugins.coc = {
     CocSymbolTypeParameter = fgs.green,
     -- CocSymbolDefault = {},
 
+    -- CocSelectedText for sign text of selected lines.
+    -- CocSelectedLine for line highlight of selected lines.
+
+    -- TODO: For non-matched
+    CocSearch = fgs.orange, -- for matched input characters
+    CocDisabled = {fg = c.grey2},
+    CocFadeOut = {fg = c.grey3}, -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
+    CocCursorRange = {fg = c.bg1, bg = c.light_red},
+    CocMenuSel = {fg = c.none, bg = c.bg1}, -- current menu item in menu dialog
+    CocCodeLens = fgs.grey1,
+    -- Popup Menu
+    CocPumSearch = {fg = c.orange}, -- for menu of complete items
+    CocPumMenu = {fg = c.fg0},
+    CocPumDeprecated = fgs.red,
+    CocPumVirtualText = {fg = c.grey1},
+    -- Tree
+    CocTreeTitle = {fg = c.red},
+    -- Notification
+    CocNotificationProgress = fgs.blue,
     -- coc-git
     CocGitAddedSign = fgs.yellow,
     CocGitChangeRemovedSign = fgs.purple,
