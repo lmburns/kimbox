@@ -1459,7 +1459,7 @@ hl.plugins.coc = {
     -- Tree
     CocTreeTitle = {fg = c.red},
     -- Notification
-    CocNotificationProgress = fgs.blue,
+    CocNotificationProgress = {fg = c.blue, bg = "none"},
     -- coc-git
     CocGitAddedSign = fgs.yellow,
     CocGitChangeRemovedSign = fgs.purple,
