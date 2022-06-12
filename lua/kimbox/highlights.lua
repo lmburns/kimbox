@@ -266,16 +266,31 @@ hl.treesitter = {
     TSLiteral = fgs.green,
     TSTextReference = fgs.blue,
     TSEnviroment = fgs.fg0,
-    TSEnviromentName = fgs.fg0,
+    TSEnviromentName = fgs.fg0
 }
 
 hl.langs.solidity = {
+    -- Treesitter
     solidityTSFunction = {fg = c.magenta, fmt = bold},
     solidityTSKeyword = fgs.orange,
     solidityTSType = {fg = c.green, fmt = bold},
     solidityTSTag = {fg = c.blue, fmt = bold},
     solidityTSMethod = {fg = c.magenta, fmt = bold},
-    solidityTSField = fgs.aqua
+    solidityTSField = fgs.aqua,
+    -- Regex parsing
+    solConstructor = {fg = c.blue, fmt = bold},
+    SolContract = fgs.orange,
+    solContractName = {fg = c.aqua, fmt = bold},
+    solOperator = fgs.orange,
+    solMethodParens = fgs.orange,
+    solFunction = fgs.red,
+    solFuncName = {fg = c.magenta, fmt = bold},
+    solFuncReturn = fgs.purple,
+    solFuncModifier = fgs.red,
+    solModifier = fgs.red,
+    solMethod = {fg = c.magenta, fmt = bold},
+    solModifierInsert = {fg = c.magenta, fmt = bold},
+    solConstant = fgs.aqua,
 }
 
 hl.langs.help = {
@@ -1492,9 +1507,8 @@ hl.plugins.coc = {
     CocExplorerTimeAccessed = fgs.aqua,
     CocExplorerTimeCreated = fgs.aqua,
     CocExplorerTimeModified = fgs.aqua,
-
     -- Custom
-    CocSuggestFloating = {fg = c.fg0, bg = c.bg3}, -- bg0
+    CocSuggestFloating = {fg = c.fg0, bg = c.bg3} -- bg0
 }
 
 hl.plugins.ale = {
@@ -1530,9 +1544,9 @@ hl.plugins.vista = {
     VistaBracket = fgs.grey1,
     VistaChildrenNr = fgs.orange,
     VistaKind = fgs.purple,
-    VistaScope = fgs.red,
+    VistaScope = {fg = c.red, fmt = bold},
     VistaScopeKind = fgs.blue,
-    VistaTag = {fg = c.yellow, fmt = bold},
+    VistaTag = {fg = c.magenta, fmt = bold},
     VistaPrefix = fgs.grey1,
     VistaColon = fgs.yellow,
     VistaIcon = fgs.green,
