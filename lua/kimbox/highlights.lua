@@ -266,7 +266,16 @@ hl.treesitter = {
     TSLiteral = fgs.green,
     TSTextReference = fgs.blue,
     TSEnviroment = fgs.fg0,
-    TSEnviromentName = fgs.fg0
+    TSEnviromentName = fgs.fg0,
+}
+
+hl.langs.solidity = {
+    solidityTSFunction = {fg = c.magenta, fmt = bold},
+    solidityTSKeyword = fgs.orange,
+    solidityTSType = {fg = c.green, fmt = bold},
+    solidityTSTag = {fg = c.blue, fmt = bold},
+    solidityTSMethod = {fg = c.magenta, fmt = bold},
+    solidityTSField = fgs.aqua
 }
 
 hl.langs.help = {
@@ -1453,11 +1462,11 @@ hl.plugins.coc = {
     CocCodeLens = fgs.grey1,
     -- Popup Menu
     CocPumSearch = {fg = c.orange}, -- for menu of complete items
-    CocPumMenu = {fg = c.fg0},
+    CocPumMenu = {fg = c.fg1}, -- items at the end like [LS]
     CocPumDeprecated = fgs.red,
     CocPumVirtualText = {fg = c.grey1},
     -- Tree
-    CocTreeTitle = {fg = c.red},
+    CocTreeTitle = {fg = c.red, fmt = "bold"},
     -- Notification
     CocNotificationProgress = {fg = c.blue, bg = "none"},
     -- coc-git
@@ -1482,7 +1491,10 @@ hl.plugins.coc = {
     CocExplorerFileSize = fgs.blue,
     CocExplorerTimeAccessed = fgs.aqua,
     CocExplorerTimeCreated = fgs.aqua,
-    CocExplorerTimeModified = fgs.aqua
+    CocExplorerTimeModified = fgs.aqua,
+
+    -- Custom
+    CocSuggestFloating = {fg = c.fg0, bg = c.bg3}, -- bg0
 }
 
 hl.plugins.ale = {
