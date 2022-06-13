@@ -298,7 +298,6 @@ All of the following languages have been manually configured.
 ### TODO
 - Create some sort of documentation
 - Create a pre-compiled version
-- Allow disabling of languages
 
 ## Thanks to
 

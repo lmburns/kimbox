@@ -28,15 +28,20 @@ end
 
 local function vim_highlights(highlights)
     for group_name, group_settings in pairs(highlights) do
-        vim.cmd(
-            ("hi %s guifg=%s guibg=%s guisp=%s gui=%s"):format(
-                group_name,
-                group_settings.fg or "none",
-                group_settings.bg or "none",
-                group_settings.sp or "none",
-                group_settings.fmt or "none"
+        if group_settings.link then
+            -- vim.api.nvim_set_hl(0, group_name, group_settings)
+            vim.cmd(("highlight! link %s %s"):format(group_name, group_settings.link))
+        else
+            vim.cmd(
+                ("hi %s guifg=%s guibg=%s guisp=%s gui=%s"):format(
+                    group_name,
+                    group_settings.fg or "none",
+                    group_settings.bg or "none",
+                    group_settings.sp or "none",
+                    group_settings.fmt or "none"
+                )
             )
-        )
+        end
     end
 end
 
@@ -185,7 +190,7 @@ hl.syntax = {
     Tag = fgs.orange,
     Label = fgs.orange,
     Structure = fgs.orange,
-    Operator = fgs.operator_base05,
+    Operator = fgs.orange,
     Title = {fg = c.orange, fmt = bold},
     Special = fgs.green,
     SpecialChar = fgs.green,
@@ -290,7 +295,7 @@ hl.langs.solidity = {
     solModifier = fgs.red,
     solMethod = {fg = c.magenta, fmt = bold},
     solModifierInsert = {fg = c.magenta, fmt = bold},
-    solConstant = fgs.aqua,
+    solConstant = fgs.aqua
 }
 
 hl.langs.help = {
@@ -818,8 +823,7 @@ hl.langs.python = {
     semshiFree = fgs.red,
     semshiErrorSign = fgs.red,
     semshiErrorChar = fgs.red,
-    -- hi link  semshiSelected CocHighlightText
-
+    semshiSelected = {bg = c.fg2},
     -- Treesitter:
     pythonTSType = {fg = c.green, fmt = bold},
     pythonTSConstructor = fgs.magenta,
@@ -1540,6 +1544,7 @@ hl.plugins.neomake = {
     NeomakeVirtualtextMessag = fgs.grey1
 }
 
+-- https://github.com/liuchengxu/vista.vim
 hl.plugins.vista = {
     VistaBracket = fgs.grey1,
     VistaChildrenNr = fgs.orange,
@@ -1601,7 +1606,9 @@ hl.plugins.whichkey = {
     WhichKey = fgs.red,
     WhichKeySeperator = fgs.yellow,
     WhichKeyGroup = fgs.green,
-    WhichKeyDesc = fgs.blue
+    WhichKeyDesc = fgs.blue,
+    WhichKeyFloat = {link = "NormalFloat"},
+    WhichKeyValue = {fg = c.grey1, fmt = italic} -- any comment
 }
 
 hl.plugins.defx = {
@@ -1627,7 +1634,38 @@ hl.plugins.vimwiki = {
     VimwikiHeader6 = {fg = "#458588", fmt = "bold"}
 }
 
--- comment
+-- https://github.com/stevearc/aerial.nvim
+hl.plugins.aerial = {
+    AerialLine = {link = "QuickFixLine"},
+    AerialGuide = {link = "LineNr"},
+    AerialFileIcon = {link = "Identifier"},
+    AerialModuleIcon = {link = "Include"},
+    AerialNamespaceIcon = {link = "Include"},
+    AerialPackageIcon = {link = "Include"},
+    AerialClassIcon = {link = "Type"},
+    AerialMethodIcon = {link = "Function"},
+    AerialPropertyIcon = {link = "Identifier"},
+    AerialFieldIcon = {link = "Identifier"},
+    AerialConstructorIcon = {link = "TSConstructor"},
+    AerialEnumIcon = {link = "Type"},
+    AerialInterfaceIcon = {link = "Type"},
+    AerialFunctionIcon = {link = "Function"},
+    AerialVariableIcon = fgs.fg1,
+    AerialConstantIcon = {link = "Type"},
+    AerialStringIcon = {link = "String"},
+    AerialNumberIcon = {link = "Number"},
+    AerialBooleanIcon = {link = "Boolean"},
+    AerialArrayIcon = {link = "Identifier"},
+    AerialObjectIcon = {link = "Identifier"},
+    AerialKeyIcon = fgs.red,
+    AerialNullIcon = {link = "Boolean"},
+    AerialEnumMemberIcon = fgs.aqua,
+    AerialStructIcon = {link = "Type"},
+    AerialEventIcon = fgs.orange,
+    AerialOperatorIcon = {link = "Operator"},
+    AerialTypeParameterIcon = {link = "Type"}
+}
+
 hl.plugins.diffview = {
     DiffviewFilePanelTitle = {fg = c.blue, fmt = bold},
     DiffviewFilePanelCounter = {fg = c.purple, fmt = bold},
@@ -1837,6 +1875,7 @@ function M.setup()
 
     for group_name, group_settings in pairs(vim.g.kimbox_config.highlights) do
         if group_settings.link then
+            -- vim.api.nvim_set_hl(0, group_name, group_settings)
             vim.cmd(("highlight! link %s %s"):format(group_name, group_settings.link))
         else
             vim.cmd(
