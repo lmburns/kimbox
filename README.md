@@ -292,20 +292,13 @@ All of the following languages have been manually configured.
 - [Lualine](https://github.com/hoob3rt/lualine.nvim)
 - [Lightline](https://github.com/itchyny/lightline.vim)
 
+### Extras
+- There is a supplemental TextMate theme in the `extras` directory. This can be used with [`bat`](https://github.com/sharkdp/bat) or SublimeText.
+
 ### TODO
 - Create some sort of documentation
-- Create a precompiled version
-- Allow changing of backgrounds with keybinding
+- Create a pre-compiled version
 - Allow disabling of languages
-
-#### Language
-- There is support for these file types; however, they haven't been specifically tailored to this theme
-- Html
-- Xml
-- CSS
-- SCSS
-- Less
-- Java
 
 ## Thanks to
 
