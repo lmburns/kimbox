@@ -735,14 +735,13 @@ hl.langs.typescript = {
     typescriptTSKeywordReturn = {fg = c.red, fmt = bold},
     typescriptTSPunctBracket = fgs.purple,
     typescriptTSPunctSpecial = fgs.green,
-    typescriptTSVariableBuiltin = fgs.purple,
+    typescriptTSVariableBuiltin = fgs.blue,
     typescriptTSException = fgs.orange,
     typescriptTSConstructor = {fg = c.gruv_magenta, fmt = bold},
-    -- typescriptTSConstructor = {fg = c.yellow, fmt = bold},
 
     -- typescriptTSNone = { fg = c.blue, fmt = bold },
     typescriptTSProperty = fgs.aqua,
-    typescriptTSMethod = fgs.blue,
+    typescriptTSMethod = {fg = c.magenta, fmt = bold},
     -- orange/red,
     typescriptTSKeyword = fgs.red
 }
