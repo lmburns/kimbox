@@ -96,7 +96,6 @@ require("kimbox").setup({
   -- deep: #0f111B
   -- darker:#291804
 
-  -- TODO: Work on this
   toggle_style_key = "<Leader>ts",
   toggle_style_list = { "medium", "ocean", "vscode", "deep", "darker" }, -- or require("kimbox").bgs_list
 
@@ -297,7 +296,7 @@ All of the following languages have been manually configured.
 
 ### TODO
 - Create some sort of documentation
-- Create a pre-compiled version
+- Create a compilation version similar to `nightfox`
 
 ## Thanks to
 

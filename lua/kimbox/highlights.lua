@@ -561,12 +561,12 @@ hl.langs.javascript = {
     javascriptTSKeywordReturn = {fg = c.red, fmt = bold},
     javascriptTSPunctBracket = fgs.purple,
     javascriptTSPunctSpecial = fgs.green,
-    javascriptTSVariableBuiltin = fgs.magenta,
+    javascriptTSVariableBuiltin = fgs.blue,
     javascriptTSException = fgs.green,
     javascriptTSConstructor = {fg = c.green, fmt = bold},
     -- javascriptTSNone = { fg = c.blue, fmt = bold },
     javascriptTSProperty = fgs.aqua,
-    javascriptTSMethod = fgs.blue,
+    javascriptTSMethod = {fg = c.magenta, fmt = bold},
     -- orange/red,
     javascriptTSKeyword = fgs.red
 }
@@ -737,7 +737,7 @@ hl.langs.typescript = {
     typescriptTSPunctSpecial = fgs.green,
     typescriptTSVariableBuiltin = fgs.blue,
     typescriptTSException = fgs.orange,
-    typescriptTSConstructor = {fg = c.gruv_magenta, fmt = bold},
+    typescriptTSConstructor = {fg = c.wave_red, fmt = bold},
 
     -- typescriptTSNone = { fg = c.blue, fmt = bold },
     typescriptTSProperty = fgs.aqua,
