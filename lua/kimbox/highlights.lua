@@ -738,7 +738,6 @@ hl.langs.typescript = {
     typescriptTSVariableBuiltin = fgs.blue,
     typescriptTSException = fgs.orange,
     typescriptTSConstructor = {fg = c.wave_red, fmt = bold},
-
     -- typescriptTSNone = { fg = c.blue, fmt = bold },
     typescriptTSProperty = fgs.aqua,
     typescriptTSMethod = {fg = c.magenta, fmt = bold},
@@ -1023,6 +1022,9 @@ hl.langs.lua = {
 }
 
 hl.langs.teal = {
+    tealTableConstructor = fgs.aqua,
+    tealBuiltin = {fg = c.magenta, fmt = bold},
+    -- Treesitter
     tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
     tealTSParameter = fgs.aqua,
     tealTSPunctBracket = fgs.purple,
@@ -1630,7 +1632,8 @@ hl.plugins.vimwiki = {
     VimwikiHeader3 = {fg = "#689d6a", fmt = "bold"},
     VimwikiHeader4 = {fg = c.green, fmt = "bold"},
     VimwikiHeader5 = {fg = c.purple, fmt = "bold"},
-    VimwikiHeader6 = {fg = "#458588", fmt = "bold"}
+    VimwikiHeader6 = {fg = "#458588", fmt = "bold"},
+    VimwikiLink = fgs.magenta,
 }
 
 -- https://github.com/stevearc/aerial.nvim
