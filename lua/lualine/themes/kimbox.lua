@@ -42,12 +42,12 @@ local kimbox = {
         z = {fg = colors.yellow, bg = colors.bg, gui = "bold"}
     },
     visual = {
-        a = {fg = colors.orange, bg = colors.bg, gui = "bold"},
+        a = {fg = colors.salmon, bg = colors.bg, gui = "bold"},
         b = {fg = colors.fg, bg = colors.bg},
         c = {fg = colors.fg, bg = colors.brown3},
         x = {fg = colors.fg, bg = colors.bg},
-        y = {fg = colors.orange, bg = colors.bg, gui = "bold"},
-        z = {fg = colors.orange, bg = colors.bg, gui = "bold"}
+        y = {fg = colors.salmon, bg = colors.bg, gui = "bold"},
+        z = {fg = colors.salmon, bg = colors.bg, gui = "bold"}
     }
 }
 

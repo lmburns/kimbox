@@ -19,6 +19,7 @@ function M.colors()
     magenta = c.magenta,
     purple = c.purple,
     cyan = c.aqua,
+    salmon = c.salmon,
     white = c.operator_base05,
     fg = c.fg0,
     bg = c.bg0,
