@@ -54,9 +54,9 @@ local fgs = {
     bg2 = {fg = c.bg2},
     bg3 = {fg = c.bg3},
     bg4 = {fg = c.bg4},
-    grey2 = {fg = c.grey2},
-    grey1 = {fg = c.grey1},
-    grey0 = {fg = c.grey0},
+    grullo_grey = {fg = c.grullo_grey},
+    coyote_brown1 = {fg = c.coyote_brown1},
+    coyote_brown = {fg = c.coyote_brown},
     red = {fg = c.red},
     bg_red = {fg = c.bg_red},
     aqua = {fg = c.aqua},
@@ -67,26 +67,26 @@ local fgs = {
     purple = {fg = c.purple},
     magenta = {fg = c.magenta},
     operator_base05 = {fg = c.operator_base05},
-    dark_green = {fg = c.dark_green}
+    philippine_green = {fg = c.philippine_green}
 }
 
 hl.common = {
     Normal = {fg = c.fg0, bg = trans and c.none or c.bg0}, -- normal text
     NormalNC = {fg = c.fg0, bg = trans and c.none or c.bg0}, -- normal text in non-current windows
     Terminal = {fg = c.fg0, bg = trans and c.none or c.bg0},
-    FoldColumn = {fg = c.grey0, bg = trans and c.none or c.bg2},
+    FoldColumn = {fg = c.coyote_brown, bg = trans and c.none or c.bg2},
     SignColumn = {fg = c.fg0, bg = trans and c.none or c.bg0},
     ToolbarLine = {fg = trans and c.fg0 or c.fg1, bg = trans and c.none or c.bg3},
     VertSplit = {fg = c.fg1, bg = c.none},
-    Folded = {fg = c.grey1, bg = c.bg2},
+    Folded = {fg = c.coyote_brown1, bg = c.bg2},
     EndOfBuffer = {
         fg = cfg.ending_tildes and c.bg2 or c.bg0,
         bg = trans and c.none or c.bg0
     },
     IncSearch = {fg = c.bg1, bg = c.light_red},
-    Search = {fg = c.bg0, bg = c.bright_violet},
+    Search = {fg = c.bg0, bg = c.vista_blue},
     ColorColumn = {bg = c.bg1}, -- used for the columns set with 'colorcolumn'
-    Conceal = {fg = c.grey1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')
+    Conceal = {fg = c.coyote_brown1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor = {fmt = reverse}, -- character under the cursor
     vCursor = {fmt = reverse},
     iCursor = {fmt = reverse},
@@ -95,19 +95,19 @@ hl.common = {
     CursorColumn = {bg = c.bg1}, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine = {fg = c.none, bg = c.bg1}, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     CursorLineNr = {fg = c.purple, fmt = bold},
-    LineNr = {fg = c.grey0},
+    LineNr = {fg = c.coyote_brown},
     -- NOTE: Possibly change
     -- DiffAdded = fgs.green,
     -- DiffRemoved = fgs.red,
     -- DiffFile = fgs.aqua,
-    -- DiffIndexLine = fgs.grey1,
+    -- DiffIndexLine = fgs.coyote_brown1,
     diffAdded = fgs.yellow,
     diffRemoved = fgs.red,
     diffChanged = fgs.blue,
     diffOldFile = fgs.green,
     diffNewFile = fgs.orange,
     diffFile = fgs.aqua,
-    diffLine = fgs.grey1,
+    diffLine = fgs.coyote_brown1,
     diffIndexLine = fgs.purple,
     DiffAdd = {fg = c.none, bg = util.darken(c.green, 0.5, c.bg0)}, -- diff mode: Added line |diff.txt|
     DiffChange = {fg = c.none, bg = util.darken(c.yellow, 0.4, c.bg0)}, -- diff mode: Changed line |diff.txt|
@@ -150,9 +150,9 @@ hl.common = {
     -- Statusline
     -- When last status=2 or 3
     StatusLine = {fg = c.none, bg = c.none},
-    StatusLineNC = {fg = c.grey1, bg = c.none},
+    StatusLineNC = {fg = c.coyote_brown1, bg = c.none},
     StatusLineTerm = {fg = c.fg0, bg = c.bg2},
-    StatusLineTermNC = {fg = c.grey1, bg = c.bg1},
+    StatusLineTermNC = {fg = c.coyote_brown1, bg = c.bg1},
     -- Spell
     SpellBad = {fg = c.red, fmt = "undercurl", sp = c.red},
     SpellCap = {fg = c.blue, fmt = undercurl, sp = c.blue},
@@ -164,7 +164,7 @@ hl.common = {
     Debug = {fg = c.orange},
     debugPC = {fg = c.bg0, bg = c.green},
     debugBreakpoint = {fg = c.bg0, bg = c.red},
-    ToolbarButton = {fg = c.bg0, bg = c.grey2},
+    ToolbarButton = {fg = c.bg0, bg = c.grullo_grey},
     FloatBorder = {fg = c.magenta},
     FloatermBorder = {fg = c.magenta}
 }
@@ -202,10 +202,10 @@ hl.syntax = {
     Macro = fgs.aqua,
     Identifier = fgs.blue,
     Delimiter = fgs.fg0,
-    Ignore = fgs.grey1,
+    Ignore = fgs.coyote_brown1,
     Underlined = {fg = c.none, fmt = underline},
-    Comment = {fg = c.grey1, fmt = italic}, -- any comment
-    SpecialComment = {fg = c.grey1, fmt = italic},
+    Comment = {fg = c.coyote_brown1, fmt = italic}, -- any comment
+    SpecialComment = {fg = c.coyote_brown1, fmt = italic},
     Todo = {fg = c.purple, bg = c.none, fmt = italic}
 }
 
@@ -217,7 +217,7 @@ hl.treesitter = {
     TSAttribute = {fg = c.green, fmt = italic},
     TSBoolean = fgs.orange,
     TSCharacter = fgs.yellow,
-    TSComment = {fg = c.grey1, fmt = italic},
+    TSComment = {fg = c.coyote_brown1, fmt = italic},
     TSConditional = {fg = c.purple, fmt = italic},
     TSConstant = fgs.aqua,
     TSConstBuiltin = {fg = c.orange, fmt = italic},
@@ -245,18 +245,18 @@ hl.treesitter = {
     TSParameterReference = fgs.fg0,
     TSProperty = fgs.yellow,
     TSPunctBracket = fgs.fg0,
-    TSPunctDelimiter = fgs.grey1,
+    TSPunctDelimiter = fgs.coyote_brown1,
     TSPunctSpecial = fgs.green,
     TSRepeat = fgs.purple,
     TSString = fgs.yellow,
-    TSStringEscape = fgs.dark_green,
+    TSStringEscape = fgs.philippine_green,
     TSStringRegex = fgs.orange,
     TSSymbol = fgs.fg0,
     TSTag = {fg = c.blue, fmt = italic},
     TSTagDelimiter = fgs.magenta,
     TSText = fgs.yellow,
-    TSStrike = fgs.grey1,
-    -- TSStrike = { fg = c.grey1, fmt = "strikethrough" },
+    TSStrike = fgs.coyote_brown1,
+    -- TSStrike = { fg = c.coyote_brown1, fmt = "strikethrough" },
     -- TSStrong = { fg = c.fg, fmt = "bold" },
     -- TSEmphasis = { fg = c.fg, fmt = "italic" },
     -- TSUnderline = { fg = c.fg, fmt = "underline" },
@@ -314,23 +314,23 @@ hl.langs.markdown = {
     markdownH5 = {fg = c.blue, fmt = "bold"},
     markdownH6 = {fg = c.purple, fmt = "bold"},
     markdownUrl = {fg = c.blue, fmt = "underline"},
-    markdownUrlDelimiter = fgs.grey1,
+    markdownUrlDelimiter = fgs.coyote_brown1,
     markdownUrlTitleDelimiter = fgs.yellow,
     markdownItalic = {fg = c.none, fmt = "italic"},
-    markdownItalicDelimiter = {fg = c.grey1, fmt = "italic"},
+    markdownItalicDelimiter = {fg = c.coyote_brown1, fmt = "italic"},
     markdownBold = {fg = c.none, fmt = "bold"},
-    markdownBoldDelimiter = fgs.grey1,
+    markdownBoldDelimiter = fgs.coyote_brown1,
     markdownCode = fgs.yellow,
     markdownCodeBlock = fgs.aqua,
     markdownCodeDelimiter = fgs.aqua,
-    markdownBlockquote = fgs.grey1,
+    markdownBlockquote = fgs.coyote_brown1,
     markdownListMarker = fgs.red,
     markdownOrderedListMarker = fgs.red,
     markdownRule = fgs.purple,
-    markdownHeadingRule = fgs.grey1,
-    markdownLinkDelimiter = fgs.grey1,
-    markdownLinkTextDelimiter = fgs.grey1,
-    markdownHeadingDelimiter = fgs.grey1,
+    markdownHeadingRule = fgs.coyote_brown1,
+    markdownLinkDelimiter = fgs.coyote_brown1,
+    markdownLinkTextDelimiter = fgs.coyote_brown1,
+    markdownHeadingDelimiter = fgs.coyote_brown1,
     markdownLinkText = fgs.purple,
     markdownId = fgs.green,
     markdownIdDeclaration = fgs.puprle
@@ -346,7 +346,7 @@ hl.langs.tex = {
     latexTSMath = fgs.orange,
     -- Latex: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_TEX
     texStatement = fgs.yellow,
-    texOnlyMath = fgs.grey1,
+    texOnlyMath = fgs.coyote_brown1,
     texDefName = fgs.green,
     texNewCmd = fgs.orange,
     texBeginEnd = fgs.red,
@@ -373,7 +373,7 @@ hl.langs.tex = {
     texCmdEnv = fgs.aqua,
     texMathZoneX = fgs.orange,
     texMathZoneXX = fgs.orange,
-    texMathDelimZone = fgs.grey1,
+    texMathDelimZone = fgs.coyote_brown1,
     texMathDelim = fgs.purple,
     texMathOper = fgs.red,
     texPgfType = fgs.yellow
@@ -406,7 +406,7 @@ hl.langs.javascript = {
     jsBlockLabel = fgs.aqua,
     jsFunctionKey = {fg = c.yellow, fmt = bold},
     jsClassDefinition = fgs.green,
-    jsDot = fgs.grey1,
+    jsDot = fgs.coyote_brown1,
     jsDestructuringBlock = fgs.blue,
     jsSpreadExpression = fgs.purple,
     jsSpreadOperator = fgs.yellow,
@@ -422,7 +422,7 @@ hl.langs.javascript = {
     javascriptIdentifierName = fgs.blue,
     javascriptVariable = fgs.orange,
     javascriptObjectLabel = fgs.aqua,
-    javascriptObjectLabelColon = fgs.grey1,
+    javascriptObjectLabelColon = fgs.coyote_brown1,
     javascriptPropertyNameString = fgs.aqua,
     javascriptFuncArg = fgs.blue,
     javascriptIdentifier = fgs.purple,
@@ -439,19 +439,19 @@ hl.langs.javascript = {
     javascriptBrackets = fgs.fg0,
     javascriptBraces = fgs.fg0,
     javascriptLabel = fgs.purple,
-    javascriptDotNotation = fgs.grey1,
-    javascriptGlobalArrayDot = fgs.grey1,
-    javascriptGlobalBigIntDot = fgs.grey1,
-    javascriptGlobalDateDot = fgs.grey1,
-    javascriptGlobalJSONDot = fgs.grey1,
-    javascriptGlobalMathDot = fgs.grey1,
-    javascriptGlobalNumberDot = fgs.grey1,
-    javascriptGlobalObjectDot = fgs.grey1,
-    javascriptGlobalPromiseDot = fgs.grey1,
-    javascriptGlobalRegExpDot = fgs.grey1,
-    javascriptGlobalStringDot = fgs.grey1,
-    javascriptGlobalSymbolDot = fgs.grey1,
-    javascriptGlobalURLDot = fgs.grey1,
+    javascriptDotNotation = fgs.coyote_brown1,
+    javascriptGlobalArrayDot = fgs.coyote_brown1,
+    javascriptGlobalBigIntDot = fgs.coyote_brown1,
+    javascriptGlobalDateDot = fgs.coyote_brown1,
+    javascriptGlobalJSONDot = fgs.coyote_brown1,
+    javascriptGlobalMathDot = fgs.coyote_brown1,
+    javascriptGlobalNumberDot = fgs.coyote_brown1,
+    javascriptGlobalObjectDot = fgs.coyote_brown1,
+    javascriptGlobalPromiseDot = fgs.coyote_brown1,
+    javascriptGlobalRegExpDot = fgs.coyote_brown1,
+    javascriptGlobalStringDot = fgs.coyote_brown1,
+    javascriptGlobalSymbolDot = fgs.coyote_brown1,
+    javascriptGlobalURLDot = fgs.coyote_brown1,
     javascriptMethod = {fg = c.yellow, fmt = bold},
     javascriptMethodName = {fg = c.yellow, fmt = bold},
     javascriptObjectMethodName = {fg = c.yellow, fmt = bold},
@@ -604,8 +604,8 @@ hl.langs.typescript = {
     typescriptObjectLabel = fgs.aqua,
     typescriptArrowFunc = fgs.purple,
     typescriptAbstract = fgs.orange,
-    typescriptObjectColon = fgs.grey1,
-    typescriptTypeAnnotation = fgs.grey1,
+    typescriptObjectColon = fgs.coyote_brown1,
+    typescriptTypeAnnotation = fgs.coyote_brown1,
     typescriptAssign = fgs.operator_base05,
     typescriptBinaryOp = fgs.operator_base05,
     typescriptUnaryOp = fgs.orange,
@@ -635,18 +635,18 @@ hl.langs.typescript = {
     typescriptTernaryOp = fgs.orange,
     typescriptParenExp = fgs.blue,
     typescriptIndexExpr = fgs.blue,
-    typescriptDotNotation = fgs.grey1,
-    typescriptGlobalNumberDot = fgs.grey1,
-    typescriptGlobalStringDot = fgs.grey1,
-    typescriptGlobalArrayDot = fgs.grey1,
-    typescriptGlobalObjectDot = fgs.grey1,
-    typescriptGlobalSymbolDot = fgs.grey1,
-    typescriptGlobalMathDot = fgs.grey1,
-    typescriptGlobalDateDot = fgs.grey1,
-    typescriptGlobalJSONDot = fgs.grey1,
-    typescriptGlobalRegExpDot = fgs.grey1,
-    typescriptGlobalPromiseDot = fgs.grey1,
-    typescriptGlobalURLDot = fgs.grey1,
+    typescriptDotNotation = fgs.coyote_brown1,
+    typescriptGlobalNumberDot = fgs.coyote_brown1,
+    typescriptGlobalStringDot = fgs.coyote_brown1,
+    typescriptGlobalArrayDot = fgs.coyote_brown1,
+    typescriptGlobalObjectDot = fgs.coyote_brown1,
+    typescriptGlobalSymbolDot = fgs.coyote_brown1,
+    typescriptGlobalMathDot = fgs.coyote_brown1,
+    typescriptGlobalDateDot = fgs.coyote_brown1,
+    typescriptGlobalJSONDot = fgs.coyote_brown1,
+    typescriptGlobalRegExpDot = fgs.coyote_brown1,
+    typescriptGlobalPromiseDot = fgs.coyote_brown1,
+    typescriptGlobalURLDot = fgs.coyote_brown1,
     typescriptGlobalMethod = {fg = c.yellow, fmt = bold},
     typescriptDOMStorageMethod = {fg = c.yellow, fmt = bold},
     typescriptFileMethod = {fg = c.yellow, fmt = bold},
@@ -738,6 +738,7 @@ hl.langs.typescript = {
     typescriptTSVariableBuiltin = fgs.blue,
     typescriptTSException = fgs.orange,
     typescriptTSConstructor = {fg = c.wave_red, fmt = bold},
+
     -- typescriptTSNone = { fg = c.blue, fmt = bold },
     typescriptTSProperty = fgs.aqua,
     typescriptTSMethod = {fg = c.magenta, fmt = bold},
@@ -762,7 +763,7 @@ hl.langs.coffeescript = {
     -- vim-coffee-script: https://github.com/kchmck/vim-coffee-script
     coffeeExtendedOp = fgs.orange,
     coffeeSpecialOp = fgs.fg0,
-    coffeeDotAccess = fgs.grey1,
+    coffeeDotAccess = fgs.coyote_brown1,
     coffeeCurly = fgs.fg0,
     coffeeParen = fgs.fg0,
     coffeeBracket = fgs.fg0,
@@ -801,18 +802,18 @@ hl.langs.python = {
     pythonInclude = {fg = c.purple, fmt = italic},
     pythonImport = {fg = c.purple, fmt = italic},
     pythonRun = fgs.blue,
-    pythonCoding = fgs.grey1,
+    pythonCoding = fgs.coyote_brown1,
     pythonOperator = fgs.orange,
     pythonConditional = {fg = c.red, fmt = italic},
     pythonRepeat = {fg = c.red, fmt = italic},
     pythonException = {fg = c.red, fmt = italic},
     pythonNone = fgs.aqua,
-    pythonDot = fgs.grey1,
+    pythonDot = fgs.coyote_brown1,
     -- semshi: https://github.com/numirias/semshi,
     semshiUnresolved = {fg = c.green, fmt = undercurl},
     semshiImported = fgs.purple,
     semshiParameter = fgs.blue,
-    semshiParameterUnused = fgs.grey1,
+    semshiParameterUnused = fgs.coyote_brown1,
     semshiSelf = {fg = c.purple, fmt = italic},
     semshiGlobal = fgs.green,
     semshiBuiltin = fgs.green,
@@ -865,7 +866,7 @@ hl.langs.go = {
     goTypeDecl = {fg = c.purple, fmt = italic},
     goDeclType = {fg = c.orange, fmt = italic},
     goFunctionCall = {fg = c.green, fmt = bold},
-    goSpaceError = {fg = c.grey1, bg = c.bg_red},
+    goSpaceError = {fg = c.coyote_brown1, bg = c.bg_red},
     goVarArgs = fgs.blue,
     goBuiltins = fgs.purple,
     goPredefinedIdentifiers = fgs.orange,
@@ -887,7 +888,7 @@ hl.langs.rust = {
     rustStructure = fgs.orange,
     rustIdentifier = fgs.purple,
     rustModPath = fgs.orange,
-    rustModPathSep = fgs.grey1,
+    rustModPathSep = fgs.coyote_brown1,
     rustSelf = fgs.blue,
     rustSuper = fgs.blue,
     rustDeriveTrait = {fg = c.purple, fmt = italic},
@@ -1022,9 +1023,6 @@ hl.langs.lua = {
 }
 
 hl.langs.teal = {
-    tealTableConstructor = fgs.aqua,
-    tealBuiltin = {fg = c.magenta, fmt = bold},
-    -- Treesitter
     tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
     tealTSParameter = fgs.aqua,
     tealTSPunctBracket = fgs.purple,
@@ -1132,7 +1130,7 @@ hl.langs.matlab = {
 
 hl.langs.vim = {
     -- vimMapModKey = fgs.orange,
-    vimCommentTitle = {fg = c.grey1, bg = c.none, fmt = bold},
+    vimCommentTitle = {fg = c.coyote_brown1, bg = c.none, fmt = bold},
     vimLet = fgs.orange,
     vimVar = fgs.aqua,
     vimFunction = {fg = c.magenta, fmt = bold},
@@ -1151,8 +1149,8 @@ hl.langs.vim = {
     vimSynType = fgs.orange,
     vimHiBang = fgs.orange,
     vimSet = fgs.green,
-    vimSetSep = fgs.grey0,
-    vimContinue = fgs.grey1,
+    vimSetSep = fgs.coyote_brown,
+    vimContinue = fgs.coyote_brown1,
     -- Non-treesitter Vim looks much better IMO
     vimTSKeyword = {fg = c.red, fmt = bold},
     vimTSNamespace = {fg = c.blue, fmt = bold},
@@ -1252,7 +1250,7 @@ hl.langs.makefile = {
 
 hl.langs.json = {
     jsonKeyword = fgs.orange,
-    jsonQuote = fgs.grey1,
+    jsonQuote = fgs.coyote_brown1,
     jsonBraces = fgs.fg0
 }
 
@@ -1295,12 +1293,12 @@ hl.langs.ron = {
 
 hl.langs.gitcommit = {
     gitcommitSummary = fgs.red,
-    gitcommitUntracked = fgs.grey1,
-    gitcommitDiscarded = fgs.grey1,
-    gitcommitSelected = fgs.grey1,
-    gitcommitUnmerged = fgs.grey1,
-    gitcommitOnBranch = fgs.grey1,
-    gitcommitArrow = fgs.grey1,
+    gitcommitUntracked = fgs.coyote_brown1,
+    gitcommitDiscarded = fgs.coyote_brown1,
+    gitcommitSelected = fgs.coyote_brown1,
+    gitcommitUnmerged = fgs.coyote_brown1,
+    gitcommitOnBranch = fgs.coyote_brown1,
+    gitcommitArrow = fgs.coyote_brown1,
     gitcommitFile = fgs.yellow
 }
 
@@ -1308,7 +1306,7 @@ hl.langs.gitcommit = {
 -- ====================================================================
 local diag_under = (undercurl == "undercurl") and undercurl or "underline"
 hl.plugins.lsp = {
-    LspCxxHlSkippedRegion = fgs.grey1,
+    LspCxxHlSkippedRegion = fgs.coyote_brown1,
     LspCxxHlSkippedRegionBeginEnd = {fg = c.purple, fmt = italic},
     LspCxxHlGroupEnumConstant = fgs.aqua,
     LspCxxHlGroupNamespace = fgs.purple,
@@ -1412,7 +1410,7 @@ hl.plugins.cmp = {
     CmpItemKindReference = fgs.orange,
     CmpItemKindSnippet = fgs.red,
     CmpItemKindStruct = fgs.purple,
-    CmpItemKindText = fgs.grey1,
+    CmpItemKindText = fgs.coyote_brown1,
     CmpItemKindTypeParameter = fgs.red,
     CmpItemKindUnit = fgs.green,
     CmpItemKindValue = fgs.orange,
@@ -1437,10 +1435,10 @@ hl.plugins.coc = {
     CocInfoSign = fgs.blue,
     CocHintSign = fgs.aqua,
     CocInlayHint = fgs.aqua, -- Things like Rust Analyzer (links to CocHintSign)
-    CocErrorVirtualText = fgs.grey1,
-    CocWarningVirtualText = fgs.grey1,
-    CocInfoVirtualText = fgs.grey1,
-    CocHintVirtualText = fgs.grey1,
+    CocErrorVirtualText = fgs.coyote_brown1,
+    CocWarningVirtualText = fgs.coyote_brown1,
+    CocInfoVirtualText = fgs.coyote_brown1,
+    CocHintVirtualText = fgs.coyote_brown1,
     --
     CocSymbolFile = fgs.green,
     CocSymbolModule = fgs.red,
@@ -1475,16 +1473,16 @@ hl.plugins.coc = {
 
     -- TODO: For non-matched
     CocSearch = fgs.orange, -- for matched input characters
-    CocDisabled = {fg = c.grey2},
-    CocFadeOut = {fg = c.grey3}, -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
+    CocDisabled = {fg = c.grullo_grey},
+    CocFadeOut = {fg = c.wenge_grey}, -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
     CocCursorRange = {fg = c.bg1, bg = c.light_red},
     CocMenuSel = {fg = c.none, bg = c.bg1}, -- current menu item in menu dialog
-    CocCodeLens = fgs.grey1,
+    CocCodeLens = fgs.coyote_brown1,
     -- Popup Menu
     CocPumSearch = {fg = c.orange}, -- for menu of complete items
     CocPumMenu = {fg = c.fg1}, -- items at the end like [LS]
     CocPumDeprecated = fgs.red,
-    CocPumVirtualText = {fg = c.grey1},
+    CocPumVirtualText = {fg = c.coyote_brown1},
     -- Tree
     CocTreeTitle = {fg = c.red, fmt = "bold"},
     -- Notification
@@ -1500,11 +1498,11 @@ hl.plugins.coc = {
     CocExplorerBufferExpandIcon = fgs.aqua,
     CocExplorerBufferBufnr = fgs.purple,
     CocExplorerBufferModified = fgs.red,
-    CocExplorerBufferBufname = fgs.grey0,
-    CocExplorerBufferFullpath = fgs.grey0,
+    CocExplorerBufferBufname = fgs.coyote_brown,
+    CocExplorerBufferFullpath = fgs.coyote_brown,
     CocExplorerFileRoot = fgs.orange,
     CocExplorerFileExpandIcon = fgs.aqua,
-    CocExplorerFileFullpath = fgs.grey0,
+    CocExplorerFileFullpath = fgs.coyote_brown,
     CocExplorerFileDirectory = fgs.yellow,
     CocExplorerFileGitStage = fgs.purple,
     CocExplorerFileGitUnstage = fgs.green,
@@ -1523,11 +1521,11 @@ hl.plugins.ale = {
     ALEErrorSign = fgs.red,
     ALEWarningSign = fgs.green,
     ALEInfoSign = fgs.blue,
-    ALEVirtualTextError = fgs.grey1,
-    ALEVirtualTextWarning = fgs.grey1,
-    ALEVirtualTextInfo = fgs.grey1,
-    ALEVirtualTextStyleError = fgs.grey1,
-    ALEVirtualTextStyleWarning = fgs.grey1
+    ALEVirtualTextError = fgs.coyote_brown1,
+    ALEVirtualTextWarning = fgs.coyote_brown1,
+    ALEVirtualTextInfo = fgs.coyote_brown1,
+    ALEVirtualTextStyleError = fgs.coyote_brown1,
+    ALEVirtualTextStyleWarning = fgs.coyote_brown1
 }
 
 hl.plugins.neomake = {
@@ -1539,21 +1537,21 @@ hl.plugins.neomake = {
     NeomakeInfoSign = fgs.blue,
     NeomakeMessage = fgs.aqua,
     NeomakeMessageSign = fgs.aqua,
-    NeomakeVirtualtextError = fgs.grey1,
-    NeomakeVirtualtextWarning = fgs.grey1,
-    NeomakeVirtualtextInfo = fgs.grey1,
-    NeomakeVirtualtextMessag = fgs.grey1
+    NeomakeVirtualtextError = fgs.coyote_brown1,
+    NeomakeVirtualtextWarning = fgs.coyote_brown1,
+    NeomakeVirtualtextInfo = fgs.coyote_brown1,
+    NeomakeVirtualtextMessag = fgs.coyote_brown1
 }
 
 -- https://github.com/liuchengxu/vista.vim
 hl.plugins.vista = {
-    VistaBracket = fgs.grey1,
+    VistaBracket = fgs.coyote_brown1,
     VistaChildrenNr = fgs.orange,
     VistaKind = fgs.purple,
     VistaScope = {fg = c.red, fmt = bold},
     VistaScopeKind = fgs.blue,
     VistaTag = {fg = c.magenta, fmt = bold},
-    VistaPrefix = fgs.grey1,
+    VistaPrefix = fgs.coyote_brown1,
     VistaColon = fgs.yellow,
     VistaIcon = fgs.green,
     VistaLineNr = fgs.fg0
@@ -1577,30 +1575,30 @@ hl.plugins.nerdtree = {
     NERDTreeClosable = fgs.orange,
     NERDTreeFile = fgs.fg0,
     NERDTreeExecFile = fgs.green,
-    NERDTreeUp = fgs.grey1,
+    NERDTreeUp = fgs.coyote_brown1,
     NERDTreeCWD = fgs.aqua,
     NERDTreeToggleOn = fgs.yellow,
     NERDTreeToggleOff = fgs.red,
     NERDTreeFlags = fgs.orange,
-    NERDTreeLinkFile = fgs.grey1,
+    NERDTreeLinkFile = fgs.coyote_brown1,
     NERDTreeLinkTarget = fgs.yellow
 }
 
 hl.plugins.easymotion = {
     EasyMotionTarget = {fg = c.bg0, bg = c.green},
-    EasyMotionShade = fgs.grey1
+    EasyMotionShade = fgs.coyote_brown1
 }
 
 hl.plugins.startify = {
-    StartifyBracket = fgs.grey1,
+    StartifyBracket = fgs.coyote_brown1,
     StartifyFile = fgs.fg0,
     StartifyNumber = fgs.red,
     StartifyPath = fgs.yellow,
     StartifySlash = fgs.yellow,
     StartifySection = fgs.blue,
     StartifyHeader = fgs.orange,
-    StartifySpecial = fgs.grey1,
-    StartifyFooter = fgs.grey1
+    StartifySpecial = fgs.coyote_brown1,
+    StartifyFooter = fgs.coyote_brown1
 }
 
 hl.plugins.whichkey = {
@@ -1609,7 +1607,7 @@ hl.plugins.whichkey = {
     WhichKeyGroup = fgs.green,
     WhichKeyDesc = fgs.blue,
     WhichKeyFloat = {link = "NormalFloat"},
-    WhichKeyValue = {fg = c.grey1, fmt = italic} -- any comment
+    WhichKeyValue = {fg = c.coyote_brown1, fmt = italic} -- any comment
 }
 
 hl.plugins.defx = {
@@ -1625,15 +1623,14 @@ hl.plugins.floaterm = {
 
 hl.plugins.vimwiki = {
     VimwikiBold = {fg = c.burple, fmt = "bold"},
-    VimwikiCode = {fg = c.gruv_magenta},
+    VimwikiCode = {fg = c.puce},
     VimwikiItalic = {fg = "#83a598", fmt = "italic"},
     VimwikiHeader1 = {fg = "#F14A68", fmt = "bold"},
     VimwikiHeader2 = {fg = "#F06431", fmt = "bold"},
     VimwikiHeader3 = {fg = "#689d6a", fmt = "bold"},
     VimwikiHeader4 = {fg = c.green, fmt = "bold"},
     VimwikiHeader5 = {fg = c.purple, fmt = "bold"},
-    VimwikiHeader6 = {fg = "#458588", fmt = "bold"},
-    VimwikiLink = fgs.magenta,
+    VimwikiHeader6 = {fg = "#458588", fmt = "bold"}
 }
 
 -- https://github.com/stevearc/aerial.nvim
@@ -1679,8 +1676,8 @@ hl.plugins.diffview = {
     DiffviewStatusLine = hl.common.StatusLine,
     DiffviewStatusLineNC = hl.common.StatusLineNC,
     DiffviewEndOfBuffer = hl.common.EndOfBuffer,
-    DiffviewFilePanelRootPath = fgs.grey1,
-    DiffviewFilePanelPath = fgs.grey1,
+    DiffviewFilePanelRootPath = fgs.coyote_brown1,
+    DiffviewFilePanelPath = fgs.coyote_brown1,
     DiffviewFilePanelInsertions = fgs.green,
     DiffviewFilePanelDeletions = fgs.red,
     DiffviewStatusAdded = fgs.green,
@@ -1738,7 +1735,7 @@ hl.plugins.nvim_tree = {
     NvimTreeGitDeleted = fgs.red,
     NvimTreeSpecialFile = {fg = c.yellow, fmt = "underline"},
     NvimTreeIndentMarker = fgs.fg0,
-    NvimTreeImageFile = {fg = c.gruv_magenta},
+    NvimTreeImageFile = {fg = c.puce},
     NvimTreeSymlink = fgs.purple,
     NvimTreeFolderName = fgs.blue
 }
@@ -1769,7 +1766,7 @@ hl.plugins.symbols_outline = {
 }
 
 hl.plugins.ts_rainbow = {
-    rainbowcol1 = fgs.grey1,
+    rainbowcol1 = fgs.coyote_brown1,
     rainbowcol2 = fgs.yellow,
     rainbowcol3 = fgs.blue,
     rainbowcol4 = fgs.orange,
@@ -1784,13 +1781,13 @@ hl.plugins.indent_blankline = {
 
 hl.plugins.hop = {
     HopNextKey = {fg = c.red, fmt = bold},
-    HopNextKey1 = {fg = c.bright_purple, fmt = bold},
-    HopNextKey2 = {fg = util.darken(c.bright_purple, 0.7)},
+    HopNextKey1 = {fg = c.deep_lilac, fmt = bold},
+    HopNextKey2 = {fg = util.darken(c.deep_lilac, 0.7)},
     HopUnmatched = fgs.grey
 }
 
 hl.plugins.sneak = {
-    Sneak = {fg = c.bright_purple, fmt = bold},
+    Sneak = {fg = c.deep_lilac, fmt = bold},
     SneakScope = {bg = c.bg4}
 }
 
