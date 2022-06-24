@@ -78,6 +78,7 @@ hl.common = {
     SignColumn = {fg = c.fg0, bg = trans and c.none or c.bg0},
     ToolbarLine = {fg = trans and c.fg0 or c.fg1, bg = trans and c.none or c.bg3},
     VertSplit = {fg = c.fg1, bg = c.none},
+    WinSeparator = {link = "VertSplit"},
     Folded = {fg = c.coyote_brown1, bg = c.bg2},
     EndOfBuffer = {
         fg = cfg.ending_tildes and c.bg2 or c.bg0,
@@ -93,7 +94,7 @@ hl.common = {
     lCursor = {fmt = reverse}, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM = {fmt = reverse}, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn = {bg = c.bg1}, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    CursorLine = {fg = c.none, bg = c.bg1}, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorLine = {fg = c.none, bg = c.bg1}, -- Screen-line at the cursor, when 'cursorline' is set
     CursorLineNr = {fg = c.purple, fmt = bold},
     LineNr = {fg = c.coyote_brown},
     -- NOTE: Possibly change
@@ -203,7 +204,7 @@ hl.syntax = {
     Identifier = fgs.blue,
     Delimiter = fgs.fg0,
     Ignore = fgs.coyote_brown1,
-    Underlined = {fg = c.none, fmt = underline},
+    Underlined = {fg = c.none, fmt = "underline"},
     Comment = {fg = c.coyote_brown1, fmt = italic}, -- any comment
     SpecialComment = {fg = c.coyote_brown1, fmt = italic},
     Todo = {fg = c.purple, bg = c.none, fmt = italic}
@@ -1541,6 +1542,12 @@ hl.plugins.neomake = {
     NeomakeVirtualtextWarning = fgs.coyote_brown1,
     NeomakeVirtualtextInfo = fgs.coyote_brown1,
     NeomakeVirtualtextMessag = fgs.coyote_brown1
+}
+
+-- https://github.com/b0o/incline.nvim
+hl.plugins.incline = {
+    InclineNormal = {link = "WinBar"},
+    InclineNormalNC = {link = "WinBarNC"}
 }
 
 -- https://github.com/liuchengxu/vista.vim
