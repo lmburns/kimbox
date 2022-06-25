@@ -1,0 +1,37 @@
+# Meant to be used with wezterm
+#
+# color_scheme = "kimbox",
+# color_scheme_dirs = { "/home/user/.config/wezterm/colors/" },
+
+[colors]
+background = "#221A02"
+foreground = "#C2A383"
+cursor_fg = "#221A02"
+cursor_bg = "#F79A32"
+cursor_border = "#F79A32"
+selection_bg = "#889B4A"
+selection_fg = "#221A02"
+
+scrollbar_thumb = "#C2A383"
+split = "#4C96A8"
+
+ansi = [
+  '#201F1F',
+  '#DC3958',
+  '#819C3B',
+  '#F79A32',
+  '#733E8B',
+  '#7E5053',
+  '#088649',
+  '#A89983',
+]
+brights = [
+  '#676767',
+  '#F14A68',
+  '#A3B95A',
+  '#F79A32',
+  '#DC3958',
+  '#FE8019',
+  '#4C96A8',
+  '#51412C',
+]

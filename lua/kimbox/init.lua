@@ -1,5 +1,8 @@
 local M = {}
 
+local util = require("kimbox.util")
+local log = util.log
+
 local g = vim.g
 local fn = vim.fn
 local cmd = vim.cmd
@@ -55,7 +58,7 @@ end
 function M.colorscheme()
     if g.kimbox_config.run_before ~= nil and type(g.kimbox_config.run_before) == "function" then
         if not pcall(g.kimbox_config.run_before) then
-            vim.notify("failed running 'before' function", vim.log.levels.ERROR, {title = "kimbox.nvim"})
+            log.err("failed running 'before' function", true)
         end
     end
 
@@ -74,7 +77,7 @@ function M.colorscheme()
 
     if g.kimbox_config.run_after ~= nil and type(g.kimbox_config.run_after) == "function" then
         if not pcall(g.kimbox_config.run_after) then
-            vim.notify("failed running 'after' function", vim.log.levels.ERROR, {title = "kimbox.nvim"})
+            log.err("failed running 'after' function", true)
         end
     end
 end

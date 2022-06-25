@@ -1,6 +1,7 @@
 local cfg = vim.g.kimbox_config
-local c = require "kimbox.colors"
-local util = require "kimbox.util"
+local c = require("kimbox.colors")
+local util = require("kimbox.util")
+local log = util.log
 
 local M = {}
 local hl = {langs = {}, plugins = {}}
@@ -739,7 +740,6 @@ hl.langs.typescript = {
     typescriptTSVariableBuiltin = fgs.blue,
     typescriptTSException = fgs.orange,
     typescriptTSConstructor = {fg = c.wave_red, fmt = bold},
-
     -- typescriptTSNone = { fg = c.blue, fmt = bold },
     typescriptTSProperty = fgs.aqua,
     typescriptTSMethod = {fg = c.magenta, fmt = bold},
@@ -1866,11 +1866,7 @@ function M.setup()
             if not color_name then
                 vim.schedule(
                     function()
-                        vim.notify(
-                            'kimbox.nvim: unknown color "' .. name .. '"',
-                            vim.log.levels.ERROR,
-                            {title = "kimbox.nvim"}
-                        )
+                        log.err(("unknown color: '%s'"):format(name))
                     end
                 )
                 return ""

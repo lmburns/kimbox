@@ -1,0 +1,28 @@
+! Kimbox .Xresources file
+
+*background: #221A02
+*foreground: #C2A383
+
+*color0: #201F1F
+*color8: #676767
+
+*color1: #DC3958
+*color9: #F14A68
+
+*color2: #819C3B
+*color10: #A3B95A
+
+*color3: #F79A32
+*color11: #F79A32
+
+*color4: #733E8B
+*color12: #DC3958
+
+*color5: #7E5053
+*color13: #FE8019
+
+*color6: #088649
+*color14: #4C96A8
+
+*color7: #A89983
+*color15: #51412C
