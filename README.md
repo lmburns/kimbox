@@ -10,11 +10,9 @@
 
 ----
 
-This started out as a fork of [Oceanic Material](https://github.com/glepnir/oceanic-material) theme with my custom [Kimbie Dark](https://marketplace.visualstudio.com/items?itemName=dnamsons.kimbie-dark-plus) colors, and turned into a [One Dark](https://github.com/navarasu/onedark.nvim) fork
-
 ![Kimbox](https://lmburns.com/gallery/media/large/kimbox-preview2.png)
 
-Kimbox is a dark colorscheme for Neovim. There is builtin treesitter support.
+Kimbox is a dark colorscheme for Neovim with builtin treesitter support. It is my variation on the  [Original `Kimbie Dark` colorscheme](https://marketplace.visualstudio.com/items?itemName=dnamsons.kimbie-dark-plus).
 
 The colors may look duller in the images provided, though they will not be whenever the colorscheme is actually loaded. I've noticed that many other colorschemes seem brighter than what their images show.
 
@@ -293,6 +291,7 @@ All of the following languages have been manually configured.
 
 ### Extras
 - There is a supplemental TextMate theme in the `extras` directory. This can be used with [`bat`](https://github.com/sharkdp/bat) or SublimeText.
+- There are also files which can be used with [`wezterm`](https://github.com/wez/wezterm). One is the theme itself, and the other contains configuration options to setup the theme.
 
 ### TODO
 - Create some sort of documentation
