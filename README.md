@@ -71,11 +71,11 @@ require("lualine").setup(
 
 ## Color
 
-| #39260E                                                                                            | #291804                                                                                            | #EF1D55                                                                                            | #DC3958                                                                                            | #FF5813                                                                                            | #FF9500                                                                                            | #819C3B                                                                                            |
-| ---------------------------------------------------------------                                    | ---------------------------------------------------------------                                    | ---------------------------------------------------------------                                    | ---------------------------------------------------------------                                    | ---------------------------------------------------------------                                    | ---------------------------------------------------------------                                    | ---------------------------------------------------------------                                    |
-| <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/39260E?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/291804?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/EF1D55?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/DC3958?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/FF5813?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/FF9500?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/819C3B?style=round'/></a> |
-| #7EB2B1                                                                                            | #4C96A8                                                                                            | #98676A                                                                                            | #A06469                                                                                            | #7F5D38                                                                                            | #A89984                                                                                            | #D9AE80                                                                                            |
-| <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/7EB2B1?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/4C96A8?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/98676A?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/A06469?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/7F5D38?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/A89984?style=round'/></a> | <a href='#'><img valign='middle' src='https://readme-swatches.vercel.app/D9AE80?style=round'/></a> |
+| #39260E                                                             | #291804                                                                 | #EF1D55                                                             | #DC3958                                                             | #FF5813                                                             | #FF9500                                                             | #819C3B                                                             |
+| ---------------------------------------------------------------     | ---------------------------------------------------------------         | ---------------------------------------------------------------     | ---------------------------------------------------------------     | ---------------------------------------------------------------     | ---------------------------------------------------------------     | ---------------------------------------------------------------     |
+| ![#39260E](https://via.placeholder.com/80/39260E/000000.png?text=+) | ![#291804](https://via.placeholder.com/80/291804.png/000000.png?text=+) | ![#EF1D55](https://via.placeholder.com/80/EF1D55/000000.png?text=+) | ![#DC3958](https://via.placeholder.com/80/DC3958/000000.png?text=+) | ![#FF5813](https://via.placeholder.com/80/FF5813/000000.png?text=+) | ![#FF9500](https://via.placeholder.com/80/FF9500/000000.png?text=+) | ![#819C3B](https://via.placeholder.com/80/819C3B/000000.png?text=+) |
+| #7EB2B1                                                             | #4C96A8                                                                 | #98676A                                                             | #A06469                                                             | #7F5D38                                                             | #A89984                                                             | #D9AE80                                                             |
+| ![#7EB2B1](https://via.placeholder.com/80/7EB2B1/000000.png?text=+) | ![#4C96A8](https://via.placeholder.com/80/4C96A8/000000.png?text=+)     | ![#98676A](https://via.placeholder.com/80/98676A/000000.png?text=+) | ![#A06469](https://via.placeholder.com/80/A06469/000000.png?text=+) | ![#7F5D38](https://via.placeholder.com/80/7F5D38/000000.png?text=+) | ![#A89984](https://via.placeholder.com/80/A89984/000000.png?text=+) | ![#D9AE80](https://via.placeholder.com/80/D9AE80/000000.png?text=+) |
 
 ## Options (Lua)
 
@@ -187,8 +187,11 @@ require("kimbox").setup({
 
 ## Filetype Support
 
-Treesitter is preferred for most filetypes (not Zsh).
+Treesitter is preferred for most file types (not Zsh).
 All of the following languages have been manually configured.
+
+<details>
+<summary>Support</summary>
 
 - Markdown
 - Latex
@@ -228,6 +231,8 @@ All of the following languages have been manually configured.
 - Toml
 - Ron (Rust Object Notation)
 - Git commit
+
+</details>
 
 ## Plugin Support
 - If any plugin is not supported and you would like for it to be, please let me know.
