@@ -440,8 +440,8 @@ hl.langs.javascript = {
     javascriptClassSuper = fgs.purple,
     javascriptClassName = fgs.green,
     javascriptClassSuperName = fgs.green,
-    javascriptBrackets = fgs.fg0,
-    javascriptBraces = fgs.fg0,
+    javascriptBrackets = fgs.purple,
+    javascriptBraces = fgs.purple,
     javascriptLabel = fgs.purple,
     javascriptDotNotation = fgs.coyote_brown1,
     javascriptGlobalArrayDot = fgs.coyote_brown1,
@@ -584,7 +584,7 @@ hl.langs.typescript = {
     typescriptGlobalObjects = fgs.aqua,
     typescriptInterpolation = fgs.green,
     typescriptInterpolationDelimiter = fgs.green,
-    typescriptBraces = fgs.fg0,
+    typescriptBraces = fgs.purple,
     typescriptParens = fgs.purple,
     -- yats: https:github.com/HerringtonDarkholme/yats.vim
 
