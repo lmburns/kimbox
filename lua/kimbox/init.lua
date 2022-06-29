@@ -1,7 +1,7 @@
 local M = {}
 
-local util = require("kimbox.util")
-local log = util.log
+local utils = require("kimbox.utils")
+local log = utils.log
 
 local g = vim.g
 local fn = vim.fn

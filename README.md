@@ -237,6 +237,9 @@ All of the following languages have been manually configured.
 ## Plugin Support
 - If any plugin is not supported and you would like for it to be, please let me know.
 
+<details>
+<summary>Support</summary>
+
 - [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [Vimtex](https://github.com/lervag/vimtex)
 - [Vim-Javascript](https://github.com/pangloss/vim-javascript)
@@ -293,6 +296,8 @@ All of the following languages have been manually configured.
 - [BufferLine](https://github.com/akinsho/nvim-bufferline.lua)
 - [Lualine](https://github.com/hoob3rt/lualine.nvim)
 - [Lightline](https://github.com/itchyny/lightline.vim)
+
+</details>
 
 ### Extras
 - There is a supplemental TextMate theme in the `extras` directory. This can be used with [`bat`](https://github.com/sharkdp/bat) or SublimeText.

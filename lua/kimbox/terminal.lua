@@ -1,7 +1,8 @@
+---@diagnostic disable:need-check-nil
 local M = {}
 
 local cfg = vim.g.kimbox_config
-local c = require "kimbox.colors"
+local c = require("kimbox.colors")
 
 function M.setup()
   if not cfg.term_colors then

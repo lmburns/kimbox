@@ -1,7 +1,9 @@
+---@diagnostic disable:need-check-nil
+
 local cfg = vim.g.kimbox_config
 local c = require("kimbox.colors")
-local util = require("kimbox.util")
-local log = util.log
+local utils = require("kimbox.utils")
+local log = utils.log
 
 local M = {}
 local hl = {langs = {}, plugins = {}}
@@ -111,10 +113,10 @@ hl.common = {
     diffFile = fgs.aqua,
     diffLine = fgs.coyote_brown1,
     diffIndexLine = fgs.purple,
-    DiffAdd = {fg = c.none, bg = util.darken(c.green, 0.5, c.bg0)}, -- diff mode: Added line |diff.txt|
-    DiffChange = {fg = c.none, bg = util.darken(c.yellow, 0.4, c.bg0)}, -- diff mode: Changed line |diff.txt|
-    DiffDelete = {fg = c.none, bg = util.darken(c.red, 0.6, c.bg0)}, -- diff mode: Deleted line |diff.txt|
-    DiffText = {fg = c.none, bg = util.darken(c.blue, 0.5, c.bg0)}, -- diff mode: Changed text within a changed line |diff.txt|
+    DiffAdd = {fg = c.none, bg = utils.darken(c.green, 0.5, c.bg0)}, -- diff mode: Added line |diff.txt|
+    DiffChange = {fg = c.none, bg = utils.darken(c.yellow, 0.4, c.bg0)}, -- diff mode: Changed line |diff.txt|
+    DiffDelete = {fg = c.none, bg = utils.darken(c.red, 0.6, c.bg0)}, -- diff mode: Deleted line |diff.txt|
+    DiffText = {fg = c.none, bg = utils.darken(c.blue, 0.5, c.bg0)}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffFile = {fg = c.aqua},
     Directory = {fg = c.bg5, bg = c.none}, -- directory names (and other special names in listings)
     ErrorMsg = {fg = c.red, fmt = underbold()},
@@ -126,7 +128,7 @@ hl.common = {
     NonText = {fg = c.bg5},
     Whitespace = {fg = c.bg5},
     SpecialKey = {fg = c.bg5},
-    -- cfg.diagnostics.background and util.darken(c.red, 0.1, c.bg0) or c.none,
+    -- cfg.diagnostics.background and utils.darken(c.red, 0.1, c.bg0) or c.none,
 
     Pmenu = {
         fg = c.operator_base05,
@@ -1317,19 +1319,19 @@ hl.plugins.lsp = {
     DiagnosticInfo = fgs.blue,
     DiagnosticHint = fgs.aqua,
     DiagnosticVirtualTextError = {
-        bg = cfg.diagnostics.background and util.darken(c.red, 0.1, c.bg0) or c.none,
+        bg = cfg.diagnostics.background and utils.darken(c.red, 0.1, c.bg0) or c.none,
         fg = c.red
     },
     DiagnosticVirtualTextWarn = {
-        bg = cfg.diagnostics.background and util.darken(c.yellow, 0.1, c.bg0) or c.none,
+        bg = cfg.diagnostics.background and utils.darken(c.yellow, 0.1, c.bg0) or c.none,
         fg = c.yellow
     },
     DiagnosticVirtualTextInfo = {
-        bg = cfg.diagnostics.background and util.darken(c.aqua, 0.1, c.bg0) or c.none,
+        bg = cfg.diagnostics.background and utils.darken(c.aqua, 0.1, c.bg0) or c.none,
         fg = c.aqua
     },
     DiagnosticVirtualTextHint = {
-        bg = cfg.diagnostics.background and util.darken(c.purple, 0.1, c.bg0) or c.none,
+        bg = cfg.diagnostics.background and utils.darken(c.purple, 0.1, c.bg0) or c.none,
         fg = c.purple
     },
     -- DiagnosticVirtualTextError = {
@@ -1789,7 +1791,7 @@ hl.plugins.indent_blankline = {
 hl.plugins.hop = {
     HopNextKey = {fg = c.red, fmt = bold},
     HopNextKey1 = {fg = c.deep_lilac, fmt = bold},
-    HopNextKey2 = {fg = util.darken(c.deep_lilac, 0.7)},
+    HopNextKey2 = {fg = utils.darken(c.deep_lilac, 0.7)},
     HopUnmatched = fgs.grey
 }
 
@@ -1827,7 +1829,7 @@ hl.plugins.barbar = {
     -- BufferVisibleTarget = {bg = c.bg_statusline, fg = c.red},
     -- BufferInactive = {bg = c.bg_statusline, fg = c.dark5},
     -- BufferInactiveIndex = {bg = c.bg_statusline, fg = c.dark5},
-    -- BufferInactiveMod = {bg = c.bg_statusline, fg = util.darken(c.warning, 0.7)},
+    -- BufferInactiveMod = {bg = c.bg_statusline, fg = utils.darken(c.warning, 0.7)},
     -- BufferInactiveSign = {bg = c.bg_statusline, fg = c.border_highlight},
     -- BufferInactiveTarget = {bg = c.bg_statusline, fg = c.red},
     -- BufferTabpages = {bg = c.bg_statusline, fg = c.none},
@@ -1844,13 +1846,13 @@ function M.setup()
     vim_highlights(hl.treesitter)
 
     for _, group in pairs(hl.langs) do
-        if not vim.tbl_contains(g.kimbox_config.disabled.langs, group) then
+        if not vim.tbl_contains(cfg.disabled.langs, group) then
             vim_highlights(group)
         end
     end
 
     for _, group in pairs(hl.plugins) do
-        if not vim.tbl_contains(g.kimbox_config.disabled.plugins, group) then
+        if not vim.tbl_contains(cfg.disabled.plugins, group) then
             vim_highlights(group)
         end
     end
@@ -1875,7 +1877,7 @@ function M.setup()
         return prefix .. "=" .. color_name
     end
 
-    for group_name, group_settings in pairs(vim.g.kimbox_config.highlights) do
+    for group_name, group_settings in pairs(cfg.highlights) do
         if group_settings.link then
             -- vim.api.nvim_set_hl(0, group_name, group_settings)
             vim.cmd(("highlight! link %s %s"):format(group_name, group_settings.link))

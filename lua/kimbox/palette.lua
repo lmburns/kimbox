@@ -3,7 +3,7 @@ local bgs = {
     ocean = "#221a02",
     vscode = "#221a0f",
     deep = "#0f111b",
-    darker = "#291804",
+    darker = "#291804"
 }
 
 return {
@@ -56,7 +56,7 @@ return {
         diff_add = "#889B4A",
         diff_delete = "#cc6666",
         diff_change = "#5F5F87",
-        diff_text = "#2c5372",
+        diff_text = "#2c5372"
     },
-    bgs = bgs,
+    bgs = bgs
 }

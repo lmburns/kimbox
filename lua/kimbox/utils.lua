@@ -20,7 +20,7 @@ end
 ---Display notification message
 ---@param msg string
 ---@param level number
----@param opts table
+---@param opts table?
 M.notify = function(msg, level, opts)
     opts = vim.tbl_extend("force", opts or {}, {title = "kimbox"})
     vim.notify(msg, level, opts)
@@ -64,9 +64,7 @@ end
 
 ---Convert a hex color (i.e., `#FFFFFF`) into an RGB(255, 255, 255)
 ---@param hex string
----@return number
----@return number
----@return number
+---@return table<number>
 function M.hexToRgb(hex)
     local p = "[abcdef0-9][abcdef0-9]"
     local pat = ("^#(%s)(%s)(%s)$"):format(p, p, p)

@@ -1,6 +1,5 @@
+---@diagnostic disable:need-check-nil
 local M = {}
-
--- ========================== Lualine ==========================
 
 function M.theme()
   return require("lualine.themes.kimbox")
