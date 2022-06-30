@@ -756,7 +756,7 @@ hl.langs.tsx = {
     tsxTSConstructor = {fg = c.wave_red, fmt = bold},
     tsxTSProperty = fgs.aqua,
     tsxTSPunctBracket = fgs.purple,
-    tsxTSTagAttribute = fgs.blue,
+    tsxTSTagAttribute = fgs.yellow,
     tsxTSTag = fgs.orange,
     tsxTSVariableBuiltin = fgs.blue,
     tsxTSException = fgs.orange,
@@ -791,6 +791,13 @@ hl.langs.coffeescript = {
     coffeeSpecialIdent = fgs.purple,
     coffeeObject = fgs.purple,
     coffeeObjAssign = fgs.aqua
+}
+
+hl.langs.html = {
+    htmlTSTagAttribute = {fg = c.green, fmt = bold},
+    htmlTSText = fgs.fg0,
+    htmlTSTag = {fg = c.red, fmt = bold},
+    htmlTSTagDelimiter = {fg = c.magenta, fmt = bold},
 }
 
 hl.langs.objectivec = {
