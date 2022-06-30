@@ -12,7 +12,7 @@
 
 ![Kimbox](https://lmburns.com/gallery/media/large/kimbox-rust.png)
 
-Kimbox is a dark colorscheme for Neovim with builtin treesitter support. It is my variation on the  [original `Kimbie Dark` colorscheme](https://marketplace.visualstudio.com/items?itemName=dnamsons.kimbie-dark-plus).
+Kimbox is a dark colorscheme for Neovim with builtin treesitter support. It is my variation of the  [original `Kimbie Dark` colorscheme](https://marketplace.visualstudio.com/items?itemName=dnamsons.kimbie-dark-plus).
 
 The colors may look duller in the images provided, though they will not be whenever the colorscheme is actually loaded. I've noticed that many other colorschemes seem brighter than what their images show.
 
@@ -299,13 +299,16 @@ All of the following languages have been manually configured.
 
 </details>
 
+### Name
+The name came about because I had originally thought I was going to create a combination of the kimbie dark and gruvbox colorschemes. It's too late to change the name now.
+
 ### Extras
 - There is a supplemental TextMate theme in the `extras` directory. This can be used with [`bat`](https://github.com/sharkdp/bat) or SublimeText.
 - There are also files which can be used with [`wezterm`](https://github.com/wez/wezterm). One is the theme itself, and the other contains configuration options to setup the theme.
 
 ### TODO
 - Create some sort of documentation
-- Create a compilation version similar to `nightfox`
+- Create a compiled version similar to `nightfox`
 
 ## Thanks to
 
