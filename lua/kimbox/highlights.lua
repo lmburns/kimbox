@@ -592,6 +592,7 @@ hl.langs.typescript = {
     typescriptMethodAccessor = {fg = c.orange, fmt = italic},
     typescriptVariable = fgs.red,
     typescriptVariableDeclaration = fgs.aqua,
+    typescriptAliasDeclaration = fgs.green,
     typescriptTypeReference = fgs.green,
     typescriptBoolean = fgs.orange,
     typescriptCase = fgs.purple,
@@ -614,7 +615,11 @@ hl.langs.typescript = {
     typescriptAssign = fgs.orange,
     typescriptBinaryOp = fgs.orange,
     typescriptUnaryOp = fgs.orange,
+    typescriptFuncTypeArrow = fgs.purple,
     typescriptFuncComma = fgs.fg0,
+    typescriptFunctionMethod = {fg = c.yellow, fmt = bold},
+    typescriptFuncName = {fg = c.magenta, fmt = bold},
+    typescriptFuncKeyword = fgs.red,
     typescriptClassName = fgs.green,
     typescriptClassHeritage = fgs.green,
     typescriptInterfaceHeritage = fgs.green,
@@ -636,7 +641,6 @@ hl.langs.typescript = {
     typescriptOptionalMark = fgs.orange,
     typescriptNull = fgs.aqua,
     typescriptMappedIn = {fg = c.red, fmt = italic},
-    typescriptFuncTypeArrow = fgs.purple,
     typescriptTernaryOp = fgs.orange,
     typescriptParenExp = fgs.blue,
     typescriptIndexExpr = fgs.blue,
@@ -673,9 +677,6 @@ hl.langs.typescript = {
     typescriptGeolocationMethod = {fg = c.yellow, fmt = bold},
     typescriptCacheMethod = {fg = c.yellow, fmt = bold},
     typescriptES6MapMethod = {fg = c.yellow, fmt = bold},
-    typescriptFunctionMethod = {fg = c.yellow, fmt = bold},
-    typescriptFuncName = fgs.magenta,
-    typescriptFuncKeyword = fgs.blue,
     typescriptRegExpMethod = {fg = c.yellow, fmt = bold},
     typescriptXHRMethod = {fg = c.yellow, fmt = bold},
     typescriptBOMNavigatorMethod = {fg = c.yellow, fmt = bold},
@@ -748,6 +749,17 @@ hl.langs.typescript = {
     typescriptTSMethod = {fg = c.magenta, fmt = bold},
     -- orange/red,
     typescriptTSKeyword = fgs.red
+}
+
+hl.langs.tsx = {
+    tsxTSMethod = {fg = c.magenta, fmt = bold},
+    tsxTSConstructor = {fg = c.wave_red, fmt = bold},
+    tsxTSProperty = fgs.aqua,
+    tsxTSPunctBracket = fgs.purple,
+    tsxTSTagAttribute = fgs.blue,
+    tsxTSTag = fgs.orange,
+    tsxTSVariableBuiltin = fgs.blue,
+    tsxTSException = fgs.orange,
 }
 
 hl.langs.dart = {
