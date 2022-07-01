@@ -86,7 +86,7 @@ end
 ---@param condition boolean|nil Statement to be tested
 ---@param is_if any Return if condition is truthy
 ---@param is_else any Return if condition is not truthy
-F.tern = function(condition, is_if, is_else)
+M.tern = function(condition, is_if, is_else)
     if condition then
         return is_if
     else

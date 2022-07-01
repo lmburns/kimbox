@@ -74,18 +74,18 @@ local fgs = {
 }
 
 hl.common = {
-    Normal = {fg = c.fg0, bg = F.tern(trans, c.none, c.bg0)},
-    NormalNC = {fg = c.fg0, bg = F.tern(trans, c.none, c.bg0)},
-    Terminal = {fg = c.fg0, bg = F.tern(trans, c.none, c.bg0)},
-    FoldColumn = {fg = c.coyote_brown, bg = F.tern(trans, c.none, c.bg2)},
-    SignColumn = {fg = c.fg0, bg = F.tern(trans, c.none, c.bg0)},
-    ToolbarLine = {fg = F.tern(trans, c.fg0, c.fg1), bg = F.tern(trans, c.none, c.bg3)},
+    Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
+    NormalNC = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
+    Terminal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
+    FoldColumn = {fg = c.coyote_brown, bg = utils.tern(trans, c.none, c.bg2)},
+    SignColumn = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
+    ToolbarLine = {fg = utils.tern(trans, c.fg0, c.fg1), bg = utils.tern(trans, c.none, c.bg3)},
     VertSplit = {fg = c.fg1, bg = c.none},
     WinSeparator = {link = "VertSplit"},
     Folded = {fg = c.coyote_brown1, bg = c.bg2},
     EndOfBuffer = {
-        fg = F.tern(cfg.ending_tildes, c.bg2, c.bg0),
-        bg = F.tern(trans, c.none, c.bg0)
+        fg = utils.tern(cfg.ending_tildes, c.bg2, c.bg0),
+        bg = utils.tern(trans, c.none, c.bg0)
     },
     IncSearch = {fg = c.bg1, bg = c.light_red},
     Search = {fg = c.bg0, bg = c.vista_blue},
@@ -132,7 +132,7 @@ hl.common = {
 
     Pmenu = {
         fg = c.operator_base05,
-        bg = F.tern(cfg.popup.background, c.bg0, c.bg1)
+        bg = utils.tern(cfg.popup.background, c.bg0, c.bg1)
     },
     PmenuSel = {fg = c.red, bg = c.bg4, fmt = bold},
     -- Pmenu = { fg = c.operator_base05, bg = c.bg0 },
@@ -1327,7 +1327,7 @@ hl.langs.gitcommit = {
 
 -- ============================== Plugins =============================
 -- ====================================================================
-local diag_under = F.tern(undercurl == "undercurl", undercurl, "underline")
+local diag_under = utils.tern(undercurl == "undercurl", undercurl, "underline")
 hl.plugins.lsp = {
     LspCxxHlSkippedRegion = fgs.coyote_brown1,
     LspCxxHlSkippedRegionBeginEnd = {fg = c.purple, fmt = italic},
@@ -1339,19 +1339,19 @@ hl.plugins.lsp = {
     DiagnosticInfo = fgs.blue,
     DiagnosticHint = fgs.aqua,
     DiagnosticVirtualTextError = {
-        bg = F.tern(cfg.diagnostics.background, utils.darken(c.red, 0.1, c.bg0), c.none),
+        bg = utils.tern(cfg.diagnostics.background, utils.darken(c.red, 0.1, c.bg0), c.none),
         fg = c.red
     },
     DiagnosticVirtualTextWarn = {
-        bg = F.tern(cfg.diagnostics.background, utils.darken(c.yellow, 0.1, c.bg0), c.none),
+        bg = utils.tern(cfg.diagnostics.background, utils.darken(c.yellow, 0.1, c.bg0), c.none),
         fg = c.yellow
     },
     DiagnosticVirtualTextInfo = {
-        bg = F.tern(cfg.diagnostics.background, utils.darken(c.aqua, 0.1, c.bg0), c.none),
+        bg = utils.tern(cfg.diagnostics.background, utils.darken(c.aqua, 0.1, c.bg0), c.none),
         fg = c.aqua
     },
     DiagnosticVirtualTextHint = {
-        bg = F.tern(cfg.diagnostics.background, utils.darken(c.purple, 0.1, c.bg0), c.none),
+        bg = utils.tern(cfg.diagnostics.background, utils.darken(c.purple, 0.1, c.bg0), c.none),
         fg = c.purple
     },
     -- DiagnosticVirtualTextError = {
@@ -1751,12 +1751,12 @@ hl.plugins.gitsigns = {
 }
 
 hl.plugins.nvim_tree = {
-    NvimTreeNormal = {fg = c.fg0, bg = F.tern(trans, c.none, c.bg0)},
+    NvimTreeNormal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     -- NOTE: Maybe fix?
-    NvimTreeVertSplit = {fg = c.bg2, bg = F.tern(trans, c.none, c.bg0)},
+    NvimTreeVertSplit = {fg = c.bg2, bg = utils.tern(trans, c.none, c.bg0)},
     NvimTreeEndOfBuffer = {
-        fg = F.tern(cfg.ending_tildes, c.bg3, c.bg0),
-        bg = F.tern(trans, c.none, c.bg0)
+        fg = utils.tern(cfg.ending_tildes, c.bg3, c.bg0),
+        bg = utils.tern(trans, c.none, c.bg0)
     },
     NvimTreeRootFolder = {fg = c.orange, fmt = "bold"},
     NvimTreeGitDirty = fgs.yellow,
