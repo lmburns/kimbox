@@ -741,6 +741,7 @@ hl.langs.typescript = {
     typescriptTSKeywordReturn = {fg = c.red, fmt = bold},
     typescriptTSPunctBracket = fgs.purple,
     typescriptTSPunctSpecial = fgs.green,
+    typescriptTSPunctDelimiter = fgs.purple,
     typescriptTSVariableBuiltin = fgs.blue,
     typescriptTSException = fgs.orange,
     typescriptTSConstructor = {fg = c.wave_red, fmt = bold},
@@ -925,7 +926,8 @@ hl.langs.rust = {
     -- Treesitter:
     rustTSConstBuiltin = fgs.purple,
     rustTSConstant = fgs.magenta,
-    rustTSField = fgs.fg0,
+    -- rustTSField = fgs.fg0,
+    rustTSField = fgs.aqua,
     rustTSFuncMacro = fgs.aqua,
     rustTSInclude = {fg = c.red, fmt = italic},
     rustTSLabel = fgs.green,
@@ -1456,8 +1458,9 @@ hl.plugins.coc = {
     CocErrorSign = fgs.red,
     CocWarningSign = fgs.yellow,
     CocInfoSign = fgs.blue,
-    CocHintSign = fgs.aqua,
-    CocInlayHint = fgs.aqua, -- Things like Rust Analyzer (links to CocHintSign)
+    CocHintSign = fgs.amethyst,
+    -- Change once this actually works
+    CocInlayHint = fgs.amethyst, -- Things like Rust Analyzer (links to CocHintSign)
     CocErrorVirtualText = fgs.coyote_brown1,
     CocWarningVirtualText = fgs.coyote_brown1,
     CocInfoVirtualText = fgs.coyote_brown1,
