@@ -60,6 +60,7 @@ local fgs = {
     grullo_grey = {fg = c.grullo_grey},
     coyote_brown1 = {fg = c.coyote_brown1},
     coyote_brown = {fg = c.coyote_brown},
+    amethyst = {fg = c.amethyst},
     red = {fg = c.red},
     bg_red = {fg = c.bg_red},
     aqua = {fg = c.aqua},
