@@ -1,12 +1,13 @@
 ---@diagnostic disable:need-check-nil
+local M = {}
+local hl = {langs = {}, plugins = {}}
 
-local cfg = vim.g.kimbox_config
 local c = require("kimbox.colors")
 local utils = require("kimbox.utils")
 local log = utils.log
 
-local M = {}
-local hl = {langs = {}, plugins = {}}
+local cfg = vim.g.kimbox_config
+local api = vim.api
 
 local reverse = cfg.allow_reverse and "reverse" or "none"
 local bold = cfg.allow_bold and "bold" or "none"
@@ -26,25 +27,6 @@ local function underbold()
         return "underline"
     else
         return "none"
-    end
-end
-
-local function vim_highlights(highlights)
-    for group_name, group_settings in pairs(highlights) do
-        if group_settings.link then
-            -- vim.api.nvim_set_hl(0, group_name, group_settings)
-            vim.cmd(("highlight! link %s %s"):format(group_name, group_settings.link))
-        else
-            vim.cmd(
-                ("hi %s guifg=%s guibg=%s guisp=%s gui=%s"):format(
-                    group_name,
-                    group_settings.fg or "none",
-                    group_settings.bg or "none",
-                    group_settings.sp or "none",
-                    group_settings.fmt or "none"
-                )
-            )
-        end
     end
 end
 
@@ -75,7 +57,7 @@ local fgs = {
 }
 
 hl.common = {
-    Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
+    -- Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     NormalNC = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     Terminal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     FoldColumn = {fg = c.coyote_brown, bg = utils.tern(trans, c.none, c.bg2)},
@@ -92,14 +74,14 @@ hl.common = {
     Search = {fg = c.bg0, bg = c.vista_blue},
     ColorColumn = {bg = c.bg1}, -- used for the columns set with 'colorcolumn'
     Conceal = {fg = c.coyote_brown1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')
-    Cursor = {fmt = reverse}, -- character under the cursor
-    vCursor = {fmt = reverse},
-    iCursor = {fmt = reverse},
-    lCursor = {fmt = reverse}, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
-    CursorIM = {fmt = reverse}, -- like Cursor, but used when in IME mode |CursorIM|
+    Cursor = {gui = reverse}, -- character under the cursor
+    vCursor = {gui = reverse},
+    iCursor = {gui = reverse},
+    lCursor = {gui = reverse}, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
+    CursorIM = {gui = reverse}, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn = {bg = c.bg1}, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine = {fg = c.none, bg = c.bg1}, -- Screen-line at the cursor, when 'cursorline' is set
-    CursorLineNr = {fg = c.purple, fmt = bold},
+    CursorLineNr = {fg = c.purple, gui = bold},
     LineNr = {fg = c.coyote_brown},
     -- NOTE: Possibly change
     -- DiffAdded = fgs.green,
@@ -120,10 +102,10 @@ hl.common = {
     DiffText = {fg = c.none, bg = utils.darken(c.blue, 0.5, c.bg0)}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffFile = {fg = c.aqua},
     Directory = {fg = c.bg5, bg = c.none}, -- directory names (and other special names in listings)
-    ErrorMsg = {fg = c.red, fmt = underbold()},
-    WarningMsg = {fg = c.green, fmt = bold},
-    ModeMsg = {fg = c.fg0, fmt = bold},
-    MoreMsg = {fg = c.green, fmt = bold},
+    ErrorMsg = {fg = c.red, gui = underbold()},
+    WarningMsg = {fg = c.green, gui = bold},
+    ModeMsg = {fg = c.fg0, gui = bold},
+    MoreMsg = {fg = c.green, gui = bold},
     MatchParen = {fg = c.none, bg = c.bg4},
     Substitute = {fg = c.bg0, bg = c.green},
     NonText = {fg = c.bg5},
@@ -135,23 +117,23 @@ hl.common = {
         fg = c.operator_base05,
         bg = utils.tern(cfg.popup.background, c.bg0, c.bg1)
     },
-    PmenuSel = {fg = c.red, bg = c.bg4, fmt = bold},
+    PmenuSel = {fg = c.red, bg = c.bg4, gui = bold},
     -- Pmenu = { fg = c.operator_base05, bg = c.bg0 },
-    -- PmenuSel = { fg = c.red, bg = c.bg1, fmt = bold },
+    -- PmenuSel = { fg = c.red, bg = c.bg1, gui = bold },
 
     PmenuSbar = {fg = c.none, bg = c.fg3},
     -- PmenuSel = { fg = c.fg0, bg = c.fg1 },
     -- PmenuSel = { fg = c.bg3, bg = c.orange },
     PmenuThumb = {fg = c.none, bg = c.green},
     WildMenu = {fg = c.bg3, bg = c.green},
-    WinBar = {fg = c.fg0, fmt = bold}, -- window bar of current window
-    WinBarNC = {fg = c.bg4, fmt = bold}, -- window bar of not-current windows
+    WinBar = {fg = c.fg0, gui = bold}, -- window bar of current window
+    WinBarNC = {fg = c.bg4, gui = bold}, -- window bar of not-current windows
     Question = {fg = c.green},
     NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
     -- Tabline
     -- TabLineSel = { fg = c.bg0, bg = c.fg },
     TabLine = {fg = c.fg, bg = c.bg1},
-    TabLineFill = {fmt = "none"},
+    TabLineFill = {gui = "none"},
     -- Statusline
     -- When last status=2 or 3
     StatusLine = {fg = c.none, bg = c.none},
@@ -159,13 +141,13 @@ hl.common = {
     StatusLineTerm = {fg = c.fg0, bg = c.bg2},
     StatusLineTermNC = {fg = c.coyote_brown1, bg = c.bg1},
     -- Spell
-    SpellBad = {fg = c.red, fmt = "undercurl", sp = c.red},
-    SpellCap = {fg = c.blue, fmt = undercurl, sp = c.blue},
-    SpellLocal = {fg = c.aqua, fmt = undercurl, sp = c.aqua},
-    SpellRare = {fg = c.purple, fmt = undercurl, sp = c.purple},
-    Visual = {fg = c.black, bg = c.operator_base05, fmt = reverse},
-    VisualNOS = {fg = c.black, bg = c.operator_base05, fmt = reverse},
-    QuickFixLine = {fg = c.purple, fmt = bold},
+    SpellBad = {fg = c.red, gui = "undercurl", sp = c.red},
+    SpellCap = {fg = c.blue, gui = undercurl, sp = c.blue},
+    SpellLocal = {fg = c.aqua, gui = undercurl, sp = c.aqua},
+    SpellRare = {fg = c.purple, gui = undercurl, sp = c.purple},
+    Visual = {fg = c.black, bg = c.operator_base05, gui = reverse},
+    VisualNOS = {fg = c.black, bg = c.operator_base05, gui = reverse},
+    QuickFixLine = {fg = c.purple, gui = bold},
     Debug = {fg = c.orange},
     debugPC = {fg = c.bg0, bg = c.green},
     debugBreakpoint = {fg = c.bg0, bg = c.red},
@@ -178,29 +160,29 @@ hl.syntax = {
     Boolean = fgs.orange,
     Number = fgs.purple,
     Float = fgs.purple,
-    PreProc = {fg = c.purple, fmt = italic},
-    PreCondit = {fg = c.purple, fmt = italic},
-    Include = {fg = c.purple, fmt = italic},
-    Define = {fg = c.purple, fmt = italic},
-    Conditional = {fg = c.purple, fmt = italic},
-    Repeat = {fg = c.purple, fmt = italic},
-    Keyword = {fg = c.red, fmt = italic},
-    Typedef = {fg = c.red, fmt = italic},
-    Exception = {fg = c.red, fmt = italic},
+    PreProc = {fg = c.purple, gui = italic},
+    PreCondit = {fg = c.purple, gui = italic},
+    Include = {fg = c.purple, gui = italic},
+    Define = {fg = c.purple, gui = italic},
+    Conditional = {fg = c.purple, gui = italic},
+    Repeat = {fg = c.purple, gui = italic},
+    Keyword = {fg = c.red, gui = italic},
+    Typedef = {fg = c.red, gui = italic},
+    Exception = {fg = c.red, gui = italic},
     -- NOTE: Why is vim Statement no longer bold after lua upgrade?
     --       This is `italic` in vimscript
-    Statement = {fg = c.red, fmt = bold},
+    Statement = {fg = c.red, gui = bold},
     Error = fgs.red,
     StorageClass = fgs.orange,
     Tag = fgs.orange,
     Label = fgs.orange,
     Structure = fgs.orange,
     Operator = fgs.orange,
-    Title = {fg = c.orange, fmt = bold},
+    Title = {fg = c.orange, gui = bold},
     Special = fgs.green,
     SpecialChar = fgs.green,
-    Type = {fg = c.green, fmt = bold},
-    Function = {fg = c.magenta, fmt = bold},
+    Type = {fg = c.green, gui = bold},
+    Function = {fg = c.magenta, gui = bold},
     String = fgs.yellow,
     Character = fgs.yellow,
     Constant = fgs.aqua,
@@ -208,40 +190,40 @@ hl.syntax = {
     Identifier = fgs.blue,
     Delimiter = fgs.fg0,
     Ignore = fgs.coyote_brown1,
-    Underlined = {fg = c.none, fmt = "underline"},
-    Comment = {fg = c.coyote_brown1, fmt = italic}, -- any comment
-    SpecialComment = {fg = c.coyote_brown1, fmt = italic},
-    Todo = {fg = c.purple, bg = c.none, fmt = italic}
+    Underlined = {fg = c.none, gui = "underline"},
+    Comment = {fg = c.coyote_brown1, gui = italic}, -- any comment
+    SpecialComment = {fg = c.coyote_brown1, gui = italic},
+    Todo = {fg = c.purple, bg = c.none, gui = italic}
 }
 
 hl.treesitter = {
-    TSNote = {fg = c.blue, bg = c.bg0, fmt = bold},
-    TSWarning = {fg = c.green, fmt = bold},
-    TSDanger = {fg = c.red, fmt = bold},
-    TSAnnotation = {fg = c.blue, fmt = italic},
-    TSAttribute = {fg = c.green, fmt = italic},
+    TSNote = {fg = c.blue, bg = c.bg0, gui = bold},
+    TSWarning = {fg = c.green, gui = bold},
+    TSDanger = {fg = c.red, gui = bold},
+    TSAnnotation = {fg = c.blue, gui = italic},
+    TSAttribute = {fg = c.green, gui = italic},
     TSBoolean = fgs.orange,
     TSCharacter = fgs.yellow,
-    TSComment = {fg = c.coyote_brown1, fmt = italic},
-    TSConditional = {fg = c.purple, fmt = italic},
+    TSComment = {fg = c.coyote_brown1, gui = italic},
+    TSConditional = {fg = c.purple, gui = italic},
     TSConstant = fgs.aqua,
-    TSConstBuiltin = {fg = c.orange, fmt = italic},
-    TSConstMacro = {fg = c.orange, fmt = italic},
-    TSConstructor = {fg = c.yellow, fmt = bold},
-    TSException = {fg = c.red, fmt = italic},
-    -- TSError = { fg = c.red, fmt = italic },
+    TSConstBuiltin = {fg = c.orange, gui = italic},
+    TSConstMacro = {fg = c.orange, gui = italic},
+    TSConstructor = {fg = c.yellow, gui = bold},
+    TSException = {fg = c.red, gui = italic},
+    -- TSError = { fg = c.red, gui = italic },
     TSField = fgs.yellow,
     TSFloat = fgs.purple,
-    TSFuncBuiltin = {fg = c.magenta, fmt = bold},
+    TSFuncBuiltin = {fg = c.magenta, gui = bold},
     TSFuncMacro = fgs.aqua,
-    TSFunction = {fg = c.magenta, fmt = bold},
-    TSInclude = {fg = c.red, fmt = italic},
+    TSFunction = {fg = c.magenta, gui = bold},
+    TSInclude = {fg = c.red, gui = italic},
     TSKeyword = fgs.red,
     TSKeywordFunction = fgs.red,
     TSKeywordOperator = fgs.red,
     TSLabel = fgs.orange,
     TSMethod = fgs.blue,
-    TSNamespace = {fg = c.blue, fmt = italic},
+    TSNamespace = {fg = c.blue, gui = italic},
     TSNone = fgs.fg0,
     TSNumber = fgs.purple,
     TSOperator = fgs.orange,
@@ -257,22 +239,22 @@ hl.treesitter = {
     TSStringEscape = fgs.philippine_green,
     TSStringRegex = fgs.orange,
     TSSymbol = fgs.fg0,
-    TSTag = {fg = c.blue, fmt = italic},
+    TSTag = {fg = c.blue, gui = italic},
     TSTagDelimiter = fgs.magenta,
     TSText = fgs.yellow,
     TSStrike = fgs.coyote_brown1,
-    -- TSStrike = { fg = c.coyote_brown1, fmt = "strikethrough" },
-    -- TSStrong = { fg = c.fg, fmt = "bold" },
-    -- TSEmphasis = { fg = c.fg, fmt = "italic" },
-    -- TSUnderline = { fg = c.fg, fmt = "underline" },
+    -- TSStrike = { fg = c.coyote_brown1, gui = "strikethrough" },
+    -- TSStrong = { fg = c.fg, gui = "bold" },
+    -- TSEmphasis = { fg = c.fg, gui = "italic" },
+    -- TSUnderline = { fg = c.fg, gui = "underline" },
     TSMath = fgs.green,
     TSType = fgs.green,
     TSTypeBuiltin = fgs.green,
-    TSURI = {fg = c.fg1, fmt = "underline"},
+    TSURI = {fg = c.fg1, gui = "underline"},
     TSVariable = fgs.fg0,
     TSVariableBuiltin = fgs.blue,
     -- ??
-    TSTitle = {fg = c.orange, fmt = "bold"},
+    TSTitle = {fg = c.orange, gui = "bold"},
     TSLiteral = fgs.green,
     TSTextReference = fgs.blue,
     TSEnviroment = fgs.fg0,
@@ -281,25 +263,25 @@ hl.treesitter = {
 
 hl.langs.solidity = {
     -- Treesitter
-    solidityTSFunction = {fg = c.magenta, fmt = bold},
+    solidityTSFunction = {fg = c.magenta, gui = bold},
     solidityTSKeyword = fgs.orange,
-    solidityTSType = {fg = c.green, fmt = bold},
-    solidityTSTag = {fg = c.blue, fmt = bold},
-    solidityTSMethod = {fg = c.magenta, fmt = bold},
+    solidityTSType = {fg = c.green, gui = bold},
+    solidityTSTag = {fg = c.blue, gui = bold},
+    solidityTSMethod = {fg = c.magenta, gui = bold},
     solidityTSField = fgs.aqua,
     -- Regex parsing
-    solConstructor = {fg = c.blue, fmt = bold},
+    solConstructor = {fg = c.blue, gui = bold},
     SolContract = fgs.orange,
-    solContractName = {fg = c.aqua, fmt = bold},
+    solContractName = {fg = c.aqua, gui = bold},
     solOperator = fgs.orange,
     solMethodParens = fgs.orange,
     solFunction = fgs.red,
-    solFuncName = {fg = c.magenta, fmt = bold},
+    solFuncName = {fg = c.magenta, gui = bold},
     solFuncReturn = fgs.purple,
     solFuncModifier = fgs.red,
     solModifier = fgs.red,
-    solMethod = {fg = c.magenta, fmt = bold},
-    solModifierInsert = {fg = c.magenta, fmt = bold},
+    solMethod = {fg = c.magenta, gui = bold},
+    solModifierInsert = {fg = c.magenta, gui = bold},
     solConstant = fgs.aqua
 }
 
@@ -308,22 +290,22 @@ hl.langs.help = {
     helpTSTitle = fgs.red,
     helpTSLabel = fgs.blue,
     helpTSString = fgs.yellow,
-    helpTSURI = {fg = c.fg1, fmt = "underline"}
+    helpTSURI = {fg = c.fg1, gui = "underline"}
 }
 
 hl.langs.markdown = {
-    markdownH1 = {fg = c.red, fmt = "bold"},
-    markdownH2 = {fg = c.orange, fmt = "bold"},
-    markdownH3 = {fg = c.green, fmt = "bold"},
-    markdownH4 = {fg = c.yellow, fmt = "bold"},
-    markdownH5 = {fg = c.blue, fmt = "bold"},
-    markdownH6 = {fg = c.purple, fmt = "bold"},
-    markdownUrl = {fg = c.blue, fmt = "underline"},
+    markdownH1 = {fg = c.red, gui = "bold"},
+    markdownH2 = {fg = c.orange, gui = "bold"},
+    markdownH3 = {fg = c.green, gui = "bold"},
+    markdownH4 = {fg = c.yellow, gui = "bold"},
+    markdownH5 = {fg = c.blue, gui = "bold"},
+    markdownH6 = {fg = c.purple, gui = "bold"},
+    markdownUrl = {fg = c.blue, gui = "underline"},
     markdownUrlDelimiter = fgs.coyote_brown1,
     markdownUrlTitleDelimiter = fgs.yellow,
-    markdownItalic = {fg = c.none, fmt = "italic"},
-    markdownItalicDelimiter = {fg = c.coyote_brown1, fmt = "italic"},
-    markdownBold = {fg = c.none, fmt = "bold"},
+    markdownItalic = {fg = c.none, gui = "italic"},
+    markdownItalicDelimiter = {fg = c.coyote_brown1, gui = "italic"},
+    markdownBold = {fg = c.none, gui = "bold"},
     markdownBoldDelimiter = fgs.coyote_brown1,
     markdownCode = fgs.yellow,
     markdownCodeBlock = fgs.aqua,
@@ -343,8 +325,8 @@ hl.langs.markdown = {
 
 hl.langs.tex = {
     latexTSInclude = fgs.blue,
-    latexTSFuncMacro = {fg = c.fg0, fmt = bold},
-    latexTSEnvironment = {fg = c.cyan, fmt = "bold"},
+    latexTSFuncMacro = {fg = c.fg0, gui = bold},
+    latexTSEnvironment = {fg = c.cyan, gui = "bold"},
     latexTSEnvironmentName = fgs.yellow,
     latexTSTitle = fgs.green,
     latexTSType = fgs.blue,
@@ -368,12 +350,12 @@ hl.langs.tex = {
     texCmdPackage = fgs.green,
     texCmdNew = fgs.green,
     texArgNew = fgs.orange,
-    texPartArgTitle = {fg = c.blue, fmt = italic},
-    texFileArg = {fg = c.blue, fmt = italic},
-    texEnvArgName = {fg = c.blue, fmt = italic},
-    texMathEnvArgName = {fg = c.blue, fmt = italic},
-    texTitleArg = {fg = c.blue, fmt = italic},
-    texAuthorArg = {fg = c.blue, fmt = italic},
+    texPartArgTitle = {fg = c.blue, gui = italic},
+    texFileArg = {fg = c.blue, gui = italic},
+    texEnvArgName = {fg = c.blue, gui = italic},
+    texMathEnvArgName = {fg = c.blue, gui = italic},
+    texTitleArg = {fg = c.blue, gui = italic},
+    texAuthorArg = {fg = c.blue, gui = italic},
     -- Not in original
     texCmdEnv = fgs.aqua,
     texMathZoneX = fgs.orange,
@@ -393,8 +375,8 @@ hl.langs.javascript = {
     jsNan = fgs.aqua,
     jsSuper = fgs.purple,
     jsPrototype = fgs.purple,
-    jsFunction = {fg = c.red, fmt = italic},
-    jsGlobalNodeObjects = {fg = c.purple, fmt = italic},
+    jsFunction = {fg = c.red, gui = italic},
+    jsGlobalNodeObjects = {fg = c.purple, gui = italic},
     jsGlobalObjects = fgs.green,
     jsArrowFunction = fgs.purple,
     jsArrowFuncArgs = fgs.blue,
@@ -409,7 +391,7 @@ hl.langs.javascript = {
     jsParenCatch = fgs.blue,
     jsBracket = fgs.blue,
     jsBlockLabel = fgs.aqua,
-    jsFunctionKey = {fg = c.yellow, fmt = bold},
+    jsFunctionKey = {fg = c.yellow, gui = bold},
     jsClassDefinition = fgs.green,
     jsDot = fgs.coyote_brown1,
     jsDestructuringBlock = fgs.blue,
@@ -435,8 +417,8 @@ hl.langs.javascript = {
     javascriptTemplate = fgs.green,
     javascriptTemplateSubstitution = fgs.green,
     javascriptTemplateSB = fgs.green,
-    javascriptNodeGlobal = {fg = c.purple, fmt = italic},
-    javascriptDocTags = {fg = c.purple, fmt = italic},
+    javascriptNodeGlobal = {fg = c.purple, gui = italic},
+    javascriptDocTags = {fg = c.purple, gui = italic},
     javascriptDocNotation = fgs.purple,
     javascriptClassSuper = fgs.purple,
     javascriptClassName = fgs.green,
@@ -457,64 +439,64 @@ hl.langs.javascript = {
     javascriptGlobalStringDot = fgs.coyote_brown1,
     javascriptGlobalSymbolDot = fgs.coyote_brown1,
     javascriptGlobalURLDot = fgs.coyote_brown1,
-    javascriptMethod = {fg = c.yellow, fmt = bold},
-    javascriptMethodName = {fg = c.yellow, fmt = bold},
-    javascriptObjectMethodName = {fg = c.yellow, fmt = bold},
-    javascriptGlobalMethod = {fg = c.yellow, fmt = bold},
-    javascriptDOMStorageMethod = {fg = c.yellow, fmt = bold},
-    javascriptFileMethod = {fg = c.yellow, fmt = bold},
-    javascriptFileReaderMethod = {fg = c.yellow, fmt = bold},
-    javascriptFileListMethod = {fg = c.yellow, fmt = bold},
-    javascriptBlobMethod = {fg = c.yellow, fmt = bold},
-    javascriptURLStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptNumberStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptNumberMethod = {fg = c.yellow, fmt = bold},
-    javascriptDOMNodeMethod = {fg = c.yellow, fmt = bold},
-    javascriptES6BigIntStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptBOMWindowMethod = {fg = c.yellow, fmt = bold},
-    javascriptHeadersMethod = {fg = c.yellow, fmt = bold},
-    javascriptRequestMethod = {fg = c.yellow, fmt = bold},
-    javascriptResponseMethod = {fg = c.yellow, fmt = bold},
-    javascriptES6SetMethod = {fg = c.yellow, fmt = bold},
-    javascriptReflectMethod = {fg = c.yellow, fmt = bold},
-    javascriptPaymentMethod = {fg = c.yellow, fmt = bold},
-    javascriptPaymentResponseMethod = {fg = c.yellow, fmt = bold},
-    javascriptTypedArrayStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptGeolocationMethod = {fg = c.yellow, fmt = bold},
-    javascriptES6MapMethod = {fg = c.yellow, fmt = bold},
-    javascriptServiceWorkerMethod = {fg = c.yellow, fmt = bold},
-    javascriptCacheMethod = {fg = c.yellow, fmt = bold},
-    javascriptFunctionMethod = {fg = c.yellow, fmt = bold},
-    javascriptXHRMethod = {fg = c.yellow, fmt = bold},
-    javascriptBOMNavigatorMethod = {fg = c.yellow, fmt = bold},
-    javascriptDOMEventTargetMethod = {fg = c.yellow, fmt = bold},
-    javascriptDOMEventMethod = {fg = c.yellow, fmt = bold},
-    javascriptIntlMethod = {fg = c.yellow, fmt = bold},
-    javascriptDOMDocMethod = {fg = c.yellow, fmt = bold},
-    javascriptStringStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptStringMethod = {fg = c.yellow, fmt = bold},
-    javascriptSymbolStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptRegExpMethod = {fg = c.yellow, fmt = bold},
-    javascriptObjectStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptObjectMethod = {fg = c.yellow, fmt = bold},
-    javascriptBOMLocationMethod = {fg = c.yellow, fmt = bold},
-    javascriptJSONStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptGeneratorMethod = {fg = c.yellow, fmt = bold},
-    javascriptEncodingMethod = {fg = c.yellow, fmt = bold},
-    javascriptPromiseStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptPromiseMethod = {fg = c.yellow, fmt = bold},
-    javascriptBOMHistoryMethod = {fg = c.yellow, fmt = bold},
-    javascriptDOMFormMethod = {fg = c.yellow, fmt = bold},
-    javascriptClipboardMethod = {fg = c.yellow, fmt = bold},
-    javascriptBroadcastMethod = {fg = c.yellow, fmt = bold},
-    javascriptDateStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptDateMethod = {fg = c.yellow, fmt = bold},
-    javascriptConsoleMethod = {fg = c.yellow, fmt = bold},
-    javascriptArrayStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptArrayMethod = {fg = c.yellow, fmt = bold},
-    javascriptMathStaticMethod = {fg = c.yellow, fmt = bold},
-    javascriptSubtleCryptoMethod = {fg = c.yellow, fmt = bold},
-    javascriptCryptoMethod = {fg = c.yellow, fmt = bold},
+    javascriptMethod = {fg = c.yellow, gui = bold},
+    javascriptMethodName = {fg = c.yellow, gui = bold},
+    javascriptObjectMethodName = {fg = c.yellow, gui = bold},
+    javascriptGlobalMethod = {fg = c.yellow, gui = bold},
+    javascriptDOMStorageMethod = {fg = c.yellow, gui = bold},
+    javascriptFileMethod = {fg = c.yellow, gui = bold},
+    javascriptFileReaderMethod = {fg = c.yellow, gui = bold},
+    javascriptFileListMethod = {fg = c.yellow, gui = bold},
+    javascriptBlobMethod = {fg = c.yellow, gui = bold},
+    javascriptURLStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptNumberStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptNumberMethod = {fg = c.yellow, gui = bold},
+    javascriptDOMNodeMethod = {fg = c.yellow, gui = bold},
+    javascriptES6BigIntStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptBOMWindowMethod = {fg = c.yellow, gui = bold},
+    javascriptHeadersMethod = {fg = c.yellow, gui = bold},
+    javascriptRequestMethod = {fg = c.yellow, gui = bold},
+    javascriptResponseMethod = {fg = c.yellow, gui = bold},
+    javascriptES6SetMethod = {fg = c.yellow, gui = bold},
+    javascriptReflectMethod = {fg = c.yellow, gui = bold},
+    javascriptPaymentMethod = {fg = c.yellow, gui = bold},
+    javascriptPaymentResponseMethod = {fg = c.yellow, gui = bold},
+    javascriptTypedArrayStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptGeolocationMethod = {fg = c.yellow, gui = bold},
+    javascriptES6MapMethod = {fg = c.yellow, gui = bold},
+    javascriptServiceWorkerMethod = {fg = c.yellow, gui = bold},
+    javascriptCacheMethod = {fg = c.yellow, gui = bold},
+    javascriptFunctionMethod = {fg = c.yellow, gui = bold},
+    javascriptXHRMethod = {fg = c.yellow, gui = bold},
+    javascriptBOMNavigatorMethod = {fg = c.yellow, gui = bold},
+    javascriptDOMEventTargetMethod = {fg = c.yellow, gui = bold},
+    javascriptDOMEventMethod = {fg = c.yellow, gui = bold},
+    javascriptIntlMethod = {fg = c.yellow, gui = bold},
+    javascriptDOMDocMethod = {fg = c.yellow, gui = bold},
+    javascriptStringStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptStringMethod = {fg = c.yellow, gui = bold},
+    javascriptSymbolStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptRegExpMethod = {fg = c.yellow, gui = bold},
+    javascriptObjectStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptObjectMethod = {fg = c.yellow, gui = bold},
+    javascriptBOMLocationMethod = {fg = c.yellow, gui = bold},
+    javascriptJSONStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptGeneratorMethod = {fg = c.yellow, gui = bold},
+    javascriptEncodingMethod = {fg = c.yellow, gui = bold},
+    javascriptPromiseStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptPromiseMethod = {fg = c.yellow, gui = bold},
+    javascriptBOMHistoryMethod = {fg = c.yellow, gui = bold},
+    javascriptDOMFormMethod = {fg = c.yellow, gui = bold},
+    javascriptClipboardMethod = {fg = c.yellow, gui = bold},
+    javascriptBroadcastMethod = {fg = c.yellow, gui = bold},
+    javascriptDateStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptDateMethod = {fg = c.yellow, gui = bold},
+    javascriptConsoleMethod = {fg = c.yellow, gui = bold},
+    javascriptArrayStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptArrayMethod = {fg = c.yellow, gui = bold},
+    javascriptMathStaticMethod = {fg = c.yellow, gui = bold},
+    javascriptSubtleCryptoMethod = {fg = c.yellow, gui = bold},
+    javascriptCryptoMethod = {fg = c.yellow, gui = bold},
     javascriptProp = fgs.aqua,
     javascriptBOMWindowProp = fgs.aqua,
     javascriptDOMStorageProp = fgs.aqua,
@@ -535,7 +517,7 @@ hl.langs.javascript = {
     javascriptRegExpStaticProp = fgs.aqua,
     javascriptRegExpProp = fgs.aqua,
     javascriptXHRProp = fgs.aqua,
-    javascriptBOMNavigatorProp = {fg = c.yellow, fmt = bold},
+    javascriptBOMNavigatorProp = {fg = c.yellow, gui = bold},
     javascriptDOMEventProp = fgs.aqua,
     javascriptBOMNetworkProp = fgs.aqua,
     javascriptDOMDocProp = fgs.aqua,
@@ -552,26 +534,26 @@ hl.langs.javascript = {
     -- JavaScript React:
     -- vim-jsx-pretty: https://github.com/maxmellon/vim-jsx-pretty
 
-    jsxTagName = {fg = c.orange, fmt = italic},
-    jsxTag = {fg = c.purple, fmt = bold},
+    jsxTagName = {fg = c.orange, gui = italic},
+    jsxTag = {fg = c.purple, gui = bold},
     jsxOpenPunct = fgs.yellow,
     jsxClosePunct = fgs.blue,
     jsxEscapeJs = fgs.blue,
     jsxAttrib = fgs.green,
-    jsxCloseTag = {fg = c.aqua, fmt = bold},
-    jsxComponentName = {fg = c.blue, fmt = bold},
+    jsxCloseTag = {fg = c.aqua, gui = bold},
+    jsxComponentName = {fg = c.blue, gui = bold},
     -- Treesitter:
     javascriptTSParameter = fgs.aqua,
-    javascriptTSTypeBuiltin = {fg = c.green, fmt = bold},
-    javascriptTSKeywordReturn = {fg = c.red, fmt = bold},
+    javascriptTSTypeBuiltin = {fg = c.green, gui = bold},
+    javascriptTSKeywordReturn = {fg = c.red, gui = bold},
     javascriptTSPunctBracket = fgs.purple,
     javascriptTSPunctSpecial = fgs.green,
     javascriptTSVariableBuiltin = fgs.blue,
     javascriptTSException = fgs.green,
-    javascriptTSConstructor = {fg = c.green, fmt = bold},
-    -- javascriptTSNone = { fg = c.blue, fmt = bold },
+    javascriptTSConstructor = {fg = c.green, gui = bold},
+    -- javascriptTSNone = { fg = c.blue, gui = bold },
     javascriptTSProperty = fgs.aqua,
-    javascriptTSMethod = {fg = c.magenta, fmt = bold},
+    javascriptTSMethod = {fg = c.magenta, gui = bold},
     -- orange/red,
     javascriptTSKeyword = fgs.red
 }
@@ -580,7 +562,7 @@ hl.langs.typescript = {
     -- TypeScript:
     -- vim-typescript: https://github.com/leafgarland/typescript-vim
 
-    typescriptSource = {fg = c.purple, fmt = italic},
+    typescriptSource = {fg = c.purple, gui = italic},
     typescriptMessage = fgs.green,
     typescriptGlobalObjects = fgs.aqua,
     typescriptInterpolation = fgs.green,
@@ -590,7 +572,7 @@ hl.langs.typescript = {
     typescriptParens = fgs.purple,
     -- yats: https:github.com/HerringtonDarkholme/yats.vim
 
-    typescriptMethodAccessor = {fg = c.orange, fmt = italic},
+    typescriptMethodAccessor = {fg = c.orange, gui = italic},
     typescriptVariable = fgs.red,
     typescriptVariableDeclaration = fgs.aqua,
     typescriptAliasDeclaration = fgs.green,
@@ -598,7 +580,7 @@ hl.langs.typescript = {
     typescriptBoolean = fgs.orange,
     typescriptCase = fgs.purple,
     typescriptRepeat = fgs.purple,
-    typescriptEnumKeyword = {fg = c.red, fmt = italic},
+    typescriptEnumKeyword = {fg = c.red, gui = italic},
     typescriptEnum = fgs.green,
     typescriptIdentifierName = fgs.aqua,
     typescriptProp = fgs.aqua,
@@ -618,30 +600,30 @@ hl.langs.typescript = {
     typescriptUnaryOp = fgs.orange,
     typescriptFuncTypeArrow = fgs.purple,
     typescriptFuncComma = fgs.fg0,
-    typescriptFunctionMethod = {fg = c.yellow, fmt = bold},
-    typescriptFuncName = {fg = c.magenta, fmt = bold},
+    typescriptFunctionMethod = {fg = c.yellow, gui = bold},
+    typescriptFuncName = {fg = c.magenta, gui = bold},
     typescriptFuncKeyword = fgs.red,
     typescriptClassName = fgs.green,
     typescriptClassHeritage = fgs.green,
     typescriptInterfaceHeritage = fgs.green,
     typescriptIdentifier = fgs.purple,
     typescriptGlobal = fgs.purple,
-    typescriptOperator = {fg = c.red, fmt = italic},
-    typescriptNodeGlobal = {fg = c.purple, fmt = italic},
-    typescriptExport = {fg = c.purple, fmt = italic},
+    typescriptOperator = {fg = c.red, gui = italic},
+    typescriptNodeGlobal = {fg = c.purple, gui = italic},
+    typescriptExport = {fg = c.purple, gui = italic},
     typescriptDefaultParam = fgs.orange,
-    typescriptImport = {fg = c.red, fmt = italic},
+    typescriptImport = {fg = c.red, gui = italic},
     typescriptTypeParameter = fgs.green,
     typescriptReadonlyModifier = fgs.orange,
     typescriptAccessibilityModifier = fgs.orange,
-    typescriptAmbientDeclaration = {fg = c.red, fmt = italic},
+    typescriptAmbientDeclaration = {fg = c.red, gui = italic},
     typescriptTemplateSubstitution = fgs.green,
     typescriptTemplateSB = fgs.green,
     typescriptExceptions = fgs.green,
-    typescriptCastKeyword = {fg = c.red, fmt = italic},
+    typescriptCastKeyword = {fg = c.red, gui = italic},
     typescriptOptionalMark = fgs.orange,
     typescriptNull = fgs.aqua,
-    typescriptMappedIn = {fg = c.red, fmt = italic},
+    typescriptMappedIn = {fg = c.red, gui = italic},
     typescriptTernaryOp = fgs.orange,
     typescriptParenExp = fgs.blue,
     typescriptIndexExpr = fgs.blue,
@@ -657,55 +639,55 @@ hl.langs.typescript = {
     typescriptGlobalRegExpDot = fgs.coyote_brown1,
     typescriptGlobalPromiseDot = fgs.coyote_brown1,
     typescriptGlobalURLDot = fgs.coyote_brown1,
-    typescriptGlobalMethod = {fg = c.yellow, fmt = bold},
-    typescriptDOMStorageMethod = {fg = c.yellow, fmt = bold},
-    typescriptFileMethod = {fg = c.yellow, fmt = bold},
-    typescriptFileReaderMethod = {fg = c.yellow, fmt = bold},
-    typescriptFileListMethod = {fg = c.yellow, fmt = bold},
-    typescriptBlobMethod = {fg = c.yellow, fmt = bold},
-    typescriptURLStaticMethod = {fg = c.yellow, fmt = bold},
-    typescriptNumberStaticMethod = {fg = c.yellow, fmt = bold},
-    typescriptNumberMethod = {fg = c.yellow, fmt = bold},
-    typescriptDOMNodeMethod = {fg = c.yellow, fmt = bold},
-    typescriptPaymentMethod = {fg = c.yellow, fmt = bold},
-    typescriptPaymentResponseMethod = {fg = c.yellow, fmt = bold},
-    typescriptHeadersMethod = {fg = c.yellow, fmt = bold},
-    typescriptRequestMethod = {fg = c.yellow, fmt = bold},
-    typescriptResponseMethod = {fg = c.yellow, fmt = bold},
-    typescriptES6SetMethod = {fg = c.yellow, fmt = bold},
-    typescriptReflectMethod = {fg = c.yellow, fmt = bold},
-    typescriptBOMWindowMethod = {fg = c.yellow, fmt = bold},
-    typescriptGeolocationMethod = {fg = c.yellow, fmt = bold},
-    typescriptCacheMethod = {fg = c.yellow, fmt = bold},
-    typescriptES6MapMethod = {fg = c.yellow, fmt = bold},
-    typescriptRegExpMethod = {fg = c.yellow, fmt = bold},
-    typescriptXHRMethod = {fg = c.yellow, fmt = bold},
-    typescriptBOMNavigatorMethod = {fg = c.yellow, fmt = bold},
-    typescriptServiceWorkerMethod = {fg = c.yellow, fmt = bold},
-    typescriptIntlMethod = {fg = c.yellow, fmt = bold},
-    typescriptDOMEventTargetMethod = {fg = c.yellow, fmt = bold},
-    typescriptDOMEventMethod = {fg = c.yellow, fmt = bold},
-    typescriptDOMDocMethod = {fg = c.yellow, fmt = bold},
-    typescriptStringStaticMethod = {fg = c.yellow, fmt = bold},
-    typescriptStringMethod = {fg = c.yellow, fmt = bold},
-    typescriptSymbolStaticMethod = {fg = c.yellow, fmt = bold},
-    typescriptObjectStaticMethod = {fg = c.yellow, fmt = bold},
-    typescriptObjectMethod = {fg = c.yellow, fmt = bold},
-    typescriptJSONStaticMethod = {fg = c.yellow, fmt = bold},
-    typescriptEncodingMethod = {fg = c.yellow, fmt = bold},
-    typescriptBOMLocationMethod = {fg = c.yellow, fmt = bold},
-    typescriptPromiseStaticMethod = {fg = c.yellow, fmt = bold},
-    typescriptPromiseMethod = {fg = c.yellow, fmt = bold},
-    typescriptSubtleCryptoMethod = {fg = c.yellow, fmt = bold},
-    typescriptCryptoMethod = {fg = c.yellow, fmt = bold},
-    typescriptBOMHistoryMethod = {fg = c.yellow, fmt = bold},
-    typescriptDOMFormMethod = {fg = c.yellow, fmt = bold},
-    typescriptConsoleMethod = {fg = c.yellow, fmt = bold},
-    typescriptDateStaticMethod = {fg = c.yellow, fmt = bold},
-    typescriptDateMethod = {fg = c.yellow, fmt = bold},
-    typescriptArrayStaticMethod = {fg = c.yellow, fmt = bold},
-    typescriptArrayMethod = {fg = c.yellow, fmt = bold},
-    typescriptMathStaticMethod = {fg = c.yellow, fmt = bold},
+    typescriptGlobalMethod = {fg = c.yellow, gui = bold},
+    typescriptDOMStorageMethod = {fg = c.yellow, gui = bold},
+    typescriptFileMethod = {fg = c.yellow, gui = bold},
+    typescriptFileReaderMethod = {fg = c.yellow, gui = bold},
+    typescriptFileListMethod = {fg = c.yellow, gui = bold},
+    typescriptBlobMethod = {fg = c.yellow, gui = bold},
+    typescriptURLStaticMethod = {fg = c.yellow, gui = bold},
+    typescriptNumberStaticMethod = {fg = c.yellow, gui = bold},
+    typescriptNumberMethod = {fg = c.yellow, gui = bold},
+    typescriptDOMNodeMethod = {fg = c.yellow, gui = bold},
+    typescriptPaymentMethod = {fg = c.yellow, gui = bold},
+    typescriptPaymentResponseMethod = {fg = c.yellow, gui = bold},
+    typescriptHeadersMethod = {fg = c.yellow, gui = bold},
+    typescriptRequestMethod = {fg = c.yellow, gui = bold},
+    typescriptResponseMethod = {fg = c.yellow, gui = bold},
+    typescriptES6SetMethod = {fg = c.yellow, gui = bold},
+    typescriptReflectMethod = {fg = c.yellow, gui = bold},
+    typescriptBOMWindowMethod = {fg = c.yellow, gui = bold},
+    typescriptGeolocationMethod = {fg = c.yellow, gui = bold},
+    typescriptCacheMethod = {fg = c.yellow, gui = bold},
+    typescriptES6MapMethod = {fg = c.yellow, gui = bold},
+    typescriptRegExpMethod = {fg = c.yellow, gui = bold},
+    typescriptXHRMethod = {fg = c.yellow, gui = bold},
+    typescriptBOMNavigatorMethod = {fg = c.yellow, gui = bold},
+    typescriptServiceWorkerMethod = {fg = c.yellow, gui = bold},
+    typescriptIntlMethod = {fg = c.yellow, gui = bold},
+    typescriptDOMEventTargetMethod = {fg = c.yellow, gui = bold},
+    typescriptDOMEventMethod = {fg = c.yellow, gui = bold},
+    typescriptDOMDocMethod = {fg = c.yellow, gui = bold},
+    typescriptStringStaticMethod = {fg = c.yellow, gui = bold},
+    typescriptStringMethod = {fg = c.yellow, gui = bold},
+    typescriptSymbolStaticMethod = {fg = c.yellow, gui = bold},
+    typescriptObjectStaticMethod = {fg = c.yellow, gui = bold},
+    typescriptObjectMethod = {fg = c.yellow, gui = bold},
+    typescriptJSONStaticMethod = {fg = c.yellow, gui = bold},
+    typescriptEncodingMethod = {fg = c.yellow, gui = bold},
+    typescriptBOMLocationMethod = {fg = c.yellow, gui = bold},
+    typescriptPromiseStaticMethod = {fg = c.yellow, gui = bold},
+    typescriptPromiseMethod = {fg = c.yellow, gui = bold},
+    typescriptSubtleCryptoMethod = {fg = c.yellow, gui = bold},
+    typescriptCryptoMethod = {fg = c.yellow, gui = bold},
+    typescriptBOMHistoryMethod = {fg = c.yellow, gui = bold},
+    typescriptDOMFormMethod = {fg = c.yellow, gui = bold},
+    typescriptConsoleMethod = {fg = c.yellow, gui = bold},
+    typescriptDateStaticMethod = {fg = c.yellow, gui = bold},
+    typescriptDateMethod = {fg = c.yellow, gui = bold},
+    typescriptArrayStaticMethod = {fg = c.yellow, gui = bold},
+    typescriptArrayMethod = {fg = c.yellow, gui = bold},
+    typescriptMathStaticMethod = {fg = c.yellow, gui = bold},
     typescriptStringProperty = fgs.aqua,
     typescriptDOMStorageProp = fgs.aqua,
     typescriptFileReaderProp = fgs.aqua,
@@ -724,7 +706,7 @@ hl.langs.typescript = {
     typescriptES6MapProp = fgs.aqua,
     typescriptRegExpStaticProp = fgs.aqua,
     typescriptRegExpProp = fgs.aqua,
-    typescriptBOMNavigatorProp = {fg = c.yellow, fmt = bold},
+    typescriptBOMNavigatorProp = {fg = c.yellow, gui = bold},
     typescriptXHRProp = fgs.aqua,
     typescriptDOMEventProp = fgs.aqua,
     typescriptDOMDocProp = fgs.aqua,
@@ -738,30 +720,30 @@ hl.langs.typescript = {
     typescriptMathStaticProp = fgs.aqua,
     -- Treesitter:
     typescriptTSParameter = fgs.aqua,
-    typescriptTSTypeBuiltin = {fg = c.green, fmt = bold},
-    typescriptTSKeywordReturn = {fg = c.red, fmt = bold},
+    typescriptTSTypeBuiltin = {fg = c.green, gui = bold},
+    typescriptTSKeywordReturn = {fg = c.red, gui = bold},
     typescriptTSPunctBracket = fgs.purple,
     typescriptTSPunctSpecial = fgs.green,
     typescriptTSPunctDelimiter = fgs.purple,
     typescriptTSVariableBuiltin = fgs.blue,
     typescriptTSException = fgs.orange,
-    typescriptTSConstructor = {fg = c.wave_red, fmt = bold},
-    -- typescriptTSNone = { fg = c.blue, fmt = bold },
+    typescriptTSConstructor = {fg = c.wave_red, gui = bold},
+    -- typescriptTSNone = { fg = c.blue, gui = bold },
     typescriptTSProperty = fgs.aqua,
-    typescriptTSMethod = {fg = c.magenta, fmt = bold},
+    typescriptTSMethod = {fg = c.magenta, gui = bold},
     -- orange/red,
     typescriptTSKeyword = fgs.red
 }
 
 hl.langs.tsx = {
-    tsxTSMethod = {fg = c.magenta, fmt = bold},
-    tsxTSConstructor = {fg = c.wave_red, fmt = bold},
+    tsxTSMethod = {fg = c.magenta, gui = bold},
+    tsxTSConstructor = {fg = c.wave_red, gui = bold},
     tsxTSProperty = fgs.aqua,
     tsxTSPunctBracket = fgs.purple,
     tsxTSTagAttribute = fgs.yellow,
     tsxTSTag = fgs.orange,
     tsxTSVariableBuiltin = fgs.blue,
-    tsxTSException = fgs.orange,
+    tsxTSException = fgs.orange
 }
 
 hl.langs.dart = {
@@ -770,9 +752,9 @@ hl.langs.dart = {
     dartCoreClasses = fgs.aqua,
     dartTypeName = fgs.aqua,
     dartInterpolation = fgs.blue,
-    dartTypeDef = {fg = c.red, fmt = italic},
-    dartClassDecl = {fg = c.red, fmt = italic},
-    dartLibrary = {fg = c.purple, fmt = italic},
+    dartTypeDef = {fg = c.red, gui = italic},
+    dartClassDecl = {fg = c.red, gui = italic},
+    dartLibrary = {fg = c.purple, gui = italic},
     dartMetadata = fgs.blue
 }
 
@@ -788,7 +770,7 @@ hl.langs.coffeescript = {
     coffeeParens = fgs.blue,
     coffeeBrackets = fgs.blue,
     coffeeCurlies = fgs.blue,
-    coffeeOperator = {fg = c.red, fmt = italic},
+    coffeeOperator = {fg = c.red, gui = italic},
     coffeeStatement = fgs.orange,
     coffeeSpecialIdent = fgs.purple,
     coffeeObject = fgs.purple,
@@ -796,18 +778,18 @@ hl.langs.coffeescript = {
 }
 
 hl.langs.html = {
-    htmlTSTagAttribute = {fg = c.green, fmt = bold},
+    htmlTSTagAttribute = {fg = c.green, gui = bold},
     htmlTSText = fgs.fg0,
-    htmlTSTag = {fg = c.red, fmt = bold},
-    htmlTSTagDelimiter = {fg = c.magenta, fmt = bold},
+    htmlTSTag = {fg = c.red, gui = bold},
+    htmlTSTagDelimiter = {fg = c.magenta, gui = bold}
 }
 
 hl.langs.objectivec = {
-    objcModuleImport = {fg = c.purple, fmt = italic},
-    objcException = {fg = c.red, fmt = italic},
+    objcModuleImport = {fg = c.purple, gui = italic},
+    objcException = {fg = c.red, gui = italic},
     objcProtocolList = fgs.aqua,
-    objcObjDef = {fg = c.purple, fmt = italic},
-    objcDirective = {fg = c.red, fmt = italic},
+    objcObjDef = {fg = c.purple, gui = italic},
+    objcDirective = {fg = c.red, gui = italic},
     objcPropertyAttribute = fgs.orange,
     objcHiddenArgument = fgs.aqua
 }
@@ -820,26 +802,26 @@ hl.langs.python = {
     pythonExClass = fgs.purple,
     pythonBuiltinType = fgs.green,
     pythonBuiltinObj = fgs.blue,
-    pythonDottedName = {fg = c.purple, fmt = italic},
-    pythonBuiltinFunc = {fg = c.yellow, fmt = bold},
-    pythonFunction = {fg = c.aqua, fmt = bold},
+    pythonDottedName = {fg = c.purple, gui = italic},
+    pythonBuiltinFunc = {fg = c.yellow, gui = bold},
+    pythonFunction = {fg = c.aqua, gui = bold},
     pythonDecorator = fgs.orange,
-    pythonInclude = {fg = c.purple, fmt = italic},
-    pythonImport = {fg = c.purple, fmt = italic},
+    pythonInclude = {fg = c.purple, gui = italic},
+    pythonImport = {fg = c.purple, gui = italic},
     pythonRun = fgs.blue,
     pythonCoding = fgs.coyote_brown1,
     pythonOperator = fgs.orange,
-    pythonConditional = {fg = c.red, fmt = italic},
-    pythonRepeat = {fg = c.red, fmt = italic},
-    pythonException = {fg = c.red, fmt = italic},
+    pythonConditional = {fg = c.red, gui = italic},
+    pythonRepeat = {fg = c.red, gui = italic},
+    pythonException = {fg = c.red, gui = italic},
     pythonNone = fgs.aqua,
     pythonDot = fgs.coyote_brown1,
     -- semshi: https://github.com/numirias/semshi,
-    semshiUnresolved = {fg = c.green, fmt = undercurl},
+    semshiUnresolved = {fg = c.green, gui = undercurl},
     semshiImported = fgs.purple,
     semshiParameter = fgs.blue,
     semshiParameterUnused = fgs.coyote_brown1,
-    semshiSelf = {fg = c.purple, fmt = italic},
+    semshiSelf = {fg = c.purple, gui = italic},
     semshiGlobal = fgs.green,
     semshiBuiltin = fgs.green,
     semshiAttribute = fgs.aqua,
@@ -849,11 +831,11 @@ hl.langs.python = {
     semshiErrorChar = fgs.red,
     semshiSelected = {bg = c.fg2},
     -- Treesitter:
-    pythonTSType = {fg = c.green, fmt = bold},
+    pythonTSType = {fg = c.green, gui = bold},
     pythonTSConstructor = fgs.magenta,
-    pythonTSKeywordFunction = {fg = c.red, fmt = bold},
+    pythonTSKeywordFunction = {fg = c.red, gui = bold},
     pythonTSConstBuiltin = fgs.purple,
-    pythonTSMethod = {fg = c.purple, fmt = bold},
+    pythonTSMethod = {fg = c.purple, gui = bold},
     pythonTSParameter = fgs.orange,
     pythonTSConstant = fgs.aqua,
     pythonTSField = fgs.fg0,
@@ -870,7 +852,7 @@ hl.langs.kotlin = {
     ktSimpleInterpolation = fgs.green,
     ktComplexInterpolation = fgs.green,
     ktComplexInterpolationBrace = fgs.green,
-    ktStructure = {fg = c.red, fmt = italic},
+    ktStructure = {fg = c.red, gui = italic},
     ktKeyword = fgs.aqua
 }
 
@@ -886,11 +868,11 @@ hl.langs.scala = {
 }
 
 hl.langs.go = {
-    goDirective = {fg = c.purple, fmt = italic},
+    goDirective = {fg = c.purple, gui = italic},
     goConstants = fgs.aqua,
-    goTypeDecl = {fg = c.purple, fmt = italic},
-    goDeclType = {fg = c.orange, fmt = italic},
-    goFunctionCall = {fg = c.green, fmt = bold},
+    goTypeDecl = {fg = c.purple, gui = italic},
+    goDeclType = {fg = c.orange, gui = italic},
+    goFunctionCall = {fg = c.green, gui = bold},
     goSpaceError = {fg = c.coyote_brown1, bg = c.bg_red},
     goVarArgs = fgs.blue,
     goBuiltins = fgs.purple,
@@ -901,9 +883,9 @@ hl.langs.go = {
     goConst = fgs.orange,
     goParamName = fgs.aqua,
     goTSProperty = fgs.blue,
-    goTSMethod = {fg = c.purple, fmt = bold},
-    goTSType = {fg = c.green, fmt = bold},
-    goTSTypeBuiltin = {fg = c.green, fmt = bold},
+    goTSMethod = {fg = c.purple, gui = bold},
+    goTSType = {fg = c.green, gui = bold},
+    goTSTypeBuiltin = {fg = c.green, gui = bold},
     goTSPunctBracket = fgs.purple
 }
 
@@ -916,12 +898,12 @@ hl.langs.rust = {
     rustModPathSep = fgs.coyote_brown1,
     rustSelf = fgs.blue,
     rustSuper = fgs.blue,
-    rustDeriveTrait = {fg = c.purple, fmt = italic},
+    rustDeriveTrait = {fg = c.purple, gui = italic},
     rustEnumVariant = fgs.purple,
     rustMacroVariable = fgs.blue,
     rustAssert = fgs.aqua,
     rustPanic = fgs.aqua,
-    rustPubScopeCrate = {fg = c.purple, fmt = italic},
+    rustPubScopeCrate = {fg = c.purple, gui = italic},
     rustArrowCharacter = fgs.orange,
     rustOperator = fgs.orange,
     -- Treesitter:
@@ -930,15 +912,15 @@ hl.langs.rust = {
     -- rustTSField = fgs.fg0,
     rustTSField = fgs.aqua,
     rustTSFuncMacro = fgs.aqua,
-    rustTSInclude = {fg = c.red, fmt = italic},
+    rustTSInclude = {fg = c.red, gui = italic},
     rustTSLabel = fgs.green,
     rustTSNamespace = fgs.orange,
     rustTSParameter = fgs.orange,
     rustTSPunctBracket = fgs.purple,
     rustTSPunctSpecial = fgs.magenta,
     rustTSStringEscape = fgs.green,
-    rustTSType = {fg = c.green, fmt = bold},
-    rustTSTypeBuiltin = {fg = c.green, fmt = bold},
+    rustTSType = {fg = c.green, gui = bold},
+    rustTSTypeBuiltin = {fg = c.green, gui = bold},
     rustTSVariableBuiltin = fgs.blue
 }
 
@@ -957,22 +939,22 @@ hl.langs.php = {
     -- php.vim: https://github.com/StanAngeloff/php.vim
     phpParent = fgs.fg0,
     phpNowDoc = fgs.yellow,
-    phpFunction = {fg = c.yellow, fmt = bold},
-    phpMethod = {fg = c.yellow, fmt = bold},
+    phpFunction = {fg = c.yellow, gui = bold},
+    phpMethod = {fg = c.yellow, gui = bold},
     phpClass = fgs.orange,
     phpSuperglobals = fgs.purple,
-    phpFunctions = {fg = c.purple, fmt = bold},
+    phpFunctions = {fg = c.purple, gui = bold},
     phpMethods = fgs.aqua,
     phpStructure = fgs.purple,
     phpOperator = fgs.purple,
     phpMemberSelector = fgs.fg0,
-    phpVarSelector = {fg = c.orange, fmt = italic},
-    phpIdentifier = {fg = c.orange, fmt = italic},
+    phpVarSelector = {fg = c.orange, gui = italic},
+    phpIdentifier = {fg = c.orange, gui = italic},
     phpBoolean = fgs.aqua,
     phpNumber = fgs.orange,
     phpHereDoc = fgs.green,
-    phpSCKeyword = {fg = c.purple, fmt = italic},
-    phpFCKeyword = {fg = c.purple, fmt = italic},
+    phpSCKeyword = {fg = c.purple, gui = italic},
+    phpFCKeyword = {fg = c.purple, gui = italic},
     phpRegion = fgs.blue
 }
 
@@ -981,12 +963,12 @@ hl.langs.ruby = {
     -- builtin: https://github.com/vim-ruby/vim-ruby
     rubyStringDelimiter = fgs.yellow,
     rubyModuleName = fgs.purple,
-    rubyMacro = {fg = c.red, fmt = italic},
-    rubyKeywordAsMethod = {fg = c.yellow, fmt = bold},
+    rubyMacro = {fg = c.red, gui = italic},
+    rubyKeywordAsMethod = {fg = c.yellow, gui = bold},
     rubyInterpolationDelimiter = fgs.green,
     rubyInterpolation = fgs.green,
     rubyDefinedOperator = fgs.orange,
-    rubyDefine = {fg = c.red, fmt = italic},
+    rubyDefine = {fg = c.red, gui = italic},
     rubyBlockParameterList = fgs.blue,
     rubyAttribute = fgs.green,
     rubyArrayDelimiter = fgs.orange,
@@ -1000,7 +982,7 @@ hl.langs.ruby = {
     rubyTSParameter = fgs.orange,
     rubyTSSymbol = fgs.aqua,
     rubyTSNone = fgs.blue,
-    rubyTSType = {fg = c.green, fmt = bold}
+    rubyTSType = {fg = c.green, gui = bold}
     -- rubyTSGlobalVariable = fgs.blue,
 }
 
@@ -1012,27 +994,27 @@ hl.langs.haskell = {
     haskellAssocType = fgs.aqua,
     haskellQuotedType = fgs.aqua,
     haskellType = fgs.aqua,
-    haskellDeclKeyword = {fg = c.red, fmt = italic},
-    haskellWhere = {fg = c.red, fmt = italic},
-    haskellDeriving = {fg = c.purple, fmt = italic},
-    haskellForeignKeywords = {fg = c.purple, fmt = italic}
+    haskellDeclKeyword = {fg = c.red, gui = italic},
+    haskellWhere = {fg = c.red, gui = italic},
+    haskellDeriving = {fg = c.purple, gui = italic},
+    haskellForeignKeywords = {fg = c.purple, gui = italic}
 }
 
 hl.langs.perl = {
     -- Perl:
     -- builtin: https://github.com/vim-perl/vim-perl
-    perlStatementPackage = {fg = c.purple, fmt = italic},
-    perlStatementInclude = {fg = c.purple, fmt = italic},
+    perlStatementPackage = {fg = c.purple, gui = italic},
+    perlStatementInclude = {fg = c.purple, gui = italic},
     perlStatementStorage = fgs.orange,
     perlStatementList = fgs.orange,
     perlMatchStartEnd = fgs.orange,
     perlVarSimpleMemberName = fgs.aqua,
     perlVarSimpleMember = fgs.fg0,
-    perlMethod = {fg = c.yellow, fmt = bold},
+    perlMethod = {fg = c.yellow, gui = bold},
     perlOperator = fgs.red,
     podVerbatimLine = fgs.yellow,
     podCmdText = fgs.green,
-    perlDATA = {fg = c.orange, fmt = italic},
+    perlDATA = {fg = c.orange, gui = italic},
     perlBraces = fgs.purple,
     perlTSVariable = fgs.blue
 }
@@ -1041,18 +1023,18 @@ hl.langs.lua = {
     luaTSProperty = fgs.green,
     luaTSField = fgs.aqua,
     luaTSPunctBracket = fgs.purple,
-    luaTSConstructor = {fg = c.green, fmt = bold},
-    luaTSConstant = {fg = c.green, fmt = bold},
+    luaTSConstructor = {fg = c.green, gui = bold},
+    luaTSConstant = {fg = c.green, gui = bold},
     luaTSKeywordFunction = fgs.red,
     -- When cursorholding
-    luaFuncTable = {fg = c.red, fmt = bold}
+    luaFuncTable = {fg = c.red, gui = bold}
 }
 
 hl.langs.teal = {
     tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
     tealTSParameter = fgs.aqua,
     tealTSPunctBracket = fgs.purple,
-    tealTSFunction = {fg = c.magenta, fmt = bold} -- doesn't pick up function definitions
+    tealTSFunction = {fg = c.magenta, gui = bold} -- doesn't pick up function definitions
 }
 
 hl.langs.ocaml = {
@@ -1081,11 +1063,11 @@ hl.langs.erlang = {
     -- Erlang:
     -- builtin: https://github.com/vim-erlang/vim-erlang-runtime
     erlangAtom = fgs.aqua,
-    erlangLocalFuncRef = {fg = c.yellow, fmt = bold},
-    erlangLocalFuncCall = {fg = c.yellow, fmt = bold},
-    erlangGlobalFuncRef = {fg = c.yellow, fmt = bold},
-    erlangGlobalFuncCall = {fg = c.yellow, fmt = bold},
-    erlangAttribute = {fg = c.purple, fmt = italic},
+    erlangLocalFuncRef = {fg = c.yellow, gui = bold},
+    erlangLocalFuncCall = {fg = c.yellow, gui = bold},
+    erlangGlobalFuncRef = {fg = c.yellow, gui = bold},
+    erlangGlobalFuncCall = {fg = c.yellow, gui = bold},
+    erlangAttribute = {fg = c.purple, gui = italic},
     erlangPipe = fgs.orange
 }
 
@@ -1098,34 +1080,34 @@ hl.langs.elixir = {
     elixirInterpolationDelimiter = fgs.green,
     elixirSelf = fgs.purple,
     elixirPseudoVariable = fgs.purple,
-    elixirModuleDefine = {fg = c.purple, fmt = italic},
-    elixirBlockDefinition = {fg = c.red, fmt = italic},
-    elixirDefine = {fg = c.red, fmt = italic},
-    elixirPrivateDefine = {fg = c.red, fmt = italic},
-    elixirGuard = {fg = c.red, fmt = italic},
-    elixirPrivateGuard = {fg = c.red, fmt = italic},
-    elixirProtocolDefine = {fg = c.red, fmt = italic},
-    elixirImplDefine = {fg = c.red, fmt = italic},
-    elixirRecordDefine = {fg = c.red, fmt = italic},
-    elixirPrivateRecordDefine = {fg = c.red, fmt = italic},
-    elixirMacroDefine = {fg = c.red, fmt = italic},
-    elixirPrivateMacroDefine = {fg = c.red, fmt = italic},
-    elixirDelegateDefine = {fg = c.red, fmt = italic},
-    elixirOverridableDefine = {fg = c.red, fmt = italic},
-    elixirExceptionDefine = {fg = c.red, fmt = italic},
-    elixirCallbackDefine = {fg = c.red, fmt = italic},
-    elixirStructDefine = {fg = c.red, fmt = italic},
-    elixirExUnitMacro = {fg = c.red, fmt = italic}
+    elixirModuleDefine = {fg = c.purple, gui = italic},
+    elixirBlockDefinition = {fg = c.red, gui = italic},
+    elixirDefine = {fg = c.red, gui = italic},
+    elixirPrivateDefine = {fg = c.red, gui = italic},
+    elixirGuard = {fg = c.red, gui = italic},
+    elixirPrivateGuard = {fg = c.red, gui = italic},
+    elixirProtocolDefine = {fg = c.red, gui = italic},
+    elixirImplDefine = {fg = c.red, gui = italic},
+    elixirRecordDefine = {fg = c.red, gui = italic},
+    elixirPrivateRecordDefine = {fg = c.red, gui = italic},
+    elixirMacroDefine = {fg = c.red, gui = italic},
+    elixirPrivateMacroDefine = {fg = c.red, gui = italic},
+    elixirDelegateDefine = {fg = c.red, gui = italic},
+    elixirOverridableDefine = {fg = c.red, gui = italic},
+    elixirExceptionDefine = {fg = c.red, gui = italic},
+    elixirCallbackDefine = {fg = c.red, gui = italic},
+    elixirStructDefine = {fg = c.red, gui = italic},
+    elixirExUnitMacro = {fg = c.red, gui = italic}
 }
 
 hl.langs.clojure = {
     -- Clojure:
     -- builtin: https://github.com/guns/vim-clojure-static
-    clojureMacro = {fg = c.purple, fmt = italic},
-    clojureFunc = {fg = c.aqua, fmt = bold},
+    clojureMacro = {fg = c.purple, gui = italic},
+    clojureFunc = {fg = c.aqua, gui = bold},
     clojureConstant = fgs.green,
-    clojureSpecial = {fg = c.red, fmt = italic},
-    clojureDefine = {fg = c.red, fmt = italic},
+    clojureSpecial = {fg = c.red, gui = italic},
+    clojureDefine = {fg = c.red, gui = italic},
     clojureKeyword = fgs.orange,
     clojureVariable = fgs.blue,
     clojureMeta = fgs.green,
@@ -1133,10 +1115,10 @@ hl.langs.clojure = {
 }
 
 hl.langs.r = {
-    rFunction = {fg = c.purple, fmt = bold},
-    rType = {fg = c.green, fmt = bold},
-    rRegion = {fg = c.purple, fmt = bold},
-    rAssign = {fg = c.red, fmt = bold},
+    rFunction = {fg = c.purple, gui = bold},
+    rType = {fg = c.green, gui = bold},
+    rRegion = {fg = c.purple, gui = bold},
+    rAssign = {fg = c.red, gui = bold},
     rBoolean = fgs.orange,
     rOperator = fgs.orange,
     rSection = fgs.orange,
@@ -1145,10 +1127,10 @@ hl.langs.r = {
 
 hl.langs.matlab = {
     matlabSemicolon = fgs.fg0,
-    matlabFunction = {fg = c.red, fmt = italic},
-    matlabImplicit = {fg = c.yellow, fmt = bold},
+    matlabFunction = {fg = c.red, gui = italic},
+    matlabImplicit = {fg = c.yellow, gui = bold},
     matlabDelimiter = fgs.fg0,
-    matlabOperator = {fg = c.yellow, fmt = bold},
+    matlabOperator = {fg = c.yellow, gui = bold},
     matlabArithmeticOperator = fgs.orange,
     matlabRelationalOperator = fgs.orange,
     matlabLogicalOperator = fgs.orange
@@ -1156,14 +1138,14 @@ hl.langs.matlab = {
 
 hl.langs.vim = {
     -- vimMapModKey = fgs.orange,
-    vimCommentTitle = {fg = c.coyote_brown1, bg = c.none, fmt = bold},
+    vimCommentTitle = {fg = c.coyote_brown1, bg = c.none, gui = bold},
     vimLet = fgs.orange,
     vimVar = fgs.aqua,
-    vimFunction = {fg = c.magenta, fmt = bold},
+    vimFunction = {fg = c.magenta, gui = bold},
     vimIsCommand = fgs.fg0,
-    vimUserFunc = {fg = c.green, fmt = bold},
-    vimFuncName = {fg = c.green, fmt = bold},
-    vimMap = {fg = c.purple, fmt = italic},
+    vimUserFunc = {fg = c.green, gui = bold},
+    vimFuncName = {fg = c.green, gui = bold},
+    vimMap = {fg = c.purple, gui = italic},
     vimNotation = fgs.aqua,
     vimMapLhs = fgs.yellow,
     vimMapRhs = fgs.yellow,
@@ -1178,10 +1160,10 @@ hl.langs.vim = {
     vimSetSep = fgs.coyote_brown,
     vimContinue = fgs.coyote_brown1,
     -- Non-treesitter Vim looks much better IMO
-    vimTSKeyword = {fg = c.red, fmt = bold},
-    vimTSNamespace = {fg = c.blue, fmt = bold},
-    vimTSFunction = {fg = c.magenta, fmt = bold}
-    -- vimTSVariableBuiltin = {fg = c.green, fmt = bold},
+    vimTSKeyword = {fg = c.red, gui = bold},
+    vimTSNamespace = {fg = c.blue, gui = bold},
+    vimTSFunction = {fg = c.magenta, gui = bold}
+    -- vimTSVariableBuiltin = {fg = c.green, gui = bold},
 }
 
 hl.langs.c = {
@@ -1197,21 +1179,21 @@ hl.langs.c = {
     cTSOperator = fgs.orange,
     -- cTSRepeat = fgs.magenta,
     cTSRepeat = fgs.blue,
-    cTSType = {fg = c.green, fmt = bold},
+    cTSType = {fg = c.green, gui = bold},
     cTSPunctBracket = fgs.purple
     -- cTSProperty = fgs.blue
 }
 
 hl.langs.cpp = {
-    cppStatement = {fg = c.purple, fmt = bold},
+    cppStatement = {fg = c.purple, gui = bold},
     cppTSConstant = fgs.aqua,
     cppTSOperator = fgs.purple,
     cppTSConstMacro = fgs.aqua,
     cppTSNamespace = fgs.orange,
-    cppTSType = {fg = c.green, fmt = bold},
-    cppTSTypeBuiltin = {fg = c.green, fmt = bold},
+    cppTSType = {fg = c.green, gui = bold},
+    cppTSTypeBuiltin = {fg = c.green, gui = bold},
     cppTSKeyword = fgs.red,
-    cppTSInclude = {fg = c.red, fmt = italic},
+    cppTSInclude = {fg = c.red, gui = italic},
     cppTSMethod = fgs.blue,
     cppTSField = fgs.yellow,
     cppTSConstructor = fgs.blue
@@ -1231,24 +1213,26 @@ hl.langs.shell = {
     shVarAssign = fgs.orange,
     shCmdSubRegion = fgs.yellow,
     shCommandSub = fgs.orange,
-    shFunctionOne = {fg = c.yellow, fmt = bold},
-    shFunctionKey = {fg = c.red, fmt = italic},
+    shFunctionOne = {fg = c.yellow, gui = bold},
+    shFunctionKey = {fg = c.red, gui = italic},
+    --- Treesitter
     bashTSFuncBuiltin = fgs.red,
     bashTSParameter = fgs.green,
     bashTSConstant = fgs.blue,
-    bashTSVariable = fgs.orange
+    bashTSPunctSpecial = fgs.aqua,
+    bashTSVariable = fgs.blue
 }
 
 hl.langs.zsh = {
-    zshOptStart = {fg = c.purple, fmt = italic},
+    zshOptStart = {fg = c.purple, gui = italic},
     zshOption = fgs.blue,
     zshSubst = fgs.green,
-    zshFunction = {fg = c.purple, fmt = bold},
+    zshFunction = {fg = c.purple, gui = bold},
     zshDeref = fgs.blue,
     zshTypes = fgs.orange,
     zshVariableDef = fgs.blue,
     zshNumber = fgs.purple,
-    zshCommand = {fg = c.red, fmt = bold},
+    zshCommand = {fg = c.red, gui = bold},
     -- zshFlag = fgs.yellow,
     zshSubstDelim = fgs.purple,
     -- ??
@@ -1256,7 +1240,7 @@ hl.langs.zsh = {
     rOTag = fgs.blue
 }
 
-hl.langs.zig = {zigTSTypeBuiltin = {fg = c.green, fmt = bold}}
+hl.langs.zig = {zigTSTypeBuiltin = {fg = c.green, gui = bold}}
 
 -- ========================== Config Formats ==========================
 
@@ -1264,7 +1248,7 @@ hl.langs.dosini = {
     dosiniLabel = fgs.yellow,
     dosiniValue = fgs.green,
     dosiniNumber = fgs.purple,
-    dosiniHeader = {fg = c.red, fmt = bold}
+    dosiniHeader = {fg = c.red, gui = bold}
 }
 
 hl.langs.makefile = {
@@ -1282,31 +1266,31 @@ hl.langs.json = {
 
 hl.langs.yaml = {
     yamlKey = fgs.orange,
-    yamlConstant = {fg = c.red, fmt = bold},
+    yamlConstant = {fg = c.red, gui = bold},
     yamlBlockMappingKey = fgs.blue,
     yamlFloat = fgs.purple,
     yamlInteger = fgs.purple,
     yamlKeyValueDelimiter = fgs.green,
-    yamlDocumentStart = {fg = c.orange, fmt = bold},
-    yamlDocumentEnd = {fg = c.orange, fmt = bold},
+    yamlDocumentStart = {fg = c.orange, gui = bold},
+    yamlDocumentEnd = {fg = c.orange, gui = bold},
     yamlPlainScalar = fgs.fg0,
     yamlBlockCollectionItemStart = fgs.orange,
-    yamlAnchor = {fg = c.green, fmt = bold},
-    yamlAlias = {fg = c.green, fmt = bold},
-    yamlNodeTag = {fg = c.green, fmt = bold},
+    yamlAnchor = {fg = c.green, gui = bold},
+    yamlAlias = {fg = c.green, gui = bold},
+    yamlNodeTag = {fg = c.green, gui = bold},
     yamlBlockMappingMerge = fgs.green,
-    yamlDirective = {fg = c.red, fmt = bold},
-    yamlYAMLDirective = {fg = c.red, fmt = bold},
+    yamlDirective = {fg = c.red, gui = bold},
+    yamlYAMLDirective = {fg = c.red, gui = bold},
     yamlYAMLVersion = fgs.magenta,
     yamlTSField = fgs.green
 }
 
 hl.langs.toml = {
-    tomlTable = {fg = c.purple, fmt = bold},
+    tomlTable = {fg = c.purple, gui = bold},
     tomlKey = fgs.orange,
     tomlBoolean = fgs.aqua,
-    tomlTableArray = {fg = c.purple, fmt = bold},
-    tomlKeyValueArray = {fg = c.purple, fmt = bold}
+    tomlTableArray = {fg = c.purple, gui = bold},
+    tomlKeyValueArray = {fg = c.purple, gui = bold}
 }
 
 hl.langs.ron = {
@@ -1333,7 +1317,7 @@ hl.langs.gitcommit = {
 local diag_under = utils.tern(undercurl == "undercurl", undercurl, "underline")
 hl.plugins.lsp = {
     LspCxxHlSkippedRegion = fgs.coyote_brown1,
-    LspCxxHlSkippedRegionBeginEnd = {fg = c.purple, fmt = italic},
+    LspCxxHlSkippedRegionBeginEnd = {fg = c.purple, gui = italic},
     LspCxxHlGroupEnumConstant = fgs.aqua,
     LspCxxHlGroupNamespace = fgs.purple,
     LspCxxHlGroupMemberVariable = fgs.aqua,
@@ -1362,10 +1346,10 @@ hl.plugins.lsp = {
     --   fg = c.purple
     -- },
 
-    DiagnosticUnderlineError = {fmt = diag_under, sp = c.red},
-    DiagnosticUnderlineHint = {fmt = diag_under, sp = c.purple},
-    DiagnosticUnderlineInfo = {fmt = diag_under, sp = c.aqua},
-    DiagnosticUnderlineWarn = {fmt = diag_under, sp = c.yellow},
+    DiagnosticUnderlineError = {gui = diag_under, sp = c.red},
+    DiagnosticUnderlineHint = {gui = diag_under, sp = c.purple},
+    DiagnosticUnderlineInfo = {gui = diag_under, sp = c.aqua},
+    DiagnosticUnderlineWarn = {gui = diag_under, sp = c.yellow},
     LspReferenceText = {bg = c.fg2},
     LspReferenceWrite = {bg = c.fg2},
     LspReferenceRead = {bg = c.fg2}
@@ -1413,7 +1397,7 @@ hl.plugins.cmp = {
     CmpItemAbbr = fgs.fg0,
     CmpItemAbbrDeprecated = fgs.fg0,
     CmpItemAbbrMatch = fgs.aqua,
-    CmpItemAbbrMatchFuzzy = {fg = c.cyan, fmt = underline},
+    CmpItemAbbrMatchFuzzy = {fg = c.cyan, gui = underline},
     CmpItemMenu = fgs.grey,
     CmpItemKindDefault = fgs.purple,
     CmpItemKindClass = fgs.yellow,
@@ -1445,12 +1429,12 @@ hl.plugins.cmp = {
 
 hl.plugins.coc = {
     -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
-    CocHoverRange = {fg = c.none, fmt = underbold()}, -- range of current hovered symbol
+    CocHoverRange = {fg = c.none, gui = underbold()}, -- range of current hovered symbol
     CocHighlightText = {bg = c.fg2}, -- Coc cursorhold event
-    CocHintHighlight = {fg = c.none, fmt = undercurl, sp = c.aqua},
-    CocErrorHighlight = {fg = c.none, fmt = undercurl, sp = c.red},
-    CocWarningHighlight = {fg = c.none, fmt = undercurl, sp = c.yellow},
-    CocInfoHighlight = {fg = c.none, fmt = undercurl, sp = c.blue},
+    CocHintHighlight = {fg = c.none, gui = undercurl, sp = c.aqua},
+    CocErrorHighlight = {fg = c.none, gui = undercurl, sp = c.red},
+    CocWarningHighlight = {fg = c.none, gui = undercurl, sp = c.yellow},
+    CocInfoHighlight = {fg = c.none, gui = undercurl, sp = c.blue},
     CocFloating = {fg = c.fg1, bg = c.bg3},
     CocErrorFloat = {fg = c.red, bg = c.bg3},
     CocWarningFloat = {fg = c.green, bg = c.bg3},
@@ -1511,7 +1495,7 @@ hl.plugins.coc = {
     CocPumDeprecated = fgs.red,
     CocPumVirtualText = {fg = c.coyote_brown1},
     -- Tree
-    CocTreeTitle = {fg = c.red, fmt = "bold"},
+    CocTreeTitle = {fg = c.red, gui = "bold"},
     -- Notification
     CocNotificationProgress = {fg = c.blue, bg = "none"},
     -- coc-git
@@ -1542,9 +1526,9 @@ hl.plugins.coc = {
 }
 
 hl.plugins.ale = {
-    ALEError = {fg = c.none, fmt = undercurl, sp = c.red},
-    ALEWarning = {fg = c.none, fmt = undercurl, sp = c.yellow},
-    ALEInfo = {fg = c.none, fmt = undercurl, sp = c.blue},
+    ALEError = {fg = c.none, gui = undercurl, sp = c.red},
+    ALEWarning = {fg = c.none, gui = undercurl, sp = c.yellow},
+    ALEInfo = {fg = c.none, gui = undercurl, sp = c.blue},
     ALEErrorSign = fgs.red,
     ALEWarningSign = fgs.green,
     ALEInfoSign = fgs.blue,
@@ -1556,11 +1540,11 @@ hl.plugins.ale = {
 }
 
 hl.plugins.neomake = {
-    NeomakeError = {fg = c.none, fmt = undercurl, sp = c.red},
+    NeomakeError = {fg = c.none, gui = undercurl, sp = c.red},
     NeomakeErrorSign = fgs.red,
-    NeomakeWarning = {fg = c.none, fmt = undercurl, sp = c.yellow},
+    NeomakeWarning = {fg = c.none, gui = undercurl, sp = c.yellow},
     NeomakeWarningSign = fgs.green,
-    NeomakeInfo = {fg = c.none, fmt = undercurl, sp = c.blue},
+    NeomakeInfo = {fg = c.none, gui = undercurl, sp = c.blue},
     NeomakeInfoSign = fgs.blue,
     NeomakeMessage = fgs.aqua,
     NeomakeMessageSign = fgs.aqua,
@@ -1581,9 +1565,9 @@ hl.plugins.vista = {
     VistaBracket = fgs.coyote_brown1,
     VistaChildrenNr = fgs.orange,
     VistaKind = fgs.purple,
-    VistaScope = {fg = c.red, fmt = bold},
+    VistaScope = {fg = c.red, gui = bold},
     VistaScopeKind = fgs.blue,
-    VistaTag = {fg = c.magenta, fmt = bold},
+    VistaTag = {fg = c.magenta, gui = bold},
     VistaPrefix = fgs.coyote_brown1,
     VistaColon = fgs.yellow,
     VistaIcon = fgs.green,
@@ -1591,10 +1575,10 @@ hl.plugins.vista = {
 }
 
 hl.plugins.gitgutter = {
-    GitGutterAdd = {fg = c.yellow, fmt = bold},
-    GitGutterChange = {fg = c.blue, fmt = bold},
-    GitGutterDelete = {fg = c.red, fmt = bold},
-    GitGutterChangeDelete = {fg = c.purple, fmt = bold},
+    GitGutterAdd = {fg = c.yellow, gui = bold},
+    GitGutterChange = {fg = c.blue, gui = bold},
+    GitGutterDelete = {fg = c.red, gui = bold},
+    GitGutterChangeDelete = {fg = c.purple, gui = bold},
     GitGutterAddLineNr = fgs.green,
     GitGutterChangeLineNr = fgs.blue,
     GitGutterDeleteLineNr = fgs.red,
@@ -1640,7 +1624,7 @@ hl.plugins.whichkey = {
     WhichKeyGroup = fgs.green,
     WhichKeyDesc = fgs.blue,
     WhichKeyFloat = {link = "NormalFloat"},
-    WhichKeyValue = {fg = c.coyote_brown1, fmt = italic} -- any comment
+    WhichKeyValue = {fg = c.coyote_brown1, gui = italic} -- any comment
 }
 
 hl.plugins.defx = {
@@ -1655,15 +1639,15 @@ hl.plugins.floaterm = {
 }
 
 hl.plugins.vimwiki = {
-    VimwikiBold = {fg = c.burple, fmt = "bold"},
+    VimwikiBold = {fg = c.burple, gui = "bold"},
     VimwikiCode = {fg = c.puce},
-    VimwikiItalic = {fg = "#83a598", fmt = "italic"},
-    VimwikiHeader1 = {fg = "#F14A68", fmt = "bold"},
-    VimwikiHeader2 = {fg = "#F06431", fmt = "bold"},
-    VimwikiHeader3 = {fg = "#689d6a", fmt = "bold"},
-    VimwikiHeader4 = {fg = c.green, fmt = "bold"},
-    VimwikiHeader5 = {fg = c.purple, fmt = "bold"},
-    VimwikiHeader6 = {fg = "#458588", fmt = "bold"}
+    VimwikiItalic = {fg = "#83a598", gui = "italic"},
+    VimwikiHeader1 = {fg = "#F14A68", gui = "bold"},
+    VimwikiHeader2 = {fg = "#F06431", gui = "bold"},
+    VimwikiHeader3 = {fg = "#689d6a", gui = "bold"},
+    VimwikiHeader4 = {fg = c.green, gui = "bold"},
+    VimwikiHeader5 = {fg = c.purple, gui = "bold"},
+    VimwikiHeader6 = {fg = "#458588", gui = "bold"}
 }
 
 -- https://github.com/stevearc/aerial.nvim
@@ -1699,8 +1683,8 @@ hl.plugins.aerial = {
 }
 
 hl.plugins.diffview = {
-    DiffviewFilePanelTitle = {fg = c.blue, fmt = bold},
-    DiffviewFilePanelCounter = {fg = c.purple, fmt = bold},
+    DiffviewFilePanelTitle = {fg = c.blue, gui = bold},
+    DiffviewFilePanelCounter = {fg = c.purple, gui = bold},
     DiffviewFilePanelFileName = fgs.fg0,
     DiffviewNormal = hl.common.Normal,
     DiffviewCursorLine = hl.common.CursorLine,
@@ -1732,7 +1716,7 @@ hl.plugins.neogit = {
     -- NeogitDiffContextHighlight = { bg = c.bg4 },
     NeogitDiffDelete = fgs.red,
     -- NeogitDiffDeleteHighlight
-    NeogitHunkHeader = {fg = c.orange, fmt = bold},
+    NeogitHunkHeader = {fg = c.orange, gui = bold},
     -- NeogitHunkHeaderHighlight
     NeogitNotificationError = fgs.bg_red,
     NeogitNotificationInfo = fgs.aqua,
@@ -1762,11 +1746,11 @@ hl.plugins.nvim_tree = {
         fg = utils.tern(cfg.ending_tildes, c.bg3, c.bg0),
         bg = utils.tern(trans, c.none, c.bg0)
     },
-    NvimTreeRootFolder = {fg = c.orange, fmt = "bold"},
+    NvimTreeRootFolder = {fg = c.orange, gui = "bold"},
     NvimTreeGitDirty = fgs.yellow,
     NvimTreeGitNew = fgs.green,
     NvimTreeGitDeleted = fgs.red,
-    NvimTreeSpecialFile = {fg = c.yellow, fmt = "underline"},
+    NvimTreeSpecialFile = {fg = c.yellow, gui = "underline"},
     NvimTreeIndentMarker = fgs.fg0,
     NvimTreeImageFile = {fg = c.puce},
     NvimTreeSymlink = fgs.purple,
@@ -1774,7 +1758,7 @@ hl.plugins.nvim_tree = {
 }
 
 hl.plugins.telescope = {
-    TelescopeSelection = {fg = c.yellow, fmt = bold},
+    TelescopeSelection = {fg = c.yellow, gui = bold},
     TelescopeSelectionCaret = fgs.green,
     TelescopeMultiSelection = fgs.blue,
     TelescopeMultiIcon = fgs.aqua,
@@ -1784,18 +1768,18 @@ hl.plugins.telescope = {
     TelescopePreviewBorder = fgs.magenta,
     TelescopeMatching = fgs.orange,
     TelescopePromptPrefix = fgs.red,
-    TelescopeTitle = {fg = c.purple, fmt = bold}
+    TelescopeTitle = {fg = c.purple, gui = bold}
 }
 
 hl.plugins.dashboard = {
-    DashboardShortCut = {fg = c.red, fmt = bold},
-    DashboardFooter = {fg = c.purple, fmt = bold},
-    DashboardHeader = {fg = c.blue, fmt = bold},
+    DashboardShortCut = {fg = c.red, gui = bold},
+    DashboardFooter = {fg = c.purple, gui = bold},
+    DashboardHeader = {fg = c.blue, gui = bold},
     DashboardCenter = fgs.aqua
 }
 
 hl.plugins.symbols_outline = {
-    FocusedSymbol = {fg = c.bg1, bg = c.yellow, fmt = bold}
+    FocusedSymbol = {fg = c.bg1, bg = c.yellow, gui = bold}
 }
 
 hl.plugins.ts_rainbow = {
@@ -1809,18 +1793,18 @@ hl.plugins.ts_rainbow = {
 }
 
 hl.plugins.indent_blankline = {
-    IndentBlanklineContextChar = {fg = c.bg_red, fmt = "nocombine"}
+    IndentBlanklineContextChar = {fg = c.bg_red, gui = "nocombine"}
 }
 
 hl.plugins.hop = {
-    HopNextKey = {fg = c.red, fmt = bold},
-    HopNextKey1 = {fg = c.deep_lilac, fmt = bold},
+    HopNextKey = {fg = c.red, gui = bold},
+    HopNextKey1 = {fg = c.deep_lilac, gui = bold},
     HopNextKey2 = {fg = utils.darken(c.deep_lilac, 0.7)},
     HopUnmatched = fgs.grey
 }
 
 hl.plugins.sneak = {
-    Sneak = {fg = c.deep_lilac, fmt = bold},
+    Sneak = {fg = c.deep_lilac, gui = bold},
     SneakScope = {bg = c.bg4}
 }
 
@@ -1865,24 +1849,33 @@ hl.plugins.fern = {
 }
 
 function M.setup()
-    vim_highlights(hl.common)
-    vim_highlights(hl.syntax)
-    vim_highlights(hl.treesitter)
+    --BUG: There is a bug in the API that returns true as a key in the table
+    --https://github.com/neovim/neovim/issues/18024
+    --It is fixed now, in Neovim 0.7.2
+    if utils.needs_api_fix then
+        utils.highlight.alt({Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}})
+    else
+        utils.highlight({Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}})
+    end
+
+    utils.highlight(hl.common)
+    utils.highlight(hl.syntax)
+    utils.highlight(hl.treesitter)
 
     for _, group in pairs(hl.langs) do
         if not vim.tbl_contains(cfg.disabled.langs, group) then
-            vim_highlights(group)
+            utils.highlight(group)
         end
     end
 
     for _, group in pairs(hl.plugins) do
         if not vim.tbl_contains(cfg.disabled.plugins, group) then
-            vim_highlights(group)
+            utils.highlight(group)
         end
     end
 
     -- user defined highlights: vim_highlights function cannot be used because it sets an attribute to none if not specified
-    local function replace_color(prefix, color_name)
+    local function replace_color(color_name)
         if not color_name then
             return ""
         end
@@ -1898,25 +1891,20 @@ function M.setup()
                 return ""
             end
         end
-        return prefix .. "=" .. color_name
+        return color_name
     end
 
-    for group_name, group_settings in pairs(cfg.highlights) do
-        if group_settings.link then
-            -- vim.api.nvim_set_hl(0, group_name, group_settings)
-            vim.cmd(("highlight! link %s %s"):format(group_name, group_settings.link))
-        else
-            vim.cmd(
-                ("highlight %s %s %s %s %s"):format(
-                    group_name,
-                    replace_color("guifg", group_settings.fg),
-                    replace_color("guibg", group_settings.bg),
-                    replace_color("guisp", group_settings.sp),
-                    replace_color("gui", group_settings.fmt)
-                )
-            )
-        end
+    local to_hl = {}
+    for group, opts in pairs(cfg.highlights) do
+        opts.fg = replace_color(opts.fg)
+        opts.bg = replace_color(opts.bg)
+        opts.sp = replace_color(opts.sp)
+        opts.gui = replace_color(opts.gui)
+
+        to_hl[group] = opts
     end
+
+    utils.highlight(to_hl)
 end
 
 return M
