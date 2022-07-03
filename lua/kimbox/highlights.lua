@@ -7,7 +7,6 @@ local utils = require("kimbox.utils")
 local log = utils.log
 
 local cfg = vim.g.kimbox_config
-local api = vim.api
 
 local reverse = cfg.allow_reverse and "reverse" or "none"
 local bold = cfg.allow_bold and "bold" or "none"
@@ -1874,37 +1873,39 @@ function M.setup()
         end
     end
 
-    -- user defined highlights: vim_highlights function cannot be used because it sets an attribute to none if not specified
-    local function replace_color(color_name)
-        if not color_name then
-            return ""
-        end
-        if color_name:sub(1, 1) == "$" then
-            local name = color_name:sub(2, -1)
-            color_name = c[name]
+    if cfg.highlights then
+        -- user defined highlights
+        local function replace_color(color_name)
             if not color_name then
-                vim.schedule(
-                    function()
-                        log.err(("unknown color: '%s'"):format(name))
-                    end
-                )
                 return ""
             end
+            if color_name:sub(1, 1) == "$" then
+                local name = color_name:sub(2, -1)
+                color_name = c[name]
+                if not color_name then
+                    vim.schedule(
+                        function()
+                            log.err(("unknown color: '%s'"):format(name))
+                        end
+                    )
+                    return ""
+                end
+            end
+            return color_name
         end
-        return color_name
+
+        local to_hl = {}
+        for group, opts in pairs(cfg.highlights) do
+            opts.fg = replace_color(opts.fg)
+            opts.bg = replace_color(opts.bg)
+            opts.sp = replace_color(opts.sp)
+            opts.gui = replace_color(opts.gui)
+
+            to_hl[group] = opts
+        end
+
+        utils.highlight(to_hl)
     end
-
-    local to_hl = {}
-    for group, opts in pairs(cfg.highlights) do
-        opts.fg = replace_color(opts.fg)
-        opts.bg = replace_color(opts.bg)
-        opts.sp = replace_color(opts.sp)
-        opts.gui = replace_color(opts.gui)
-
-        to_hl[group] = opts
-    end
-
-    utils.highlight(to_hl)
 end
 
 return M
