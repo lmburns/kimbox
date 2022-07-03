@@ -12,66 +12,8 @@ M.log = {
 
 M.is_nvim = fn.has("nvim") == 1
 M.has_api = M.is_nvim and fn.has("nvim-0.7") == 1
+M.needs_api_fix = M.is_nvim and fn.has("nvim-0.7.2") == 0
 
----Convert a `gui=...` into valid arguments for `api.nvim_set_hl`
----@param style string
----@return table
-M.convert_gui = function(style)
-    if not style or style:lower() == "none" then
-        return {}
-    end
-
-    local gui = {}
-    style = style:lower()
-    for token in style:gmatch("([^,]+)") do
-        gui[token] = true
-    end
-
-    return gui
-end
-
----Highlight using Vim's language
----@param highlights any
-local function vim_highlights(highlights)
-    local to_highlight = {}
-    for group, opts in pairs(highlights) do
-        if opts.link then
-            -- vim.api.nvim_set_hl(0, group_name, group_settings)
-            table.insert(to_highlight, ("highlight! link %s %s"):format(group, opts.link))
-        else
-            table.insert(
-                to_highlight,
-                ("hi %s guifg=%s guibg=%s guisp=%s gui=%s"):format(
-                    group,
-                    opts.fg or "none",
-                    opts.bg or "none",
-                    opts.sp or "none",
-                    opts.gui or "none"
-                )
-            )
-        end
-    end
-    vim.cmd(table.concat(to_highlight, "\n"))
-end
-
----Highlight using the Nvim API
----@param highlights any
-local function nvim_highlights(highlights)
-    for group, opts in pairs(highlights) do
-        if not utils.is_empty(opts.link) then
-            api.nvim_set_hl(0, group, {link = opts.link})
-        else
-            local values = M.convert_gui(opts.gui)
-            values.bg = opts.bg
-            values.fg = opts.fg
-            values.sp = opts.sp
-            api.nvim_set_hl(0, group, values)
-        end
-    end
-end
-
--- M.highlight = M.tern(M.has_api, nvim_highlights, vim_highlights)0
-M.highlight = nvim_highlights
 ---Echo a message with `nvim_echo`
 ---@param msg string message
 ---@param hl string highlight group
@@ -204,5 +146,76 @@ end
 M.lighten = function(hex, amount, fg)
     return M.blend(hex, fg or M.fg, math.abs(amount))
 end
+
+---Convert a `gui=...` into valid arguments for `api.nvim_set_hl`
+---@param style string
+---@return table
+M.convert_gui = function(style)
+    if not style or style:lower() == "none" then
+        return {}
+    end
+
+    local gui = {}
+    style = style:lower()
+    for token in style:gmatch("([^,]+)") do
+        gui[token] = true
+    end
+
+    return gui
+end
+
+---Highlight using Vim's language
+---@param highlights any
+local function vim_highlights(highlights)
+    local to_highlight = {}
+    for group, opts in pairs(highlights) do
+        if opts.link then
+            -- vim.api.nvim_set_hl(0, group_name, group_settings)
+            table.insert(to_highlight, ("highlight! link %s %s"):format(group, opts.link))
+        else
+            table.insert(
+                to_highlight,
+                ("hi %s guifg=%s guibg=%s guisp=%s gui=%s"):format(
+                    group,
+                    opts.fg or "none",
+                    opts.bg or "none",
+                    opts.sp or "none",
+                    opts.gui or "none"
+                )
+            )
+        end
+    end
+    vim.cmd(table.concat(to_highlight, "\n"))
+end
+
+---Highlight using the Nvim API
+---@param highlights any
+local function nvim_highlights(highlights)
+    for group, opts in pairs(highlights) do
+        if not M.is_empty(opts.link) then
+            api.nvim_set_hl(0, group, {link = opts.link})
+        else
+            local values = M.convert_gui(opts.gui)
+            values.bg = opts.bg
+            values.fg = opts.fg
+            values.sp = opts.sp
+            api.nvim_set_hl(0, group, values)
+        end
+    end
+end
+
+-- M.highlight = M.tern(M.has_api, nvim_highlights, vim_highlights)
+M.highlight =
+    setmetatable(
+    {
+        alt = vim_highlights
+    },
+    {
+        __call = function(_, ...)
+            local hl = M.tern(M.has_api, nvim_highlights, vim_highlights)
+            hl(...)
+        end
+    }
+)
 
 return M
