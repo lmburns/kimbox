@@ -1810,7 +1810,25 @@ hl.plugins.dapui = {
     DapUIBreakpointsCurrentLine = fgs.blue,
     DapUIBreakpointsPath = fgs.blue,
     DapUIBreakpointsInfo = fgs.green,
-    DapUIModifiedValue = fgs.yellow,
+    DapUIModifiedValue = fgs.yellow
+}
+
+hl.plugins.packer = {
+    packerSuccess = fgs.green,
+    packerWorking = fgs.yellow,
+    packerFail = fgs.red,
+    packerStatusSuccess = fgs.fg0,
+    packerStatusFail = fgs.fg0,
+    packerString = fgs.yellow,
+    packerPackageNotLoaded = {fg = c.grullo_grey},
+    packerRelDate = {fg = c.grullo_grey},
+    packerPackageName = fgs.green,
+    packerOutput = fgs.orange,
+    packerHash = fgs.magenta,
+    packerTimeTrivial = fgs.blue,
+    packerTimeHigh = fgs.red,
+    packerTimeMedium = fgs.yellow,
+    packerTimeLow = fgs.green,
 }
 
 hl.plugins.hop = {
