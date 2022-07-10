@@ -1795,6 +1795,24 @@ hl.plugins.indent_blankline = {
     IndentBlanklineContextChar = {fg = c.bg_red, gui = "nocombine"}
 }
 
+hl.plugins.dapui = {
+    DapUIScope = fgs.blue,
+    DapUIType = fgs.purple,
+    DapUIDecoration = fgs.blue,
+    DapUIThread = fgs.green,
+    DapUIStoppedThread = fgs.red,
+    DapUISource = fgs.green,
+    DapUILineNumber = fgs.orange,
+    DapUIFloatBorder = fgs.purple,
+    DapUIWatchesEmpty = fgs.red,
+    DapUIWatchesValue = fgs.green,
+    DapUIError = fgs.red,
+    DapUIBreakpointsCurrentLine = fgs.blue,
+    DapUIBreakpointsPath = fgs.blue,
+    DapUIBreakpointsInfo = fgs.green,
+    DapUIModifiedValue = fgs.yellow,
+}
+
 hl.plugins.hop = {
     HopNextKey = {fg = c.red, gui = bold},
     HopNextKey1 = {fg = c.deep_lilac, gui = bold},
