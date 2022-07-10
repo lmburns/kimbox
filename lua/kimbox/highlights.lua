@@ -548,7 +548,7 @@ hl.langs.javascript = {
     javascriptTSPunctBracket = fgs.purple,
     javascriptTSPunctSpecial = fgs.green,
     javascriptTSVariableBuiltin = fgs.blue,
-    javascriptTSException = fgs.green,
+    javascriptTSException = fgs.orange,
     javascriptTSConstructor = {fg = c.green, gui = bold},
     -- javascriptTSNone = { fg = c.blue, gui = bold },
     javascriptTSProperty = fgs.aqua,
