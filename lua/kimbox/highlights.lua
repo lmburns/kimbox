@@ -95,8 +95,8 @@ hl.common = {
     diffFile = fgs.aqua,
     diffLine = fgs.coyote_brown1,
     diffIndexLine = fgs.purple,
-    DiffAdd = {fg = c.none, bg = utils.darken(c.green, 0.5, c.bg0)}, -- diff mode: Added line |diff.txt|
-    DiffChange = {fg = c.none, bg = utils.darken(c.yellow, 0.4, c.bg0)}, -- diff mode: Changed line |diff.txt|
+    DiffAdd = {fg = c.none, bg = utils.darken(c.green, 0.55, c.bg0)}, -- diff mode: Added line |diff.txt|
+    DiffChange = {fg = c.none, bg = c.diff_change}, -- diff mode: Changed line |diff.txt|
     DiffDelete = {fg = c.none, bg = utils.darken(c.red, 0.6, c.bg0)}, -- diff mode: Deleted line |diff.txt|
     DiffText = {fg = c.none, bg = utils.darken(c.blue, 0.5, c.bg0)}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffFile = {fg = c.aqua},

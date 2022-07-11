@@ -55,7 +55,7 @@ return {
         operator_base05 = "#e8c097",
         diff_add = "#889B4A",
         diff_delete = "#cc6666",
-        diff_change = "#5F5F87",
+        diff_change = "#564176",
         diff_text = "#2c5372"
     },
     bgs = bgs
