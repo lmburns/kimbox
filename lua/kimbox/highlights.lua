@@ -1230,7 +1230,12 @@ hl.langs.zsh = {
     rOTag = fgs.blue
 }
 
-hl.langs.zig = {zigTSTypeBuiltin = {fg = c.green, gui = bold}}
+hl.langs.zig = {
+    zigTSTypeBuiltin = {fg = c.green, gui = bold},
+    zigTSField = fgs.aqua,
+    zigTSFuncMacro = fgs.aqua,
+    zigTSAttribute = fgs.aqua,
+}
 
 -- ========================== Config Formats ==========================
 
