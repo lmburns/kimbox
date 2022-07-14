@@ -45,7 +45,6 @@ local default_config = {
 }
 
 ---Change kimbox option (g.kimbox_config.option)
----It can't be changed directly by modifing that field due to a Neovim lua bug with global variables (kimbox_config is a global variable)
 ---@param opt string: option name
 ---@param value any: new value
 function M.set_options(opt, value)

@@ -56,7 +56,7 @@ local fgs = {
 }
 
 hl.common = {
-    -- Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
+    Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     NormalNC = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     Terminal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     FoldColumn = {fg = c.coyote_brown, bg = utils.tern(trans, c.none, c.bg2)},
@@ -110,33 +110,24 @@ hl.common = {
     NonText = {fg = c.bg5},
     Whitespace = {fg = c.bg5},
     SpecialKey = {fg = c.bg5},
-    -- cfg.diagnostics.background and utils.darken(c.red, 0.1, c.bg0) or c.none,
-
     Pmenu = {
         fg = c.operator_base05,
         bg = utils.tern(cfg.popup.background, c.bg0, c.bg1)
     },
     PmenuSel = {fg = c.red, bg = c.bg4, gui = bold},
-    -- Pmenu = { fg = c.operator_base05, bg = c.bg0 },
-    -- PmenuSel = { fg = c.red, bg = c.bg1, gui = bold },
-
     PmenuSbar = {fg = c.none, bg = c.fg3},
-    -- PmenuSel = { fg = c.fg0, bg = c.fg1 },
-    -- PmenuSel = { fg = c.bg3, bg = c.orange },
     PmenuThumb = {fg = c.none, bg = c.green},
-    WildMenu = {fg = c.bg3, bg = c.green},
+    WildMenu = {fg = c.bg3, bg = c.green}, -- Current match in 'wildmenu' completion
     WinBar = {fg = c.fg0, gui = bold}, -- window bar of current window
     WinBarNC = {fg = c.bg4, gui = bold}, -- window bar of not-current windows
     Question = {fg = c.green},
     NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
-    -- Tabline
-    -- TabLineSel = { fg = c.bg0, bg = c.fg },
-    TabLine = {fg = c.fg, bg = c.bg1},
-    TabLineFill = {gui = "none"},
-    -- Statusline
+    TabLine = {fg = c.fg, bg = c.bg1}, -- Tab pages line, not active tab page label
+    TabLineSel = {fg = c.bg0, bg = c.fg, gui = bold}, -- Tab pages line, active tab page label
+    TabLineFill = {gui = "none"}, -- Tab pages line, where there are no labels
     -- When last status=2 or 3
-    StatusLine = {fg = c.none, bg = c.none},
-    StatusLineNC = {fg = c.coyote_brown1, bg = c.none},
+    StatusLine = {fg = c.none, bg = c.none}, -- Status line of current window.
+    StatusLineNC = {fg = c.coyote_brown1, bg = c.none}, -- Status lines of not-current windows
     StatusLineTerm = {fg = c.fg0, bg = c.bg2},
     StatusLineTermNC = {fg = c.coyote_brown1, bg = c.bg1},
     -- Spell
@@ -144,8 +135,8 @@ hl.common = {
     SpellCap = {fg = c.blue, gui = undercurl, sp = c.blue},
     SpellLocal = {fg = c.aqua, gui = undercurl, sp = c.aqua},
     SpellRare = {fg = c.purple, gui = undercurl, sp = c.purple},
-    Visual = {fg = c.black, bg = c.operator_base05, gui = reverse},
-    VisualNOS = {fg = c.black, bg = c.operator_base05, gui = reverse},
+    Visual = {fg = c.black, bg = c.operator_base05, gui = reverse}, -- Visual mode selection
+    VisualNOS = {fg = c.black, bg = c.operator_base05, gui = reverse}, -- Visual sel when vim is "Not Owning the Selection"
     QuickFixLine = {fg = c.purple, gui = bold},
     Debug = {fg = c.orange},
     debugPC = {fg = c.bg0, bg = c.green},
@@ -196,21 +187,27 @@ hl.syntax = {
 }
 
 hl.treesitter = {
-    TSNote = {fg = c.blue, bg = c.bg0, gui = bold},
-    TSWarning = {fg = c.green, gui = bold},
-    TSDanger = {fg = c.red, gui = bold},
+    -- TSEmphasis = { fg = c.fg, gui = "italic" },
+    -- TSError = { fg = c.red, gui = italic },
+    -- TSStrike = { fg = c.coyote_brown1, gui = "strikethrough" },
+    -- TSStrong = { fg = c.fg, gui = "bold" },
+    -- TSUnderline = { fg = c.fg, gui = "underline" },
+
     TSAnnotation = {fg = c.blue, gui = italic},
-    TSAttribute = {fg = c.green, gui = italic},
-    TSBoolean = fgs.orange,
-    TSCharacter = fgs.yellow,
-    TSComment = {fg = c.coyote_brown1, gui = italic},
+    TSAttribute = {fg = c.green, gui = italic}, -- Annotations attached to code to denote some meta info
+    TSBoolean = fgs.orange, -- Boolean literals
+    TSCharacter = fgs.yellow, -- Character literals
+    TSCharacterSpecial = {link = "SpecialChar"}, -- Special characters
+    TSComment = {fg = c.coyote_brown1, gui = italic}, -- Line comments and block comments
     TSConditional = {fg = c.purple, gui = italic},
-    TSConstant = fgs.aqua,
     TSConstBuiltin = {fg = c.orange, gui = italic},
     TSConstMacro = {fg = c.orange, gui = italic},
+    TSConstant = fgs.aqua,
     TSConstructor = {fg = c.yellow, gui = bold},
+    TSDanger = {fg = c.red, gui = bold},
+    TSEnviroment = fgs.fg0,
+    TSEnviromentName = fgs.fg0,
     TSException = {fg = c.red, gui = italic},
-    -- TSError = { fg = c.red, gui = italic },
     TSField = fgs.yellow,
     TSFloat = fgs.purple,
     TSFuncBuiltin = {fg = c.magenta, gui = bold},
@@ -221,12 +218,14 @@ hl.treesitter = {
     TSKeywordFunction = fgs.red,
     TSKeywordOperator = fgs.red,
     TSLabel = fgs.orange,
+    TSLiteral = fgs.green,
+    TSMath = fgs.green,
     TSMethod = fgs.blue,
     TSNamespace = {fg = c.blue, gui = italic},
     TSNone = fgs.fg0,
+    TSNote = {fg = c.blue, bg = c.bg0, gui = bold},
     TSNumber = fgs.purple,
     TSOperator = fgs.orange,
-    -- fg0/orange
     TSParameter = fgs.fg0,
     TSParameterReference = fgs.fg0,
     TSProperty = fgs.yellow,
@@ -234,6 +233,7 @@ hl.treesitter = {
     TSPunctDelimiter = fgs.coyote_brown1,
     TSPunctSpecial = fgs.green,
     TSRepeat = fgs.purple,
+    TSStrike = fgs.coyote_brown1,
     TSString = fgs.yellow,
     TSStringEscape = fgs.philippine_green,
     TSStringRegex = fgs.orange,
@@ -241,23 +241,14 @@ hl.treesitter = {
     TSTag = {fg = c.blue, gui = italic},
     TSTagDelimiter = fgs.magenta,
     TSText = fgs.yellow,
-    TSStrike = fgs.coyote_brown1,
-    -- TSStrike = { fg = c.coyote_brown1, gui = "strikethrough" },
-    -- TSStrong = { fg = c.fg, gui = "bold" },
-    -- TSEmphasis = { fg = c.fg, gui = "italic" },
-    -- TSUnderline = { fg = c.fg, gui = "underline" },
-    TSMath = fgs.green,
+    TSTextReference = fgs.blue,
+    TSTitle = {fg = c.orange, gui = "bold"}, -- Text that is part of a title
     TSType = fgs.green,
     TSTypeBuiltin = fgs.green,
     TSURI = {fg = c.fg1, gui = "underline"},
     TSVariable = fgs.fg0,
     TSVariableBuiltin = fgs.blue,
-    -- ??
-    TSTitle = {fg = c.orange, gui = "bold"},
-    TSLiteral = fgs.green,
-    TSTextReference = fgs.blue,
-    TSEnviroment = fgs.fg0,
-    TSEnviromentName = fgs.fg0
+    TSWarning = {fg = c.green, gui = bold}
 }
 
 hl.langs.solidity = {
@@ -1351,7 +1342,9 @@ hl.plugins.lsp = {
     DiagnosticUnderlineWarn = {gui = diag_under, sp = c.yellow},
     LspReferenceText = {bg = c.fg2},
     LspReferenceWrite = {bg = c.fg2},
-    LspReferenceRead = {bg = c.fg2}
+    LspReferenceRead = {bg = c.fg2},
+    LspSignatureActiveParameter = fgs.yellow,
+    LspCodeLens = fgs.coyote_brown1
 }
 
 hl.plugins.lsp.LspDiagnosticsDefaultError = hl.plugins.lsp.DiagnosticError
@@ -1757,17 +1750,29 @@ hl.plugins.nvim_tree = {
 }
 
 hl.plugins.telescope = {
+    TelescopeBorder = fgs.magenta,
+    TelescopeMatching = fgs.orange,
+    TelescopeMultiIcon = fgs.aqua,
+    TelescopeMultiSelection = fgs.blue,
+    TelescopePreviewBorder = fgs.magenta,
+    TelescopePromptBorder = fgs.magenta,
+    TelescopePromptPrefix = fgs.red,
+    TelescopeResultsBorder = fgs.magenta,
     TelescopeSelection = {fg = c.yellow, gui = bold},
     TelescopeSelectionCaret = fgs.green,
-    TelescopeMultiSelection = fgs.blue,
-    TelescopeMultiIcon = fgs.aqua,
-    TelescopeBorder = fgs.magenta,
-    TelescopePromptBorder = fgs.magenta,
-    TelescopeResultsBorder = fgs.magenta,
-    TelescopePreviewBorder = fgs.magenta,
-    TelescopeMatching = fgs.orange,
-    TelescopePromptPrefix = fgs.red,
     TelescopeTitle = {fg = c.purple, gui = bold}
+}
+
+hl.plugins.illuminate = {
+    illuminatedWord = {link = "LspReferenceText"},
+    illuminatedCurWord = {link = "LspReferenceText"}
+}
+
+hl.plugins.modes = {
+    ModesCopy = {bg = c.yellow},
+    ModesDelete = {bg = c.red},
+    ModesInsert = {bg = c.aqua},
+    ModesVisual = {bg = c.magenta}
 }
 
 hl.plugins.dashboard = {
@@ -1821,14 +1826,14 @@ hl.plugins.packer = {
     packerStatusFail = {fg = c.red, gui = bold},
     packerString = fgs.yellow,
     packerPackageNotLoaded = {fg = c.grullo_grey},
-    packerRelDate = {fg = c.coyote_brown1, gui = italic},
+    packerRelDate = {fg = c.grullo_grey, gui = italic},
     packerPackageName = fgs.green,
     packerOutput = {fg = c.orange, gui = bold},
     packerHash = fgs.magenta,
     packerTimeTrivial = fgs.blue,
     packerTimeHigh = fgs.red,
     packerTimeMedium = fgs.yellow,
-    packerTimeLow = fgs.green,
+    packerTimeLow = fgs.green
 }
 
 hl.plugins.hop = {

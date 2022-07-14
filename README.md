@@ -65,7 +65,7 @@ local t = require("kimbox.lualine").theme()
 
 require("lualine").setup(
   -- configuration stuff
-  theme = 'kimbox' -- 'auto' also works as well
+  theme = 'kimbox' -- 'auto' works as well
 )
 ```
 
@@ -193,44 +193,49 @@ All of the following languages have been manually configured.
 <details>
 <summary>Support</summary>
 
-- Markdown
-- Latex
-- Javascript
-- Typescript
-- JavascriptReact TypescriptReact
-- Dart
-- CoffeeScript
-- ObjectiveC
-- Python
-- Kotlin
-- Scala
-- Go
-- Rust
-- Swift
-- PHP
-- Ruby
-- Haskell
-- Perl
-- Lua
-- Teal
-- Erlang
-- Ocaml
-- Elixir
-- Clojure
-- R
-- Matlab
-- Vimscript
-- C/C++
 - Bash/Dash
-- Zsh
+- C/C++
+- Clojure
+- CoffeeScript
+- Dart
+- Elixir
+- Erlang
+- Go
+- Haskell
+- HTML
+- Javascript
+- JavascriptReact TypescriptReact
+- Kotlin
+- Lua
+- OCaml
+- ObjectiveC
+- PHP
+- Perl
+- Python
+- R
+- Ruby
+- Rust
+- Scala
+- Solidity
+- Swift
+- Teal
+- Typescript
+- Vimscript
 - Zig
+- Zsh
+
+- Help pages (Vim)
+- Latex
+- Markdown
+- Matlab
+
 - Dosini
+- Git Commit
+- JSON
 - Makefile
-- Json
-- Yaml
-- Toml
 - Ron (Rust Object Notation)
-- Git commit
+- TOML
+- YAML
 
 </details>
 
@@ -240,62 +245,71 @@ All of the following languages have been manually configured.
 <details>
 <summary>Support</summary>
 
-- [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [Vimtex](https://github.com/lervag/vimtex)
-- [Vim-Javascript](https://github.com/pangloss/vim-javascript)
-- [yajs](https://github.com/othree/yajs.vim,)
-- [vim-jsx-pretty](https://github.com/maxmellon/vim-jsx-pretty)
-- [vim-typescript](https://github.com/leafgarland/typescript-vim)
-- [yats](https:github.com/HerringtonDarkholme/yats.vim)
-- [dart-lang](https://github.com/dart-lang/dart-vim-plugin)
-- [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
-- [python-syntax](https://github.com/vim-python/python-syntax,)
-- [semshi](https://github.com/numirias/semshi,)
-- [kotlin-vim](https://github.com/udalov/kotlin-vim)
-- [vim-scala](https://github.com/derekwyatt/vim-scala)
-- [rust.vim](https://github.com/rust-lang/rust.vim)
-- [swift.vim](https://github.com/keith/swift.vim)
-- [php.vim](https://github.com/StanAngeloff/php.vim)
-- [vim-ruby](https://github.com/vim-ruby/vim-ruby)
-- [haskell-vim](https://github.com/neovimhaskell/haskell-vim)
-- [vim-perl](https://github.com/vim-perl/vim-perl)
-- [vim-ocaml](https://github.com/rgrinberg/vim-ocaml)
-- [vim-erlang-runtime](https://github.com/vim-erlang/vim-erlang-runtime)
-- [vim-elixir](https://github.com/elixir-editors/vim-elixir)
-- [vim-clojure-static](https://github.com/guns/vim-clojure-static)
-- [Nvim-R](https://github.com/jalvesaq/Nvim-R)
-- [vimwiki](https://github.com/vimwiki/vimwiki)
-- [ron.vim](https://github.com/ron-rs/ron.vim)
-- [LSP Diagnostics](https://neovim.io/doc/user/lsp.html)
-- [LSP Trouble](https://github.com/folke/lsp-trouble.nvim)
-- [LSP Saga](https://github.com/glepnir/lspsaga.nvim)
-- [Coc.nvim](https://github.com/neoclide/coc.nvim)
+- [Aerial](https://github.com/stevearc/aerial.nvim)
 - [Ale](https://github.com/dense-analysis/ale)
-- [Neomake](https://github.com/neomake/neomake)
-- [Vista.vim](https://github.com/liuchengxu/vista.vim)
-- [NerdTree](https://github.com/preservim/nerdtree)
-- [Coc-Explorer](https://github.com/weirongxu/coc-explorer)
-- [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
-- [Neogit](https://github.com/TimUntersberger/neogit)
-- [Git Signs](https://github.com/lewis6991/gitsigns.nvim)
-- [Git Gutter](https://github.com/airblade/vim-gitgutter)
-- [DiffView](https://github.com/sindrets/diffview.nvim)
-- [EasyMotion](https://github.com/easymotion/vim-easymotion)
-- [Startify](https://github.com/mhinz/vim-startify)
-- [Dashboard](https://github.com/glepnir/dashboard-nvim)
-- [Floaterm](https://github.com/voldikss/vim-floaterm)
-- [WhichKey](https://github.com/liuchengxu/vim-which-key)
-- [Hop](https://github.com/phaazon/hop.nvim)
-- [vim-sneak](https://github.com/justinmk/vim-sneak)
-- [Lightspeed](https://github.com/ggandor/lightspeed.nvim)
-- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-- [Treesitter Rainbow](https://github.com/p00f/nvim-ts-rainbow)
-- [Indent Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
-- [Fern](https://github.com/lambdalisue/fern.vim)
 - [Barbar](https://github.com/romgrk/barbar.nvim)
 - [BufferLine](https://github.com/akinsho/nvim-bufferline.lua)
-- [Lualine](https://github.com/hoob3rt/lualine.nvim)
+- [Cmp](https://github.com/hrsh7th/nvim-cmp)
+- [Coc-Explorer](https://github.com/weirongxu/coc-explorer)
+- [Coc.nvim](https://github.com/neoclide/coc.nvim)
+- [Dap-UI](https://github.com/rcarriga/nvim-dap-ui)
+- [Dashboard](https://github.com/glepnir/dashboard-nvim)
+- [Defx](https://github.com/Shougo/defx.nvim)
+- [DiffView](https://github.com/sindrets/diffview.nvim)
+- [EasyMotion](https://github.com/easymotion/vim-easymotion)
+- [Fern](https://github.com/lambdalisue/fern.vim)
+- [Floaterm](https://github.com/voldikss/vim-floaterm)
+- [Git Gutter](https://github.com/airblade/vim-gitgutter)
+- [Git Signs](https://github.com/lewis6991/gitsigns.nvim)
+- [Hop](https://github.com/phaazon/hop.nvim)
+- [Incline](https://github.com/b0o/incline.nvim)
+- [Indent Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [LSP Diagnostics](https://neovim.io/doc/user/lsp.html)
+- [LSP Saga](https://github.com/glepnir/lspsaga.nvim)
+- [LSP Trouble](https://github.com/folke/lsp-trouble.nvim)
 - [Lightline](https://github.com/itchyny/lightline.vim)
+- [Lightspeed](https://github.com/ggandor/lightspeed.nvim)
+- [Lualine](https://github.com/hoob3rt/lualine.nvim)
+- [Modes](https://github.com/mvllow/modes.nvim)
+- [Neogit](https://github.com/TimUntersberger/neogit)
+- [Neomake](https://github.com/neomake/neomake)
+- [NerdTree](https://github.com/preservim/nerdtree)
+- [Nvim-R](https://github.com/jalvesaq/Nvim-R)
+- [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
+- [Packer](https://github.com/wbthomason/packer.nvim)
+- [Sneak](https://github.com/justinmk/vim-sneak)
+- [Startify](https://github.com/mhinz/vim-startify)
+- [Symbols Outline](https://github.com/simrat39/symbols-outline.nvim)
+- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [Treesitter Rainbow](https://github.com/p00f/nvim-ts-rainbow)
+- [Vim-Javascript](https://github.com/pangloss/vim-javascript)
+- [VimWiki](https://github.com/vimwiki/vimwiki)
+- [Vimtex](https://github.com/lervag/vimtex)
+- [Vista.vim](https://github.com/liuchengxu/vista.vim)
+- [WhichKey](https://github.com/liuchengxu/vim-which-key)
+- [dart-lang](https://github.com/dart-lang/dart-vim-plugin)
+- [haskell-vim](https://github.com/neovimhaskell/haskell-vim)
+- [kotlin-vim](https://github.com/udalov/kotlin-vim)
+- [php.vim](https://github.com/StanAngeloff/php.vim)
+- [python-syntax](https://github.com/vim-python/python-syntax,)
+- [ron.vim](https://github.com/ron-rs/ron.vim)
+- [rust.vim](https://github.com/rust-lang/rust.vim)
+- [semshi](https://github.com/numirias/semshi,)
+- [swift.vim](https://github.com/keith/swift.vim)
+- [vim-clojure-static](https://github.com/guns/vim-clojure-static)
+- [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
+- [vim-elixir](https://github.com/elixir-editors/vim-elixir)
+- [vim-erlang-runtime](https://github.com/vim-erlang/vim-erlang-runtime)
+- [vim-jsx-pretty](https://github.com/maxmellon/vim-jsx-pretty)
+- [vim-ocaml](https://github.com/rgrinberg/vim-ocaml)
+- [vim-perl](https://github.com/vim-perl/vim-perl)
+- [vim-ruby](https://github.com/vim-ruby/vim-ruby)
+- [vim-scala](https://github.com/derekwyatt/vim-scala)
+- [vim-sneak](https://github.com/justinmk/vim-sneak)
+- [vim-typescript](https://github.com/leafgarland/typescript-vim)
+- [yajs](https://github.com/othree/yajs.vim,)
+- [yats](https:github.com/HerringtonDarkholme/yats.vim)
 
 </details>
 
