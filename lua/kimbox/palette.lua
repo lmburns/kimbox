@@ -57,7 +57,7 @@ return {
         diff_add = "#889B4A",
         diff_delete = "#cc6666",
         diff_change = "#543739",
-        diff_text = "#2c5372"
+        diff_text = "#325c59" -- "#335250" -- "#405453"
     },
     bgs = bgs
 }
