@@ -28,6 +28,7 @@ return {
         blue = "#4C96A8",
         purple = "#98676A",
         philippine_green = "#088649",
+        sea_green = "#77a172",
         morning_blue = "#83a598",
         jelly_bean_blue = "#418292",
         slate_gray = "#719190",
@@ -55,7 +56,7 @@ return {
         operator_base05 = "#e8c097",
         diff_add = "#889B4A",
         diff_delete = "#cc6666",
-        diff_change = "#564176",
+        diff_change = "#543739",
         diff_text = "#2c5372"
     },
     bgs = bgs
