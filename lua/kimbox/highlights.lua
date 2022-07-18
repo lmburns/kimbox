@@ -732,9 +732,37 @@ hl.langs.tsx = {
     tsxTSProperty = fgs.aqua,
     tsxTSPunctBracket = fgs.purple,
     tsxTSTagAttribute = fgs.yellow,
-    tsxTSTag = fgs.orange,
+    tsxTSTag = {fg = c.orange, gui = italic},
     tsxTSVariableBuiltin = fgs.blue,
     tsxTSException = fgs.orange
+
+    -- jsxTag = {fg = c.purple, gui = bold},
+    -- jsxOpenPunct = fgs.yellow,
+    -- jsxClosePunct = fgs.blue,
+    -- jsxEscapeJs = fgs.blue,
+    -- jsxAttrib = fgs.green,
+    -- jsxCloseTag = {fg = c.aqua, gui = bold},
+    -- jsxComponentName = {fg = c.blue, gui = bold},
+}
+
+hl.langs.css = {
+    cssAtRule = fgs.red,
+    -- Treesitter
+    cssTSProperty = fgs.orange,
+    cssTSKeyword = fgs.red,
+    cssTSType = {fg = c.red, gui = bold}
+}
+
+hl.langs.scss = {
+    -- scssAtRule = fgs.red,
+    -- Treesitter
+    scssTSProperty = fgs.orange,
+    scssTSVariable = fgs.blue,
+    scssTSString = fgs.yellow,
+    scssTSKeyword = fgs.red,
+    scssTSRepeat = fgs.purple,
+    scssTSType = {fg = c.red, gui = bold},
+    scssTSPunctDelimiter = fgs.aqua
 }
 
 hl.langs.dart = {
@@ -1235,7 +1263,7 @@ hl.langs.zig = {
     zigTSTypeBuiltin = {fg = c.green, gui = bold},
     zigTSField = fgs.aqua,
     zigTSFuncMacro = fgs.aqua,
-    zigTSAttribute = fgs.aqua,
+    zigTSAttribute = fgs.aqua
 }
 
 -- ========================== Config Formats ==========================

@@ -224,10 +224,12 @@ All of the following languages have been manually configured.
 - Zig
 - Zsh
 
+- CSS
 - Help pages (Vim)
 - Latex
 - Markdown
 - Matlab
+- SCSS
 
 - Dosini
 - Git Commit
