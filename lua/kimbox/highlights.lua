@@ -252,6 +252,12 @@ hl.treesitter = {
     TSWarning = {fg = c.green, gui = bold}
 }
 
+hl.langs.comment = {
+    -- commentTSTag = {fg = c.old_rose},
+    commentTSTag = {fg = c.amethyst},
+    commentTSConstant = {fg = c.yellow}
+}
+
 hl.langs.solidity = {
     -- Treesitter
     solidityTSFunction = {fg = c.magenta, gui = bold},
@@ -1314,7 +1320,9 @@ hl.langs.toml = {
     tomlKey = fgs.orange,
     tomlBoolean = fgs.aqua,
     tomlTableArray = {fg = c.purple, gui = bold},
-    tomlKeyValueArray = {fg = c.purple, gui = bold}
+    tomlKeyValueArray = {fg = c.purple, gui = bold},
+    -- Treesitter
+    tomlTSProperty = fgs.orange
 }
 
 hl.langs.ron = {
