@@ -16,132 +16,149 @@ local colors = {
 
 local kimbox = {
     -- Status background
-    fill = {guifg = colors.magenta, guibg = colors.dbg},
-    background = {guifg = colors.fg, guibg = colors.dbg},
-    tab = {guifg = colors.fg, guibg = colors.dbg},
-    tab_selected = {guifg = colors.fg, guibg = colors.lbg},
+    fill = {fg = colors.magenta, bg = colors.dbg},
+    background = {fg = colors.fg, bg = colors.dbg},
+    tab = {fg = colors.fg, bg = colors.dbg},
+    tab_selected = {fg = colors.fg, bg = colors.lbg},
     -- tab_close = {
-    --   guifg = "#FFFFFF",
-    --   guibg = "#FFFFFF",
+    --   fg = "#FFFFFF",
+    --   bg = "#FFFFFF",
     -- },
     -- close_button = {
-    --   guifg = "#FFFFFF",
-    --   guibg = "#FFFFFF",
+    --   fg = "#FFFFFF",
+    --   bg = "#FFFFFF",
     -- },
     -- close_button_visible = {
-    --   guifg = "#FFFFFF",
-    --   guibg = "#FFFFFF",
+    --   fg = "#FFFFFF",
+    --   bg = "#FFFFFF",
     -- },
     -- close_button_selected = {
-    --   guifg = "#FFFFFF",
-    --   guibg = "#FFFFFF",
+    --   fg = "#FFFFFF",
+    --   bg = "#FFFFFF",
     -- },
-    buffer_visible = {guifg = colors.magenta, guibg = colors.lbg},
+    buffer_visible = {fg = colors.magenta, bg = colors.lbg},
     buffer_selected = {
-        guifg = colors.fg,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.fg,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    diagnostic = {guifg = colors.red, guibg = colors.dbg},
-    diagnostic_visible = {guifg = colors.red, guibg = colors.lbg},
+    diagnostic = {fg = colors.red, bg = colors.dbg},
+    diagnostic_visible = {fg = colors.red, bg = colors.lbg},
     diagnostic_selected = {
-        guifg = colors.red,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.red,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    hint = {guifg = colors.cyan, guibg = colors.dbg},
-    hint_visible = {guifg = colors.blue, guibg = colors.lbg},
+    hint = {fg = colors.cyan, bg = colors.dbg},
+    hint_visible = {fg = colors.blue, bg = colors.lbg},
     hint_selected = {
-        guifg = colors.blue,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.blue,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    hint_diagnostic = {guifg = colors.blue, guibg = colors.dbg},
-    hint_diagnostic_visible = {guifg = colors.blue, guibg = colors.lbg},
+    hint_diagnostic = {fg = colors.blue, bg = colors.dbg},
+    hint_diagnostic_visible = {fg = colors.blue, bg = colors.lbg},
     hint_diagnostic_selected = {
-        guifg = colors.blue,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.blue,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    info = {guifg = colors.purple, guibg = colors.dbg},
-    info_visible = {guifg = colors.purple, guibg = colors.lbg},
+    info = {fg = colors.purple, bg = colors.dbg},
+    info_visible = {fg = colors.purple, bg = colors.lbg},
     info_selected = {
-        guifg = colors.purple,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.purple,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    info_diagnostic = {guifg = colors.purple, guibg = colors.dbg},
-    info_diagnostic_visible = {guifg = colors.purple, guibg = colors.lbg},
+    info_diagnostic = {fg = colors.purple, bg = colors.dbg},
+    info_diagnostic_visible = {fg = colors.purple, bg = colors.lbg},
     info_diagnostic_selected = {
-        guifg = colors.purple,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.purple,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    warning = {guifg = colors.orange, guibg = colors.dbg},
-    warning_visible = {guifg = colors.orange, guibg = colors.lbg},
+    warning = {fg = colors.orange, bg = colors.dbg},
+    warning_visible = {fg = colors.orange, bg = colors.lbg},
     warning_selected = {
-        guifg = colors.orange,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.orange,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    warning_diagnostic = {guifg = colors.orange, guibg = colors.dbg},
-    warning_diagnostic_visible = {guifg = colors.orange, guibg = colors.lbg},
+    warning_diagnostic = {fg = colors.orange, bg = colors.dbg},
+    warning_diagnostic_visible = {fg = colors.orange, bg = colors.lbg},
     warning_diagnostic_selected = {
-        guifg = colors.orange,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.orange,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    error = {guifg = colors.red, guibg = colors.dbg},
-    error_visible = {guifg = colors.red, guibg = colors.lbg},
+    error = {fg = colors.red, bg = colors.dbg},
+    error_visible = {fg = colors.red, bg = colors.lbg},
     error_selected = {
-        guifg = colors.red,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.red,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    error_diagnostic = {guifg = colors.red, guibg = colors.dbg},
-    error_diagnostic_visible = {guifg = colors.red, guibg = colors.lbg},
+    error_diagnostic = {fg = colors.red, bg = colors.dbg},
+    error_diagnostic_visible = {fg = colors.red, bg = colors.lbg},
     error_diagnostic_selected = {
-        guifg = colors.red,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.red,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
-    modified = {guifg = colors.red, guibg = colors.dbg},
-    modified_visible = {guifg = colors.red, guibg = colors.lbg},
-    modified_selected = {guifg = colors.red, guibg = colors.lbg},
+    modified = {fg = colors.red, bg = colors.dbg},
+    modified_visible = {fg = colors.red, bg = colors.lbg},
+    modified_selected = {fg = colors.red, bg = colors.lbg},
     duplicate_selected = {
-        guifg = colors.cyan,
-        gui = "italic",
-        guibg = colors.lbg
+        fg = colors.cyan,
+        bg = colors.lbg,
+        italic = true
     },
-    duplicate_visible = {guifg = colors.cyan, gui = "italic", guibg = colors.lbg},
-    duplicate = {guifg = colors.red, gui = "italic", guibg = colors.dbg},
-    separator_selected = {guifg = colors.dbg, guibg = colors.lbg},
-    separator_visible = {guifg = colors.dbg, guibg = colors.lbg},
-    separator = {guifg = colors.dbg, guibg = colors.dbg},
-    indicator_selected = {guifg = colors.red, guibg = colors.lbg},
+    duplicate_visible = {fg = colors.cyan, bg = colors.lbg, italic = true},
+    duplicate = {fg = colors.red, bg = colors.dbg, italic = true},
+    separator_selected = {fg = colors.dbg, bg = colors.lbg},
+    separator_visible = {fg = colors.dbg, bg = colors.lbg},
+    separator = {fg = colors.dbg, bg = colors.dbg},
+    indicator_selected = {fg = colors.red, bg = colors.lbg},
     pick_selected = {
-        guifg = colors.dred,
-        guibg = colors.lbg,
-        gui = "bold,italic"
+        fg = colors.dred,
+        bg = colors.lbg,
+        italic = true,
+        bold = true
     },
     pick_visible = {
-        guifg = colors.green,
-        guibg = colors.dbg,
-        gui = "bold,italic"
+        fg = colors.green,
+        bg = colors.dbg,
+        italic = true,
+        bold = true
     },
-    pick = {guifg = colors.green, guibg = colors.dbg, gui = "bold,italic"},
+    pick = {
+        fg = colors.green,
+        bg = colors.dbg,
+        italic = true,
+        bold = true
+    },
     numbers = {
-        guifg = colors.fg,
-        guibg = colors.dbg
+        fg = colors.fg,
+        bg = colors.dbg
     },
     numbers_selected = {
-        guifg = colors.fg,
-        guibg = colors.lbg,
-        gui = "bold"
+        fg = colors.fg,
+        bg = colors.lbg,
+        bold = true
     },
     numbers_visible = {
-        guifg = colors.fg,
-        guibg = colors.lbg
+        fg = colors.fg,
+        bg = colors.lbg
     }
 }
 
