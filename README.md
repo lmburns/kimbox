@@ -179,8 +179,8 @@ require("kimbox").setup({
   },
   highlights = {
     TSKeyword = {fg = '$green'},
-    TSString = {fg = '$bright_orange', bg = '#00ff00', fmt = 'bold'},
-    TSFunction = {fg = '#0000ff', sp = '$cyan', fmt = 'underline,italic'},
+    TSString = {fg = '$bright_orange', bg = '#00ff00', gui = 'bold'},
+    TSFunction = {fg = '#0000ff', sp = '$cyan', gui = 'underline,italic'},
   }
 })
 ```
