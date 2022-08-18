@@ -1044,6 +1044,13 @@ hl.langs.perl = {
     perlTSVariable = fgs.blue
 }
 
+hl.langs.luap = {
+    luapTSPunctSpecial = fgs.green,
+    luapTSPunctBracket = fgs.blue,
+    luapTSOperator = fgs.orange,
+    luapTSKeyword = fgs.red
+}
+
 hl.langs.lua = {
     luaTSProperty = fgs.green,
     luaTSField = fgs.aqua,
