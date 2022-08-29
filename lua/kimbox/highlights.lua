@@ -1276,7 +1276,8 @@ hl.langs.zig = {
     zigTSTypeBuiltin = {fg = c.green, gui = bold},
     zigTSField = fgs.aqua,
     zigTSFuncMacro = fgs.aqua,
-    zigTSAttribute = fgs.aqua
+    zigTSAttribute = fgs.aqua,
+    zigTSPunctBracket = fgs.orange
 }
 
 -- ========================== Config Formats ==========================
