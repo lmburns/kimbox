@@ -185,7 +185,14 @@ local function vim_highlights(highlights)
             )
         end
     end
-    vim.cmd(table.concat(to_highlight, "\n"))
+
+    -- FIX: Use pcall here until checking for patch-8.2.0674 works
+    --      Actually pcall does nothing, W18: Invalid character in group name is still shown
+    pcall(
+        function()
+            vim.cmd(table.concat(to_highlight, "\n"))
+        end
+    )
 end
 
 ---Highlight using the Nvim API
@@ -193,13 +200,15 @@ end
 local function nvim_highlights(highlights)
     for group, opts in pairs(highlights) do
         if not M.is_empty(opts.link) then
-            api.nvim_set_hl(0, group, {link = opts.link})
+            -- FIX: Use pcall here until checking for patch-8.2.0674 works
+            pcall(api.nvim_set_hl, 0, group, {link = opts.link})
         else
             local values = M.convert_gui(opts.gui)
             values.bg = opts.bg
             values.fg = opts.fg
             values.sp = opts.sp
-            api.nvim_set_hl(0, group, values)
+            -- FIX: Use pcall here until checking for patch-8.2.0674 works
+            pcall(api.nvim_set_hl, 0, group, values)
         end
     end
 end
