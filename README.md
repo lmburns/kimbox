@@ -1,15 +1,3 @@
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-  - [Installation](#installation)
-  - [Color](#color)
-  - [Options (Lua)](#options-lua)
-  - [Support Filetype](#support-filetype)
-  - [Support Plugin](#support-plugin)
-  - [Thanks to](#thanks-to)
-
-----
-
 ![Kimbox](https://lmburns.com/gallery/media/large/kimbox-rust.png)
 
 Kimbox is a dark colorscheme for Neovim with builtin treesitter support. It is my variation of the  [original `Kimbie Dark` colorscheme](https://marketplace.visualstudio.com/items?itemName=dnamsons.kimbie-dark-plus).
