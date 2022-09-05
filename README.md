@@ -97,6 +97,9 @@ require("kimbox").setup({
   toggle_style_key = "<Leader>ts",
   toggle_style_list = { "medium", "ocean", "vscode", "deep", "darker" }, -- or require("kimbox").bgs_list
 
+  -- See below (New Lua Treesitter Highlight Groups) for an explanation
+  langs08 = true,
+
   -- Used with popup menus (coc.nvim mainly) --
   popup = {
     background = false, -- use background color for pmenu
@@ -126,7 +129,8 @@ require("kimbox").setup({
   -- View them with require("kimbox.highlights").{langs,plugins}
   disabled = {
       langs = {},
-      plugins = {}
+      plugins = {},
+      langs08 = {} -- Capture groups only present on nightly release (see below)
   },
 
   run_before = nil, -- Run a function before the colorscheme is loaded
@@ -176,14 +180,27 @@ require("kimbox").setup({
   colors = {
     bright_orange = "#ff8800",    -- define a new color
     green = '#00ffaa',            -- redefine an existing color
+    myblue = '#418292'
   },
   highlights = {
     TSKeyword = {fg = '$green'},
     TSString = {fg = '$bright_orange', bg = '#00ff00', gui = 'bold'},
     TSFunction = {fg = '#0000ff', sp = '$cyan', gui = 'underline,italic'},
+    ["@function.macro.lua"] = {fg = '$myblue', sp = '$cyan', gui = 'underline,italic'}
   }
 })
 ```
+
+## New Lua Treesitter Highlight Groups
+
+See `:h lua-treesitter-highlight-groups` to a full explanation.
+
+After the commit `030b422d1`, highlight groups were changed from in the following pattern:
+* `luaTSFunction` => `@function.lua`
+* `helpTSTitle` => `@text.title.help`
+* etc.
+
+This feature will **not yet be enabled by default**. If you wish to use this colorscheme and wish to have the exact same colors as the highlight groups that were present before the aforementioned commit, set the configuration feature `langs08` to `true` in your configuration. This feature will eventually be this colorscheme's default settings.
 
 ## Filetype Support
 

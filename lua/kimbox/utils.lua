@@ -10,9 +10,43 @@ M.log = {
     levels = vim.log.levels
 }
 
-M.is_nvim = fn.has("nvim") == 1
-M.has_api = M.is_nvim and fn.has("nvim-0.7") == 1
-M.needs_api_fix = M.is_nvim and fn.has("nvim-0.7.2") == 0
+---Determine whether the user haas Neovim 0.8
+---@return fun(): boolean
+M.has08 = (function()
+    local has08
+    return function()
+        if has08 == nil then
+            has08 = fn.has("nvim-0.8") == 1
+        end
+        return has08
+    end
+end)()
+
+---Determine whether the user has `api.nvim_set_hl`
+---@return fun(): boolean
+M.has_api = (function()
+    local has_api
+    return function()
+        if has_api == nil then
+            has_api = fn.has("nvim-0.7") == 1 and type(api.nvim_set_hl) == "function"
+        end
+        return has_api
+    end
+end)
+
+---BUG: There is a bug in the API that returns true as a key in the table
+---https://github.com/neovim/neovim/issues/18024
+---It is fixed now, in Neovim 0.7.2
+---@return fun(): boolean
+M.needs_api_fix = (function()
+    local needs_api_fix
+    return function()
+        if needs_api_fix == nil then
+            needs_api_fix = fn.has("nvim-0.7.2") == 0
+        end
+        return needs_api_fix
+    end
+end)
 
 ---Echo a message with `nvim_echo`
 ---@param msg string message
@@ -107,7 +141,7 @@ end
 
 ---Convert a hex color (i.e., `#FFFFFF`) into an RGB(255, 255, 255)
 ---@param hex string
----@return table<number>
+---@return number[]
 M.hexToRgb = function(hex)
     local p = "[abcdef0-9][abcdef0-9]"
     local pat = ("^#(%s)(%s)(%s)$"):format(p, p, p)
@@ -128,11 +162,11 @@ end
 ---@param bg string background color
 ---@param alpha number number between 0 and 1. 0 results in bg, 1 results in fg
 M.blend = function(fg, bg, alpha)
-    bg = M.hexToRgb(bg)
-    fg = M.hexToRgb(fg)
+    local bg_rgb = M.hexToRgb(bg)
+    local fg_rgb = M.hexToRgb(fg)
 
     local blendChannel = function(i)
-        local ret = (alpha * fg[i] + ((1 - alpha) * bg[i]))
+        local ret = (alpha * fg_rgb[i] + ((1 - alpha) * bg_rgb[i]))
         return math.floor(math.min(math.max(0, ret), 255) + 0.5)
     end
 
@@ -213,7 +247,6 @@ local function nvim_highlights(highlights)
     end
 end
 
--- M.highlight = M.tern(M.has_api, nvim_highlights, vim_highlights)
 M.highlight =
     setmetatable(
     {
@@ -221,7 +254,7 @@ M.highlight =
     },
     {
         __call = function(_, ...)
-            local hl = M.tern(M.has_api, nvim_highlights, vim_highlights)
+            local hl = M.tern(M.has_api(), nvim_highlights, vim_highlights)
             hl(...)
         end
     }

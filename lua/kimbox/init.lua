@@ -14,6 +14,8 @@ local default_config = {
     style = "ocean", -- choose between "medium", "ocean", "vscode", "deep", "darker"
     toggle_style_key = "<Leader>ts",
     toggle_style_list = M.bgs_list,
+    -- New Lua-Treesitter highlight groups
+    langs08 = false,
     -- Used with popup menus (coc.nvim mainly) --
     popup = {
         background = false -- use background color for pmenu
@@ -38,6 +40,7 @@ local default_config = {
     -- Plugins or langauges that can be disabled
     disabled = {
         langs = {},
+        langs08 = {},
         plugins = {}
     },
     run_before = nil, -- Run a function before the colorscheme is loaded

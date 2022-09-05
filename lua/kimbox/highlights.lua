@@ -1,6 +1,10 @@
 ---@diagnostic disable:need-check-nil
 local M = {}
-local hl = {langs = {}, plugins = {}}
+local hl = {
+    langs = {},
+    langs08 = {},
+    plugins = {}
+}
 
 -- Location where Treesitter capture groups changed to '@capture.name'
 -- Commit:    030b422d1
@@ -259,7 +263,10 @@ hl.treesitter = {
 hl.langs.comment = {
     -- commentTSTag = {fg = c.old_rose},
     commentTSTag = {fg = c.amethyst},
-    commentTSConstant = {fg = c.yellow},
+    commentTSConstant = {fg = c.yellow}
+}
+
+hl.langs08.comment = {
     ["@tag.comment"] = {fg = c.amethyst},
     ["@constant.comment"] = {fg = c.yellow}
 }
@@ -280,14 +287,17 @@ hl.langs.solidity = {
     solModifierInsert = {fg = c.magenta, gui = bold},
     solConstant = fgs.aqua,
     --
-    -- Treesitter:
+    -- Treesitter
     --
     solidityTSFunction = {fg = c.magenta, gui = bold},
     solidityTSKeyword = fgs.orange,
     solidityTSType = {fg = c.green, gui = bold},
     solidityTSTag = {fg = c.blue, gui = bold},
     solidityTSMethod = {fg = c.magenta, gui = bold},
-    solidityTSField = fgs.aqua,
+    solidityTSField = fgs.aqua
+}
+
+hl.langs08.solidity = {
     ["@function.solidity"] = {fg = c.magenta, gui = bold},
     ["@keyword.solidity"] = fgs.orange,
     ["@type.solidity"] = {fg = c.green, gui = bold},
@@ -300,7 +310,10 @@ hl.langs.help = {
     helpTSTitle = fgs.red,
     helpTSLabel = fgs.blue,
     helpTSString = fgs.yellow,
-    helpTSURI = {fg = c.fg1, gui = "underline"},
+    helpTSURI = {fg = c.fg1, gui = "underline"}
+}
+
+hl.langs08.help = {
     ["@text.title.help"] = fgs.red,
     ["@label.help"] = fgs.blue,
     ["@string.help"] = fgs.yellow,
@@ -338,13 +351,6 @@ hl.langs.markdown = {
 }
 
 hl.langs.tex = {
-    latexTSInclude = fgs.blue,
-    latexTSFuncMacro = {fg = c.fg0, gui = bold},
-    latexTSEnvironment = {fg = c.cyan, gui = "bold"},
-    latexTSEnvironmentName = fgs.yellow,
-    latexTSTitle = fgs.green,
-    latexTSType = fgs.blue,
-    latexTSMath = fgs.orange,
     -- Latex: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_TEX
     texStatement = fgs.yellow,
     texOnlyMath = fgs.coyote_brown1,
@@ -377,7 +383,27 @@ hl.langs.tex = {
     texMathDelimZone = fgs.coyote_brown1,
     texMathDelim = fgs.purple,
     texMathOper = fgs.red,
-    texPgfType = fgs.yellow
+    texPgfType = fgs.yellow,
+    --
+    -- Treesitter
+    --
+    latexTSInclude = fgs.blue,
+    latexTSFuncMacro = {fg = c.fg0, gui = bold},
+    latexTSEnvironment = {fg = c.cyan, gui = "bold"},
+    latexTSEnvironmentName = fgs.yellow,
+    latexTSTitle = fgs.green,
+    latexTSType = fgs.blue,
+    latexTSMath = fgs.orange
+}
+
+hl.langs08.tex = {
+    ["@include.latex"] = fgs.blue,
+    ["@function.macro.latex"] = {fg = c.fg0, gui = bold},
+    ["@text.environment.latex"] = {fg = c.cyan, gui = "bold"},
+    ["@text.environment.name.latex"] = fgs.yellow,
+    ["@text.title.latex"] = fgs.green,
+    ["@text.math.latex"] = fgs.orange,
+    ["@type.latex"] = fgs.blue
 }
 
 hl.langs.javascript = {
@@ -556,7 +582,7 @@ hl.langs.javascript = {
     jsxCloseTag = {fg = c.aqua, gui = bold},
     jsxComponentName = {fg = c.blue, gui = bold},
     --
-    -- Treesitter:
+    -- Treesitter
     --
     javascriptTSParameter = fgs.aqua,
     javascriptTSTypeBuiltin = {fg = c.green, gui = bold},
@@ -568,7 +594,10 @@ hl.langs.javascript = {
     javascriptTSConstructor = {fg = c.green, gui = bold},
     javascriptTSProperty = fgs.aqua,
     javascriptTSMethod = {fg = c.magenta, gui = bold},
-    javascriptTSKeyword = fgs.red,
+    javascriptTSKeyword = fgs.red
+}
+
+hl.langs08.javascript = {
     ["@parameter.javascript"] = fgs.aqua,
     ["@type.builtin.javascript"] = {fg = c.green, gui = bold},
     ["@keyword.return.javascript"] = {fg = c.red, gui = bold},
@@ -741,7 +770,7 @@ hl.langs.typescript = {
     typescriptBOMHistoryProp = fgs.aqua,
     typescriptMathStaticProp = fgs.aqua,
     --
-    -- Treesitter:
+    -- Treesitter
     --
     typescriptTSParameter = fgs.aqua,
     typescriptTSTypeBuiltin = {fg = c.green, gui = bold},
@@ -754,7 +783,10 @@ hl.langs.typescript = {
     typescriptTSConstructor = {fg = c.wave_red, gui = bold},
     typescriptTSProperty = fgs.aqua,
     typescriptTSMethod = {fg = c.magenta, gui = bold},
-    typescriptTSKeyword = fgs.red,
+    typescriptTSKeyword = fgs.red
+}
+
+hl.langs08.typescript = {
     ["@parameter.typescript"] = fgs.aqua,
     ["@type.builtin.typescript"] = {fg = c.green, gui = bold},
     ["@keyword.return.typescript"] = {fg = c.red, gui = bold},
@@ -777,15 +809,7 @@ hl.langs.tsx = {
     tsxTSTagAttribute = fgs.yellow,
     tsxTSTag = {fg = c.orange, gui = italic},
     tsxTSVariableBuiltin = fgs.blue,
-    tsxTSException = fgs.orange,
-    ["@method.tsx"] = {fg = c.magenta, gui = bold},
-    ["@constructor.tsx"] = {fg = c.wave_red, gui = bold},
-    ["@property.tsx"] = fgs.aqua,
-    ["@punctuation.bracket.tsx"] = fgs.purple,
-    ["@tag.attribute.tsx"] = fgs.yellow,
-    ["@tag.tsx"] = {fg = c.orange, gui = italic},
-    ["@variable.builtin.tsx"] = fgs.blue,
-    ["@exception.tsx"] = fgs.orange
+    tsxTSException = fgs.orange
 
     -- jsxTag = {fg = c.purple, gui = bold},
     -- jsxOpenPunct = fgs.yellow,
@@ -796,12 +820,26 @@ hl.langs.tsx = {
     -- jsxComponentName = {fg = c.blue, gui = bold},
 }
 
+hl.langs08.tsx = {
+    ["@method.tsx"] = {fg = c.magenta, gui = bold},
+    ["@constructor.tsx"] = {fg = c.wave_red, gui = bold},
+    ["@property.tsx"] = fgs.aqua,
+    ["@punctuation.bracket.tsx"] = fgs.purple,
+    ["@tag.attribute.tsx"] = fgs.yellow,
+    ["@tag.tsx"] = {fg = c.orange, gui = italic},
+    ["@variable.builtin.tsx"] = fgs.blue,
+    ["@exception.tsx"] = fgs.orange
+}
+
 hl.langs.css = {
     cssAtRule = fgs.red,
     -- Treesitter
     cssTSProperty = fgs.orange,
     cssTSKeyword = fgs.red,
-    cssTSType = {fg = c.red, gui = bold},
+    cssTSType = {fg = c.red, gui = bold}
+}
+
+hl.langs08.css = {
     ["@property.css"] = fgs.orange,
     ["@keyword.css"] = fgs.red,
     ["@type.css"] = {fg = c.red, gui = bold}
@@ -816,7 +854,10 @@ hl.langs.scss = {
     scssTSKeyword = fgs.red,
     scssTSRepeat = fgs.purple,
     scssTSType = {fg = c.red, gui = bold},
-    scssTSPunctDelimiter = fgs.aqua,
+    scssTSPunctDelimiter = fgs.aqua
+}
+
+hl.langs08.scss = {
     ["@property.scss"] = fgs.orange,
     ["@variable.scss"] = fgs.blue,
     ["@string.scss"] = fgs.yellow,
@@ -861,7 +902,10 @@ hl.langs.html = {
     htmlTSTagAttribute = {fg = c.green, gui = bold},
     htmlTSText = fgs.fg0,
     htmlTSTag = {fg = c.red, gui = bold},
-    htmlTSTagDelimiter = {fg = c.magenta, gui = bold},
+    htmlTSTagDelimiter = {fg = c.magenta, gui = bold}
+}
+
+hl.langs08.html = {
     ["@tag.attribute.html"] = {fg = c.green, gui = bold},
     ["@text.html"] = fgs.fg0,
     ["@tag.html"] = {fg = c.red, gui = bold},
@@ -915,7 +959,7 @@ hl.langs.python = {
     semshiErrorChar = fgs.red,
     semshiSelected = {bg = c.fg2},
     --
-    -- Treesitter:
+    -- Treesitter
     --
     pythonTSType = {fg = c.green, gui = bold},
     pythonTSConstructor = fgs.magenta,
@@ -926,11 +970,13 @@ hl.langs.python = {
     pythonTSConstant = fgs.aqua,
     pythonTSField = fgs.fg0,
     pythonTSStringEscape = fgs.green,
-    pythonTSPunctBracket = fgs.purple,
+    pythonTSPunctBracket = fgs.purple
     -- pythonTSParameter = fgs.orange,
     -- pythonTSPunctBracket = fgs.green,
     -- pythonTSPunctBracket = fgs.fg0,
+}
 
+hl.langs08.python = {
     ["@type.python"] = {fg = c.green, gui = bold},
     ["@constructor.python"] = fgs.magenta,
     ["@keyword.function.python"] = {fg = c.red, gui = bold},
@@ -980,13 +1026,16 @@ hl.langs.go = {
     goConst = fgs.orange,
     goParamName = fgs.aqua,
     --
-    -- Treesitter:
+    -- Treesitter
     --
     goTSProperty = fgs.blue,
     goTSMethod = {fg = c.purple, gui = bold},
     goTSType = {fg = c.green, gui = bold},
     goTSTypeBuiltin = {fg = c.green, gui = bold},
-    goTSPunctBracket = fgs.purple,
+    goTSPunctBracket = fgs.purple
+}
+
+hl.langs08.go = {
     ["@property.go"] = fgs.blue,
     ["@method.go"] = {fg = c.purple, gui = bold},
     ["@type.go"] = {fg = c.green, gui = bold},
@@ -1012,7 +1061,7 @@ hl.langs.rust = {
     rustArrowCharacter = fgs.orange,
     rustOperator = fgs.orange,
     --
-    -- Treesitter:
+    -- Treesitter
     --
     rustTSConstBuiltin = fgs.purple,
     rustTSConstant = fgs.magenta,
@@ -1027,7 +1076,10 @@ hl.langs.rust = {
     rustTSStringEscape = fgs.green,
     rustTSType = {fg = c.green, gui = bold},
     rustTSTypeBuiltin = {fg = c.green, gui = bold},
-    rustTSVariableBuiltin = fgs.blue,
+    rustTSVariableBuiltin = fgs.blue
+}
+
+hl.langs08.rust = {
     ["@constant.builtin.rust"] = fgs.purple,
     ["@constant.rust"] = fgs.magenta,
     ["@field.rust"] = fgs.aqua, -- fg0
@@ -1095,7 +1147,7 @@ hl.langs.ruby = {
     rubyCurlyBlockDelimiter = fgs.orange,
     rubyAccess = fgs.orange,
     --
-    -- Treesitter:
+    -- Treesitter
     --
     rubyTSLabel = fgs.blue,
     rubyTSString = fgs.yellow,
@@ -1104,7 +1156,10 @@ hl.langs.ruby = {
     rubyTSParameter = fgs.orange,
     rubyTSSymbol = fgs.aqua,
     rubyTSNone = fgs.blue,
-    rubyTSType = {fg = c.green, gui = bold},
+    rubyTSType = {fg = c.green, gui = bold}
+}
+
+hl.langs08.ruby = {
     ["@label.ruby"] = fgs.blue,
     ["@string.ruby"] = fgs.yellow,
     ["@punctuation.special.ruby"] = fgs.green,
@@ -1146,9 +1201,12 @@ hl.langs.perl = {
     perlDATA = {fg = c.orange, gui = italic},
     perlBraces = fgs.purple,
     --
-    -- Treesitter:
+    -- Treesitter
     --
-    perlTSVariable = fgs.blue,
+    perlTSVariable = fgs.blue
+}
+
+hl.langs08.perl = {
     ["@variable.perl"] = fgs.blue
 }
 
@@ -1156,7 +1214,10 @@ hl.langs.luap = {
     luapTSPunctSpecial = fgs.green,
     luapTSPunctBracket = fgs.blue,
     luapTSOperator = fgs.orange,
-    luapTSKeyword = fgs.red,
+    luapTSKeyword = fgs.red
+}
+
+hl.langs08.luap = {
     ["@punctuation.special.luap"] = fgs.green,
     ["@punctuation.bracket.luap"] = fgs.blue,
     ["@operator.luap"] = fgs.orange,
@@ -1167,14 +1228,17 @@ hl.langs.lua = {
     -- When cursorholding
     luaFuncTable = {fg = c.red, gui = bold},
     --
-    -- Treesitter:
+    -- Treesitter
     --
     luaTSProperty = fgs.green,
     luaTSField = fgs.aqua,
     luaTSPunctBracket = fgs.purple,
     luaTSConstructor = {fg = c.green, gui = bold},
     luaTSConstant = {fg = c.green, gui = bold},
-    luaTSKeywordFunction = fgs.red,
+    luaTSKeywordFunction = fgs.red
+}
+
+hl.langs08.lua = {
     ["@property.lua"] = fgs.green,
     ["@field.lua"] = fgs.aqua,
     ["@punctuation.bracket.lua"] = fgs.purple,
@@ -1187,7 +1251,10 @@ hl.langs.teal = {
     tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
     tealTSParameter = fgs.aqua,
     tealTSPunctBracket = fgs.purple,
-    tealTSFunction = {fg = c.magenta, gui = bold}, -- doesn't pick up function definitions
+    tealTSFunction = {fg = c.magenta, gui = bold} -- doesn't pick up function definitions
+}
+
+hl.langs08.teal = {
     ["@operator.teal"] = fgs.orange,
     ["@parameter.teal"] = fgs.aqua,
     ["@punctuation.bracket.teal"] = fgs.purple,
@@ -1318,13 +1385,14 @@ hl.langs.vim = {
     vimContinue = fgs.coyote_brown1,
     -- Non-treesitter Vim looks much better IMO
     --
-    -- Treesitter:
+    -- Treesitter
     --
     vimTSKeyword = {fg = c.red, gui = bold},
     vimTSNamespace = {fg = c.blue, gui = bold},
-    vimTSFunction = {fg = c.magenta, gui = bold},
-    -- vimTSVariableBuiltin = {fg = c.green, gui = bold},
+    vimTSFunction = {fg = c.magenta, gui = bold}
+}
 
+hl.langs08.vim = {
     ["@keyword.vim"] = {fg = c.red, gui = bold},
     ["@namespace.vim"] = {fg = c.blue, gui = bold},
     ["@function.vim"] = {fg = c.magenta, gui = bold}
@@ -1336,7 +1404,7 @@ hl.langs.c = {
     cTypedef = fgs.purple,
     cDefine = fgs.aqua,
     --
-    -- Treesitter:
+    -- Treesitter
     --
     -- cTSInclude = fgs.blue,
     -- cTSFuncMacro = fgs.yellow,
@@ -1346,7 +1414,10 @@ hl.langs.c = {
     cTSOperator = fgs.orange,
     cTSRepeat = fgs.blue,
     cTSType = {fg = c.green, gui = bold},
-    cTSPunctBracket = fgs.purple,
+    cTSPunctBracket = fgs.purple
+}
+
+hl.langs08.c = {
     ["@include.c"] = fgs.red,
     ["@constant.c"] = fgs.aqua,
     ["@constant.macro.c"] = fgs.orange,
@@ -1359,7 +1430,7 @@ hl.langs.c = {
 hl.langs.cpp = {
     cppStatement = {fg = c.purple, gui = bold},
     --
-    -- Treesitter:
+    -- Treesitter
     --
     cppTSConstant = fgs.aqua,
     cppTSOperator = fgs.purple,
@@ -1371,7 +1442,10 @@ hl.langs.cpp = {
     cppTSInclude = {fg = c.red, gui = italic},
     cppTSMethod = fgs.blue,
     cppTSField = fgs.yellow,
-    cppTSConstructor = fgs.blue,
+    cppTSConstructor = fgs.blue
+}
+
+hl.langs08.cpp = {
     ["@constant.cpp"] = fgs.aqua,
     ["@operator.cpp"] = fgs.purple,
     ["@constant.macro.cpp"] = fgs.aqua,
@@ -1402,13 +1476,16 @@ hl.langs.shell = {
     shFunctionOne = {fg = c.yellow, gui = bold},
     shFunctionKey = {fg = c.red, gui = italic},
     --
-    -- Treesitter:
+    -- Treesitter
     --
     bashTSFuncBuiltin = fgs.red,
     bashTSParameter = fgs.green,
     bashTSConstant = fgs.blue,
     bashTSPunctSpecial = fgs.aqua,
-    bashTSVariable = fgs.blue,
+    bashTSVariable = fgs.blue
+}
+
+hl.langs08.shell = {
     ["@function.builtin.bash"] = fgs.red,
     ["@parameter.bash"] = fgs.green,
     ["@constant.bash"] = fgs.blue,
@@ -1435,7 +1512,10 @@ hl.langs.zig = {
     zigTSField = fgs.aqua,
     zigTSFuncMacro = fgs.aqua,
     zigTSAttribute = fgs.aqua,
-    zigTSPunctBracket = fgs.orange,
+    zigTSPunctBracket = fgs.orange
+}
+
+hl.langs08.zig = {
     ["@type.builtin.zig"] = {fg = c.green, gui = bold},
     ["@field.zig"] = fgs.aqua,
     ["@function.macro.zig"] = fgs.aqua,
@@ -1484,9 +1564,12 @@ hl.langs.yaml = {
     yamlYAMLDirective = {fg = c.red, gui = bold},
     yamlYAMLVersion = fgs.magenta,
     --
-    -- Treesitter:
+    -- Treesitter
     --
-    yamlTSField = fgs.green,
+    yamlTSField = fgs.green
+}
+
+hl.langs08.yaml = {
     ["@field.yaml"] = fgs.green
 }
 
@@ -1499,7 +1582,10 @@ hl.langs.toml = {
     --
     -- Treesitter
     --
-    tomlTSProperty = fgs.orange,
+    tomlTSProperty = fgs.orange
+}
+
+hl.langs08.toml = {
     ["@property.toml"] = fgs.orange
 }
 
@@ -1588,13 +1674,13 @@ hl.plugins.lsp_trouble = {
 
 hl.plugins.lsp_saga = {
     -- LspFloatWinNormal = {bg = c.bg_float},
+    -- LspSagaFinderSelection = {fg = c.bg_visual},
     LspFloatWinBorder = {fg = c.magenta},
     LspSagaBorderTitle = {fg = c.cyan},
     LspSagaHoverBorder = {fg = c.blue},
     LspSagaRenameBorder = {fg = c.green},
     LspSagaDefPreviewBorder = {fg = c.green},
     LspSagaCodeActionBorder = {fg = c.blue},
-    -- LspSagaFinderSelection = {fg = c.bg_visual},
     LspSagaCodeActionTitle = {fg = c.aqua},
     LspSagaCodeActionContent = {fg = c.purple},
     LspSagaSignatureHelpBorder = {fg = c.red},
@@ -1662,7 +1748,7 @@ hl.plugins.coc = {
     CocWarningVirtualText = fgs.coyote_brown1,
     CocInfoVirtualText = fgs.coyote_brown1,
     CocHintVirtualText = fgs.coyote_brown1,
-    --
+    -- Symbols --
     CocSymbolFile = fgs.green,
     CocSymbolModule = fgs.red,
     CocSymbolNamespace = fgs.orange,
@@ -1690,7 +1776,6 @@ hl.plugins.coc = {
     CocSymbolOperator = fgs.orange,
     CocSymbolTypeParameter = fgs.green,
     -- CocSymbolDefault = {},
-
     -- CocSelectedText for sign text of selected lines.
     -- CocSelectedLine for line highlight of selected lines.
 
@@ -1701,22 +1786,22 @@ hl.plugins.coc = {
     CocCursorRange = {fg = c.bg1, bg = c.light_red},
     CocMenuSel = {fg = c.none, bg = c.bg1}, -- current menu item in menu dialog
     CocCodeLens = fgs.coyote_brown1,
-    -- Popup Menu
+    -- Popup Menu --
     CocPumSearch = {fg = c.orange}, -- for menu of complete items
     CocPumMenu = {fg = c.fg1}, -- items at the end like [LS]
     CocPumDeprecated = fgs.red,
     CocPumVirtualText = {fg = c.coyote_brown1},
-    -- Tree
+    -- Tree --
     CocTreeTitle = {fg = c.red, gui = "bold"},
-    -- Notification
+    -- Notification --
     CocNotificationProgress = {fg = c.blue, bg = "none"},
-    -- coc-git
+    -- Coc-Git --
     CocGitAddedSign = fgs.yellow,
     CocGitChangeRemovedSign = fgs.purple,
     CocGitChangedSign = fgs.blue,
     CocGitRemovedSign = fgs.red,
     CocGitTopRemovedSign = fgs.red,
-    -- coc-explorer
+    -- Coc-Explorer --
     CocExplorerBufferRoot = fgs.orange,
     CocExplorerBufferExpandIcon = fgs.aqua,
     CocExplorerBufferBufnr = fgs.purple,
@@ -1733,7 +1818,7 @@ hl.plugins.coc = {
     CocExplorerTimeAccessed = fgs.aqua,
     CocExplorerTimeCreated = fgs.aqua,
     CocExplorerTimeModified = fgs.aqua,
-    -- Custom
+    -- Custom --
     CocSuggestFloating = {fg = c.fg0, bg = c.bg3} -- bg0
 }
 
@@ -2109,10 +2194,7 @@ hl.plugins.fern = {
 }
 
 function M.setup()
-    --BUG: There is a bug in the API that returns true as a key in the table
-    --https://github.com/neovim/neovim/issues/18024
-    --It is fixed now, in Neovim 0.7.2
-    if utils.needs_api_fix then
+    if utils.needs_api_fix() then
         utils.highlight.alt({Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}})
     else
         utils.highlight({Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}})
@@ -2131,6 +2213,18 @@ function M.setup()
     for _, group in pairs(hl.plugins) do
         if not vim.tbl_contains(cfg.disabled.plugins, group) then
             utils.highlight(group)
+        end
+    end
+
+    if utils.has08() then
+        if cfg.langs08 then
+            for _, group in pairs(hl.langs08) do
+                if not vim.tbl_contains(cfg.disabled.langs08, group) then
+                    utils.highlight(group)
+                end
+            end
+        else
+            log.err("You need Neovim 0.8 to use this feature")
         end
     end
 
