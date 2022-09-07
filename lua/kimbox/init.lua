@@ -15,7 +15,8 @@ local default_config = {
     toggle_style_key = "<Leader>ts",
     toggle_style_list = M.bgs_list,
     -- New Lua-Treesitter highlight groups
-    langs08 = false,
+    -- This isn't bulletproof, but it will help
+    langs08 = utils.tern(utils.has08(), true, false),
     -- Used with popup menus (coc.nvim mainly) --
     popup = {
         background = false -- use background color for pmenu

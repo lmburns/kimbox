@@ -62,7 +62,11 @@ end
 ---@param opts table?
 M.notify = function(msg, level, opts)
     opts = vim.tbl_extend("force", opts or {}, {title = "kimbox"})
-    vim.notify(msg, level, opts)
+    if opts.once then
+        vim.notify_once(msg, level, opts)
+    else
+        vim.notify(msg, level, opts)
+    end
 end
 
 ---`INFO` message
@@ -139,6 +143,31 @@ M.is_empty = function(str)
     return str == "" or str == nil
 end
 
+---Get the latest messages from `messages` command
+---@param count number? of messages to get
+---@param str boolean whether to return as a string or table
+---@return string
+M.messages = function(count, str)
+    -- local messages = api.nvim_exec("messages", true)
+    local messages = fn.execute("messages")
+    local lines = vim.split(messages, "\n")
+    lines =
+        vim.tbl_filter(
+        function(line)
+            return line ~= ""
+        end,
+        lines
+    )
+    count = count and tonumber(count) or nil
+    count = (count ~= nil and count >= 0) and count - 1 or #lines
+    local slice = vim.list_slice(lines, #lines - count)
+    return str and table.concat(slice, "\n") or slice
+end
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                          Colors                          │
+-- ╰──────────────────────────────────────────────────────────╯
+
 ---Convert a hex color (i.e., `#FFFFFF`) into an RGB(255, 255, 255)
 ---@param hex string
 ---@return number[]
@@ -204,7 +233,6 @@ local function vim_highlights(highlights)
     local to_highlight = {}
     for group, opts in pairs(highlights) do
         if opts.link then
-            -- vim.api.nvim_set_hl(0, group_name, group_settings)
             table.insert(to_highlight, ("highlight! link %s %s"):format(group, opts.link))
         else
             table.insert(
@@ -220,13 +248,7 @@ local function vim_highlights(highlights)
         end
     end
 
-    -- FIX: Use pcall here until checking for patch-8.2.0674 works
-    --      Actually pcall does nothing, W18: Invalid character in group name is still shown
-    pcall(
-        function()
-            vim.cmd(table.concat(to_highlight, "\n"))
-        end
-    )
+    vim.cmd(table.concat(to_highlight, "\n"))
 end
 
 ---Highlight using the Nvim API
@@ -234,15 +256,15 @@ end
 local function nvim_highlights(highlights)
     for group, opts in pairs(highlights) do
         if not M.is_empty(opts.link) then
-            -- FIX: Use pcall here until checking for patch-8.2.0674 works
-            pcall(api.nvim_set_hl, 0, group, {link = opts.link})
+            -- pcall(api.nvim_set_hl, 0, group, {link = opts.link})
+            api.nvim_set_hl(0, group, {link = opts.link})
         else
             local values = M.convert_gui(opts.gui)
             values.bg = opts.bg
             values.fg = opts.fg
             values.sp = opts.sp
-            -- FIX: Use pcall here until checking for patch-8.2.0674 works
-            pcall(api.nvim_set_hl, 0, group, values)
+            -- pcall(api.nvim_set_hl, 0, group, values)
+            api.nvim_set_hl(0, group, values)
         end
     end
 end

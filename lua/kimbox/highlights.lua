@@ -2216,8 +2216,8 @@ function M.setup()
         end
     end
 
-    if utils.has08() then
-        if cfg.langs08 then
+    if cfg.langs08 then
+        if utils.has08() then
             for _, group in pairs(hl.langs08) do
                 if not vim.tbl_contains(cfg.disabled.langs08, group) then
                     utils.highlight(group)
@@ -2227,6 +2227,20 @@ function M.setup()
             log.err("You need Neovim 0.8 to use this feature")
         end
     end
+
+    vim.defer_fn(
+        function()
+            local msg = utils.messages(1, true)
+            if msg and msg:match("^W18: Invalid character in group name") then
+                log.err(
+                    "You need to disable `langs08` or\nyou must have commit 030b422d1.\nCheck `:h lua-treesitter-highlight-groups`",
+                    true,
+                    {once = true}
+                )
+            end
+        end,
+        1000
+    )
 
     if cfg.highlights then
         -- user defined highlights
