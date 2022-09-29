@@ -983,8 +983,8 @@ hl.langs08.python = {
     ["@constant.builtin.python"] = fgs.purple,
     ["@method.python"] = {fg = c.purple, gui = bold},
     ["@parameter.python"] = fgs.orange,
-    ["@constant.python"] = fgs.aqua,
-    ["@field.python"] = fgs.fg0,
+    ["@constant.python"] = {fg = c.aqua, gui = bold},
+    ["@field.python"] = fgs.aqua,
     ["@string.escape.python"] = fgs.green,
     ["@punctuation.bracket.python"] = fgs.purple
 }
