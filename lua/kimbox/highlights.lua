@@ -303,6 +303,7 @@ hl.langs08.solidity = {
     ["@type.solidity"] = {fg = c.green, gui = bold},
     ["@tag.solidity"] = {fg = c.blue, gui = bold},
     ["@method.solidity"] = {fg = c.magenta, gui = bold},
+    ["@method.call.solidity"] = {fg = c.magenta, gui = bold},
     ["@field.solidity"] = fgs.aqua
 }
 
@@ -608,6 +609,7 @@ hl.langs08.javascript = {
     ["@constructor.javascript"] = {fg = c.green, gui = bold},
     ["@property.javascript"] = fgs.aqua,
     ["@method.javascript"] = {fg = c.magenta, gui = bold},
+    ["@method.call.javascript"] = {fg = c.magenta, gui = bold},
     ["@keyword.javascript"] = fgs.red
 }
 
@@ -798,6 +800,7 @@ hl.langs08.typescript = {
     ["@constructor.typescript"] = {fg = c.wave_red, gui = bold},
     ["@property.typescript"] = fgs.aqua,
     ["@method.typescript"] = {fg = c.magenta, gui = bold},
+    ["@method.call.typescript"] = {fg = c.magenta, gui = bold},
     ["@keyword.typescript"] = fgs.red
 }
 
@@ -822,6 +825,7 @@ hl.langs.tsx = {
 
 hl.langs08.tsx = {
     ["@method.tsx"] = {fg = c.magenta, gui = bold},
+    ["@method.call.tsx"] = {fg = c.magenta, gui = bold},
     ["@constructor.tsx"] = {fg = c.wave_red, gui = bold},
     ["@property.tsx"] = fgs.aqua,
     ["@punctuation.bracket.tsx"] = fgs.purple,
@@ -982,6 +986,7 @@ hl.langs08.python = {
     ["@keyword.function.python"] = {fg = c.red, gui = bold},
     ["@constant.builtin.python"] = fgs.purple,
     ["@method.python"] = {fg = c.purple, gui = bold},
+    ["@method.call.python"] = {fg = c.magenta, gui = bold},
     ["@parameter.python"] = fgs.orange,
     ["@constant.python"] = {fg = c.aqua, gui = bold},
     ["@field.python"] = fgs.aqua,
@@ -1038,6 +1043,7 @@ hl.langs.go = {
 hl.langs08.go = {
     ["@property.go"] = fgs.blue,
     ["@method.go"] = {fg = c.purple, gui = bold},
+    ["@method.call.go"] = {fg = c.magenta, gui = bold},
     ["@type.go"] = {fg = c.green, gui = bold},
     ["@type.builtin.go"] = {fg = c.green, gui = bold},
     ["@punctuation.bracket.go"] = fgs.purple
@@ -1455,6 +1461,7 @@ hl.langs08.cpp = {
     ["@keyword.cpp"] = fgs.red,
     ["@include.cpp"] = {fg = c.red, gui = italic},
     ["@method.cpp"] = fgs.blue,
+    ["@method.call.cpp"] = {fg = c.magenta, gui = bold},
     ["@field.cpp"] = fgs.yellow,
     ["@constructor.cpp"] = fgs.blue
 }
