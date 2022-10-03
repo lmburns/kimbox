@@ -16,16 +16,17 @@ local log = utils.log
 
 local cfg = vim.g.kimbox_config
 
+M.langs = hl.langs
+M.plugins = hl.plugins
+
 local reverse = cfg.allow_reverse and "reverse" or "none"
 local bold = cfg.allow_bold and "bold" or "none"
 local italic = cfg.allow_italic and "italic" or "none"
 local underline = cfg.allow_underline and "underline" or "none"
 local undercurl = cfg.allow_undercurl and "undercurl" or "none"
+local trans = cfg.transparent
 
-M.langs = hl.langs
-M.plugins = hl.plugins
-
-local function underbold()
+local underbold = (function()
     if cfg.allow_bold and cfg.allow_underline then
         return "bold,underline"
     elseif cfg.allow_bold then
@@ -35,9 +36,8 @@ local function underbold()
     else
         return "none"
     end
-end
+end)()
 
-local trans = cfg.transparent
 local fgs = {
     fg0 = {fg = c.fg0},
     fg1 = {fg = c.fg1},
@@ -110,7 +110,7 @@ hl.common = {
     DiffText = {fg = c.none, bg = c.diff_text}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffFile = {fg = c.aqua},
     Directory = {fg = c.bg5, bg = c.none}, -- directory names (and other special names in listings)
-    ErrorMsg = {fg = c.red, gui = underbold()},
+    ErrorMsg = {fg = c.red, gui = underbold},
     WarningMsg = {fg = c.green, gui = bold},
     ModeMsg = {fg = c.fg0, gui = bold},
     MoreMsg = {fg = c.green, gui = bold},
@@ -1734,7 +1734,7 @@ hl.plugins.cmp = {
 
 hl.plugins.coc = {
     -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
-    CocHoverRange = {fg = c.none, gui = underbold()}, -- range of current hovered symbol
+    CocHoverRange = {fg = c.none, gui = underbold}, -- range of current hovered symbol
     CocHighlightText = {bg = c.fg2}, -- Coc cursorhold event
     CocHintHighlight = {fg = c.none, gui = undercurl, sp = c.aqua},
     CocErrorHighlight = {fg = c.none, gui = undercurl, sp = c.red},
