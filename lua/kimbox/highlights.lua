@@ -399,7 +399,7 @@ hl.langs.tex = {
 
 hl.langs08.tex = {
     ["@include.latex"] = fgs.blue,
-    ["@function.macro.latex"] = {fg = c.fg0, gui = bold},
+    ["@function.macro.latex"] = {fg = c.green, gui = bold},
     ["@text.environment.latex"] = {fg = c.cyan, gui = "bold"},
     ["@text.environment.name.latex"] = fgs.yellow,
     ["@text.title.latex"] = fgs.green,
@@ -809,7 +809,7 @@ hl.langs.tsx = {
     tsxTSConstructor = {fg = c.wave_red, gui = bold},
     tsxTSProperty = fgs.aqua,
     tsxTSPunctBracket = fgs.purple,
-    tsxTSTagAttribute = fgs.yellow,
+    tsxTSTagAttribute = fgs.aqua,
     tsxTSTag = {fg = c.orange, gui = italic},
     tsxTSVariableBuiltin = fgs.blue,
     tsxTSException = fgs.orange
@@ -829,7 +829,7 @@ hl.langs08.tsx = {
     ["@constructor.tsx"] = {fg = c.wave_red, gui = bold},
     ["@property.tsx"] = fgs.aqua,
     ["@punctuation.bracket.tsx"] = fgs.purple,
-    ["@tag.attribute.tsx"] = fgs.yellow,
+    ["@tag.attribute.tsx"] = fgs.aqua,
     ["@tag.tsx"] = {fg = c.orange, gui = italic},
     ["@variable.builtin.tsx"] = fgs.blue,
     ["@exception.tsx"] = fgs.orange
