@@ -835,6 +835,18 @@ hl.langs08.tsx = {
     ["@exception.tsx"] = fgs.orange
 }
 
+hl.langs.graphql = {
+    graphqlParameter = fgs.blue,
+    graphqlVariable = {fg = c.magenta, gui = bold},
+    graphqlProperty = fgs.aqua
+}
+
+hl.langs08.graphql = {
+    ["@parameter.graphql"] = fgs.blue,
+    ["@variable.graphql"] = {fg = c.magenta, gui = bold},
+    ["@property.graphql"] = fgs.aqua,
+}
+
 hl.langs.css = {
     cssAtRule = fgs.red,
     -- Treesitter
