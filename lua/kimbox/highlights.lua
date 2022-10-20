@@ -836,9 +836,9 @@ hl.langs08.tsx = {
 }
 
 hl.langs.graphql = {
-    graphqlParameter = fgs.blue,
-    graphqlVariable = {fg = c.magenta, gui = bold},
-    graphqlProperty = fgs.aqua
+    graphqlTSParameter = fgs.blue,
+    graphqlTSVariable = {fg = c.magenta, gui = bold},
+    graphqlTSProperty = fgs.aqua
 }
 
 hl.langs08.graphql = {
@@ -1253,7 +1253,8 @@ hl.langs.lua = {
     luaTSPunctBracket = fgs.purple,
     luaTSConstructor = {fg = c.green, gui = bold},
     luaTSConstant = {fg = c.green, gui = bold},
-    luaTSKeywordFunction = fgs.red
+    luaTSKeywordFunction = fgs.red,
+    luaTSMethod = fgs.blue
 }
 
 hl.langs08.lua = {
@@ -1262,7 +1263,8 @@ hl.langs08.lua = {
     ["@punctuation.bracket.lua"] = fgs.purple,
     ["@constructor.lua"] = {fg = c.green, gui = bold},
     ["@constant.lua"] = {fg = c.green, gui = bold},
-    ["@keyword.function.lua"] = fgs.red
+    ["@keyword.function.lua"] = fgs.red,
+    ["@method.lua"] = fgs.blue
 }
 
 hl.langs.teal = {
