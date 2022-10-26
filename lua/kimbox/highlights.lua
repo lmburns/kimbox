@@ -261,37 +261,33 @@ hl.treesitter = {
 }
 
 hl.langs08.treesitter = {
-    ["@text.annotation"] = {fg = c.blue, gui = italic}, -- NOTE: unsure
-    ["@text.attribute"] = {fg = c.green, gui = italic}, -- NOTE: unsure
-    ["@boolean"] = fgs.orange, -- Boolean literals
-    ["@character"] = fgs.yellow, -- Character literals
-    ["@character.special"] = {link = "SpecialChar"}, -- Special characters
-    ["@comment"] = {fg = c.coyote_brown1, gui = italic}, -- Line comments and block comments
-    ["@conditional"] = {fg = c.purple, gui = italic}, -- NOTE: unsure
+    ["@boolean"] = fgs.orange,
+    ["@character"] = fgs.yellow,
+    ["@character.special"] = {link = "SpecialChar"},
+    ["@comment"] = {fg = c.coyote_brown1, gui = italic},
+    ["@conditional"] = {fg = c.purple, gui = italic}, -- keywords related to conditionals (e.g. `if` / `else`)
+    ["@constant"] = {fgs = c.green, gui = bold},
     ["@constant.builtin"] = {fg = c.orange, gui = italic},
     ["@constant.macro"] = {fg = c.orange, gui = italic},
-    ["@constant"] = {fgs = c.green, gui = bold},
-    ["@constructor"] = {fg = c.yellow, gui = bold},
-    -- TSDanger = {fg = c.red, gui = bold},
-    ["@text.environment"] = fgs.fg0,
-    ["@text.environment.name"] = fgs.fg0,
-    ["@exception"] = {fg = c.red, gui = italic},
+    ["@constructor"] = {fg = c.wave_red, gui = bold},
+    -- ["@debug"] = {}, -- keywords related to debugging
+    ["@exception"] = {fg = c.red, gui = italic}, -- keywords related to exceptions (e.g. `throw` / `catch`)
     ["@field"] = fgs.aqua,
     ["@float"] = fgs.purple,
+    ["@function"] = {fg = c.magenta, gui = bold},
+    ["@function.call"] = {fg = c.magenta, gui = bold},
     ["@function.builtin"] = {fg = c.magenta, gui = bold},
     ["@function.macro"] = fgs.aqua,
-    ["@function"] = {fg = c.magenta, gui = bold},
-    ["@include"] = {fg = c.red, gui = italic},
+    ["@include"] = {fg = c.red, gui = italic}, -- keywords for including modules (e.g. `import` / `from` in Python)
     ["@keyword"] = fgs.red,
-    ["@keyword.function"] = fgs.red,
-    ["@keyword.operator"] = fgs.red,
-    ["@label"] = fgs.orange,
-    ["@literal"] = fgs.green,
-    ["@text.math"] = fgs.green,
+    ["@keyword.function"] = fgs.red, -- keywords that define a function (e.g. `func` in Go, `def` in Python)
+    ["@keyword.operator"] = fgs.red, -- operators that are English words (e.g. `and` / `or`)
+    ["@keyword.return"] = {fg = c.red, gui = bold}, -- keywords like `return` and `yield`
+    ["@label"] = fgs.orange, -- GOTO and other labels (e.g. `label:` in C)
     ["@method"] = fgs.blue,
+    -- ["@method.call"] = {},
     ["@namespace"] = {fg = c.blue, gui = italic},
     ["@none"] = fgs.fg0,
-    ["@text.note"] = {fg = c.blue, bg = c.bg0, gui = bold}, -- NOTE: unsure
     ["@number"] = fgs.purple,
     ["@operator"] = fgs.orange,
     ["@parameter"] = fgs.fg0,
@@ -300,23 +296,46 @@ hl.langs08.treesitter = {
     ["@punctuation.bracket"] = fgs.fg0,
     ["@punctuation.delimiter"] = fgs.coyote_brown1,
     ["@punctuation.special"] = fgs.green,
-    ["@repeat"] = fgs.purple,
-    ["@text.strike"] = fgs.coyote_brown1, -- NOTE: unsure
+    ["@repeat"] = fgs.purple, -- keywords related to loops (e.g. `for` / `while`)
     ["@string"] = fgs.yellow,
     ["@string.escape"] = fgs.philippine_green,
     ["@string.regex"] = fgs.orange,
+    ["@string.special"] = fgs.pumpkin,
+    ["@storageclass"] = fgs.red,
     ["@symbol"] = fgs.fg0,
     ["@tag"] = {fg = c.blue, gui = italic},
+    -- ["@tag.attribute"] = fgs.magenta,
     ["@tag.delimiter"] = fgs.magenta,
-    -- TSText = fgs.yellow,
-    -- TSTextReference = fgs.blue,
+    ["@text"] = fgs.yellow,
+    ["@text.annotation"] = {fg = c.blue, gui = italic}, -- NOTE: unsure
+    ["@text.attribute"] = {fg = c.green, gui = italic}, -- NOTE: unsure
+    ["@text.danger"] = {fg = c.red, gui = bold},
+    ["@text.diff.add"] = {fg = c.none, bg = utils.darken(c.green, 0.6, c.bg0)},
+    ["@text.diff.delete"] = {fg = c.none, bg = utils.darken(c.red, 0.6, c.bg0)},
+    ["@text.environment"] = fgs.fg0,
+    ["@text.environment.name"] = fgs.fg0,
+    ["@text.literal"] = fgs.green,
+    ["@text.math"] = fgs.green,
+    ["@text.note"] = {fg = c.blue, bg = c.bg0, gui = bold},
+    ["@text.reference"] = fgs.blue,
+    ["@text.strike"] = fgs.coyote_brown1,
+    ["@text.strong"] = {fg = c.none, gui = "bold"},
     ["@text.title"] = {fg = c.orange, gui = "bold"}, -- Text that is part of a title
+    ["@text.todo"] = {fg = c.red, gui = bold},
+    ["@text.underline"] = {fg = c.none, gui = "underline"},
+    ["@text.uri"] = {fg = c.fg1, gui = "underline"},
+    ["@text.warning"] = {fg = c.green, gui = bold},
     ["@type"] = fgs.green,
     ["@type.builtin"] = fgs.green,
-    ["@text.uri"] = {fg = c.fg1, gui = "underline"},
+    -- ["@type.definition"] = fgs.green,
+    ["@type.qualifier"] = fgs.red,
     ["@variable"] = fgs.fg0,
-    ["@variable.builtin"] = fgs.blue,
-    ["@warning"] = {fg = c.green, gui = bold}
+    ["@variable.builtin"] = fgs.blue
+
+    -- ["@preproc"] = {},
+    -- ["@define"] = {},
+    -- ["@conceal"] = {},
+    -- ["@spell"] = {}
 }
 
 hl.langs.comment = {
@@ -326,7 +345,7 @@ hl.langs.comment = {
 }
 
 hl.langs08.comment = {
-    ["@tag.comment"] = {fg = c.yellow},
+    ["@tag.comment"] = {fg = c.peach_red},
     ["@constant.comment"] = {fg = c.amethyst}
 }
 
