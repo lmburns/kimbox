@@ -260,6 +260,65 @@ hl.treesitter = {
     TSWarning = {fg = c.green, gui = bold}
 }
 
+hl.langs08.treesitter = {
+    ["@text.annotation"] = {fg = c.blue, gui = italic}, -- NOTE: unsure
+    ["@text.attribute"] = {fg = c.green, gui = italic}, -- NOTE: unsure
+    ["@boolean"] = fgs.orange, -- Boolean literals
+    ["@character"] = fgs.yellow, -- Character literals
+    ["@character.special"] = {link = "SpecialChar"}, -- Special characters
+    ["@comment"] = {fg = c.coyote_brown1, gui = italic}, -- Line comments and block comments
+    ["@conditional"] = {fg = c.purple, gui = italic}, -- NOTE: unsure
+    ["@constant.builtin"] = {fg = c.orange, gui = italic},
+    ["@constant.macro"] = {fg = c.orange, gui = italic},
+    ["@constant"] = {fgs = c.green, gui = bold},
+    ["@constructor"] = {fg = c.yellow, gui = bold},
+    -- TSDanger = {fg = c.red, gui = bold},
+    ["@text.environment"] = fgs.fg0,
+    ["@text.environment.name"] = fgs.fg0,
+    ["@exception"] = {fg = c.red, gui = italic},
+    ["@field"] = fgs.aqua,
+    ["@float"] = fgs.purple,
+    ["@function.builtin"] = {fg = c.magenta, gui = bold},
+    ["@function.macro"] = fgs.aqua,
+    ["@function"] = {fg = c.magenta, gui = bold},
+    ["@include"] = {fg = c.red, gui = italic},
+    ["@keyword"] = fgs.red,
+    ["@keyword.function"] = fgs.red,
+    ["@keyword.operator"] = fgs.red,
+    ["@label"] = fgs.orange,
+    ["@literal"] = fgs.green,
+    ["@text.math"] = fgs.green,
+    ["@method"] = fgs.blue,
+    ["@namespace"] = {fg = c.blue, gui = italic},
+    ["@none"] = fgs.fg0,
+    ["@text.note"] = {fg = c.blue, bg = c.bg0, gui = bold}, -- NOTE: unsure
+    ["@number"] = fgs.purple,
+    ["@operator"] = fgs.orange,
+    ["@parameter"] = fgs.fg0,
+    ["@parameter.reference"] = fgs.fg0,
+    ["@property"] = fgs.yellow,
+    ["@punctuation.bracket"] = fgs.fg0,
+    ["@punctuation.delimiter"] = fgs.coyote_brown1,
+    ["@punctuation.special"] = fgs.green,
+    ["@repeat"] = fgs.purple,
+    ["@text.strike"] = fgs.coyote_brown1, -- NOTE: unsure
+    ["@string"] = fgs.yellow,
+    ["@string.escape"] = fgs.philippine_green,
+    ["@string.regex"] = fgs.orange,
+    ["@symbol"] = fgs.fg0,
+    ["@tag"] = {fg = c.blue, gui = italic},
+    ["@tag.delimiter"] = fgs.magenta,
+    -- TSText = fgs.yellow,
+    -- TSTextReference = fgs.blue,
+    ["@text.title"] = {fg = c.orange, gui = "bold"}, -- Text that is part of a title
+    ["@type"] = fgs.green,
+    ["@type.builtin"] = fgs.green,
+    ["@text.uri"] = {fg = c.fg1, gui = "underline"},
+    ["@variable"] = fgs.fg0,
+    ["@variable.builtin"] = fgs.blue,
+    ["@warning"] = {fg = c.green, gui = bold}
+}
+
 hl.langs.comment = {
     -- commentTSTag = {fg = c.old_rose},
     commentTSTag = {fg = c.amethyst},
@@ -267,8 +326,8 @@ hl.langs.comment = {
 }
 
 hl.langs08.comment = {
-    ["@tag.comment"] = {fg = c.amethyst},
-    ["@constant.comment"] = {fg = c.yellow}
+    ["@tag.comment"] = {fg = c.yellow},
+    ["@constant.comment"] = {fg = c.amethyst}
 }
 
 hl.langs.solidity = {
@@ -1612,6 +1671,16 @@ hl.langs.toml = {
 
 hl.langs08.toml = {
     ["@property.toml"] = fgs.orange
+}
+
+hl.langs.sxhkdrc = {
+    sxhkdrcTSVariable = fgs.blue,
+    sxhkdrcTSPunctuationBracket = fgs.green
+}
+
+hl.langs08.sxhkdrc = {
+    ["@variable.sxhkdrc"] = fgs.blue,
+    ["@punctuation.bracket.sxhkdrc"] = fgs.green
 }
 
 hl.langs.ron = {
