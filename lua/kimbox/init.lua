@@ -121,7 +121,7 @@ function M.setup(opts)
         end
     end
 
-    vim.api.nvim_set_keymap(
+    vim.keymap.set(
         "n",
         g.kimbox_config.toggle_style_key,
         [[<cmd>lua require('kimbox').toggle()<CR>]],

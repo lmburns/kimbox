@@ -804,6 +804,7 @@ hl.langs.typescript = {
     typescriptSymbolStaticMethod = {fg = c.yellow, gui = bold},
     typescriptObjectStaticMethod = {fg = c.yellow, gui = bold},
     typescriptObjectMethod = {fg = c.yellow, gui = bold},
+    typescriptObjectType = {fg = c.orange, gui = bold},
     typescriptJSONStaticMethod = {fg = c.yellow, gui = bold},
     typescriptEncodingMethod = {fg = c.yellow, gui = bold},
     typescriptBOMLocationMethod = {fg = c.yellow, gui = bold},
