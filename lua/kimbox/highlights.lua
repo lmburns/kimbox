@@ -1713,6 +1713,18 @@ hl.langs.ron = {
     ronBoolean = fgs.orange
 }
 
+hl.langs.gitignore = {
+    gitignoreTSPunctDelimiter = {fg = c.blue, gui = bold},
+    gitignoreTSPunctBracket = {fg = c.magenta, gui = bold},
+    gitignoreTSOperator = {fg = c.orange, gui = bold}
+}
+
+hl.langs08.gitignore = {
+    ["@punctuation.delimiter.gitignore"] = {fg = c.blue, gui = bold},
+    ["@punctuation.bracket.gitignore"] = {fg = c.magenta, gui = bold},
+    ["@operator.gitignore"] = {fg = c.orange, gui = bold}
+}
+
 hl.langs.gitcommit = {
     gitcommitSummary = fgs.red,
     gitcommitUntracked = fgs.coyote_brown1,
