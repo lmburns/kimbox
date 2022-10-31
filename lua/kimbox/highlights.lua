@@ -426,7 +426,19 @@ hl.langs.markdown = {
     markdownHeadingDelimiter = fgs.coyote_brown1,
     markdownLinkText = fgs.purple,
     markdownId = fgs.green,
-    markdownIdDeclaration = fgs.puprle
+    markdownIdDeclaration = fgs.purple,
+    --
+    -- Treesitter
+    --
+    markdownTSPunctSpecial = {fg = c.red, gui = bold}
+}
+
+hl.langs08.markdown = {
+    ["@text.literal.markdown"] = fgs.purple,
+    ["@text.strong.markdown"] = {fg = c.deep_lilac, gui = bold},
+    ["@text.emphasis.markdown"] = {fg = c.morning_blue, gui = underbold},
+    ["@text.reference.markdown"] = {fg = c.blue, gui = underline},
+    ["@punctuation.special.markdown"] = {fg = c.red, gui = bold}
 }
 
 hl.langs.tex = {
@@ -997,7 +1009,8 @@ hl.langs.html = {
     htmlTSTagAttribute = {fg = c.green, gui = bold},
     htmlTSText = fgs.fg0,
     htmlTSTag = {fg = c.red, gui = bold},
-    htmlTSTagDelimiter = {fg = c.magenta, gui = bold}
+    htmlTSTagDelimiter = {fg = c.magenta, gui = bold},
+    htmlBold = {fg = c.deep_lilac, gui = bold}
 }
 
 hl.langs08.html = {
