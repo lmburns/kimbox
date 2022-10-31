@@ -1354,14 +1354,16 @@ hl.langs.teal = {
     tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
     tealTSParameter = fgs.aqua,
     tealTSPunctBracket = fgs.purple,
-    tealTSFunction = {fg = c.magenta, gui = bold} -- doesn't pick up function definitions
+    tealTSFunction = {fg = c.magenta, gui = bold},
+    tealTSConstant = {fg = c.wave_red, gui = bold}
 }
 
 hl.langs08.teal = {
     ["@operator.teal"] = fgs.orange,
     ["@parameter.teal"] = fgs.aqua,
     ["@punctuation.bracket.teal"] = fgs.purple,
-    ["@function.teal"] = {fg = c.magenta, gui = bold}
+    ["@function.teal"] = {fg = c.magenta, gui = bold},
+    ["@constant.teal"] = {fg = c.wave_red, gui = bold}
 }
 
 hl.langs.ocaml = {
