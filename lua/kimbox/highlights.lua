@@ -47,6 +47,7 @@ local fgs = {
     bg3 = {fg = c.bg3},
     bg4 = {fg = c.bg4},
     grullo_grey = {fg = c.grullo_grey},
+    wenge_grey = {fg = c.wenge_grey},
     coyote_brown1 = {fg = c.coyote_brown1},
     coyote_brown = {fg = c.coyote_brown},
     amethyst = {fg = c.amethyst},
@@ -1837,7 +1838,7 @@ hl.plugins.cmp = {
     CmpItemAbbrDeprecated = fgs.fg0,
     CmpItemAbbrMatch = fgs.aqua,
     CmpItemAbbrMatchFuzzy = {fg = c.cyan, gui = underline},
-    CmpItemMenu = fgs.grey,
+    CmpItemMenu = fgs.grullo_grey,
     CmpItemKindDefault = fgs.purple,
     CmpItemKindClass = fgs.yellow,
     CmpItemKindColor = fgs.green,
@@ -1922,8 +1923,8 @@ hl.plugins.coc = {
 
     -- TODO: For non-matched
     CocSearch = fgs.orange, -- for matched input characters
-    CocDisabled = {fg = c.grullo_grey},
-    CocFadeOut = {fg = c.wenge_grey}, -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
+    CocDisabled = fgs.grullo_grey,
+    CocFadeOut = fgs.wenge_grey, -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
     CocCursorRange = {fg = c.bg1, bg = c.light_red},
     CocMenuSel = {fg = c.none, bg = c.bg1}, -- current menu item in menu dialog
     CocCodeLens = fgs.coyote_brown1,
@@ -2286,7 +2287,12 @@ hl.plugins.hop = {
     HopNextKey = {fg = c.red, gui = bold},
     HopNextKey1 = {fg = c.deep_lilac, gui = bold},
     HopNextKey2 = {fg = utils.darken(c.deep_lilac, 0.7)},
-    HopUnmatched = fgs.grey
+    HopUnmatched = {fg = "#666666", sp = "#666666"}
+}
+
+hl.plugins.treehopper = {
+    TSNodeUnmatched = {link = "HopUnmatched"},
+    TSNodeKey = {link = "HopNextKey"}
 }
 
 hl.plugins.sneak = {
