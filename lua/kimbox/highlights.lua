@@ -2078,7 +2078,7 @@ hl.plugins.floaterm = {
 }
 
 hl.plugins.vimwiki = {
-    VimwikiBold = {fg = c.burple, gui = "bold"},
+    VimwikiBold = {fg = c.deep_lilac, gui = "bold"},
     VimwikiCode = {fg = c.puce},
     VimwikiItalic = {fg = "#83a598", gui = "italic"},
     VimwikiHeader1 = {fg = "#F14A68", gui = "bold"},
