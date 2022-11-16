@@ -1623,6 +1623,7 @@ hl.langs.zsh = {
     zshVariableDef = fgs.blue,
     zshNumber = fgs.purple,
     zshCommand = {fg = c.red, gui = bold},
+    zshDelim = {fg = c.blue},
     -- zshFlag = fgs.yellow,
     zshSubstDelim = fgs.purple
 }
