@@ -1,53 +1,53 @@
-local colors = require("kimbox.lualine").colors()
+local c = require("kimbox.lualine").colors()
 
 local kimbox = {
     normal = {
-        a = {fg = colors.purple, bg = colors.bg, gui = "bold"},
-        b = {fg = colors.fg, bg = colors.bg},
-        c = {fg = colors.fg, bg = colors.brown3},
-        x = {fg = colors.fg, bg = colors.bg},
-        y = {fg = colors.purple, bg = colors.bg, gui = "bold"},
-        z = {fg = colors.purple, bg = colors.bg, gui = "bold"}
+        a = {fg = c.purple, bg = c.bg, gui = "bold"},
+        b = {fg = c.fg, bg = c.bg},
+        c = {fg = c.fg, bg = c.brown3},
+        x = {fg = c.fg, bg = c.bg},
+        y = {fg = c.purple, bg = c.bg, gui = "bold"},
+        z = {fg = c.purple, bg = c.bg, gui = "bold"}
     },
     command = {
-        a = {fg = colors.blue, bg = colors.bg, gui = "bold"},
-        b = {fg = colors.fg, bg = colors.bg},
-        c = {fg = colors.fg, bg = colors.brown3},
-        x = {fg = colors.fg, bg = colors.bg}
+        a = {fg = c.blue, bg = c.bg, gui = "bold"},
+        b = {fg = c.fg, bg = c.bg},
+        c = {fg = c.fg, bg = c.brown3},
+        x = {fg = c.fg, bg = c.bg}
     },
     inactive = {
-        a = {fg = colors.red, bg = colors.bg},
-        b = {fg = colors.magenta, bg = colors.bg}
+        a = {fg = c.red, bg = c.bg},
+        b = {fg = c.magenta, bg = c.bg}
     },
     insert = {
-        a = {fg = colors.green, bg = colors.bg, gui = "bold"},
-        b = {fg = colors.fg, bg = colors.bg},
-        c = {fg = colors.fg, bg = colors.brown3},
-        x = {fg = colors.fg, bg = colors.bg},
-        y = {fg = colors.green, bg = colors.bg, gui = "bold"},
-        z = {fg = colors.green, bg = colors.bg, gui = "bold"}
+        a = {fg = c.green, bg = c.bg, gui = "bold"},
+        b = {fg = c.fg, bg = c.bg},
+        c = {fg = c.fg, bg = c.brown3},
+        x = {fg = c.fg, bg = c.bg},
+        y = {fg = c.green, bg = c.bg, gui = "bold"},
+        z = {fg = c.green, bg = c.bg, gui = "bold"}
     },
     replace = {
-        a = {fg = colors.red, bg = colors.bg, gui = "bold"},
-        b = {fg = colors.fg, bg = colors.bg},
-        c = {fg = colors.fg, bg = colors.brown3},
-        x = {fg = colors.fg, bg = colors.bg}
+        a = {fg = c.red, bg = c.bg, gui = "bold"},
+        b = {fg = c.fg, bg = c.bg},
+        c = {fg = c.fg, bg = c.brown3},
+        x = {fg = c.fg, bg = c.bg}
     },
     terminal = {
-        a = {fg = colors.yellow, bg = colors.bg, gui = "bold"},
-        b = {fg = colors.fg, bg = colors.bg},
-        c = {fg = colors.fg, bg = colors.brown3},
-        x = {fg = colors.fg, bg = colors.bg},
-        y = {fg = colors.yellow, bg = colors.bg, gui = "bold"},
-        z = {fg = colors.yellow, bg = colors.bg, gui = "bold"}
+        a = {fg = c.yellow, bg = c.bg, gui = "bold"},
+        b = {fg = c.fg, bg = c.bg},
+        c = {fg = c.fg, bg = c.brown3},
+        x = {fg = c.fg, bg = c.bg},
+        y = {fg = c.yellow, bg = c.bg, gui = "bold"},
+        z = {fg = c.yellow, bg = c.bg, gui = "bold"}
     },
     visual = {
-        a = {fg = colors.salmon, bg = colors.bg, gui = "bold"},
-        b = {fg = colors.fg, bg = colors.bg},
-        c = {fg = colors.fg, bg = colors.brown3},
-        x = {fg = colors.fg, bg = colors.bg},
-        y = {fg = colors.salmon, bg = colors.bg, gui = "bold"},
-        z = {fg = colors.salmon, bg = colors.bg, gui = "bold"}
+        a = {fg = c.salmon, bg = c.bg, gui = "bold"},
+        b = {fg = c.fg, bg = c.bg},
+        c = {fg = c.fg, bg = c.brown3},
+        x = {fg = c.fg, bg = c.bg},
+        y = {fg = c.salmon, bg = c.bg, gui = "bold"},
+        z = {fg = c.salmon, bg = c.bg, gui = "bold"}
     }
 }
 

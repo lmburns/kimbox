@@ -53,7 +53,7 @@ return {
         coyote_brown1 = "#7E602C",
         grullo_grey = "#a89984",
         wenge_grey = "#625A5A",
-        operator_base05 = "#e8c097",
+        operator_base = "#e8c097",
         diff_add = "#889B4A",
         diff_delete = "#cc6666",
         diff_change = "#543739",

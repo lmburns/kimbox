@@ -60,7 +60,7 @@ local fgs = {
     blue = {fg = c.blue},
     purple = {fg = c.purple},
     magenta = {fg = c.magenta},
-    operator_base05 = {fg = c.operator_base05},
+    operator_base = {fg = c.operator_base},
     philippine_green = {fg = c.philippine_green}
 }
 
@@ -121,7 +121,7 @@ hl.common = {
     Whitespace = {fg = c.bg5},
     SpecialKey = {fg = c.bg5},
     Pmenu = {
-        fg = c.operator_base05,
+        fg = c.operator_base,
         bg = utils.tern(cfg.popup.background, c.bg0, c.bg1)
     },
     PmenuSel = {fg = c.red, bg = c.bg4, gui = bold},
@@ -133,8 +133,9 @@ hl.common = {
     Question = {fg = c.green},
     NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
     TabLine = {fg = c.fg, bg = c.bg1}, -- Tab pages line, not active tab page label
-    -- TabLineSel = {fg = c.bg0, bg = c.fg, gui = bold}, -- Tab pages line, active tab page label
-    TabLineSel = {bg = c.bg1, gui = bold}, -- Tab pages line, active tab page label
+    TabLineSel = {fg = c.bg0, bg = c.fg, gui = bold}, -- Tab pages line, active tab page label
+    -- TabLineSel = {fg = c.fg, bg = c.bg1}, -- Tab pages line, active tab page label
+    -- TabLineFill = {fg = c.fg, bg = c.bg1}, -- Tab pages line, where there are no labels
     TabLineFill = {gui = "none"}, -- Tab pages line, where there are no labels
     -- When last status=2 or 3
     StatusLine = {fg = c.none, bg = c.none}, -- Status line of current window.
@@ -146,8 +147,8 @@ hl.common = {
     SpellCap = {fg = c.blue, gui = undercurl, sp = c.blue},
     SpellLocal = {fg = c.aqua, gui = undercurl, sp = c.aqua},
     SpellRare = {fg = c.purple, gui = undercurl, sp = c.purple},
-    Visual = {fg = c.black, bg = c.operator_base05, gui = reverse}, -- Visual mode selection
-    VisualNOS = {fg = c.black, bg = c.operator_base05, gui = reverse}, -- Visual sel when vim is "Not Owning the Selection"
+    Visual = {fg = c.black, bg = c.operator_base, gui = reverse}, -- Visual mode selection
+    VisualNOS = {fg = c.black, bg = c.operator_base, gui = reverse}, -- Visual sel when vim is "Not Owning the Selection"
     QuickFixLine = {fg = c.purple, gui = bold},
     Debug = {fg = c.orange},
     debugPC = {fg = c.bg0, bg = c.green},

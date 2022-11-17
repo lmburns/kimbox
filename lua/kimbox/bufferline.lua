@@ -15,7 +15,7 @@ function M.colors()
     purple = c.purple,
     dbg = bgs.vscode,
     lgb = c.bg4,
-    fg = c.operator_base05,
+    fg = c.operator_base,
     red = c.red,
     dred = c.bg_red,
     green = c.green,

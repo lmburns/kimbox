@@ -30,7 +30,7 @@ let s:colors = {
       \ 'grey0':            ['#7E602C',   '243'],
       \ 'grey1':            ['#7E602C',   '245'],
       \ 'grey2':            ['#a89984',   '246'],
-      \ 'operator_base05':  ['#e8c097',   '251'],
+      \ 'operator_base':  ['#e8c097',   '251'],
       \ 'none':             ['NONE',      'NONE']
       \ }
 "}}}
