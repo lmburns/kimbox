@@ -133,7 +133,8 @@ hl.common = {
     Question = {fg = c.green},
     NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
     TabLine = {fg = c.fg, bg = c.bg1}, -- Tab pages line, not active tab page label
-    TabLineSel = {fg = c.bg0, bg = c.fg, gui = bold}, -- Tab pages line, active tab page label
+    -- TabLineSel = {fg = c.bg0, bg = c.fg, gui = bold}, -- Tab pages line, active tab page label
+    TabLineSel = {bg = c.bg1, gui = bold}, -- Tab pages line, active tab page label
     TabLineFill = {gui = "none"}, -- Tab pages line, where there are no labels
     -- When last status=2 or 3
     StatusLine = {fg = c.none, bg = c.none}, -- Status line of current window.
