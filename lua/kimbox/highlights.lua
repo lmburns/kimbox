@@ -1981,6 +1981,14 @@ hl.plugins.ale = {
     ALEVirtualTextStyleWarning = fgs.coyote_brown1
 }
 
+hl.plugins.cybu = {
+    CybuFocus = {fg = c.green, gui = bold}, -- Current / Selected Buffer
+    CybuAdjacent = {fg = c.red, gui = bold}, -- Buffers not in focus
+    CybuBackground = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}, -- Window Background
+    CybuBorder = {link = "FloatBoarder"}, -- Border of the window
+    CybuInfobar = {link = "StatusLine"}
+}
+
 hl.plugins.neomake = {
     NeomakeError = {fg = c.none, gui = undercurl, sp = c.red},
     NeomakeErrorSign = fgs.red,

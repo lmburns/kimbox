@@ -259,6 +259,7 @@ All of the following languages have been manually configured.
 - [Cmp](https://github.com/hrsh7th/nvim-cmp)
 - [Coc-Explorer](https://github.com/weirongxu/coc-explorer)
 - [Coc.nvim](https://github.com/neoclide/coc.nvim)
+- [Cybu](https://github.com/ghillb/cybu.nvim)
 - [Dap-UI](https://github.com/rcarriga/nvim-dap-ui)
 - [Dashboard](https://github.com/glepnir/dashboard-nvim)
 - [Defx](https://github.com/Shougo/defx.nvim)
