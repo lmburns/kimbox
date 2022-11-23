@@ -1141,7 +1141,9 @@ hl.langs.go = {
     -- Treesitter
     --
     goTSProperty = fgs.blue,
+    goTSField = fgs.aqua,
     goTSMethod = {fg = c.purple, gui = bold},
+    goTSNamespace = fgs.orange,
     goTSType = {fg = c.green, gui = bold},
     goTSTypeBuiltin = {fg = c.green, gui = bold},
     goTSPunctBracket = fgs.purple
@@ -1149,8 +1151,10 @@ hl.langs.go = {
 
 hl.langs08.go = {
     ["@property.go"] = fgs.blue,
+    ["@field.go"] = fgs.aqua,
     ["@method.go"] = {fg = c.purple, gui = bold},
     ["@method.call.go"] = {fg = c.magenta, gui = bold},
+    ["@namespace.go"] = fgs.orange,
     ["@type.go"] = {fg = c.green, gui = bold},
     ["@type.builtin.go"] = {fg = c.green, gui = bold},
     ["@punctuation.bracket.go"] = fgs.purple
