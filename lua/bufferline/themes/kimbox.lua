@@ -123,8 +123,16 @@ local kimbox = {
         bg = colors.lbg,
         italic = true
     },
-    duplicate_visible = {fg = colors.cyan, bg = colors.lbg, italic = true},
-    duplicate = {fg = colors.red, bg = colors.dbg, italic = true},
+    duplicate_visible = {
+        fg = colors.cyan,
+        bg = colors.lbg,
+        italic = true
+    },
+    duplicate = {
+        fg = colors.red,
+        bg = colors.dbg,
+        italic = true
+    },
     separator_selected = {fg = colors.dbg, bg = colors.lbg},
     separator_visible = {fg = colors.dbg, bg = colors.lbg},
     separator = {fg = colors.dbg, bg = colors.dbg},

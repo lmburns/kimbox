@@ -930,15 +930,17 @@ hl.langs08.tsx = {
 }
 
 hl.langs.graphql = {
-    graphqlParameter = fgs.blue,
-    graphqlVariable = {fg = c.magenta, gui = bold},
-    graphqlProperty = fgs.aqua
+    graphqlTSParameter = fgs.blue,
+    graphqlTSVariable = {fg = c.magenta, gui = bold},
+    graphqlTSProperty = fgs.aqua,
+    graphqlTSPunctBracket = fgs.purple
 }
 
 hl.langs08.graphql = {
     ["@parameter.graphql"] = fgs.blue,
     ["@variable.graphql"] = {fg = c.magenta, gui = bold},
-    ["@property.graphql"] = fgs.aqua
+    ["@property.graphql"] = fgs.aqua,
+    ["@punctuation.bracket.graphql"] = fgs.purple
 }
 
 hl.langs.css = {
@@ -1718,7 +1720,7 @@ hl.langs08.toml = {
 
 hl.langs.sxhkdrc = {
     sxhkdrcTSVariable = fgs.blue,
-    sxhkdrcTSPunctuationBracket = fgs.green
+    sxhkdrcTSPunctBracket = fgs.green
 }
 
 hl.langs08.sxhkdrc = {

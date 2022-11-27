@@ -323,7 +323,7 @@ All of the following languages have been manually configured.
 </details>
 
 ### Name
-The name came about because I had originally thought I was going to create a combination of the kimbie dark and gruvbox colorschemes. It's too late to change the name now.
+The name came about because I had originally thought I was going to create a combination of the kimbie dark and gruvbox colorschemes. It's too late to change it now.
 
 ### Extras
 - There is a supplemental TextMate theme in the `extras` directory. This can be used with [`bat`](https://github.com/sharkdp/bat) or SublimeText.
