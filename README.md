@@ -183,7 +183,7 @@ require("kimbox").setup({
 
 See `:h lua-treesitter-highlight-groups` to a full explanation.
 
-After the commit `030b422d1`, highlight groups were changed from in the following pattern:
+After the commit `030b422d1`, highlight groups were changed in the following pattern:
 * `luaTSFunction` => `@function.lua`
 * `helpTSTitle` => `@text.title.help`
 * etc.
