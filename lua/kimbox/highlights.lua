@@ -133,7 +133,7 @@ hl.common = {
     Question = {fg = c.green},
     NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
     TabLine = {fg = c.fg, bg = c.bg1}, -- Tab pages line, not active tab page label
-    TabLineSel = {fg = c.bg0, bg = c.fg, gui = bold}, -- Tab pages line, active tab page label
+    TabLineSel = {fg = c.bg1, bg = c.fg4, gui = bold }, -- Tab pages line, active tab page label
     -- TabLineSel = {fg = c.fg, bg = c.bg1}, -- Tab pages line, active tab page label
     -- TabLineFill = {fg = c.fg, bg = c.bg1}, -- Tab pages line, where there are no labels
     TabLineFill = {gui = "none"}, -- Tab pages line, where there are no labels
