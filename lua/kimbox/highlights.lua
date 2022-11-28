@@ -61,7 +61,8 @@ local fgs = {
     purple = {fg = c.purple},
     magenta = {fg = c.magenta},
     operator_base = {fg = c.operator_base},
-    philippine_green = {fg = c.philippine_green}
+    philippine_green = {fg = c.philippine_green},
+    sea_green = {fg = c.sea_green},
 }
 
 hl.common = {
@@ -214,7 +215,7 @@ hl.treesitter = {
     TSConditional = {fg = c.purple, gui = italic},
     TSConstBuiltin = {fg = c.orange, gui = italic},
     TSConstMacro = {fg = c.orange, gui = italic},
-    TSConstant = {fgs = c.green, gui = bold},
+    TSConstant = {fgs = c.sea_green, gui = bold},
     TSConstructor = {fg = c.yellow, gui = bold},
     TSDanger = {fg = c.red, gui = bold},
     TSEnviroment = fgs.fg0,
@@ -269,7 +270,7 @@ hl.langs08.treesitter = {
     ["@character.special"] = {link = "SpecialChar"},
     ["@comment"] = {fg = c.coyote_brown1, gui = italic},
     ["@conditional"] = {fg = c.purple, gui = italic}, -- keywords related to conditionals (e.g. `if` / `else`)
-    ["@constant"] = {fgs = c.green, gui = bold},
+    ["@constant"] = {fgs = c.sea_green, gui = bold},
     ["@constant.builtin"] = {fg = c.orange, gui = italic},
     ["@constant.macro"] = {fg = c.orange, gui = italic},
     ["@constructor"] = {fg = c.wave_red, gui = bold},
@@ -343,8 +344,8 @@ hl.langs08.treesitter = {
 
 hl.langs.comment = {
     -- commentTSTag = {fg = c.old_rose},
-    commentTSTag = {fg = c.amethyst},
-    commentTSConstant = {fg = c.yellow}
+    commentTSTag = {fg = c.peach_red},
+    commentTSConstant = {fg = c.amethyst}
 }
 
 hl.langs08.comment = {
@@ -1080,7 +1081,7 @@ hl.langs.python = {
     pythonTSConstBuiltin = fgs.purple,
     pythonTSMethod = {fg = c.purple, gui = bold},
     pythonTSParameter = fgs.orange,
-    pythonTSConstant = fgs.aqua,
+    pythonTSConstant = {fg = c.sea_green, gui = bold},
     pythonTSField = fgs.fg0,
     pythonTSStringEscape = fgs.green,
     pythonTSPunctBracket = fgs.purple
@@ -1090,17 +1091,17 @@ hl.langs.python = {
 }
 
 hl.langs08.python = {
-    ["@type.python"] = {fg = c.green, gui = bold},
-    ["@constructor.python"] = fgs.magenta,
-    ["@keyword.function.python"] = {fg = c.red, gui = bold},
+    ["@constant.python"] = {fg = c.sea_green, gui = bold},
     ["@constant.builtin.python"] = fgs.purple,
-    ["@method.python"] = {fg = c.purple, gui = bold},
-    ["@method.call.python"] = {fg = c.magenta, gui = bold},
-    ["@parameter.python"] = fgs.orange,
-    ["@constant.python"] = {fg = c.aqua, gui = bold},
+    ["@constructor.python"] = fgs.magenta,
     ["@field.python"] = fgs.aqua,
+    ["@keyword.function.python"] = {fg = c.red, gui = bold},
+    ["@method.call.python"] = {fg = c.magenta, gui = bold},
+    ["@method.python"] = {fg = c.purple, gui = bold},
+    ["@parameter.python"] = fgs.orange,
+    ["@punctuation.bracket.python"] = fgs.purple,
     ["@string.escape.python"] = fgs.green,
-    ["@punctuation.bracket.python"] = fgs.purple
+    ["@type.python"] = {fg = c.green, gui = bold},
 }
 
 hl.langs.kotlin = {
@@ -1183,7 +1184,7 @@ hl.langs.rust = {
     -- Treesitter
     --
     rustTSConstBuiltin = fgs.purple,
-    rustTSConstant = fgs.magenta,
+    rustTSConstant = {fg = c.sea_green, gui = bold},
     rustTSField = fgs.aqua, -- fg0
     rustTSFuncMacro = fgs.aqua,
     rustTSInclude = {fg = c.red, gui = italic},
@@ -1200,7 +1201,7 @@ hl.langs.rust = {
 
 hl.langs08.rust = {
     ["@constant.builtin.rust"] = fgs.purple,
-    ["@constant.rust"] = fgs.magenta,
+    ["@constant.rust"] = {fg = c.sea_green, gui = bold},
     ["@field.rust"] = fgs.aqua, -- fg0
     ["@function.macro.rust"] = fgs.aqua,
     ["@include.rust"] = {fg = c.red, gui = italic},
@@ -1536,7 +1537,8 @@ hl.langs.c = {
     -- cTSInclude = fgs.blue,
     -- cTSFuncMacro = fgs.yellow,
     cTSInclude = fgs.red,
-    cTSConstant = fgs.aqua,
+    cTSProperty = fgs.aqua,
+    cTSConstant = {fg = c.sea_green, gui = bold},
     cTSConstMacro = fgs.orange,
     cTSOperator = fgs.orange,
     cTSRepeat = fgs.blue,
@@ -1546,7 +1548,8 @@ hl.langs.c = {
 
 hl.langs08.c = {
     ["@include.c"] = fgs.red,
-    ["@constant.c"] = fgs.aqua,
+    ["@property.c"] = fgs.aqua,
+    ["@constant.c"] = {fg = c.sea_green, gui = bold},
     ["@constant.macro.c"] = fgs.orange,
     ["@operator.c"] = fgs.orange,
     ["@repeat.c"] = fgs.blue,
@@ -1559,7 +1562,7 @@ hl.langs.cpp = {
     --
     -- Treesitter
     --
-    cppTSConstant = fgs.aqua,
+    cppTSConstant = {fg = c.sea_green, gui = bold},
     cppTSOperator = fgs.purple,
     cppTSConstMacro = fgs.aqua,
     cppTSNamespace = fgs.orange,
@@ -1573,7 +1576,7 @@ hl.langs.cpp = {
 }
 
 hl.langs08.cpp = {
-    ["@constant.cpp"] = fgs.aqua,
+    ["@constant.cpp"] = {fg = c.sea_green, gui = bold},
     ["@operator.cpp"] = fgs.purple,
     ["@constant.macro.cpp"] = fgs.aqua,
     ["@namespace.cpp"] = fgs.orange,
