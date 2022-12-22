@@ -350,7 +350,7 @@ hl.langs.comment = {
 
 hl.langs08.comment = {
     ["@tag.comment"] = {fg = c.peach_red},
-    ["@constant.comment"] = {fg = c.dark_seafoam}
+    ["@constant.comment"] = {fg = c.dyellow}
 }
 
 hl.langs.solidity = {

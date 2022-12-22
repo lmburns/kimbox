@@ -30,7 +30,7 @@ return {
         purple = "#98676A",
         philippine_green = "#088649",
         sea_green = "#77a172",
-        dark_seafoam = "#24a36a", -- "#36997a" "#3fba94" "#2ab074"
+        -- dark_seafoam = "#24a36a", -- "#36997a" "#3fba94" "#2ab074"
         morning_blue = "#83a598",
         jelly_bean_blue = "#418292",
         slate_gray = "#719190",
