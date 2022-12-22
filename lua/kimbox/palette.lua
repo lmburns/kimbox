@@ -30,6 +30,7 @@ return {
         purple = "#98676A",
         philippine_green = "#088649",
         sea_green = "#77a172",
+        dark_seafoam = "#24a36a", -- "#36997a" "#3fba94" "#2ab074"
         morning_blue = "#83a598",
         jelly_bean_blue = "#418292",
         slate_gray = "#719190",
@@ -46,7 +47,7 @@ return {
         puce = "#d3869b",
         pumpkin = "#fe8019",
         surimi_orange = "#FFA066",
-        dyellow = "#e78a4e",
+        dyellow = "#e78a4e", -- "#db8456"
         bg_red = "#DC3958",
         light_red = "#cc6666",
         -- These are duplicates because they are both used and could be changed at some point
