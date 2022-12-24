@@ -215,7 +215,7 @@ hl.treesitter = {
     TSConditional = {fg = c.purple, gui = italic},
     TSConstBuiltin = {fg = c.orange, gui = italic},
     TSConstMacro = {fg = c.orange, gui = italic},
-    TSConstant = {fgs = c.sea_green, gui = bold},
+    TSConstant = {fg = c.sea_green, gui = bold},
     TSConstructor = {fg = c.yellow, gui = bold},
     TSDanger = {fg = c.red, gui = bold},
     TSEnviroment = fgs.fg0,
@@ -270,7 +270,7 @@ hl.langs08.treesitter = {
     ["@character.special"] = {link = "SpecialChar"},
     ["@comment"] = {fg = c.coyote_brown1, gui = italic},
     ["@conditional"] = {fg = c.purple, gui = italic}, -- keywords related to conditionals (e.g. `if` / `else`)
-    ["@constant"] = {fgs = c.sea_green, gui = bold},
+    ["@constant"] = {fg = c.sea_green, gui = bold},
     ["@constant.builtin"] = {fg = c.orange, gui = italic},
     ["@constant.macro"] = {fg = c.orange, gui = italic},
     ["@constructor"] = {fg = c.wave_red, gui = bold},
