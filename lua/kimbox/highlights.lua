@@ -164,13 +164,13 @@ hl.syntax = {
     Number = fgs.purple,
     Float = fgs.purple,
     PreProc = {fg = c.purple, gui = italic},
-    PreCondit = {fg = c.purple, gui = italic},
+    PreCondit = {fg = c.purple},
     Include = {fg = c.purple, gui = italic},
-    Define = {fg = c.purple, gui = italic},
+    Define = {fg = c.purple},
     Conditional = {fg = c.purple, gui = italic},
     Repeat = {fg = c.purple, gui = italic},
     Keyword = {fg = c.red, gui = italic},
-    Typedef = {fg = c.red, gui = italic},
+    Typedef = {fg = c.red},
     Exception = {fg = c.red, gui = italic},
     -- NOTE: Why is vim Statement no longer bold after lua upgrade?
     --       This is `italic` in vimscript
@@ -206,14 +206,14 @@ hl.treesitter = {
     -- TSStrong = { fg = c.fg, gui = "bold" },
     -- TSUnderline = { fg = c.fg, gui = "underline" },
 
-    TSAnnotation = {fg = c.blue, gui = italic},
+    TSAnnotation = {fg = c.blue},
     TSAttribute = {fg = c.green, gui = italic}, -- Annotations attached to code to denote some meta info
     TSBoolean = fgs.orange, -- Boolean literals
     TSCharacter = fgs.yellow, -- Character literals
     TSCharacterSpecial = {link = "SpecialChar"}, -- Special characters
     TSComment = {fg = c.coyote_brown1, gui = italic}, -- Line comments and block comments
     TSConditional = {fg = c.purple, gui = italic},
-    TSConstBuiltin = {fg = c.orange, gui = italic},
+    TSConstBuiltin = {fg = c.orange},
     TSConstMacro = {fg = c.orange, gui = italic},
     TSConstant = {fg = c.sea_green, gui = bold},
     TSConstructor = {fg = c.yellow, gui = bold},
@@ -226,7 +226,7 @@ hl.treesitter = {
     TSFuncBuiltin = {fg = c.magenta, gui = bold},
     TSFuncMacro = fgs.aqua,
     TSFunction = {fg = c.magenta, gui = bold},
-    TSInclude = {fg = c.red, gui = italic},
+    TSInclude = {fg = c.red},
     TSKeyword = fgs.red,
     TSKeywordFunction = fgs.red,
     TSKeywordOperator = fgs.red,
@@ -330,7 +330,7 @@ hl.langs08.treesitter = {
     ["@text.uri"] = {fg = c.fg1, gui = "underline"},
     ["@text.warning"] = {fg = c.green, gui = bold},
     ["@type"] = fgs.green,
-    ["@type.builtin"] = fgs.green,
+    ["@type.builtin"] = {fg = c.green, gui = bold},
     -- ["@type.definition"] = fgs.green,
     ["@type.qualifier"] = fgs.red,
     ["@variable"] = fgs.fg0,
@@ -434,7 +434,7 @@ hl.langs.markdown = {
     --
     -- Treesitter
     --
-    markdownTSPunctSpecial = {fg = c.red, gui = bold}
+    markdownTSPunctSpecial = {fg = c.red, gui = bold},
 }
 
 hl.langs08.markdown = {
