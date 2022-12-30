@@ -204,7 +204,6 @@ hl.treesitter = {
     -- TSError = { fg = c.red, gui = italic },
     -- TSStrike = { fg = c.coyote_brown1, gui = "strikethrough" },
     -- TSStrong = { fg = c.fg, gui = "bold" },
-    -- TSUnderline = { fg = c.fg, gui = "underline" },
 
     TSAnnotation = {fg = c.blue},
     TSAttribute = {fg = c.green, gui = italic}, -- Annotations attached to code to denote some meta info
@@ -258,6 +257,7 @@ hl.treesitter = {
     TSTitle = {fg = c.orange, gui = "bold"}, -- Text that is part of a title
     TSType = fgs.green,
     TSTypeBuiltin = fgs.green,
+    TSUnderline = { fg = c.fg, gui = "underline" },
     TSURI = {fg = c.fg1, gui = "underline"},
     TSVariable = fgs.fg0,
     TSVariableBuiltin = fgs.blue,
@@ -334,12 +334,17 @@ hl.langs08.treesitter = {
     -- ["@type.definition"] = fgs.green,
     ["@type.qualifier"] = fgs.red,
     ["@variable"] = fgs.fg0,
-    ["@variable.builtin"] = fgs.blue
+    ["@variable.builtin"] = fgs.blue,
 
     -- ["@preproc"] = {},
     -- ["@define"] = {},
     -- ["@conceal"] = {},
     -- ["@spell"] = {}
+
+    -- CUSTOM
+    ["@underline"] = {link = "Underlined"},
+    ["@code"] = {link = "VimwikiCode"},
+    ["@bold"] = {link = "VimwikiBold"},
 }
 
 hl.langs.comment = {
