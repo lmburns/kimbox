@@ -1,3 +1,4 @@
+---@type { [string]: string }
 local bgs = {
     medium = "#231A0C",
     ocean = "#221A02",
@@ -58,8 +59,8 @@ return {
         wenge_grey = "#625A5A",
         operator_base = "#E8C097",
         ------------------------------------------------------------------------------------------------------
-        diff_add = "#889B4A",
-        diff_delete = "#CC6666",
+        diff_add = "#4c5c25",
+        diff_delete = "#961134",
         diff_change = "#543739",
         diff_text = "#325C59" -- "#335250" "#405453"
     },

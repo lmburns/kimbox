@@ -7,6 +7,10 @@ local g = vim.g
 local fn = vim.fn
 local cmd = vim.cmd
 
+---@alias HexColor string A string that starts with a '#' followed by 6 hexadecimal digits
+---@alias ColorName string A string that represents the name (closest) matching the HexColor
+---@alias Colors { [string]: HexColor } Collection of keys (color name) & values (HexColor)
+
 M.bgs_list = {"medium", "ocean", "vscode", "deep", "darker"}
 
 local default_config = {
