@@ -335,6 +335,7 @@ hl.langs08.treesitter = {
     ["@type.qualifier"] = fgs.red,
     ["@variable"] = fgs.fg0,
     ["@variable.builtin"] = fgs.blue,
+    ["@variable.global"] = fgs.blue,
 
     -- ["@preproc"] = {},
     -- ["@define"] = {},
