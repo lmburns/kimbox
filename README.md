@@ -181,14 +181,14 @@ require("kimbox").setup({
 
 ## New Lua Treesitter Highlight Groups
 
-See `:h lua-treesitter-highlight-groups` to a full explanation.
+See `:h lua-treesitter-highlight-groups` for a full explanation.
 
 After the commit `030b422d1`, highlight groups were changed in the following pattern:
 * `luaTSFunction` => `@function.lua`
 * `helpTSTitle` => `@text.title.help`
 * etc.
 
-This feature will **not yet be enabled by default**. If you wish to use this colorscheme and wish to have the exact same colors as the highlight groups that were present before the aforementioned commit, set the configuration feature `langs08` to `true` in your configuration. This feature will eventually be this colorscheme's default settings.
+This feature will **not yet be enabled by default**. If you wish to use this colorscheme and wish to have the exact same colors as the highlight groups that were present before the aforementioned commit, set the configuration feature `langs08` to `true` in your configuration. This feature will eventually be this colorschemes default settings.
 
 ## Filetype Support
 
