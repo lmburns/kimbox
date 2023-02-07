@@ -62,7 +62,7 @@ local fgs = {
     magenta = {fg = c.magenta},
     operator_base = {fg = c.operator_base},
     philippine_green = {fg = c.philippine_green},
-    sea_green = {fg = c.sea_green},
+    sea_green = {fg = c.sea_green}
 }
 
 hl.common = {
@@ -134,7 +134,7 @@ hl.common = {
     Question = {fg = c.green},
     NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
     TabLine = {fg = c.fg, bg = c.bg1}, -- Tab pages line, not active tab page label
-    TabLineSel = {fg = c.bg1, bg = c.fg4, gui = bold }, -- Tab pages line, active tab page label
+    TabLineSel = {fg = c.bg1, bg = c.fg4, gui = bold}, -- Tab pages line, active tab page label
     -- TabLineSel = {fg = c.fg, bg = c.bg1}, -- Tab pages line, active tab page label
     -- TabLineFill = {fg = c.fg, bg = c.bg1}, -- Tab pages line, where there are no labels
     TabLineFill = {gui = "none"}, -- Tab pages line, where there are no labels
@@ -257,7 +257,7 @@ hl.treesitter = {
     TSTitle = {fg = c.orange, gui = "bold"}, -- Text that is part of a title
     TSType = fgs.green,
     TSTypeBuiltin = fgs.green,
-    TSUnderline = { fg = c.fg, gui = "underline" },
+    TSUnderline = {fg = c.fg, gui = "underline"},
     TSURI = {fg = c.fg1, gui = "underline"},
     TSVariable = fgs.fg0,
     TSVariableBuiltin = fgs.blue,
@@ -336,7 +336,6 @@ hl.langs08.treesitter = {
     ["@variable"] = fgs.fg0,
     ["@variable.builtin"] = fgs.blue,
     ["@variable.global"] = fgs.blue,
-
     -- ["@preproc"] = {},
     -- ["@define"] = {},
     -- ["@conceal"] = {},
@@ -345,7 +344,7 @@ hl.langs08.treesitter = {
     -- CUSTOM
     ["@underline"] = {link = "Underlined"},
     ["@code"] = {link = "VimwikiCode"},
-    ["@bold"] = {link = "VimwikiBold"},
+    ["@bold"] = {link = "VimwikiBold"}
 }
 
 hl.langs.comment = {
@@ -440,7 +439,7 @@ hl.langs.markdown = {
     --
     -- Treesitter
     --
-    markdownTSPunctSpecial = {fg = c.red, gui = bold},
+    markdownTSPunctSpecial = {fg = c.red, gui = bold}
 }
 
 hl.langs08.markdown = {
@@ -1107,7 +1106,7 @@ hl.langs08.python = {
     ["@parameter.python"] = fgs.orange,
     ["@punctuation.bracket.python"] = fgs.purple,
     ["@string.escape.python"] = fgs.green,
-    ["@type.python"] = {fg = c.green, gui = bold},
+    ["@type.python"] = {fg = c.green, gui = bold}
 }
 
 hl.langs.kotlin = {
@@ -2177,15 +2176,15 @@ hl.plugins.diffview = {
 hl.plugins.neogit = {
     NeogitBranch = fgs.blue,
     NeogitDiffAdd = fgs.green,
-    -- NeogitDiffAddHighlight = { bg = c.bg4 }
-    -- NeogitDiffContextHighlight = { bg = c.bg4 },
     NeogitDiffDelete = fgs.red,
-    -- NeogitDiffDeleteHighlight
-    NeogitHunkHeader = {fg = c.orange, gui = bold},
-    -- NeogitHunkHeaderHighlight
-    NeogitNotificationError = fgs.bg_red,
-    NeogitNotificationInfo = fgs.aqua,
+    -- NeogitDiffAddHighlight = {bg = c.green},
+    NeogitDiffContextHighlight = {fg = c.philippine_silver},
+    -- NeogitDiffDeleteHighlight = {bg = c.bg_red},
+    NeogitHunkHeaderHighlight = fgs.orange,
+    NeogitHunkHeader = {fg = c.magenta, gui = bold},
+    NeogitNotificationInfo = fgs.blue,
     NeogitNotificationWarning = fgs.yellow,
+    NeogitNotificationError = fgs.bg_red,
     NeogitRemote = fgs.yellow
     -- NeogitStashes
     -- NeogitUnstagedChanges

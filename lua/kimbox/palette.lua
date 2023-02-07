@@ -55,6 +55,7 @@ return {
         -- These are duplicates because they are both used and could be changed at some point
         coyote_brown = "#7E602C",
         coyote_brown1 = "#7E602C",
+        philippine_silver = "#B2B2B2",
         grullo_grey = "#A89984",
         wenge_grey = "#625A5A",
         operator_base = "#E8C097",
