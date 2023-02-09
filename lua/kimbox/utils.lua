@@ -171,7 +171,7 @@ end
 ---Convert a hex color (i.e., `#FFFFFF`) into an RGB(255, 255, 255)
 ---@param hex string
 ---@return number[]
-M.hexToRgb = function(hex)
+M.hex2rgb = function(hex)
     local p = "[abcdef0-9][abcdef0-9]"
     local pat = ("^#(%s)(%s)(%s)$"):format(p, p, p)
 
@@ -191,15 +191,15 @@ end
 ---@param bg string background color
 ---@param alpha number number between 0 and 1. 0 results in bg, 1 results in fg
 M.blend = function(fg, bg, alpha)
-    local bg_rgb = M.hexToRgb(bg)
-    local fg_rgb = M.hexToRgb(fg)
+    local bg_rgb = M.hex2rgb(bg)
+    local fg_rgb = M.hex2rgb(fg)
 
-    local blendChannel = function(i)
+    local blend_channel = function(i)
         local ret = (alpha * fg_rgb[i] + ((1 - alpha) * bg_rgb[i]))
         return math.floor(math.min(math.max(0, ret), 255) + 0.5)
     end
 
-    return string.format("#%02X%02X%02X", blendChannel(1), blendChannel(2), blendChannel(3))
+    return string.format("#%02X%02X%02X", blend_channel(1), blend_channel(2), blend_channel(3))
 end
 
 M.darken = function(hex, amount, bg)

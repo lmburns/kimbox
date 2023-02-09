@@ -267,6 +267,7 @@ All of the following languages have been manually configured.
 - [EasyMotion](https://github.com/easymotion/vim-easymotion)
 - [Fern](https://github.com/lambdalisue/fern.vim)
 - [Floaterm](https://github.com/voldikss/vim-floaterm)
+- [Fzf-Lua](https://github.com/ibhagwan/fzf-lua)
 - [Git Gutter](https://github.com/airblade/vim-gitgutter)
 - [Git Signs](https://github.com/lewis6991/gitsigns.nvim)
 - [Hop](https://github.com/phaazon/hop.nvim)

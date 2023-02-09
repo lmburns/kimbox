@@ -19,11 +19,11 @@ local cfg = vim.g.kimbox_config
 M.langs = hl.langs
 M.plugins = hl.plugins
 
-local reverse = cfg.allow_reverse and "reverse" or "none"
-local bold = cfg.allow_bold and "bold" or "none"
-local italic = cfg.allow_italic and "italic" or "none"
-local underline = cfg.allow_underline and "underline" or "none"
-local undercurl = cfg.allow_undercurl and "undercurl" or "none"
+local reverse = utils.tern(cfg.allow_reverse, "reverse", "none")
+local bold = utils.tern(cfg.allow_bold, "bold", "none")
+local italic = utils.tern(cfg.allow_italic, "italic", "none")
+local underline = utils.tern(cfg.allow_underline, "underline", "none")
+local undercurl = utils.tern(cfg.allow_undercurl, "undercurl", "none")
 local trans = cfg.transparent
 
 local underbold = (function()
@@ -2200,6 +2200,23 @@ hl.plugins.gitsigns = {
     GitSignsDelete = fgs.red,
     GitSignsDeleteLn = fgs.red,
     GitSignsDeleteNr = fgs.red
+}
+
+hl.plugins.fzf_lua = {
+    FzfLuaBorder = {link = "FloatBorder"}
+    -- FzfLuaNormal = { "Normal" },
+    -- FzfLuaBorder = { "Normal" },
+    -- FzfLuaCursor = { "Cursor" },
+    -- FzfLuaCursorLine = { "CursorLine" },
+    -- FzfLuaCursorLineNr = { "CursorLineNr" },
+    -- FzfLuaSearch = { "IncSearch" },
+    -- FzfLuaTitle = { "FzfLuaNormal" },
+    -- FzfLuaScrollBorderEmpty = { "FzfLuaBorder" },
+    -- FzfLuaScrollBorderFull  = { "FzfLuaBorder" },
+    -- FzfLuaScrollFloatEmpty  = { "PmenuSbar" },
+    -- FzfLuaScrollFloatFull   = { "PmenuThumb" },
+    -- FzfLuaHelpNormal = { "FzfLuaNormal" },
+    -- FzfLuaHelpBorder = { "FzfLuaBorder" },
 }
 
 hl.plugins.nvim_tree = {
