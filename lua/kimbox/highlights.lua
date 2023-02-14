@@ -2104,6 +2104,7 @@ hl.plugins.floaterm = {
 
 hl.plugins.vimwiki = {
     VimwikiBold = {fg = c.deep_lilac, gui = "bold"},
+    VimwikiBoldItalic = {fg = c.jade_green, gui = "bold,italic"},
     VimwikiCode = {fg = c.puce},
     VimwikiItalic = {fg = "#83a598", gui = "italic"},
     VimwikiHeader1 = {fg = "#F14A68", gui = "bold"},

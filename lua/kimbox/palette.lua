@@ -4,7 +4,8 @@ local bgs = {
     ocean = "#221A02",
     vscode = "#221A0F",
     deep = "#0F111B",
-    darker = "#291804"
+    darker = "#291804",
+    eerie = "#1C0B28"
 }
 
 return {
@@ -38,13 +39,15 @@ return {
         slate_gray = "#719190",
         tuscan_red = "#7E5053",
         maximum_purple = "#733E8B",
-        deep_lilac = "#A25BC4",
+        deep_lilac = "#A25BC4", -- "#945EB8"
         vista_blue = "#7E9CD8",
+        ube = "#7E82CC",
         amethyst = "#938AA9",
         oni_violet = "#957FB8",
         salmon = "#EA6962",
         wave_red = "#E46876",
         peach_red = "#FF5D62",
+        opera_muave = "#BB80B3",
         old_rose = "#BD798B",
         puce = "#D3869B",
         pumpkin = "#FE8019",

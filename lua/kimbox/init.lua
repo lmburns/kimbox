@@ -11,11 +11,11 @@ local cmd = vim.cmd
 ---@alias ColorName string A string that represents the name (closest) matching the HexColor
 ---@alias Colors { [string]: HexColor } Collection of keys (color name) & values (HexColor)
 
-M.bgs_list = {"medium", "ocean", "vscode", "deep", "darker"}
+M.bgs_list = {"medium", "ocean", "vscode", "deep", "darker", "eerie"}
 
 local default_config = {
     -- Main options --
-    style = "ocean", -- choose between "medium", "ocean", "vscode", "deep", "darker"
+    style = "ocean", -- choose between "medium", "ocean", "vscode", "deep", "darker", "eerie"
     toggle_style_key = "<Leader>ts",
     toggle_style_list = M.bgs_list,
     -- New Lua-Treesitter highlight groups
