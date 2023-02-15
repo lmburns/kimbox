@@ -2138,7 +2138,12 @@ hl.plugins.vista = {
     VistaColon = fgs.yellow,
     VistaIcon = fgs.green,
     VistaLineNr = fgs.fg0,
-    VistaFloat = {link = "CocFloating"}
+    VistaFloat = {link = "CocFloating"},
+    FZFVista = {link = "Type"},
+    FZFVistaTag = {link = "Tag"},
+    FZFVistaScope = {link = "Function"},
+    FZFVistaNumber = {link = "Number"},
+    FZFVistaBracket = fgs.blue
 }
 
 -- https://github.com/airblade/vim-gitgutter
