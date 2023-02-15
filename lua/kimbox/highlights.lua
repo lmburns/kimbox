@@ -62,7 +62,9 @@ local fgs = {
     magenta = {fg = c.magenta},
     operator_base = {fg = c.operator_base},
     philippine_green = {fg = c.philippine_green},
-    sea_green = {fg = c.sea_green}
+    sea_green = {fg = c.sea_green},
+    jade_green = {fg = c.jade_green},
+    salmon = {fg = c.salmon},
 }
 
 hl.common = {
@@ -222,6 +224,7 @@ hl.treesitter = {
     TSException = {fg = c.red, gui = italic},
     TSField = fgs.aqua,
     TSFloat = fgs.purple,
+    TSFuncCall = {fg = c.magenta, gui = bold},
     TSFuncBuiltin = {fg = c.magenta, gui = bold},
     TSFuncMacro = fgs.aqua,
     TSFunction = {fg = c.magenta, gui = bold},
@@ -316,6 +319,7 @@ hl.langs08.treesitter = {
     ["@text.danger"] = {fg = c.red, gui = bold},
     ["@text.diff.add"] = {fg = c.none, bg = utils.darken(c.green, 0.6, c.bg0)},
     ["@text.diff.delete"] = {fg = c.none, bg = utils.darken(c.red, 0.6, c.bg0)},
+    ["@text.emphasis"] = {fg = c.morning_blue, gui = underbold},
     ["@text.environment"] = fgs.fg0,
     ["@text.environment.name"] = fgs.fg0,
     ["@text.literal"] = fgs.green,
@@ -347,6 +351,50 @@ hl.langs08.treesitter = {
     ["@bold"] = {link = "VimwikiBold"}
 }
 
+hl.langs.awk = {
+    awkTSConditional = {fg = c.purple, gui = italic},
+    awkTSFunction = {fg = c.magenta, gui = bold},
+    awkTSFuncBuiltin = {fg = c.red, gui = bold},
+    awkTSFuncCall = {fg = c.magenta, gui = bold},
+    awkTSKeyword = fgs.red,
+    awkTSKeywordFunction = fgs.red,
+    awkTSKeywordReturn = {fg = c.red, gui = bold},
+    awkTSLabel = {fg = c.green, gui = bold},
+    awkTSOperator = fgs.orange,
+    awkTSPreproc = fgs.sea_green,
+    awkTSPunctBracket = fgs.blue,
+    awkTSPunctDelimiter = fgs.green,
+    awkTSRepeat = fgs.blue,
+    awkTSString = fgs.yellow,
+    awkTSStringEscape = fgs.philippine_green,
+    --
+    -- Unsupported
+    --
+    awkTSVariableBuiltin = fgs.blue
+}
+
+hl.langs08.awk = {
+    ["@conditional.awk"] = {fg = c.purple, gui = italic},
+    ["@function.awk"] = {fg = c.magenta, gui = bold},
+    ["@function.builtin.awk"] = {fg = c.red, gui = bold},
+    ["@function.call.awk"] = {fg = c.magenta, gui = bold},
+    ["@keyword.awk"] = fgs.red,
+    ["@keyword.function.awk"] = fgs.red,
+    ["@keyword.return.awk"] = {fg = c.red, gui = bold},
+    ["@label.awk"] = {fg = c.green, gui = bold},
+    ["@operator.awk"] = fgs.orange,
+    ["@preproc.awk"] = fgs.sea_green,
+    ["@punctuation.bracket.awk"] = fgs.blue,
+    ["@punctuation.delimiter.awk"] = fgs.green,
+    ["@repeat.awk"] = fgs.blue,
+    ["@string.awk"] = fgs.yellow,
+    ["@string.escape.awk"] = fgs.philippine_green,
+    --
+    -- Unsupported
+    --
+    ["@variable.builtin.awk"] = fgs.blue
+}
+
 hl.langs.comment = {
     -- commentTSTag = {fg = c.old_rose},
     commentTSTag = {fg = c.peach_red},
@@ -355,9 +403,10 @@ hl.langs.comment = {
 
 hl.langs08.comment = {
     ["@tag.comment"] = {fg = c.peach_red},
-    ["@constant.comment"] = {fg = c.dyellow}
+    ["@constant.comment"] = {fg = c.jasper_orange}
 }
 
+-- https://github.com/thesis/vim-solidity
 hl.langs.solidity = {
     -- Regex parsing
     solConstructor = {fg = c.blue, gui = bold},
@@ -439,6 +488,10 @@ hl.langs.markdown = {
     --
     -- Treesitter
     --
+    markdownTSTextLiteral = fgs.purple,
+    markdownTSTextStrong = {fg = c.deep_lilac, gui = bold},
+    markdownTSTextEmphasis = {fg = c.morning_blue, gui = underbold},
+    markdownTSTextReference = {fg = c.blue, gui = underline},
     markdownTSPunctSpecial = {fg = c.red, gui = bold}
 }
 
@@ -690,7 +743,7 @@ hl.langs.javascript = {
     javascriptTSPunctBracket = fgs.purple,
     javascriptTSPunctSpecial = fgs.green,
     javascriptTSVariableBuiltin = fgs.blue,
-    javascriptTSException = fgs.orange,
+    javascriptTSException = {fg = c.orange, gui = italic},
     javascriptTSConstructor = {fg = c.green, gui = bold},
     javascriptTSProperty = fgs.aqua,
     javascriptTSMethod = {fg = c.magenta, gui = bold},
@@ -704,7 +757,7 @@ hl.langs08.javascript = {
     ["@punctuation.bracket.javascript"] = fgs.purple,
     ["@punctuation.special.javascript"] = fgs.green,
     ["@variable.builtin.javascript"] = fgs.blue,
-    ["@exception.javascript"] = fgs.orange,
+    ["@exception.javascript"] = {fg = c.orange, gui = italic},
     ["@constructor.javascript"] = {fg = c.green, gui = bold},
     ["@property.javascript"] = fgs.aqua,
     ["@method.javascript"] = {fg = c.magenta, gui = bold},
@@ -881,7 +934,7 @@ hl.langs.typescript = {
     typescriptTSPunctSpecial = fgs.green,
     typescriptTSPunctDelimiter = fgs.purple,
     typescriptTSVariableBuiltin = fgs.blue,
-    typescriptTSException = fgs.orange,
+    typescriptTSException = {fg = c.orange, gui = italic},
     typescriptTSConstructor = {fg = c.wave_red, gui = bold},
     typescriptTSProperty = fgs.aqua,
     typescriptTSMethod = {fg = c.magenta, gui = bold},
@@ -896,7 +949,7 @@ hl.langs08.typescript = {
     ["@punctuation.special.typescript"] = fgs.green,
     ["@punctuation.delimiter.typescript"] = fgs.purple,
     ["@variable.builtin.typescript"] = fgs.blue,
-    ["@exception.typescript"] = fgs.orange,
+    ["@exception.typescript"] = {fg = c.orange, gui = italic},
     ["@constructor.typescript"] = {fg = c.wave_red, gui = bold},
     ["@property.typescript"] = fgs.aqua,
     ["@method.typescript"] = {fg = c.magenta, gui = bold},
@@ -912,7 +965,7 @@ hl.langs.tsx = {
     tsxTSTagAttribute = fgs.aqua,
     tsxTSTag = {fg = c.orange, gui = italic},
     tsxTSVariableBuiltin = fgs.blue,
-    tsxTSException = fgs.orange
+    tsxTSException = {fg = c.orange, gui = italic}
 
     -- jsxTag = {fg = c.purple, gui = bold},
     -- jsxOpenPunct = fgs.yellow,
@@ -932,7 +985,7 @@ hl.langs08.tsx = {
     ["@tag.attribute.tsx"] = fgs.aqua,
     ["@tag.tsx"] = {fg = c.orange, gui = italic},
     ["@variable.builtin.tsx"] = fgs.blue,
-    ["@exception.tsx"] = fgs.orange
+    ["@exception.tsx"] = {fg = c.orange, gui = italic}
 }
 
 hl.langs.graphql = {
@@ -951,7 +1004,9 @@ hl.langs08.graphql = {
 
 hl.langs.css = {
     cssAtRule = fgs.red,
+    --
     -- Treesitter
+    --
     cssTSProperty = fgs.orange,
     cssTSKeyword = fgs.red,
     cssTSType = {fg = c.red, gui = bold}
@@ -965,7 +1020,9 @@ hl.langs08.css = {
 
 hl.langs.scss = {
     -- scssAtRule = fgs.red,
+    --
     -- Treesitter
+    --
     scssTSProperty = fgs.orange,
     scssTSVariable = fgs.blue,
     scssTSString = fgs.yellow,
@@ -1017,11 +1074,14 @@ hl.langs.coffeescript = {
 }
 
 hl.langs.html = {
+    htmlBold = {fg = c.deep_lilac, gui = bold},
+    --
+    -- Treesitter
+    --
     htmlTSTagAttribute = {fg = c.green, gui = bold},
     htmlTSText = fgs.fg0,
     htmlTSTag = {fg = c.red, gui = bold},
-    htmlTSTagDelimiter = {fg = c.magenta, gui = bold},
-    htmlBold = {fg = c.deep_lilac, gui = bold}
+    htmlTSTagDelimiter = {fg = c.magenta, gui = bold}
 }
 
 hl.langs08.html = {
@@ -1151,7 +1211,7 @@ hl.langs.go = {
     goTSProperty = fgs.blue,
     goTSField = fgs.aqua,
     goTSMethod = {fg = c.purple, gui = bold},
-    goTSNamespace = fgs.orange,
+    goTSNamespace = {fg = c.jade_green, gui = bold},
     goTSType = {fg = c.green, gui = bold},
     goTSTypeBuiltin = {fg = c.green, gui = bold},
     goTSPunctBracket = fgs.purple
@@ -1162,7 +1222,7 @@ hl.langs08.go = {
     ["@field.go"] = fgs.aqua,
     ["@method.go"] = {fg = c.purple, gui = bold},
     ["@method.call.go"] = {fg = c.magenta, gui = bold},
-    ["@namespace.go"] = fgs.orange,
+    ["@namespace.go"] = {fg = c.jade_green, gui = bold},
     ["@type.go"] = {fg = c.green, gui = bold},
     ["@type.builtin.go"] = {fg = c.green, gui = bold},
     ["@punctuation.bracket.go"] = fgs.purple
@@ -1360,10 +1420,10 @@ hl.langs.lua = {
     luaTSPunctBracket = fgs.purple,
     luaTSConstructor = {fg = c.green, gui = bold},
     luaTSConstant = {fg = c.green, gui = bold},
-    luaTSConstantBuiltin = fgs.orange,
+    luaTSConstBuiltin = fgs.orange,
     luaTSKeywordFunction = fgs.red,
     luaTSMethod = fgs.blue,
-    luaTSFunctionBuiltin = {fg = c.magenta, gui = bold}
+    luaTSFuncBuiltin = {fg = c.magenta, gui = bold}
 }
 
 hl.langs08.lua = {
@@ -1374,7 +1434,7 @@ hl.langs08.lua = {
     ["@constant.lua"] = {fg = c.green, gui = bold},
     ["@constant.builtin.lua"] = fgs.orange,
     ["@keyword.function.lua"] = fgs.red,
-    ["@function.builtin"] = {fg = c.magenta, gui = bold},
+    ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
     ["@method.lua"] = fgs.blue
 }
 
@@ -1516,19 +1576,50 @@ hl.langs.vim = {
     vimSet = fgs.green,
     vimSetSep = fgs.coyote_brown,
     vimContinue = fgs.coyote_brown1,
-    -- Non-treesitter Vim looks much better IMO
     --
     -- Treesitter
     --
+    vimTSBoolean = fgs.orange,
+    vimTSConditional = {fg = c.purple, gui = italic},
+    vimTSConstBuiltin = {fg = c.aqua, gui = italic},
+    vimTSConstant = {fg = c.sea_green, gui = bold},
+    vimTSException = {fg = c.orange, gui = bold},
+    vimTSFuncCall = {fg = c.magenta, gui = bold},
+    vimTSFunction = {fg = c.magenta, gui = bold},
     vimTSKeyword = {fg = c.red, gui = bold},
     vimTSNamespace = {fg = c.blue, gui = bold},
-    vimTSFunction = {fg = c.magenta, gui = bold}
+    vimTSOperator = fgs.orange,
+    vimTSPunctBracket = fgs.green,
+    vimTSPunctSpecial = {fg = c.green, gui = bold},
+    vimTSRepeat = fgs.blue,
+    vimTSStringSpecial = fgs.green,
+    vimTSType = {fg = c.green, gui = bold},
+    vimTSVariableBuiltin = {fg = c.green, gui = bold}
+    --
+    -- vimTSFuncBuiltin = {fg = c.jade_green, gui = bold},
 }
 
 hl.langs08.vim = {
+    ["@boolean.vim"] = fgs.orange,
+    ["@conditional.vim"] = {fg = c.purple, gui = italic},
+    ["@constant.builtin.vim"] = {fg = c.aqua, gui = italic},
+    ["@constant.vim"] = {fg = c.sea_green, gui = bold},
+    ["@exception.vim"] = {fg = c.orange, gui = bold},
+    ["@function.call.vim"] = {fg = c.magenta, gui = bold},
+    ["@function.vim"] = {fg = c.magenta, gui = bold},
     ["@keyword.vim"] = {fg = c.red, gui = bold},
     ["@namespace.vim"] = {fg = c.blue, gui = bold},
-    ["@function.vim"] = {fg = c.magenta, gui = bold}
+    ["@operator.vim"] = fgs.orange,
+    ["@punctuation.bracket.vim"] = fgs.green,
+    ["@punctuation.special.vim"] = {fg = c.green, gui = bold},
+    ["@repeat.vim"] = fgs.blue,
+    ["@string.special.vim"] = fgs.green,
+    ["@type.vim"] = {fg = c.green, gui = bold},
+    ["@variable.builtin.vim"] = {fg = c.green, gui = bold}
+    --
+    -- Unsupported
+    --
+    -- ["@function.builtin.vim"] = {fg = c.jade_green, gui = bold},
 }
 
 hl.langs.c = {
@@ -1539,8 +1630,6 @@ hl.langs.c = {
     --
     -- Treesitter
     --
-    -- cTSInclude = fgs.blue,
-    -- cTSFuncMacro = fgs.yellow,
     cTSInclude = fgs.red,
     cTSProperty = fgs.aqua,
     cTSConstant = {fg = c.sea_green, gui = bold},
@@ -1549,6 +1638,8 @@ hl.langs.c = {
     cTSRepeat = fgs.blue,
     cTSType = {fg = c.green, gui = bold},
     cTSPunctBracket = fgs.purple
+    -- cTSInclude = fgs.blue,
+    -- cTSFuncMacro = fgs.yellow,
 }
 
 hl.langs08.c = {
@@ -1630,6 +1721,7 @@ hl.langs08.shell = {
 }
 
 hl.langs.zsh = {
+    -- zshFlag = fgs.yellow,
     zshOptStart = {fg = c.purple, gui = italic},
     zshOption = fgs.blue,
     zshSubst = fgs.green,
@@ -1640,7 +1732,6 @@ hl.langs.zsh = {
     zshNumber = fgs.purple,
     zshCommand = {fg = c.red, gui = bold},
     zshDelim = {fg = c.blue},
-    -- zshFlag = fgs.yellow,
     zshSubstDelim = fgs.purple
 }
 
@@ -1727,11 +1818,15 @@ hl.langs08.toml = {
 }
 
 hl.langs.sxhkdrc = {
+    sxhkdrcTSOperator = fgs.orange,
+    sxhkdrcTSKeyword = fgs.red,
     sxhkdrcTSVariable = fgs.blue,
     sxhkdrcTSPunctBracket = fgs.green
 }
 
 hl.langs08.sxhkdrc = {
+    ["@operator.sxhkdrc"] = fgs.orange,
+    ["@keyword.sxhkdrc"] = fgs.red,
     ["@variable.sxhkdrc"] = fgs.blue,
     ["@punctuation.bracket.sxhkdrc"] = fgs.green
 }
@@ -1825,12 +1920,14 @@ hl.plugins.lsp.LspDiagnosticsVirtualTextWarning = hl.plugins.lsp.DiagnosticVirtu
 hl.plugins.lsp.LspDiagnosticsVirtualTextInformation = hl.plugins.lsp.DiagnosticVirtualTextInfo
 hl.plugins.lsp.LspDiagnosticsVirtualTextHint = hl.plugins.lsp.DiagnosticVirtualTextHint
 
+-- https://github.com/folke/lsp-trouble.nvim
 hl.plugins.lsp_trouble = {
     LspTroubleText = {fg = c.fg0},
     LspTroubleCount = {fg = c.blue},
     LspTroubleNormal = {fg = c.magenta}
 }
 
+-- https://github.com/glepnir/lspsaga.nvim
 hl.plugins.lsp_saga = {
     -- LspFloatWinNormal = {bg = c.bg_float},
     -- LspSagaFinderSelection = {fg = c.bg_visual},
@@ -1850,6 +1947,7 @@ hl.plugins.lsp_saga = {
     TargetWord = {fg = c.cyan}
 }
 
+-- https://github.com/hrsh7th/nvim-cmp
 hl.plugins.cmp = {
     CmpItemAbbr = fgs.fg0,
     CmpItemAbbrDeprecated = fgs.fg0,
@@ -1884,6 +1982,7 @@ hl.plugins.cmp = {
     CmpItemKindVariable = fgs.purple
 }
 
+-- https://github.com/neoclide/coc.nvim
 hl.plugins.coc = {
     -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
     CocHoverRange = {fg = c.none, gui = underbold}, -- range of current hovered symbol
@@ -1981,6 +2080,7 @@ hl.plugins.coc = {
     CocSuggestFloating = {fg = c.fg0, bg = c.bg3} -- bg0
 }
 
+-- https://github.com/dense-analysis/ale
 hl.plugins.ale = {
     ALEError = {fg = c.none, gui = undercurl, sp = c.red},
     ALEWarning = {fg = c.none, gui = undercurl, sp = c.yellow},
@@ -1995,6 +2095,7 @@ hl.plugins.ale = {
     ALEVirtualTextStyleWarning = fgs.coyote_brown1
 }
 
+-- https://github.com/ghillb/cybu.nvim
 hl.plugins.cybu = {
     CybuFocus = {fg = c.green, gui = bold}, -- Current / Selected Buffer
     CybuAdjacent = {fg = c.red, gui = bold}, -- Buffers not in focus
@@ -2003,6 +2104,7 @@ hl.plugins.cybu = {
     CybuInfobar = {link = "StatusLine"}
 }
 
+-- https://github.com/neomake/neomake
 hl.plugins.neomake = {
     NeomakeError = {fg = c.none, gui = undercurl, sp = c.red},
     NeomakeErrorSign = fgs.red,
@@ -2035,9 +2137,11 @@ hl.plugins.vista = {
     VistaPrefix = fgs.coyote_brown1,
     VistaColon = fgs.yellow,
     VistaIcon = fgs.green,
-    VistaLineNr = fgs.fg0
+    VistaLineNr = fgs.fg0,
+    VistaFloat = {link = "CocFloating"}
 }
 
+-- https://github.com/airblade/vim-gitgutter
 hl.plugins.gitgutter = {
     GitGutterAdd = {fg = c.yellow, gui = bold},
     GitGutterChange = {fg = c.blue, gui = bold},
@@ -2049,6 +2153,7 @@ hl.plugins.gitgutter = {
     GitGutterChangeDeleteLineNr = fgs.purple
 }
 
+-- https://github.com/preservim/nerdtree
 hl.plugins.nerdtree = {
     NERDTreeDir = fgs.yellow,
     NERDTreeDirSlash = fgs.aqua,
@@ -2065,11 +2170,13 @@ hl.plugins.nerdtree = {
     NERDTreeLinkTarget = fgs.yellow
 }
 
+-- https://github.com/easymotion/vim-easymotion
 hl.plugins.easymotion = {
     EasyMotionTarget = {fg = c.bg0, bg = c.green},
     EasyMotionShade = fgs.coyote_brown1
 }
 
+-- https://github.com/mhinz/vim-startify
 hl.plugins.startify = {
     StartifyBracket = fgs.coyote_brown1,
     StartifyFile = fgs.fg0,
@@ -2082,6 +2189,7 @@ hl.plugins.startify = {
     StartifyFooter = fgs.coyote_brown1
 }
 
+-- https://github.com/folke/which-key.nvim
 hl.plugins.whichkey = {
     WhichKey = fgs.red,
     WhichKeySeperator = fgs.yellow,
@@ -2091,28 +2199,40 @@ hl.plugins.whichkey = {
     WhichKeyValue = {fg = c.coyote_brown1, gui = italic} -- any comment
 }
 
+-- https://github.com/Shougo/defx.nvim
 hl.plugins.defx = {
     DefxIconsParentDirectory = fgs.orange,
     Defx_filename_directory = fgs.blue,
     Defx_filename_root = fgs.red
 }
 
+-- https://github.com/voldikss/vim-floaterm
 hl.plugins.floaterm = {
     Floaterm = {fg = c.none, bg = c.bg0},
     FloatermBorder = {fg = c.magenta, bg = c.none}
 }
 
+-- https://github.com/vimwiki/vimwiki
 hl.plugins.vimwiki = {
     VimwikiBold = {fg = c.deep_lilac, gui = "bold"},
     VimwikiBoldItalic = {fg = c.jade_green, gui = "bold,italic"},
     VimwikiCode = {fg = c.puce},
-    VimwikiItalic = {fg = "#83a598", gui = "italic"},
-    VimwikiHeader1 = {fg = "#F14A68", gui = "bold"},
+    VimwikiItalic = {fg = c.morning_blue, gui = "italic"},
+    VimwikiHeader1 = {fg = c.infra_red, gui = "bold"},
     VimwikiHeader2 = {fg = "#F06431", gui = "bold"},
-    VimwikiHeader3 = {fg = "#689d6a", gui = "bold"},
+    VimwikiHeader3 = {fg = c.russian_green, gui = "bold"},
     VimwikiHeader4 = {fg = c.green, gui = "bold"},
     VimwikiHeader5 = {fg = c.purple, gui = "bold"},
     VimwikiHeader6 = {fg = "#458588", gui = "bold"}
+}
+
+-- https://github.com/kevinhwang91/nvim-bqf
+hl.plugins.bqf = {
+    BqfSign = {fg = c.deep_lilac, gui = bold},
+    BqfPreviewBorder = {link = "Parameter"}
+    -- BqfPreviewRange = {},
+    -- BqfPreviewCursorLine = {},
+    -- BqfPreviewBufLabel = {},
 }
 
 -- https://github.com/stevearc/aerial.nvim
@@ -2147,6 +2267,7 @@ hl.plugins.aerial = {
     AerialTypeParameterIcon = {link = "Type"}
 }
 
+-- https://github.com/sindrets/diffview.nvim
 hl.plugins.diffview = {
     DiffviewFilePanelTitle = {fg = c.blue, gui = bold},
     DiffviewFilePanelCounter = {fg = c.purple, gui = bold},
@@ -2174,6 +2295,7 @@ hl.plugins.diffview = {
     DiffviewStatusBroken = fgs.red
 }
 
+-- https://github.com/TimUntersberger/neogit
 hl.plugins.neogit = {
     NeogitBranch = fgs.blue,
     NeogitDiffAdd = fgs.green,
@@ -2191,6 +2313,7 @@ hl.plugins.neogit = {
     -- NeogitUnstagedChanges
 }
 
+-- https://github.com/lewis6991/gitsigns.nvim
 hl.plugins.gitsigns = {
     GitSignsAdd = fgs.green,
     GitSignsAddLn = fgs.green,
@@ -2203,6 +2326,7 @@ hl.plugins.gitsigns = {
     GitSignsDeleteNr = fgs.red
 }
 
+-- https://github.com/ibhagwan/fzf-lua
 hl.plugins.fzf_lua = {
     FzfLuaBorder = {link = "FloatBorder"}
     -- FzfLuaNormal = { "Normal" },
@@ -2220,6 +2344,7 @@ hl.plugins.fzf_lua = {
     -- FzfLuaHelpBorder = { "FzfLuaBorder" },
 }
 
+-- https://github.com/kyazdani42/nvim-tree.lua
 hl.plugins.nvim_tree = {
     NvimTreeNormal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     -- NOTE: Maybe fix?
@@ -2239,6 +2364,7 @@ hl.plugins.nvim_tree = {
     NvimTreeFolderName = fgs.blue
 }
 
+-- https://github.com/nvim-telescope/telescope.nvim
 hl.plugins.telescope = {
     TelescopeBorder = fgs.magenta,
     TelescopeMatching = fgs.orange,
@@ -2253,11 +2379,13 @@ hl.plugins.telescope = {
     TelescopeTitle = {fg = c.purple, gui = bold}
 }
 
+-- https://github.com/RRethy/vim-illuminate
 hl.plugins.illuminate = {
     illuminatedWord = {link = "LspReferenceText"},
     illuminatedCurWord = {link = "LspReferenceText"}
 }
 
+-- https://github.com/mvllow/modes.nvim
 hl.plugins.modes = {
     ModesCopy = {bg = c.yellow},
     ModesDelete = {bg = c.red},
@@ -2265,6 +2393,7 @@ hl.plugins.modes = {
     ModesVisual = {bg = c.magenta}
 }
 
+-- https://github.com/glepnir/dashboard-nvim
 hl.plugins.dashboard = {
     DashboardShortCut = {fg = c.red, gui = bold},
     DashboardFooter = {fg = c.purple, gui = bold},
@@ -2272,10 +2401,17 @@ hl.plugins.dashboard = {
     DashboardCenter = fgs.aqua
 }
 
+-- https://github.com/simrat39/symbols-outline.nvim
 hl.plugins.symbols_outline = {
     FocusedSymbol = {fg = c.bg1, bg = c.yellow, gui = bold}
 }
 
+-- https://github.com/m-demare/hlargs.nvim
+hl.plugins.hlargs = {
+    Hlargs = fgs.salmon
+}
+
+-- https://github.com/p00f/nvim-ts-rainbow
 hl.plugins.ts_rainbow = {
     rainbowcol1 = fgs.coyote_brown1,
     rainbowcol2 = fgs.yellow,
@@ -2286,10 +2422,12 @@ hl.plugins.ts_rainbow = {
     rainbowcol7 = fgs.red
 }
 
+-- https://github.com/lukas-reineke/indent-blankline.nvim
 hl.plugins.indent_blankline = {
     IndentBlanklineContextChar = {fg = c.bg_red, gui = "nocombine"}
 }
 
+-- https://github.com/rcarriga/nvim-dap-ui
 hl.plugins.dapui = {
     DapUIScope = fgs.blue,
     DapUIType = fgs.purple,
@@ -2308,6 +2446,7 @@ hl.plugins.dapui = {
     DapUIModifiedValue = fgs.yellow
 }
 
+-- https://github.com/wbthomason/packer.nvim
 hl.plugins.packer = {
     packerSuccess = fgs.green,
     packerWorking = fgs.yellow,
@@ -2326,6 +2465,7 @@ hl.plugins.packer = {
     packerTimeLow = fgs.green
 }
 
+-- https://github.com/phaazon/hop.nvim
 hl.plugins.hop = {
     HopNextKey = {fg = c.red, gui = bold},
     HopNextKey1 = {fg = c.deep_lilac, gui = bold},
@@ -2333,16 +2473,19 @@ hl.plugins.hop = {
     HopUnmatched = {fg = "#666666", sp = "#666666"}
 }
 
+-- https://github.com/mfussenegger/nvim-treehopper
 hl.plugins.treehopper = {
     TSNodeUnmatched = {link = "HopUnmatched"},
     TSNodeKey = {link = "HopNextKey"}
 }
 
+-- https://github.com/justinmk/vim-sneak
 hl.plugins.sneak = {
     Sneak = {fg = c.deep_lilac, gui = bold},
     SneakScope = {bg = c.bg4}
 }
 
+-- https://github.com/ggandor/lightspeed.nvim
 hl.plugins.lightspeed = {
     LightspeedCursor = {link = "Cursor"}
     -- LightspeedGreyWash = {fg = c.dark3},
@@ -2359,6 +2502,7 @@ hl.plugins.lightspeed = {
     -- LightspeedUnlabeledMatch = {fg = c.blue2, style = "bold"}
 }
 
+-- https://github.com/romgrk/barbar.nvim
 hl.plugins.barbar = {
     BufferCurrent = c.fg0
     -- BufferCurrentIndex = {bg = c.fg_gutter, fg = c.info},
@@ -2379,6 +2523,7 @@ hl.plugins.barbar = {
     -- BufferTabpage = {bg = c.bg_statusline, fg = c.border_highlight}
 }
 
+-- https://github.com/lambdalisue/fern.vim
 hl.plugins.fern = {
     FernBranchText = {fg = c.blue}
 }
