@@ -65,6 +65,7 @@ local fgs = {
     sea_green = {fg = c.sea_green},
     jade_green = {fg = c.jade_green},
     salmon = {fg = c.salmon},
+    puce = {fg = c.puce},
 }
 
 hl.common = {
@@ -207,38 +208,33 @@ hl.treesitter = {
     -- TSStrike = { fg = c.coyote_brown1, gui = "strikethrough" },
     -- TSStrong = { fg = c.fg, gui = "bold" },
 
-    TSAnnotation = {fg = c.blue},
-    TSAttribute = {fg = c.green, gui = italic}, -- Annotations attached to code to denote some meta info
     TSBoolean = fgs.orange, -- Boolean literals
     TSCharacter = fgs.yellow, -- Character literals
     TSCharacterSpecial = {link = "SpecialChar"}, -- Special characters
     TSComment = {fg = c.coyote_brown1, gui = italic}, -- Line comments and block comments
-    TSConditional = {fg = c.purple, gui = italic},
-    TSConstBuiltin = {fg = c.orange},
-    TSConstMacro = {fg = c.orange, gui = italic},
+    TSConditional = {fg = c.purple, gui = italic}, -- keywords related to conditionals (e.g. `if` / `else`)
     TSConstant = {fg = c.sea_green, gui = bold},
-    TSConstructor = {fg = c.yellow, gui = bold},
-    TSDanger = {fg = c.red, gui = bold},
-    TSEnviroment = fgs.fg0,
-    TSEnviromentName = fgs.fg0,
-    TSException = {fg = c.red, gui = italic},
+    TSConstBuiltin = {fg = c.orange, gui = italic},
+    TSConstMacro = {fg = c.orange, gui = italic},
+    TSConstructor = {fg = c.wave_red, gui = bold},
+    -- TSDebug = {}, -- keywords related to debugging
+    TSException = {fg = c.red, gui = italic}, -- keywords related to exceptions (e.g. `throw` / `catch`)
     TSField = fgs.aqua,
     TSFloat = fgs.purple,
+    TSFunction = {fg = c.magenta, gui = bold},
     TSFuncCall = {fg = c.magenta, gui = bold},
     TSFuncBuiltin = {fg = c.magenta, gui = bold},
     TSFuncMacro = fgs.aqua,
-    TSFunction = {fg = c.magenta, gui = bold},
-    TSInclude = {fg = c.red},
+    TSInclude = {fg = c.red, gui = italic}, -- keywords for including modules (e.g. `import` / `from` in Python)
     TSKeyword = fgs.red,
-    TSKeywordFunction = fgs.red,
-    TSKeywordOperator = fgs.red,
-    TSLabel = fgs.orange,
-    TSLiteral = fgs.green,
-    TSMath = fgs.green,
+    TSKeywordFunction = fgs.red, -- keywords that define a function (e.g. `func` in Go, `def` in Python)
+    TSKeywordOperator = fgs.red, -- operators that are English words (e.g. `and` / `or`)
+    TSKeywordReturn = {fg = c.red, gui = bold}, -- keywords like `return` and `yield`
+    TSLabel = fgs.orange, -- GOTO and other labels (e.g. `label:` in C)
     TSMethod = fgs.blue,
+    -- TSMethodCall = {},
     TSNamespace = {fg = c.blue, gui = italic},
     TSNone = fgs.fg0,
-    TSNote = {fg = c.blue, bg = c.bg0, gui = bold},
     TSNumber = fgs.purple,
     TSOperator = fgs.orange,
     TSParameter = fgs.fg0,
@@ -247,24 +243,43 @@ hl.treesitter = {
     TSPunctBracket = fgs.fg0,
     TSPunctDelimiter = fgs.coyote_brown1,
     TSPunctSpecial = fgs.green,
-    TSRepeat = fgs.purple,
-    TSStrike = fgs.coyote_brown1,
+    TSRepeat = fgs.purple, -- keywords related to loops (e.g. `for` / `while`)
     TSString = fgs.yellow,
     TSStringEscape = fgs.philippine_green,
     TSStringRegex = fgs.orange,
+    TSStringSpecial = fgs.pumpkin,
+    TSStorageClass = fgs.red,
     TSSymbol = fgs.fg0,
     TSTag = {fg = c.blue, gui = italic},
+    -- TSTagAttribute = fgs.magenta,
     TSTagDelimiter = fgs.magenta,
     TSText = fgs.yellow,
+    TSAnnotation = {fg = c.blue, gui = italic}, -- Annotations attached to code to denote some meta info
+    TSAttribute = {fg = c.green, gui = italic},
+    TSDanger = {fg = c.red, gui = bold},
+    TSDiffAdd = {fg = c.none, bg = utils.darken(c.green, 0.6, c.bg0)},
+    TSDiffDelete = {fg = c.none, bg = utils.darken(c.red, 0.6, c.bg0)},
+    TSEmphasis = {fg = c.morning_blue, gui = underbold},
+    TSEnviroment = fgs.fg0,
+    TSEnviromentName = fgs.fg0,
+    TSLiteral = fgs.green,
+    TSMath = fgs.green,
+    TSNote = {fg = c.blue, gui = bold},
     TSTextReference = fgs.blue,
+    TSStrike = fgs.coyote_brown1,
+    TSStrong = {fg = c.deep_lilac, gui = bold}, -- {fg = c.none, gui = "bold"},
     TSTitle = {fg = c.orange, gui = "bold"}, -- Text that is part of a title
-    TSType = fgs.green,
-    TSTypeBuiltin = fgs.green,
+    TSTodo = {fg = c.red, gui = bold},
     TSUnderline = {fg = c.fg, gui = "underline"},
     TSURI = {fg = c.fg1, gui = "underline"},
+    TSWarning = {fg = c.green, gui = bold},
+    TSType = fgs.green,
+    TSTypeBuiltin = {fg = c.green, gui = bold},
+    -- TSTypeDefinition = fgs.green,
+    TSTypeQualifier = fgs.red,
     TSVariable = fgs.fg0,
     TSVariableBuiltin = fgs.blue,
-    TSWarning = {fg = c.green, gui = bold}
+    TSVariableGlobal = fgs.blue,
 }
 
 hl.langs08.treesitter = {
@@ -272,25 +287,25 @@ hl.langs08.treesitter = {
     ["@character"] = fgs.yellow,
     ["@character.special"] = {link = "SpecialChar"},
     ["@comment"] = {fg = c.coyote_brown1, gui = italic},
-    ["@conditional"] = {fg = c.purple, gui = italic}, -- keywords related to conditionals (e.g. `if` / `else`)
+    ["@conditional"] = {fg = c.purple, gui = italic},
     ["@constant"] = {fg = c.sea_green, gui = bold},
     ["@constant.builtin"] = {fg = c.orange, gui = italic},
     ["@constant.macro"] = {fg = c.orange, gui = italic},
     ["@constructor"] = {fg = c.wave_red, gui = bold},
     -- ["@debug"] = {}, -- keywords related to debugging
-    ["@exception"] = {fg = c.red, gui = italic}, -- keywords related to exceptions (e.g. `throw` / `catch`)
+    ["@exception"] = {fg = c.red, gui = italic},
     ["@field"] = fgs.aqua,
     ["@float"] = fgs.purple,
     ["@function"] = {fg = c.magenta, gui = bold},
     ["@function.call"] = {fg = c.magenta, gui = bold},
     ["@function.builtin"] = {fg = c.magenta, gui = bold},
     ["@function.macro"] = fgs.aqua,
-    ["@include"] = {fg = c.red, gui = italic}, -- keywords for including modules (e.g. `import` / `from` in Python)
+    ["@include"] = {fg = c.red, gui = italic},
     ["@keyword"] = fgs.red,
-    ["@keyword.function"] = fgs.red, -- keywords that define a function (e.g. `func` in Go, `def` in Python)
-    ["@keyword.operator"] = fgs.red, -- operators that are English words (e.g. `and` / `or`)
-    ["@keyword.return"] = {fg = c.red, gui = bold}, -- keywords like `return` and `yield`
-    ["@label"] = fgs.orange, -- GOTO and other labels (e.g. `label:` in C)
+    ["@keyword.function"] = fgs.red,
+    ["@keyword.operator"] = fgs.red,
+    ["@keyword.return"] = {fg = c.red, gui = bold},
+    ["@label"] = fgs.orange,
     ["@method"] = fgs.blue,
     -- ["@method.call"] = {},
     ["@namespace"] = {fg = c.blue, gui = italic},
@@ -303,7 +318,7 @@ hl.langs08.treesitter = {
     ["@punctuation.bracket"] = fgs.fg0,
     ["@punctuation.delimiter"] = fgs.coyote_brown1,
     ["@punctuation.special"] = fgs.green,
-    ["@repeat"] = fgs.purple, -- keywords related to loops (e.g. `for` / `while`)
+    ["@repeat"] = fgs.purple,
     ["@string"] = fgs.yellow,
     ["@string.escape"] = fgs.philippine_green,
     ["@string.regex"] = fgs.orange,
@@ -314,8 +329,8 @@ hl.langs08.treesitter = {
     -- ["@tag.attribute"] = fgs.magenta,
     ["@tag.delimiter"] = fgs.magenta,
     ["@text"] = fgs.yellow,
-    ["@text.annotation"] = {fg = c.blue, gui = italic}, -- NOTE: unsure
-    ["@text.attribute"] = {fg = c.green, gui = italic}, -- NOTE: unsure
+    ["@text.annotation"] = {fg = c.blue, gui = italic},
+    ["@text.attribute"] = {fg = c.green, gui = italic},
     ["@text.danger"] = {fg = c.red, gui = bold},
     ["@text.diff.add"] = {fg = c.none, bg = utils.darken(c.green, 0.6, c.bg0)},
     ["@text.diff.delete"] = {fg = c.none, bg = utils.darken(c.red, 0.6, c.bg0)},
@@ -324,11 +339,11 @@ hl.langs08.treesitter = {
     ["@text.environment.name"] = fgs.fg0,
     ["@text.literal"] = fgs.green,
     ["@text.math"] = fgs.green,
-    ["@text.note"] = {fg = c.blue, bg = c.bg0, gui = bold},
+    ["@text.note"] = {fg = c.blue, gui = bold},
     ["@text.reference"] = fgs.blue,
     ["@text.strike"] = fgs.coyote_brown1,
-    ["@text.strong"] = {fg = c.none, gui = "bold"},
-    ["@text.title"] = {fg = c.orange, gui = "bold"}, -- Text that is part of a title
+    ["@text.strong"] = {fg = c.deep_lilac, gui = bold}, -- {fg = c.none, gui = "bold"},
+    ["@text.title"] = {fg = c.orange, gui = "bold"},
     ["@text.todo"] = {fg = c.red, gui = bold},
     ["@text.underline"] = {fg = c.none, gui = "underline"},
     ["@text.uri"] = {fg = c.fg1, gui = "underline"},
@@ -368,7 +383,7 @@ hl.langs.awk = {
     awkTSString = fgs.yellow,
     awkTSStringEscape = fgs.philippine_green,
     --
-    -- Unsupported
+    -- Unsupported (yet)
     --
     awkTSVariableBuiltin = fgs.blue
 }
@@ -390,7 +405,7 @@ hl.langs08.awk = {
     ["@string.awk"] = fgs.yellow,
     ["@string.escape.awk"] = fgs.philippine_green,
     --
-    -- Unsupported
+    -- Unsupported (yet)
     --
     ["@variable.builtin.awk"] = fgs.blue
 }
@@ -406,9 +421,8 @@ hl.langs08.comment = {
     ["@constant.comment"] = {fg = c.jasper_orange}
 }
 
--- https://github.com/thesis/vim-solidity
 hl.langs.solidity = {
-    -- Regex parsing
+    -- https://github.com/thesis/vim-solidity
     solConstructor = {fg = c.blue, gui = bold},
     SolContract = fgs.orange,
     solContractName = {fg = c.aqua, gui = bold},
@@ -560,7 +574,6 @@ hl.langs08.tex = {
 }
 
 hl.langs.javascript = {
-    -- Javascript:
     -- vim-javascript: https://github.com/pangloss/vim-javascript
     jsThis = fgs.purple,
     jsUndefined = fgs.aqua,
@@ -724,7 +737,6 @@ hl.langs.javascript = {
     javascriptDataViewProp = fgs.aqua,
     javascriptBroadcastProp = fgs.aqua,
     javascriptMathStaticProp = fgs.aqua,
-    -- JavaScript React:
     -- vim-jsx-pretty: https://github.com/maxmellon/vim-jsx-pretty
     jsxTagName = {fg = c.orange, gui = italic},
     jsxTag = {fg = c.purple, gui = bold},
@@ -766,7 +778,6 @@ hl.langs08.javascript = {
 }
 
 hl.langs.typescript = {
-    -- TypeScript:
     -- vim-typescript: https://github.com/leafgarland/typescript-vim
     typescriptSource = {fg = c.purple, gui = italic},
     typescriptMessage = fgs.green,
@@ -988,62 +999,7 @@ hl.langs08.tsx = {
     ["@exception.tsx"] = {fg = c.orange, gui = italic}
 }
 
-hl.langs.graphql = {
-    graphqlTSParameter = fgs.blue,
-    graphqlTSVariable = {fg = c.magenta, gui = bold},
-    graphqlTSProperty = fgs.aqua,
-    graphqlTSPunctBracket = fgs.purple
-}
-
-hl.langs08.graphql = {
-    ["@parameter.graphql"] = fgs.blue,
-    ["@variable.graphql"] = {fg = c.magenta, gui = bold},
-    ["@property.graphql"] = fgs.aqua,
-    ["@punctuation.bracket.graphql"] = fgs.purple
-}
-
-hl.langs.css = {
-    cssAtRule = fgs.red,
-    --
-    -- Treesitter
-    --
-    cssTSProperty = fgs.orange,
-    cssTSKeyword = fgs.red,
-    cssTSType = {fg = c.red, gui = bold}
-}
-
-hl.langs08.css = {
-    ["@property.css"] = fgs.orange,
-    ["@keyword.css"] = fgs.red,
-    ["@type.css"] = {fg = c.red, gui = bold}
-}
-
-hl.langs.scss = {
-    -- scssAtRule = fgs.red,
-    --
-    -- Treesitter
-    --
-    scssTSProperty = fgs.orange,
-    scssTSVariable = fgs.blue,
-    scssTSString = fgs.yellow,
-    scssTSKeyword = fgs.red,
-    scssTSRepeat = fgs.purple,
-    scssTSType = {fg = c.red, gui = bold},
-    scssTSPunctDelimiter = fgs.aqua
-}
-
-hl.langs08.scss = {
-    ["@property.scss"] = fgs.orange,
-    ["@variable.scss"] = fgs.blue,
-    ["@string.scss"] = fgs.yellow,
-    ["@keyword.scss"] = fgs.red,
-    ["@repeat.scss"] = fgs.purple,
-    ["@type.scss"] = {fg = c.red, gui = bold},
-    ["@punctuation.delimiter.scss"] = fgs.aqua
-}
-
 hl.langs.dart = {
-    -- Dart:
     -- dart-lang: https://github.com/dart-lang/dart-vim-plugin
     dartCoreClasses = fgs.aqua,
     dartTypeName = fgs.aqua,
@@ -1055,7 +1011,6 @@ hl.langs.dart = {
 }
 
 hl.langs.coffeescript = {
-    -- CoffeeScript:
     -- vim-coffee-script: https://github.com/kchmck/vim-coffee-script
     coffeeExtendedOp = fgs.orange,
     coffeeSpecialOp = fgs.fg0,
@@ -1071,24 +1026,6 @@ hl.langs.coffeescript = {
     coffeeSpecialIdent = fgs.purple,
     coffeeObject = fgs.purple,
     coffeeObjAssign = fgs.aqua
-}
-
-hl.langs.html = {
-    htmlBold = {fg = c.deep_lilac, gui = bold},
-    --
-    -- Treesitter
-    --
-    htmlTSTagAttribute = {fg = c.green, gui = bold},
-    htmlTSText = fgs.fg0,
-    htmlTSTag = {fg = c.red, gui = bold},
-    htmlTSTagDelimiter = {fg = c.magenta, gui = bold}
-}
-
-hl.langs08.html = {
-    ["@tag.attribute.html"] = {fg = c.green, gui = bold},
-    ["@text.html"] = fgs.fg0,
-    ["@tag.html"] = {fg = c.red, gui = bold},
-    ["@tag.delimiter.html"] = {fg = c.magenta, gui = bold}
 }
 
 hl.langs.objectivec = {
@@ -1150,9 +1087,6 @@ hl.langs.python = {
     pythonTSField = fgs.fg0,
     pythonTSStringEscape = fgs.green,
     pythonTSPunctBracket = fgs.purple
-    -- pythonTSParameter = fgs.orange,
-    -- pythonTSPunctBracket = fgs.green,
-    -- pythonTSPunctBracket = fgs.fg0,
 }
 
 hl.langs08.python = {
@@ -1170,7 +1104,6 @@ hl.langs08.python = {
 }
 
 hl.langs.kotlin = {
-    -- Kotlin:
     -- kotlin-vim: https://github.com/udalov/kotlin-vim
     ktSimpleInterpolation = fgs.green,
     ktComplexInterpolation = fgs.green,
@@ -1180,7 +1113,6 @@ hl.langs.kotlin = {
 }
 
 hl.langs.scala = {
-    -- Scala:
     -- vim-scala: https://github.com/derekwyatt/vim-scala
     scalaNameDefinition = fgs.aqua,
     scalaInterpolationBoundary = fgs.green,
@@ -1229,7 +1161,6 @@ hl.langs08.go = {
 }
 
 hl.langs.rust = {
-    -- Rust:
     -- rust.vim: https://github.com/rust-lang/rust.vim
     rustStructure = fgs.orange,
     rustIdentifier = fgs.purple,
@@ -1282,7 +1213,6 @@ hl.langs08.rust = {
 }
 
 hl.langs.swift = {
-    -- Swift:
     -- swift.vim: https://github.com/keith/swift.vim
     swiftInterpolatedWrapper = fgs.green,
     swiftInterpolatedString = fgs.blue,
@@ -1292,7 +1222,6 @@ hl.langs.swift = {
 }
 
 hl.langs.php = {
-    -- PHP:
     -- php.vim: https://github.com/StanAngeloff/php.vim
     phpParent = fgs.fg0,
     phpNowDoc = fgs.yellow,
@@ -1316,7 +1245,6 @@ hl.langs.php = {
 }
 
 hl.langs.ruby = {
-    -- Ruby:
     -- builtin: https://github.com/vim-ruby/vim-ruby
     rubyStringDelimiter = fgs.yellow,
     rubyModuleName = fgs.purple,
@@ -1356,7 +1284,6 @@ hl.langs08.ruby = {
 }
 
 hl.langs.haskell = {
-    -- Haskell:
     -- haskell-vim: https://github.com/neovimhaskell/haskell-vim
     haskellBrackets = fgs.blue,
     haskellIdentifier = fgs.green,
@@ -1455,8 +1382,7 @@ hl.langs08.teal = {
 }
 
 hl.langs.ocaml = {
-    -- OCaml:
-    -- builtin: https://github.com/rgrinberg/vim-ocaml
+    -- vim-ocaml: https://github.com/rgrinberg/vim-ocaml
     ocamlArrow = fgs.orange,
     ocamlEqual = fgs.orange,
     ocamlOperator = fgs.orange,
@@ -1477,8 +1403,7 @@ hl.langs.ocaml = {
 }
 
 hl.langs.erlang = {
-    -- Erlang:
-    -- builtin: https://github.com/vim-erlang/vim-erlang-runtime
+    -- vim-erlang-runtime: https://github.com/vim-erlang/vim-erlang-runtime
     erlangAtom = fgs.aqua,
     erlangLocalFuncRef = {fg = c.yellow, gui = bold},
     erlangLocalFuncCall = {fg = c.yellow, gui = bold},
@@ -1489,7 +1414,6 @@ hl.langs.erlang = {
 }
 
 hl.langs.elixir = {
-    -- Elixir:
     -- vim-elixir: https://github.com/elixir-editors/vim-elixir
     elixirStringDelimiter = fgs.yellow,
     elixirKeyword = fgs.orange,
@@ -1518,8 +1442,7 @@ hl.langs.elixir = {
 }
 
 hl.langs.clojure = {
-    -- Clojure:
-    -- builtin: https://github.com/guns/vim-clojure-static
+    -- vim-coljure-static: https://github.com/guns/vim-clojure-static
     clojureMacro = {fg = c.purple, gui = italic},
     clojureFunc = {fg = c.aqua, gui = bold},
     clojureConstant = fgs.green,
@@ -1751,7 +1674,114 @@ hl.langs08.zig = {
     ["@punctuation.bracket.zig"] = fgs.orange
 }
 
--- ========================== Config Formats ==========================
+hl.langs.jq = {
+    jqTSNumber = {link = "TSNumber"},
+    jqTSString = {link = "TSString"},
+    jqTSConditional = {link = "TSConditional"},
+    jqTSKeyword = {link = "TSKeyword"},
+    jqTSFunction = {link = "TSFunction"},
+    jqTSOperator = {link = "TSOperator"},
+    jqTSBoolean = {link = "TSBoolean"},
+    jqTSFuncBuiltin = {fg = c.green, gui = bold},
+    jqTSPunctBracket = fgs.puce,
+    jqTSVariable = fgs.blue,
+    jqTSProperty = fgs.aqua,
+    -- Unsupported (yet)
+    jqTSFuncCall = {link = "@function.call"},
+}
+
+hl.langs08.jq = {
+    ["@number.jq"] = {link = "@number"},
+    ["@string.jq"] = {link = "@string"},
+    ["@conditional.jq"] = {link = "@conditional"},
+    ["@keyword.jq"] = {link = "@keyword"},
+    ["@function.jq"] = {link = "@function"},
+    ["@operator.jq"] = {link = "@operator"},
+    ["@boolean.jq"] = {link = "@boolean"},
+    ["@function.builtin.jq"] = {fg = c.green, gui = bold},
+    ["@punctuation.bracket.jq"] = fgs.puce,
+    ["@variable.jq"] = fgs.blue,
+    ["@property.jq"] = fgs.aqua,
+    -- Unsupported (yet)
+    ["@function.call.jq"] = {link = "@function.call"},
+}
+
+hl.langs.graphql = {
+    graphqlTSParameter = fgs.blue,
+    graphqlTSVariable = {fg = c.magenta, gui = bold},
+    graphqlTSProperty = fgs.aqua,
+    graphqlTSPunctBracket = fgs.purple
+}
+
+hl.langs08.graphql = {
+    ["@parameter.graphql"] = fgs.blue,
+    ["@variable.graphql"] = {fg = c.magenta, gui = bold},
+    ["@property.graphql"] = fgs.aqua,
+    ["@punctuation.bracket.graphql"] = fgs.purple
+}
+
+hl.langs.css = {
+    cssAtRule = fgs.red,
+    --
+    -- Treesitter
+    --
+    cssTSProperty = fgs.orange,
+    cssTSKeyword = fgs.red,
+    cssTSType = {fg = c.red, gui = bold}
+}
+
+hl.langs08.css = {
+    ["@property.css"] = fgs.orange,
+    ["@keyword.css"] = fgs.red,
+    ["@type.css"] = {fg = c.red, gui = bold}
+}
+
+hl.langs.scss = {
+    -- scssAtRule = fgs.red,
+    --
+    -- Treesitter
+    --
+    scssTSProperty = fgs.orange,
+    scssTSVariable = fgs.blue,
+    scssTSString = fgs.yellow,
+    scssTSKeyword = fgs.red,
+    scssTSRepeat = fgs.purple,
+    scssTSType = {fg = c.red, gui = bold},
+    scssTSPunctDelimiter = fgs.aqua
+}
+
+hl.langs08.scss = {
+    ["@property.scss"] = fgs.orange,
+    ["@variable.scss"] = fgs.blue,
+    ["@string.scss"] = fgs.yellow,
+    ["@keyword.scss"] = fgs.red,
+    ["@repeat.scss"] = fgs.purple,
+    ["@type.scss"] = {fg = c.red, gui = bold},
+    ["@punctuation.delimiter.scss"] = fgs.aqua
+}
+
+hl.langs.html = {
+    htmlBold = {fg = c.deep_lilac, gui = bold},
+    --
+    -- Treesitter
+    --
+    htmlTSTagAttribute = {fg = c.green, gui = bold},
+    htmlTSText = fgs.fg0,
+    htmlTSTag = {fg = c.red, gui = bold},
+    htmlTSTagDelimiter = {fg = c.magenta, gui = bold}
+}
+
+hl.langs08.html = {
+    ["@tag.attribute.html"] = {fg = c.green, gui = bold},
+    ["@text.html"] = fgs.fg0,
+    ["@tag.html"] = {fg = c.red, gui = bold},
+    ["@tag.delimiter.html"] = {fg = c.magenta, gui = bold}
+}
+
+--  ╭──────────────────────────────────────────────────────────╮
+--  │                      Config Formats                      │
+--  ╰──────────────────────────────────────────────────────────╯
+
 
 hl.langs.dosini = {
     dosiniLabel = fgs.yellow,
@@ -1836,7 +1866,27 @@ hl.langs.ron = {
     ronKey = fgs.red,
     ronInteger = fgs.purple,
     ronString = fgs.yellow,
-    ronBoolean = fgs.orange
+    ronBoolean = fgs.orange,
+    --
+    -- Treesiter
+    --
+    ronTSProperty = fgs.red,
+    ronTSNumber = {link = "TSNumber"},
+    ronTSString = {link = "TSString"},
+    ronTSBoolean = {link = "TSBoolean"},
+    ronTSConstant = {link = "TSConstant"},
+    ronTSPunctBracket = fgs.blue,
+    ronTSType = { link = "TSTypeBuiltin" },
+}
+
+hl.langs08.ron = {
+    ["@property.ron"] = fgs.red,
+    ["@number.ron"] = {link = "@number"},
+    ["@string.ron"] = {link = "@string"},
+    ["@boolean.ron"] = {link = "@boolean"},
+    ["@constant.ron"] = {link = "@constant"},
+    ["@punctuation.bracket.ron"] = fgs.blue,
+    ["@type.ron"] = { link = "@type.builtin" },
 }
 
 hl.langs.gitignore = {
@@ -2221,14 +2271,16 @@ hl.plugins.floaterm = {
 hl.plugins.vimwiki = {
     VimwikiBold = {fg = c.deep_lilac, gui = "bold"},
     VimwikiBoldItalic = {fg = c.jade_green, gui = "bold,italic"},
-    VimwikiCode = {fg = c.puce},
+    VimwikiCode = fgs.puce,
     VimwikiItalic = {fg = c.morning_blue, gui = "italic"},
     VimwikiHeader1 = {fg = c.infra_red, gui = "bold"},
     VimwikiHeader2 = {fg = "#F06431", gui = "bold"},
     VimwikiHeader3 = {fg = c.russian_green, gui = "bold"},
     VimwikiHeader4 = {fg = c.green, gui = "bold"},
     VimwikiHeader5 = {fg = c.purple, gui = "bold"},
-    VimwikiHeader6 = {fg = "#458588", gui = "bold"}
+    VimwikiHeader6 = {fg = "#458588", gui = "bold"},
+    VimwikiWeblink1 = {fg = c.aqua, gui = "underline"},
+    VimwikiWeblink1Char = {fg = c.orange, gui = underline},
 }
 
 -- https://github.com/kevinhwang91/nvim-bqf
@@ -2364,7 +2416,7 @@ hl.plugins.nvim_tree = {
     NvimTreeGitDeleted = fgs.red,
     NvimTreeSpecialFile = {fg = c.yellow, gui = "underline"},
     NvimTreeIndentMarker = fgs.fg0,
-    NvimTreeImageFile = {fg = c.puce},
+    NvimTreeImageFile = fgs.puce,
     NvimTreeSymlink = fgs.purple,
     NvimTreeFolderName = fgs.blue
 }
