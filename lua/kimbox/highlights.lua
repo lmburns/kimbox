@@ -62,10 +62,13 @@ local fgs = {
     magenta = {fg = c.magenta},
     operator_base = {fg = c.operator_base},
     philippine_green = {fg = c.philippine_green},
+    russian_green = {fg = c.russian_green},
     sea_green = {fg = c.sea_green},
     jade_green = {fg = c.jade_green},
     salmon = {fg = c.salmon},
     puce = {fg = c.puce},
+    ube = {fg = c.ube},
+    jasper_orange = {fg = c.jasper_orange}
 }
 
 hl.common = {
@@ -232,13 +235,14 @@ hl.treesitter = {
     TSKeywordReturn = {fg = c.red, gui = bold}, -- keywords like `return` and `yield`
     TSLabel = fgs.orange, -- GOTO and other labels (e.g. `label:` in C)
     TSMethod = fgs.blue,
-    -- TSMethodCall = {},
+    TSMethodCall = fgs.blue,
     TSNamespace = {fg = c.blue, gui = italic},
     TSNone = fgs.fg0,
     TSNumber = fgs.purple,
     TSOperator = fgs.orange,
     TSParameter = fgs.fg0,
     TSParameterReference = fgs.fg0,
+    TSPreproc = fgs.sea_green,
     TSProperty = fgs.yellow,
     TSPunctBracket = fgs.fg0,
     TSPunctDelimiter = fgs.coyote_brown1,
@@ -279,7 +283,7 @@ hl.treesitter = {
     TSTypeQualifier = fgs.red,
     TSVariable = fgs.fg0,
     TSVariableBuiltin = fgs.blue,
-    TSVariableGlobal = fgs.blue,
+    TSVariableGlobal = fgs.blue
 }
 
 hl.langs08.treesitter = {
@@ -314,6 +318,7 @@ hl.langs08.treesitter = {
     ["@operator"] = fgs.orange,
     ["@parameter"] = fgs.fg0,
     ["@parameter.reference"] = fgs.fg0,
+    ["@preproc"] = fgs.sea_green,
     ["@property"] = fgs.yellow,
     ["@punctuation.bracket"] = fgs.fg0,
     ["@punctuation.delimiter"] = fgs.coyote_brown1,
@@ -355,7 +360,6 @@ hl.langs08.treesitter = {
     ["@variable"] = fgs.fg0,
     ["@variable.builtin"] = fgs.blue,
     ["@variable.global"] = fgs.blue,
-    -- ["@preproc"] = {},
     -- ["@define"] = {},
     -- ["@conceal"] = {},
     -- ["@spell"] = {}
@@ -366,22 +370,25 @@ hl.langs08.treesitter = {
     ["@bold"] = {link = "VimwikiBold"}
 }
 
+--  ╭─────╮
+--  │ Awk │
+--  ╰─────╯
 hl.langs.awk = {
-    awkTSConditional = {fg = c.purple, gui = italic},
-    awkTSFunction = {fg = c.magenta, gui = bold},
+    awkTSConditional = {link = "TSConditional"},
+    awkTSFunction = {link = "TSFunction"},
     awkTSFuncBuiltin = {fg = c.red, gui = bold},
-    awkTSFuncCall = {fg = c.magenta, gui = bold},
-    awkTSKeyword = fgs.red,
-    awkTSKeywordFunction = fgs.red,
-    awkTSKeywordReturn = {fg = c.red, gui = bold},
+    awkTSFuncCall = {link = "TSFuncCall"},
+    awkTSKeyword = {link = "TSKeyword"},
+    awkTSKeywordFunction = {link = "TSKeywordFunction"},
+    awkTSKeywordReturn = {link = "TSKeywordReturn"},
     awkTSLabel = {fg = c.green, gui = bold},
-    awkTSOperator = fgs.orange,
-    awkTSPreproc = fgs.sea_green,
+    awkTSOperator = {link = "TSOperator"},
+    awkTSPreproc = {link = "TSPreproc"},
     awkTSPunctBracket = fgs.blue,
     awkTSPunctDelimiter = fgs.green,
     awkTSRepeat = fgs.blue,
-    awkTSString = fgs.yellow,
-    awkTSStringEscape = fgs.philippine_green,
+    awkTSString = {link = "TSString"},
+    awkTSStringEscape = {link = "TSStringEscape"},
     --
     -- Unsupported (yet)
     --
@@ -389,38 +396,43 @@ hl.langs.awk = {
 }
 
 hl.langs08.awk = {
-    ["@conditional.awk"] = {fg = c.purple, gui = italic},
-    ["@function.awk"] = {fg = c.magenta, gui = bold},
+    ["@conditional.awk"] = {link = "@conditional"},
+    ["@function.awk"] = {link = "@function"},
     ["@function.builtin.awk"] = {fg = c.red, gui = bold},
-    ["@function.call.awk"] = {fg = c.magenta, gui = bold},
-    ["@keyword.awk"] = fgs.red,
-    ["@keyword.function.awk"] = fgs.red,
-    ["@keyword.return.awk"] = {fg = c.red, gui = bold},
+    ["@function.call.awk"] = {link = "@function.call"},
+    ["@keyword.awk"] = {link = "@keyword"},
+    ["@keyword.function.awk"] = {link = "@keyword.function"},
+    ["@keyword.return.awk"] = {link = "@keyword.return"},
     ["@label.awk"] = {fg = c.green, gui = bold},
-    ["@operator.awk"] = fgs.orange,
-    ["@preproc.awk"] = fgs.sea_green,
+    ["@operator.awk"] = {link = "@operator"},
+    ["@preproc.awk"] = {link = "@preproc"},
     ["@punctuation.bracket.awk"] = fgs.blue,
     ["@punctuation.delimiter.awk"] = fgs.green,
     ["@repeat.awk"] = fgs.blue,
-    ["@string.awk"] = fgs.yellow,
-    ["@string.escape.awk"] = fgs.philippine_green,
+    ["@string.awk"] = {link = "@string"},
+    ["@string.escape.awk"] = {link = "@string.escape"},
     --
     -- Unsupported (yet)
     --
     ["@variable.builtin.awk"] = fgs.blue
 }
 
+--  ╭─────────╮
+--  │ Comment │
+--  ╰─────────╯
 hl.langs.comment = {
-    -- commentTSTag = {fg = c.old_rose},
     commentTSTag = {fg = c.peach_red},
-    commentTSConstant = {fg = c.amethyst}
+    commentTSConstant = fgs.jasper_orange
 }
 
 hl.langs08.comment = {
     ["@tag.comment"] = {fg = c.peach_red},
-    ["@constant.comment"] = {fg = c.jasper_orange}
+    ["@constant.comment"] = fgs.jasper_orange
 }
 
+--  ╭──────────╮
+--  │ Solidity │
+--  ╰──────────╯
 hl.langs.solidity = {
     -- https://github.com/thesis/vim-solidity
     solConstructor = {fg = c.blue, gui = bold},
@@ -439,38 +451,44 @@ hl.langs.solidity = {
     --
     -- Treesitter
     --
-    solidityTSFunction = {fg = c.magenta, gui = bold},
+    solidityTSFunction = {link = "TSFunction"},
     solidityTSKeyword = fgs.orange,
     solidityTSType = {fg = c.green, gui = bold},
     solidityTSTag = {fg = c.blue, gui = bold},
     solidityTSMethod = {fg = c.magenta, gui = bold},
-    solidityTSField = fgs.aqua
+    solidityTSField = {link = "TSField"}
 }
 
 hl.langs08.solidity = {
-    ["@function.solidity"] = {fg = c.magenta, gui = bold},
+    ["@function.solidity"] = {link = "@function"},
     ["@keyword.solidity"] = fgs.orange,
     ["@type.solidity"] = {fg = c.green, gui = bold},
     ["@tag.solidity"] = {fg = c.blue, gui = bold},
     ["@method.solidity"] = {fg = c.magenta, gui = bold},
     ["@method.call.solidity"] = {fg = c.magenta, gui = bold},
-    ["@field.solidity"] = fgs.aqua
+    ["@field.solidity"] = {link = "@field"}
 }
 
+--  ╭──────╮
+--  │ Help │
+--  ╰──────╯
 hl.langs.help = {
     helpTSTitle = fgs.red,
     helpTSLabel = fgs.blue,
-    helpTSString = fgs.yellow,
-    helpTSURI = {fg = c.fg1, gui = "underline"}
+    helpTSString = {link = "TSString"},
+    helpTSURI = {link = "TSURI"}
 }
 
 hl.langs08.help = {
     ["@text.title.help"] = fgs.red,
     ["@label.help"] = fgs.blue,
-    ["@string.help"] = fgs.yellow,
-    ["@text.uri.help"] = {fg = c.fg1, gui = "underline"}
+    ["@string.help"] = {link = "@string"},
+    ["@text.uri.help"] = {link = "@text.uri"}
 }
 
+--  ╭──────────╮
+--  │ Markdown │
+--  ╰──────────╯
 hl.langs.markdown = {
     markdownH1 = {fg = c.red, gui = "bold"},
     markdownH2 = {fg = c.orange, gui = "bold"},
@@ -502,9 +520,9 @@ hl.langs.markdown = {
     --
     -- Treesitter
     --
-    markdownTSTextLiteral = fgs.purple,
-    markdownTSTextStrong = {fg = c.deep_lilac, gui = bold},
-    markdownTSTextEmphasis = {fg = c.morning_blue, gui = underbold},
+    markdownTSLiteral = fgs.purple,
+    markdownTSStrong = {fg = c.deep_lilac, gui = bold},
+    markdownTSEmphasis = {fg = c.morning_blue, gui = underbold},
     markdownTSTextReference = {fg = c.blue, gui = underline},
     markdownTSPunctSpecial = {fg = c.red, gui = bold}
 }
@@ -517,6 +535,9 @@ hl.langs08.markdown = {
     ["@punctuation.special.markdown"] = {fg = c.red, gui = bold}
 }
 
+--  ╭─────╮
+--  │ Tex │
+--  ╰─────╯
 hl.langs.tex = {
     -- Latex: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_TEX
     texStatement = fgs.yellow,
@@ -555,24 +576,27 @@ hl.langs.tex = {
     -- Treesitter
     --
     latexTSInclude = fgs.blue,
-    latexTSFuncMacro = {fg = c.fg0, gui = bold},
+    latexTSFuncMacro = {fg = c.red, gui = bold},
     latexTSEnvironment = {fg = c.cyan, gui = "bold"},
     latexTSEnvironmentName = fgs.yellow,
-    latexTSTitle = fgs.green,
-    latexTSType = fgs.blue,
-    latexTSMath = fgs.orange
+    latexTSMath = fgs.purple,
+    latexTSTitle = fgs.orange,
+    latexTSType = fgs.green
 }
 
 hl.langs08.tex = {
     ["@include.latex"] = fgs.blue,
-    ["@function.macro.latex"] = {fg = c.green, gui = bold},
+    ["@function.macro.latex"] = {fg = c.red, gui = bold},
     ["@text.environment.latex"] = {fg = c.cyan, gui = "bold"},
     ["@text.environment.name.latex"] = fgs.yellow,
-    ["@text.title.latex"] = fgs.green,
-    ["@text.math.latex"] = fgs.orange,
-    ["@type.latex"] = fgs.blue
+    ["@text.math.latex"] = fgs.purple,
+    ["@text.title.latex"] = fgs.orange,
+    ["@type.latex"] = fgs.green
 }
 
+--  ╭────────────╮
+--  │ Javascript │
+--  ╰────────────╯
 hl.langs.javascript = {
     -- vim-javascript: https://github.com/pangloss/vim-javascript
     jsThis = fgs.purple,
@@ -749,34 +773,38 @@ hl.langs.javascript = {
     --
     -- Treesitter
     --
-    javascriptTSParameter = fgs.aqua,
-    javascriptTSTypeBuiltin = {fg = c.green, gui = bold},
-    javascriptTSKeywordReturn = {fg = c.red, gui = bold},
-    javascriptTSPunctBracket = fgs.purple,
-    javascriptTSPunctSpecial = fgs.green,
-    javascriptTSVariableBuiltin = fgs.blue,
-    javascriptTSException = {fg = c.orange, gui = italic},
     javascriptTSConstructor = {fg = c.green, gui = bold},
+    javascriptTSException = {fg = c.orange, gui = italic},
+    javascriptTSKeyword = {link = "TSKeyword"},
+    javascriptTSKeywordReturn = {link = "TSKeywordReturn"},
+    javascriptTSMethodCall = {link = "TSFunction"},
+    javascriptTSMethod = {link = "TSFunction"},
+    javascriptTSParameter = fgs.aqua,
     javascriptTSProperty = fgs.aqua,
-    javascriptTSMethod = {fg = c.magenta, gui = bold},
-    javascriptTSKeyword = fgs.red
+    javascriptTSPunctBracket = fgs.purple,
+    javascriptTSPunctSpecial = {link = "TSPunctSpecial"},
+    javascriptTSTypeBuiltin = {link = "TSTypeBuiltin"},
+    javascriptTSVariableBuiltin = {link = "TSVariableBuiltin"}
 }
 
 hl.langs08.javascript = {
-    ["@parameter.javascript"] = fgs.aqua,
-    ["@type.builtin.javascript"] = {fg = c.green, gui = bold},
-    ["@keyword.return.javascript"] = {fg = c.red, gui = bold},
-    ["@punctuation.bracket.javascript"] = fgs.purple,
-    ["@punctuation.special.javascript"] = fgs.green,
-    ["@variable.builtin.javascript"] = fgs.blue,
-    ["@exception.javascript"] = {fg = c.orange, gui = italic},
     ["@constructor.javascript"] = {fg = c.green, gui = bold},
+    ["@exception.javascript"] = {fg = c.orange, gui = italic},
+    ["@keyword.javascript"] = {link = "@keyword"},
+    ["@keyword.return.javascript"] = {link = "@keyword.return"},
+    ["@method.call.javascript"] = {link = "@function.call"},
+    ["@method.javascript"] = {link = "@function"},
+    ["@parameter.javascript"] = fgs.aqua,
     ["@property.javascript"] = fgs.aqua,
-    ["@method.javascript"] = {fg = c.magenta, gui = bold},
-    ["@method.call.javascript"] = {fg = c.magenta, gui = bold},
-    ["@keyword.javascript"] = fgs.red
+    ["@punctuation.bracket.javascript"] = fgs.purple,
+    ["@punctuation.special.javascript"] = {link = "@punctuation.special"},
+    ["@type.builtin.javascript"] = {link = "@type.builtin"},
+    ["@variable.builtin.javascript"] = {link = "@variable.builtin"}
 }
 
+--  ╭────────────╮
+--  │ Typescript │
+--  ╰────────────╯
 hl.langs.typescript = {
     -- vim-typescript: https://github.com/leafgarland/typescript-vim
     typescriptSource = {fg = c.purple, gui = italic},
@@ -968,6 +996,9 @@ hl.langs08.typescript = {
     ["@keyword.typescript"] = fgs.red
 }
 
+--  ╭─────╮
+--  │ tsx │
+--  ╰─────╯
 hl.langs.tsx = {
     tsxTSMethod = {fg = c.magenta, gui = bold},
     tsxTSConstructor = {fg = c.wave_red, gui = bold},
@@ -999,45 +1030,9 @@ hl.langs08.tsx = {
     ["@exception.tsx"] = {fg = c.orange, gui = italic}
 }
 
-hl.langs.dart = {
-    -- dart-lang: https://github.com/dart-lang/dart-vim-plugin
-    dartCoreClasses = fgs.aqua,
-    dartTypeName = fgs.aqua,
-    dartInterpolation = fgs.blue,
-    dartTypeDef = {fg = c.red, gui = italic},
-    dartClassDecl = {fg = c.red, gui = italic},
-    dartLibrary = {fg = c.purple, gui = italic},
-    dartMetadata = fgs.blue
-}
-
-hl.langs.coffeescript = {
-    -- vim-coffee-script: https://github.com/kchmck/vim-coffee-script
-    coffeeExtendedOp = fgs.orange,
-    coffeeSpecialOp = fgs.fg0,
-    coffeeDotAccess = fgs.coyote_brown1,
-    coffeeCurly = fgs.fg0,
-    coffeeParen = fgs.fg0,
-    coffeeBracket = fgs.fg0,
-    coffeeParens = fgs.blue,
-    coffeeBrackets = fgs.blue,
-    coffeeCurlies = fgs.blue,
-    coffeeOperator = {fg = c.red, gui = italic},
-    coffeeStatement = fgs.orange,
-    coffeeSpecialIdent = fgs.purple,
-    coffeeObject = fgs.purple,
-    coffeeObjAssign = fgs.aqua
-}
-
-hl.langs.objectivec = {
-    objcModuleImport = {fg = c.purple, gui = italic},
-    objcException = {fg = c.red, gui = italic},
-    objcProtocolList = fgs.aqua,
-    objcObjDef = {fg = c.purple, gui = italic},
-    objcDirective = {fg = c.red, gui = italic},
-    objcPropertyAttribute = fgs.orange,
-    objcHiddenArgument = fgs.aqua
-}
-
+--  ╭────────╮
+--  │ Python │
+--  ╰────────╯
 hl.langs.python = {
     pythonBuiltin = fgs.green,
     pythonExceptions = fgs.purple,
@@ -1103,25 +1098,9 @@ hl.langs08.python = {
     ["@type.python"] = {fg = c.green, gui = bold}
 }
 
-hl.langs.kotlin = {
-    -- kotlin-vim: https://github.com/udalov/kotlin-vim
-    ktSimpleInterpolation = fgs.green,
-    ktComplexInterpolation = fgs.green,
-    ktComplexInterpolationBrace = fgs.green,
-    ktStructure = {fg = c.red, gui = italic},
-    ktKeyword = fgs.aqua
-}
-
-hl.langs.scala = {
-    -- vim-scala: https://github.com/derekwyatt/vim-scala
-    scalaNameDefinition = fgs.aqua,
-    scalaInterpolationBoundary = fgs.green,
-    scalaInterpolation = fgs.blue,
-    scalaTypeOperator = fgs.orange,
-    scalaOperator = fgs.orange,
-    scalaKeywordModifier = fgs.orange
-}
-
+--  ╭────╮
+--  │ Go │
+--  ╰────╯
 hl.langs.go = {
     goDirective = {fg = c.purple, gui = italic},
     goConstants = fgs.aqua,
@@ -1160,6 +1139,9 @@ hl.langs08.go = {
     ["@punctuation.bracket.go"] = fgs.purple
 }
 
+--  ╭──────╮
+--  │ Rust │
+--  ╰──────╯
 hl.langs.rust = {
     -- rust.vim: https://github.com/rust-lang/rust.vim
     rustStructure = fgs.orange,
@@ -1212,38 +1194,9 @@ hl.langs08.rust = {
     ["@variable.builtin.rust"] = fgs.blue
 }
 
-hl.langs.swift = {
-    -- swift.vim: https://github.com/keith/swift.vim
-    swiftInterpolatedWrapper = fgs.green,
-    swiftInterpolatedString = fgs.blue,
-    swiftProperty = fgs.aqua,
-    swiftTypeDeclaration = fgs.orange,
-    swiftClosureArgument = fgs.purple
-}
-
-hl.langs.php = {
-    -- php.vim: https://github.com/StanAngeloff/php.vim
-    phpParent = fgs.fg0,
-    phpNowDoc = fgs.yellow,
-    phpFunction = {fg = c.yellow, gui = bold},
-    phpMethod = {fg = c.yellow, gui = bold},
-    phpClass = fgs.orange,
-    phpSuperglobals = fgs.purple,
-    phpFunctions = {fg = c.purple, gui = bold},
-    phpMethods = fgs.aqua,
-    phpStructure = fgs.purple,
-    phpOperator = fgs.purple,
-    phpMemberSelector = fgs.fg0,
-    phpVarSelector = {fg = c.orange, gui = italic},
-    phpIdentifier = {fg = c.orange, gui = italic},
-    phpBoolean = fgs.aqua,
-    phpNumber = fgs.orange,
-    phpHereDoc = fgs.green,
-    phpSCKeyword = {fg = c.purple, gui = italic},
-    phpFCKeyword = {fg = c.purple, gui = italic},
-    phpRegion = fgs.blue
-}
-
+--  ╭──────╮
+--  │ Ruby │
+--  ╰──────╯
 hl.langs.ruby = {
     -- builtin: https://github.com/vim-ruby/vim-ruby
     rubyStringDelimiter = fgs.yellow,
@@ -1283,19 +1236,9 @@ hl.langs08.ruby = {
     ["@type.ruby"] = {fg = c.green, gui = bold}
 }
 
-hl.langs.haskell = {
-    -- haskell-vim: https://github.com/neovimhaskell/haskell-vim
-    haskellBrackets = fgs.blue,
-    haskellIdentifier = fgs.green,
-    haskellAssocType = fgs.aqua,
-    haskellQuotedType = fgs.aqua,
-    haskellType = fgs.aqua,
-    haskellDeclKeyword = {fg = c.red, gui = italic},
-    haskellWhere = {fg = c.red, gui = italic},
-    haskellDeriving = {fg = c.purple, gui = italic},
-    haskellForeignKeywords = {fg = c.purple, gui = italic}
-}
-
+--  ╭──────╮
+--  │ Perl │
+--  ╰──────╯
 hl.langs.perl = {
     -- Perl:
     -- builtin: https://github.com/vim-perl/vim-perl
@@ -1322,20 +1265,9 @@ hl.langs08.perl = {
     ["@variable.perl"] = fgs.blue
 }
 
-hl.langs.luap = {
-    luapTSPunctSpecial = fgs.green,
-    luapTSPunctBracket = fgs.blue,
-    luapTSOperator = fgs.orange,
-    luapTSKeyword = fgs.red
-}
-
-hl.langs08.luap = {
-    ["@punctuation.special.luap"] = fgs.green,
-    ["@punctuation.bracket.luap"] = fgs.blue,
-    ["@operator.luap"] = fgs.orange,
-    ["@keyword.luap"] = fgs.red
-}
-
+--  ╭─────╮
+--  │ Lua │
+--  ╰─────╯
 hl.langs.lua = {
     -- When cursorholding
     luaFuncTable = {fg = c.red, gui = bold},
@@ -1365,6 +1297,26 @@ hl.langs08.lua = {
     ["@method.lua"] = fgs.blue
 }
 
+--  ╭──────╮
+--  │ Luap │
+--  ╰──────╯
+hl.langs.luap = {
+    luapTSPunctSpecial = fgs.green,
+    luapTSPunctBracket = fgs.blue,
+    luapTSOperator = fgs.orange,
+    luapTSKeyword = fgs.red
+}
+
+hl.langs08.luap = {
+    ["@punctuation.special.luap"] = fgs.green,
+    ["@punctuation.bracket.luap"] = fgs.blue,
+    ["@operator.luap"] = fgs.orange,
+    ["@keyword.luap"] = fgs.red
+}
+
+--  ╭──────╮
+--  │ Teal │
+--  ╰──────╯
 hl.langs.teal = {
     tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
     tealTSParameter = fgs.aqua,
@@ -1381,101 +1333,9 @@ hl.langs08.teal = {
     ["@constant.teal"] = {fg = c.wave_red, gui = bold}
 }
 
-hl.langs.ocaml = {
-    -- vim-ocaml: https://github.com/rgrinberg/vim-ocaml
-    ocamlArrow = fgs.orange,
-    ocamlEqual = fgs.orange,
-    ocamlOperator = fgs.orange,
-    ocamlKeyChar = fgs.orange,
-    ocamlModPath = fgs.yellow,
-    ocamlFullMod = fgs.yellow,
-    ocamlModule = fgs.purple,
-    ocamlConstructor = fgs.aqua,
-    ocamlFuncWith = fgs.green,
-    ocamlWith = fgs.green,
-    ocamlModParam = fgs.fg0,
-    ocamlAnyVar = fgs.blue,
-    ocamlPpxEncl = fgs.orange,
-    ocamlPpxIdentifier = fgs.blue,
-    ocamlSigEncl = fgs.orange,
-    ocamlStructEncl = fgs.aqua,
-    ocamlModParam1 = fgs.blue
-}
-
-hl.langs.erlang = {
-    -- vim-erlang-runtime: https://github.com/vim-erlang/vim-erlang-runtime
-    erlangAtom = fgs.aqua,
-    erlangLocalFuncRef = {fg = c.yellow, gui = bold},
-    erlangLocalFuncCall = {fg = c.yellow, gui = bold},
-    erlangGlobalFuncRef = {fg = c.yellow, gui = bold},
-    erlangGlobalFuncCall = {fg = c.yellow, gui = bold},
-    erlangAttribute = {fg = c.purple, gui = italic},
-    erlangPipe = fgs.orange
-}
-
-hl.langs.elixir = {
-    -- vim-elixir: https://github.com/elixir-editors/vim-elixir
-    elixirStringDelimiter = fgs.yellow,
-    elixirKeyword = fgs.orange,
-    elixirInterpolation = fgs.green,
-    elixirInterpolationDelimiter = fgs.green,
-    elixirSelf = fgs.purple,
-    elixirPseudoVariable = fgs.purple,
-    elixirModuleDefine = {fg = c.purple, gui = italic},
-    elixirBlockDefinition = {fg = c.red, gui = italic},
-    elixirDefine = {fg = c.red, gui = italic},
-    elixirPrivateDefine = {fg = c.red, gui = italic},
-    elixirGuard = {fg = c.red, gui = italic},
-    elixirPrivateGuard = {fg = c.red, gui = italic},
-    elixirProtocolDefine = {fg = c.red, gui = italic},
-    elixirImplDefine = {fg = c.red, gui = italic},
-    elixirRecordDefine = {fg = c.red, gui = italic},
-    elixirPrivateRecordDefine = {fg = c.red, gui = italic},
-    elixirMacroDefine = {fg = c.red, gui = italic},
-    elixirPrivateMacroDefine = {fg = c.red, gui = italic},
-    elixirDelegateDefine = {fg = c.red, gui = italic},
-    elixirOverridableDefine = {fg = c.red, gui = italic},
-    elixirExceptionDefine = {fg = c.red, gui = italic},
-    elixirCallbackDefine = {fg = c.red, gui = italic},
-    elixirStructDefine = {fg = c.red, gui = italic},
-    elixirExUnitMacro = {fg = c.red, gui = italic}
-}
-
-hl.langs.clojure = {
-    -- vim-coljure-static: https://github.com/guns/vim-clojure-static
-    clojureMacro = {fg = c.purple, gui = italic},
-    clojureFunc = {fg = c.aqua, gui = bold},
-    clojureConstant = fgs.green,
-    clojureSpecial = {fg = c.red, gui = italic},
-    clojureDefine = {fg = c.red, gui = italic},
-    clojureKeyword = fgs.orange,
-    clojureVariable = fgs.blue,
-    clojureMeta = fgs.green,
-    clojureDeref = fgs.green
-}
-
-hl.langs.r = {
-    rFunction = {fg = c.purple, gui = bold},
-    rType = {fg = c.green, gui = bold},
-    rRegion = {fg = c.purple, gui = bold},
-    rAssign = {fg = c.red, gui = bold},
-    rBoolean = fgs.orange,
-    rOperator = fgs.orange,
-    rSection = fgs.orange,
-    rRepeat = fgs.purple
-}
-
-hl.langs.matlab = {
-    matlabSemicolon = fgs.fg0,
-    matlabFunction = {fg = c.red, gui = italic},
-    matlabImplicit = {fg = c.yellow, gui = bold},
-    matlabDelimiter = fgs.fg0,
-    matlabOperator = {fg = c.yellow, gui = bold},
-    matlabArithmeticOperator = fgs.orange,
-    matlabRelationalOperator = fgs.orange,
-    matlabLogicalOperator = fgs.orange
-}
-
+--  ╭──────╮
+--  │ VimL │
+--  ╰──────╯
 hl.langs.vim = {
     -- vimMapModKey = fgs.orange,
     vimCommentTitle = {fg = c.coyote_brown1, bg = c.none, gui = bold},
@@ -1545,6 +1405,9 @@ hl.langs08.vim = {
     -- ["@function.builtin.vim"] = {fg = c.jade_green, gui = bold},
 }
 
+--  ╭───╮
+--  │ C │
+--  ╰───╯
 hl.langs.c = {
     cInclude = fgs.blue,
     cStorageClass = fgs.purple,
@@ -1576,6 +1439,9 @@ hl.langs08.c = {
     ["@punctuation.bracket.c"] = fgs.purple
 }
 
+--  ╭─────╮
+--  │ CPP │
+--  ╰─────╯
 hl.langs.cpp = {
     cppStatement = {fg = c.purple, gui = bold},
     --
@@ -1609,6 +1475,28 @@ hl.langs08.cpp = {
     ["@constructor.cpp"] = fgs.blue
 }
 
+--  ╭─────╮
+--  │ Zig │
+--  ╰─────╯
+hl.langs.zig = {
+    zigTSTypeBuiltin = {fg = c.green, gui = bold},
+    zigTSField = fgs.aqua,
+    zigTSFuncMacro = fgs.aqua,
+    zigTSAttribute = fgs.aqua,
+    zigTSPunctBracket = fgs.orange
+}
+
+hl.langs08.zig = {
+    ["@type.builtin.zig"] = {fg = c.green, gui = bold},
+    ["@field.zig"] = fgs.aqua,
+    ["@function.macro.zig"] = fgs.aqua,
+    ["@attribute.zig"] = fgs.aqua,
+    ["@punctuation.bracket.zig"] = fgs.orange
+}
+
+--  ╭────────────╮
+--  │ Shell/Bash │
+--  ╰────────────╯
 hl.langs.shell = {
     shRange = fgs.fg0,
     shTestOpr = fgs.orange,
@@ -1658,22 +1546,249 @@ hl.langs.zsh = {
     zshSubstDelim = fgs.purple
 }
 
-hl.langs.zig = {
-    zigTSTypeBuiltin = {fg = c.green, gui = bold},
-    zigTSField = fgs.aqua,
-    zigTSFuncMacro = fgs.aqua,
-    zigTSAttribute = fgs.aqua,
-    zigTSPunctBracket = fgs.orange
+--  ╭──────╮
+--  │ Dart │
+--  ╰──────╯
+hl.langs.dart = {
+    -- dart-lang: https://github.com/dart-lang/dart-vim-plugin
+    dartCoreClasses = fgs.aqua,
+    dartTypeName = fgs.aqua,
+    dartInterpolation = fgs.blue,
+    dartTypeDef = {fg = c.red, gui = italic},
+    dartClassDecl = {fg = c.red, gui = italic},
+    dartLibrary = {fg = c.purple, gui = italic},
+    dartMetadata = fgs.blue
 }
 
-hl.langs08.zig = {
-    ["@type.builtin.zig"] = {fg = c.green, gui = bold},
-    ["@field.zig"] = fgs.aqua,
-    ["@function.macro.zig"] = fgs.aqua,
-    ["@attribute.zig"] = fgs.aqua,
-    ["@punctuation.bracket.zig"] = fgs.orange
+--  ╭──────────────╮
+--  │ CoffeeScript │
+--  ╰──────────────╯
+hl.langs.coffeescript = {
+    -- vim-coffee-script: https://github.com/kchmck/vim-coffee-script
+    coffeeExtendedOp = fgs.orange,
+    coffeeSpecialOp = fgs.fg0,
+    coffeeDotAccess = fgs.coyote_brown1,
+    coffeeCurly = fgs.fg0,
+    coffeeParen = fgs.fg0,
+    coffeeBracket = fgs.fg0,
+    coffeeParens = fgs.blue,
+    coffeeBrackets = fgs.blue,
+    coffeeCurlies = fgs.blue,
+    coffeeOperator = {fg = c.red, gui = italic},
+    coffeeStatement = fgs.orange,
+    coffeeSpecialIdent = fgs.purple,
+    coffeeObject = fgs.purple,
+    coffeeObjAssign = fgs.aqua
 }
 
+--  ╭────────────╮
+--  │ ObjectiveC │
+--  ╰────────────╯
+hl.langs.objectivec = {
+    objcModuleImport = {fg = c.purple, gui = italic},
+    objcException = {fg = c.red, gui = italic},
+    objcProtocolList = fgs.aqua,
+    objcObjDef = {fg = c.purple, gui = italic},
+    objcDirective = {fg = c.red, gui = italic},
+    objcPropertyAttribute = fgs.orange,
+    objcHiddenArgument = fgs.aqua
+}
+
+--  ╭────────╮
+--  │ Kotlin │
+--  ╰────────╯
+hl.langs.kotlin = {
+    -- kotlin-vim: https://github.com/udalov/kotlin-vim
+    ktSimpleInterpolation = fgs.green,
+    ktComplexInterpolation = fgs.green,
+    ktComplexInterpolationBrace = fgs.green,
+    ktStructure = {fg = c.red, gui = italic},
+    ktKeyword = fgs.aqua
+}
+
+--  ╭───────╮
+--  │ Scala │
+--  ╰───────╯
+hl.langs.scala = {
+    -- vim-scala: https://github.com/derekwyatt/vim-scala
+    scalaNameDefinition = fgs.aqua,
+    scalaInterpolationBoundary = fgs.green,
+    scalaInterpolation = fgs.blue,
+    scalaTypeOperator = fgs.orange,
+    scalaOperator = fgs.orange,
+    scalaKeywordModifier = fgs.orange
+}
+
+--  ╭───────╮
+--  │ Swift │
+--  ╰───────╯
+hl.langs.swift = {
+    -- swift.vim: https://github.com/keith/swift.vim
+    swiftInterpolatedWrapper = fgs.green,
+    swiftInterpolatedString = fgs.blue,
+    swiftProperty = fgs.aqua,
+    swiftTypeDeclaration = fgs.orange,
+    swiftClosureArgument = fgs.purple
+}
+
+--  ╭─────╮
+--  │ PHP │
+--  ╰─────╯
+hl.langs.php = {
+    -- php.vim: https://github.com/StanAngeloff/php.vim
+    phpParent = fgs.fg0,
+    phpNowDoc = fgs.yellow,
+    phpFunction = {fg = c.yellow, gui = bold},
+    phpMethod = {fg = c.yellow, gui = bold},
+    phpClass = fgs.orange,
+    phpSuperglobals = fgs.purple,
+    phpFunctions = {fg = c.purple, gui = bold},
+    phpMethods = fgs.aqua,
+    phpStructure = fgs.purple,
+    phpOperator = fgs.purple,
+    phpMemberSelector = fgs.fg0,
+    phpVarSelector = {fg = c.orange, gui = italic},
+    phpIdentifier = {fg = c.orange, gui = italic},
+    phpBoolean = fgs.aqua,
+    phpNumber = fgs.orange,
+    phpHereDoc = fgs.green,
+    phpSCKeyword = {fg = c.purple, gui = italic},
+    phpFCKeyword = {fg = c.purple, gui = italic},
+    phpRegion = fgs.blue
+}
+
+--  ╭─────────╮
+--  │ Haskell │
+--  ╰─────────╯
+hl.langs.haskell = {
+    -- haskell-vim: https://github.com/neovimhaskell/haskell-vim
+    haskellBrackets = fgs.blue,
+    haskellIdentifier = fgs.green,
+    haskellAssocType = fgs.aqua,
+    haskellQuotedType = fgs.aqua,
+    haskellType = fgs.aqua,
+    haskellDeclKeyword = {fg = c.red, gui = italic},
+    haskellWhere = {fg = c.red, gui = italic},
+    haskellDeriving = {fg = c.purple, gui = italic},
+    haskellForeignKeywords = {fg = c.purple, gui = italic}
+}
+
+--  ╭───────╮
+--  │ OCaml │
+--  ╰───────╯
+hl.langs.ocaml = {
+    -- vim-ocaml: https://github.com/rgrinberg/vim-ocaml
+    ocamlArrow = fgs.orange,
+    ocamlEqual = fgs.orange,
+    ocamlOperator = fgs.orange,
+    ocamlKeyChar = fgs.orange,
+    ocamlModPath = fgs.yellow,
+    ocamlFullMod = fgs.yellow,
+    ocamlModule = fgs.purple,
+    ocamlConstructor = fgs.aqua,
+    ocamlFuncWith = fgs.green,
+    ocamlWith = fgs.green,
+    ocamlModParam = fgs.fg0,
+    ocamlAnyVar = fgs.blue,
+    ocamlPpxEncl = fgs.orange,
+    ocamlPpxIdentifier = fgs.blue,
+    ocamlSigEncl = fgs.orange,
+    ocamlStructEncl = fgs.aqua,
+    ocamlModParam1 = fgs.blue
+}
+
+--  ╭────────╮
+--  │ Erlang │
+--  ╰────────╯
+hl.langs.erlang = {
+    -- vim-erlang-runtime: https://github.com/vim-erlang/vim-erlang-runtime
+    erlangAtom = fgs.aqua,
+    erlangLocalFuncRef = {fg = c.yellow, gui = bold},
+    erlangLocalFuncCall = {fg = c.yellow, gui = bold},
+    erlangGlobalFuncRef = {fg = c.yellow, gui = bold},
+    erlangGlobalFuncCall = {fg = c.yellow, gui = bold},
+    erlangAttribute = {fg = c.purple, gui = italic},
+    erlangPipe = fgs.orange
+}
+
+--  ╭────────╮
+--  │ Elixir │
+--  ╰────────╯
+hl.langs.elixir = {
+    -- vim-elixir: https://github.com/elixir-editors/vim-elixir
+    elixirStringDelimiter = fgs.yellow,
+    elixirKeyword = fgs.orange,
+    elixirInterpolation = fgs.green,
+    elixirInterpolationDelimiter = fgs.green,
+    elixirSelf = fgs.purple,
+    elixirPseudoVariable = fgs.purple,
+    elixirModuleDefine = {fg = c.purple, gui = italic},
+    elixirBlockDefinition = {fg = c.red, gui = italic},
+    elixirDefine = {fg = c.red, gui = italic},
+    elixirPrivateDefine = {fg = c.red, gui = italic},
+    elixirGuard = {fg = c.red, gui = italic},
+    elixirPrivateGuard = {fg = c.red, gui = italic},
+    elixirProtocolDefine = {fg = c.red, gui = italic},
+    elixirImplDefine = {fg = c.red, gui = italic},
+    elixirRecordDefine = {fg = c.red, gui = italic},
+    elixirPrivateRecordDefine = {fg = c.red, gui = italic},
+    elixirMacroDefine = {fg = c.red, gui = italic},
+    elixirPrivateMacroDefine = {fg = c.red, gui = italic},
+    elixirDelegateDefine = {fg = c.red, gui = italic},
+    elixirOverridableDefine = {fg = c.red, gui = italic},
+    elixirExceptionDefine = {fg = c.red, gui = italic},
+    elixirCallbackDefine = {fg = c.red, gui = italic},
+    elixirStructDefine = {fg = c.red, gui = italic},
+    elixirExUnitMacro = {fg = c.red, gui = italic}
+}
+
+--  ╭─────────╮
+--  │ Clojure │
+--  ╰─────────╯
+hl.langs.clojure = {
+    -- vim-coljure-static: https://github.com/guns/vim-clojure-static
+    clojureMacro = {fg = c.purple, gui = italic},
+    clojureFunc = {fg = c.aqua, gui = bold},
+    clojureConstant = fgs.green,
+    clojureSpecial = {fg = c.red, gui = italic},
+    clojureDefine = {fg = c.red, gui = italic},
+    clojureKeyword = fgs.orange,
+    clojureVariable = fgs.blue,
+    clojureMeta = fgs.green,
+    clojureDeref = fgs.green
+}
+
+--  ╭───╮
+--  │ R │
+--  ╰───╯
+hl.langs.r = {
+    rFunction = {fg = c.purple, gui = bold},
+    rType = {fg = c.green, gui = bold},
+    rRegion = {fg = c.purple, gui = bold},
+    rAssign = {fg = c.red, gui = bold},
+    rBoolean = fgs.orange,
+    rOperator = fgs.orange,
+    rSection = fgs.orange,
+    rRepeat = fgs.purple
+}
+
+--  ╭────────╮
+--  │ Matlab │
+--  ╰────────╯
+hl.langs.matlab = {
+    matlabSemicolon = fgs.fg0,
+    matlabFunction = {fg = c.red, gui = italic},
+    matlabImplicit = {fg = c.yellow, gui = bold},
+    matlabDelimiter = fgs.fg0,
+    matlabOperator = {fg = c.yellow, gui = bold},
+    matlabArithmeticOperator = fgs.orange,
+    matlabRelationalOperator = fgs.orange,
+    matlabLogicalOperator = fgs.orange
+}
+
+--  ╭────╮
+--  │ JQ │
+--  ╰────╯
 hl.langs.jq = {
     jqTSNumber = {link = "TSNumber"},
     jqTSString = {link = "TSString"},
@@ -1687,7 +1802,7 @@ hl.langs.jq = {
     jqTSVariable = fgs.blue,
     jqTSProperty = fgs.aqua,
     -- Unsupported (yet)
-    jqTSFuncCall = {link = "@function.call"},
+    jqTSFuncCall = {link = "@function.call"}
 }
 
 hl.langs08.jq = {
@@ -1703,9 +1818,12 @@ hl.langs08.jq = {
     ["@variable.jq"] = fgs.blue,
     ["@property.jq"] = fgs.aqua,
     -- Unsupported (yet)
-    ["@function.call.jq"] = {link = "@function.call"},
+    ["@function.call.jq"] = {link = "@function.call"}
 }
 
+--  ╭─────────╮
+--  │ GraphQL │
+--  ╰─────────╯
 hl.langs.graphql = {
     graphqlTSParameter = fgs.blue,
     graphqlTSVariable = {fg = c.magenta, gui = bold},
@@ -1720,6 +1838,9 @@ hl.langs08.graphql = {
     ["@punctuation.bracket.graphql"] = fgs.purple
 }
 
+--  ╭─────╮
+--  │ CSS │
+--  ╰─────╯
 hl.langs.css = {
     cssAtRule = fgs.red,
     --
@@ -1736,8 +1857,10 @@ hl.langs08.css = {
     ["@type.css"] = {fg = c.red, gui = bold}
 }
 
+--  ╭──────╮
+--  │ SCSS │
+--  ╰──────╯
 hl.langs.scss = {
-    -- scssAtRule = fgs.red,
     --
     -- Treesitter
     --
@@ -1760,6 +1883,9 @@ hl.langs08.scss = {
     ["@punctuation.delimiter.scss"] = fgs.aqua
 }
 
+--  ╭──────╮
+--  │ HTML │
+--  ╰──────╯
 hl.langs.html = {
     htmlBold = {fg = c.deep_lilac, gui = bold},
     --
@@ -1782,7 +1908,9 @@ hl.langs08.html = {
 --  │                      Config Formats                      │
 --  ╰──────────────────────────────────────────────────────────╯
 
-
+--  ╭────────╮
+--  │ DosIni │
+--  ╰────────╯
 hl.langs.dosini = {
     dosiniLabel = fgs.yellow,
     dosiniValue = fgs.green,
@@ -1790,19 +1918,85 @@ hl.langs.dosini = {
     dosiniHeader = {fg = c.red, gui = bold}
 }
 
-hl.langs.makefile = {
-    makeIdent = fgs.aqua,
-    makeSpecTarget = fgs.green,
-    makeTarget = fgs.blue,
-    makeCommands = fgs.orange
+--  ╭───────╮
+--  │ CMake │
+--  ╰───────╯
+hl.langs.cmake = {
+    cmakeCommand = {link = "Function"},
+    cmakeVariable = fgs.blue,
+    cmakeGeneratorExpressions = fgs.aqua,
+    cmakeKWset = {fg = c.red, gui = bold},
+    cmakeKWfind_package = {fg = c.orange, gui = bold},
+    cmakeKWadd_library = {fg = c.yellow, gui = bold},
+    cmakeKWproject = {fg = c.oni_violet, gui = bold},
+    cmakeKWtry_run = {fg = c.salmon, gui = bold},
+    cmakeKWget_cmake_property = {fg = c.sea_green, gui = bold},
+    cmakeVariableValue = {link = "Type"},
+    --
+    -- Treesitter
+    --
+    cmakeTSBoolean = {fg = c.orange, gui = bold},
+    cmakeTSConstant = {link = "TSConstant"},
+    cmakeTSKeywordOperator = {link = "TSKeywordReturn"},
+    cmakeTSPunctSpecial = {link = "TSPunctSpecial"},
 }
 
+hl.langs08.cmake = {
+    ["@boolean.cmake"] = {fg = c.orange, gui = bold},
+    ["@constant.cmake"] = {link = "@constant"},
+    ["@keyword.operator.cmake"] = {link = "@keyword.return"},
+    ["@punctuation.special.cmake"] = {link = "@punctuation.special"},
+}
+
+--  ╭──────────╮
+--  │ MakeFile │
+--  ╰──────────╯
+hl.langs.makefile = {
+    makeIdent = fgs.aqua,
+    makeSpecTarget = {fg = c.green, gui = bold},
+    makeTarget = fgs.blue,
+    makeCommands = fgs.orange,
+    makeSpecial = fgs.magenta,
+    --
+    -- Treesitter
+    --
+    makefileTSFuncBuiltin = {link = "@function.builtin"},
+    makefileTSFuncCall = {link = "@function.call"},
+    makefileTSParameter = fgs.orange
+}
+
+hl.langs08.makefile = {
+    ["@function.builtin.makefile"] = {link = "@function.builtin"},
+    ["@function.call.makefile"] = {link = "@function.call"},
+    ["@parameter.makefile"] = fgs.orange
+}
+
+--  ╭──────╮
+--  │ JSON │
+--  ╰──────╯
 hl.langs.json = {
     jsonKeyword = fgs.orange,
     jsonQuote = fgs.coyote_brown1,
-    jsonBraces = fgs.fg0
+    jsonBraces = fgs.blue,
+    --
+    -- Treesitter
+    --
+    jsonTSLabel = fgs.orange,
+    jsonTSBoolean = fgs.red,
+    jsonTSPunctBracket = fgs.blue,
+    jsonTSConstBuiltin = {link = "@function"}
 }
 
+hl.langs08.json = {
+    ["@label.json"] = fgs.orange,
+    ["@boolean.json"] = fgs.red,
+    ["@punctuation.bracket.json"] = fgs.blue,
+    ["@constant.builtin.json"] = {link = "@function"}
+}
+
+--  ╭──────╮
+--  │ YAML │
+--  ╰──────╯
 hl.langs.yaml = {
     yamlKey = fgs.orange,
     yamlConstant = {fg = c.red, gui = bold},
@@ -1824,13 +2018,28 @@ hl.langs.yaml = {
     --
     -- Treesitter
     --
-    yamlTSField = fgs.green
+    yamlTSBoolean = {fg = c.red, gui = bold},
+    yamlTSConstBuiltin = {fg = c.orange, gui = bold},
+    yamlTSField = fgs.blue,
+    yamlTSPreproc = {fg = c.sea_green, gui = bold},
+    yamlTSPunctBracket = fgs.orange,
+    yamlTSPunctSpecial = {link = "TSTypeBuiltin"},
+    yamlTSType = {link = "TSTypeBuiltin"}
 }
 
 hl.langs08.yaml = {
-    ["@field.yaml"] = fgs.green
+    ["@boolean.yaml"] = {fg = c.red, gui = bold},
+    ["@constant.builtin.yaml"] = {fg = c.orange, gui = bold},
+    ["@field.yaml"] = fgs.blue,
+    ["@preproc.yaml"] = {fg = c.sea_green, gui = bold},
+    ["@punctuation.delimiter.yaml"] = fgs.orange,
+    ["@punctuation.special.yaml"] = {link = "@type.builtin"},
+    ["@type.yaml"] = {link = "@type.builtin"}
 }
 
+--  ╭──────╮
+--  │ TOML │
+--  ╰──────╯
 hl.langs.toml = {
     tomlTable = {fg = c.purple, gui = bold},
     tomlKey = fgs.orange,
@@ -1840,13 +2049,53 @@ hl.langs.toml = {
     --
     -- Treesitter
     --
-    tomlTSProperty = fgs.orange
+    tomlTSProperty = fgs.orange,
+    tomlTSType = fgs.magenta,
+    tomlTSBoolean = {fg = c.red, gui = bold},
+    tomlTSPunctBracket = {link = "TSFunction"}
 }
 
 hl.langs08.toml = {
-    ["@property.toml"] = fgs.orange
+    ["@property.toml"] = fgs.orange,
+    ["@type.toml"] = fgs.magenta,
+    ["@boolean.toml"] = {fg = c.red, gui = bold},
+    ["@punctuation.bracket.toml"] = {link = "@function"}
 }
 
+--  ╭─────╮
+--  │ RON │
+--  ╰─────╯
+hl.langs.ron = {
+    ronIdentifier = fgs.green,
+    ronKey = fgs.red,
+    ronInteger = fgs.purple,
+    ronString = fgs.yellow,
+    ronBoolean = fgs.orange,
+    --
+    -- Treesiter
+    --
+    ronTSProperty = fgs.red,
+    ronTSNumber = {link = "TSNumber"},
+    ronTSString = {link = "TSString"},
+    ronTSBoolean = {fg = c.red, gui = bold},
+    ronTSConstant = {link = "TSConstant"},
+    ronTSPunctBracket = fgs.blue,
+    ronTSType = {link = "TSTypeBuiltin"}
+}
+
+hl.langs08.ron = {
+    ["@property.ron"] = fgs.red,
+    ["@number.ron"] = {link = "@number"},
+    ["@string.ron"] = {link = "@string"},
+    ["@boolean.ron"] = {link = "@boolean"},
+    ["@constant.ron"] = {link = "@constant"},
+    ["@punctuation.bracket.ron"] = fgs.blue,
+    ["@type.ron"] = {link = "@type.builtin"}
+}
+
+--  ╭─────────╮
+--  │ sxhkdrc │
+--  ╰─────────╯
 hl.langs.sxhkdrc = {
     sxhkdrcTSOperator = fgs.orange,
     sxhkdrcTSKeyword = fgs.red,
@@ -1861,34 +2110,9 @@ hl.langs08.sxhkdrc = {
     ["@punctuation.bracket.sxhkdrc"] = fgs.green
 }
 
-hl.langs.ron = {
-    ronIdentifier = fgs.green,
-    ronKey = fgs.red,
-    ronInteger = fgs.purple,
-    ronString = fgs.yellow,
-    ronBoolean = fgs.orange,
-    --
-    -- Treesiter
-    --
-    ronTSProperty = fgs.red,
-    ronTSNumber = {link = "TSNumber"},
-    ronTSString = {link = "TSString"},
-    ronTSBoolean = {link = "TSBoolean"},
-    ronTSConstant = {link = "TSConstant"},
-    ronTSPunctBracket = fgs.blue,
-    ronTSType = { link = "TSTypeBuiltin" },
-}
-
-hl.langs08.ron = {
-    ["@property.ron"] = fgs.red,
-    ["@number.ron"] = {link = "@number"},
-    ["@string.ron"] = {link = "@string"},
-    ["@boolean.ron"] = {link = "@boolean"},
-    ["@constant.ron"] = {link = "@constant"},
-    ["@punctuation.bracket.ron"] = fgs.blue,
-    ["@type.ron"] = { link = "@type.builtin" },
-}
-
+--  ╭───────────╮
+--  │ GitIgnore │
+--  ╰───────────╯
 hl.langs.gitignore = {
     gitignoreTSPunctDelimiter = {fg = c.blue, gui = bold},
     gitignoreTSPunctBracket = {fg = c.magenta, gui = bold},
@@ -1901,6 +2125,9 @@ hl.langs08.gitignore = {
     ["@operator.gitignore"] = {fg = c.orange, gui = bold}
 }
 
+--  ╭───────────╮
+--  │ GitCommit │
+--  ╰───────────╯
 hl.langs.gitcommit = {
     gitcommitSummary = fgs.red,
     gitcommitUntracked = fgs.coyote_brown1,
@@ -2050,8 +2277,9 @@ hl.plugins.coc = {
     CocWarningSign = fgs.yellow,
     CocInfoSign = fgs.blue,
     CocHintSign = fgs.amethyst,
-    -- Change once this actually works
-    CocInlayHint = fgs.amethyst, -- Things like Rust Analyzer (links to CocHintSign)
+    CocInlayHint = fgs.russian_green,
+    CocInlayHintParameter = fgs.russian_green,
+    CocInlayHintType = fgs.amethyst,
     CocErrorVirtualText = fgs.coyote_brown1,
     CocWarningVirtualText = fgs.coyote_brown1,
     CocInfoVirtualText = fgs.coyote_brown1,
@@ -2102,7 +2330,11 @@ hl.plugins.coc = {
     -- Tree --
     CocTreeTitle = {fg = c.red, gui = "bold"},
     -- Notification --
+    CocNotificationButton = {fg = c.red, gui = "bold"},
     CocNotificationProgress = {fg = c.blue, bg = "none"},
+    CocNotificationError = fgs.red,
+    CocNotificationWarning = fgs.yellow,
+    CocNotificationInfo = fgs.blue,
     -- Coc-Git --
     CocGitAddedSign = fgs.yellow,
     CocGitChangeRemovedSign = fgs.purple,
@@ -2280,7 +2512,7 @@ hl.plugins.vimwiki = {
     VimwikiHeader5 = {fg = c.purple, gui = "bold"},
     VimwikiHeader6 = {fg = "#458588", gui = "bold"},
     VimwikiWeblink1 = {fg = c.aqua, gui = "underline"},
-    VimwikiWeblink1Char = {fg = c.orange, gui = underline},
+    VimwikiWeblink1Char = {fg = c.orange, gui = underline}
 }
 
 -- https://github.com/kevinhwang91/nvim-bqf
@@ -2326,37 +2558,37 @@ hl.plugins.aerial = {
 
 -- https://github.com/sindrets/diffview.nvim
 hl.plugins.diffview = {
-    DiffviewFilePanelTitle = {fg = c.blue, gui = bold},
+    DiffviewNormal = {link = "Normal"},
+    DiffviewCursorLine = {link = "CursorLine"},
+    DiffviewVertSplit = {link = "VertSplit"},
+    DiffviewSignColumn = {link = "SignColumn"},
+    DiffviewStatusLine = {link = "StatusLine"},
+    DiffviewStatusLineNC = {link = "StatusLineNC"},
+    DiffviewEndOfBuffer = {link = "EndOfBuffer"},
     DiffviewFilePanelCounter = {fg = c.purple, gui = bold},
-    DiffviewFilePanelFileName = fgs.fg0,
-    DiffviewNormal = hl.common.Normal,
-    DiffviewCursorLine = hl.common.CursorLine,
-    DiffviewVertSplit = hl.common.VertSplit,
-    DiffviewSignColumn = hl.common.SignColumn,
-    DiffviewStatusLine = hl.common.StatusLine,
-    DiffviewStatusLineNC = hl.common.StatusLineNC,
-    DiffviewEndOfBuffer = hl.common.EndOfBuffer,
-    DiffviewFilePanelRootPath = fgs.coyote_brown1,
-    DiffviewFilePanelPath = fgs.coyote_brown1,
-    DiffviewFilePanelInsertions = fgs.green,
     DiffviewFilePanelDeletions = fgs.red,
-    DiffviewStatusAdded = fgs.green,
-    DiffviewStatusUntracked = fgs.blue,
-    DiffviewStatusModified = fgs.blue,
-    DiffviewStatusRenamed = fgs.blue,
+    DiffviewFilePanelFileName = fgs.russian_green,
+    DiffviewFilePanelInsertions = fgs.green,
+    DiffviewFilePanelPath = {link = "Title"},
+    DiffviewFilePanelRootPath = fgs.coyote_brown1,
+    DiffviewFilePanelTitle = {fg = c.blue, gui = bold},
+    DiffviewStatusAdded = {link = "Type"},
+    DiffviewStatusBroken = {fg = c.red, gui = "bold"},
     DiffviewStatusCopied = fgs.blue,
-    DiffviewStatusTypeChange = fgs.blue,
-    DiffviewStatusUnmerged = fgs.blue,
-    DiffviewStatusUnknown = fgs.red,
-    DiffviewStatusDeleted = fgs.red,
-    DiffviewStatusBroken = fgs.red
+    DiffviewStatusDeleted = {link = "ErrorMsg"},
+    DiffviewStatusModified = {link = "Constant"},
+    DiffviewStatusRenamed = {link = "Character"},
+    DiffviewStatusTypeChange = {link = "Character"},
+    DiffviewStatusUnknown = fgs.bg_red,
+    DiffviewStatusUnmerged = fgs.amethyst,
+    DiffviewStatusUntracked = {link = "Tag"}
 }
 
 -- https://github.com/TimUntersberger/neogit
 hl.plugins.neogit = {
-    NeogitBranch = fgs.blue,
-    NeogitDiffAdd = fgs.green,
-    NeogitDiffDelete = fgs.red,
+    NeogitBranch = {link = "Title"},
+    NeogitDiffAdd = {link = "Type"},
+    NeogitDiffDelete = {link = "ErrorMsg"},
     -- NeogitDiffAddHighlight = {bg = c.green},
     NeogitDiffContextHighlight = {fg = c.philippine_silver},
     -- NeogitDiffDeleteHighlight = {bg = c.bg_red},
@@ -2365,22 +2597,22 @@ hl.plugins.neogit = {
     NeogitNotificationInfo = fgs.blue,
     NeogitNotificationWarning = fgs.yellow,
     NeogitNotificationError = fgs.bg_red,
-    NeogitRemote = fgs.yellow
+    NeogitRemote = fgs.amethyst,
     -- NeogitStashes
-    -- NeogitUnstagedChanges
+    NeogitUnstagedChanges = {link = "Tag"}
 }
 
 -- https://github.com/lewis6991/gitsigns.nvim
 hl.plugins.gitsigns = {
-    GitSignsAdd = fgs.green,
-    GitSignsAddLn = fgs.green,
-    GitSignsAddNr = fgs.green,
-    GitSignsChange = fgs.blue,
-    GitSignsChangeLn = fgs.blue,
-    GitSignsChangeNr = fgs.blue,
-    GitSignsDelete = fgs.red,
-    GitSignsDeleteLn = fgs.red,
-    GitSignsDeleteNr = fgs.red
+    GitSignsAdd = {link = "Type"},
+    GitSignsAddLn = {link = "Type"},
+    GitSignsAddNr = {link = "Type"},
+    GitSignsChange = {link = "Constant"},
+    GitSignsChangeLn = {link = "Constant"},
+    GitSignsChangeNr = {link = "Constant"},
+    GitSignsDelete = {link = "ErrorMsg"},
+    GitSignsDeleteLn = {link = "ErrorMsg"},
+    GitSignsDeleteNr = {link = "ErrorMsg"}
 }
 
 -- https://github.com/ibhagwan/fzf-lua
