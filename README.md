@@ -198,6 +198,7 @@ All of the following languages have been manually configured.
 <details>
 <summary>Support</summary>
 
+- Awk
 - Bash/Dash
 - C/C++
 - Clojure
@@ -225,22 +226,30 @@ All of the following languages have been manually configured.
 - Swift
 - Teal
 - Typescript
+- TypescriptReact (tsx)
 - Vimscript
 - Zig
 - Zsh
 
 - CSS
+- SCSS
+- GraphQL
+- JQ
 - Help pages (Vim)
+- Comments
+- Luap (Lua patterns)
 - Latex
 - Markdown
 - Matlab
-- SCSS
 
-- Dosini
-- Git Commit
-- JSON
+- sxhkdrc
+- CMake
 - Makefile
-- Ron (Rust Object Notation)
+- Git Commit
+- Git Ignore
+- DosIni (Ini)
+- JSON
+- RON (Rust Object Notation)
 - TOML
 - YAML
 

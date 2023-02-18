@@ -16,9 +16,6 @@ local log = utils.log
 
 local cfg = vim.g.kimbox_config
 
-M.langs = hl.langs
-M.plugins = hl.plugins
-
 local reverse = utils.tern(cfg.allow_reverse, "reverse", "none")
 local bold = utils.tern(cfg.allow_bold, "bold", "none")
 local italic = utils.tern(cfg.allow_italic, "italic", "none")
@@ -1269,8 +1266,26 @@ hl.langs08.perl = {
 --  │ Lua │
 --  ╰─────╯
 hl.langs.lua = {
-    -- When cursorholding
-    luaFuncTable = {fg = c.red, gui = bold},
+    -- When cursorholding for Coc.nvim
+    -- Mimic treesitter as much as possible
+    luaTable = fgs.aqua,
+    luaConstant = fgs.orange,
+    luaParens = fgs.blue,
+    luaFuncParens = fgs.blue,
+    luaLocal = {link = "Statement"},
+    luaStatement = {link = "Statement"},
+    luaSpecialValue = {link = "Function"},
+    luaFuncCall = {link = "Function"},
+    luaFuncId = {link = "Function"},
+    luaFuncName = {link = "Function"},
+    luaFuncKeyword = fgs.red,
+    luaFuncTable = {link = "Type"},
+    luaEllipsis = {link = "Special"},
+    luaSpecialTable = {link = "Type"},
+    luaOperator = fgs.red,
+    luaSymbolOperator = fgs.orange,
+    luaCond = {link = "Conditional"},
+    luaErrHand = {link = "Exception"},
     --
     -- Treesitter
     --
@@ -1911,11 +1926,25 @@ hl.langs08.html = {
 --  ╭────────╮
 --  │ DosIni │
 --  ╰────────╯
-hl.langs.dosini = {
-    dosiniLabel = fgs.yellow,
-    dosiniValue = fgs.green,
+hl.langs.ini = {
+    dosiniLabel = fgs.green,
+    dosiniValue = fgs.yellow,
     dosiniNumber = fgs.purple,
-    dosiniHeader = {fg = c.red, gui = bold}
+    dosiniHeader = {fg = c.red, gui = bold},
+    --
+    -- Treesitter
+    --
+    iniTSType = {fg = c.red, gui = bold},
+    iniTSPunctBracket = fgs.purple,
+    iniTSProperty = fgs.green,
+    iniTSText = fgs.yellow
+}
+
+hl.langs08.dosini = {
+    ["@type.ini"] = {fg = c.red, gui = bold},
+    ["@punctuation.bracket.ini"] = fgs.purple,
+    ["@property.ini"] = fgs.green,
+    ["@text.ini"] = fgs.yellow
 }
 
 --  ╭───────╮
@@ -1938,14 +1967,14 @@ hl.langs.cmake = {
     cmakeTSBoolean = {fg = c.orange, gui = bold},
     cmakeTSConstant = {link = "TSConstant"},
     cmakeTSKeywordOperator = {link = "TSKeywordReturn"},
-    cmakeTSPunctSpecial = {link = "TSPunctSpecial"},
+    cmakeTSPunctSpecial = {link = "TSPunctSpecial"}
 }
 
 hl.langs08.cmake = {
     ["@boolean.cmake"] = {fg = c.orange, gui = bold},
     ["@constant.cmake"] = {link = "@constant"},
     ["@keyword.operator.cmake"] = {link = "@keyword.return"},
-    ["@punctuation.special.cmake"] = {link = "@punctuation.special"},
+    ["@punctuation.special.cmake"] = {link = "@punctuation.special"}
 }
 
 --  ╭──────────╮
@@ -2899,6 +2928,10 @@ function M.setup()
 
         utils.highlight(to_hl)
     end
+
+    M.langs = vim.tbl_keys(hl.langs)
+    M.langs08 = vim.tbl_keys(hl.langs08)
+    M.plugins = vim.tbl_keys(hl.plugins)
 end
 
 return M
