@@ -65,7 +65,8 @@ local fgs = {
     salmon = {fg = c.salmon},
     puce = {fg = c.puce},
     ube = {fg = c.ube},
-    jasper_orange = {fg = c.jasper_orange}
+    jasper_orange = {fg = c.jasper_orange},
+    light_red = {fg = c.light_red},
 }
 
 hl.common = {
@@ -1327,6 +1328,28 @@ hl.langs08.luap = {
     ["@punctuation.bracket.luap"] = fgs.blue,
     ["@operator.luap"] = fgs.orange,
     ["@keyword.luap"] = fgs.red
+}
+
+--  ╭───────╮
+--  │ Regex │
+--  ╰───────╯
+hl.langs.regex = {
+    regexTSString = {fg = c.wave_red},
+    -- regexTSConstCharacter = {fg = c.opera_muave, gui = bold},
+    -- regexTSConstCharacterEscape = {fg = c.russian_green, gui = bold},
+    regesTSPunctDelimiter = {fg = c.ube, gui = bold},
+    regexTSOperator = {fg = c.pumpkin, bui = bold},
+    regexTSProperty = {fg = c.yellow, bui = bold},
+}
+
+hl.langs08.regex = {
+    -- ["@string.regex"] = {fg = c.beaver},
+    ["@string.regex"] = {fg = c.wave_red},
+    ["@constant.character.regex"] = {fg = c.opera_muave, gui = bold},
+    ["@constant.character.escape.regex"] = {fg = c.russian_green, gui = bold},
+    ["@punctuation.delimiter.regex"] = {fg = c.ube, gui = bold},
+    ["@operator.regex"] = {fg = c.pumpkin, bui = bold},
+    ["@property.regex"] = {fg = c.yellow, bui = bold},
 }
 
 --  ╭──────╮

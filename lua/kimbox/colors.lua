@@ -11,10 +11,9 @@ local function extend(original, to_add)
     return vim.tbl_extend("force", original, to_add)
 end
 
----
----@return { [string]: string }?
+---Merge theme colors with user configured colors
+---@return KimboxColors
 return (function()
-    ---@type table?
     local selected = {none = "none"}
 
     selected = extend(selected, {bg0 = bgs[vim.g.kimbox_config.style]})
