@@ -222,6 +222,7 @@ All of the following languages have been manually configured.
 - Ruby
 - Rust
 - Scala
+- Sed
 - Solidity
 - Swift
 - Teal
@@ -238,6 +239,7 @@ All of the following languages have been manually configured.
 - Help pages (Vim)
 - Comments
 - Luap (Lua patterns)
+- Regex
 - Latex
 - Markdown
 - Matlab

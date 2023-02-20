@@ -6,7 +6,10 @@ local api = vim.api
 M.bg = "#000000"
 M.fg = "#ffffff"
 
+---@alias KimboxLogLevels { TRACE: 0, DEBUG: 1, INFO: 2, WARN: 3, ERROR: 4, OFF: 5 }
+
 M.log = {
+    ---@type KimboxLogLevels
     levels = vim.log.levels
 }
 
@@ -105,18 +108,21 @@ M.log.err = function(msg, notify, opts)
     end
 end
 
----Return a default value if `x` is `nil`
----@param x any
----@param default any
----@return any
+---Return a default value if `x` is nil
+---@generic T, V
+---@param x T Value to check if not `nil`
+---@param default V Default value to return if `x` is `nil`
+---@return T | V
 M.get_default = function(x, default)
     return M.ife_nil(x, default, x)
 end
 
 ---Similar to `vim.F.nil` except that an alternate default value can be given
----@param x any
----@param is_nil any
----@param is_not_nil any?
+---@generic T, V
+---@param x any Value to check if `nil`
+---@param is_nil T Value to return if `x` is `nil`
+---@param is_not_nil V Value to return if `x` is not `nil`
+---@return T | V
 M.ife_nil = function(x, is_nil, is_not_nil)
     if x == nil then
         return is_nil
@@ -126,9 +132,11 @@ M.ife_nil = function(x, is_nil, is_not_nil)
 end
 
 ---Return one of two values based on a conditional
+---@generic T, V
 ---@param condition boolean|nil Statement to be tested
----@param is_if any Return if condition is truthy
----@param is_else any Return if condition is not truthy
+---@param is_if T Return if condition is truthy
+---@param is_else V Return if condition is not truthy
+---@return T | V
 M.tern = function(condition, is_if, is_else)
     if condition then
         return is_if
@@ -138,6 +146,7 @@ M.tern = function(condition, is_if, is_else)
 end
 
 ---Check if `string` is empty or `nil`
+---@param str string
 ---@return boolean
 M.is_empty = function(str)
     return str == "" or str == nil
@@ -169,8 +178,8 @@ end
 -- ╰──────────────────────────────────────────────────────────╯
 
 ---Convert a hex color (i.e., `#FFFFFF`) into an RGB(255, 255, 255)
----@param hex string
----@return number[]
+---@param hex HexColor
+---@return KimboxRGB
 M.hex2rgb = function(hex)
     local p = "[abcdef0-9][abcdef0-9]"
     local pat = ("^#(%s)(%s)(%s)$"):format(p, p, p)
@@ -187,9 +196,11 @@ M.hex2rgb = function(hex)
     }
 end
 
----@param fg string foreground color
----@param bg string background color
+---
+---@param fg HexColor foreground color
+---@param bg HexColor background color
 ---@param alpha number number between 0 and 1. 0 results in bg, 1 results in fg
+---@return HexColor
 M.blend = function(fg, bg, alpha)
     local bg_rgb = M.hex2rgb(bg)
     local fg_rgb = M.hex2rgb(fg)
@@ -199,19 +210,29 @@ M.blend = function(fg, bg, alpha)
         return math.floor(math.min(math.max(0, ret), 255) + 0.5)
     end
 
-    return string.format("#%02X%02X%02X", blend_channel(1), blend_channel(2), blend_channel(3))
+    return ("#%02X%02X%02X"):format(blend_channel(1), blend_channel(2), blend_channel(3))
 end
 
+---
+---@param hex HexColor Color to blend
+---@param amount number Number between 0 and 1. 0 results in bg, 1 results in fg
+---@param bg HexColor Background color
+---@return HexColor
 M.darken = function(hex, amount, bg)
     return M.blend(hex, bg or M.bg, math.abs(amount))
 end
 
+---
+---@param hex HexColor Color to blend
+---@param amount number Number between 0 and 1. 0 results in bg, 1 results in fg
+---@param fg HexColor Foreground color
+---@return HexColor
 M.lighten = function(hex, amount, fg)
     return M.blend(hex, fg or M.fg, math.abs(amount))
 end
 
 ---Convert a `gui=...` into valid arguments for `api.nvim_set_hl`
----@param style string
+---@param style
 ---@return table
 M.convert_gui = function(style)
     if not style or style:lower() == "none" then
@@ -228,8 +249,9 @@ M.convert_gui = function(style)
 end
 
 ---Highlight using Vim's language
----@param highlights any
+---@param highlights KimboxHighlightMap
 local function vim_highlights(highlights)
+    ---@type KimboxHighlightMap
     local to_highlight = {}
     for group, opts in pairs(highlights) do
         if opts.link then
@@ -252,7 +274,7 @@ local function vim_highlights(highlights)
 end
 
 ---Highlight using the Nvim API
----@param highlights any
+---@param highlights KimboxHighlightMap
 local function nvim_highlights(highlights)
     for group, opts in pairs(highlights) do
         if not M.is_empty(opts.link) then
@@ -269,12 +291,18 @@ local function nvim_highlights(highlights)
     end
 end
 
+---@class KimboxHighlight
+---@operator call(KimboxHighlightMap): nil
+---@field alt fun(h: KimboxHighlightMap)
 M.highlight =
     setmetatable(
     {
         alt = vim_highlights
     },
     {
+        ---
+        ---@param _ KimboxHighlight
+        ---@vararg KimboxHighlightMap
         __call = function(_, ...)
             local hl = M.tern(M.has_api(), nvim_highlights, vim_highlights)
             hl(...)

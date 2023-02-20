@@ -67,6 +67,9 @@ local fgs = {
     ube = {fg = c.ube},
     jasper_orange = {fg = c.jasper_orange},
     light_red = {fg = c.light_red},
+    wave_red = {fg = c.wave_red},
+    opera_muave = {fg = c.opera_muave},
+    oni_violet = {fg = c.oni_violet},
 }
 
 hl.common = {
@@ -366,66 +369,6 @@ hl.langs08.treesitter = {
     ["@underline"] = {link = "Underlined"},
     ["@code"] = {link = "VimwikiCode"},
     ["@bold"] = {link = "VimwikiBold"}
-}
-
---  ╭─────╮
---  │ Awk │
---  ╰─────╯
-hl.langs.awk = {
-    awkTSConditional = {link = "TSConditional"},
-    awkTSFunction = {link = "TSFunction"},
-    awkTSFuncBuiltin = {fg = c.red, gui = bold},
-    awkTSFuncCall = {link = "TSFuncCall"},
-    awkTSKeyword = {link = "TSKeyword"},
-    awkTSKeywordFunction = {link = "TSKeywordFunction"},
-    awkTSKeywordReturn = {link = "TSKeywordReturn"},
-    awkTSLabel = {fg = c.green, gui = bold},
-    awkTSOperator = {link = "TSOperator"},
-    awkTSPreproc = {link = "TSPreproc"},
-    awkTSPunctBracket = fgs.blue,
-    awkTSPunctDelimiter = fgs.green,
-    awkTSRepeat = fgs.blue,
-    awkTSString = {link = "TSString"},
-    awkTSStringEscape = {link = "TSStringEscape"},
-    --
-    -- Unsupported (yet)
-    --
-    awkTSVariableBuiltin = fgs.blue
-}
-
-hl.langs08.awk = {
-    ["@conditional.awk"] = {link = "@conditional"},
-    ["@function.awk"] = {link = "@function"},
-    ["@function.builtin.awk"] = {fg = c.red, gui = bold},
-    ["@function.call.awk"] = {link = "@function.call"},
-    ["@keyword.awk"] = {link = "@keyword"},
-    ["@keyword.function.awk"] = {link = "@keyword.function"},
-    ["@keyword.return.awk"] = {link = "@keyword.return"},
-    ["@label.awk"] = {fg = c.green, gui = bold},
-    ["@operator.awk"] = {link = "@operator"},
-    ["@preproc.awk"] = {link = "@preproc"},
-    ["@punctuation.bracket.awk"] = fgs.blue,
-    ["@punctuation.delimiter.awk"] = fgs.green,
-    ["@repeat.awk"] = fgs.blue,
-    ["@string.awk"] = {link = "@string"},
-    ["@string.escape.awk"] = {link = "@string.escape"},
-    --
-    -- Unsupported (yet)
-    --
-    ["@variable.builtin.awk"] = fgs.blue
-}
-
---  ╭─────────╮
---  │ Comment │
---  ╰─────────╯
-hl.langs.comment = {
-    commentTSTag = {fg = c.peach_red},
-    commentTSConstant = fgs.jasper_orange
-}
-
-hl.langs08.comment = {
-    ["@tag.comment"] = {fg = c.peach_red},
-    ["@constant.comment"] = fgs.jasper_orange
 }
 
 --  ╭──────────╮
@@ -1339,7 +1282,7 @@ hl.langs.regex = {
     -- regexTSConstCharacterEscape = {fg = c.russian_green, gui = bold},
     regesTSPunctDelimiter = {fg = c.ube, gui = bold},
     regexTSOperator = {fg = c.pumpkin, bui = bold},
-    regexTSProperty = {fg = c.yellow, bui = bold},
+    regexTSProperty = {fg = c.yellow, bui = bold}
 }
 
 hl.langs08.regex = {
@@ -1349,7 +1292,7 @@ hl.langs08.regex = {
     ["@constant.character.escape.regex"] = {fg = c.russian_green, gui = bold},
     ["@punctuation.delimiter.regex"] = {fg = c.ube, gui = bold},
     ["@operator.regex"] = {fg = c.pumpkin, bui = bold},
-    ["@property.regex"] = {fg = c.yellow, bui = bold},
+    ["@property.regex"] = {fg = c.yellow, bui = bold}
 }
 
 --  ╭──────╮
@@ -1582,6 +1525,81 @@ hl.langs.zsh = {
     zshCommand = {fg = c.red, gui = bold},
     zshDelim = {fg = c.blue},
     zshSubstDelim = fgs.purple
+}
+
+--  ╭─────╮
+--  │ Awk │
+--  ╰─────╯
+hl.langs.awk = {
+    awkTSConditional = {link = "TSConditional"},
+    awkTSFunction = {link = "TSFunction"},
+    awkTSFuncBuiltin = {fg = c.red, gui = bold},
+    awkTSFuncCall = {link = "TSFuncCall"},
+    awkTSKeyword = {link = "TSKeyword"},
+    awkTSKeywordFunction = {link = "TSKeywordFunction"},
+    awkTSKeywordReturn = {link = "TSKeywordReturn"},
+    awkTSLabel = {fg = c.green, gui = bold},
+    awkTSOperator = {link = "TSOperator"},
+    awkTSPreproc = {link = "TSPreproc"},
+    awkTSPunctBracket = fgs.blue,
+    awkTSPunctDelimiter = fgs.green,
+    awkTSRepeat = fgs.blue,
+    awkTSString = {link = "TSString"},
+    awkTSStringEscape = {link = "TSStringEscape"},
+    --
+    -- Unsupported (yet)
+    --
+    awkTSVariableBuiltin = fgs.blue
+}
+
+hl.langs08.awk = {
+    ["@conditional.awk"] = {link = "@conditional"},
+    ["@function.awk"] = {link = "@function"},
+    ["@function.builtin.awk"] = {fg = c.red, gui = bold},
+    ["@function.call.awk"] = {link = "@function.call"},
+    ["@keyword.awk"] = {link = "@keyword"},
+    ["@keyword.function.awk"] = {link = "@keyword.function"},
+    ["@keyword.return.awk"] = {link = "@keyword.return"},
+    ["@label.awk"] = {fg = c.green, gui = bold},
+    ["@operator.awk"] = {link = "@operator"},
+    ["@preproc.awk"] = {link = "@preproc"},
+    ["@punctuation.bracket.awk"] = fgs.blue,
+    ["@punctuation.delimiter.awk"] = fgs.green,
+    ["@repeat.awk"] = fgs.blue,
+    ["@string.awk"] = {link = "@string"},
+    ["@string.escape.awk"] = {link = "@string.escape"},
+    --
+    -- Unsupported (yet)
+    --
+    ["@variable.builtin.awk"] = fgs.blue
+}
+
+--  ╭─────╮
+--  │ Sed │
+--  ╰─────╯
+hl.langs.sed = {
+    sedST = {link = "Function"},
+    sedRegexp47 = fgs.orange,
+    sedLabel = fgs.wave_red,
+    sedBranch = {fg = c.green, gui = bold},
+    sedRegexpMeta = fgs.blue,
+    sedRegexp58 = fgs.opera_muave,
+    sedReplacement47 = fgs.yellow,
+    sedFlag = {fg = c.red, gui = bold},
+    sedReplacement58 = fgs.oni_violet
+}
+
+--  ╭─────────╮
+--  │ Comment │
+--  ╰─────────╯
+hl.langs.comment = {
+    commentTSTag = {fg = c.peach_red},
+    commentTSConstant = fgs.jasper_orange
+}
+
+hl.langs08.comment = {
+    ["@tag.comment"] = {fg = c.peach_red},
+    ["@constant.comment"] = fgs.jasper_orange
 }
 
 --  ╭──────╮
@@ -2952,8 +2970,11 @@ function M.setup()
         utils.highlight(to_hl)
     end
 
+    ---@type string[]
     M.langs = vim.tbl_keys(hl.langs)
+    ---@type string[]
     M.langs08 = vim.tbl_keys(hl.langs08)
+    ---@type string[]
     M.plugins = vim.tbl_keys(hl.plugins)
 end
 
