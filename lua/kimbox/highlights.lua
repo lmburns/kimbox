@@ -68,6 +68,7 @@ local fgs = {
     jasper_orange = {fg = c.jasper_orange},
     light_red = {fg = c.light_red},
     wave_red = {fg = c.wave_red},
+    peach_red = {fg = c.peach_red},
     opera_muave = {fg = c.opera_muave},
     oni_violet = {fg = c.oni_violet},
 }
@@ -1593,12 +1594,12 @@ hl.langs.sed = {
 --  │ Comment │
 --  ╰─────────╯
 hl.langs.comment = {
-    commentTSTag = {fg = c.peach_red},
+    commentTSTag = fgs.peach_red,
     commentTSConstant = fgs.jasper_orange
 }
 
 hl.langs08.comment = {
-    ["@tag.comment"] = {fg = c.peach_red},
+    ["@tag.comment"] = fgs.peach_red,
     ["@constant.comment"] = fgs.jasper_orange
 }
 
@@ -2885,6 +2886,13 @@ hl.plugins.barbar = {
 -- https://github.com/lambdalisue/fern.vim
 hl.plugins.fern = {
     FernBranchText = {fg = c.blue}
+}
+
+-- https://github.com/chentau/marks.nvim
+hl.plugins.marks = {
+    MarkSignHL = {link = "Identifier"},
+    MarkSignNumHL = {fg = c.peach_red, gui = bold},
+    MarkVirtTextHL = fgs.jasper_orange
 }
 
 function M.setup()

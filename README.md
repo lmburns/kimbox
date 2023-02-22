@@ -291,6 +291,7 @@ All of the following languages have been manually configured.
 - [Lightline](https://github.com/itchyny/lightline.vim)
 - [Lightspeed](https://github.com/ggandor/lightspeed.nvim)
 - [Lualine](https://github.com/hoob3rt/lualine.nvim)
+- [Marks](https://github.com/chentau/marks.nvim)
 - [Modes](https://github.com/mvllow/modes.nvim)
 - [Neogit](https://github.com/TimUntersberger/neogit)
 - [Neomake](https://github.com/neomake/neomake)
