@@ -11,6 +11,7 @@ local hl = {
 -- Vim patch: patch-8.2.0674
 
 local c = require("kimbox.colors")
+local bgs = require("kimbox.palette").bgs
 local utils = require("kimbox.utils")
 local log = utils.log
 
@@ -39,10 +40,12 @@ local fgs = {
     fg0 = {fg = c.fg0},
     fg1 = {fg = c.fg1},
     fg2 = {fg = c.fg2},
+    fg4 = {fg = c.fg4},
     bg1 = {fg = c.bg1},
     bg2 = {fg = c.bg2},
     bg3 = {fg = c.bg3},
     bg4 = {fg = c.bg4},
+    bg5 = {fg = c.bg5},
     grullo_grey = {fg = c.grullo_grey},
     wenge_grey = {fg = c.wenge_grey},
     coyote_brown1 = {fg = c.coyote_brown1},
@@ -57,7 +60,6 @@ local fgs = {
     blue = {fg = c.blue},
     purple = {fg = c.purple},
     magenta = {fg = c.magenta},
-    operator_base = {fg = c.operator_base},
     philippine_green = {fg = c.philippine_green},
     russian_green = {fg = c.russian_green},
     sea_green = {fg = c.sea_green},
@@ -71,6 +73,8 @@ local fgs = {
     peach_red = {fg = c.peach_red},
     opera_muave = {fg = c.opera_muave},
     oni_violet = {fg = c.oni_violet},
+    maroon_x11 = {fg = c.maroon_x11},
+    beaver = {fg = c.beaver},
 }
 
 hl.common = {
@@ -119,18 +123,18 @@ hl.common = {
     -- DiffText = {fg = c.none, bg = utils.darken(c.blue, 0.6, c.bg0)}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffText = {fg = c.none, bg = c.diff_text}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffFile = {fg = c.aqua},
-    Directory = {fg = c.bg5, bg = c.none}, -- directory names (and other special names in listings)
+    Directory = {fg = c.bg4, bg = c.none}, -- directory names (and other special names in listings)
     ErrorMsg = {fg = c.red, gui = underbold},
     WarningMsg = {fg = c.green, gui = bold},
     ModeMsg = {fg = c.fg0, gui = bold},
     MoreMsg = {fg = c.green, gui = bold},
     MatchParen = {fg = c.none, bg = c.bg4},
     Substitute = {fg = c.bg0, bg = c.green},
-    NonText = {fg = c.bg5},
-    Whitespace = {fg = c.bg5},
-    SpecialKey = {fg = c.bg5},
+    NonText = {fg = c.bg4},
+    Whitespace = {fg = c.bg4},
+    SpecialKey = {fg = c.bg4},
     Pmenu = {
-        fg = c.operator_base,
+        fg = c.fg4,
         bg = utils.tern(cfg.popup.background, c.bg0, c.bg1)
     },
     PmenuSel = {fg = c.red, bg = c.bg4, gui = bold},
@@ -140,7 +144,7 @@ hl.common = {
     WinBar = {fg = c.fg0, gui = bold}, -- window bar of current window
     WinBarNC = {fg = c.bg4, gui = bold}, -- window bar of not-current windows
     Question = {fg = c.green},
-    NormalFloat = {fg = c.fg1, bg = c.bg3}, -- Normal text in floating windows.
+    NormalFloat = {fg = c.fg1, bg = bgs.ocean}, -- Normal text in floating windows.
     TabLine = {fg = c.fg, bg = c.bg1}, -- Tab pages line, not active tab page label
     TabLineSel = {fg = c.bg1, bg = c.fg4, gui = bold}, -- Tab pages line, active tab page label
     -- TabLineSel = {fg = c.fg, bg = c.bg1}, -- Tab pages line, active tab page label
@@ -156,8 +160,8 @@ hl.common = {
     SpellCap = {fg = c.blue, gui = undercurl, sp = c.blue},
     SpellLocal = {fg = c.aqua, gui = undercurl, sp = c.aqua},
     SpellRare = {fg = c.purple, gui = undercurl, sp = c.purple},
-    Visual = {fg = c.black, bg = c.operator_base, gui = reverse}, -- Visual mode selection
-    VisualNOS = {fg = c.black, bg = c.operator_base, gui = reverse}, -- Visual sel when vim is "Not Owning the Selection"
+    Visual = {fg = c.black, bg = c.fg4, gui = reverse}, -- Visual mode selection
+    VisualNOS = {fg = c.black, bg = c.fg4, gui = reverse}, -- Visual sel when vim is "Not Owning the Selection"
     QuickFixLine = {fg = c.purple, gui = bold},
     Debug = {fg = c.orange},
     debugPC = {fg = c.bg0, bg = c.green},
@@ -2549,12 +2553,14 @@ hl.plugins.startify = {
 
 -- https://github.com/folke/which-key.nvim
 hl.plugins.whichkey = {
-    WhichKey = fgs.red,
-    WhichKeySeperator = fgs.yellow,
-    WhichKeyGroup = fgs.green,
-    WhichKeyDesc = fgs.blue,
-    WhichKeyFloat = {link = "NormalFloat"},
-    WhichKeyValue = {fg = c.coyote_brown1, gui = italic} -- any comment
+    WhichKey = {fg = c.bg_red},
+    WhichKeyDesc = fgs.oni_violet,
+    WhichKeyGroup = {fg = c.green, gui = "bold"},
+    -- WhichKeyFloat = {fg = c.fg1, bg = c.bg3},
+    WhichKeyFloat = {fg = c.fg1, bg = bgs.ocean},
+    WhichKeyValue = {fg = c.coyote_brown1, gui = italic}, -- any comment
+    WhichKeyBorder = fgs.amethyst,
+    WhichKeySeparator = fgs.beaver,
 }
 
 -- https://github.com/Shougo/defx.nvim
