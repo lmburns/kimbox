@@ -74,7 +74,7 @@ local fgs = {
     opera_muave = {fg = c.opera_muave},
     oni_violet = {fg = c.oni_violet},
     maroon_x11 = {fg = c.maroon_x11},
-    beaver = {fg = c.beaver},
+    beaver = {fg = c.beaver}
 }
 
 hl.common = {
@@ -2553,14 +2553,14 @@ hl.plugins.startify = {
 
 -- https://github.com/folke/which-key.nvim
 hl.plugins.whichkey = {
-    WhichKey = {fg = c.bg_red},
-    WhichKeyDesc = fgs.oni_violet,
+    WhichKey = {fg = c.begonia},
+    WhichKeyDesc = fgs.opera_muave,
     WhichKeyGroup = {fg = c.green, gui = "bold"},
     -- WhichKeyFloat = {fg = c.fg1, bg = c.bg3},
     WhichKeyFloat = {fg = c.fg1, bg = bgs.ocean},
     WhichKeyValue = {fg = c.coyote_brown1, gui = italic}, -- any comment
     WhichKeyBorder = fgs.amethyst,
-    WhichKeySeparator = fgs.beaver,
+    WhichKeySeparator = fgs.beaver
 }
 
 -- https://github.com/Shougo/defx.nvim
@@ -2682,14 +2682,20 @@ hl.plugins.neogit = {
 -- https://github.com/lewis6991/gitsigns.nvim
 hl.plugins.gitsigns = {
     GitSignsAdd = {link = "Type"},
-    GitSignsAddLn = {link = "Type"},
+    GitSignsAddLn = {link = "DiffAdd"},
     GitSignsAddNr = {link = "Type"},
+    GitSignsAddInline = {link = "DiffAdd"},
+    GitSignsAddLnInline = {link = "Type"},
     GitSignsChange = {link = "Constant"},
-    GitSignsChangeLn = {link = "Constant"},
+    GitSignsChangeLn = {link = "DiffText"},
     GitSignsChangeNr = {link = "Constant"},
+    GitSignsChangeInline = {link = "DiffText"},
+    GitSignsChangeLnInline = {link = "Constant"},
     GitSignsDelete = {link = "ErrorMsg"},
-    GitSignsDeleteLn = {link = "ErrorMsg"},
-    GitSignsDeleteNr = {link = "ErrorMsg"}
+    GitSignsDeleteLn = {link = "DiffDelete"},
+    GitSignsDeleteNr = {link = "ErrorMsg"},
+    GitSignsDeleteInline = {link = "DiffDelete"},
+    GitSignsDeleteLnInline = {link = "ErrorMsg"},
 }
 
 -- https://github.com/ibhagwan/fzf-lua
