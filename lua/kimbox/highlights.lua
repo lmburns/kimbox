@@ -1468,16 +1468,18 @@ hl.langs.zig = {
     zigTSTypeBuiltin = {fg = c.green, gui = bold},
     zigTSField = fgs.aqua,
     zigTSFuncMacro = fgs.aqua,
-    zigTSAttribute = fgs.aqua,
-    zigTSPunctBracket = fgs.orange
+    zigTSAttribute = fgs.red,
+    zigTSPunctBracket = fgs.orange,
+    zigTSConstBuiltin = {fg = c.orange, gui = bold},
 }
 
 hl.langs08.zig = {
     ["@type.builtin.zig"] = {fg = c.green, gui = bold},
     ["@field.zig"] = fgs.aqua,
     ["@function.macro.zig"] = fgs.aqua,
-    ["@attribute.zig"] = fgs.aqua,
-    ["@punctuation.bracket.zig"] = fgs.orange
+    ["@attribute.zig"] = fgs.red,
+    ["@punctuation.bracket.zig"] = fgs.orange,
+    ["@constant.builtin.zig"] = {fg = c.orange, gui = bold},
 }
 
 --  ╭────────────╮
