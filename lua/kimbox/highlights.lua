@@ -358,7 +358,7 @@ hl.langs08.treesitter = {
     ["@text.todo"] = {fg = c.red, gui = bold},
     ["@text.underline"] = {fg = c.none, gui = "underline"},
     ["@text.uri"] = {fg = c.fg1, gui = "underline"},
-    ["@text.warning"] = {fg = c.green, gui = bold},
+    ["@text.warning"] = {fg = c.yellow, gui = bold},
     ["@type"] = fgs.green,
     ["@type.builtin"] = {fg = c.green, gui = bold},
     -- ["@type.definition"] = fgs.green,
@@ -373,7 +373,10 @@ hl.langs08.treesitter = {
     -- CUSTOM
     ["@underline"] = {link = "Underlined"},
     ["@code"] = {link = "VimwikiCode"},
-    ["@bold"] = {link = "VimwikiBold"}
+    ["@bold"] = {link = "VimwikiBold"},
+    ["@text.error"] = {fg = c.red, gui = bold},
+    ["@text.hint"] = {fg = c.amethyst, gui = bold},
+    ["@text.info"] = {fg = c.blue, gui = bold},
 }
 
 --  ╭──────────╮
