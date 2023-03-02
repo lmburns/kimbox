@@ -38,11 +38,13 @@ local fgs = {
     jade_green = "#2AB074",
     morning_blue = "#83A598",
     jelly_bean_blue = "#418292",
-    slate_gray = "#719190",
+    slate_grey = "#719190",
     tuscan_red = "#7E5053",
+    purple_taupe = "#4F3552",
     maximum_purple = "#733E8B",
     deep_lilac = "#A25BC4", -- "#945EB8"
     opera_muave = "#BB80B3",
+    heliotrope = "#D484FF",
     vista_blue = "#7E9CD8",
     ube = "#7E82CC",
     amethyst = "#938AA9",
@@ -66,6 +68,7 @@ local fgs = {
     deep_saffron = "#F79A32",
     dark_electric_blue = "#586081",
     coconut = "#9A5534",
+    russet = "#79491d",
     ---------------------------------------------------------------------------------------------
     -- These are duplicates because they are both used and could be changed at some point
     coyote_brown = "#7E602C",

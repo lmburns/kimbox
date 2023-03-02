@@ -296,6 +296,7 @@ All of the following languages have been manually configured.
 - [Neogit](https://github.com/TimUntersberger/neogit)
 - [Neomake](https://github.com/neomake/neomake)
 - [NerdTree](https://github.com/preservim/nerdtree)
+- [Nvim-Notify](https://github.com/rcarriga/nvim-notify)
 - [Nvim-R](https://github.com/jalvesaq/Nvim-R)
 - [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
 - [Packer](https://github.com/wbthomason/packer.nvim)

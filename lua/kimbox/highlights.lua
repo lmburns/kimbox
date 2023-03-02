@@ -48,6 +48,7 @@ local fgs = {
     bg5 = {fg = c.bg5},
     grullo_grey = {fg = c.grullo_grey},
     wenge_grey = {fg = c.wenge_grey},
+    slate_grey = {fg = c.slate_grey},
     coyote_brown1 = {fg = c.coyote_brown1},
     coyote_brown = {fg = c.coyote_brown},
     amethyst = {fg = c.amethyst},
@@ -67,6 +68,8 @@ local fgs = {
     salmon = {fg = c.salmon},
     puce = {fg = c.puce},
     ube = {fg = c.ube},
+    deep_lilac = {fg = c.deep_lilac},
+    heliotrope = {fg = c.heliotrope},
     jasper_orange = {fg = c.jasper_orange},
     light_red = {fg = c.light_red},
     wave_red = {fg = c.wave_red},
@@ -74,7 +77,9 @@ local fgs = {
     opera_muave = {fg = c.opera_muave},
     oni_violet = {fg = c.oni_violet},
     maroon_x11 = {fg = c.maroon_x11},
-    beaver = {fg = c.beaver}
+    beaver = {fg = c.beaver},
+    russet = {fg = c.russet},
+    coconut = {fg = c.coconut},
 }
 
 hl.common = {
@@ -377,6 +382,8 @@ hl.langs08.treesitter = {
     ["@text.error"] = {fg = c.red, gui = bold},
     ["@text.hint"] = {fg = c.amethyst, gui = bold},
     ["@text.info"] = {fg = c.blue, gui = bold},
+    ["@text.debug"] = {fg = c.orange, gui = bold},
+    ["@text.trace"] = {fg = c.deep_lilac, gui = bold},
 }
 
 --  ╭──────────╮
@@ -2860,6 +2867,33 @@ hl.plugins.treehopper = {
 hl.plugins.sneak = {
     Sneak = {fg = c.deep_lilac, gui = bold},
     SneakScope = {bg = c.bg4}
+}
+
+-- https://github.com/rcarriga/nvim-notify
+hl.plugins.notify = {
+    NotifyBackground = {link = "NormalFloat"},
+    NotifyERRORBorder = {fg = c.diff_delete},
+    NotifyERRORBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyERRORIcon = fgs.red,
+    NotifyERRORTitle = fgs.red,
+    NotifyWARNBorder = fgs.coconut,
+    NotifyWARNBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyWARNIcon = fgs.yellow,
+    NotifyWARNTitle = fgs.yellow,
+    NotifyINFOBorder = fgs.slate_grey,
+    NotifyINFOBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyINFOIcon = fgs.blue,
+    NotifyINFOTitle = fgs.blue,
+    NotifyDEBUGBorder = fgs.jasper_orange,
+    NotifyDEBUGBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyDEBUGIcon = fgs.orange,
+    NotifyDEBUGTitle = fgs.orange,
+    NotifyTRACEBorder = fgs.opera_muave,
+    NotifyTRACEBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyTRACEIcon = fgs.heliotrope,
+    NotifyTRACETitle = fgs.deep_lilac,
+    -- NotifyLogTime = fgs.deep_lilac,
+    -- NotifyLogTitle = fgs.deep_lilac,
 }
 
 -- https://github.com/ggandor/lightspeed.nvim
