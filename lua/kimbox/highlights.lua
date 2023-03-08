@@ -79,7 +79,7 @@ local fgs = {
     maroon_x11 = {fg = c.maroon_x11},
     beaver = {fg = c.beaver},
     russet = {fg = c.russet},
-    coconut = {fg = c.coconut},
+    coconut = {fg = c.coconut}
 }
 
 hl.common = {
@@ -180,8 +180,8 @@ hl.syntax = {
     Boolean = fgs.orange,
     Number = fgs.purple,
     Float = fgs.purple,
-    PreProc = {fg = c.purple, gui = italic},
-    PreCondit = {fg = c.purple},
+    PreProc = {fg = c.sea_green, gui = italic},
+    PreCondit = fgs.sea_green,
     Include = {fg = c.purple, gui = italic},
     Define = {fg = c.purple},
     Conditional = {fg = c.purple, gui = italic},
@@ -208,7 +208,7 @@ hl.syntax = {
     Constant = fgs.aqua,
     Macro = fgs.aqua,
     Identifier = fgs.blue,
-    Delimiter = fgs.fg0,
+    Delimiter = fgs.blue,
     Ignore = fgs.coyote_brown1,
     Underlined = {fg = c.none, gui = "underline"},
     Comment = {fg = c.coyote_brown1, gui = italic}, -- any comment
@@ -383,7 +383,7 @@ hl.langs08.treesitter = {
     ["@text.hint"] = {fg = c.amethyst, gui = bold},
     ["@text.info"] = {fg = c.blue, gui = bold},
     ["@text.debug"] = {fg = c.orange, gui = bold},
-    ["@text.trace"] = {fg = c.deep_lilac, gui = bold},
+    ["@text.trace"] = {fg = c.deep_lilac, gui = bold}
 }
 
 --  ╭──────────╮
@@ -1480,7 +1480,7 @@ hl.langs.zig = {
     zigTSFuncMacro = fgs.aqua,
     zigTSAttribute = fgs.red,
     zigTSPunctBracket = fgs.orange,
-    zigTSConstBuiltin = {fg = c.orange, gui = bold},
+    zigTSConstBuiltin = {fg = c.orange, gui = bold}
 }
 
 hl.langs08.zig = {
@@ -1489,17 +1489,18 @@ hl.langs08.zig = {
     ["@function.macro.zig"] = fgs.aqua,
     ["@attribute.zig"] = fgs.red,
     ["@punctuation.bracket.zig"] = fgs.orange,
-    ["@constant.builtin.zig"] = {fg = c.orange, gui = bold},
+    ["@constant.builtin.zig"] = {fg = c.orange, gui = bold}
 }
 
 --  ╭────────────╮
 --  │ Shell/Bash │
 --  ╰────────────╯
 hl.langs.shell = {
+    bashStatement = fgs.orange,
     shRange = fgs.fg0,
+    shShebang = {fg = c.purple, gui = italic},
     shTestOpr = fgs.orange,
     shOption = fgs.orange,
-    bashStatement = fgs.orange,
     shOperator = fgs.orange,
     shQuote = fgs.yellow,
     shSet = fgs.orange,
@@ -1530,18 +1531,24 @@ hl.langs08.shell = {
 }
 
 hl.langs.zsh = {
-    -- zshFlag = fgs.yellow,
+    zshFlag = {link = "SpecialChar"},
     zshOptStart = {fg = c.purple, gui = italic},
-    zshOption = fgs.blue,
+    zshOption = {link = "Identifier"},
     zshSubst = fgs.green,
-    zshFunction = {fg = c.purple, gui = bold},
+    zshSubstDelim = fgs.purple,
+    zshFunction = {link = "TSFunction"},
+    zshPrecommand = {fg = c.sea_green, gui = bold},
+    zshPreproc = {fg = c.purple, gui = italic},
     zshDeref = fgs.blue,
     zshTypes = fgs.orange,
+    zshVariable = fgs.blue,
     zshVariableDef = fgs.blue,
     zshNumber = fgs.purple,
     zshCommand = {fg = c.red, gui = bold},
-    zshDelim = {fg = c.blue},
-    zshSubstDelim = fgs.purple
+    zshKeymap = {link = "TSConstBuiltin"},
+    zshBrackets = {fg = c.blue},
+    -- sh.vim
+    zshDelim = {fg = c.blue}
 }
 
 --  ╭─────╮
@@ -2707,7 +2714,7 @@ hl.plugins.gitsigns = {
     GitSignsDeleteLn = {link = "DiffDelete"},
     GitSignsDeleteNr = {link = "ErrorMsg"},
     GitSignsDeleteInline = {link = "DiffDelete"},
-    GitSignsDeleteLnInline = {link = "ErrorMsg"},
+    GitSignsDeleteLnInline = {link = "ErrorMsg"}
 }
 
 -- https://github.com/ibhagwan/fzf-lua
@@ -2891,7 +2898,7 @@ hl.plugins.notify = {
     NotifyTRACEBorder = fgs.opera_muave,
     NotifyTRACEBody = {fg = c.beaver, bg = bgs.ocean},
     NotifyTRACEIcon = fgs.heliotrope,
-    NotifyTRACETitle = fgs.deep_lilac,
+    NotifyTRACETitle = fgs.deep_lilac
     -- NotifyLogTime = fgs.deep_lilac,
     -- NotifyLogTitle = fgs.deep_lilac,
 }
@@ -2944,6 +2951,14 @@ hl.plugins.marks = {
     MarkSignHL = {link = "Identifier"},
     MarkSignNumHL = {fg = c.peach_red, gui = bold},
     MarkVirtTextHL = fgs.jasper_orange
+}
+
+-- https://github.com/glepnir/nerdicons.nvim
+hl.plugins.nerdicons = {
+    NerdIconBorder = {link = "FloatBorder"},
+    NerdIconNormal = fgs.beaver,
+    NerdIconPreviewPrompt = {link = "Identifier"},
+    NerdIconPrompt = fgs.orange
 }
 
 function M.setup()

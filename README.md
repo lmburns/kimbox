@@ -295,6 +295,7 @@ All of the following languages have been manually configured.
 - [Modes](https://github.com/mvllow/modes.nvim)
 - [Neogit](https://github.com/TimUntersberger/neogit)
 - [Neomake](https://github.com/neomake/neomake)
+- [NerdIcons](https://github.com/glepnir/nerdicons.nvim)
 - [NerdTree](https://github.com/preservim/nerdtree)
 - [Nvim-Notify](https://github.com/rcarriga/nvim-notify)
 - [Nvim-R](https://github.com/jalvesaq/Nvim-R)
