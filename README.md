@@ -248,6 +248,7 @@ All of the following languages have been manually configured.
 - CMake
 - Makefile
 - Git Commit
+- Git Config
 - Git Ignore
 - DosIni (Ini)
 - JSON

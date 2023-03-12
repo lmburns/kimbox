@@ -286,7 +286,7 @@ hl.treesitter = {
     TSTitle = {fg = c.orange, gui = "bold"}, -- Text that is part of a title
     TSTodo = {fg = c.red, gui = bold},
     TSUnderline = {fg = c.fg, gui = "underline"},
-    TSURI = {fg = c.fg1, gui = "underline"},
+    TSURI = {fg = c.fg0, gui = "underline"},
     TSWarning = {fg = c.green, gui = bold},
     TSType = fgs.green,
     TSTypeBuiltin = {fg = c.green, gui = bold},
@@ -362,7 +362,7 @@ hl.langs08.treesitter = {
     ["@text.title"] = {fg = c.orange, gui = "bold"},
     ["@text.todo"] = {fg = c.red, gui = bold},
     ["@text.underline"] = {fg = c.none, gui = "underline"},
-    ["@text.uri"] = {fg = c.fg1, gui = "underline"},
+    ["@text.uri"] = {fg = c.fg0, gui = "underline"},
     ["@text.warning"] = {fg = c.yellow, gui = bold},
     ["@type"] = fgs.green,
     ["@type.builtin"] = {fg = c.green, gui = bold},
@@ -2217,6 +2217,29 @@ hl.langs08.gitignore = {
     ["@punctuation.delimiter.gitignore"] = {fg = c.blue, gui = bold},
     ["@punctuation.bracket.gitignore"] = {fg = c.magenta, gui = bold},
     ["@operator.gitignore"] = {fg = c.orange, gui = bold}
+}
+
+--  ╭───────────╮
+--  │ GitConfig │
+--  ╰───────────╯
+hl.langs.gitconfig = {
+    gitConfigSection = {link = "Keyword"},
+    gitConfigVariable = fgs.blue,
+    gitConfigBoolean = {link = "Boolean"},
+    --
+    -- Treesitter
+    --
+    git_configTSType = fgs.red,
+    git_configTSProperty = fgs.blue,
+    git_configTSPunctBracket = fgs.purple,
+    git_configTSStringSpecial = fgs.green
+}
+
+hl.langs08.gitconfig = {
+    ["@type.git_config"] = fgs.red,
+    ["@property.git_config"] = fgs.blue,
+    ["@punctuation.bracket.git_config"] = fgs.purple,
+    ["@string.special.git_config"] = fgs.green
 }
 
 --  ╭───────────╮
