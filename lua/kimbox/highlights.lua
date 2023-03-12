@@ -109,11 +109,6 @@ hl.common = {
     CursorLine = {fg = c.none, bg = c.bg1}, -- Screen-line at the cursor, when 'cursorline' is set
     CursorLineNr = {fg = c.purple, gui = bold},
     LineNr = {fg = c.coyote_brown},
-    -- NOTE: Possibly change
-    -- DiffAdded = fgs.green,
-    -- DiffRemoved = fgs.red,
-    -- DiffFile = fgs.aqua,
-    -- DiffIndexLine = fgs.coyote_brown1,
     diffAdded = fgs.yellow,
     diffRemoved = fgs.red,
     diffChanged = fgs.blue,
@@ -125,7 +120,6 @@ hl.common = {
     DiffAdd = {fg = c.none, bg = c.diff_add}, -- diff mode: Added line |diff.txt|
     DiffChange = {fg = c.none, bg = c.diff_change}, -- diff mode: Changed line |diff.txt|
     DiffDelete = {fg = c.none, bg = c.diff_delete}, -- diff mode: Deleted line |diff.txt|
-    -- DiffText = {fg = c.none, bg = utils.darken(c.blue, 0.6, c.bg0)}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffText = {fg = c.none, bg = c.diff_text}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffFile = {fg = c.aqua},
     Directory = {fg = c.bg4, bg = c.none}, -- directory names (and other special names in listings)
@@ -272,8 +266,9 @@ hl.treesitter = {
     TSAnnotation = {fg = c.blue, gui = italic}, -- Annotations attached to code to denote some meta info
     TSAttribute = {fg = c.green, gui = italic},
     TSDanger = {fg = c.red, gui = bold},
-    TSDiffAdd = {fg = c.none, bg = utils.darken(c.green, 0.6, c.bg0)},
-    TSDiffDelete = {fg = c.none, bg = utils.darken(c.red, 0.6, c.bg0)},
+    TSDiffAdd = {fg = c.none, bg = c.diff_add},
+    TSDiffChange = {fg = c.none, bg = c.diff_change},
+    TSDiffDelete = {fg = c.none, bg = c.diff_delete},
     TSEmphasis = {fg = c.morning_blue, gui = underbold},
     TSEnviroment = fgs.fg0,
     TSEnviromentName = fgs.fg0,
@@ -348,8 +343,9 @@ hl.langs08.treesitter = {
     ["@text.annotation"] = {fg = c.blue, gui = italic},
     ["@text.attribute"] = {fg = c.green, gui = italic},
     ["@text.danger"] = {fg = c.red, gui = bold},
-    ["@text.diff.add"] = {fg = c.none, bg = utils.darken(c.green, 0.6, c.bg0)},
-    ["@text.diff.delete"] = {fg = c.none, bg = utils.darken(c.red, 0.6, c.bg0)},
+    ["@text.diff.add"] = {fg = c.none, bg = c.diff_add},
+    ["@text.diff.change"] = {fg = c.none, bg = c.diff_change},
+    ["@text.diff.delete"] = {fg = c.none, bg = c.diff_delete},
     ["@text.emphasis"] = {fg = c.morning_blue, gui = underbold},
     ["@text.environment"] = fgs.fg0,
     ["@text.environment.name"] = fgs.fg0,
