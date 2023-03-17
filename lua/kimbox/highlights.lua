@@ -86,19 +86,19 @@ hl.common = {
     Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     NormalNC = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     Terminal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
-    FoldColumn = {fg = c.coyote_brown, bg = utils.tern(trans, c.none, c.bg2)},
-    SignColumn = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     ToolbarLine = {fg = utils.tern(trans, c.fg0, c.fg1), bg = utils.tern(trans, c.none, c.bg3)},
     VertSplit = {fg = c.fg1, bg = c.none},
     WinSeparator = {link = "VertSplit"},
-    Folded = {fg = c.coyote_brown1, bg = c.bg2},
     EndOfBuffer = {
         fg = utils.tern(cfg.ending_tildes, c.bg2, c.bg0),
         bg = utils.tern(trans, c.none, c.bg0)
     },
     IncSearch = {fg = c.bg1, bg = c.light_red},
     Search = {fg = c.bg0, bg = c.vista_blue},
+    Folded = {fg = c.coyote_brown1, bg = c.bg2},
     ColorColumn = {bg = c.bg1}, -- used for the columns set with 'colorcolumn'
+    FoldColumn = {fg = c.coyote_brown, bg = utils.tern(trans, c.none, c.bg2)},
+    SignColumn = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     Conceal = {fg = c.coyote_brown1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor = {gui = reverse}, -- character under the cursor
     vCursor = {gui = reverse},
@@ -107,8 +107,12 @@ hl.common = {
     CursorIM = {gui = reverse}, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn = {bg = c.bg1}, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine = {fg = c.none, bg = c.bg1}, -- Screen-line at the cursor, when 'cursorline' is set
-    CursorLineNr = {fg = c.purple, gui = bold},
-    LineNr = {fg = c.coyote_brown},
+    CursorLineNr = {fg = c.purple, gui = bold}, -- Number on cursorline
+    CursorLineFold = {fg = c.purple, gui = bold}, -- FoldColumn for cursorline
+    CursorLineSign = {fg = c.purple, gui = bold}, -- SignColumn for cursorline
+    LineNr = {fg = c.coyote_brown}, -- SignColumn numbers
+    LineNrAbove = {fg = c.coyote_brown}, -- SignColumn numbers above curent line
+    LineNrBelow = {fg = c.coyote_brown}, -- SignColumn numbers below curent line
     diffAdded = fgs.yellow,
     diffRemoved = fgs.red,
     diffChanged = fgs.blue,
@@ -122,27 +126,29 @@ hl.common = {
     DiffDelete = {fg = c.none, bg = c.diff_delete}, -- diff mode: Deleted line |diff.txt|
     DiffText = {fg = c.none, bg = c.diff_text}, -- diff mode: Changed text within a changed line |diff.txt|
     DiffFile = {fg = c.aqua},
-    Directory = {fg = c.bg4, bg = c.none}, -- directory names (and other special names in listings)
+    Directory = {fg = c.salmon, gui = bold}, -- directory names (and other special names in listings)
     ErrorMsg = {fg = c.red, gui = underbold},
     WarningMsg = {fg = c.green, gui = bold},
-    ModeMsg = {fg = c.fg0, gui = bold},
-    MoreMsg = {fg = c.green, gui = bold},
+    ModeMsg = {fg = c.purple, gui = bold}, -- 'showmode' message
+    MoreMsg = {fg = c.green, gui = bold}, -- |more-prompt|
+    MsgSeparator = {fg = c.light_red, gui = bold}, -- Separator for scrolled messages
+    Question = {fg = c.green}, -- Yes/no prompt questions
     MatchParen = {fg = c.none, bg = c.bg4},
     Substitute = {fg = c.bg0, bg = c.green},
-    NonText = {fg = c.bg4},
-    Whitespace = {fg = c.bg4},
+    NonText = {fg = c.bg4},  -- fillchars, showbreak
     SpecialKey = {fg = c.bg4},
+    Whitespace = {fg = c.bg4},
+    -- Popup menu: normal item
     Pmenu = {
         fg = c.fg4,
         bg = utils.tern(cfg.popup.background, c.bg0, c.bg1)
     },
-    PmenuSel = {fg = c.red, bg = c.bg4, gui = bold},
-    PmenuSbar = {fg = c.none, bg = c.fg3},
+    PmenuSel = {fg = c.red, bg = c.bg4, gui = bold}, -- Popup menu: selected item
+    PmenuSbar = {fg = c.none, bg = c.fg3}, -- Popup menu: scrollbar
     PmenuThumb = {fg = c.none, bg = c.green},
     WildMenu = {fg = c.bg3, bg = c.green}, -- Current match in 'wildmenu' completion
     WinBar = {fg = c.fg0, gui = bold}, -- window bar of current window
     WinBarNC = {fg = c.bg4, gui = bold}, -- window bar of not-current windows
-    Question = {fg = c.green},
     NormalFloat = {fg = c.fg1, bg = bgs.ocean}, -- Normal text in floating windows.
     TabLine = {fg = c.fg, bg = c.bg1}, -- Tab pages line, not active tab page label
     TabLineSel = {fg = c.bg1, bg = c.fg4, gui = bold}, -- Tab pages line, active tab page label
@@ -194,7 +200,7 @@ hl.syntax = {
     Operator = fgs.orange,
     Title = {fg = c.orange, gui = bold},
     Special = fgs.green,
-    SpecialChar = fgs.green,
+    SpecialChar = fgs.philippine_green,
     Type = {fg = c.green, gui = bold},
     Function = {fg = c.magenta, gui = bold},
     String = fgs.yellow,
@@ -1527,7 +1533,7 @@ hl.langs08.shell = {
 }
 
 hl.langs.zsh = {
-    zshFlag = {link = "SpecialChar"},
+    zshFlag = {link = "Special"},
     zshOptStart = {fg = c.purple, gui = italic},
     zshOption = {link = "Identifier"},
     zshSubst = fgs.green,
@@ -1860,6 +1866,13 @@ hl.langs.matlab = {
     matlabArithmeticOperator = fgs.orange,
     matlabRelationalOperator = fgs.orange,
     matlabLogicalOperator = fgs.orange
+}
+
+-- https://github.com/b0o/incline.nvim
+hl.langs.man = {
+    manSectionHeading = {link = "Statement"},
+    manTitle = {link = "Title"},
+    manReference = {fg = c.sea_green, gui = bold},
 }
 
 --  ╭────╮
