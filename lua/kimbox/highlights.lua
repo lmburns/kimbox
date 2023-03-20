@@ -97,7 +97,7 @@ hl.common = {
     Search = {fg = c.bg0, bg = c.vista_blue},
     Folded = {fg = c.coyote_brown1, bg = c.bg2},
     ColorColumn = {bg = c.bg1}, -- used for the columns set with 'colorcolumn'
-    FoldColumn = {fg = c.coyote_brown, bg = utils.tern(trans, c.none, c.bg2)},
+    FoldColumn = {fg = c.coyote_brown},
     SignColumn = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     Conceal = {fg = c.coyote_brown1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor = {gui = reverse}, -- character under the cursor
