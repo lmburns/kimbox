@@ -2836,6 +2836,7 @@ hl.plugins.hlargs = {
 }
 
 -- https://github.com/p00f/nvim-ts-rainbow
+-- https://github.com/HiPhish/nvim-ts-rainbow2
 hl.plugins.ts_rainbow = {
     rainbowcol1 = fgs.coyote_brown1,
     rainbowcol2 = fgs.yellow,
@@ -2843,7 +2844,17 @@ hl.plugins.ts_rainbow = {
     rainbowcol4 = fgs.orange,
     rainbowcol5 = fgs.purple,
     rainbowcol6 = fgs.green,
-    rainbowcol7 = fgs.red
+    rainbowcol7 = fgs.red,
+    --
+    -- Rainbow2
+    --
+    TSRainbowRed = {fg = c.red, gui = bold},
+    TSRainbowYellow = {fg = c.yellow, gui = bold},
+    TSRainbowBlue = {fg = c.blue, gui = bold},
+    TSRainbowOrange = {fg = c.orange, gui = bold},
+    TSRainbowGreen = {fg = c.green, gui = bold},
+    TSRainbowViolet = {fg = c.purple, gui = bold},
+    TSRainbowCyan = {fg = c.coyote_brown1, gui = bold}
 }
 
 -- https://github.com/lukas-reineke/indent-blankline.nvim

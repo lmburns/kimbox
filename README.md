@@ -309,6 +309,7 @@ All of the following languages have been manually configured.
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [Treesitter Treehopper](https://github.com/mfussenegger/nvim-treehopper)
 - [Treesitter Rainbow](https://github.com/p00f/nvim-ts-rainbow)
+- [Treesitter Rainbow 2](https://github.com/HiPhish/nvim-ts-rainbow2)
 - [VimWiki](https://github.com/vimwiki/vimwiki)
 - [Vimtex](https://github.com/lervag/vimtex)
 - [Vista.vim](https://github.com/liuchengxu/vista.vim)
