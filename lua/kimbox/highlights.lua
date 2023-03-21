@@ -1446,22 +1446,23 @@ hl.langs.cpp = {
     -- Treesitter
     --
     cppTSConstant = {fg = c.sea_green, gui = bold},
-    cppTSOperator = fgs.purple,
-    cppTSConstMacro = fgs.aqua,
+    cppTSConstMacro = {fg = c.aqua, gui = bold},
+    cppTSOperator = fgs.orange,
     cppTSNamespace = fgs.orange,
     cppTSType = {fg = c.green, gui = bold},
     cppTSTypeBuiltin = {fg = c.green, gui = bold},
     cppTSKeyword = fgs.red,
     cppTSInclude = {fg = c.red, gui = italic},
     cppTSMethod = fgs.blue,
-    cppTSField = fgs.yellow,
-    cppTSConstructor = fgs.blue
+    cppTSField = fgs.aqua,
+    cppTSConstructor = {fg = c.wave_red, gui = bold}
 }
 
 hl.langs08.cpp = {
     ["@constant.cpp"] = {fg = c.sea_green, gui = bold},
-    ["@operator.cpp"] = fgs.purple,
-    ["@constant.macro.cpp"] = fgs.aqua,
+    ["@constant.macro.cpp"] = {fg = c.aqua, gui = bold},
+    ["@operator.cpp"] = fgs.orange,
+    ["@conditional.ternary.cpp"] = fgs.blue,
     ["@namespace.cpp"] = fgs.orange,
     ["@type.cpp"] = {fg = c.green, gui = bold},
     ["@type.builtin.cpp"] = {fg = c.green, gui = bold},
@@ -1469,8 +1470,8 @@ hl.langs08.cpp = {
     ["@include.cpp"] = {fg = c.red, gui = italic},
     ["@method.cpp"] = fgs.blue,
     ["@method.call.cpp"] = {fg = c.magenta, gui = bold},
-    ["@field.cpp"] = fgs.yellow,
-    ["@constructor.cpp"] = fgs.blue
+    ["@field.cpp"] = fgs.aqua,
+    ["@constructor.cpp"] = {fg = c.wave_red, gui = bold}
 }
 
 --  ╭─────╮
