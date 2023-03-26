@@ -140,7 +140,7 @@ hl.common = {
     Question = {fg = c.green}, -- Yes/no prompt questions
     MatchParen = {fg = c.none, bg = c.bg4},
     Substitute = {fg = c.bg0, bg = c.green},
-    NonText = {fg = c.bg4},  -- fillchars, showbreak
+    NonText = {fg = c.bg4}, -- fillchars, showbreak
     SpecialKey = {fg = c.bg4},
     Whitespace = {fg = c.bg4},
     -- Popup menu: normal item
@@ -1267,19 +1267,54 @@ hl.langs.lua = {
 }
 
 hl.langs08.lua = {
-    ["@property.lua"] = fgs.green,
-    ["@field.lua"] = fgs.aqua,
-    ["@punctuation.bracket.lua"] = fgs.purple,
-    ["@constructor.lua"] = {fg = c.wave_red, gui = bold},
     ["@constant.lua"] = {fg = c.green, gui = bold},
     ["@constant.builtin.lua"] = fgs.orange,
-    ["@keyword.function.lua"] = fgs.red,
-    ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
+    ["@constructor.lua"] = {fg = c.wave_red, gui = bold},
+    ["@property.lua"] = fgs.green,
+    ["@field.lua"] = fgs.aqua,
+    ["@preproc.lua"] = fgs.purple,
     ["@method.lua"] = fgs.blue,
+    ["@punctuation.bracket.lua"] = fgs.purple,
+    -- ["@punctuation.delimiter.lua"] = fgs.purple,
     ["@variable.builtin.lua"] = fgs.russian_green,
+    ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
+    -- ["@function.builtin.lua"] = {fg = c.russian_green, gui = bold},
+    ["@keyword.function.lua"] = fgs.red,
+    ["@keyword.coroutine.lua"] = {fg = c.oni_violet, gui = bold},
     -- ["@comment.documentation.lua"] = fgs.blue,
-    ["@keyword.self.lua"] = {fg = c.blue},
-    ["@keyword.super.lua"] = {fg = c.blue},
+    ["@keyword.self.lua"] = fgs.blue,
+    ["@keyword.super.lua"] = fgs.blue,
+    ["@field.builtin.lua"] = fgs.wave_red,
+    ["@constant.blank.lua"] = {fg = c.green, gui = bold},
+}
+
+--  ╭─────────╮
+--  │ Lua Doc │
+--  ╰─────────╯
+hl.langs.luadoc = {
+    luadocTSParameter = {fg = c.salmon, gui = bold},
+    luadocTSKeyword = fgs.jasper_orange,
+    luadocTSKeywordFunction = {link = "@keyword.function"},
+    luadocTSKeywordReturn = {link = "@keyword.return"},
+    luadocTSType = {link = "@type"},
+    luadocTSTypeBuiltin = {link = "@type.builtin"},
+    luadocTSOperator = {fg = c.orange, gui = bold},
+    luadocTSPunctBracket = fgs.purple,
+    luadocTSPunctDelimiter = {fg = c.orange, gui = bold},
+    luadocTSPunctSpecial = {link = "@punctuation.special"}
+}
+
+hl.langs08.luadoc = {
+    ["@parameter.luadoc"] = {fg = c.salmon, gui = bold},
+    ["@keyword.luadoc"] = fgs.jasper_orange,
+    ["@keyword.function.luadoc"] = {link = "@keyword.function"},
+    ["@keyword.return.luadoc"] = {link = "@keyword.return"},
+    ["@type.luadoc"] = {link = "@type"},
+    ["@type.builtin.luadoc"] = {link = "@type.builtin"},
+    ["@operator.luadoc"] = {fg = c.orange, gui = bold},
+    ["@punctuation.bracket.luadoc"] = fgs.purple,
+    ["@punctuation.delimiter.luadoc"] = {fg = c.orange, gui = bold},
+    ["@punctuation.special.luadoc"] = {link = "@punctuation.special"}
 }
 
 --  ╭──────╮
@@ -1882,7 +1917,7 @@ hl.langs.matlab = {
 hl.langs.man = {
     manSectionHeading = {link = "Statement"},
     manTitle = {link = "Title"},
-    manReference = {fg = c.sea_green, gui = bold},
+    manReference = {fg = c.sea_green, gui = bold}
 }
 
 --  ╭────╮
@@ -2012,7 +2047,7 @@ hl.langs08.html = {
 --  ╰──────────────╯
 hl.langs.editorconfig = {
     editorconfigUnknownProperty = {link = "Identifier"},
-    editorconfigProperty = {link = "dosiniLabel"},
+    editorconfigProperty = {link = "dosiniLabel"}
 }
 
 --  ╭────────────╮
@@ -2022,7 +2057,7 @@ hl.langs.conf = {
     CfgSection = {link = "Type"},
     CfgValues = {link = "Constant"},
     CfgOnOff = {link = "Boolean"},
-    CfgString = {link = "String"},
+    CfgString = {link = "String"}
 }
 
 --  ╭────────╮

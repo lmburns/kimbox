@@ -238,6 +238,7 @@ All of the following languages have been manually configured.
 - JQ
 - Help pages (Vim)
 - Comments
+- LuaDoc (Lua documentation comments)
 - Luap (Lua patterns)
 - Regex
 - Latex
