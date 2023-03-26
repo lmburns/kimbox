@@ -100,11 +100,16 @@ hl.common = {
     FoldColumn = {fg = c.coyote_brown},
     SignColumn = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
     Conceal = {fg = c.coyote_brown1, bg = c.none}, -- placeholder characters substituted for concealed text (see 'conceallevel')
-    Cursor = {gui = reverse}, -- character under the cursor
-    vCursor = {gui = reverse},
-    iCursor = {gui = reverse},
-    lCursor = {gui = reverse}, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
-    CursorIM = {gui = reverse}, -- like Cursor, but used when in IME mode |CursorIM|
+    -- Cursor = {gui = reverse},
+    -- vCursor = {gui = reverse},
+    -- iCursor = {gui = reverse},
+    -- lCursor = {gui = reverse},
+    -- CursorIM = {gui = reverse},
+    Cursor = {fg = bgs.ocean, bg = c.deep_saffron}, -- character under the cursor
+    vCursor = {fg = bgs.ocean, bg = c.deep_saffron},
+    iCursor = {fg = bgs.ocean, bg = c.deep_saffron},
+    lCursor = {fg = bgs.ocean, bg = c.deep_saffron}, -- the character under the cursor when |language-mapping|
+    CursorIM = {fg = bgs.ocean, bg = c.deep_saffron}, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn = {bg = c.bg1}, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine = {fg = c.none, bg = c.bg1}, -- Screen-line at the cursor, when 'cursorline' is set
     CursorLineNr = {fg = c.purple, gui = bold}, -- Number on cursorline
@@ -1265,12 +1270,16 @@ hl.langs08.lua = {
     ["@property.lua"] = fgs.green,
     ["@field.lua"] = fgs.aqua,
     ["@punctuation.bracket.lua"] = fgs.purple,
-    ["@constructor.lua"] = {fg = c.green, gui = bold},
+    ["@constructor.lua"] = {fg = c.wave_red, gui = bold},
     ["@constant.lua"] = {fg = c.green, gui = bold},
     ["@constant.builtin.lua"] = fgs.orange,
     ["@keyword.function.lua"] = fgs.red,
     ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
-    ["@method.lua"] = fgs.blue
+    ["@method.lua"] = fgs.blue,
+    ["@variable.builtin.lua"] = fgs.russian_green,
+    -- ["@comment.documentation.lua"] = fgs.blue,
+    ["@keyword.self.lua"] = {fg = c.blue},
+    ["@keyword.super.lua"] = {fg = c.blue},
 }
 
 --  ╭──────╮
@@ -1997,6 +2006,24 @@ hl.langs08.html = {
 --  ╭──────────────────────────────────────────────────────────╮
 --  │                      Config Formats                      │
 --  ╰──────────────────────────────────────────────────────────╯
+
+--  ╭──────────────╮
+--  │ EditorConfig │
+--  ╰──────────────╯
+hl.langs.editorconfig = {
+    editorconfigUnknownProperty = {link = "Identifier"},
+    editorconfigProperty = {link = "dosiniLabel"},
+}
+
+--  ╭────────────╮
+--  │ conf / cfg │
+--  ╰────────────╯
+hl.langs.conf = {
+    CfgSection = {link = "Type"},
+    CfgValues = {link = "Constant"},
+    CfgOnOff = {link = "Boolean"},
+    CfgString = {link = "String"},
+}
 
 --  ╭────────╮
 --  │ DosIni │
