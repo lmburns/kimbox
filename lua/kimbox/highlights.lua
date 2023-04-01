@@ -178,6 +178,7 @@ hl.common = {
     debugBreakpoint = {fg = c.bg0, bg = c.red},
     ToolbarButton = {fg = c.bg0, bg = c.grullo_grey},
     FloatBorder = {fg = c.magenta},
+    FloatTitle = {fg = c.orange, gui = bold},
     FloatermBorder = {fg = c.magenta}
 }
 
