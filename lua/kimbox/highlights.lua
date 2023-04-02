@@ -451,19 +451,33 @@ hl.langs08.help = {
 }
 
 hl.langs.vimdoc = {
+    helpSpecial = fgs.green,
+    helpNote = {fg = c.purple, gui = bold},
+    helpHeader = {fg = c.sea_green, gui = bold},
+    helpVim = {fg = c.blue, gui = bold}, -- Main header/title
+    helpHyperTextEntry = {fg = c.yellow, gui = bold},
+    --
+    -- Treesitter
+    --
     vimdocTSTitle = {fg = c.red, gui = bold},
-    vimdocTSTextLiteral = fgs.green,
+    vimdocTSTextLiteral = fgs.purple,
+    vimdocTSTextReference = {fg = c.green, gui = bold},
     vimdocTSLabel = fgs.blue,
     vimdocTSString = {link = "TSString"},
-    vimdocTSURI = {link = "TSURI"}
+    vimdocTSURI = {link = "TSURI"},
+    vimdocTSParameter = fgs.salmon
 }
 
 hl.langs08.vimdoc = {
     ["@text.title.vimdoc"] = {fg = c.red, gui = bold},
-    ["@text.literal.vimdoc"] = fgs.green,
+    ["@text.literal.vimdoc"] = fgs.purple,
+    -- ["@text.literal.vimdoc"] = {link = "@comment"},
+    ["@text.reference.vimdoc"] = {fg = c.green, gui = bold},
     ["@label.vimdoc"] = fgs.blue,
     ["@string.vimdoc"] = {link = "@string"},
-    ["@text.uri.vimdoc"] = {link = "@text.uri"}
+    ["@text.uri.vimdoc"] = {link = "@text.uri"},
+    ["@parameter.vimdoc"] = fgs.salmon,
+    -- ["@parameter.vimdoc"] = fgs.green,
 }
 
 --  ╭──────────╮
