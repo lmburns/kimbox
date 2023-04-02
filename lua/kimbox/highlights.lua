@@ -450,6 +450,22 @@ hl.langs08.help = {
     ["@text.uri.help"] = {link = "@text.uri"}
 }
 
+hl.langs.vimdoc = {
+    vimdocTSTitle = {fg = c.red, gui = bold},
+    vimdocTSTextLiteral = fgs.green,
+    vimdocTSLabel = fgs.blue,
+    vimdocTSString = {link = "TSString"},
+    vimdocTSURI = {link = "TSURI"}
+}
+
+hl.langs08.vimdoc = {
+    ["@text.title.vimdoc"] = {fg = c.red, gui = bold},
+    ["@text.literal.vimdoc"] = fgs.green,
+    ["@label.vimdoc"] = fgs.blue,
+    ["@string.vimdoc"] = {link = "@string"},
+    ["@text.uri.vimdoc"] = {link = "@text.uri"}
+}
+
 --  ╭──────────╮
 --  │ Markdown │
 --  ╰──────────╯
