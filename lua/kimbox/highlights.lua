@@ -2043,14 +2043,28 @@ hl.langs.css = {
     -- Treesitter
     --
     cssTSProperty = fgs.orange,
-    cssTSKeyword = fgs.red,
-    cssTSType = {fg = c.red, gui = bold}
+    cssTSPropertyClass = {fg = c.sea_green, gui = bold},
+    cssTSPropertyId = {fg = c.purple, gui = bold},
+    cssTSKeyword = {fg = c.red, gui = bold},
+    cssTSFunction = {link = "TSFunction"},
+    cssTSString = {link = "TSString"},
+    cssTSStringPlain = {fg = c.aqua},
+    cssTSType = {fg = c.green, gui = bold},
+    cssTSTypeQualifier = {fg = c.amethyst, gui = bold},
+    cssTSTypeTag = {fg = c.red, gui = bold},
+    cssTSTypeDefinition = fgs.old_rose,
+    cssTSPunctBracket = fgs.blue,
+    cssTSPunctDelimiter = {link = "TSPunctDelimiter"},
+    cssTSInclude = {fg = c.sea_green, gui = bold},
+    cssTSNamespace = {fg = c.deep_lilac, gui = bold},
+    cssTSOperator = {fg = c.wave_red, gui = bold},
 }
 
 hl.langs08.css = {
     ["@property.css"] = fgs.orange,
     ["@property.class.css"] = {fg = c.sea_green, gui = bold},
-    ["@property.id.css"] = {fg = c.blue, gui = bold},
+    -- ["@property.id.css"] = {fg = c.blue, gui = bold},
+    ["@property.id.css"] = {fg = c.purple, gui = bold},
     ["@keyword.css"] = {fg = c.red, gui = bold},
     ["@function.css"] = {link = "@function"},
     ["@string.css"] = {link = "@string"},
