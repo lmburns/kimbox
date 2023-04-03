@@ -66,6 +66,7 @@ local fgs = {
     sea_green = {fg = c.sea_green},
     jade_green = {fg = c.jade_green},
     salmon = {fg = c.salmon},
+    old_rose = {fg = c.old_rose},
     puce = {fg = c.puce},
     ube = {fg = c.ube},
     deep_lilac = {fg = c.deep_lilac},
@@ -358,10 +359,10 @@ hl.langs08.treesitter = {
     ["@text.diff.add"] = {fg = c.none, bg = c.diff_add},
     ["@text.diff.change"] = {fg = c.none, bg = c.diff_change},
     ["@text.diff.delete"] = {fg = c.none, bg = c.diff_delete},
-    ["@text.emphasis"] = {fg = c.morning_blue, gui = underbold},
+    -- ["@text.emphasis"] = {fg = c.morning_blue, gui = "italic"},
     ["@text.environment"] = fgs.fg0,
     ["@text.environment.name"] = fgs.fg0,
-    ["@text.literal"] = fgs.green,
+    -- ["@text.literal"] = fgs.green,
     ["@text.math"] = fgs.green,
     ["@text.note"] = {fg = c.blue, gui = bold},
     ["@text.reference"] = fgs.blue,
@@ -476,7 +477,7 @@ hl.langs08.vimdoc = {
     ["@label.vimdoc"] = fgs.blue,
     ["@string.vimdoc"] = {link = "@string"},
     ["@text.uri.vimdoc"] = {link = "@text.uri"},
-    ["@parameter.vimdoc"] = fgs.salmon,
+    ["@parameter.vimdoc"] = fgs.salmon
     -- ["@parameter.vimdoc"] = fgs.green,
 }
 
@@ -514,18 +515,39 @@ hl.langs.markdown = {
     --
     -- Treesitter
     --
-    markdownTSLiteral = fgs.purple,
-    markdownTSStrong = {fg = c.deep_lilac, gui = bold},
-    markdownTSEmphasis = {fg = c.morning_blue, gui = underbold},
+    markdownTSNone = fgs.purple,
+    markdownTSPunctDelimiter = {link = "@preproc"},
+    TSLiteral = fgs.puce,
+    markdownTSLiteral = fgs.puce,
+    TSEmphasis = {fg = c.morning_blue, gui = "italic"},
+    markdownTSEmphasis = {fg = c.morning_blue, gui = "italic"},
+    TSURI = {fg = c.amethyst, gui = "underline"},
+    markdownTSURI = {fg = c.amethyst, gui = "underline"},
+    markdownTSStrong = {fg = c.deep_lilac, gui = "bold"},
     markdownTSTextReference = {fg = c.blue, gui = underline},
+    markdownTSTextQuote = {link = "@string"},
+    markdownTSTodoChecked = {fg = c.orange, gui = bold},
+    markdownTSTodoUnchecked = {fg = c.green, gui = bold},
     markdownTSPunctSpecial = {fg = c.red, gui = bold}
 }
 
 hl.langs08.markdown = {
-    ["@text.literal.markdown"] = fgs.purple,
-    ["@text.strong.markdown"] = {fg = c.deep_lilac, gui = bold},
-    ["@text.emphasis.markdown"] = {fg = c.morning_blue, gui = underbold},
+    -- Fenced code block
+    ["@none.markdown"] = fgs.purple,
+    -- Fenced code block delim
+    ["@punctuation.delimiter.markdown"] = {link = "@preproc"},
+    -- Has to be no markdown suffix
+    ["@text.literal"] = fgs.puce,
+    ["@text.literal.markdown"] = fgs.puce,
+    ["@text.emphasis"] = {fg = c.morning_blue, gui = "italic"},
+    ["@text.emphasis.markdown"] = {fg = c.morning_blue, gui = "italic"},
+    ["@text.uri"] = {fg = c.amethyst, gui = "underline"},
+    ["@text.uri.markdown"] = {fg = c.amethyst, gui = "underline"},
+    ["@text.strong.markdown"] = {fg = c.deep_lilac, gui = "bold"},
     ["@text.reference.markdown"] = {fg = c.blue, gui = underline},
+    ["@text.quote.markdown"] = {link = "@string"},
+    ["@text.todo.checked"] = {fg = c.orange, gui = bold},
+    ["@text.todo.unchecked"] = {fg = c.green, gui = bold},
     ["@punctuation.special.markdown"] = {fg = c.red, gui = bold}
 }
 
@@ -1286,18 +1308,25 @@ hl.langs.lua = {
     --
     -- Treesitter
     --
-    luaTSProperty = fgs.green,
-    luaTSField = fgs.aqua,
-    luaTSPunctBracket = fgs.purple,
-    luaTSConstructor = {fg = c.green, gui = bold},
+
     luaTSConstant = {fg = c.green, gui = bold},
     luaTSConstBuiltin = fgs.orange,
-    luaTSKeywordFunction = fgs.red,
+    luaTSConstructor = {fg = c.wave_red, gui = bold},
+    luaTSProperty = fgs.green,
+    luaTSField = fgs.aqua,
+    luaTSPreproc = fgs.purple,
     luaTSMethod = fgs.blue,
-    luaTSFuncBuiltin = {fg = c.magenta, gui = bold}
+    luaTSPunctBracket = fgs.purple,
+    luaTSVariableBuiltin = fgs.russian_green,
+    luaTSFuncBuiltin = {fg = c.magenta, gui = bold},
+    luaTSKeywordFunction = fgs.red,
+    luaTSKeywordCoroutine = {fg = c.oni_violet, gui = bold}
 }
 
 hl.langs08.lua = {
+    -- ["@punctuation.delimiter.lua"] = fgs.purple,
+    -- ["@function.builtin.lua"] = {fg = c.russian_green, gui = bold},
+    -- ["@comment.documentation.lua"] = fgs.blue,
     ["@constant.lua"] = {fg = c.green, gui = bold},
     ["@constant.builtin.lua"] = fgs.orange,
     ["@constructor.lua"] = {fg = c.wave_red, gui = bold},
@@ -1306,17 +1335,15 @@ hl.langs08.lua = {
     ["@preproc.lua"] = fgs.purple,
     ["@method.lua"] = fgs.blue,
     ["@punctuation.bracket.lua"] = fgs.purple,
-    -- ["@punctuation.delimiter.lua"] = fgs.purple,
     ["@variable.builtin.lua"] = fgs.russian_green,
     ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
-    -- ["@function.builtin.lua"] = {fg = c.russian_green, gui = bold},
     ["@keyword.function.lua"] = fgs.red,
     ["@keyword.coroutine.lua"] = {fg = c.oni_violet, gui = bold},
-    -- ["@comment.documentation.lua"] = fgs.blue,
+    -- Custom
     ["@keyword.self.lua"] = fgs.blue,
     ["@keyword.super.lua"] = fgs.blue,
     ["@field.builtin.lua"] = fgs.wave_red,
-    ["@constant.blank.lua"] = {fg = c.green, gui = bold},
+    ["@constant.blank.lua"] = {fg = c.green, gui = bold}
 }
 
 --  ╭─────────╮
@@ -1325,14 +1352,14 @@ hl.langs08.lua = {
 hl.langs.luadoc = {
     luadocTSParameter = {fg = c.salmon, gui = bold},
     luadocTSKeyword = fgs.jasper_orange,
-    luadocTSKeywordFunction = {link = "@keyword.function"},
-    luadocTSKeywordReturn = {link = "@keyword.return"},
-    luadocTSType = {link = "@type"},
-    luadocTSTypeBuiltin = {link = "@type.builtin"},
+    luadocTSKeywordFunction = {link = "TSKeywordFunction"},
+    luadocTSKeywordReturn = {link = "TSKeywordReturn"},
+    luadocTSType = {link = "TSType"},
+    luadocTSTypeBuiltin = {link = "TSTypeBuiltin"},
     luadocTSOperator = {fg = c.orange, gui = bold},
     luadocTSPunctBracket = fgs.purple,
     luadocTSPunctDelimiter = {fg = c.orange, gui = bold},
-    luadocTSPunctSpecial = {link = "@punctuation.special"}
+    luadocTSPunctSpecial = {link = "TSPunctSpecial"}
 }
 
 hl.langs08.luadoc = {
@@ -1967,7 +1994,7 @@ hl.langs.jq = {
     jqTSVariable = fgs.blue,
     jqTSProperty = fgs.aqua,
     -- Unsupported (yet)
-    jqTSFuncCall = {link = "@function.call"}
+    jqTSFuncCall = {link = "TSFuncCall"}
 }
 
 hl.langs08.jq = {
@@ -2007,7 +2034,11 @@ hl.langs08.graphql = {
 --  │ CSS │
 --  ╰─────╯
 hl.langs.css = {
-    cssAtRule = fgs.red,
+    cssCustomProp = fgs.aqua,
+    cssPseudoClass = fgs.green,
+    cssPseudoClassId = {link = "PreProc"},
+    cssMediaType = {link = "Special"},
+    cssAtRule = {link = "Special"},
     --
     -- Treesitter
     --
@@ -2018,8 +2049,23 @@ hl.langs.css = {
 
 hl.langs08.css = {
     ["@property.css"] = fgs.orange,
-    ["@keyword.css"] = fgs.red,
-    ["@type.css"] = {fg = c.red, gui = bold}
+    ["@property.class.css"] = {fg = c.sea_green, gui = bold},
+    ["@property.id.css"] = {fg = c.blue, gui = bold},
+    ["@keyword.css"] = {fg = c.red, gui = bold},
+    ["@function.css"] = {link = "@function"},
+    ["@string.css"] = {link = "@string"},
+    ["@string.plain.css"] = {fg = c.aqua},
+    ["@type.css"] = {fg = c.green, gui = bold},
+    ["@type.qualifier.css"] = {fg = c.amethyst, gui = bold},
+    ["@type.tag.css"] = {fg = c.red, gui = bold},
+    ["@type.definition.css"] = fgs.old_rose,
+    ["@punctuation.bracket.css"] = fgs.blue,
+    ["@punctuation.delimiter.css"] = {link = "@punctuation.delimiter"},
+    ["@include.css"] = {fg = c.sea_green, gui = bold},
+    ["@namespace.css"] = {fg = c.deep_lilac, gui = bold},
+    ["@operator.css"] = {fg = c.wave_red, gui = bold},
+    -- Custom
+    ["@string.unit.css"] = fgs.salmon
 }
 
 --  ╭──────╮
@@ -2725,8 +2771,15 @@ hl.plugins.floaterm = {
 hl.plugins.vimwiki = {
     VimwikiBold = {fg = c.deep_lilac, gui = "bold"},
     VimwikiBoldItalic = {fg = c.jade_green, gui = "bold,italic"},
+    VimwikiItalicBold = {link = "VimwikiBoldItalic"},
     VimwikiCode = fgs.puce,
     VimwikiItalic = {fg = c.morning_blue, gui = "italic"},
+    VimwikiPre = fgs.purple,
+    VimwikiPreDelim = {link = "PreProc"},
+    VimwikiTag = fgs.red,
+    VimwikiDelText = {fg = c.salmon, gui = "strikethrough"},
+    VimwikiListTodo = {fg = c.blue, gui = "bold"},
+    VimwikiCheckBoxDone = {fg = c.amethyst, gui = "bold"},
     VimwikiHeader1 = {fg = c.infra_red, gui = "bold"},
     VimwikiHeader2 = {fg = "#F06431", gui = "bold"},
     VimwikiHeader3 = {fg = c.russian_green, gui = "bold"},
@@ -2734,7 +2787,12 @@ hl.plugins.vimwiki = {
     VimwikiHeader5 = {fg = c.purple, gui = "bold"},
     VimwikiHeader6 = {fg = "#458588", gui = "bold"},
     VimwikiWeblink1 = {fg = c.aqua, gui = "underline"},
-    VimwikiWeblink1Char = {fg = c.orange, gui = underline}
+    VimwikiWeblink1Char = {fg = c.orange, gui = underline},
+    VimwikiWikiLink1 = {fg = c.orange, gui = "underline"},
+    VimwikiNoExistsLink = {fg = c.red, gui = "underline,bold"},
+    VimwikiImage = {fg = c.blue, gui = "underline"},
+    VimwikiCellSeparator = {link = "Conceal"},
+    VimwikiMarkers = {link = "Comment"}
 }
 
 -- https://github.com/kevinhwang91/nvim-bqf
