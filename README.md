@@ -299,6 +299,7 @@ All of the following languages have been manually configured.
 - [Neomake](https://github.com/neomake/neomake)
 - [NerdIcons](https://github.com/glepnir/nerdicons.nvim)
 - [NerdTree](https://github.com/preservim/nerdtree)
+- [Noice](https://github.com/folke/noice.nvim)
 - [Nvim-Notify](https://github.com/rcarriga/nvim-notify)
 - [Nvim-R](https://github.com/jalvesaq/Nvim-R)
 - [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)

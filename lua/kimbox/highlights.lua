@@ -2768,6 +2768,11 @@ hl.plugins.whichkey = {
     WhichKeySeparator = fgs.beaver
 }
 
+-- https://github.com/folke/noice.nvim
+hl.plugins.noice = {
+    NoiceConfirmBorder = fgs.red,
+}
+
 -- https://github.com/Shougo/defx.nvim
 hl.plugins.defx = {
     DefxIconsParentDirectory = fgs.orange,
