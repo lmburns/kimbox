@@ -133,7 +133,7 @@ end
 
 ---Return one of two values based on a conditional
 ---@generic T, V
----@param condition boolean|nil Statement to be tested
+---@param condition? boolean|fun():boolean Statement to be tested
 ---@param is_if T Return if condition is truthy
 ---@param is_else V Return if condition is not truthy
 ---@return T | V
@@ -216,7 +216,7 @@ end
 ---
 ---@param hex HexColor Color to blend
 ---@param amount number Number between 0 and 1. 0 results in bg, 1 results in fg
----@param bg HexColor Background color
+---@param bg? HexColor Background color
 ---@return HexColor
 M.darken = function(hex, amount, bg)
     return M.blend(hex, bg or M.bg, math.abs(amount))
@@ -225,14 +225,14 @@ end
 ---
 ---@param hex HexColor Color to blend
 ---@param amount number Number between 0 and 1. 0 results in bg, 1 results in fg
----@param fg HexColor Foreground color
+---@param fg? HexColor Foreground color
 ---@return HexColor
 M.lighten = function(hex, amount, fg)
     return M.blend(hex, fg or M.fg, math.abs(amount))
 end
 
 ---Convert a `gui=...` into valid arguments for `api.nvim_set_hl`
----@param style
+---@param style string
 ---@return table
 M.convert_gui = function(style)
     if not style or style:lower() == "none" then

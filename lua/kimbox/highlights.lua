@@ -3,7 +3,7 @@ local M = {}
 local hl = {
     langs = {},
     langs08 = {},
-    plugins = {}
+    plugins = {},
 }
 
 -- Location where Treesitter capture groups changed to '@capture.name'
@@ -80,7 +80,7 @@ local fgs = {
     maroon_x11 = {fg = c.maroon_x11},
     beaver = {fg = c.beaver},
     russet = {fg = c.russet},
-    coconut = {fg = c.coconut}
+    coconut = {fg = c.coconut},
 }
 
 hl.common = {
@@ -92,7 +92,7 @@ hl.common = {
     WinSeparator = {link = "VertSplit"},
     EndOfBuffer = {
         fg = utils.tern(cfg.ending_tildes, c.bg2, c.bg0),
-        bg = utils.tern(trans, c.none, c.bg0)
+        bg = utils.tern(trans, c.none, c.bg0),
     },
     IncSearch = {fg = c.bg1, bg = c.light_red},
     Search = {fg = c.bg0, bg = c.vista_blue},
@@ -109,16 +109,16 @@ hl.common = {
     Cursor = {fg = bgs.ocean, bg = c.deep_saffron}, -- character under the cursor
     vCursor = {fg = bgs.ocean, bg = c.deep_saffron},
     iCursor = {fg = bgs.ocean, bg = c.deep_saffron},
-    lCursor = {fg = bgs.ocean, bg = c.deep_saffron}, -- the character under the cursor when |language-mapping|
+    lCursor = {fg = bgs.ocean, bg = c.deep_saffron},  -- the character under the cursor when |language-mapping|
     CursorIM = {fg = bgs.ocean, bg = c.deep_saffron}, -- like Cursor, but used when in IME mode |CursorIM|
-    CursorColumn = {bg = c.bg1}, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    CursorLine = {fg = c.none, bg = c.bg1}, -- Screen-line at the cursor, when 'cursorline' is set
-    CursorLineNr = {fg = c.purple, gui = bold}, -- Number on cursorline
-    CursorLineFold = {fg = c.purple, gui = bold}, -- FoldColumn for cursorline
-    CursorLineSign = {fg = c.purple, gui = bold}, -- SignColumn for cursorline
-    LineNr = {fg = c.coyote_brown}, -- SignColumn numbers
-    LineNrAbove = {fg = c.coyote_brown}, -- SignColumn numbers above curent line
-    LineNrBelow = {fg = c.coyote_brown}, -- SignColumn numbers below curent line
+    CursorColumn = {bg = c.bg1},                      -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    CursorLine = {fg = c.none, bg = c.bg1},           -- Screen-line at the cursor, when 'cursorline' is set
+    CursorLineNr = {fg = c.purple, gui = bold},       -- Number on cursorline
+    CursorLineFold = {fg = c.purple, gui = bold},     -- FoldColumn for cursorline
+    CursorLineSign = {fg = c.purple, gui = bold},     -- SignColumn for cursorline
+    LineNr = {fg = c.coyote_brown},                   -- SignColumn numbers
+    LineNrAbove = {fg = c.coyote_brown},              -- SignColumn numbers above curent line
+    LineNrBelow = {fg = c.coyote_brown},              -- SignColumn numbers below curent line
     diffAdded = fgs.yellow,
     diffRemoved = fgs.red,
     diffChanged = fgs.blue,
@@ -127,18 +127,18 @@ hl.common = {
     diffFile = fgs.aqua,
     diffLine = fgs.coyote_brown1,
     diffIndexLine = fgs.purple,
-    DiffAdd = {fg = c.none, bg = c.diff_add}, -- diff mode: Added line |diff.txt|
+    DiffAdd = {fg = c.none, bg = c.diff_add},       -- diff mode: Added line |diff.txt|
     DiffChange = {fg = c.none, bg = c.diff_change}, -- diff mode: Changed line |diff.txt|
     DiffDelete = {fg = c.none, bg = c.diff_delete}, -- diff mode: Deleted line |diff.txt|
-    DiffText = {fg = c.none, bg = c.diff_text}, -- diff mode: Changed text within a changed line |diff.txt|
+    DiffText = {fg = c.none, bg = c.diff_text},     -- diff mode: Changed text within a changed line |diff.txt|
     DiffFile = {fg = c.aqua},
-    Directory = {fg = c.salmon, gui = bold}, -- directory names (and other special names in listings)
+    Directory = {fg = c.salmon, gui = bold},        -- directory names (and other special names in listings)
     ErrorMsg = {fg = c.red, gui = underbold},
     WarningMsg = {fg = c.green, gui = bold},
-    ModeMsg = {fg = c.purple, gui = bold}, -- 'showmode' message
-    MoreMsg = {fg = c.green, gui = bold}, -- |more-prompt|
+    ModeMsg = {fg = c.purple, gui = bold},         -- 'showmode' message
+    MoreMsg = {fg = c.green, gui = bold},          -- |more-prompt|
     MsgSeparator = {fg = c.light_red, gui = bold}, -- Separator for scrolled messages
-    Question = {fg = c.green}, -- Yes/no prompt questions
+    Question = {fg = c.green},                     -- Yes/no prompt questions
     MatchParen = {fg = c.none, bg = c.bg4},
     Substitute = {fg = c.bg0, bg = c.green},
     NonText = {fg = c.bg4}, -- fillchars, showbreak
@@ -147,22 +147,22 @@ hl.common = {
     -- Popup menu: normal item
     Pmenu = {
         fg = c.fg4,
-        bg = utils.tern(cfg.popup.background, c.bg0, c.bg1)
+        bg = utils.tern(cfg.popup.background, c.bg0, c.bg1),
     },
-    PmenuSel = {fg = c.red, bg = c.bg4, gui = bold}, -- Popup menu: selected item
-    PmenuSbar = {fg = c.none, bg = c.fg3}, -- Popup menu: scrollbar
+    PmenuSel = {fg = c.red, bg = c.bg4, gui = bold},   -- Popup menu: selected item
+    PmenuSbar = {fg = c.none, bg = c.fg3},             -- Popup menu: scrollbar
     PmenuThumb = {fg = c.none, bg = c.green},
-    WildMenu = {fg = c.bg3, bg = c.green}, -- Current match in 'wildmenu' completion
-    WinBar = {fg = c.fg0, gui = bold}, -- window bar of current window
-    WinBarNC = {fg = c.bg4, gui = bold}, -- window bar of not-current windows
-    NormalFloat = {fg = c.fg1, bg = bgs.ocean}, -- Normal text in floating windows.
-    TabLine = {fg = c.fg, bg = c.bg1}, -- Tab pages line, not active tab page label
+    WildMenu = {fg = c.bg3, bg = c.green},             -- Current match in 'wildmenu' completion
+    WinBar = {fg = c.fg0, gui = bold},                 -- window bar of current window
+    WinBarNC = {fg = c.bg4, gui = bold},               -- window bar of not-current windows
+    NormalFloat = {fg = c.fg1, bg = bgs.ocean},        -- Normal text in floating windows.
+    TabLine = {fg = c.fg, bg = c.bg1},                 -- Tab pages line, not active tab page label
     TabLineSel = {fg = c.bg1, bg = c.fg4, gui = bold}, -- Tab pages line, active tab page label
     -- TabLineSel = {fg = c.fg, bg = c.bg1}, -- Tab pages line, active tab page label
     -- TabLineFill = {fg = c.fg, bg = c.bg1}, -- Tab pages line, where there are no labels
-    TabLineFill = {gui = "none"}, -- Tab pages line, where there are no labels
+    TabLineFill = {gui = "none"},                       -- Tab pages line, where there are no labels
     -- When last status=2 or 3
-    StatusLine = {fg = c.none, bg = c.none}, -- Status line of current window.
+    StatusLine = {fg = c.none, bg = c.none},            -- Status line of current window.
     StatusLineNC = {fg = c.coyote_brown1, bg = c.none}, -- Status lines of not-current windows
     StatusLineTerm = {fg = c.fg0, bg = c.bg2},
     StatusLineTermNC = {fg = c.coyote_brown1, bg = c.bg1},
@@ -171,7 +171,7 @@ hl.common = {
     SpellCap = {fg = c.blue, gui = undercurl, sp = c.blue},
     SpellLocal = {fg = c.aqua, gui = undercurl, sp = c.aqua},
     SpellRare = {fg = c.purple, gui = undercurl, sp = c.purple},
-    Visual = {fg = c.black, bg = c.fg4, gui = reverse}, -- Visual mode selection
+    Visual = {fg = c.black, bg = c.fg4, gui = reverse},    -- Visual mode selection
     VisualNOS = {fg = c.black, bg = c.fg4, gui = reverse}, -- Visual sel when vim is "Not Owning the Selection"
     QuickFixLine = {fg = c.purple, gui = bold},
     Debug = {fg = c.orange},
@@ -180,7 +180,7 @@ hl.common = {
     ToolbarButton = {fg = c.bg0, bg = c.grullo_grey},
     FloatBorder = {fg = c.magenta},
     FloatTitle = {fg = c.orange, gui = bold},
-    FloatermBorder = {fg = c.magenta}
+    FloatermBorder = {fg = c.magenta},
 }
 
 hl.syntax = {
@@ -220,7 +220,7 @@ hl.syntax = {
     Underlined = {fg = c.none, gui = "underline"},
     Comment = {fg = c.coyote_brown1, gui = italic}, -- any comment
     SpecialComment = {fg = c.coyote_brown1, gui = italic},
-    Todo = {fg = c.purple, bg = c.none, gui = italic}
+    Todo = {fg = c.purple, bg = c.none, gui = italic},
 }
 
 hl.treesitter = {
@@ -229,11 +229,11 @@ hl.treesitter = {
     -- TSStrike = { fg = c.coyote_brown1, gui = "strikethrough" },
     -- TSStrong = { fg = c.fg, gui = "bold" },
 
-    TSBoolean = fgs.orange, -- Boolean literals
-    TSCharacter = fgs.yellow, -- Character literals
-    TSCharacterSpecial = {link = "SpecialChar"}, -- Special characters
+    TSBoolean = fgs.orange,                           -- Boolean literals
+    TSCharacter = fgs.yellow,                         -- Character literals
+    TSCharacterSpecial = {link = "SpecialChar"},      -- Special characters
     TSComment = {fg = c.coyote_brown1, gui = italic}, -- Line comments and block comments
-    TSConditional = {fg = c.purple, gui = italic}, -- keywords related to conditionals (e.g. `if` / `else`)
+    TSConditional = {fg = c.purple, gui = italic},    -- keywords related to conditionals (e.g. `if` / `else`)
     TSConstant = {fg = c.sea_green, gui = bold},
     TSConstBuiltin = {fg = c.orange, gui = italic},
     TSConstMacro = {fg = c.orange, gui = italic},
@@ -246,12 +246,12 @@ hl.treesitter = {
     TSFuncCall = {fg = c.magenta, gui = bold},
     TSFuncBuiltin = {fg = c.magenta, gui = bold},
     TSFuncMacro = fgs.aqua,
-    TSInclude = {fg = c.red, gui = italic}, -- keywords for including modules (e.g. `import` / `from` in Python)
+    TSInclude = {fg = c.red, gui = italic},     -- keywords for including modules (e.g. `import` / `from` in Python)
     TSKeyword = fgs.red,
-    TSKeywordFunction = fgs.red, -- keywords that define a function (e.g. `func` in Go, `def` in Python)
-    TSKeywordOperator = fgs.red, -- operators that are English words (e.g. `and` / `or`)
+    TSKeywordFunction = fgs.red,                -- keywords that define a function (e.g. `func` in Go, `def` in Python)
+    TSKeywordOperator = fgs.red,                -- operators that are English words (e.g. `and` / `or`)
     TSKeywordReturn = {fg = c.red, gui = bold}, -- keywords like `return` and `yield`
-    TSLabel = fgs.orange, -- GOTO and other labels (e.g. `label:` in C)
+    TSLabel = fgs.orange,                       -- GOTO and other labels (e.g. `label:` in C)
     TSMethod = fgs.blue,
     TSMethodCall = fgs.blue,
     TSNamespace = {fg = c.blue, gui = italic},
@@ -291,7 +291,7 @@ hl.treesitter = {
     TSTextReference = fgs.blue,
     TSStrike = fgs.coyote_brown1,
     TSStrong = {fg = c.deep_lilac, gui = bold}, -- {fg = c.none, gui = "bold"},
-    TSTitle = {fg = c.orange, gui = "bold"}, -- Text that is part of a title
+    TSTitle = {fg = c.orange, gui = "bold"},    -- Text that is part of a title
     TSTodo = {fg = c.red, gui = bold},
     TSUnderline = {fg = c.fg, gui = "underline"},
     TSURI = {fg = c.fg0, gui = "underline"},
@@ -302,7 +302,7 @@ hl.treesitter = {
     TSTypeQualifier = fgs.red,
     TSVariable = fgs.fg0,
     TSVariableBuiltin = fgs.blue,
-    TSVariableGlobal = fgs.blue
+    TSVariableGlobal = fgs.blue,
 }
 
 hl.langs08.treesitter = {
@@ -392,7 +392,7 @@ hl.langs08.treesitter = {
     ["@text.hint"] = {fg = c.amethyst, gui = bold},
     ["@text.info"] = {fg = c.blue, gui = bold},
     ["@text.debug"] = {fg = c.orange, gui = bold},
-    ["@text.trace"] = {fg = c.deep_lilac, gui = bold}
+    ["@text.trace"] = {fg = c.deep_lilac, gui = bold},
 }
 
 --  ╭──────────╮
@@ -421,7 +421,7 @@ hl.langs.solidity = {
     solidityTSType = {fg = c.green, gui = bold},
     solidityTSTag = {fg = c.blue, gui = bold},
     solidityTSMethod = {fg = c.magenta, gui = bold},
-    solidityTSField = {link = "TSField"}
+    solidityTSField = {link = "TSField"},
 }
 
 hl.langs08.solidity = {
@@ -431,7 +431,7 @@ hl.langs08.solidity = {
     ["@tag.solidity"] = {fg = c.blue, gui = bold},
     ["@method.solidity"] = {fg = c.magenta, gui = bold},
     ["@method.call.solidity"] = {fg = c.magenta, gui = bold},
-    ["@field.solidity"] = {link = "@field"}
+    ["@field.solidity"] = {link = "@field"},
 }
 
 --  ╭──────╮
@@ -441,14 +441,14 @@ hl.langs.help = {
     helpTSTitle = fgs.red,
     helpTSLabel = fgs.blue,
     helpTSString = {link = "TSString"},
-    helpTSURI = {link = "TSURI"}
+    helpTSURI = {link = "TSURI"},
 }
 
 hl.langs08.help = {
     ["@text.title.help"] = fgs.red,
     ["@label.help"] = fgs.blue,
     ["@string.help"] = {link = "@string"},
-    ["@text.uri.help"] = {link = "@text.uri"}
+    ["@text.uri.help"] = {link = "@text.uri"},
 }
 
 hl.langs.vimdoc = {
@@ -466,7 +466,7 @@ hl.langs.vimdoc = {
     vimdocTSLabel = fgs.blue,
     vimdocTSString = {link = "TSString"},
     vimdocTSURI = {link = "TSURI"},
-    vimdocTSParameter = fgs.salmon
+    vimdocTSParameter = fgs.salmon,
 }
 
 hl.langs08.vimdoc = {
@@ -477,7 +477,7 @@ hl.langs08.vimdoc = {
     ["@label.vimdoc"] = fgs.blue,
     ["@string.vimdoc"] = {link = "@string"},
     ["@text.uri.vimdoc"] = {link = "@text.uri"},
-    ["@parameter.vimdoc"] = fgs.salmon
+    ["@parameter.vimdoc"] = fgs.salmon,
     -- ["@parameter.vimdoc"] = fgs.green,
 }
 
@@ -528,7 +528,7 @@ hl.langs.markdown = {
     markdownTSTextQuote = {link = "@string"},
     markdownTSTodoChecked = {fg = c.orange, gui = bold},
     markdownTSTodoUnchecked = {fg = c.green, gui = bold},
-    markdownTSPunctSpecial = {fg = c.red, gui = bold}
+    markdownTSPunctSpecial = {fg = c.red, gui = bold},
 }
 
 hl.langs08.markdown = {
@@ -548,7 +548,7 @@ hl.langs08.markdown = {
     ["@text.quote.markdown"] = {link = "@string"},
     ["@text.todo.checked"] = {fg = c.orange, gui = bold},
     ["@text.todo.unchecked"] = {fg = c.green, gui = bold},
-    ["@punctuation.special.markdown"] = {fg = c.red, gui = bold}
+    ["@punctuation.special.markdown"] = {fg = c.red, gui = bold},
 }
 
 --  ╭─────╮
@@ -597,7 +597,7 @@ hl.langs.tex = {
     latexTSEnvironmentName = fgs.yellow,
     latexTSMath = fgs.purple,
     latexTSTitle = fgs.orange,
-    latexTSType = fgs.green
+    latexTSType = fgs.green,
 }
 
 hl.langs08.tex = {
@@ -607,7 +607,7 @@ hl.langs08.tex = {
     ["@text.environment.name.latex"] = fgs.yellow,
     ["@text.math.latex"] = fgs.purple,
     ["@text.title.latex"] = fgs.orange,
-    ["@type.latex"] = fgs.green
+    ["@type.latex"] = fgs.green,
 }
 
 --  ╭────────────╮
@@ -800,7 +800,7 @@ hl.langs.javascript = {
     javascriptTSPunctBracket = fgs.purple,
     javascriptTSPunctSpecial = {link = "TSPunctSpecial"},
     javascriptTSTypeBuiltin = {link = "TSTypeBuiltin"},
-    javascriptTSVariableBuiltin = {link = "TSVariableBuiltin"}
+    javascriptTSVariableBuiltin = {link = "TSVariableBuiltin"},
 }
 
 hl.langs08.javascript = {
@@ -815,7 +815,7 @@ hl.langs08.javascript = {
     ["@punctuation.bracket.javascript"] = fgs.purple,
     ["@punctuation.special.javascript"] = {link = "@punctuation.special"},
     ["@type.builtin.javascript"] = {link = "@type.builtin"},
-    ["@variable.builtin.javascript"] = {link = "@variable.builtin"}
+    ["@variable.builtin.javascript"] = {link = "@variable.builtin"},
 }
 
 --  ╭────────────╮
@@ -993,7 +993,7 @@ hl.langs.typescript = {
     typescriptTSConstructor = {fg = c.wave_red, gui = bold},
     typescriptTSProperty = fgs.aqua,
     typescriptTSMethod = {fg = c.magenta, gui = bold},
-    typescriptTSKeyword = fgs.red
+    typescriptTSKeyword = fgs.red,
 }
 
 hl.langs08.typescript = {
@@ -1009,7 +1009,7 @@ hl.langs08.typescript = {
     ["@property.typescript"] = fgs.aqua,
     ["@method.typescript"] = {fg = c.magenta, gui = bold},
     ["@method.call.typescript"] = {fg = c.magenta, gui = bold},
-    ["@keyword.typescript"] = fgs.red
+    ["@keyword.typescript"] = fgs.red,
 }
 
 --  ╭─────╮
@@ -1023,8 +1023,7 @@ hl.langs.tsx = {
     tsxTSTagAttribute = fgs.aqua,
     tsxTSTag = {fg = c.orange, gui = italic},
     tsxTSVariableBuiltin = fgs.blue,
-    tsxTSException = {fg = c.orange, gui = italic}
-
+    tsxTSException = {fg = c.orange, gui = italic},
     -- jsxTag = {fg = c.purple, gui = bold},
     -- jsxOpenPunct = fgs.yellow,
     -- jsxClosePunct = fgs.blue,
@@ -1043,7 +1042,7 @@ hl.langs08.tsx = {
     ["@tag.attribute.tsx"] = fgs.aqua,
     ["@tag.tsx"] = {fg = c.orange, gui = italic},
     ["@variable.builtin.tsx"] = fgs.blue,
-    ["@exception.tsx"] = {fg = c.orange, gui = italic}
+    ["@exception.tsx"] = {fg = c.orange, gui = italic},
 }
 
 --  ╭────────╮
@@ -1097,7 +1096,7 @@ hl.langs.python = {
     pythonTSConstant = {fg = c.sea_green, gui = bold},
     pythonTSField = fgs.fg0,
     pythonTSStringEscape = fgs.green,
-    pythonTSPunctBracket = fgs.purple
+    pythonTSPunctBracket = fgs.purple,
 }
 
 hl.langs08.python = {
@@ -1111,7 +1110,7 @@ hl.langs08.python = {
     ["@parameter.python"] = fgs.orange,
     ["@punctuation.bracket.python"] = fgs.purple,
     ["@string.escape.python"] = fgs.green,
-    ["@type.python"] = {fg = c.green, gui = bold}
+    ["@type.python"] = {fg = c.green, gui = bold},
 }
 
 --  ╭────╮
@@ -1141,7 +1140,7 @@ hl.langs.go = {
     goTSNamespace = {fg = c.jade_green, gui = bold},
     goTSType = {fg = c.green, gui = bold},
     goTSTypeBuiltin = {fg = c.green, gui = bold},
-    goTSPunctBracket = fgs.purple
+    goTSPunctBracket = fgs.purple,
 }
 
 hl.langs08.go = {
@@ -1152,7 +1151,7 @@ hl.langs08.go = {
     ["@namespace.go"] = {fg = c.jade_green, gui = bold},
     ["@type.go"] = {fg = c.green, gui = bold},
     ["@type.builtin.go"] = {fg = c.green, gui = bold},
-    ["@punctuation.bracket.go"] = fgs.purple
+    ["@punctuation.bracket.go"] = fgs.purple,
 }
 
 --  ╭──────╮
@@ -1190,7 +1189,7 @@ hl.langs.rust = {
     rustTSStringEscape = fgs.green,
     rustTSType = {fg = c.green, gui = bold},
     rustTSTypeBuiltin = {fg = c.green, gui = bold},
-    rustTSVariableBuiltin = fgs.blue
+    rustTSVariableBuiltin = fgs.blue,
 }
 
 hl.langs08.rust = {
@@ -1207,7 +1206,7 @@ hl.langs08.rust = {
     ["@string.escape.rust"] = fgs.green,
     ["@type.rust"] = {fg = c.green, gui = bold},
     ["@type.builtin.rust"] = {fg = c.green, gui = bold},
-    ["@variable.builtin.rust"] = fgs.blue
+    ["@variable.builtin.rust"] = fgs.blue,
 }
 
 --  ╭──────╮
@@ -1238,7 +1237,7 @@ hl.langs.ruby = {
     rubyTSParameter = fgs.orange,
     rubyTSSymbol = fgs.aqua,
     rubyTSNone = fgs.blue,
-    rubyTSType = {fg = c.green, gui = bold}
+    rubyTSType = {fg = c.green, gui = bold},
 }
 
 hl.langs08.ruby = {
@@ -1249,7 +1248,7 @@ hl.langs08.ruby = {
     ["@parameter.ruby"] = fgs.orange,
     ["@symbol.ruby"] = fgs.aqua,
     ["@none.ruby"] = fgs.blue,
-    ["@type.ruby"] = {fg = c.green, gui = bold}
+    ["@type.ruby"] = {fg = c.green, gui = bold},
 }
 
 --  ╭──────╮
@@ -1274,11 +1273,11 @@ hl.langs.perl = {
     --
     -- Treesitter
     --
-    perlTSVariable = fgs.blue
+    perlTSVariable = fgs.blue,
 }
 
 hl.langs08.perl = {
-    ["@variable.perl"] = fgs.blue
+    ["@variable.perl"] = fgs.blue,
 }
 
 --  ╭─────╮
@@ -1320,7 +1319,7 @@ hl.langs.lua = {
     luaTSVariableBuiltin = fgs.russian_green,
     luaTSFuncBuiltin = {fg = c.magenta, gui = bold},
     luaTSKeywordFunction = fgs.red,
-    luaTSKeywordCoroutine = {fg = c.oni_violet, gui = bold}
+    luaTSKeywordCoroutine = {fg = c.oni_violet, gui = bold},
 }
 
 hl.langs08.lua = {
@@ -1343,13 +1342,14 @@ hl.langs08.lua = {
     ["@keyword.self.lua"] = fgs.blue,
     ["@keyword.super.lua"] = fgs.blue,
     ["@field.builtin.lua"] = fgs.wave_red,
-    ["@constant.blank.lua"] = {fg = c.green, gui = bold}
+    ["@constant.blank.lua"] = {fg = c.green, gui = bold},
 }
 
 --  ╭─────────╮
 --  │ Lua Doc │
 --  ╰─────────╯
 hl.langs.luadoc = {
+    luadocTSVariable = {fg = c.philippine_silver, gui = bold},
     luadocTSParameter = {fg = c.salmon, gui = bold},
     luadocTSKeyword = fgs.jasper_orange,
     luadocTSKeywordFunction = {link = "TSKeywordFunction"},
@@ -1359,10 +1359,11 @@ hl.langs.luadoc = {
     luadocTSOperator = {fg = c.orange, gui = bold},
     luadocTSPunctBracket = fgs.purple,
     luadocTSPunctDelimiter = {fg = c.orange, gui = bold},
-    luadocTSPunctSpecial = {link = "TSPunctSpecial"}
+    luadocTSPunctSpecial = {link = "TSPunctSpecial"},
 }
 
 hl.langs08.luadoc = {
+    ["@variable.luadoc"] = {fg = c.philippine_silver, gui = bold},
     ["@parameter.luadoc"] = {fg = c.salmon, gui = bold},
     ["@keyword.luadoc"] = fgs.jasper_orange,
     ["@keyword.function.luadoc"] = {link = "@keyword.function"},
@@ -1372,7 +1373,7 @@ hl.langs08.luadoc = {
     ["@operator.luadoc"] = {fg = c.orange, gui = bold},
     ["@punctuation.bracket.luadoc"] = fgs.purple,
     ["@punctuation.delimiter.luadoc"] = {fg = c.orange, gui = bold},
-    ["@punctuation.special.luadoc"] = {link = "@punctuation.special"}
+    ["@punctuation.special.luadoc"] = {link = "@punctuation.special"},
 }
 
 --  ╭──────╮
@@ -1382,14 +1383,14 @@ hl.langs.luap = {
     luapTSPunctSpecial = fgs.green,
     luapTSPunctBracket = fgs.blue,
     luapTSOperator = fgs.orange,
-    luapTSKeyword = fgs.red
+    luapTSKeyword = fgs.red,
 }
 
 hl.langs08.luap = {
     ["@punctuation.special.luap"] = fgs.green,
     ["@punctuation.bracket.luap"] = fgs.blue,
     ["@operator.luap"] = fgs.orange,
-    ["@keyword.luap"] = fgs.red
+    ["@keyword.luap"] = fgs.red,
 }
 
 --  ╭───────╮
@@ -1401,7 +1402,7 @@ hl.langs.regex = {
     -- regexTSConstCharacterEscape = {fg = c.russian_green, gui = bold},
     regesTSPunctDelimiter = {fg = c.ube, gui = bold},
     regexTSOperator = {fg = c.pumpkin, bui = bold},
-    regexTSProperty = {fg = c.yellow, bui = bold}
+    regexTSProperty = {fg = c.yellow, bui = bold},
 }
 
 hl.langs08.regex = {
@@ -1411,7 +1412,7 @@ hl.langs08.regex = {
     ["@constant.character.escape.regex"] = {fg = c.russian_green, gui = bold},
     ["@punctuation.delimiter.regex"] = {fg = c.ube, gui = bold},
     ["@operator.regex"] = {fg = c.pumpkin, bui = bold},
-    ["@property.regex"] = {fg = c.yellow, bui = bold}
+    ["@property.regex"] = {fg = c.yellow, bui = bold},
 }
 
 --  ╭──────╮
@@ -1422,7 +1423,7 @@ hl.langs.teal = {
     tealTSParameter = fgs.aqua,
     tealTSPunctBracket = fgs.purple,
     tealTSFunction = {fg = c.magenta, gui = bold},
-    tealTSConstant = {fg = c.wave_red, gui = bold}
+    tealTSConstant = {fg = c.wave_red, gui = bold},
 }
 
 hl.langs08.teal = {
@@ -1430,7 +1431,7 @@ hl.langs08.teal = {
     ["@parameter.teal"] = fgs.aqua,
     ["@punctuation.bracket.teal"] = fgs.purple,
     ["@function.teal"] = {fg = c.magenta, gui = bold},
-    ["@constant.teal"] = {fg = c.wave_red, gui = bold}
+    ["@constant.teal"] = {fg = c.wave_red, gui = bold},
 }
 
 --  ╭──────╮
@@ -1477,7 +1478,7 @@ hl.langs.vim = {
     vimTSRepeat = fgs.blue,
     vimTSStringSpecial = fgs.green,
     vimTSType = {fg = c.green, gui = bold},
-    vimTSVariableBuiltin = {fg = c.green, gui = bold}
+    vimTSVariableBuiltin = {fg = c.green, gui = bold},
     --
     -- vimTSFuncBuiltin = {fg = c.jade_green, gui = bold},
 }
@@ -1498,7 +1499,7 @@ hl.langs08.vim = {
     ["@repeat.vim"] = fgs.blue,
     ["@string.special.vim"] = fgs.green,
     ["@type.vim"] = {fg = c.green, gui = bold},
-    ["@variable.builtin.vim"] = {fg = c.green, gui = bold}
+    ["@variable.builtin.vim"] = {fg = c.green, gui = bold},
     --
     -- Unsupported
     --
@@ -1523,7 +1524,7 @@ hl.langs.c = {
     cTSOperator = fgs.orange,
     cTSRepeat = fgs.blue,
     cTSType = {fg = c.green, gui = bold},
-    cTSPunctBracket = fgs.purple
+    cTSPunctBracket = fgs.purple,
     -- cTSInclude = fgs.blue,
     -- cTSFuncMacro = fgs.yellow,
 }
@@ -1536,7 +1537,7 @@ hl.langs08.c = {
     ["@operator.c"] = fgs.orange,
     ["@repeat.c"] = fgs.blue,
     ["@type.c"] = {fg = c.green, gui = bold},
-    ["@punctuation.bracket.c"] = fgs.purple
+    ["@punctuation.bracket.c"] = fgs.purple,
 }
 
 --  ╭─────╮
@@ -1557,7 +1558,7 @@ hl.langs.cpp = {
     cppTSInclude = {fg = c.red, gui = italic},
     cppTSMethod = fgs.blue,
     cppTSField = fgs.aqua,
-    cppTSConstructor = {fg = c.wave_red, gui = bold}
+    cppTSConstructor = {fg = c.wave_red, gui = bold},
 }
 
 hl.langs08.cpp = {
@@ -1573,7 +1574,7 @@ hl.langs08.cpp = {
     ["@method.cpp"] = fgs.blue,
     ["@method.call.cpp"] = {fg = c.magenta, gui = bold},
     ["@field.cpp"] = fgs.aqua,
-    ["@constructor.cpp"] = {fg = c.wave_red, gui = bold}
+    ["@constructor.cpp"] = {fg = c.wave_red, gui = bold},
 }
 
 --  ╭─────╮
@@ -1585,7 +1586,7 @@ hl.langs.zig = {
     zigTSFuncMacro = fgs.aqua,
     zigTSAttribute = fgs.red,
     zigTSPunctBracket = fgs.orange,
-    zigTSConstBuiltin = {fg = c.orange, gui = bold}
+    zigTSConstBuiltin = {fg = c.orange, gui = bold},
 }
 
 hl.langs08.zig = {
@@ -1594,7 +1595,7 @@ hl.langs08.zig = {
     ["@function.macro.zig"] = fgs.aqua,
     ["@attribute.zig"] = fgs.red,
     ["@punctuation.bracket.zig"] = fgs.orange,
-    ["@constant.builtin.zig"] = {fg = c.orange, gui = bold}
+    ["@constant.builtin.zig"] = {fg = c.orange, gui = bold},
 }
 
 --  ╭────────────╮
@@ -1624,7 +1625,7 @@ hl.langs.shell = {
     bashTSParameter = fgs.green,
     bashTSConstant = fgs.blue,
     bashTSPunctSpecial = fgs.aqua,
-    bashTSVariable = fgs.blue
+    bashTSVariable = fgs.blue,
 }
 
 hl.langs08.shell = {
@@ -1632,7 +1633,7 @@ hl.langs08.shell = {
     ["@parameter.bash"] = fgs.green,
     ["@constant.bash"] = fgs.blue,
     ["@punctuation.special.bash"] = fgs.aqua,
-    ["@variable.bash"] = fgs.blue
+    ["@variable.bash"] = fgs.blue,
 }
 
 hl.langs.zsh = {
@@ -1653,7 +1654,7 @@ hl.langs.zsh = {
     zshKeymap = {link = "TSConstBuiltin"},
     zshBrackets = {fg = c.blue},
     -- sh.vim
-    zshDelim = {fg = c.blue}
+    zshDelim = {fg = c.blue},
 }
 
 --  ╭─────╮
@@ -1678,7 +1679,7 @@ hl.langs.awk = {
     --
     -- Unsupported (yet)
     --
-    awkTSVariableBuiltin = fgs.blue
+    awkTSVariableBuiltin = fgs.blue,
 }
 
 hl.langs08.awk = {
@@ -1700,7 +1701,7 @@ hl.langs08.awk = {
     --
     -- Unsupported (yet)
     --
-    ["@variable.builtin.awk"] = fgs.blue
+    ["@variable.builtin.awk"] = fgs.blue,
 }
 
 --  ╭─────╮
@@ -1715,7 +1716,7 @@ hl.langs.sed = {
     sedRegexp58 = fgs.opera_muave,
     sedReplacement47 = fgs.yellow,
     sedFlag = {fg = c.red, gui = bold},
-    sedReplacement58 = fgs.oni_violet
+    sedReplacement58 = fgs.oni_violet,
 }
 
 --  ╭─────────╮
@@ -1723,12 +1724,12 @@ hl.langs.sed = {
 --  ╰─────────╯
 hl.langs.comment = {
     commentTSTag = fgs.peach_red,
-    commentTSConstant = fgs.jasper_orange
+    commentTSConstant = fgs.jasper_orange,
 }
 
 hl.langs08.comment = {
     ["@tag.comment"] = fgs.peach_red,
-    ["@constant.comment"] = fgs.jasper_orange
+    ["@constant.comment"] = fgs.jasper_orange,
 }
 
 --  ╭──────╮
@@ -1742,7 +1743,7 @@ hl.langs.dart = {
     dartTypeDef = {fg = c.red, gui = italic},
     dartClassDecl = {fg = c.red, gui = italic},
     dartLibrary = {fg = c.purple, gui = italic},
-    dartMetadata = fgs.blue
+    dartMetadata = fgs.blue,
 }
 
 --  ╭──────────────╮
@@ -1763,7 +1764,7 @@ hl.langs.coffeescript = {
     coffeeStatement = fgs.orange,
     coffeeSpecialIdent = fgs.purple,
     coffeeObject = fgs.purple,
-    coffeeObjAssign = fgs.aqua
+    coffeeObjAssign = fgs.aqua,
 }
 
 --  ╭────────────╮
@@ -1776,7 +1777,7 @@ hl.langs.objectivec = {
     objcObjDef = {fg = c.purple, gui = italic},
     objcDirective = {fg = c.red, gui = italic},
     objcPropertyAttribute = fgs.orange,
-    objcHiddenArgument = fgs.aqua
+    objcHiddenArgument = fgs.aqua,
 }
 
 --  ╭────────╮
@@ -1788,7 +1789,7 @@ hl.langs.kotlin = {
     ktComplexInterpolation = fgs.green,
     ktComplexInterpolationBrace = fgs.green,
     ktStructure = {fg = c.red, gui = italic},
-    ktKeyword = fgs.aqua
+    ktKeyword = fgs.aqua,
 }
 
 --  ╭───────╮
@@ -1801,7 +1802,7 @@ hl.langs.scala = {
     scalaInterpolation = fgs.blue,
     scalaTypeOperator = fgs.orange,
     scalaOperator = fgs.orange,
-    scalaKeywordModifier = fgs.orange
+    scalaKeywordModifier = fgs.orange,
 }
 
 --  ╭───────╮
@@ -1813,7 +1814,7 @@ hl.langs.swift = {
     swiftInterpolatedString = fgs.blue,
     swiftProperty = fgs.aqua,
     swiftTypeDeclaration = fgs.orange,
-    swiftClosureArgument = fgs.purple
+    swiftClosureArgument = fgs.purple,
 }
 
 --  ╭─────╮
@@ -1839,7 +1840,7 @@ hl.langs.php = {
     phpHereDoc = fgs.green,
     phpSCKeyword = {fg = c.purple, gui = italic},
     phpFCKeyword = {fg = c.purple, gui = italic},
-    phpRegion = fgs.blue
+    phpRegion = fgs.blue,
 }
 
 --  ╭─────────╮
@@ -1855,7 +1856,7 @@ hl.langs.haskell = {
     haskellDeclKeyword = {fg = c.red, gui = italic},
     haskellWhere = {fg = c.red, gui = italic},
     haskellDeriving = {fg = c.purple, gui = italic},
-    haskellForeignKeywords = {fg = c.purple, gui = italic}
+    haskellForeignKeywords = {fg = c.purple, gui = italic},
 }
 
 --  ╭───────╮
@@ -1879,7 +1880,7 @@ hl.langs.ocaml = {
     ocamlPpxIdentifier = fgs.blue,
     ocamlSigEncl = fgs.orange,
     ocamlStructEncl = fgs.aqua,
-    ocamlModParam1 = fgs.blue
+    ocamlModParam1 = fgs.blue,
 }
 
 --  ╭────────╮
@@ -1893,7 +1894,7 @@ hl.langs.erlang = {
     erlangGlobalFuncRef = {fg = c.yellow, gui = bold},
     erlangGlobalFuncCall = {fg = c.yellow, gui = bold},
     erlangAttribute = {fg = c.purple, gui = italic},
-    erlangPipe = fgs.orange
+    erlangPipe = fgs.orange,
 }
 
 --  ╭────────╮
@@ -1924,7 +1925,7 @@ hl.langs.elixir = {
     elixirExceptionDefine = {fg = c.red, gui = italic},
     elixirCallbackDefine = {fg = c.red, gui = italic},
     elixirStructDefine = {fg = c.red, gui = italic},
-    elixirExUnitMacro = {fg = c.red, gui = italic}
+    elixirExUnitMacro = {fg = c.red, gui = italic},
 }
 
 --  ╭─────────╮
@@ -1940,7 +1941,7 @@ hl.langs.clojure = {
     clojureKeyword = fgs.orange,
     clojureVariable = fgs.blue,
     clojureMeta = fgs.green,
-    clojureDeref = fgs.green
+    clojureDeref = fgs.green,
 }
 
 --  ╭───╮
@@ -1954,7 +1955,7 @@ hl.langs.r = {
     rBoolean = fgs.orange,
     rOperator = fgs.orange,
     rSection = fgs.orange,
-    rRepeat = fgs.purple
+    rRepeat = fgs.purple,
 }
 
 --  ╭────────╮
@@ -1968,14 +1969,14 @@ hl.langs.matlab = {
     matlabOperator = {fg = c.yellow, gui = bold},
     matlabArithmeticOperator = fgs.orange,
     matlabRelationalOperator = fgs.orange,
-    matlabLogicalOperator = fgs.orange
+    matlabLogicalOperator = fgs.orange,
 }
 
 -- https://github.com/b0o/incline.nvim
 hl.langs.man = {
     manSectionHeading = {link = "Statement"},
     manTitle = {link = "Title"},
-    manReference = {fg = c.sea_green, gui = bold}
+    manReference = {fg = c.sea_green, gui = bold},
 }
 
 --  ╭────╮
@@ -1994,7 +1995,7 @@ hl.langs.jq = {
     jqTSVariable = fgs.blue,
     jqTSProperty = fgs.aqua,
     -- Unsupported (yet)
-    jqTSFuncCall = {link = "TSFuncCall"}
+    jqTSFuncCall = {link = "TSFuncCall"},
 }
 
 hl.langs08.jq = {
@@ -2010,7 +2011,7 @@ hl.langs08.jq = {
     ["@variable.jq"] = fgs.blue,
     ["@property.jq"] = fgs.aqua,
     -- Unsupported (yet)
-    ["@function.call.jq"] = {link = "@function.call"}
+    ["@function.call.jq"] = {link = "@function.call"},
 }
 
 --  ╭─────────╮
@@ -2020,14 +2021,14 @@ hl.langs.graphql = {
     graphqlTSParameter = fgs.blue,
     graphqlTSVariable = {fg = c.magenta, gui = bold},
     graphqlTSProperty = fgs.aqua,
-    graphqlTSPunctBracket = fgs.purple
+    graphqlTSPunctBracket = fgs.purple,
 }
 
 hl.langs08.graphql = {
     ["@parameter.graphql"] = fgs.blue,
     ["@variable.graphql"] = {fg = c.magenta, gui = bold},
     ["@property.graphql"] = fgs.aqua,
-    ["@punctuation.bracket.graphql"] = fgs.purple
+    ["@punctuation.bracket.graphql"] = fgs.purple,
 }
 
 --  ╭─────╮
@@ -2079,7 +2080,7 @@ hl.langs08.css = {
     ["@namespace.css"] = {fg = c.deep_lilac, gui = bold},
     ["@operator.css"] = {fg = c.wave_red, gui = bold},
     -- Custom
-    ["@string.unit.css"] = fgs.salmon
+    ["@string.unit.css"] = fgs.salmon,
 }
 
 --  ╭──────╮
@@ -2095,7 +2096,7 @@ hl.langs.scss = {
     scssTSKeyword = fgs.red,
     scssTSRepeat = fgs.purple,
     scssTSType = {fg = c.red, gui = bold},
-    scssTSPunctDelimiter = fgs.aqua
+    scssTSPunctDelimiter = fgs.aqua,
 }
 
 hl.langs08.scss = {
@@ -2105,7 +2106,7 @@ hl.langs08.scss = {
     ["@keyword.scss"] = fgs.red,
     ["@repeat.scss"] = fgs.purple,
     ["@type.scss"] = {fg = c.red, gui = bold},
-    ["@punctuation.delimiter.scss"] = fgs.aqua
+    ["@punctuation.delimiter.scss"] = fgs.aqua,
 }
 
 --  ╭──────╮
@@ -2119,14 +2120,14 @@ hl.langs.html = {
     htmlTSTagAttribute = {fg = c.green, gui = bold},
     htmlTSText = fgs.fg0,
     htmlTSTag = {fg = c.red, gui = bold},
-    htmlTSTagDelimiter = {fg = c.magenta, gui = bold}
+    htmlTSTagDelimiter = {fg = c.magenta, gui = bold},
 }
 
 hl.langs08.html = {
     ["@tag.attribute.html"] = {fg = c.green, gui = bold},
     ["@text.html"] = fgs.fg0,
     ["@tag.html"] = {fg = c.red, gui = bold},
-    ["@tag.delimiter.html"] = {fg = c.magenta, gui = bold}
+    ["@tag.delimiter.html"] = {fg = c.magenta, gui = bold},
 }
 
 --  ╭──────────────────────────────────────────────────────────╮
@@ -2138,7 +2139,7 @@ hl.langs08.html = {
 --  ╰──────────────╯
 hl.langs.editorconfig = {
     editorconfigUnknownProperty = {link = "Identifier"},
-    editorconfigProperty = {link = "dosiniLabel"}
+    editorconfigProperty = {link = "dosiniLabel"},
 }
 
 --  ╭────────────╮
@@ -2148,7 +2149,7 @@ hl.langs.conf = {
     CfgSection = {link = "Type"},
     CfgValues = {link = "Constant"},
     CfgOnOff = {link = "Boolean"},
-    CfgString = {link = "String"}
+    CfgString = {link = "String"},
 }
 
 --  ╭────────╮
@@ -2165,14 +2166,14 @@ hl.langs.ini = {
     iniTSType = {fg = c.red, gui = bold},
     iniTSPunctBracket = fgs.purple,
     iniTSProperty = fgs.green,
-    iniTSText = fgs.yellow
+    iniTSText = fgs.yellow,
 }
 
 hl.langs08.dosini = {
     ["@type.ini"] = {fg = c.red, gui = bold},
     ["@punctuation.bracket.ini"] = fgs.purple,
     ["@property.ini"] = fgs.green,
-    ["@text.ini"] = fgs.yellow
+    ["@text.ini"] = fgs.yellow,
 }
 
 --  ╭───────╮
@@ -2195,14 +2196,14 @@ hl.langs.cmake = {
     cmakeTSBoolean = {fg = c.orange, gui = bold},
     cmakeTSConstant = {link = "TSConstant"},
     cmakeTSKeywordOperator = {link = "TSKeywordReturn"},
-    cmakeTSPunctSpecial = {link = "TSPunctSpecial"}
+    cmakeTSPunctSpecial = {link = "TSPunctSpecial"},
 }
 
 hl.langs08.cmake = {
     ["@boolean.cmake"] = {fg = c.orange, gui = bold},
     ["@constant.cmake"] = {link = "@constant"},
     ["@keyword.operator.cmake"] = {link = "@keyword.return"},
-    ["@punctuation.special.cmake"] = {link = "@punctuation.special"}
+    ["@punctuation.special.cmake"] = {link = "@punctuation.special"},
 }
 
 --  ╭──────────╮
@@ -2219,13 +2220,13 @@ hl.langs.makefile = {
     --
     makefileTSFuncBuiltin = {link = "@function.builtin"},
     makefileTSFuncCall = {link = "@function.call"},
-    makefileTSParameter = fgs.orange
+    makefileTSParameter = fgs.orange,
 }
 
 hl.langs08.makefile = {
     ["@function.builtin.makefile"] = {link = "@function.builtin"},
     ["@function.call.makefile"] = {link = "@function.call"},
-    ["@parameter.makefile"] = fgs.orange
+    ["@parameter.makefile"] = fgs.orange,
 }
 
 --  ╭──────╮
@@ -2241,14 +2242,14 @@ hl.langs.json = {
     jsonTSLabel = fgs.orange,
     jsonTSBoolean = fgs.red,
     jsonTSPunctBracket = fgs.blue,
-    jsonTSConstBuiltin = {link = "@function"}
+    jsonTSConstBuiltin = {link = "@function"},
 }
 
 hl.langs08.json = {
     ["@label.json"] = fgs.orange,
     ["@boolean.json"] = fgs.red,
     ["@punctuation.bracket.json"] = fgs.blue,
-    ["@constant.builtin.json"] = {link = "@function"}
+    ["@constant.builtin.json"] = {link = "@function"},
 }
 
 --  ╭──────╮
@@ -2281,7 +2282,7 @@ hl.langs.yaml = {
     yamlTSPreproc = {fg = c.sea_green, gui = bold},
     yamlTSPunctBracket = fgs.orange,
     yamlTSPunctSpecial = {link = "TSTypeBuiltin"},
-    yamlTSType = {link = "TSTypeBuiltin"}
+    yamlTSType = {link = "TSTypeBuiltin"},
 }
 
 hl.langs08.yaml = {
@@ -2291,7 +2292,7 @@ hl.langs08.yaml = {
     ["@preproc.yaml"] = {fg = c.sea_green, gui = bold},
     ["@punctuation.delimiter.yaml"] = fgs.orange,
     ["@punctuation.special.yaml"] = {link = "@type.builtin"},
-    ["@type.yaml"] = {link = "@type.builtin"}
+    ["@type.yaml"] = {link = "@type.builtin"},
 }
 
 --  ╭──────╮
@@ -2309,14 +2310,14 @@ hl.langs.toml = {
     tomlTSProperty = fgs.orange,
     tomlTSType = fgs.magenta,
     tomlTSBoolean = {fg = c.red, gui = bold},
-    tomlTSPunctBracket = {link = "TSFunction"}
+    tomlTSPunctBracket = {link = "TSFunction"},
 }
 
 hl.langs08.toml = {
     ["@property.toml"] = fgs.orange,
     ["@type.toml"] = fgs.magenta,
     ["@boolean.toml"] = {fg = c.red, gui = bold},
-    ["@punctuation.bracket.toml"] = {link = "@function"}
+    ["@punctuation.bracket.toml"] = {link = "@function"},
 }
 
 --  ╭─────╮
@@ -2337,7 +2338,7 @@ hl.langs.ron = {
     ronTSBoolean = {fg = c.red, gui = bold},
     ronTSConstant = {link = "TSConstant"},
     ronTSPunctBracket = fgs.blue,
-    ronTSType = {link = "TSTypeBuiltin"}
+    ronTSType = {link = "TSTypeBuiltin"},
 }
 
 hl.langs08.ron = {
@@ -2347,7 +2348,7 @@ hl.langs08.ron = {
     ["@boolean.ron"] = {link = "@boolean"},
     ["@constant.ron"] = {link = "@constant"},
     ["@punctuation.bracket.ron"] = fgs.blue,
-    ["@type.ron"] = {link = "@type.builtin"}
+    ["@type.ron"] = {link = "@type.builtin"},
 }
 
 --  ╭─────────╮
@@ -2357,14 +2358,14 @@ hl.langs.sxhkdrc = {
     sxhkdrcTSOperator = fgs.orange,
     sxhkdrcTSKeyword = fgs.red,
     sxhkdrcTSVariable = fgs.blue,
-    sxhkdrcTSPunctBracket = fgs.green
+    sxhkdrcTSPunctBracket = fgs.green,
 }
 
 hl.langs08.sxhkdrc = {
     ["@operator.sxhkdrc"] = fgs.orange,
     ["@keyword.sxhkdrc"] = fgs.red,
     ["@variable.sxhkdrc"] = fgs.blue,
-    ["@punctuation.bracket.sxhkdrc"] = fgs.green
+    ["@punctuation.bracket.sxhkdrc"] = fgs.green,
 }
 
 --  ╭───────────╮
@@ -2373,13 +2374,13 @@ hl.langs08.sxhkdrc = {
 hl.langs.gitignore = {
     gitignoreTSPunctDelimiter = {fg = c.blue, gui = bold},
     gitignoreTSPunctBracket = {fg = c.magenta, gui = bold},
-    gitignoreTSOperator = {fg = c.orange, gui = bold}
+    gitignoreTSOperator = {fg = c.orange, gui = bold},
 }
 
 hl.langs08.gitignore = {
     ["@punctuation.delimiter.gitignore"] = {fg = c.blue, gui = bold},
     ["@punctuation.bracket.gitignore"] = {fg = c.magenta, gui = bold},
-    ["@operator.gitignore"] = {fg = c.orange, gui = bold}
+    ["@operator.gitignore"] = {fg = c.orange, gui = bold},
 }
 
 --  ╭───────────╮
@@ -2395,14 +2396,14 @@ hl.langs.gitconfig = {
     git_configTSType = fgs.red,
     git_configTSProperty = fgs.blue,
     git_configTSPunctBracket = fgs.purple,
-    git_configTSStringSpecial = fgs.green
+    git_configTSStringSpecial = fgs.green,
 }
 
 hl.langs08.gitconfig = {
     ["@type.git_config"] = fgs.red,
     ["@property.git_config"] = fgs.blue,
     ["@punctuation.bracket.git_config"] = fgs.purple,
-    ["@string.special.git_config"] = fgs.green
+    ["@string.special.git_config"] = fgs.green,
 }
 
 --  ╭───────────╮
@@ -2416,7 +2417,7 @@ hl.langs.gitcommit = {
     gitcommitUnmerged = fgs.coyote_brown1,
     gitcommitOnBranch = fgs.coyote_brown1,
     gitcommitArrow = fgs.coyote_brown1,
-    gitcommitFile = fgs.yellow
+    gitcommitFile = fgs.yellow,
 }
 
 -- ============================== Plugins =============================
@@ -2434,19 +2435,19 @@ hl.plugins.lsp = {
     DiagnosticHint = fgs.aqua,
     DiagnosticVirtualTextError = {
         bg = utils.tern(cfg.diagnostics.background, utils.darken(c.red, 0.1, c.bg0), c.none),
-        fg = c.red
+        fg = c.red,
     },
     DiagnosticVirtualTextWarn = {
         bg = utils.tern(cfg.diagnostics.background, utils.darken(c.yellow, 0.1, c.bg0), c.none),
-        fg = c.yellow
+        fg = c.yellow,
     },
     DiagnosticVirtualTextInfo = {
         bg = utils.tern(cfg.diagnostics.background, utils.darken(c.aqua, 0.1, c.bg0), c.none),
-        fg = c.aqua
+        fg = c.aqua,
     },
     DiagnosticVirtualTextHint = {
         bg = utils.tern(cfg.diagnostics.background, utils.darken(c.purple, 0.1, c.bg0), c.none),
-        fg = c.purple
+        fg = c.purple,
     },
     -- DiagnosticVirtualTextError = {
     --   bg = cfg.diagnostics.background and c.bg0 or c.bg4,
@@ -2461,7 +2462,7 @@ hl.plugins.lsp = {
     LspReferenceWrite = {bg = c.fg2},
     LspReferenceRead = {bg = c.fg2},
     LspSignatureActiveParameter = fgs.yellow,
-    LspCodeLens = fgs.coyote_brown1
+    LspCodeLens = fgs.coyote_brown1,
 }
 
 hl.plugins.lsp.LspDiagnosticsDefaultError = hl.plugins.lsp.DiagnosticError
@@ -2481,7 +2482,7 @@ hl.plugins.lsp.LspDiagnosticsVirtualTextHint = hl.plugins.lsp.DiagnosticVirtualT
 hl.plugins.lsp_trouble = {
     LspTroubleText = {fg = c.fg0},
     LspTroubleCount = {fg = c.blue},
-    LspTroubleNormal = {fg = c.magenta}
+    LspTroubleNormal = {fg = c.magenta},
 }
 
 -- https://github.com/glepnir/lspsaga.nvim
@@ -2501,7 +2502,7 @@ hl.plugins.lsp_saga = {
     DefinitionCount = {fg = c.purple},
     DefinitionIcon = {fg = c.blue},
     ReferencesIcon = {fg = c.blue},
-    TargetWord = {fg = c.cyan}
+    TargetWord = {fg = c.cyan},
 }
 
 -- https://github.com/hrsh7th/nvim-cmp
@@ -2536,14 +2537,14 @@ hl.plugins.cmp = {
     CmpItemKindTypeParameter = fgs.red,
     CmpItemKindUnit = fgs.green,
     CmpItemKindValue = fgs.orange,
-    CmpItemKindVariable = fgs.purple
+    CmpItemKindVariable = fgs.purple,
 }
 
 -- https://github.com/neoclide/coc.nvim
 hl.plugins.coc = {
     -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
     CocHoverRange = {fg = c.none, gui = underbold}, -- range of current hovered symbol
-    CocHighlightText = {bg = c.fg2}, -- Coc cursorhold event
+    CocHighlightText = {bg = c.fg2},                -- Coc cursorhold event
     CocHintHighlight = {fg = c.none, gui = undercurl, sp = c.aqua},
     CocErrorHighlight = {fg = c.none, gui = undercurl, sp = c.red},
     CocWarningHighlight = {fg = c.none, gui = undercurl, sp = c.yellow},
@@ -2596,15 +2597,15 @@ hl.plugins.coc = {
     -- CocSelectedLine for line highlight of selected lines.
 
     -- TODO: For non-matched
-    CocSearch = fgs.orange, -- for matched input characters
+    CocSearch = fgs.orange,                 -- for matched input characters
     CocDisabled = fgs.grullo_grey,
-    CocFadeOut = fgs.wenge_grey, -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
+    CocFadeOut = fgs.wenge_grey,            -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
     CocCursorRange = {fg = c.bg1, bg = c.light_red},
     CocMenuSel = {fg = c.none, bg = c.bg1}, -- current menu item in menu dialog
     CocCodeLens = fgs.coyote_brown1,
     -- Popup Menu --
     CocPumSearch = {fg = c.orange}, -- for menu of complete items
-    CocPumMenu = {fg = c.fg1}, -- items at the end like [LS]
+    CocPumMenu = {fg = c.fg1},      -- items at the end like [LS]
     CocPumDeprecated = fgs.red,
     CocPumVirtualText = {fg = c.coyote_brown1},
     -- Tree --
@@ -2639,7 +2640,7 @@ hl.plugins.coc = {
     CocExplorerTimeCreated = fgs.aqua,
     CocExplorerTimeModified = fgs.aqua,
     -- Custom --
-    CocSuggestFloating = {fg = c.fg0, bg = c.bg3} -- bg0
+    CocSuggestFloating = {fg = c.fg0, bg = c.bg3}, -- bg0
 }
 
 -- https://github.com/dense-analysis/ale
@@ -2654,16 +2655,16 @@ hl.plugins.ale = {
     ALEVirtualTextWarning = fgs.coyote_brown1,
     ALEVirtualTextInfo = fgs.coyote_brown1,
     ALEVirtualTextStyleError = fgs.coyote_brown1,
-    ALEVirtualTextStyleWarning = fgs.coyote_brown1
+    ALEVirtualTextStyleWarning = fgs.coyote_brown1,
 }
 
 -- https://github.com/ghillb/cybu.nvim
 hl.plugins.cybu = {
-    CybuFocus = {fg = c.green, gui = bold}, -- Current / Selected Buffer
-    CybuAdjacent = {fg = c.red, gui = bold}, -- Buffers not in focus
+    CybuFocus = {fg = c.green, gui = bold},                               -- Current / Selected Buffer
+    CybuAdjacent = {fg = c.red, gui = bold},                              -- Buffers not in focus
     CybuBackground = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}, -- Window Background
-    CybuBorder = {link = "FloatBoarder"}, -- Border of the window
-    CybuInfobar = {link = "StatusLine"}
+    CybuBorder = {link = "FloatBoarder"},                                 -- Border of the window
+    CybuInfobar = {link = "StatusLine"},
 }
 
 -- https://github.com/neomake/neomake
@@ -2679,13 +2680,13 @@ hl.plugins.neomake = {
     NeomakeVirtualtextError = fgs.coyote_brown1,
     NeomakeVirtualtextWarning = fgs.coyote_brown1,
     NeomakeVirtualtextInfo = fgs.coyote_brown1,
-    NeomakeVirtualtextMessag = fgs.coyote_brown1
+    NeomakeVirtualtextMessag = fgs.coyote_brown1,
 }
 
 -- https://github.com/b0o/incline.nvim
 hl.plugins.incline = {
     InclineNormal = {link = "WinBar"},
-    InclineNormalNC = {link = "WinBarNC"}
+    InclineNormalNC = {link = "WinBarNC"},
 }
 
 -- https://github.com/liuchengxu/vista.vim
@@ -2705,7 +2706,7 @@ hl.plugins.vista = {
     FZFVistaTag = {link = "Tag"},
     FZFVistaScope = {link = "Function"},
     FZFVistaNumber = {link = "Number"},
-    FZFVistaBracket = fgs.blue
+    FZFVistaBracket = fgs.blue,
 }
 
 -- https://github.com/airblade/vim-gitgutter
@@ -2717,7 +2718,7 @@ hl.plugins.gitgutter = {
     GitGutterAddLineNr = fgs.green,
     GitGutterChangeLineNr = fgs.blue,
     GitGutterDeleteLineNr = fgs.red,
-    GitGutterChangeDeleteLineNr = fgs.purple
+    GitGutterChangeDeleteLineNr = fgs.purple,
 }
 
 -- https://github.com/preservim/nerdtree
@@ -2734,13 +2735,13 @@ hl.plugins.nerdtree = {
     NERDTreeToggleOff = fgs.red,
     NERDTreeFlags = fgs.orange,
     NERDTreeLinkFile = fgs.coyote_brown1,
-    NERDTreeLinkTarget = fgs.yellow
+    NERDTreeLinkTarget = fgs.yellow,
 }
 
 -- https://github.com/easymotion/vim-easymotion
 hl.plugins.easymotion = {
     EasyMotionTarget = {fg = c.bg0, bg = c.green},
-    EasyMotionShade = fgs.coyote_brown1
+    EasyMotionShade = fgs.coyote_brown1,
 }
 
 -- https://github.com/mhinz/vim-startify
@@ -2753,7 +2754,7 @@ hl.plugins.startify = {
     StartifySection = fgs.blue,
     StartifyHeader = fgs.orange,
     StartifySpecial = fgs.coyote_brown1,
-    StartifyFooter = fgs.coyote_brown1
+    StartifyFooter = fgs.coyote_brown1,
 }
 
 -- https://github.com/folke/which-key.nvim
@@ -2765,7 +2766,7 @@ hl.plugins.whichkey = {
     WhichKeyFloat = {fg = c.fg1, bg = bgs.ocean},
     WhichKeyValue = {fg = c.coyote_brown1, gui = italic}, -- any comment
     WhichKeyBorder = fgs.amethyst,
-    WhichKeySeparator = fgs.beaver
+    WhichKeySeparator = fgs.beaver,
 }
 
 -- https://github.com/folke/noice.nvim
@@ -2777,13 +2778,13 @@ hl.plugins.noice = {
 hl.plugins.defx = {
     DefxIconsParentDirectory = fgs.orange,
     Defx_filename_directory = fgs.blue,
-    Defx_filename_root = fgs.red
+    Defx_filename_root = fgs.red,
 }
 
 -- https://github.com/voldikss/vim-floaterm
 hl.plugins.floaterm = {
     Floaterm = {fg = c.none, bg = c.bg0},
-    FloatermBorder = {fg = c.magenta, bg = c.none}
+    FloatermBorder = {fg = c.magenta, bg = c.none},
 }
 
 -- https://github.com/vimwiki/vimwiki
@@ -2811,13 +2812,13 @@ hl.plugins.vimwiki = {
     VimwikiNoExistsLink = {fg = c.red, gui = "underline,bold"},
     VimwikiImage = {fg = c.blue, gui = "underline"},
     VimwikiCellSeparator = {link = "Conceal"},
-    VimwikiMarkers = {link = "Comment"}
+    VimwikiMarkers = {link = "Comment"},
 }
 
 -- https://github.com/kevinhwang91/nvim-bqf
 hl.plugins.bqf = {
     BqfSign = {fg = c.deep_lilac, gui = bold},
-    BqfPreviewBorder = {link = "Parameter"}
+    BqfPreviewBorder = {link = "Parameter"},
     -- BqfPreviewRange = {},
     -- BqfPreviewCursorLine = {},
     -- BqfPreviewBufLabel = {},
@@ -2852,7 +2853,7 @@ hl.plugins.aerial = {
     AerialStructIcon = {link = "Type"},
     AerialEventIcon = fgs.orange,
     AerialOperatorIcon = {link = "Operator"},
-    AerialTypeParameterIcon = {link = "Type"}
+    AerialTypeParameterIcon = {link = "Type"},
 }
 
 -- https://github.com/sindrets/diffview.nvim
@@ -2880,7 +2881,7 @@ hl.plugins.diffview = {
     DiffviewStatusTypeChange = {link = "Character"},
     DiffviewStatusUnknown = fgs.bg_red,
     DiffviewStatusUnmerged = fgs.amethyst,
-    DiffviewStatusUntracked = {link = "Tag"}
+    DiffviewStatusUntracked = {link = "Tag"},
 }
 
 -- https://github.com/TimUntersberger/neogit
@@ -2898,7 +2899,7 @@ hl.plugins.neogit = {
     NeogitNotificationError = fgs.bg_red,
     NeogitRemote = fgs.amethyst,
     -- NeogitStashes
-    NeogitUnstagedChanges = {link = "Tag"}
+    NeogitUnstagedChanges = {link = "Tag"},
 }
 
 -- https://github.com/lewis6991/gitsigns.nvim
@@ -2917,12 +2918,12 @@ hl.plugins.gitsigns = {
     GitSignsDeleteLn = {link = "DiffDelete"},
     GitSignsDeleteNr = {link = "ErrorMsg"},
     GitSignsDeleteInline = {link = "DiffDelete"},
-    GitSignsDeleteLnInline = {link = "ErrorMsg"}
+    GitSignsDeleteLnInline = {link = "ErrorMsg"},
 }
 
 -- https://github.com/ibhagwan/fzf-lua
 hl.plugins.fzf_lua = {
-    FzfLuaBorder = {link = "FloatBorder"}
+    FzfLuaBorder = {link = "FloatBorder"},
     -- FzfLuaNormal = { "Normal" },
     -- FzfLuaBorder = { "Normal" },
     -- FzfLuaCursor = { "Cursor" },
@@ -2945,7 +2946,7 @@ hl.plugins.nvim_tree = {
     NvimTreeVertSplit = {fg = c.bg2, bg = utils.tern(trans, c.none, c.bg0)},
     NvimTreeEndOfBuffer = {
         fg = utils.tern(cfg.ending_tildes, c.bg3, c.bg0),
-        bg = utils.tern(trans, c.none, c.bg0)
+        bg = utils.tern(trans, c.none, c.bg0),
     },
     NvimTreeRootFolder = {fg = c.orange, gui = "bold"},
     NvimTreeGitDirty = fgs.yellow,
@@ -2955,7 +2956,7 @@ hl.plugins.nvim_tree = {
     NvimTreeIndentMarker = fgs.fg0,
     NvimTreeImageFile = fgs.puce,
     NvimTreeSymlink = fgs.purple,
-    NvimTreeFolderName = fgs.blue
+    NvimTreeFolderName = fgs.blue,
 }
 
 -- https://github.com/nvim-telescope/telescope.nvim
@@ -2970,13 +2971,13 @@ hl.plugins.telescope = {
     TelescopeResultsBorder = fgs.magenta,
     TelescopeSelection = {fg = c.yellow, gui = bold},
     TelescopeSelectionCaret = fgs.green,
-    TelescopeTitle = {fg = c.purple, gui = bold}
+    TelescopeTitle = {fg = c.purple, gui = bold},
 }
 
 -- https://github.com/RRethy/vim-illuminate
 hl.plugins.illuminate = {
     illuminatedWord = {link = "LspReferenceText"},
-    illuminatedCurWord = {link = "LspReferenceText"}
+    illuminatedCurWord = {link = "LspReferenceText"},
 }
 
 -- https://github.com/mvllow/modes.nvim
@@ -2984,7 +2985,7 @@ hl.plugins.modes = {
     ModesCopy = {bg = c.yellow},
     ModesDelete = {bg = c.red},
     ModesInsert = {bg = c.aqua},
-    ModesVisual = {bg = c.magenta}
+    ModesVisual = {bg = c.magenta},
 }
 
 -- https://github.com/glepnir/dashboard-nvim
@@ -2992,17 +2993,17 @@ hl.plugins.dashboard = {
     DashboardShortCut = {fg = c.red, gui = bold},
     DashboardFooter = {fg = c.purple, gui = bold},
     DashboardHeader = {fg = c.blue, gui = bold},
-    DashboardCenter = fgs.aqua
+    DashboardCenter = fgs.aqua,
 }
 
 -- https://github.com/simrat39/symbols-outline.nvim
 hl.plugins.symbols_outline = {
-    FocusedSymbol = {fg = c.bg1, bg = c.yellow, gui = bold}
+    FocusedSymbol = {fg = c.bg1, bg = c.yellow, gui = bold},
 }
 
 -- https://github.com/m-demare/hlargs.nvim
 hl.plugins.hlargs = {
-    Hlargs = fgs.salmon
+    Hlargs = fgs.salmon,
 }
 
 -- https://github.com/p00f/nvim-ts-rainbow
@@ -3024,12 +3025,12 @@ hl.plugins.ts_rainbow = {
     TSRainbowOrange = {fg = c.orange, gui = bold},
     TSRainbowGreen = {fg = c.green, gui = bold},
     TSRainbowViolet = {fg = c.purple, gui = bold},
-    TSRainbowCyan = {fg = c.coyote_brown1, gui = bold}
+    TSRainbowCyan = {fg = c.coyote_brown1, gui = bold},
 }
 
 -- https://github.com/lukas-reineke/indent-blankline.nvim
 hl.plugins.indent_blankline = {
-    IndentBlanklineContextChar = {fg = c.bg_red, gui = "nocombine"}
+    IndentBlanklineContextChar = {fg = c.bg_red, gui = "nocombine"},
 }
 
 -- https://github.com/rcarriga/nvim-dap-ui
@@ -3048,7 +3049,7 @@ hl.plugins.dapui = {
     DapUIBreakpointsCurrentLine = fgs.blue,
     DapUIBreakpointsPath = fgs.blue,
     DapUIBreakpointsInfo = fgs.green,
-    DapUIModifiedValue = fgs.yellow
+    DapUIModifiedValue = fgs.yellow,
 }
 
 -- https://github.com/wbthomason/packer.nvim
@@ -3067,7 +3068,7 @@ hl.plugins.packer = {
     packerTimeTrivial = fgs.blue,
     packerTimeHigh = fgs.red,
     packerTimeMedium = fgs.yellow,
-    packerTimeLow = fgs.green
+    packerTimeLow = fgs.green,
 }
 
 -- https://github.com/phaazon/hop.nvim
@@ -3075,19 +3076,36 @@ hl.plugins.hop = {
     HopNextKey = {fg = c.red, gui = bold},
     HopNextKey1 = {fg = c.deep_lilac, gui = bold},
     HopNextKey2 = {fg = utils.darken(c.deep_lilac, 0.7)},
-    HopUnmatched = {fg = "#666666", sp = "#666666"}
+    HopUnmatched = {fg = "#666666", sp = "#666666"},
 }
 
 -- https://github.com/mfussenegger/nvim-treehopper
 hl.plugins.treehopper = {
     TSNodeUnmatched = {link = "HopUnmatched"},
-    TSNodeKey = {link = "HopNextKey"}
+    TSNodeKey = {link = "HopNextKey"},
+}
+
+-- https://github.com/ggandor/lightspeed.nvim
+hl.plugins.lightspeed = {
+    LightspeedCursor = {link = "Cursor"},
+    -- LightspeedGreyWash = {fg = c.dark3},
+    -- LightspeedLabel = {fg = c.magenta2, style = "bold,underline"},
+    -- LightspeedLabelDistant = {fg = c.green1, style = "bold,underline"},
+    -- LightspeedLabelDistantOverlapped = {fg = c.green2, style = "underline"},
+    -- LightspeedLabelOverlapped = {fg = c.magenta2, style = "underline"},
+    -- LightspeedMaskedChar = {fg = c.orange},
+    -- LightspeedOneCharMatch = {bg = c.magenta2, fg = c.fg, style = "bold"},
+    -- LightspeedPendingOpArea = {bg = c.magenta2, fg = c.fg},
+    -- LightspeedShortcut = {bg = c.magenta2, fg = c.fg, style = "bold,underline"},
+    -- LightspeedShortcutOverlapped = { link = "LightspeedShortcut" },
+    -- LightspeedUniqueChar = { link = "LightspeedUnlabeledMatch" },
+    -- LightspeedUnlabeledMatch = {fg = c.blue2, style = "bold"}
 }
 
 -- https://github.com/justinmk/vim-sneak
 hl.plugins.sneak = {
     Sneak = {fg = c.deep_lilac, gui = bold},
-    SneakScope = {bg = c.bg4}
+    SneakScope = {bg = c.bg4},
 }
 
 -- https://github.com/rcarriga/nvim-notify
@@ -3112,31 +3130,14 @@ hl.plugins.notify = {
     NotifyTRACEBorder = fgs.opera_muave,
     NotifyTRACEBody = {fg = c.beaver, bg = bgs.ocean},
     NotifyTRACEIcon = fgs.heliotrope,
-    NotifyTRACETitle = fgs.deep_lilac
+    NotifyTRACETitle = fgs.deep_lilac,
     -- NotifyLogTime = fgs.deep_lilac,
     -- NotifyLogTitle = fgs.deep_lilac,
 }
 
--- https://github.com/ggandor/lightspeed.nvim
-hl.plugins.lightspeed = {
-    LightspeedCursor = {link = "Cursor"}
-    -- LightspeedGreyWash = {fg = c.dark3},
-    -- LightspeedLabel = {fg = c.magenta2, style = "bold,underline"},
-    -- LightspeedLabelDistant = {fg = c.green1, style = "bold,underline"},
-    -- LightspeedLabelDistantOverlapped = {fg = c.green2, style = "underline"},
-    -- LightspeedLabelOverlapped = {fg = c.magenta2, style = "underline"},
-    -- LightspeedMaskedChar = {fg = c.orange},
-    -- LightspeedOneCharMatch = {bg = c.magenta2, fg = c.fg, style = "bold"},
-    -- LightspeedPendingOpArea = {bg = c.magenta2, fg = c.fg},
-    -- LightspeedShortcut = {bg = c.magenta2, fg = c.fg, style = "bold,underline"},
-    -- LightspeedShortcutOverlapped = { link = "LightspeedShortcut" },
-    -- LightspeedUniqueChar = { link = "LightspeedUnlabeledMatch" },
-    -- LightspeedUnlabeledMatch = {fg = c.blue2, style = "bold"}
-}
-
 -- https://github.com/romgrk/barbar.nvim
 hl.plugins.barbar = {
-    BufferCurrent = c.fg0
+    BufferCurrent = c.fg0,
     -- BufferCurrentIndex = {bg = c.fg_gutter, fg = c.info},
     -- BufferCurrentMod = {bg = c.fg_gutter, fg = c.warning},
     -- BufferCurrentSign = {bg = c.fg_gutter, fg = c.info},
@@ -3157,14 +3158,14 @@ hl.plugins.barbar = {
 
 -- https://github.com/lambdalisue/fern.vim
 hl.plugins.fern = {
-    FernBranchText = {fg = c.blue}
+    FernBranchText = {fg = c.blue},
 }
 
 -- https://github.com/chentau/marks.nvim
 hl.plugins.marks = {
     MarkSignHL = {link = "Identifier"},
     MarkSignNumHL = {fg = c.peach_red, gui = bold},
-    MarkVirtTextHL = fgs.jasper_orange
+    MarkVirtTextHL = fgs.jasper_orange,
 }
 
 -- https://github.com/glepnir/nerdicons.nvim
@@ -3172,7 +3173,14 @@ hl.plugins.nerdicons = {
     NerdIconBorder = {link = "FloatBorder"},
     NerdIconNormal = fgs.beaver,
     NerdIconPreviewPrompt = {link = "Identifier"},
-    NerdIconPrompt = fgs.orange
+    NerdIconPrompt = fgs.orange,
+}
+
+-- https://github.com/inkarkat/vim-SpellCheck
+hl.plugins.spellcheck = {
+    qfSpellContext = fgs.yellow,
+    qfSpellErrorWordInContext = fgs.blue,
+    qfSpellErrorWord = {link = "SpellBad"},
 }
 
 function M.setup()

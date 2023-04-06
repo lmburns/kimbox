@@ -337,6 +337,7 @@ All of the following languages have been manually configured.
 - [vim-ruby](https://github.com/vim-ruby/vim-ruby)
 - [vim-scala](https://github.com/derekwyatt/vim-scala)
 - [vim-solidity](https://github.com/thesis/vim-solidity)
+- [vim-SpellCheck](https://github.com/inkarkat/vim-SpellCheck)
 - [vim-typescript](https://github.com/leafgarland/typescript-vim)
 - [yajs](https://github.com/othree/yajs.vim,)
 - [yats](https:github.com/HerringtonDarkholme/yats.vim)
