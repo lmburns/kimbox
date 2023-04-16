@@ -1280,6 +1280,33 @@ hl.langs08.perl = {
     ["@variable.perl"] = fgs.blue,
 }
 
+--  ╭──────╮
+--  │ Teal │
+--  ╰──────╯
+hl.langs.teal = {
+    tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
+    tealTSParameter = fgs.aqua,
+    tealTSPunctBracket = fgs.purple,
+    tealTSFunction = {fg = c.magenta, gui = bold},
+    tealTSConstant = {fg = c.wave_red, gui = bold},
+}
+
+hl.langs08.teal = {
+    ["@operator.teal"] = fgs.orange,
+    ["@parameter.teal"] = fgs.aqua,
+    ["@punctuation.bracket.teal"] = fgs.purple,
+    ["@function.teal"] = {fg = c.magenta, gui = bold},
+    ["@constant.teal"] = {fg = c.green, gui = bold},
+    ["@constant.builtin.teal"] = fgs.orange,
+    -- Custom
+    ["@keyword.coroutine.teal"] = {fg = c.oni_violet, gui = bold},
+    ["@field.builtin.teal"] = fgs.wave_red,
+    ["@variable.builtin.teal"] = fgs.russian_green,
+    -- ["@keyword.self.teal"] = fgs.blue,
+    -- ["@keyword.super.teal"] = fgs.blue,
+    -- ["@constant.blank.teal"] = {fg = c.green, gui = bold},
+}
+
 --  ╭─────╮
 --  │ Lua │
 --  ╰─────╯
@@ -1416,29 +1443,9 @@ hl.langs08.regex = {
 }
 
 --  ╭──────╮
---  │ Teal │
---  ╰──────╯
-hl.langs.teal = {
-    tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
-    tealTSParameter = fgs.aqua,
-    tealTSPunctBracket = fgs.purple,
-    tealTSFunction = {fg = c.magenta, gui = bold},
-    tealTSConstant = {fg = c.wave_red, gui = bold},
-}
-
-hl.langs08.teal = {
-    ["@operator.teal"] = fgs.orange,
-    ["@parameter.teal"] = fgs.aqua,
-    ["@punctuation.bracket.teal"] = fgs.purple,
-    ["@function.teal"] = {fg = c.magenta, gui = bold},
-    ["@constant.teal"] = {fg = c.wave_red, gui = bold},
-}
-
---  ╭──────╮
 --  │ VimL │
 --  ╰──────╯
 hl.langs.vim = {
-    -- vimMapModKey = fgs.orange,
     vimCommentTitle = {fg = c.coyote_brown1, bg = c.none, gui = bold},
     vimLet = fgs.orange,
     vimVar = fgs.aqua,
@@ -1458,6 +1465,7 @@ hl.langs.vim = {
     vimSynType = fgs.orange,
     vimHiBang = fgs.orange,
     vimSet = fgs.green,
+    -- vimCommand = fgs.red,
     vimSetSep = fgs.coyote_brown,
     vimContinue = fgs.coyote_brown1,
     --
