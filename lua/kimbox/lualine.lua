@@ -1,10 +1,11 @@
----@diagnostic disable:need-check-nil
 local M = {}
 
+---@return KimboxLualineConfig
 function M.theme()
   return require("lualine.themes.kimbox")
 end
 
+---@return KimboxColors
 function M.colors()
   local c = require("kimbox.colors")
   return {

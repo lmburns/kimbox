@@ -15,12 +15,15 @@ end
 ---@return KimboxColors
 return (function()
     local selected = {none = "none"}
+    -- An alternative is given in case this file is
+    -- required before the theme is loaded by the plugin manager
+    local conf = vim.g.kimbox_config or {}
 
-    selected = extend(selected, {bg0 = bgs[vim.g.kimbox_config.style]})
-    -- NOTE: In the future, another style could be added
+    selected = extend(selected, {bg0 = bgs[conf.style or "ocean"]})
+    -- Default colors
     selected = extend(selected, colors)
     -- Extra user specified colors
-    selected = extend(selected, vim.g.kimbox_config.colors)
+    selected = extend(selected, conf.colors or {})
 
     return selected
 end)()

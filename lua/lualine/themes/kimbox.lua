@@ -1,5 +1,6 @@
 local c = require("kimbox.lualine").colors()
 
+---@class KimboxLualineConfig
 local kimbox = {
     normal = {
         a = {fg = c.purple, bg = c.bg, gui = "bold"},

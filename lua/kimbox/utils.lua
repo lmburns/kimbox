@@ -10,7 +10,7 @@ M.fg = "#ffffff"
 
 M.log = {
     ---@type KimboxLogLevels
-    levels = vim.log.levels
+    levels = vim.log.levels,
 }
 
 ---Determine whether the user haas Neovim 0.8
@@ -18,7 +18,9 @@ M.log = {
 M.has08 = (function()
     local has08
     return function()
+        -- api_level >= 7
         if has08 == nil then
+            -- has08 = vim.version.gt('0.8', vim.version())
             has08 = fn.has("nvim-0.8") == 1
         end
         return has08
@@ -157,11 +159,9 @@ end
 ---@param str boolean whether to return as a string or table
 ---@return string
 M.messages = function(count, str)
-    -- local messages = api.nvim_exec("messages", true)
     local messages = fn.execute("messages")
     local lines = vim.split(messages, "\n")
-    lines =
-        vim.tbl_filter(
+    lines = vim.tbl_filter(
         function(line)
             return line ~= ""
         end,
@@ -192,7 +192,7 @@ M.hex2rgb = function(hex)
     return {
         tonumber(r, 16),
         tonumber(g, 16),
-        tonumber(b, 16)
+        tonumber(b, 16),
     }
 end
 
@@ -296,18 +296,18 @@ end
 ---@field alt fun(h: KimboxHighlightMap)
 M.highlight =
     setmetatable(
-    {
-        alt = vim_highlights
-    },
-    {
-        ---
-        ---@param _ KimboxHighlight
-        ---@vararg KimboxHighlightMap
-        __call = function(_, ...)
-            local hl = M.tern(M.has_api(), nvim_highlights, vim_highlights)
-            hl(...)
-        end
-    }
-)
+        {
+            alt = vim_highlights,
+        },
+        {
+            ---
+            ---@param _ KimboxHighlight
+            ---@param ... KimboxHighlightMap
+            __call = function(_, ...)
+                local hl = M.tern(M.has_api(), nvim_highlights, vim_highlights)
+                hl(...)
+            end,
+        }
+    )
 
 return M

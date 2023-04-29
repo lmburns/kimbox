@@ -1,11 +1,11 @@
 local M = {}
 
--- ========================= Bufferline ========================
-
+---@return KimboxBufferlineConfig
 function M.theme()
   return require("bufferline.themes.kimbox")
 end
 
+---@return KimboxColors
 function M.colors()
   local c = require("kimbox.colors")
   local bgs = require("kimbox.palette").bgs
