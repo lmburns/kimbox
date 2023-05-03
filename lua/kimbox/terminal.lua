@@ -1,7 +1,8 @@
----@diagnostic disable:need-check-nil
 local M = {}
 
+---@type KimboxConfig
 local cfg = vim.g.kimbox_config
+---@type KimboxColors
 local c = require("kimbox.colors")
 
 function M.setup()

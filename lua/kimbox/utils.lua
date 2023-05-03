@@ -10,7 +10,7 @@ M.fg = "#ffffff"
 
 M.log = {
     ---@type KimboxLogLevels
-    levels = vim.log.levels
+    levels = vim.log.levels,
 }
 
 ---Determine whether the user haas Neovim 0.8
@@ -18,10 +18,30 @@ M.log = {
 M.has08 = (function()
     local has08
     return function()
+        -- local version_t = {
+        --     vim.version().major,
+        --     vim.version().minor,
+        --     vim.version().patch,
+        -- }
+        -- local version = vim.version.parse(("%s.%s.%s"):format(unpack(version_t)))
+        -- has08 = vim.version.gt(version, '0.8')
+
         if has08 == nil then
             has08 = fn.has("nvim-0.8") == 1
         end
         return has08
+    end
+end)()
+
+---Determine whether the user haas Neovim 0.9
+---@return fun(): boolean
+M.has09 = (function()
+    local has09
+    return function()
+        if has09 == nil then
+            has09 = fn.has("nvim-0.9") == 1
+        end
+        return has09
     end
 end)()
 
@@ -157,11 +177,9 @@ end
 ---@param str boolean whether to return as a string or table
 ---@return string
 M.messages = function(count, str)
-    -- local messages = api.nvim_exec("messages", true)
     local messages = fn.execute("messages")
     local lines = vim.split(messages, "\n")
-    lines =
-        vim.tbl_filter(
+    lines = vim.tbl_filter(
         function(line)
             return line ~= ""
         end,
@@ -192,7 +210,7 @@ M.hex2rgb = function(hex)
     return {
         tonumber(r, 16),
         tonumber(g, 16),
-        tonumber(b, 16)
+        tonumber(b, 16),
     }
 end
 
@@ -278,17 +296,25 @@ end
 local function nvim_highlights(highlights)
     for group, opts in pairs(highlights) do
         if not M.is_empty(opts.link) then
-            -- pcall(api.nvim_set_hl, 0, group, {link = opts.link})
             api.nvim_set_hl(0, group, {link = opts.link})
         else
             local values = M.convert_gui(opts.gui)
             values.bg = opts.bg
             values.fg = opts.fg
             values.sp = opts.sp
-            -- pcall(api.nvim_set_hl, 0, group, values)
             api.nvim_set_hl(0, group, values)
         end
     end
+end
+
+local function get_hl(name)
+    local ret
+    if M.has09() then
+        ret = api.nvim_get_hl(0, {name = name})
+    else
+        ret = api.nvim_get_hl_by_name(name, true)
+    end
+    return {}
 end
 
 ---@class KimboxHighlight
@@ -296,18 +322,18 @@ end
 ---@field alt fun(h: KimboxHighlightMap)
 M.highlight =
     setmetatable(
-    {
-        alt = vim_highlights
-    },
-    {
-        ---
-        ---@param _ KimboxHighlight
-        ---@vararg KimboxHighlightMap
-        __call = function(_, ...)
-            local hl = M.tern(M.has_api(), nvim_highlights, vim_highlights)
-            hl(...)
-        end
-    }
-)
+        {
+            alt = vim_highlights,
+        },
+        {
+            ---
+            ---@param _ KimboxHighlight
+            ---@param ... KimboxHighlightMap
+            __call = function(_, ...)
+                local hl = M.tern(M.has_api(), nvim_highlights, vim_highlights)
+                hl(...)
+            end,
+        }
+    )
 
 return M

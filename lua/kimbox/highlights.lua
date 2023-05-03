@@ -6,10 +6,6 @@ local hl = {
     plugins = {},
 }
 
--- Location where Treesitter capture groups changed to '@capture.name'
--- Commit:    030b422d1
--- Vim patch: patch-8.2.0674
-
 local c = require("kimbox.colors")
 local bgs = require("kimbox.palette").bgs
 local utils = require("kimbox.utils")
@@ -399,7 +395,7 @@ hl.langs08.treesitter = {
 --  │ Solidity │
 --  ╰──────────╯
 hl.langs.solidity = {
-    -- https://github.com/thesis/vim-solidity
+    -- vim-solidity: https://github.com/thesis/vim-solidity
     solConstructor = {fg = c.blue, gui = bold},
     SolContract = fgs.orange,
     solContractName = {fg = c.aqua, gui = bold},
@@ -648,7 +644,7 @@ hl.langs.javascript = {
     jsTemplateExpression = fgs.green,
     jsTemplateBraces = fgs.green,
     jsClassMethodType = fgs.orange,
-    -- yajs: https://github.com/othree/yajs.vim,
+    -- yajs: https://github.com/othree/yajs.vim
     javascriptEndColons = fgs.fg0,
     javascriptOpSymbol = fgs.orange,
     javascriptOpSymbols = fgs.orange,
@@ -831,7 +827,7 @@ hl.langs.typescript = {
     typescriptTypeBrackets = fgs.purple,
     typescriptBraces = fgs.purple,
     typescriptParens = fgs.purple,
-    -- yats: https:github.com/HerringtonDarkholme/yats.vim
+    -- yats: https://github.com/HerringtonDarkholme/yats.vim
     typescriptMethodAccessor = {fg = c.orange, gui = italic},
     typescriptVariable = fgs.red,
     typescriptVariableDeclaration = fgs.aqua,
@@ -1052,7 +1048,7 @@ hl.langs.python = {
     pythonBuiltin = fgs.green,
     pythonExceptions = fgs.purple,
     pythonDecoratorName = fgs.blue,
-    -- python-syntax: https://github.com/vim-python/python-syntax,
+    -- python-syntax: https://github.com/vim-python/python-syntax
     pythonExClass = fgs.purple,
     pythonBuiltinType = fgs.green,
     pythonBuiltinObj = fgs.blue,
@@ -1070,7 +1066,7 @@ hl.langs.python = {
     pythonException = {fg = c.red, gui = italic},
     pythonNone = fgs.aqua,
     pythonDot = fgs.coyote_brown1,
-    -- semshi: https://github.com/numirias/semshi,
+    -- semshi: https://github.com/numirias/semshi
     semshiUnresolved = {fg = c.green, gui = undercurl},
     semshiImported = fgs.purple,
     semshiParameter = fgs.blue,
@@ -1255,7 +1251,6 @@ hl.langs08.ruby = {
 --  │ Perl │
 --  ╰──────╯
 hl.langs.perl = {
-    -- Perl:
     -- builtin: https://github.com/vim-perl/vim-perl
     perlStatementPackage = {fg = c.purple, gui = italic},
     perlStatementInclude = {fg = c.purple, gui = italic},
@@ -1304,7 +1299,6 @@ hl.langs08.teal = {
     ["@variable.builtin.teal"] = fgs.russian_green,
     -- ["@keyword.self.teal"] = fgs.blue,
     -- ["@keyword.super.teal"] = fgs.blue,
-    -- ["@constant.blank.teal"] = {fg = c.green, gui = bold},
 }
 
 --  ╭─────╮
@@ -1676,8 +1670,9 @@ hl.langs.awk = {
     awkTSKeyword = {link = "TSKeyword"},
     awkTSKeywordFunction = {link = "TSKeywordFunction"},
     awkTSKeywordReturn = {link = "TSKeywordReturn"},
-    awkTSLabel = {fg = c.green, gui = bold},
+    awkTSLabel = {fg = c.ube, gui = bold},
     awkTSOperator = {link = "TSOperator"},
+    awkTSParameter = fgs.salmon,
     awkTSPreproc = {link = "TSPreproc"},
     awkTSPunctBracket = fgs.blue,
     awkTSPunctDelimiter = fgs.green,
@@ -1687,7 +1682,7 @@ hl.langs.awk = {
     --
     -- Unsupported (yet)
     --
-    awkTSVariableBuiltin = fgs.blue,
+    awkTSVariableBuiltin = {link = "TSTypeBuiltin"}
 }
 
 hl.langs08.awk = {
@@ -1698,8 +1693,9 @@ hl.langs08.awk = {
     ["@keyword.awk"] = {link = "@keyword"},
     ["@keyword.function.awk"] = {link = "@keyword.function"},
     ["@keyword.return.awk"] = {link = "@keyword.return"},
-    ["@label.awk"] = {fg = c.green, gui = bold},
+    ["@label.awk"] = {fg = c.ube, gui = bold},
     ["@operator.awk"] = {link = "@operator"},
+    ["@parameter.awk"] = fgs.salmon,
     ["@preproc.awk"] = {link = "@preproc"},
     ["@punctuation.bracket.awk"] = fgs.blue,
     ["@punctuation.delimiter.awk"] = fgs.green,
@@ -1709,7 +1705,7 @@ hl.langs08.awk = {
     --
     -- Unsupported (yet)
     --
-    ["@variable.builtin.awk"] = fgs.blue,
+    ["@variable.builtin.awk"] = {link = "@type.builtin"}
 }
 
 --  ╭─────╮
@@ -1895,7 +1891,7 @@ hl.langs.ocaml = {
 --  │ Erlang │
 --  ╰────────╯
 hl.langs.erlang = {
-    -- vim-erlang-runtime: https://github.com/vim-erlang/vim-erlang-runtime
+    -- vim-erlang: https://github.com/vim-erlang/vim-erlang-runtime
     erlangAtom = fgs.aqua,
     erlangLocalFuncRef = {fg = c.yellow, gui = bold},
     erlangLocalFuncCall = {fg = c.yellow, gui = bold},
@@ -1940,7 +1936,7 @@ hl.langs.elixir = {
 --  │ Clojure │
 --  ╰─────────╯
 hl.langs.clojure = {
-    -- vim-coljure-static: https://github.com/guns/vim-clojure-static
+    -- vim-clojure: https://github.com/guns/vim-clojure-static
     clojureMacro = {fg = c.purple, gui = italic},
     clojureFunc = {fg = c.aqua, gui = bold},
     clojureConstant = fgs.green,
@@ -1980,7 +1976,9 @@ hl.langs.matlab = {
     matlabLogicalOperator = fgs.orange,
 }
 
--- https://github.com/b0o/incline.nvim
+--  ╭─────────╮
+--  │ ManPage │
+--  ╰─────────╯
 hl.langs.man = {
     manSectionHeading = {link = "Statement"},
     manTitle = {link = "Title"},
@@ -2002,8 +2000,9 @@ hl.langs.jq = {
     jqTSPunctBracket = fgs.puce,
     jqTSVariable = fgs.blue,
     jqTSProperty = fgs.aqua,
-    -- Unsupported (yet)
+    -- Unsupported (as of now)
     jqTSFuncCall = {link = "TSFuncCall"},
+    -- Custom
 }
 
 hl.langs08.jq = {
@@ -2018,8 +2017,15 @@ hl.langs08.jq = {
     ["@punctuation.bracket.jq"] = fgs.puce,
     ["@variable.jq"] = fgs.blue,
     ["@property.jq"] = fgs.aqua,
-    -- Unsupported (yet)
+    ["@type.builtin.jq"] = {fg = c.orange, gui = bold},
+    -- Unsupported (as of now)
     ["@function.call.jq"] = {link = "@function.call"},
+    -- Custom
+    ["@repeat.jq"] = {fg = c.wave_red, gui = bold},
+    ["@collections.jq"] = {fg = c.sea_green, gui = bold},
+    ["@function.error.jq"] = {fg = c.red, gui = bold},
+    ["@function.other.jq"] = {fg = c.red, gui = bold},
+    ["@function.test.jq"] = {fg = c.blue, gui = bold},
 }
 
 --  ╭─────────╮
@@ -3274,11 +3280,11 @@ function M.setup()
         utils.highlight(to_hl)
     end
 
-    ---@type string[]
+    ---@class KimboxHighlightLangs
     M.langs = vim.tbl_keys(hl.langs)
-    ---@type string[]
+    ---@class KimboxHighlightLangs08
     M.langs08 = vim.tbl_keys(hl.langs08)
-    ---@type string[]
+    ---@class KimboxHighlightPlugins
     M.plugins = vim.tbl_keys(hl.plugins)
 end
 

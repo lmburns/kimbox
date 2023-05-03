@@ -1,173 +1,84 @@
-local colors = {
-    magenta = "#A06469",
-    purple = "#98676A",
-    dbg = "#221a0f",
-    lbg = "#5e452b",
-    fg = "#e8c097",
-    red = "#EF1D55",
-    dred = "#DC3958",
-    green = "#819C3B",
-    yellow = "#FF9500",
-    orange = "#FF5813",
-    blue = "#4C96A8",
-    cyan = "#7EB2B1",
-    dpurple = "#733e8b"
-}
+local c = require("kimbox.bufferline").colors()
 
+---@class KimboxBufferlineConfig
 local kimbox = {
-    -- Status background
-    fill = {fg = colors.magenta, bg = colors.dbg},
-    background = {fg = colors.fg, bg = colors.dbg},
-    tab = {fg = colors.fg, bg = colors.dbg},
-    tab_selected = {fg = colors.fg, bg = colors.lbg},
-    -- tab_close = {
-    --   fg = "#FFFFFF",
-    --   bg = "#FFFFFF",
-    -- },
-    -- close_button = {
-    --   fg = "#FFFFFF",
-    --   bg = "#FFFFFF",
-    -- },
-    -- close_button_visible = {
-    --   fg = "#FFFFFF",
-    --   bg = "#FFFFFF",
-    -- },
-    -- close_button_selected = {
-    --   fg = "#FFFFFF",
-    --   bg = "#FFFFFF",
-    -- },
-    buffer_visible = {fg = colors.magenta, bg = colors.lbg},
-    buffer_selected = {
-        fg = colors.fg,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    diagnostic = {fg = colors.red, bg = colors.dbg},
-    diagnostic_visible = {fg = colors.red, bg = colors.lbg},
-    diagnostic_selected = {
-        fg = colors.red,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    hint = {fg = colors.cyan, bg = colors.dbg},
-    hint_visible = {fg = colors.blue, bg = colors.lbg},
-    hint_selected = {
-        fg = colors.blue,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    hint_diagnostic = {fg = colors.blue, bg = colors.dbg},
-    hint_diagnostic_visible = {fg = colors.blue, bg = colors.lbg},
-    hint_diagnostic_selected = {
-        fg = colors.blue,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    info = {fg = colors.purple, bg = colors.dbg},
-    info_visible = {fg = colors.purple, bg = colors.lbg},
-    info_selected = {
-        fg = colors.purple,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    info_diagnostic = {fg = colors.purple, bg = colors.dbg},
-    info_diagnostic_visible = {fg = colors.purple, bg = colors.lbg},
-    info_diagnostic_selected = {
-        fg = colors.purple,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    warning = {fg = colors.orange, bg = colors.dbg},
-    warning_visible = {fg = colors.orange, bg = colors.lbg},
-    warning_selected = {
-        fg = colors.orange,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    warning_diagnostic = {fg = colors.orange, bg = colors.dbg},
-    warning_diagnostic_visible = {fg = colors.orange, bg = colors.lbg},
-    warning_diagnostic_selected = {
-        fg = colors.orange,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    error = {fg = colors.red, bg = colors.dbg},
-    error_visible = {fg = colors.red, bg = colors.lbg},
-    error_selected = {
-        fg = colors.red,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    error_diagnostic = {fg = colors.red, bg = colors.dbg},
-    error_diagnostic_visible = {fg = colors.red, bg = colors.lbg},
-    error_diagnostic_selected = {
-        fg = colors.red,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    modified = {fg = colors.red, bg = colors.dbg},
-    modified_visible = {fg = colors.red, bg = colors.lbg},
-    modified_selected = {fg = colors.red, bg = colors.lbg},
-    duplicate_selected = {
-        fg = colors.cyan,
-        bg = colors.lbg,
-        italic = true
-    },
-    duplicate_visible = {
-        fg = colors.cyan,
-        bg = colors.lbg,
-        italic = true
-    },
-    duplicate = {
-        fg = colors.red,
-        bg = colors.dbg,
-        italic = true
-    },
-    separator_selected = {fg = colors.dbg, bg = colors.lbg},
-    separator_visible = {fg = colors.dbg, bg = colors.lbg},
-    separator = {fg = colors.dbg, bg = colors.dbg},
-    indicator_selected = {fg = colors.red, bg = colors.lbg},
-    pick_selected = {
-        fg = colors.dred,
-        bg = colors.lbg,
-        italic = true,
-        bold = true
-    },
-    pick_visible = {
-        fg = colors.green,
-        bg = colors.dbg,
-        italic = true,
-        bold = true
-    },
-    pick = {
-        fg = colors.green,
-        bg = colors.dbg,
-        italic = true,
-        bold = true
-    },
-    numbers = {
-        fg = colors.fg,
-        bg = colors.dbg
-    },
-    numbers_selected = {
-        fg = colors.fg,
-        bg = colors.lbg,
-        bold = true
-    },
-    numbers_visible = {
-        fg = colors.fg,
-        bg = colors.lbg
-    }
+    fill = {bg = c.vscode},
+    background = {fg = c.fg0, bg = c.vscode},
+
+    close_button = {fg = c.light_red, bg = c.vscode},
+    close_button_selected = {fg = c.wave_red, bg = c.bg4},
+    close_button_visible = {fg = c.light_red, bg = c.vscode},
+
+    numbers = {fg = c.magenta, bg = c.vscode, bold = true},
+    numbers_selected = {fg = c.fg0, bg = c.bg4, bold = true, italic = false},
+    numbers_visible = {fg = c.magenta, bg = c.bg4, bold = true},
+
+    separator = {fg = c.vscode, bg = c.vscode},
+    separator_selected = {fg = c.vscode, bg = c.bg4},
+    separator_visible = {fg = c.vscode, bg = c.bg4},
+
+    offset_separator = {fg = c.light_red, bg = c.vscode},
+
+    tab_separator = {fg = c.vscode, bg = c.vscode},
+    tab_separator_selected = {fg = c.vscode, bg = c.bg4},
+
+    tab = {fg = c.fg0, bg = c.vscode},
+    tab_selected = {fg = c.fg0, bg = c.bg4, bold = true},
+    tab_close = {fg = c.red},
+
+    buffer = {fg = c.fg0, bg = c.vscode, bold = true},
+    buffer_selected = {fg = c.fg0, bg = c.bg4, bold = true, italic = false},
+    buffer_visible = {fg = c.grullo_grey, bg = c.bg4},
+
+    -- group_label = {fg = c.vscode, bg = c.vscode},
+    -- group_separator = {fg = c.vscode, bg = c.bg4},
+
+    indicator_selected = {fg = c.red, bg = c.bg4, bold = true},
+    indicator_visible = {fg = c.red, bg = c.vscode, bold = true},
+
+    pick = {fg = c.green, bg = c.vscode, bold = true, italic = false},
+    pick_selected = {fg = c.bg_red, bg = c.bg4, bold = true, italic = false},
+    pick_visible = {fg = c.green, bg = c.vscode, bold = true, italic = false},
+
+    diagnostic = {fg = c.red, bg = c.vscode},
+    diagnostic_selected = {fg = c.red, bg = c.bg4, bold = true, italic = false},
+    diagnostic_visible = {fg = c.red, bg = c.bg4},
+
+    hint = {fg = c.beaver, bg = c.vscode},
+    hint_selected = {fg = c.blue, bg = c.bg4, bold = true, italic = false},
+    hint_visible = {fg = c.beaver, bg = c.bg4},
+    hint_diagnostic = {fg = c.blue, bg = c.vscode, bold = true},
+    hint_diagnostic_selected = {fg = c.blue, bg = c.bg4, italic = false},
+    hint_diagnostic_visible = {fg = c.blue, bg = c.bg4, bold = true},
+
+    info = {fg = c.beaver, bg = c.vscode},
+    info_selected = {fg = c.purple, bg = c.bg4, bold = true, italic = false},
+    info_visible = {fg = c.beaver, bg = c.bg4},
+    info_diagnostic = {fg = c.purple, bg = c.vscode, bold = true},
+    info_diagnostic_selected = {fg = c.purple, bg = c.bg4, italic = false},
+    info_diagnostic_visible = {fg = c.purple, bg = c.bg4, bold = true},
+
+    warning = {fg = c.beaver, bg = c.vscode},
+    warning_selected = {fg = c.yellow, bg = c.bg4, bold = true, italic = false},
+    warning_visible = {fg = c.beaver, bg = c.bg4},
+    warning_diagnostic = {fg = c.yellow, bg = c.vscode, bold = true},
+    warning_diagnostic_selected = {fg = c.yellow, bg = c.bg4, italic = false},
+    warning_diagnostic_visible = {fg = c.yellow, bg = c.bg4, bold = true},
+
+    error = {fg = c.beaver, bg = c.vscode},
+    error_selected = {fg = c.red, bg = c.bg4, bold = true, italic = false},
+    error_visible = {fg = c.beaver, bg = c.bg4},
+    error_diagnostic = {fg = c.red, bg = c.vscode, bold = true},
+    error_diagnostic_selected = {fg = c.red, bg = c.bg4, italic = false},
+    error_diagnostic_visible = {fg = c.red, bg = c.bg4, bold = true},
+
+    modified = {fg = c.red, bg = c.vscode},
+    modified_selected = {fg = c.red, bg = c.bg4},
+    modified_visible = {fg = c.red, bg = c.bg4},
+
+    duplicate = {fg = c.wave_red, bg = c.vscode, italic = false},
+    duplicate_selected = {fg = c.wave_red, bg = c.bg4, bold = true, italic = false},
+    duplicate_visible = {fg = c.wave_red, bg = c.bg4, italic = false},
 }
 
 return kimbox

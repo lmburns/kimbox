@@ -1,4 +1,4 @@
----@type KimboxColors
+---@class KimboxBGs
 local bgs = {
     medium = "#231A0C",
     ocean = "#221A02",
@@ -8,8 +8,9 @@ local bgs = {
     eerie = "#1C0B28"
 }
 
----@type KimboxColors
+---@class KimboxFGs
 local fgs = {
+    none = "none",
     bg1 = "#39260E",
     bg2 = "#362712",
     bg3 = bgs.darker,

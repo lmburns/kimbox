@@ -1,7 +1,10 @@
+local M = {}
+
 local utils = require("kimbox.utils")
 local log = utils.log
 
-local function load_old_config()
+---@return KimboxConfig?
+function M.load()
     local opts = {
         "background",
         "transparent_background",
@@ -9,7 +12,7 @@ local function load_old_config()
         "allow_italic",
         "allow_underline",
         "allow_reverse",
-        "allow_undercurl"
+        "allow_undercurl",
     }
 
     local cfg = {}
@@ -22,10 +25,11 @@ local function load_old_config()
             cfg[opt] = value
             using_old_config = true
             messages =
-                ("%s option 'kimbox_%s' has been deprecated.\nLook at README.md for new configuration\n"):format(
-                messages,
-                opt
-            )
+                ("%s option 'kimbox_%s' has been deprecated.\nLook at README.md for new configuration\n")
+                :format(
+                    messages,
+                    opt
+                )
         end
     end
 
@@ -36,6 +40,7 @@ local function load_old_config()
             end
         )
 
+        ---@class KimboxConfig
         local new_config = {
             style = cfg.style,
             toggle_style_key = cfg.toggle_style_keymap,
@@ -48,13 +53,12 @@ local function load_old_config()
             allow_undercurl = cfg.allow_undercurl,
             allow_reverse = cfg.allow_reverse,
             diagnostics = {
-                background = cfg.diagnostics_text_bg
-            }
+                background = cfg.diagnostics_text_bg,
+            },
         }
+
         return new_config
-    else
-        return false
     end
 end
 
-return load_old_config()
+return M
