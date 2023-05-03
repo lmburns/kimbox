@@ -9,7 +9,12 @@ end
 function M.colors()
   local c = require("kimbox.colors")
   return {
-    black = c.bg0,
+    bg0 = c.bg0,
+    fg0 = c.fg0,
+    fg1 = c.fg1,
+    bg4 = c.bg4,
+    bg2 = c.bg2,
+    grullo_grey = c.grullo_grey,
     red = c.bg_red,
     red2 = c.red,
     green = c.green,
@@ -20,13 +25,7 @@ function M.colors()
     purple = c.purple,
     cyan = c.aqua,
     salmon = c.salmon,
-    white = c.operator_base,
-    fg = c.fg0,
-    bg = c.bg0,
-    gray1 = c.grey2,
-    brown1 = c.fg1,
-    brown2 = c.bg4,
-    brown3 = c.bg2,
+    white = c.fg4,
   }
 end
 

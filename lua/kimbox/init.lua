@@ -10,7 +10,7 @@ local cmd = vim.cmd
 ---@alias KimboxRGB { [1]: number, [2]: number, [3]: number }
 ---@alias HexColor string A string that starts with a '#' followed by 6 hexadecimal digits
 ---@alias ColorName string A string that represents the name (closest) matching the HexColor
----@alias KimboxColors { [ColorName]: HexColor } Collection of keys (color name) & values (HexColor)
+---@alias KimboxColors KimboxFGs|KimboxBGs Collection of keys (color name) & values (HexColor)
 
 ---@alias KimboxCtermMap
 ---| '"bold"'
