@@ -32,6 +32,7 @@ local underbold = (function()
     end
 end)()
 
+---@class KimboxShortFGs
 local fgs = {
     fg0 = {fg = c.fg0},
     fg1 = {fg = c.fg1},
@@ -282,6 +283,7 @@ hl.treesitter = {
     TSEnviroment = fgs.fg0,
     TSEnviromentName = fgs.fg0,
     TSLiteral = fgs.green,
+    -- TSLiteral = fgs.puce,
     TSMath = fgs.green,
     TSNote = {fg = c.blue, gui = bold},
     TSTextReference = fgs.blue,
@@ -289,8 +291,9 @@ hl.treesitter = {
     TSStrong = {fg = c.deep_lilac, gui = bold}, -- {fg = c.none, gui = "bold"},
     TSTitle = {fg = c.orange, gui = "bold"},    -- Text that is part of a title
     TSTodo = {fg = c.red, gui = bold},
-    TSUnderline = {fg = c.fg, gui = "underline"},
-    TSURI = {fg = c.fg0, gui = "underline"},
+    TSUnderline = {fg = c.fg0, gui = "underline"},
+    TSURI = {fg = c.amethyst, gui = "underline"},
+    -- TSURI = {fg = c.fg0, gui = "underline"},
     TSWarning = {fg = c.green, gui = bold},
     TSType = fgs.green,
     TSTypeBuiltin = {fg = c.green, gui = bold},
@@ -326,7 +329,7 @@ hl.langs08.treesitter = {
     ["@keyword.return"] = {fg = c.red, gui = bold},
     ["@label"] = fgs.orange,
     ["@method"] = fgs.blue,
-    -- ["@method.call"] = {},
+    ["@method.call"] = fgs.blue,
     ["@namespace"] = {fg = c.blue, gui = italic},
     ["@none"] = fgs.fg0,
     ["@number"] = fgs.purple,
@@ -409,9 +412,7 @@ hl.langs.solidity = {
     solMethod = {fg = c.magenta, gui = bold},
     solModifierInsert = {fg = c.magenta, gui = bold},
     solConstant = fgs.aqua,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     solidityTSFunction = {link = "TSFunction"},
     solidityTSKeyword = fgs.orange,
     solidityTSType = {fg = c.green, gui = bold},
@@ -433,29 +434,18 @@ hl.langs08.solidity = {
 --  ╭──────╮
 --  │ Help │
 --  ╰──────╯
-hl.langs.help = {
-    helpTSTitle = fgs.red,
-    helpTSLabel = fgs.blue,
-    helpTSString = {link = "TSString"},
-    helpTSURI = {link = "TSURI"},
-}
-
-hl.langs08.help = {
-    ["@text.title.help"] = fgs.red,
-    ["@label.help"] = fgs.blue,
-    ["@string.help"] = {link = "@string"},
-    ["@text.uri.help"] = {link = "@text.uri"},
-}
-
 hl.langs.vimdoc = {
     helpSpecial = fgs.green,
     helpNote = {fg = c.purple, gui = bold},
     helpHeader = {fg = c.sea_green, gui = bold},
     helpVim = {fg = c.blue, gui = bold}, -- Main header/title
     helpHyperTextEntry = {fg = c.yellow, gui = bold},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
+    helpTSTitle = fgs.red,
+    helpTSLabel = fgs.blue,
+    helpTSString = {link = "TSString"},
+    helpTSURI = {link = "TSURI"},
+    -- old
     vimdocTSTitle = {fg = c.red, gui = bold},
     vimdocTSTextLiteral = fgs.purple,
     vimdocTSTextReference = {fg = c.green, gui = bold},
@@ -468,13 +458,19 @@ hl.langs.vimdoc = {
 hl.langs08.vimdoc = {
     ["@text.title.vimdoc"] = {fg = c.red, gui = bold},
     ["@text.literal.vimdoc"] = fgs.purple,
-    -- ["@text.literal.vimdoc"] = {link = "@comment"},
     ["@text.reference.vimdoc"] = {fg = c.green, gui = bold},
     ["@label.vimdoc"] = fgs.blue,
     ["@string.vimdoc"] = {link = "@string"},
     ["@text.uri.vimdoc"] = {link = "@text.uri"},
     ["@parameter.vimdoc"] = fgs.salmon,
+    -- ["@text.literal.vimdoc"] = {link = "@comment"},
     -- ["@parameter.vimdoc"] = fgs.green,
+    --
+    -- old
+    ["@text.title.help"] = fgs.red,
+    ["@label.help"] = fgs.blue,
+    ["@string.help"] = {link = "@string"},
+    ["@text.uri.help"] = {link = "@text.uri"},
 }
 
 --  ╭──────────╮
@@ -508,16 +504,11 @@ hl.langs.markdown = {
     markdownLinkText = fgs.purple,
     markdownId = fgs.green,
     markdownIdDeclaration = fgs.purple,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     markdownTSNone = fgs.purple,
     markdownTSPunctDelimiter = {link = "@preproc"},
-    TSLiteral = fgs.puce,
     markdownTSLiteral = fgs.puce,
-    TSEmphasis = {fg = c.morning_blue, gui = "italic"},
     markdownTSEmphasis = {fg = c.morning_blue, gui = "italic"},
-    TSURI = {fg = c.amethyst, gui = "underline"},
     markdownTSURI = {fg = c.amethyst, gui = "underline"},
     markdownTSStrong = {fg = c.deep_lilac, gui = "bold"},
     markdownTSTextReference = {fg = c.blue, gui = underline},
@@ -584,12 +575,10 @@ hl.langs.tex = {
     texMathDelim = fgs.purple,
     texMathOper = fgs.red,
     texPgfType = fgs.yellow,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     latexTSInclude = fgs.blue,
     latexTSFuncMacro = {fg = c.red, gui = bold},
-    latexTSEnvironment = {fg = c.cyan, gui = "bold"},
+    latexTSEnvironment = {fg = c.aqua, gui = "bold"},
     latexTSEnvironmentName = fgs.yellow,
     latexTSMath = fgs.purple,
     latexTSTitle = fgs.orange,
@@ -599,7 +588,7 @@ hl.langs.tex = {
 hl.langs08.tex = {
     ["@include.latex"] = fgs.blue,
     ["@function.macro.latex"] = {fg = c.red, gui = bold},
-    ["@text.environment.latex"] = {fg = c.cyan, gui = "bold"},
+    ["@text.environment.latex"] = {fg = c.aqua, gui = "bold"},
     ["@text.environment.name.latex"] = fgs.yellow,
     ["@text.math.latex"] = fgs.purple,
     ["@text.title.latex"] = fgs.orange,
@@ -782,9 +771,7 @@ hl.langs.javascript = {
     jsxAttrib = fgs.green,
     jsxCloseTag = {fg = c.aqua, gui = bold},
     jsxComponentName = {fg = c.blue, gui = bold},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     javascriptTSConstructor = {fg = c.green, gui = bold},
     javascriptTSException = {fg = c.orange, gui = italic},
     javascriptTSKeyword = {link = "TSKeyword"},
@@ -975,9 +962,7 @@ hl.langs.typescript = {
     typescriptDOMFormProp = fgs.aqua,
     typescriptBOMHistoryProp = fgs.aqua,
     typescriptMathStaticProp = fgs.aqua,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     typescriptTSParameter = fgs.aqua,
     typescriptTSTypeBuiltin = {fg = c.green, gui = bold},
     typescriptTSKeywordReturn = {fg = c.red, gui = bold},
@@ -1080,9 +1065,7 @@ hl.langs.python = {
     semshiErrorSign = fgs.red,
     semshiErrorChar = fgs.red,
     semshiSelected = {bg = c.fg2},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     pythonTSType = {fg = c.green, gui = bold},
     pythonTSConstructor = fgs.magenta,
     pythonTSKeywordFunction = {fg = c.red, gui = bold},
@@ -1127,9 +1110,7 @@ hl.langs.go = {
     goDeclaration = fgs.blue,
     goConst = fgs.orange,
     goParamName = fgs.aqua,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     goTSProperty = fgs.blue,
     goTSField = fgs.aqua,
     goTSMethod = {fg = c.purple, gui = bold},
@@ -1169,9 +1150,7 @@ hl.langs.rust = {
     rustPubScopeCrate = {fg = c.purple, gui = italic},
     rustArrowCharacter = fgs.orange,
     rustOperator = fgs.orange,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     rustTSConstBuiltin = fgs.purple,
     rustTSConstant = {fg = c.sea_green, gui = bold},
     rustTSField = fgs.aqua, -- fg0
@@ -1223,9 +1202,7 @@ hl.langs.ruby = {
     rubyArrayDelimiter = fgs.orange,
     rubyCurlyBlockDelimiter = fgs.orange,
     rubyAccess = fgs.orange,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     rubyTSLabel = fgs.blue,
     rubyTSString = fgs.yellow,
     rubyTSPunctSpecial = fgs.green,
@@ -1265,9 +1242,7 @@ hl.langs.perl = {
     podCmdText = fgs.green,
     perlDATA = {fg = c.orange, gui = italic},
     perlBraces = fgs.purple,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     perlTSVariable = fgs.blue,
 }
 
@@ -1325,10 +1300,7 @@ hl.langs.lua = {
     luaSymbolOperator = fgs.orange,
     luaCond = {link = "Conditional"},
     luaErrHand = {link = "Exception"},
-    --
-    -- Treesitter
-    --
-
+    -- ════ Treesitter ════
     luaTSConstant = {fg = c.green, gui = bold},
     luaTSConstBuiltin = fgs.orange,
     luaTSConstructor = {fg = c.wave_red, gui = bold},
@@ -1354,6 +1326,7 @@ hl.langs08.lua = {
     ["@field.lua"] = fgs.aqua,
     ["@preproc.lua"] = fgs.purple,
     ["@method.lua"] = fgs.blue,
+    ["@method.call.lua"] = fgs.blue,
     ["@punctuation.bracket.lua"] = fgs.purple,
     ["@variable.builtin.lua"] = fgs.russian_green,
     ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
@@ -1385,16 +1358,24 @@ hl.langs.luadoc = {
 
 hl.langs08.luadoc = {
     ["@variable.luadoc"] = {fg = c.philippine_silver, gui = bold},
+    -- ["@variable.luadoc"] = {fg = c.fg0, gui = bold},
     ["@parameter.luadoc"] = {fg = c.salmon, gui = bold},
     ["@keyword.luadoc"] = fgs.jasper_orange,
     ["@keyword.function.luadoc"] = {link = "@keyword.function"},
     ["@keyword.return.luadoc"] = {link = "@keyword.return"},
+    ["@namespace.luadoc"] = {fg = c.orange, gui = bold},
     ["@type.luadoc"] = {link = "@type"},
     ["@type.builtin.luadoc"] = {link = "@type.builtin"},
     ["@operator.luadoc"] = {fg = c.orange, gui = bold},
     ["@punctuation.bracket.luadoc"] = fgs.purple,
     ["@punctuation.delimiter.luadoc"] = {fg = c.orange, gui = bold},
     ["@punctuation.special.luadoc"] = {link = "@punctuation.special"},
+    -- custom
+    ["@keyword.diagnostic.luadoc"] = {fg = c.russian_green, gui = bold},
+    ["@keyword.extra.luadoc"] = {fg = c.slate_grey, gui = bold},
+    ["@keyword.info.luadoc"] = {fg = c.ube, gui = bold},
+    ["@keyword.deprecated.luadoc"] = {fg = c.infra_red, gui = bold},
+    ["@keyword.meta.luadoc"] = {fg = c.peach_red, gui = bold},
 }
 
 --  ╭──────╮
@@ -1462,9 +1443,7 @@ hl.langs.vim = {
     -- vimCommand = fgs.red,
     vimSetSep = fgs.coyote_brown,
     vimContinue = fgs.coyote_brown1,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     vimTSBoolean = fgs.orange,
     vimTSConditional = {fg = c.purple, gui = italic},
     vimTSConstBuiltin = {fg = c.aqua, gui = italic},
@@ -1516,9 +1495,7 @@ hl.langs.c = {
     cStorageClass = fgs.purple,
     cTypedef = fgs.purple,
     cDefine = fgs.aqua,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     cTSInclude = fgs.red,
     cTSProperty = fgs.aqua,
     cTSConstant = {fg = c.sea_green, gui = bold},
@@ -1547,9 +1524,7 @@ hl.langs08.c = {
 --  ╰─────╯
 hl.langs.cpp = {
     cppStatement = {fg = c.purple, gui = bold},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     cppTSConstant = {fg = c.sea_green, gui = bold},
     cppTSConstMacro = {fg = c.aqua, gui = bold},
     cppTSOperator = fgs.orange,
@@ -1620,9 +1595,7 @@ hl.langs.shell = {
     shCommandSub = fgs.orange,
     shFunctionOne = {fg = c.yellow, gui = bold},
     shFunctionKey = {fg = c.red, gui = italic},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     bashTSFuncBuiltin = fgs.red,
     bashTSParameter = fgs.green,
     bashTSConstant = fgs.blue,
@@ -1682,7 +1655,7 @@ hl.langs.awk = {
     --
     -- Unsupported (yet)
     --
-    awkTSVariableBuiltin = {link = "TSTypeBuiltin"}
+    awkTSVariableBuiltin = {link = "TSTypeBuiltin"},
 }
 
 hl.langs08.awk = {
@@ -1705,7 +1678,7 @@ hl.langs08.awk = {
     --
     -- Unsupported (yet)
     --
-    ["@variable.builtin.awk"] = {link = "@type.builtin"}
+    ["@variable.builtin.awk"] = {link = "@type.builtin"},
 }
 
 --  ╭─────╮
@@ -2054,9 +2027,7 @@ hl.langs.css = {
     cssPseudoClassId = {link = "PreProc"},
     cssMediaType = {link = "Special"},
     cssAtRule = {link = "Special"},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     cssTSProperty = fgs.orange,
     cssTSPropertyClass = {fg = c.sea_green, gui = bold},
     cssTSPropertyId = {fg = c.purple, gui = bold},
@@ -2101,9 +2072,7 @@ hl.langs08.css = {
 --  │ SCSS │
 --  ╰──────╯
 hl.langs.scss = {
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     scssTSProperty = fgs.orange,
     scssTSVariable = fgs.blue,
     scssTSString = fgs.yellow,
@@ -2128,9 +2097,7 @@ hl.langs08.scss = {
 --  ╰──────╯
 hl.langs.html = {
     htmlBold = {fg = c.deep_lilac, gui = bold},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     htmlTSTagAttribute = {fg = c.green, gui = bold},
     htmlTSText = fgs.fg0,
     htmlTSTag = {fg = c.red, gui = bold},
@@ -2174,9 +2141,7 @@ hl.langs.ini = {
     dosiniValue = fgs.yellow,
     dosiniNumber = fgs.purple,
     dosiniHeader = {fg = c.red, gui = bold},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     iniTSType = {fg = c.red, gui = bold},
     iniTSPunctBracket = fgs.purple,
     iniTSProperty = fgs.green,
@@ -2204,9 +2169,7 @@ hl.langs.cmake = {
     cmakeKWtry_run = {fg = c.salmon, gui = bold},
     cmakeKWget_cmake_property = {fg = c.sea_green, gui = bold},
     cmakeVariableValue = {link = "Type"},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     cmakeTSBoolean = {fg = c.orange, gui = bold},
     cmakeTSConstant = {link = "TSConstant"},
     cmakeTSKeywordOperator = {link = "TSKeywordReturn"},
@@ -2229,9 +2192,7 @@ hl.langs.makefile = {
     makeTarget = fgs.blue,
     makeCommands = fgs.orange,
     makeSpecial = fgs.magenta,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     makefileTSFuncBuiltin = {link = "@function.builtin"},
     makefileTSFuncCall = {link = "@function.call"},
     makefileTSParameter = fgs.orange,
@@ -2250,9 +2211,7 @@ hl.langs.json = {
     jsonKeyword = fgs.orange,
     jsonQuote = fgs.coyote_brown1,
     jsonBraces = fgs.blue,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     jsonTSLabel = fgs.orange,
     jsonTSBoolean = fgs.red,
     jsonTSPunctBracket = fgs.blue,
@@ -2287,9 +2246,7 @@ hl.langs.yaml = {
     yamlDirective = {fg = c.red, gui = bold},
     yamlYAMLDirective = {fg = c.red, gui = bold},
     yamlYAMLVersion = fgs.magenta,
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     yamlTSBoolean = {fg = c.red, gui = bold},
     yamlTSConstBuiltin = {fg = c.orange, gui = bold},
     yamlTSField = fgs.blue,
@@ -2318,9 +2275,7 @@ hl.langs.toml = {
     tomlBoolean = fgs.aqua,
     tomlTableArray = {fg = c.purple, gui = bold},
     tomlKeyValueArray = {fg = c.purple, gui = bold},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     tomlTSProperty = fgs.orange,
     tomlTSType = fgs.magenta,
     tomlTSBoolean = {fg = c.red, gui = bold},
@@ -2343,9 +2298,7 @@ hl.langs.ron = {
     ronInteger = fgs.purple,
     ronString = fgs.yellow,
     ronBoolean = fgs.orange,
-    --
-    -- Treesiter
-    --
+    -- ════ Treesitter ════
     ronTSProperty = fgs.red,
     ronTSNumber = {link = "TSNumber"},
     ronTSString = {link = "TSString"},
@@ -2404,9 +2357,7 @@ hl.langs.gitconfig = {
     gitConfigSection = {link = "Keyword"},
     gitConfigVariable = fgs.blue,
     gitConfigBoolean = {link = "Boolean"},
-    --
-    -- Treesitter
-    --
+    -- ════ Treesitter ════
     git_configTSType = fgs.red,
     git_configTSProperty = fgs.blue,
     git_configTSPunctBracket = fgs.purple,

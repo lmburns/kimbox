@@ -185,7 +185,7 @@ See `:h lua-treesitter-highlight-groups` for a full explanation.
 
 After the commit `030b422d1`, highlight groups were changed in the following pattern:
 * `luaTSFunction` => `@function.lua`
-* `helpTSTitle` => `@text.title.help`
+* `vimdocTSTitle` => `@text.title.vimdoc`
 * etc.
 
 This feature will **not yet be enabled by default**. If you wish to use this colorscheme and wish to have the exact same colors as the highlight groups that were present before the aforementioned commit, set the configuration feature `langs08` to `true` in your configuration. This feature will eventually be this colorschemes default settings.
@@ -227,7 +227,7 @@ All of the following languages have been manually configured.
 - Swift
 - Teal
 - Typescript
-- TypescriptReact (tsx)
+- TypescriptReact (`.tsx`)
 - Vimscript
 - Zig
 - Zsh
@@ -236,10 +236,11 @@ All of the following languages have been manually configured.
 - SCSS
 - GraphQL
 - JQ
-- Help pages (Vim)
 - Comments
+- Vimdoc (Vim help)
 - LuaDoc (Lua documentation comments)
 - Luap (Lua patterns)
+- Query (`.scm`, Treesitter query syntax)
 - Regex
 - Latex
 - Markdown
@@ -251,7 +252,7 @@ All of the following languages have been manually configured.
 - Git Commit
 - Git Config
 - Git Ignore
-- DosIni (Ini)
+- DosIni (`.ini`)
 - JSON
 - RON (Rust Object Notation)
 - TOML
