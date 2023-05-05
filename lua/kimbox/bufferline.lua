@@ -5,15 +5,14 @@ function M.theme()
   return require("bufferline.themes.kimbox")
 end
 
----@return KimboxColors
+---@return KimboxColors|{[string]: string}
 function M.colors()
   local c = require("kimbox.colors")
-  local z = bufnr
-
   return {
-    bg4 = c.bg4,
-    fg0 = c.fg4,
-    vscode = c.vscode,
+    fg = c.fg4,
+    bg = c.vscode,
+    active = c.bg4,
+
     magenta = c.magenta,
     purple = c.purple,
     red = c.red,
@@ -26,8 +25,8 @@ function M.colors()
     maximum_purple = c.maximum_purple,
 
     sea_green = c.sea_green,
-    -- russian_green = "#689D6A",
-    -- jade_green = "#2AB074",
+    russian_green = c.russian_green,
+    jade_green = c.jade_green,
     deep_lilac = c.deep_lilac,
     opera_muave = c.opera_muave,
     vista_blue = c.vista_blue,
@@ -39,7 +38,7 @@ function M.colors()
     wave_red = c.wave_red,
     peach_red = c.peach_red,
     surimi_orange = c.surimi_orange,
-    light_red = c.light_red,
+    fuzzy_wuzzy = c.fuzzy_wuzzy,
     middle_green_yellow = c.middle_green_yellow,
     deep_saffron = c.deep_saffron,
     coconut = c.coconut,

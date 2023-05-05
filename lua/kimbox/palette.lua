@@ -5,7 +5,7 @@ local bgs = {
     vscode = "#221A0F",
     deep = "#0F111B",
     darker = "#291804",
-    eerie = "#1C0B28"
+    eerie = "#1C0B28",
 }
 
 ---@class KimboxFGs
@@ -44,13 +44,13 @@ local fgs = {
     tuscan_red = "#7E5053",
     purple_taupe = "#4F3552",
     maximum_purple = "#733E8B",
-    deep_lilac = "#A25BC4", -- "#945EB8"
-    opera_muave = "#BB80B3",
+    deep_lilac = "#A25BC4",  -- "#945EB8"
+    opera_muave = "#BB80B3", -- "#AF85A0"
     heliotrope = "#D484FF",
     vista_blue = "#7E9CD8",
     ube = "#7E82CC",
     amethyst = "#938AA9",
-    oni_violet = "#957FB8", -- #8e77b3
+    oni_violet = "#957FB8", -- "#8E77B3" "#8F7DB0"
     old_rose = "#BD798B",
     puce = "#D3869B",
     salmon = "#EA6962",
@@ -61,9 +61,9 @@ local fgs = {
     surimi_orange = "#FFA066",
     jasper_orange = "#E78A4E",
     bg_red = "#DC3958",
-    light_red = "#CC6666",
+    fuzzy_wuzzy = "#CC6666",
     ----------------------------------------------------------------------------
-    maroon_x11 = "#A43A57",
+    maroon_x11 = "#A43A57", -- "#B13254"
     watermelon = "#EC5F91",
     begonia = "#FF747C",
     middle_green_yellow = "#A3B95A",
@@ -71,6 +71,14 @@ local fgs = {
     dark_electric_blue = "#586081",
     coconut = "#9A5534",
     russet = "#79491d",
+    brown_chocolate = "#621A3C",
+    russian_violet = "#311D55",
+    dark_purple = "#471337",
+
+    army_green = "#445321", -- "#4c5c25",
+    vivid_burgundy = "#961134",
+    royal_brown = "#543739",
+    dark_slate_grey = "#325C59", -- "#335250" "#405453"
     ----------------------------------------------------------------------------
     -- These are duplicates because they are both used and could be changed at some point
     coyote_brown = "#7E602C",
@@ -80,14 +88,17 @@ local fgs = {
     wenge_grey = "#625A5A",
     beaver = "#A0936A",
     light_taupe = "#AF8D6E",
-    ----------------------------------------------------------------------------
-    diff_add = "#445321", -- "#4c5c25",
-    diff_delete = "#961134",
-    diff_change = "#543739",
-    diff_text = "#325C59" -- "#335250" "#405453"
 }
+
+fgs.diff_add = fgs.army_green
+fgs.diff_delete = fgs.vivid_burgundy
+fgs.diff_change = fgs.royal_brown
+fgs.diff_text = fgs.dark_slate_grey
+
+-- Legacy
+fgs.light_red = fgs.fuzzy_wuzzy
 
 return {
     colors = fgs,
-    bgs = bgs
+    bgs = bgs,
 }

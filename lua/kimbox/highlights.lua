@@ -49,8 +49,6 @@ local fgs = {
     coyote_brown1 = {fg = c.coyote_brown1},
     coyote_brown = {fg = c.coyote_brown},
     amethyst = {fg = c.amethyst},
-    red = {fg = c.red},
-    bg_red = {fg = c.bg_red},
     aqua = {fg = c.aqua},
     yellow = {fg = c.yellow},
     orange = {fg = c.orange},
@@ -69,9 +67,12 @@ local fgs = {
     deep_lilac = {fg = c.deep_lilac},
     heliotrope = {fg = c.heliotrope},
     jasper_orange = {fg = c.jasper_orange},
-    light_red = {fg = c.light_red},
+    red = {fg = c.red},
+    bg_red = {fg = c.bg_red},
+    fuzzy_wuzzy = {fg = c.fuzzy_wuzzy},
     wave_red = {fg = c.wave_red},
     peach_red = {fg = c.peach_red},
+    tuscan_red = {fg = c.tuscan_red},
     opera_muave = {fg = c.opera_muave},
     oni_violet = {fg = c.oni_violet},
     maroon_x11 = {fg = c.maroon_x11},
@@ -91,7 +92,7 @@ hl.common = {
         fg = utils.tern(cfg.ending_tildes, c.bg2, c.bg0),
         bg = utils.tern(trans, c.none, c.bg0),
     },
-    IncSearch = {fg = c.bg1, bg = c.light_red},
+    IncSearch = {fg = c.bg1, bg = c.fuzzy_wuzzy},
     Search = {fg = c.bg0, bg = c.vista_blue},
     Folded = {fg = c.coyote_brown1, bg = c.bg2},
     ColorColumn = {bg = c.bg1}, -- used for the columns set with 'colorcolumn'
@@ -134,7 +135,7 @@ hl.common = {
     WarningMsg = {fg = c.green, gui = bold},
     ModeMsg = {fg = c.purple, gui = bold},         -- 'showmode' message
     MoreMsg = {fg = c.green, gui = bold},          -- |more-prompt|
-    MsgSeparator = {fg = c.light_red, gui = bold}, -- Separator for scrolled messages
+    MsgSeparator = {fg = c.fuzzy_wuzzy, gui = bold}, -- Separator for scrolled messages
     Question = {fg = c.green},                     -- Yes/no prompt questions
     MatchParen = {fg = c.none, bg = c.bg4},
     Substitute = {fg = c.bg0, bg = c.green},
@@ -1325,18 +1326,21 @@ hl.langs08.lua = {
     ["@property.lua"] = fgs.green,
     ["@field.lua"] = fgs.aqua,
     ["@preproc.lua"] = fgs.purple,
+    ["@label.lua"] = {fg = c.orange, gui = bold},
     ["@method.lua"] = fgs.blue,
     ["@method.call.lua"] = fgs.blue,
     ["@punctuation.bracket.lua"] = fgs.purple,
-    ["@variable.builtin.lua"] = fgs.russian_green,
+    ["@namespace.builtin.lua"] = fgs.russian_green,
+    ["@variable.builtin.lua"] = fgs.blue,
     ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
     ["@keyword.function.lua"] = fgs.red,
     ["@keyword.coroutine.lua"] = {fg = c.oni_violet, gui = bold},
     -- Custom
-    ["@keyword.self.lua"] = fgs.blue,
-    ["@keyword.super.lua"] = fgs.blue,
     ["@field.builtin.lua"] = fgs.wave_red,
-    ["@constant.blank.lua"] = {fg = c.green, gui = bold},
+    ["@function.meta.lua"] = {fg = c.wave_red, gui = bold},
+    ["@function.error.lua"] = {fg = c.infra_red, gui = bold},
+    -- ["@function.table.lua"] = {fg = c.new, gui = bold},
+    -- ["@function.import.lua"] = {fg = c.bg_red, gui = bold},
 }
 
 --  ╭─────────╮
@@ -2565,7 +2569,7 @@ hl.plugins.coc = {
     CocSearch = fgs.orange,                 -- for matched input characters
     CocDisabled = fgs.grullo_grey,
     CocFadeOut = fgs.wenge_grey,            -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
-    CocCursorRange = {fg = c.bg1, bg = c.light_red},
+    CocCursorRange = {fg = c.bg1, bg = c.fuzzy_wuzzy},
     CocMenuSel = {fg = c.none, bg = c.bg1}, -- current menu item in menu dialog
     CocCodeLens = fgs.coyote_brown1,
     -- Popup Menu --

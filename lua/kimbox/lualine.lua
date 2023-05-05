@@ -5,14 +5,12 @@ function M.theme()
   return require("lualine.themes.kimbox")
 end
 
----@return KimboxColors
+---@return KimboxColors|{[string]: string}
 function M.colors()
   local c = require("kimbox.colors")
   return {
-    bg0 = c.bg0,
-    fg0 = c.fg0,
-    fg1 = c.fg1,
-    bg4 = c.bg4,
+    fg = c.fg0,
+    bg = c.bg0,
     bg2 = c.bg2,
     grullo_grey = c.grullo_grey,
     red = c.bg_red,
@@ -25,7 +23,6 @@ function M.colors()
     purple = c.purple,
     cyan = c.aqua,
     salmon = c.salmon,
-    white = c.fg4,
   }
 end
 
