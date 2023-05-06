@@ -97,6 +97,7 @@ fgs.diff_text = fgs.dark_slate_grey
 
 -- Legacy
 fgs.light_red = fgs.fuzzy_wuzzy
+fgs.cyan = fgs.aqua
 
 return {
     colors = fgs,

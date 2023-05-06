@@ -67,6 +67,7 @@ local fgs = {
     deep_lilac = {fg = c.deep_lilac},
     heliotrope = {fg = c.heliotrope},
     jasper_orange = {fg = c.jasper_orange},
+    pumpkin = {fg = c.pumpkin},
     red = {fg = c.red},
     bg_red = {fg = c.bg_red},
     fuzzy_wuzzy = {fg = c.fuzzy_wuzzy},
@@ -133,10 +134,10 @@ hl.common = {
     Directory = {fg = c.salmon, gui = bold},        -- directory names (and other special names in listings)
     ErrorMsg = {fg = c.red, gui = underbold},
     WarningMsg = {fg = c.green, gui = bold},
-    ModeMsg = {fg = c.purple, gui = bold},         -- 'showmode' message
-    MoreMsg = {fg = c.green, gui = bold},          -- |more-prompt|
+    ModeMsg = {fg = c.purple, gui = bold},           -- 'showmode' message
+    MoreMsg = {fg = c.green, gui = bold},            -- |more-prompt|
     MsgSeparator = {fg = c.fuzzy_wuzzy, gui = bold}, -- Separator for scrolled messages
-    Question = {fg = c.green},                     -- Yes/no prompt questions
+    Question = {fg = c.green},                       -- Yes/no prompt questions
     MatchParen = {fg = c.none, bg = c.bg4},
     Substitute = {fg = c.bg0, bg = c.green},
     NonText = {fg = c.bg4}, -- fillchars, showbreak
@@ -147,15 +148,15 @@ hl.common = {
         fg = c.fg4,
         bg = utils.tern(cfg.popup.background, c.bg0, c.bg1),
     },
-    PmenuSel = {fg = c.red, bg = c.bg4, gui = bold},   -- Popup menu: selected item
-    PmenuSbar = {fg = c.none, bg = c.fg3},             -- Popup menu: scrollbar
+    PmenuSel = {fg = c.red, bg = c.bg4, gui = bold},      -- Popup menu: selected item
+    PmenuSbar = {fg = c.none, bg = c.fg3},                -- Popup menu: scrollbar
     PmenuThumb = {fg = c.none, bg = c.green},
-    WildMenu = {fg = c.bg3, bg = c.green},             -- Current match in 'wildmenu' completion
-    WinBar = {fg = c.fg0, gui = bold},                 -- window bar of current window
-    WinBarNC = {fg = c.bg4, gui = bold},               -- window bar of not-current windows
-    NormalFloat = {fg = c.fg1, bg = bgs.ocean},        -- Normal text in floating windows.
-    TabLine = {fg = c.fg, bg = c.bg1},                 -- Tab pages line, not active tab page label
-    TabLineSel = {fg = c.bg1, bg = c.fg4, gui = bold}, -- Tab pages line, active tab page label
+    WildMenu = {fg = c.bg3, bg = c.green},                -- Current match in 'wildmenu' completion
+    WinBar = {fg = c.fg0, gui = bold},                    -- window bar of current window
+    WinBarNC = {fg = c.bg4, gui = bold},                  -- window bar of not-current windows
+    NormalFloat = {fg = c.fg1, bg = bgs.ocean},           -- Normal text in floating windows.
+    TabLine = {fg = c.fg0, bg = c.bg1},                   -- Tab pages line, not active tab page label
+    TabLineSel = {fg = c.purple, bg = c.bg1, gui = bold}, -- Tab pages line, active tab page label
     -- TabLineSel = {fg = c.fg, bg = c.bg1}, -- Tab pages line, active tab page label
     -- TabLineFill = {fg = c.fg, bg = c.bg1}, -- Tab pages line, where there are no labels
     TabLineFill = {gui = "none"},                       -- Tab pages line, where there are no labels
@@ -330,7 +331,7 @@ hl.langs08.treesitter = {
     ["@keyword.return"] = {fg = c.red, gui = bold},
     ["@label"] = fgs.orange,
     ["@method"] = fgs.blue,
-    ["@method.call"] = fgs.blue,
+    -- ["@method.call"] = fgs.blue,
     ["@namespace"] = {fg = c.blue, gui = italic},
     ["@none"] = fgs.fg0,
     ["@number"] = fgs.purple,
@@ -1332,6 +1333,7 @@ hl.langs08.lua = {
     ["@punctuation.bracket.lua"] = fgs.purple,
     ["@namespace.builtin.lua"] = fgs.russian_green,
     ["@variable.builtin.lua"] = fgs.blue,
+    ["@function.lua"] = {fg = c.magenta, gui = bold},
     ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
     ["@keyword.function.lua"] = fgs.red,
     ["@keyword.coroutine.lua"] = {fg = c.oni_violet, gui = bold},
@@ -2459,7 +2461,7 @@ hl.plugins.lsp_saga = {
     -- LspFloatWinNormal = {bg = c.bg_float},
     -- LspSagaFinderSelection = {fg = c.bg_visual},
     LspFloatWinBorder = {fg = c.magenta},
-    LspSagaBorderTitle = {fg = c.cyan},
+    LspSagaBorderTitle = {fg = c.aqua},
     LspSagaHoverBorder = {fg = c.blue},
     LspSagaRenameBorder = {fg = c.green},
     LspSagaDefPreviewBorder = {fg = c.green},
@@ -2471,7 +2473,7 @@ hl.plugins.lsp_saga = {
     DefinitionCount = {fg = c.purple},
     DefinitionIcon = {fg = c.blue},
     ReferencesIcon = {fg = c.blue},
-    TargetWord = {fg = c.cyan},
+    TargetWord = {fg = c.aqua},
 }
 
 -- https://github.com/hrsh7th/nvim-cmp
@@ -2479,7 +2481,7 @@ hl.plugins.cmp = {
     CmpItemAbbr = fgs.fg0,
     CmpItemAbbrDeprecated = fgs.fg0,
     CmpItemAbbrMatch = fgs.aqua,
-    CmpItemAbbrMatchFuzzy = {fg = c.cyan, gui = underline},
+    CmpItemAbbrMatchFuzzy = {fg = c.aqua, gui = underline},
     CmpItemMenu = fgs.grullo_grey,
     CmpItemKindDefault = fgs.purple,
     CmpItemKindClass = fgs.yellow,
@@ -3187,19 +3189,16 @@ function M.setup()
         end
     end
 
-    vim.defer_fn(
-        function()
-            local msg = utils.messages(1, true)
-            if msg and msg:match("^W18: Invalid character in group name") then
-                log.err(
-                    "You need to disable `langs08` or\nyou must have commit 030b422d1.\nCheck `:h lua-treesitter-highlight-groups`",
-                    true,
-                    {once = true}
-                )
-            end
-        end,
-        1000
-    )
+    vim.defer_fn(function()
+        local msg = utils.messages(1, true)
+        if msg and msg:match("^W18: Invalid character in group name") then
+            log.err(
+                "You need to disable `langs08` or\nyou must have commit 030b422d1.\nCheck `:h lua-treesitter-highlight-groups`",
+                true,
+                {once = true}
+            )
+        end
+    end, 1000)
 
     if cfg.highlights then
         -- user defined highlights
@@ -3211,11 +3210,9 @@ function M.setup()
                 local name = color_name:sub(2, -1)
                 color_name = c[name]
                 if not color_name then
-                    vim.schedule(
-                        function()
-                            log.err(("unknown color: '%s'"):format(name))
-                        end
-                    )
+                    vim.schedule(function()
+                        log.err(("unknown color: '%s'"):format(name))
+                    end)
                     return ""
                 end
             end
