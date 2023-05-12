@@ -7,7 +7,7 @@ local kimbox = {
 
     close_button = {fg = c.fuzzy_wuzzy, bg = c.bg},
     close_button_selected = {fg = c.wave_red, bg = c.active},
-    close_button_visible = {fg = c.fuzzy_wuzzy, bg = c.bg},
+    close_button_visible = {fg = c.fuzzy_wuzzy, bg = c.active},
 
     numbers = {fg = c.magenta, bg = c.bg, bold = true},
     numbers_selected = {fg = c.fg, bg = c.active, bold = true, italic = false},
@@ -34,11 +34,19 @@ local kimbox = {
     -- group_separator = {fg = c.bg, bg = c.active},
 
     indicator_selected = {fg = c.red, bg = c.active, bold = true},
-    indicator_visible = {fg = c.red, bg = c.bg, bold = true},
+    indicator_visible = {fg = c.red, bg = c.active, bold = true},
 
     pick = {fg = c.green, bg = c.bg, bold = true, italic = false},
     pick_selected = {fg = c.bg_red, bg = c.active, bold = true, italic = false},
-    pick_visible = {fg = c.green, bg = c.bg, bold = true, italic = false},
+    pick_visible = {fg = c.green, bg = c.active, bold = true, italic = false},
+
+    modified = {fg = c.red, bg = c.bg},
+    modified_selected = {fg = c.red, bg = c.active},
+    modified_visible = {fg = c.red, bg = c.active},
+
+    duplicate = {fg = c.wave_red, bg = c.bg, italic = false},
+    duplicate_selected = {fg = c.wave_red, bg = c.active, bold = true, italic = false},
+    duplicate_visible = {fg = c.wave_red, bg = c.active, italic = false},
 
     diagnostic = {fg = c.red, bg = c.bg},
     diagnostic_selected = {fg = c.red, bg = c.active, bold = true, italic = false},
@@ -71,14 +79,6 @@ local kimbox = {
     error_diagnostic = {fg = c.red, bg = c.bg, bold = true},
     error_diagnostic_selected = {fg = c.red, bg = c.active, italic = false},
     error_diagnostic_visible = {fg = c.red, bg = c.active, bold = true},
-
-    modified = {fg = c.red, bg = c.bg},
-    modified_selected = {fg = c.red, bg = c.active},
-    modified_visible = {fg = c.red, bg = c.active},
-
-    duplicate = {fg = c.wave_red, bg = c.bg, italic = false},
-    duplicate_selected = {fg = c.wave_red, bg = c.active, bold = true, italic = false},
-    duplicate_visible = {fg = c.wave_red, bg = c.active, italic = false},
 }
 
 return kimbox
