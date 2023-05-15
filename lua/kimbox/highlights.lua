@@ -1414,7 +1414,7 @@ hl.langs.regex = {
     -- regexTSConstCharacterEscape = {fg = c.russian_green, gui = bold},
     regesTSPunctDelimiter = {fg = c.ube, gui = bold},
     regexTSOperator = {fg = c.glorious_sunset, gui = bold},
-    regexTSProperty = {fg = c.yellow, bui = bold},
+    regexTSProperty = {fg = c.yellow, gui = bold},
 }
 
 hl.langs08.regex = {
@@ -1423,8 +1423,8 @@ hl.langs08.regex = {
     ["@constant.character.regex"] = {fg = c.drama_violet, gui = bold},
     ["@constant.character.escape.regex"] = {fg = c.russian_green, gui = bold},
     ["@punctuation.delimiter.regex"] = {fg = c.ube, gui = bold},
-    ["@operator.regex"] = {fg = c.glorious_sunset, bui = bold},
-    ["@property.regex"] = {fg = c.yellow, bui = bold},
+    ["@operator.regex"] = {fg = c.glorious_sunset, gui = bold},
+    ["@property.regex"] = {fg = c.yellow, gui = bold},
 }
 
 --  ╭──────╮
