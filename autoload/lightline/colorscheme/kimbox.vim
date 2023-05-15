@@ -10,25 +10,26 @@ let s:colors = {
       \ 'bg1':              ['#332712',   '237'],
       \ 'bg2':              ['#332712',   '235'],
       \ 'bg3':              ['#291804',   '237'],
-      \ 'bg4':              ['#5e452b',   '237'],
-      \ 'bg5':              ['#5e452b',   '239'],
+      \ 'bg4':              ['#5E452B',   '237'],
+      \ 'bg5':              ['#5E452B',   '239'],
       \ 'fg0':              ['#D9AE80',   '223'],
       \ 'fg1':              ['#7E602C',   '225'],
       \ 'fg3':              ['#231A0C',    '17'],
+      \ 'fg4':              ['#E8C097',   '251'],
       \ 'red':              ['#EF1D55',   '255'],
       \ 'magenta':          ['#A06469',   '255'],
       \ 'orange':           ['#FF5813',   '255'],
       \ 'yellow':           ['#819C3B',   '255'],
       \ 'green':            ['#FF9500',   '255'],
       \ 'aqua':             ['#7EB2B1',   '255'],
-      \ 'blue':             ['#733e8b',   '255'],
+      \ 'blue':             ['#4C96A8',   '255'],
+      \ 'amaranth_purple':  ['#733E8B',   '255'],
       \ 'purple':           ['#98676A',   '176'],
       \ 'black':            ['#000000',    '0'],
-      \ 'bg_red':           ['#DC3958',   '167'],
+      \ 'teaberry':         ['#DC3958',   '167'],
       \ 'grey0':            ['#7E5053',   '243'],
       \ 'grey1':            ['#7E602C',   '245'],
-      \ 'grey2':            ['#a89984',   '246'],
-      \ 'operator_base':  ['#e8c097',   '251'],
+      \ 'grey2':            ['#A89984',   '246'],
       \ 'none':             ['NONE',      'NONE']
   \ }
 
@@ -60,11 +61,11 @@ let s:normal_middle_fg = s:colors.grey2
 let s:normal_middle_bg = s:colors.bg2
 
 let s:insert_l1_fg = s:colors.bg0
-let s:insert_l1_bg = s:colors.blue
+let s:insert_l1_bg = s:colors.amaranth_purple
 let s:insert_l2_fg = s:colors.fg1
 let s:insert_l2_bg = s:colors.bg3
 let s:insert_r1_fg = s:colors.bg0
-let s:insert_r1_bg = s:colors.blue
+let s:insert_r1_bg = s:colors.amaranth_purple
 let s:insert_r2_fg = s:colors.fg1
 let s:insert_r2_bg = s:colors.bg3
 let s:insert_middle_fg = s:colors.fg1

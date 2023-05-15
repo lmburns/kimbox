@@ -37,7 +37,7 @@ local kimbox = {
     indicator_visible = {fg = c.red, bg = c.active, bold = true},
 
     pick = {fg = c.green, bg = c.bg, bold = true, italic = false},
-    pick_selected = {fg = c.bg_red, bg = c.active, bold = true, italic = false},
+    pick_selected = {fg = c.teaberry, bg = c.active, bold = true, italic = false},
     pick_visible = {fg = c.green, bg = c.active, bold = true, italic = false},
 
     modified = {fg = c.red, bg = c.bg},

@@ -37,10 +37,10 @@ local c = require("kimbox.bufferline").colors()
 -- Theme itself
 local t = require("kimbox.bufferline").theme()
 
-require("bufferline").setup(
+require("bufferline").setup({
   -- configuration stuff
   highlights = require("kimbox.bufferline").theme()
-)
+})
 ```
 
 - Lualine
@@ -51,10 +51,10 @@ local c = require("kimbox.lualine").colors()
 -- Theme itself
 local t = require("kimbox.lualine").theme()
 
-require("lualine").setup(
+require("lualine").setup({
   -- configuration stuff
   theme = 'kimbox' -- 'auto' works as well
-)
+})
 ```
 
 ## Color
@@ -74,55 +74,68 @@ vim.g.kimbox_config = {
 }
 
 require("kimbox").setup({
-  -- Main options --
-  style = "ocean", -- choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-  -- medium: #231A0C
-  -- ocean: #221A02
-  -- medium: #231A0C
-  -- deep: #0f111B
-  -- darker:#291804
-
-  toggle_style_key = "<Leader>ts",
-  toggle_style_list = { "medium", "ocean", "vscode", "deep", "darker" }, -- or require("kimbox").bgs_list
-
-  -- See below (New Lua Treesitter Highlight Groups) for an explanation
-  langs08 = true,
-
-  -- Used with popup menus (coc.nvim mainly) --
-  popup = {
-    background = false, -- use background color for pmenu
-  },
-
-  -- Plugins Related --
-  diagnostics = {
-    background = true, -- use background color for virtual text
-  }
-
-  -- General formatting --
-  allow_bold = true,
-  allow_italic = false,
-  allow_underline = false,
-  allow_undercurl = true,
-  allow_reverse = false,
-
-  transparent = false, -- don't set background
-  term_colors = true, -- if true enable the terminal
-  ending_tildes = false, -- show the end-of-buffer tildes
-
-
-  -- Custom Highlights --
-  colors = {}, -- Override default colors
-  highlights = {}, -- Override highlight groups
-  -- Plugins or languages that can be disabled
-  -- View them with require("kimbox.highlights").{langs,plugins}
-  disabled = {
-      langs = {},
-      plugins = {},
-      langs08 = {} -- Capture groups only present on nightly release (see below)
-  },
-
-  run_before = nil, -- Run a function before the colorscheme is loaded
-  run_after = nil -- Run a function after the colorscheme is loaded
+    ---Background color:
+    ---    burnt_coffee : #231A0C   -- legacy: "medium"
+    ---    cannon       : #221A02   -- legacy: "ocean"
+    ---    used_oil     : #221A0F   -- legacy: "vscode"
+    ---    deep         : #0F111B
+    ---    zinnwaldite  : #291804   -- legacy: "darker"
+    ---    eerie        : #1C0B28
+    style = "cannon",
+    ---Key used to cycle through the backgrounds in "toggle_style_list"
+    toggle_style_key = "<Leader>ts",
+    ---List of background names
+    toggle_style_list = require("kimbox").KimboxBgColors,
+    ---New Lua-Treesitter highlight groups
+    ---See below (New Lua Treesitter Highlight Groups) for an explanation
+    ---  Location where Treesitter capture groups changed to '@capture.name'
+    ---  Commit:    030b422d1
+    ---  Vim patch: patch-8.2.0674
+    langs08 = true,
+    ---Used with popup menus (coc.nvim mainly) --
+    popup = {
+        background = false, -- use background color for PMenu
+    },
+    -- ━━━ Plugin Related ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    diagnostics = {
+        background = true, -- use background color for virtual text
+    },
+    -- ━━━ General Formatting ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    allow_bold = true,
+    allow_italic = false,
+    allow_underline = false,
+    allow_undercurl = true,
+    allow_reverse = false,
+    transparent = false,   -- don't set background
+    term_colors = true,    -- if true enable the terminal
+    ending_tildes = false, -- show the end-of-buffer tildes
+    -- ━━━ Custom Highlights ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ---Override default colors
+    ---@type table<string, string>
+    colors = {},
+    ---Override highlight groups
+    ---@type table<string, KimboxHighlightMap>
+    highlights = {},
+    ---Plugins and langauges that can be disabled
+    ---To view options: print(require("kimbox.highlights").{langs,langs08,plugins})
+    ---@type {langs: string[], langs08: string[], plugins: string[]}
+    disabled = {
+        ---Disabled languages
+        ---@see KimboxHighlightLangs
+        langs = {},
+        ---Disabled languages with '@' treesitter highlights
+        ---@see KimboxHighlightLangs08
+        langs08 = {},
+        ---Disabled plugins
+        ---@see KimboxHighlightPlugins
+        plugins = {},
+    },
+    ---Run a function before the colorscheme is loaded
+    ---@type fun(): nil
+    run_before = nil,
+    ---Run a function after the colorscheme is loaded
+    ---@type fun(): nil
+    run_after = nil,
 })
 
 require("kimbox").load()
@@ -165,17 +178,17 @@ colorscheme kimbox
 
 ```lua
 require("kimbox").setup({
-  colors = {
-    bright_orange = "#ff8800",    -- define a new color
-    green = '#00ffaa',            -- redefine an existing color
-    myblue = '#418292'
-  },
-  highlights = {
-    TSKeyword = {fg = '$green'},
-    TSString = {fg = '$bright_orange', bg = '#00ff00', gui = 'bold'},
-    TSFunction = {fg = '#0000ff', sp = '$cyan', gui = 'underline,italic'},
-    ["@function.macro.lua"] = {fg = '$myblue', sp = '$cyan', gui = 'underline,italic'}
-  }
+    colors = {
+        bright_orange = "#ff8800", -- define a new color
+        green = "#77A172",         -- redefine an existing color
+        myblue = "#418292",
+    },
+    highlights = {
+        TSKeyword = {fg = "$green"},
+        TSString = {fg = "$bright_orange", bg = "#FF5813", gui = "bold"},
+        TSFunction = {fg = "#88C0D0", sp = "$aqua", gui = "underline,italic"},
+        ["@function.macro.lua"] = {fg = "$myblue", sp = "$aqua", gui = "underline,italic"},
+    },
 })
 ```
 

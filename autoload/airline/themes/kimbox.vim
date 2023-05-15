@@ -17,6 +17,7 @@ let s:colors = {
       \ 'fg0':              ['#D9AE80',   '223'],
       \ 'fg1':              ['#7E602C',   '225'],
       \ 'fg3':              ['#231A0C',    '17'],
+      \ 'fg4':              ['#e8c097',   '251'],
       \ 'red':              ['#EF1D55',   '255'],
       \ 'magenta':          ['#A06469',   '255'],
       \ 'orange':           ['#FF5813',   '255'],
@@ -30,7 +31,6 @@ let s:colors = {
       \ 'grey0':            ['#7E602C',   '243'],
       \ 'grey1':            ['#7E602C',   '245'],
       \ 'grey2':            ['#a89984',   '246'],
-      \ 'operator_base':  ['#e8c097',   '251'],
       \ 'none':             ['NONE',      'NONE']
       \ }
 "}}}
@@ -223,4 +223,4 @@ let g:airline#themes#kimbox#palette.tabline.airline_tabhid = s:IA1
 highlight! link bufferline_selected airline_c
 "}}}
 
-" vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker fmr={{{,}}}:
+" vim: ft=vim:et:sw=0:ts=2:sts=2:fdm=marker:fmr=[[[,]]]

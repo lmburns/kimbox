@@ -67,16 +67,16 @@ local fgs = {
     deep_lilac = {fg = c.deep_lilac},
     heliotrope = {fg = c.heliotrope},
     jasper_orange = {fg = c.jasper_orange},
-    pumpkin = {fg = c.pumpkin},
+    glorious_sunset = {fg = c.glorious_sunset},
     red = {fg = c.red},
-    bg_red = {fg = c.bg_red},
+    teaberry = {fg = c.teaberry},
     fuzzy_wuzzy = {fg = c.fuzzy_wuzzy},
     wave_red = {fg = c.wave_red},
     peach_red = {fg = c.peach_red},
     tuscan_red = {fg = c.tuscan_red},
-    opera_muave = {fg = c.opera_muave},
+    drama_violet = {fg = c.drama_violet},
     oni_violet = {fg = c.oni_violet},
-    maroon_x11 = {fg = c.maroon_x11},
+    cranberry_sauce = {fg = c.cranberry_sauce},
     beaver = {fg = c.beaver},
     russet = {fg = c.russet},
     coconut = {fg = c.coconut},
@@ -268,7 +268,7 @@ hl.treesitter = {
     TSString = fgs.yellow,
     TSStringEscape = fgs.philippine_green,
     TSStringRegex = fgs.orange,
-    TSStringSpecial = fgs.pumpkin,
+    TSStringSpecial = fgs.glorious_sunset,
     TSStorageClass = fgs.red,
     TSSymbol = fgs.fg0,
     TSTag = {fg = c.blue, gui = italic},
@@ -347,7 +347,7 @@ hl.langs08.treesitter = {
     ["@string"] = fgs.yellow,
     ["@string.escape"] = fgs.philippine_green,
     ["@string.regex"] = fgs.orange,
-    ["@string.special"] = fgs.pumpkin,
+    ["@string.special"] = fgs.glorious_sunset,
     ["@storageclass"] = fgs.red,
     ["@symbol"] = fgs.fg0,
     ["@tag"] = {fg = c.blue, gui = italic},
@@ -1103,7 +1103,7 @@ hl.langs.go = {
     goTypeDecl = {fg = c.purple, gui = italic},
     goDeclType = {fg = c.orange, gui = italic},
     goFunctionCall = {fg = c.green, gui = bold},
-    goSpaceError = {fg = c.coyote_brown1, bg = c.bg_red},
+    goSpaceError = {fg = c.coyote_brown1, bg = c.teaberry},
     goVarArgs = fgs.blue,
     goBuiltins = fgs.purple,
     goPredefinedIdentifiers = fgs.orange,
@@ -1346,7 +1346,7 @@ hl.langs08.lua = {
     ["@function.meta.lua"] = {fg = c.wave_red, gui = bold},
     ["@function.error.lua"] = {fg = c.infra_red, gui = bold},
     -- ["@function.table.lua"] = {fg = c.new, gui = bold},
-    -- ["@function.import.lua"] = {fg = c.bg_red, gui = bold},
+    -- ["@function.import.lua"] = {fg = c.teaberry, gui = bold},
 }
 
 --  ╭─────────╮
@@ -1410,20 +1410,20 @@ hl.langs08.luap = {
 --  ╰───────╯
 hl.langs.regex = {
     regexTSString = {fg = c.wave_red},
-    -- regexTSConstCharacter = {fg = c.opera_muave, gui = bold},
+    -- regexTSConstCharacter = {fg = c.drama_violet, gui = bold},
     -- regexTSConstCharacterEscape = {fg = c.russian_green, gui = bold},
     regesTSPunctDelimiter = {fg = c.ube, gui = bold},
-    regexTSOperator = {fg = c.pumpkin, bui = bold},
+    regexTSOperator = {fg = c.glorious_sunset, gui = bold},
     regexTSProperty = {fg = c.yellow, bui = bold},
 }
 
 hl.langs08.regex = {
     -- ["@string.regex"] = {fg = c.beaver},
     ["@string.regex"] = {fg = c.wave_red},
-    ["@constant.character.regex"] = {fg = c.opera_muave, gui = bold},
+    ["@constant.character.regex"] = {fg = c.drama_violet, gui = bold},
     ["@constant.character.escape.regex"] = {fg = c.russian_green, gui = bold},
     ["@punctuation.delimiter.regex"] = {fg = c.ube, gui = bold},
-    ["@operator.regex"] = {fg = c.pumpkin, bui = bold},
+    ["@operator.regex"] = {fg = c.glorious_sunset, bui = bold},
     ["@property.regex"] = {fg = c.yellow, bui = bold},
 }
 
@@ -1700,7 +1700,7 @@ hl.langs.sed = {
     sedLabel = fgs.wave_red,
     sedBranch = {fg = c.green, gui = bold},
     sedRegexpMeta = fgs.blue,
-    sedRegexp58 = fgs.opera_muave,
+    sedRegexp58 = fgs.drama_violet,
     sedReplacement47 = fgs.yellow,
     sedFlag = {fg = c.red, gui = bold},
     sedReplacement58 = fgs.oni_violet,
@@ -2735,7 +2735,7 @@ hl.plugins.startify = {
 -- https://github.com/folke/which-key.nvim
 hl.plugins.whichkey = {
     WhichKey = {fg = c.begonia},
-    WhichKeyDesc = fgs.opera_muave,
+    WhichKeyDesc = fgs.drama_violet,
     WhichKeyGroup = {fg = c.green, gui = "bold"},
     -- WhichKeyFloat = {fg = c.fg1, bg = c.bg3},
     WhichKeyFloat = {fg = c.fg1, bg = bgs.ocean},
@@ -2854,7 +2854,7 @@ hl.plugins.diffview = {
     DiffviewStatusModified = {link = "Constant"},
     DiffviewStatusRenamed = {link = "Character"},
     DiffviewStatusTypeChange = {link = "Character"},
-    DiffviewStatusUnknown = fgs.bg_red,
+    DiffviewStatusUnknown = fgs.teaberry,
     DiffviewStatusUnmerged = fgs.amethyst,
     DiffviewStatusUntracked = {link = "Tag"},
 }
@@ -2866,12 +2866,12 @@ hl.plugins.neogit = {
     NeogitDiffDelete = {link = "ErrorMsg"},
     -- NeogitDiffAddHighlight = {bg = c.green},
     NeogitDiffContextHighlight = {fg = c.philippine_silver},
-    -- NeogitDiffDeleteHighlight = {bg = c.bg_red},
+    -- NeogitDiffDeleteHighlight = {bg = c.teaberry},
     NeogitHunkHeaderHighlight = fgs.orange,
     NeogitHunkHeader = {fg = c.magenta, gui = bold},
     NeogitNotificationInfo = fgs.blue,
     NeogitNotificationWarning = fgs.yellow,
-    NeogitNotificationError = fgs.bg_red,
+    NeogitNotificationError = fgs.teaberry,
     NeogitRemote = fgs.amethyst,
     -- NeogitStashes
     NeogitUnstagedChanges = {link = "Tag"},
@@ -2952,8 +2952,8 @@ hl.plugins.telescope = {
     TelescopePreviewLink = {link = "TSURI"},
     TelescopePreviewBlock = {link = "Constant"},
     TelescopePreviewDirectory = {link = "Title"},
-    TelescopePreviewCharDev = fgs.bg_red,
-    TelescopePreviewCharPipe = fgs.bg_red,
+    TelescopePreviewCharDev = fgs.teaberry,
+    TelescopePreviewCharPipe = fgs.teaberry,
     TelescopePreviewMatch = {link = "Search"},
     TelescopePreviewTitle = {fg = c.salmon, gui = bold},
     TelescopePromptBorder = fgs.magenta,
@@ -3026,7 +3026,7 @@ hl.plugins.ts_rainbow = {
 
 -- https://github.com/lukas-reineke/indent-blankline.nvim
 hl.plugins.indent_blankline = {
-    IndentBlanklineContextChar = {fg = c.bg_red, gui = "nocombine"},
+    IndentBlanklineContextChar = {fg = c.teaberry, gui = "nocombine"},
 }
 
 -- https://github.com/rcarriga/nvim-dap-ui
@@ -3123,7 +3123,7 @@ hl.plugins.notify = {
     NotifyDEBUGBody = {fg = c.beaver, bg = bgs.ocean},
     NotifyDEBUGIcon = fgs.orange,
     NotifyDEBUGTitle = fgs.orange,
-    NotifyTRACEBorder = fgs.opera_muave,
+    NotifyTRACEBorder = fgs.drama_violet,
     NotifyTRACEBody = {fg = c.beaver, bg = bgs.ocean},
     NotifyTRACEIcon = fgs.heliotrope,
     NotifyTRACETitle = fgs.deep_lilac,

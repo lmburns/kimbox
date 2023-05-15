@@ -13,7 +13,7 @@ function M.colors()
     bg = c.bg0,
     bg2 = c.bg2,
     grullo_grey = c.grullo_grey,
-    red = c.bg_red,
+    red = c.teaberry,
     red2 = c.red,
     green = c.green,
     yellow = c.yellow,
