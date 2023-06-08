@@ -774,7 +774,7 @@ hl.langs.javascript = {
     jsxCloseTag = {fg = c.aqua, gui = bold},
     jsxComponentName = {fg = c.blue, gui = bold},
     -- ════ Treesitter ════
-    javascriptTSConstructor = {fg = c.green, gui = bold},
+    javascriptTSConstructor = {fg = c.wave_red, gui = bold},
     javascriptTSException = {fg = c.orange, gui = italic},
     javascriptTSKeyword = {link = "TSKeyword"},
     javascriptTSKeywordReturn = {link = "TSKeywordReturn"},
@@ -789,7 +789,7 @@ hl.langs.javascript = {
 }
 
 hl.langs08.javascript = {
-    ["@constructor.javascript"] = {fg = c.green, gui = bold},
+    ["@constructor.javascript"] = {fg = c.wave_red, gui = bold},
     ["@exception.javascript"] = {fg = c.orange, gui = italic},
     ["@keyword.javascript"] = {link = "@keyword"},
     ["@keyword.return.javascript"] = {link = "@keyword.return"},
@@ -1491,6 +1491,7 @@ hl.langs08.vim = {
     ["@string.special.vim"] = fgs.green,
     ["@type.vim"] = {fg = c.green, gui = bold},
     ["@variable.builtin.vim"] = {fg = c.green, gui = bold},
+    ["@variable.self.vim"] = {fg = c.blue},
     --
     -- Unsupported
     --
