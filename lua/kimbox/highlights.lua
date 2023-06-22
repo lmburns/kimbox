@@ -1250,6 +1250,20 @@ hl.langs.perl = {
 
 hl.langs08.perl = {
     ["@variable.perl"] = fgs.blue,
+    ["@keyword.function.perl"] = {fg = c.red, gui = bold},
+    ["@conditional.ternary.perl"] = {link = "@function"},
+    ["@include.perl"] = {fg = c.red, gui = bold},
+    ["@type.perl"] = {fg = c.green, gui = bold},
+    ["@namespace.perl"] = fgs.blue,
+    ["@variable.builtin.perl"] = {fg = c.sea_green, gui = bold},
+    ["@string.regex.perl"] = fgs.salmon,
+    ["@parameter.perl"] = fgs.salmon,
+    -- Custom
+    ["@function.exit.perl"] = {fg = c.red, gui = bold},
+    ["@function.other.perl"] = {fg = c.red, gui = bold},
+    ["@function.underscore.perl"] = {fg = c.green, gui = bold},
+    ["@keyword.block.perl"] = {fg = c.oni_violet, gui = bold},
+    ["@keyword.scope.perl"] = fgs.orange,
 }
 
 --  ╭──────╮
@@ -1528,6 +1542,7 @@ hl.langs08.c = {
     ["@repeat.c"] = fgs.blue,
     ["@type.c"] = {fg = c.green, gui = bold},
     ["@punctuation.bracket.c"] = fgs.purple,
+    -- ["@comment.documentation.c"] = fgs.jasper_orange,
 }
 
 --  ╭─────╮
@@ -1581,9 +1596,11 @@ hl.langs08.zig = {
     ["@type.builtin.zig"] = {fg = c.green, gui = bold},
     ["@field.zig"] = fgs.aqua,
     ["@function.macro.zig"] = fgs.aqua,
+    ["@function.builtin.zig"] = {fg = c.magenta, gui = bold},
     ["@attribute.zig"] = fgs.red,
     ["@punctuation.bracket.zig"] = fgs.orange,
     ["@constant.builtin.zig"] = {fg = c.orange, gui = bold},
+    ["@variable.self"] = fgs.blue,
 }
 
 --  ╭────────────╮
