@@ -105,11 +105,11 @@ hl.common = {
     -- iCursor = {gui = reverse},
     -- lCursor = {gui = reverse},
     -- CursorIM = {gui = reverse},
-    Cursor = {fg = bgs.ocean, bg = c.deep_saffron}, -- character under the cursor
-    vCursor = {fg = bgs.ocean, bg = c.deep_saffron},
-    iCursor = {fg = bgs.ocean, bg = c.deep_saffron},
-    lCursor = {fg = bgs.ocean, bg = c.deep_saffron},  -- the character under the cursor when |language-mapping|
-    CursorIM = {fg = bgs.ocean, bg = c.deep_saffron}, -- like Cursor, but used when in IME mode |CursorIM|
+    Cursor = {fg = bgs.cannon, bg = c.deep_saffron}, -- character under the cursor
+    vCursor = {fg = bgs.cannon, bg = c.deep_saffron},
+    iCursor = {fg = bgs.cannon, bg = c.deep_saffron},
+    lCursor = {fg = bgs.cannon, bg = c.deep_saffron},  -- the character under the cursor when |language-mapping|
+    CursorIM = {fg = bgs.cannon, bg = c.deep_saffron}, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn = {bg = c.bg1},                      -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine = {fg = c.none, bg = c.bg1},           -- Screen-line at the cursor, when 'cursorline' is set
     CursorLineNr = {fg = c.purple, gui = bold},       -- Number on cursorline
@@ -154,7 +154,7 @@ hl.common = {
     WildMenu = {fg = c.bg3, bg = c.green},                -- Current match in 'wildmenu' completion
     WinBar = {fg = c.fg0, gui = bold},                    -- window bar of current window
     WinBarNC = {fg = c.bg4, gui = bold},                  -- window bar of not-current windows
-    NormalFloat = {fg = c.fg1, bg = bgs.ocean},           -- Normal text in floating windows.
+    NormalFloat = {fg = c.fg1, bg = bgs.cannon},           -- Normal text in floating windows.
     TabLine = {fg = c.fg0, bg = c.bg1},                   -- Tab pages line, not active tab page label
     TabLineSel = {fg = c.purple, bg = c.bg1, gui = bold}, -- Tab pages line, active tab page label
     -- TabLineSel = {fg = c.fg, bg = c.bg1}, -- Tab pages line, active tab page label
@@ -385,7 +385,7 @@ hl.langs08.treesitter = {
     -- ["@conceal"] = {},
     -- ["@spell"] = {}
 
-    -- CUSTOM
+    -- === Custom ===
     ["@underline"] = {link = "Underlined"},
     ["@code"] = {link = "VimwikiCode"},
     ["@bold"] = {link = "VimwikiBold"},
@@ -1258,7 +1258,7 @@ hl.langs08.perl = {
     ["@variable.builtin.perl"] = {fg = c.sea_green, gui = bold},
     ["@string.regex.perl"] = fgs.salmon,
     ["@parameter.perl"] = fgs.salmon,
-    -- Custom
+    -- === Custom ===
     ["@function.exit.perl"] = {fg = c.red, gui = bold},
     ["@function.other.perl"] = {fg = c.red, gui = bold},
     ["@function.underscore.perl"] = {fg = c.green, gui = bold},
@@ -1284,7 +1284,7 @@ hl.langs08.teal = {
     ["@function.teal"] = {fg = c.magenta, gui = bold},
     ["@constant.teal"] = {fg = c.green, gui = bold},
     ["@constant.builtin.teal"] = fgs.orange,
-    -- Custom
+    -- === Custom ===
     ["@keyword.coroutine.teal"] = {fg = c.oni_violet, gui = bold},
     ["@field.builtin.teal"] = fgs.wave_red,
     ["@variable.builtin.teal"] = fgs.russian_green,
@@ -1355,7 +1355,7 @@ hl.langs08.lua = {
     ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
     ["@keyword.function.lua"] = fgs.red,
     ["@keyword.coroutine.lua"] = {fg = c.oni_violet, gui = bold},
-    -- Custom
+    -- === Custom ===
     ["@field.builtin.lua"] = fgs.wave_red,
     ["@function.meta.lua"] = {fg = c.wave_red, gui = bold},
     ["@function.error.lua"] = {fg = c.infra_red, gui = bold},
@@ -1394,7 +1394,7 @@ hl.langs08.luadoc = {
     ["@punctuation.bracket.luadoc"] = fgs.purple,
     ["@punctuation.delimiter.luadoc"] = {fg = c.orange, gui = bold},
     ["@punctuation.special.luadoc"] = {link = "@punctuation.special"},
-    -- custom
+    -- === Custom ===
     ["@keyword.diagnostic.luadoc"] = {fg = c.russian_green, gui = bold},
     ["@keyword.extra.luadoc"] = {fg = c.slate_grey, gui = bold},
     ["@keyword.info.luadoc"] = {fg = c.ube, gui = bold},
@@ -2003,7 +2003,6 @@ hl.langs.jq = {
     jqTSProperty = fgs.aqua,
     -- Unsupported (as of now)
     jqTSFuncCall = {link = "TSFuncCall"},
-    -- Custom
 }
 
 hl.langs08.jq = {
@@ -2021,7 +2020,7 @@ hl.langs08.jq = {
     ["@type.builtin.jq"] = {fg = c.orange, gui = bold},
     -- Unsupported (as of now)
     ["@function.call.jq"] = {link = "@function.call"},
-    -- Custom
+    -- === Custom ===
     ["@repeat.jq"] = {fg = c.wave_red, gui = bold},
     ["@collections.jq"] = {fg = c.sea_green, gui = bold},
     ["@function.error.jq"] = {fg = c.red, gui = bold},
@@ -2092,7 +2091,7 @@ hl.langs08.css = {
     ["@include.css"] = {fg = c.sea_green, gui = bold},
     ["@namespace.css"] = {fg = c.deep_lilac, gui = bold},
     ["@operator.css"] = {fg = c.wave_red, gui = bold},
-    -- Custom
+    -- === Custom ===
     ["@string.unit.css"] = fgs.salmon,
 }
 
@@ -2538,22 +2537,28 @@ hl.plugins.coc = {
     -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
     CocHoverRange = {fg = c.none, gui = underbold}, -- range of current hovered symbol
     CocHighlightText = {bg = c.fg2},                -- Coc cursorhold event
-    CocHintHighlight = {fg = c.none, gui = undercurl, sp = c.aqua},
     CocErrorHighlight = {fg = c.none, gui = undercurl, sp = c.red},
     CocWarningHighlight = {fg = c.none, gui = undercurl, sp = c.yellow},
     CocInfoHighlight = {fg = c.none, gui = undercurl, sp = c.blue},
+    CocHintHighlight = {fg = c.none, gui = undercurl, sp = c.aqua},
+
     CocFloating = {fg = c.fg1, bg = c.bg3},
+    CocFloatDividingLine = fgs.beaver,
+    CocFloatActive = fgs.orange, -- currently typed text
     CocErrorFloat = {fg = c.red, bg = c.bg3},
     CocWarningFloat = {fg = c.green, bg = c.bg3},
     CocInfoFloat = {fg = c.blue, bg = c.bg3},
     CocHintFloat = {fg = c.aqua, bg = c.bg3},
+
     CocErrorSign = fgs.red,
     CocWarningSign = fgs.yellow,
     CocInfoSign = fgs.blue,
     CocHintSign = fgs.amethyst,
+
     CocInlayHint = fgs.russian_green,
     CocInlayHintParameter = fgs.russian_green,
     CocInlayHintType = fgs.amethyst,
+
     CocErrorVirtualText = fgs.coyote_brown1,
     CocWarningVirtualText = fgs.coyote_brown1,
     CocInfoVirtualText = fgs.coyote_brown1,
@@ -2609,13 +2614,21 @@ hl.plugins.coc = {
     CocNotificationError = fgs.red,
     CocNotificationWarning = fgs.yellow,
     CocNotificationInfo = fgs.blue,
-    -- Coc-Git --
+    -- === Custom ===
+    CocSuggestFloating = {fg = c.fg0, bg = c.bg3}, -- bg0
+}
+
+-- https://github.com/neoclide/coc-git
+hl.plugins.coc_git = {
     CocGitAddedSign = fgs.yellow,
     CocGitChangeRemovedSign = fgs.purple,
     CocGitChangedSign = fgs.blue,
     CocGitRemovedSign = fgs.red,
     CocGitTopRemovedSign = fgs.red,
-    -- Coc-Explorer --
+}
+
+-- https://github.com/weirongxu/coc-explorer
+hl.plugins.coc_explorer = {
     CocExplorerBufferRoot = fgs.orange,
     CocExplorerBufferExpandIcon = fgs.aqua,
     CocExplorerBufferBufnr = fgs.purple,
@@ -2632,8 +2645,6 @@ hl.plugins.coc = {
     CocExplorerTimeAccessed = fgs.aqua,
     CocExplorerTimeCreated = fgs.aqua,
     CocExplorerTimeModified = fgs.aqua,
-    -- Custom --
-    CocSuggestFloating = {fg = c.fg0, bg = c.bg3}, -- bg0
 }
 
 -- https://github.com/dense-analysis/ale
@@ -2756,7 +2767,7 @@ hl.plugins.whichkey = {
     WhichKeyDesc = fgs.drama_violet,
     WhichKeyGroup = {fg = c.green, gui = "bold"},
     -- WhichKeyFloat = {fg = c.fg1, bg = c.bg3},
-    WhichKeyFloat = {fg = c.fg1, bg = bgs.ocean},
+    WhichKeyFloat = {fg = c.fg1, bg = bgs.cannon},
     WhichKeyValue = {fg = c.coyote_brown1, gui = italic}, -- any comment
     WhichKeyBorder = fgs.amethyst,
     WhichKeySeparator = fgs.beaver,
@@ -3126,23 +3137,23 @@ hl.plugins.sneak = {
 hl.plugins.notify = {
     NotifyBackground = {link = "NormalFloat"},
     NotifyERRORBorder = {fg = c.diff_delete},
-    NotifyERRORBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyERRORBody = {fg = c.beaver, bg = bgs.cannon},
     NotifyERRORIcon = fgs.red,
     NotifyERRORTitle = fgs.red,
     NotifyWARNBorder = fgs.coconut,
-    NotifyWARNBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyWARNBody = {fg = c.beaver, bg = bgs.cannon},
     NotifyWARNIcon = fgs.yellow,
     NotifyWARNTitle = fgs.yellow,
     NotifyINFOBorder = fgs.slate_grey,
-    NotifyINFOBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyINFOBody = {fg = c.beaver, bg = bgs.cannon},
     NotifyINFOIcon = fgs.blue,
     NotifyINFOTitle = fgs.blue,
     NotifyDEBUGBorder = fgs.jasper_orange,
-    NotifyDEBUGBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyDEBUGBody = {fg = c.beaver, bg = bgs.cannon},
     NotifyDEBUGIcon = fgs.orange,
     NotifyDEBUGTitle = fgs.orange,
     NotifyTRACEBorder = fgs.drama_violet,
-    NotifyTRACEBody = {fg = c.beaver, bg = bgs.ocean},
+    NotifyTRACEBody = {fg = c.beaver, bg = bgs.cannon},
     NotifyTRACEIcon = fgs.heliotrope,
     NotifyTRACETitle = fgs.deep_lilac,
     -- NotifyLogTime = fgs.deep_lilac,
@@ -3195,6 +3206,28 @@ hl.plugins.spellcheck = {
     qfSpellContext = fgs.yellow,
     qfSpellErrorWordInContext = fgs.blue,
     qfSpellErrorWord = {link = "SpellBad"},
+}
+
+-- https://github.com/tversteeg/registers.nvim
+hl.plugins.registers = {
+    RegistersEscaped = {link = "SpecialChar"},
+    RegistersWhitespace = {link = "Comment"},
+    RegistersString = {link = "String"},
+    RegistersNumber = {link = "Number"},
+    -- NOTE: these need to be used manually within registers.nvim setup() function
+    RegistersCursorline = {fg = c.purple, bg = c.royal_brown, gui = "bold,underline"}, -- when the cursor is over the line
+    RegistersSelection = {fg = c.salmon, gui = bold},                                  -- selection registers, `*+`
+    RegistersDefault = {link = "@bold"},                                               -- default register, `"`
+    RegistersUnnamed = {link = "@function"},                                           -- unnamed register, `\\`
+    RegistersReadOnly = {link = "Statement"},                                          -- read only registers, `:.%`
+    RegistersExpression = {link = "@text.title"},                                      -- expression register, `=`
+    RegistersBlackHole = {fg = c.amethyst},                                            -- black hole register, `_`
+    RegistersAlternateBuffer = {fg = c.glorious_sunset, gui = bold},                   -- alternate buffer register, `#` [@property]
+    RegistersLastSearch = {fg = c.vista_blue},                                         -- last search register, `/` [Search]
+    RegistersDelete = {fg = c.fg0, bg = c.diff_delete},                                -- delete register, `-`
+    RegistersYank = {link = "@type"},                                                  -- yank register, `0`
+    RegistersHistory = {link = "Number"},                                              -- history registers, `1-9`
+    RegistersNamed = {fg = c.slate_grey},                                              -- named registers, `a-z`
 }
 
 function M.setup()

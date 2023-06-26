@@ -68,11 +68,6 @@ require("lualine").setup({
 ## Options (Lua)
 
 ```lua
--- These options can also be set using:
-vim.g.kimbox_config = {
-  -- ...options from above
-}
-
 require("kimbox").setup({
     ---Background color:
     ---    burnt_coffee : #231A0C   -- legacy: "medium"
@@ -139,39 +134,56 @@ require("kimbox").setup({
 })
 
 require("kimbox").load()
+-- or this, which allows the running of `run_before`/`run_after`
+require("kimbox").colorscheme()
+
+-- These options can also be set using:
+vim.g.kimbox_config = {
+  -- ...options from above
+}
 ```
 
 ### Options (vimscript)
 
 ```vim
 " an example
-let g:kimbox_config = {
-    \ 'allow_reverse': v:false,
-    \ 'popup': {'background': v:false},
-    \ 'transparent': v:false,
-    \ 'allow_bold': v:true,
-    \ 'toggle_style_list': [
-    \   'medium',
-    \   'ocean',
-    \   'vscode',
-    \   'deep',
-    \   'darker'
+let g:kimbox_config = #{
+    \ style: 'cannon',
+    \ toggle_style_key: '<Leader>ts',
+    \ toggle_style_list: [
+    \     'burnt_coffee',
+    \     'cannon',
+    \     'used_oil',
+    \     'deep',
+    \     'zinnwaldite',
+    \     'eerie',
     \ ],
-    \ 'toggle_style_key': '<Leader>ts',
-    \ 'colors': [],
-    \ 'allow_italic': v:false,
-    \ 'diagnostics': {'background': v:true},
-    \ 'ending_tildes': v:false,
-    \ 'allow_underline': v:false,
-    \ 'toggle_style_index': 0,
-    \ 'allow_undercurl': v:false,
-    \ 'highlights': [],
-    \ 'style': 'ocean',
-    \ 'loaded': v:true,
-    \ 'term_colors': v:true
-\ }
+    \ langs08: v:false,
+    \ diagnostics: #{background: v:true},
+    \ popup:       #{background: v:false},
+    \ allow_bold: v:true,
+    \ allow_italic: v:false,
+    \ allow_underline: v:false,
+    \ allow_undercurl: v:true,
+    \ allow_reverse: v:false,
+    \ transparent: v:false,
+    \ term_colors: v:true,
+    \ ending_tildes: v:false,
+    \ colors: [],
+    \ highlights: [],
+    \ disabled: #{
+    \   langs:   [],
+    \   langs08: [],
+    \   plugins: [],
+    \ },
+    \ run_before: v:null,
+    \ run_after: v:null,
+    \ }
 
 colorscheme kimbox
+" or this, which allows the running of `run_before`/`run_after`
+lua require("kimbox").colorscheme()
+
 ```
 
 ### Overriding highlight groups
@@ -285,6 +297,7 @@ All of the following languages have been manually configured.
 - [BufferLine](https://github.com/akinsho/nvim-bufferline.lua)
 - [Cmp](https://github.com/hrsh7th/nvim-cmp)
 - [Coc-Explorer](https://github.com/weirongxu/coc-explorer)
+- [Coc-Git](https://github.com/neoclide/coc-git)
 - [Coc.nvim](https://github.com/neoclide/coc.nvim)
 - [Cybu](https://github.com/ghillb/cybu.nvim)
 - [Dap-UI](https://github.com/rcarriga/nvim-dap-ui)
@@ -318,6 +331,7 @@ All of the following languages have been manually configured.
 - [Nvim-R](https://github.com/jalvesaq/Nvim-R)
 - [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
 - [Packer](https://github.com/wbthomason/packer.nvim)
+- [Registers](https://github.com:tversteeg/registers.nvim)
 - [Sneak](https://github.com/justinmk/vim-sneak)
 - [Startify](https://github.com/mhinz/vim-startify)
 - [Symbols Outline](https://github.com/simrat39/symbols-outline.nvim)
