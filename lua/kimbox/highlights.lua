@@ -10,8 +10,13 @@ local c = require("kimbox.colors")
 local bgs = require("kimbox.palette").bgs
 local utils = require("kimbox.utils")
 local log = utils.log
+local Config = require("kimbox.config")
 
-local cfg = vim.g.kimbox_config
+if Config.__did_hl then
+    return
+end
+
+local cfg = Config.user
 
 local reverse = utils.tern(cfg.allow_reverse, "reverse", "none")
 local bold = utils.tern(cfg.allow_bold, "bold", "none")
@@ -3230,6 +3235,10 @@ hl.plugins.registers = {
     RegistersNamed = {fg = c.slate_grey},                                              -- named registers, `a-z`
 }
 
+function M.toggle_bg()
+    utils.highlight(hl.common)
+end
+
 function M.setup()
     if utils.needs_api_fix() then
         utils.highlight.alt({Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}})
@@ -3241,22 +3250,22 @@ function M.setup()
     utils.highlight(hl.syntax)
     utils.highlight(hl.treesitter)
 
-    for _, group in pairs(hl.langs) do
-        if not vim.tbl_contains(cfg.disabled.langs, group) then
+    for lang, group in pairs(hl.langs) do
+        if not vim.tbl_contains(cfg.disabled.langs, lang) then
             utils.highlight(group)
         end
     end
 
-    for _, group in pairs(hl.plugins) do
-        if not vim.tbl_contains(cfg.disabled.plugins, group) then
+    for plugin, group in pairs(hl.plugins) do
+        if not vim.tbl_contains(cfg.disabled.plugins, plugin) then
             utils.highlight(group)
         end
     end
 
     if cfg.langs08 then
         if utils.has08() then
-            for _, group in pairs(hl.langs08) do
-                if not vim.tbl_contains(cfg.disabled.langs08, group) then
+            for lang, group in pairs(hl.langs08) do
+                if not vim.tbl_contains(cfg.disabled.langs08, lang) then
                     utils.highlight(group)
                 end
             end

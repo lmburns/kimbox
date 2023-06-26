@@ -1,3 +1,4 @@
+local Config = require("kimbox.config")
 local palette = require("kimbox.palette")
 local colors = palette.colors
 local bgs = palette.bgs
@@ -17,9 +18,9 @@ return (function()
     local selected = {}
     -- An alternative is given in case this file is
     -- required before the theme is loaded by the plugin manager
-    local conf = vim.g.kimbox_config or {}
+    local conf = Config.user or {}
 
-    selected = extend(selected, {bg0 = bgs[conf.style or "ocean"]})
+    selected = extend(selected, {bg0 = bgs[conf.style or "cannon"]})
     -- Default colors
     selected = extend(selected, colors)
     selected = extend(selected, bgs)

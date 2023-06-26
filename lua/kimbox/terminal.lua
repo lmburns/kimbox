@@ -1,7 +1,7 @@
 local M = {}
 
 ---@type KimboxConfig
-local cfg = vim.g.kimbox_config
+local cfg = require("kimbox.config").user or vim.g.kimbox_config
 ---@type KimboxColors
 local c = require("kimbox.colors")
 

@@ -13,28 +13,19 @@ M.log = {
     levels = vim.log.levels,
 }
 
----Determine whether the user haas Neovim 0.8
+---Determine whether the user has Neovim 0.8
 ---@return fun(): boolean
 M.has08 = (function()
     local has08
     return function()
-        -- local version_t = {
-        --     vim.version().major,
-        --     vim.version().minor,
-        --     vim.version().patch,
-        -- }
-        -- local version = vim.version.parse(("%s.%s.%s"):format(unpack(version_t)))
-        -- has08 = vim.version.gt(version, '0.8')
-
         if has08 == nil then
-            -- has08 = vim.version.gt('0.8', vim.version())
             has08 = fn.has("nvim-0.8") == 1
         end
         return has08
     end
 end)()
 
----Determine whether the user haas Neovim 0.9
+---Determine whether the user has Neovim 0.9
 ---@return fun(): boolean
 M.has09 = (function()
     local has09
@@ -306,16 +297,6 @@ local function nvim_highlights(highlights)
             api.nvim_set_hl(0, group, values)
         end
     end
-end
-
-local function get_hl(name)
-    local ret
-    if M.has09() then
-        ret = api.nvim_get_hl(0, {name = name})
-    else
-        ret = api.nvim_get_hl_by_name(name, true)
-    end
-    return {}
 end
 
 ---@class KimboxHighlight

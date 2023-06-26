@@ -15,17 +15,18 @@ colorscheme kimbox
 
 - Packer
 ```lua
--- require("kimbox").load() == colorscheme kimbox
-use({ "lmburns/kimbox", config = [[require("kimbox").load()]] })
+use({"lmburns/kimbox", config = [[require("kimbox").load()]]})
 -- or
 use({
-  "lmburns/kimbox",
-  config = function()
-      require("kimbox").setup({
-          -- options
-      })
-      require("kimbox").load()
-    end
+    "lmburns/kimbox",
+    config = function()
+        require("kimbox").setup({
+            -- options
+        })
+        require("kimbox").load()
+        -- or
+        vim.cmd("colorscheme kimbox")
+    end,
 })
 ```
 
@@ -68,6 +69,11 @@ require("lualine").setup({
 ## Options (Lua)
 
 ```lua
+-- These options can also be set using:
+vim.g.kimbox_config = {
+  -- ...options from above
+}
+
 require("kimbox").setup({
     ---Background color:
     ---    burnt_coffee : #231A0C   -- legacy: "medium"
@@ -77,10 +83,13 @@ require("kimbox").setup({
     ---    zinnwaldite  : #291804   -- legacy: "darker"
     ---    eerie        : #1C0B28
     style = "cannon",
-    ---Key used to cycle through the backgrounds in "toggle_style_list"
-    toggle_style_key = "<Leader>ts",
-    ---List of background names
-    toggle_style_list = require("kimbox").KimboxBgColors,
+    ---Allow changing background color
+    toggle_style = {
+        ---Key used to cycle through the backgrounds in `toggle_style.bgs`
+        key = "<Leader>ts",
+        ---List of background names
+        bgs = require("kimbox.config").bg_colors
+    },
     ---New Lua-Treesitter highlight groups
     ---See below (New Lua Treesitter Highlight Groups) for an explanation
     ---  Location where Treesitter capture groups changed to '@capture.name'
@@ -134,13 +143,6 @@ require("kimbox").setup({
 })
 
 require("kimbox").load()
--- or this, which allows the running of `run_before`/`run_after`
-require("kimbox").colorscheme()
-
--- These options can also be set using:
-vim.g.kimbox_config = {
-  -- ...options from above
-}
 ```
 
 ### Options (vimscript)
@@ -149,15 +151,17 @@ vim.g.kimbox_config = {
 " an example
 let g:kimbox_config = #{
     \ style: 'cannon',
-    \ toggle_style_key: '<Leader>ts',
-    \ toggle_style_list: [
+    \ toggle_style: #{
+    \   key: '<Leader>ts',
+    \   bgs: [
     \     'burnt_coffee',
     \     'cannon',
     \     'used_oil',
     \     'deep',
     \     'zinnwaldite',
     \     'eerie',
-    \ ],
+    \   ]
+    \ },
     \ langs08: v:false,
     \ diagnostics: #{background: v:true},
     \ popup:       #{background: v:false},
@@ -181,9 +185,6 @@ let g:kimbox_config = #{
     \ }
 
 colorscheme kimbox
-" or this, which allows the running of `run_before`/`run_after`
-lua require("kimbox").colorscheme()
-
 ```
 
 ### Overriding highlight groups

@@ -13,4 +13,4 @@ for pack, _ in pairs(package.loaded) do
 end
 
 require("kimbox").setup()
-require("kimbox").colorscheme()
+require("kimbox").load()
