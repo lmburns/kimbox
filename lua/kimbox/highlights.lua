@@ -1547,6 +1547,7 @@ hl.langs08.c = {
     ["@repeat.c"] = fgs.blue,
     ["@type.c"] = {fg = c.green, gui = bold},
     ["@punctuation.bracket.c"] = fgs.purple,
+    ["@attribute.c"] = {fg = c.aqua, gui = bold},
     -- ["@comment.documentation.c"] = fgs.jasper_orange,
 }
 
