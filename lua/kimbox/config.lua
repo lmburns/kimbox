@@ -130,7 +130,7 @@ local function validate(c)
 
     if not vim.tbl_contains(Config.bg_colors, c.style) then
         log.err(("invalid 'style' name given: %s.\nValid names: %s")
-            :format(c.style, table.concat(Config.bg_colors)))
+            :format(c.style, table.concat(Config.bg_colors, ", ")))
         c.style = DEFAULT_STYLE
     end
 

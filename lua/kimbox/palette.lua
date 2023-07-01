@@ -54,14 +54,16 @@ local fgs = {
     amaranth_purple = "#733E8B",
     lusty_lavender = "#945EB8",
     deep_lilac = "#A25BC4",
-    drama_violet = "#BB80B3",
-    capri_fashion_pink = "#AF85A0",
     heliotrope = "#D484FF",
     vista_blue = "#7E9CD8",
     ube = "#7E82CC",
-    amethyst = "#938AA9",
     oni_violet = "#957FB8",
     paisley_purple = "#8E77B3",
+    amethyst = "#938AA9",
+    capri_fashion_pink = "#AF85A0",
+    drama_violet = "#BB80B3",
+    victorian_violet = "#B279A7",
+    cure_all = "#A76C8C",
     old_rose = "#BD798B",
     puce = "#D3869B",
     salmon = "#EA6962",
@@ -70,18 +72,29 @@ local fgs = {
     infra_red = "#F14A68",
     teaberry = "#DC3958",
     fuzzy_wuzzy = "#CC6666",
-    glorious_sunset = "#FE8019", -- pumpkin
+    glorious_sunset = "#FE8019",
     surimi_orange = "#FFA066",
     jasper_orange = "#E78A4E",
     ----------------------------------------------------------------------------
-    cranberry_sauce = "#A43A57", -- maroon_x11
+    cranberry_sauce = "#A43A57",
     watermelon = "#EC5F91",
     begonia = "#FF747C",
     middle_green_yellow = "#A3B95A",
     deep_saffron = "#F79A32",
+
+    gleeful = "#99BE7D",
+    family_tree = "#A4B494",
+    heart_potion = "#AD7EB7",
+    ponceau = "#F55B76",
+    nectarous_nectarine = "#DE5662",
+    carnation = "#F77B91",
+    gorse_yellow_orange = "#EB9938",
+    dried_flower = "#792359",
+    pretty_prune = "#6B2D5C",
+
     dark_electric_blue = "#586081",
     coconut = "#9A5534",
-    russet = "#79491d",
+    russet = "#79491D",
     brown_chocolate = "#621A3C",
     russian_violet = "#311D55",
     dark_purple = "#471337",
@@ -89,7 +102,7 @@ local fgs = {
     army_green = "#445321", -- "#4c5c25",
     vivid_burgundy = "#961134",
     royal_brown = "#543739",
-    royal_pine = "#325C59",  -- dark_slate_grey
+    royal_pine = "#325C59", -- dark_slate_grey
     ----------------------------------------------------------------------------
     -- These are duplicates because they are both used and might be changed at some point
     coyote_brown = "#7E602C",
@@ -99,46 +112,38 @@ local fgs = {
     wenge_grey = "#625A5A",
     beaver = "#A0936A",
     light_taupe = "#AF8D6E",
-    ----------------------------------------------------------------------------
-    -- "#335250" "#405453" "#B13254"
-    -- gentian = "#8F7DB0",
+
+    --  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    carbon_fiber = "#2F2D2E",
+    wenge_black = "#41292C",
+    vivid_cerise = "#D72483",
+    diva_pink = "#FD3E81",
+
+    -- bats_blood = "#F0386B",
+    -- fiery_rose = "#FF5376",
+    -- pale_petunia = "#F8C0C8",
+    birdseed = "#E2C290",
+
+    ballerina_tutu = "#C96480",
+    wild_party = "#B47878",
+    applegate_park = "#B1AE91",
+    velvet_leaf = "#95BF8F",
+    jade_lime = "#99D17B",
+
+    rose_gold = "#B76C77",
+    melanzane = "#34252F",
+    dusk_wine = "#9E7682",
+    orchid_grey = "#605770",
+    garden_violet = "#847996",
+    vintage_blue = "#88B7B5",
+    pastel_meadow = "#A7CAB1",
 }
 
 fgs.diff_add = fgs.army_green
 fgs.diff_delete = fgs.vivid_burgundy
 fgs.diff_change = fgs.royal_brown
 fgs.diff_text = fgs.royal_pine
-
--- fgs.grass_court = fgs.philippine_green
--- fgs.hierba_santa = fgs.sea_green
--- fgs.leafy = fgs.russian_green
--- fgs.salsify_grass = fgs.jade_green
--- fgs.beckett = fgs.morning_blue
--- fgs.wipeout = fgs.jelly_bean_blue
--- fgs.pool_tide = fgs.slate_grey
--- fgs.deep_rhubarb = fgs.tuscan_red
--- fgs.chive_bloom = fgs.purple_taupe
--- fgs.trunks_hair = fgs.deep_lilac
--- fgs.lavender_tea = fgs.heliotrope
--- fgs.boudoir_blue = fgs.vista_blue
--- fgs.twilight_twinkle = fgs.ube
--- fgs.antique_viola = fgs.amethyst
--- fgs.lavender_purple = fgs.oni_violet
--- fgs.muave_seductress = fgs.old_rose
--- fgs.dull_pink = fgs.puce
--- fgs.coral_commander = fgs.salmon
--- fgs.old_heart = fgs.wave_red
--- fgs.fusion_red = fgs.peach_red
--- fgs.smudged_lips = fgs.infra_red
--- fgs.peach_cobbler = fgs.surimi_orange
--- fgs.autumn_glimmer = fgs.jasper_orange
--- fgs.chinese_money_plant = fgs.middle_green_yellow
--- fgs.pelican_pecker = fgs.deep_saffron
--- fgs.award_night = fgs.dark_electric_blue
--- fgs.fabric_of_space = fgs.russian_violet
--- fgs.chilli_black_red = fgs.dark_purple
--- fgs.french_winery = fgs.vivid_burgundy
--- fgs.wooden_peg = fgs.grullo_grey
 
 -- Legacy
 fgs.light_red = fgs.fuzzy_wuzzy
