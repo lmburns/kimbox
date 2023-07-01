@@ -388,7 +388,7 @@ hl.langs08.treesitter = {
 
     -- === Keywords ===
     ["@keyword"] = fgs.red,                                   -- various keywords
-    ["@keyword.coroutine"] = {fg = c.oni_violet, gui = bold}, -- keywords related to coroutines (`async`/`await`)
+    -- ["@keyword.coroutine"] = {fg = c.oni_violet, gui = bold}, -- keywords related to coroutines (`async`/`await`)
     ["@keyword.function"] = fgs.red,                          -- keywords that define a function (`def`/`fn`/`func`)
     ["@keyword.operator"] = fgs.red,                          -- operators that are English words (`and`/`or`)
     ["@keyword.return"] = {fg = c.red, gui = bold},           -- keywords like `return`/`yield`
