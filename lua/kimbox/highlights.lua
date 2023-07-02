@@ -137,7 +137,7 @@ hl.common = {
     DiffFile = {fg = c.aqua},
     Directory = {fg = c.salmon, gui = bold},         -- directory names (and other special names in listings)
     ErrorMsg = {fg = c.red, gui = underbold},        -- error messages on the command line
-    WarningMsg = {fg = c.green, gui = bold},
+    WarningMsg = {fg = c.green, gui = bold},         -- warning messages
     ModeMsg = {fg = c.purple, gui = bold},           -- 'showmode' message (e.g., "-- INSERT --")
     MoreMsg = {fg = c.green, gui = bold},            -- more-prompt
     -- MsgArea = {},                                    -- area for messages and cmdline
@@ -147,7 +147,7 @@ hl.common = {
     Substitute = {fg = c.bg0, bg = c.green},         -- :substitute replacement text
     NonText = {fg = c.bg4},                          -- '@' at the end of the window, fillchars, showbreak
     SpecialKey = {fg = c.bg4},                       -- unprintable characters
-    Whitespace = {fg = c.bg4},
+    Whitespace = {fg = c.bg4},                       -- "nbsp", "space", "tab", "multispace", "lead", "trail"
     Pmenu = {                                        -- popup menu: normal item
         fg = c.fg4,
         bg = utils.tern(cfg.popup.background, c.bg0, c.bg1),
@@ -163,21 +163,21 @@ hl.common = {
     WinBar = {fg = c.fg0, gui = bold},                       -- window bar of current window
     WinBarNC = {fg = c.bg4, gui = bold},                     -- window bar of not-current windows
     NormalFloat = {fg = c.fg1, bg = bgs.cannon},             -- normal text in floating windows
-    TabLine = {fg = c.fg0, bg = c.bg1},                      -- Tab pages line, not active tab page label
-    TabLineSel = {fg = c.purple, bg = c.bg1, gui = bold},    -- Tab pages line, active tab page label
-    TabLineFill = {gui = "none"},                            -- Tab pages line, where there are no labels
+    TabLine = {fg = c.fg0, bg = c.bg1},                      -- tabpages line, not active tabpage label
+    TabLineSel = {fg = c.purple, bg = c.bg1, gui = bold},    -- tabpages line, active tabpage label
+    TabLineFill = {gui = "none"},                            -- tabpages line, where there are no labels
     -- When last status=2 or 3
     StatusLine = {fg = c.none, bg = c.none},                 -- status line of current window
-    StatusLineNC = {fg = c.coyote_brown1, bg = c.none},      -- status lines of not-current windows
-    StatusLineTerm = {fg = c.fg0, bg = c.bg2},
-    StatusLineTermNC = {fg = c.coyote_brown1, bg = c.bg1},
-    SpellBad = {fg = c.red, gui = "undercurl", sp = c.red},
-    SpellCap = {fg = c.blue, gui = undercurl, sp = c.blue},
-    SpellLocal = {fg = c.aqua, gui = undercurl, sp = c.aqua},
-    SpellRare = {fg = c.purple, gui = undercurl, sp = c.purple},
-    Visual = {fg = c.black, bg = c.fg4, gui = reverse},    -- visual mode selection
-    VisualNOS = {fg = c.black, bg = c.fg4, gui = reverse}, -- visual sel when vim is "Not Owning the Selection"
-    QuickFixLine = {fg = c.purple, gui = bold},            -- current quickfix item in the quickfix window
+    StatusLineNC = {fg = c.coyote_brown1, bg = c.bg0},       -- status lines of not-current windows
+    StatusLineTerm = {fg = c.fg0, bg = c.bg0},
+    StatusLineTermNC = {fg = c.beaver, bg = c.bg0},
+    SpellBad = {fg = c.red, gui = "undercurl", sp = c.red},      -- word not recognized by spellchecker
+    SpellCap = {fg = c.blue, gui = undercurl, sp = c.blue},      -- word that should start with capital letter
+    SpellLocal = {fg = c.aqua, gui = undercurl, sp = c.aqua},    -- word recognized from another region
+    SpellRare = {fg = c.purple, gui = undercurl, sp = c.purple}, -- word recognized as one that is rarely used
+    Visual = {fg = c.black, bg = c.fg4, gui = reverse},          -- visual mode selection
+    VisualNOS = {fg = c.black, bg = c.fg4, gui = reverse},       -- visual sel when vim is "Not Owning the Selection"
+    QuickFixLine = {fg = c.purple, gui = bold},                  -- current quickfix item in the quickfix window
     Debug = {fg = c.orange},
     debugPC = {fg = c.bg0, bg = c.green},
     debugBreakpoint = {fg = c.bg0, bg = c.red},
@@ -185,6 +185,10 @@ hl.common = {
     FloatBorder = {fg = c.magenta},           -- border of floating windows
     FloatTitle = {fg = c.orange, gui = bold}, -- title of floating windows
     FloatermBorder = {fg = c.magenta},
+    -- === GUI ===
+    -- Menu = {--[[ font = "",]] link = "Pmenu"},    -- current font, bg & fg colors of the menus
+    -- Scrollbar = {fg = c.none, bg = c.fg3},        -- bg & fg of the main window's scrollbars
+    -- Tooltip = {--[[ font = "",]] link = "Pmenu"}, -- current font, bg & fg colors of the menus
 }
 
 hl.syntax = {
@@ -193,13 +197,13 @@ hl.syntax = {
     Float = fgs.purple,
     PreProc = {fg = c.sea_green, gui = italic},
     PreCondit = fgs.sea_green,
-    Include = {fg = c.purple, gui = italic},
-    Define = {fg = c.purple},
+    Include = {fg = c.red, gui = italic},
+    Define = fgs.purple,
     Conditional = {fg = c.purple, gui = italic},
     Repeat = {fg = c.purple, gui = italic},
     Keyword = {fg = c.red, gui = italic},
-    Typedef = {fg = c.red},
-    Exception = {fg = c.red, gui = italic},
+    Typedef = {fg = c.peach_red, gui = bold},
+    Exception = {fg = c.orange, gui = bold},
     Statement = {fg = c.red, gui = bold},
     Error = fgs.red,
     StorageClass = fgs.red,
@@ -207,13 +211,6 @@ hl.syntax = {
     Label = fgs.orange,
     Structure = fgs.red,
     Operator = fgs.orange,
-    Title = {fg = c.orange, gui = bold},
-    Title1 = {fg = c.infra_red, gui = "bold"},
-    Title2 = {fg = "#F06431", gui = "bold"},
-    Title3 = {fg = c.russian_green, gui = "bold"},
-    Title4 = {fg = c.green, gui = "bold"},
-    Title5 = {fg = c.purple, gui = "bold"},
-    Title6 = {fg = "#458588", gui = "bold"},
     Special = fgs.green,
     SpecialChar = fgs.philippine_green,
     Type = {fg = c.green, gui = bold},
@@ -223,12 +220,19 @@ hl.syntax = {
     Constant = fgs.aqua,
     Macro = fgs.aqua,
     Identifier = fgs.blue,
-    Delimiter = fgs.blue,
+    Delimiter = fgs.purple,
     Ignore = fgs.coyote_brown1,
     Comment = fgs.coyote_brown1,
     SpecialComment = {fg = c.coyote_brown1, gui = italic},
-    Todo = {fg = c.purple, bg = c.none, gui = italic},
+    Todo = {fg = c.purple, bg = c.none, gui = bold},
     Underlined = {fg = c.none, gui = "underline"},
+    Title = {fg = c.orange, gui = bold},           -- titles for output from ":set all", ":autocmd" etc
+    Title1 = {fg = c.infra_red, gui = "bold"},     -- CUSTOM: markdown heading 1
+    Title2 = {fg = "#F06431", gui = "bold"},       -- CUSTOM: markdown heading 2
+    Title3 = {fg = c.russian_green, gui = "bold"}, -- CUSTOM: markdown heading 3
+    Title4 = {fg = c.green, gui = "bold"},         -- CUSTOM: markdown heading 4
+    Title5 = {fg = c.purple, gui = "bold"},        -- CUSTOM: markdown heading 5
+    Title6 = {fg = "#458588", gui = "bold"},       -- CUSTOM: markdown heading 6
     -- === Custom ===
     Bold = {fg = c.deep_lilac, gui = "bold"},
     BoldItalic = {fg = c.jade_green, gui = "bold,italic"},
@@ -240,28 +244,28 @@ hl.treesitter = {
     -- === Miscellaneous ===
     TSComment = {link = "Comment"},             -- Line comments and block comments
     TSCommentDocumentation = fgs.jasper_orange, -- comments documenting code
-    -- TSError = fgs.red,                          -- syntax/parser errors (NOTE: maybe change)
+    -- TSError = {link = "Error"},              -- syntax/parser errors (NOTE: maybe change)
     TSNone = fgs.fg0,                           -- completely disable the highlight
-    TSPreproc = fgs.sea_green,                  -- various preprocessor directives & shebangs
+    TSPreproc = {link = "PreProc"},             -- various preprocessor directives & shebangs
     TSDefine = {link = "TSPreproc"},            -- preprocessor definition directives
-    TSOperator = fgs.orange,                    -- symbolic operators (e.g. `+` / `*`)
+    TSOperator = {link = "Operator"},           -- symbolic operators (e.g. `+` / `*`)
 
     -- === Punctuation ===
-    TSPunctBracket = fgs.purple,          -- brackets (e.g. `()` / `{}` / `[]`)
-    TSPunctDelimiter = fgs.coyote_brown1, -- delimiters (e.g. `;` / `.` / `,`)
-    TSPunctSpecial = fgs.green,           -- special symbols (e.g. `{}` in string interpolation)
+    TSPunctBracket = {link = "Delimiter"}, -- brackets (e.g. `()` / `{}` / `[]`)
+    TSPunctDelimiter = fgs.coyote_brown1,  -- delimiters (e.g. `;` / `.` / `,`)
+    TSPunctSpecial = {link = "Special"},   -- special symbols (e.g. `{}` in string interpolation)
 
     -- === Literal ===
-    TSString = fgs.yellow,                       -- string literals
-    TSStringDocumentation = fgs.yellow,          -- string documenting code (e.g. Python docstrings)
+    TSString = {link = "String"},                -- string literals
+    TSStringDocumentation = {link = "String"},   -- string documenting code (e.g. Python docstrings)
     TSStringRegex = fgs.orange,                  -- regular expressions
     TSStringEscape = {link = "SpecialChar"},     -- escape sequences
     TSStringSpecial = fgs.glorious_sunset,       -- other special strings (e.g. dates)
-    TSCharacter = fgs.yellow,                    -- character literals
+    TSCharacter = {link = "Character"},          -- character literals
     TSCharacterSpecial = {link = "SpecialChar"}, -- special characters (e.g. wildcards)
     TSBoolean = {link = "Boolean"},              -- boolean literals
     TSNumber = {link = "Number"},                -- numeric literals
-    TSFloat = {link = "Number"},                 -- floating-point number literals
+    TSFloat = {link = "Float"},                  -- floating-point number literals
 
     -- === Functions ===
     TSFunction = {link = "Function"},              -- function definitions
@@ -275,23 +279,23 @@ hl.treesitter = {
     TSParameterReference = fgs.salmon,             -- parameter references within a function
 
     -- === Keywords ===
-    TSKeyword = fgs.red,                                  -- various keywords
-    TSKeywordCoroutine = {fg = c.oni_violet, gui = bold}, -- keywords related to coroutines (`async`/`await`)
-    TSKeywordFunction = fgs.red,                          -- keywords that define a function (`def`/`fn`/`func`)
-    TSKeywordOperator = fgs.red,                          -- operators that are English words (`and`/`or`)
-    TSKeywordReturn = {fg = c.red, gui = bold},           -- keywords like `return`/`yield`
-    TSConditional = {fg = c.purple, gui = italic},        -- keywords related to conditionals (`if`/`then`/`elif`...)
-    TSConditionalTernary = {link = "TSFunction"},         -- ternary operator (`?`/`:`)
-    TSRepeat = fgs.purple,                                -- keywords related to loops (`for`/`while`/`break`)
-    TSDebug = fgs.slate_grey,                             -- keywords related to debugging (NOTE: maybe change)
-    TSLabel = fgs.orange,                                 -- goto and other labels
-    TSInclude = {fg = c.red, gui = italic},               -- keywords for including modules
-    TSException = {fg = c.orange, gui = bold},            -- keywords related to exceptions (`throw`/`catch`)
+    TSKeyword = {link = "Keyword"},             -- various keywords
+    -- TSKeywordCoroutine = {fg = c.oni_violet, gui = bold}, -- keywords related to coroutines (`async`/`await`)
+    TSKeywordFunction = fgs.red,                -- keywords that define a function (`def`/`fn`/`func`)
+    TSKeywordOperator = {link = "Keyword"},     -- operators that are English words (`and`/`or`)
+    TSKeywordReturn = {link = "Statement"},     -- keywords like `return`/`yield`
+    TSConditional = {link = "Conditional"},     -- keywords related to conditionals (`if`/`then`/`elif`...)
+    TSConditionalTernary = {link = "Function"}, -- ternary operator (`?`/`:`)
+    TSRepeat = {link = "Repeat"},               -- keywords related to loops (`for`/`while`/`break`)
+    TSDebug = fgs.slate_grey,                   -- keywords related to debugging (NOTE: maybe change)
+    TSLabel = {link = "Label"},                 -- goto and other labels
+    TSInclude = {link = "Include"},             -- keywords for including modules
+    TSException = {link = "Exception"},         -- keywords related to exceptions (`throw`/`catch`)
 
     -- === Types ===
     TSType = fgs.green,                                 -- type or class definitions and annotations
-    TSTypeBuiltin = {fg = c.green, gui = bold},         -- built-in types
-    TSTypeDefinition = {fg = c.peach_red, gui = bold},  -- type definitions (`typedef`)
+    TSTypeBuiltin = {link = "Type"},                    -- built-in types
+    TSTypeDefinition = {link = "Typedef"},              -- type definitions (`typedef`)
     TSTypeQualifier = fgs.red,                          -- type qualifiers (`const`/`static`)
     TSStorageClass = {link = "StorageClass"},           -- modifiers that affect storage in memory or life-time
     TSAttribute = {fg = c.glorious_sunset, gui = bold}, -- attribute annotations (decorators, [[noreturn]], etc)
@@ -306,6 +310,7 @@ hl.treesitter = {
     TSConstBuiltin = {fg = c.orange, gui = italic}, -- built-in constant values
     TSConstMacro = {fg = c.orange, gui = italic},   -- constants defined by the preprocessor
     TSNamespace = {fg = c.orange, gui = italic},    -- modules or namespaces
+    TSNamespaceBuiltin = fgs.russian_green,
     TSSymbol = fgs.fg0,                             -- symbols or atoms
 
     -- === Text ===
@@ -315,7 +320,7 @@ hl.treesitter = {
     TSUnderline = {link = "Underlined"},             -- underlined text
     TSStrike = {fg = c.none, gui = "strikethrough"}, -- strikethrough text
     TSTitle = {link = "Title"},                      -- text that is part of a title
-    TSTextQuote = fgs.yellow,                        -- text quotations (NOTE: unsure if correct)
+    TSTextQuote = {link = "TSString"},               -- text quotations (NOTE: unsure if correct)
     TSURI = {fg = c.amethyst, gui = "underline"},    -- URIs (e.g. hyperlinks)
     TSMath = fgs.green,                              -- math environments
     TSEnviroment = fgs.fg0,                          -- text environments of markup languages
@@ -336,7 +341,7 @@ hl.treesitter = {
     -- === Tags ===
     TSTag = {fg = c.magenta, gui = bold},        -- XML tag names
     TSTagAttribute = {fg = c.green, gui = bold}, -- XML tag attributes
-    TSTagDelimiter = fgs.magenta,                -- XML tag delimiters
+    TSTagDelimiter = {link = "Delimiter"},       -- XML tag delimiters
 
     -- === Custom ===
     TSCode = {link = "Code"},
@@ -352,28 +357,28 @@ hl.langs08.treesitter = {
     -- === Miscellaneous ===
     ["@comment"] = {link = "Comment"},              -- line and block comments
     ["@comment.documentation"] = fgs.jasper_orange, -- comments documenting code
-    -- ["@error"] = fgs.red,                           -- syntax/parser errors (NOTE: maybe change)
+    -- ["@error"] = {link = "Error"},                  -- syntax/parser errors (NOTE: maybe change)
     ["@none"] = fgs.fg0,                            -- completely disable the highlight
-    ["@preproc"] = fgs.sea_green,                   -- various preprocessor directives & shebangs
+    ["@preproc"] = {link = "PreProc"},              -- various preprocessor directives & shebangs
     ["@define"] = {link = "@preproc"},              -- preprocessor definition directives
-    ["@operator"] = fgs.orange,                     -- symbolic operators (e.g. `+` / `*`)
+    ["@operator"] = {link = "Operator"},            -- symbolic operators (e.g. `+` / `*`)
 
     -- === Punctuation ===
-    ["@punctuation.bracket"] = fgs.purple,          -- brackets (e.g. `()` / `{}` / `[]`)
-    ["@punctuation.delimiter"] = fgs.coyote_brown1, -- delimiters (e.g. `;` / `.` / `,`)
-    ["@punctuation.special"] = fgs.green,           -- special symbols (e.g. `{}` in string interpolation)
+    ["@punctuation.bracket"] = {link = "Delimiter"}, -- brackets (e.g. `()` / `{}` / `[]`)
+    ["@punctuation.delimiter"] = fgs.coyote_brown1,  -- delimiters (e.g. `;` / `.` / `,`)
+    ["@punctuation.special"] = {link = "Special"},   -- special symbols (e.g. `{}` in string interpolation)
 
     -- === Literal ===
-    ["@string"] = fgs.yellow,                        -- string literals
-    ["@string.documentation"] = fgs.yellow,          -- string documenting code (e.g. Python docstrings)
+    ["@string"] = {link = "String"},                 -- string literals
+    ["@string.documentation"] = {link = "String"},   -- string documenting code (e.g. Python docstrings)
     ["@string.regex"] = fgs.orange,                  -- regular expressions
     ["@string.escape"] = {link = "SpecialChar"},     -- escape sequences
     ["@string.special"] = fgs.glorious_sunset,       -- other special strings (e.g. dates)
-    ["@character"] = fgs.yellow,                     -- character literals
+    ["@character"] = {link = "Character"},           -- character literals
     ["@character.special"] = {link = "SpecialChar"}, -- special characters (e.g. wildcards)
     ["@boolean"] = {link = "Boolean"},               -- boolean literals
     ["@number"] = {link = "Number"},                 -- numeric literals
-    ["@float"] = {link = "Number"},                  -- floating-point number literals
+    ["@float"] = {link = "Float"},                   -- floating-point number literals
 
     -- === Functions ===
     ["@function"] = {link = "Function"},              -- function definitions
@@ -387,23 +392,23 @@ hl.langs08.treesitter = {
     ["@parameter.reference"] = fgs.salmon,            -- parameter references within a function
 
     -- === Keywords ===
-    ["@keyword"] = fgs.red,                                   -- various keywords
+    ["@keyword"] = {link = "Keyword"},              -- various keywords
     -- ["@keyword.coroutine"] = {fg = c.oni_violet, gui = bold}, -- keywords related to coroutines (`async`/`await`)
-    ["@keyword.function"] = fgs.red,                          -- keywords that define a function (`def`/`fn`/`func`)
-    ["@keyword.operator"] = fgs.red,                          -- operators that are English words (`and`/`or`)
-    ["@keyword.return"] = {fg = c.red, gui = bold},           -- keywords like `return`/`yield`
-    ["@conditional"] = {fg = c.purple, gui = italic},         -- keywords related to conditionals (`if`/`then`/`elif`...)
-    ["@conditional.ternary"] = {link = "@function"},          -- ternary operator (`?`/`:`)
-    ["@repeat"] = fgs.purple,                                 -- keywords related to loops (`for`/`while`/`break`)
-    ["@debug"] = fgs.slate_grey,                              -- keywords related to debugging (NOTE: maybe change)
-    ["@label"] = fgs.orange,                                  -- goto and other labels
-    ["@include"] = {fg = c.red, gui = italic},                -- keywords for including modules
-    ["@exception"] = {fg = c.orange, gui = bold},             -- keywords related to exceptions (`throw`/`catch`)
+    ["@keyword.function"] = fgs.red,                -- keywords that define a function (`def`/`fn`/`func`)
+    ["@keyword.operator"] = {link = "Keyword"},     -- operators that are English words (`and`/`or`)
+    ["@keyword.return"] = {link = "Statement"},     -- keywords like `return`/`yield`
+    ["@conditional"] = {link = "Conditional"},      -- keywords related to conditionals (`if`/`then`/`elif`...)
+    ["@conditional.ternary"] = {link = "Function"}, -- ternary operator (`?`/`:`)
+    ["@repeat"] = {link = "Repeat"},                -- keywords related to loops (`for`/`while`/`break`)
+    ["@debug"] = fgs.slate_grey,                    -- keywords related to debugging (NOTE: maybe change)
+    ["@label"] = {link = "Label"},                  -- goto and other labels
+    ["@include"] = {link = "Include"},              -- keywords for including modules
+    ["@exception"] = {link = "Exception"},          -- keywords related to exceptions (`throw`/`catch`)
 
     -- === Types ===
     ["@type"] = fgs.green,                                 -- type or class definitions and annotations
     ["@type.builtin"] = {fg = c.green, gui = bold},        -- built-in types
-    ["@type.definition"] = {fg = c.peach_red, gui = bold}, -- type definitions (`typedef`)
+    ["@type.definition"] = {link = "Typedef"},             -- type definitions (`typedef`)
     ["@type.qualifier"] = fgs.red,                         -- type qualifiers (`const`/`static`)
     ["@storageclass"] = {link = "StorageClass"},           -- modifiers that affect storage in memory or life-time
     ["@attribute"] = {fg = c.glorious_sunset, gui = bold}, -- attribute annotations (decorators, [[noreturn]], etc)
@@ -418,6 +423,7 @@ hl.langs08.treesitter = {
     ["@constant.builtin"] = {fg = c.orange, gui = italic}, -- built-in constant values
     ["@constant.macro"] = {fg = c.orange, gui = italic},   -- constants defined by the preprocessor
     ["@namespace"] = {fg = c.orange, gui = italic},        -- modules or namespaces
+    ["@namespace.builtin"] = fgs.russian_green,
     ["@symbol"] = fgs.fg0,                                 -- symbols or atoms
 
     -- === Text ===
@@ -455,7 +461,7 @@ hl.langs08.treesitter = {
     -- === Tags ===
     ["@tag"] = {fg = c.magenta, gui = bold},         -- XML tag names
     ["@tag.attribute"] = {fg = c.green, gui = bold}, -- XML tag attributes
-    ["@tag.delimiter"] = fgs.magenta,                -- XML tag delimiters
+    ["@tag.delimiter"] = {link = "Delimiter"},       -- XML tag delimiters
 
     -- ["@conceal"] = {},                               -- for captures that are only used for concealing
     -- ["@spell"] = {},                                 -- for defining regions to be spellchecked
@@ -480,32 +486,33 @@ hl.langs.solidity = {
     solConstructor = {fg = c.blue, gui = bold},
     SolContract = fgs.orange,
     solContractName = {fg = c.aqua, gui = bold},
-    solOperator = fgs.orange,
-    solMethodParens = fgs.orange,
-    solFunction = fgs.red,
-    solFuncName = {fg = c.magenta, gui = bold},
-    solFuncReturn = fgs.purple,
-    solFuncModifier = fgs.red,
-    solModifier = fgs.red,
-    solMethod = {fg = c.magenta, gui = bold},
+    solOperator = {link = "Operator"},
+    solMethodParens = {link = "Delimiter"},
+    solFunction = {link = "Keyword"},
+    solFuncName = {link = "Function"},
+    solFuncReturn = {link = "TSKeywordReturn"},
+    solFuncModifier = {link = "StorageClass"},
+    solModifier = {link = "StorageClass"},
+    solMethod = {link = "Function"},
     solModifierInsert = {fg = c.magenta, gui = bold},
-    solConstant = fgs.aqua,
+    solConstant = {link = "TSConstant"},
     -- === Treesitter ===
     solidityTSFunction = {link = "TSFunction"},
     solidityTSKeyword = fgs.orange,
-    solidityTSType = {fg = c.green, gui = bold},
+    solidityTSType = {link = "TSTypeBuiltin"},
     solidityTSTag = {fg = c.blue, gui = bold},
-    solidityTSMethod = {fg = c.magenta, gui = bold},
+    solidityTSMethod = {link = "TSFunction"},
+    solidityTSMethodCall = {link = "TSFunction"},
     solidityTSField = {link = "TSField"},
 }
 
 hl.langs08.solidity = {
     ["@function.solidity"] = {link = "@function"},
     ["@keyword.solidity"] = fgs.orange,
-    ["@type.solidity"] = {fg = c.green, gui = bold},
+    ["@type.solidity"] = {link = "@type.builtin"},
     ["@tag.solidity"] = {fg = c.blue, gui = bold},
-    ["@method.solidity"] = {fg = c.magenta, gui = bold},
-    ["@method.call.solidity"] = {fg = c.magenta, gui = bold},
+    ["@method.solidity"] = {link = "@function"},
+    ["@method.call.solidity"] = {link = "@function"},
     ["@field.solidity"] = {link = "@field"},
 }
 
@@ -513,19 +520,19 @@ hl.langs08.solidity = {
 --  │ Help │
 --  ╰──────╯
 hl.langs.vimdoc = {
-    helpSpecial = fgs.green,
+    helpSpecial = {link = "Special"},
     helpNote = {fg = c.purple, gui = bold},
     helpHeader = {fg = c.sea_green, gui = bold},
     helpVim = {fg = c.blue, gui = bold}, -- Main header/title
     helpHyperTextEntry = {fg = c.yellow, gui = bold},
     -- === Treesitter ===
     vimdocTSTitle = {fg = c.red, gui = bold},
-    vimdocTSTextLiteral = fgs.purple,
-    vimdocTSTextReference = {fg = c.green, gui = bold},
+    vimdocTSLiteral = fgs.purple,
+    vimdocTSTextReference = {link = "TSTypeBuiltin"},
     vimdocTSLabel = fgs.blue,
     vimdocTSString = {link = "TSString"},
     vimdocTSURI = {link = "TSURI"},
-    vimdocTSParameter = fgs.salmon,
+    vimdocTSParameter = {link = "TSParameter"},
     -- old
     helpTSTitle = fgs.red,
     helpTSLabel = fgs.blue,
@@ -536,14 +543,11 @@ hl.langs.vimdoc = {
 hl.langs08.vimdoc = {
     ["@text.title.vimdoc"] = {fg = c.red, gui = bold},
     ["@text.literal.vimdoc"] = fgs.purple,
-    ["@text.reference.vimdoc"] = {fg = c.green, gui = bold},
+    ["@text.reference.vimdoc"] = {link = "@type.builtin"},
     ["@label.vimdoc"] = fgs.blue,
     ["@string.vimdoc"] = {link = "@string"},
     ["@text.uri.vimdoc"] = {link = "@text.uri"},
-    ["@parameter.vimdoc"] = fgs.salmon,
-    -- ["@text.literal.vimdoc"] = {link = "@comment"},
-    -- ["@parameter.vimdoc"] = fgs.green,
-    --
+    ["@parameter.vimdoc"] = {link = "@paramter"},
     -- old
     ["@text.title.help"] = fgs.red,
     ["@label.help"] = fgs.blue,
@@ -583,17 +587,18 @@ hl.langs.markdown = {
     markdownId = fgs.green,
     markdownIdDeclaration = fgs.purple,
     -- === Treesitter ===
-    markdownTSNone = fgs.purple,
-    markdownTSPunctDelimiter = {link = "TSPreproc"},
-    markdownTSLiteral = fgs.puce,
+    markdownTSNone = fgs.purple,                     -- Fenced code block
+    markdownTSPunctDelimiter = {link = "TSPreproc"}, -- Fenced code block delim
+    markdownTSLiteral = {link = "TSCode"},
     markdownTSEmphasis = {fg = c.morning_blue, gui = "italic"},
-    markdownTSURI = {fg = c.amethyst, gui = "underline"},
+    markdownTSURI = {link = "TSURI"},
     markdownTSStrong = {link = "Bold"},
     markdownTSTextReference = {fg = c.blue, gui = underline},
     markdownTSTextQuote = {link = "TSString"},
+    markdownTSPunctSpecial = {fg = c.red, gui = bold},
+
     markdownTSTodoChecked = {fg = c.amethyst, gui = "bold"},
     markdownTSTodoUnchecked = {fg = c.blue, gui = "bold"},
-    markdownTSPunctSpecial = {fg = c.red, gui = bold},
 }
 
 hl.langs08.markdown = {
@@ -616,56 +621,56 @@ hl.langs08.markdown = {
 --  ╰─────╯
 hl.langs.tex = {
     -- Latex: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_TEX
-    texStatement = fgs.yellow,
+    texStatement = {link = "Statement"},
     texOnlyMath = fgs.coyote_brown1,
-    texDefName = fgs.green,
-    texNewCmd = fgs.orange,
-    texBeginEnd = fgs.red,
-    texBeginEndName = fgs.blue,
+    texDefName = {link = "Function"},
+    texNewCmd = {fg = c.orange, gui = bold},
+    texBeginEnd = {link = "Statement"},
+    texBeginEndName = {link = "Statement"},
     texDocType = fgs.purple,
-    texDocTypeArgs = fgs.orange,
+    texDocTypeArgs = {link = "TSParameter"},
     -- Vimtex: https://github.com/lervag/vimtex
-    texCmd = fgs.yellow,
-    texCmdClass = fgs.purple,
-    texCmdTitle = fgs.purple,
-    texCmdAuthor = fgs.purple,
+    texCmd = {link = "Function"},
+    texCmdClass = {link = "Type"},
+    texCmdTitle = {link = "Title"},
+    texCmdAuthor = {link = "Title"},
     texCmdPart = fgs.purple,
     texCmdBib = fgs.purple,
-    texCmdPackage = fgs.green,
-    texCmdNew = fgs.green,
-    texArgNew = fgs.orange,
+    texCmdPackage = {link = "Include"},
+    texCmdNew = {fg = c.orange, gui = bold},
+    texArgNew = {link = "TSParameter"},
     texPartArgTitle = {fg = c.blue, gui = italic},
-    texFileArg = {fg = c.blue, gui = italic},
-    texEnvArgName = {fg = c.blue, gui = italic},
+    texFileArg = {link = "Directory"},
+    texEnvArgName = {fg = c.aqua, gui = "bold"},
     texMathEnvArgName = {fg = c.blue, gui = italic},
-    texTitleArg = {fg = c.blue, gui = italic},
-    texAuthorArg = {fg = c.blue, gui = italic},
+    texTitleArg = {link = "Title"},
+    texAuthorArg = {link = "Title"},
     -- Not in original
     texCmdEnv = fgs.aqua,
     texMathZoneX = fgs.orange,
     texMathZoneXX = fgs.orange,
     texMathDelimZone = fgs.coyote_brown1,
-    texMathDelim = fgs.purple,
-    texMathOper = fgs.red,
+    texMathDelim = {link = "Delimiter"},
+    texMathOper = {link = "Operator"},
     texPgfType = fgs.yellow,
     -- === Treesitter ===
-    latexTSInclude = fgs.blue,
-    latexTSFuncMacro = {fg = c.red, gui = bold},
+    latexTSInclude = {link = "TSInclude"},
+    latexTSFuncMacro = {link = "TSFuncMacro"},
     latexTSEnvironment = {fg = c.aqua, gui = "bold"},
-    latexTSEnvironmentName = fgs.yellow,
-    latexTSMath = fgs.purple,
-    latexTSTitle = fgs.orange,
-    latexTSType = fgs.green,
+    latexTSEnvironmentName = {fg = c.blue, gui = italic},
+    latexTSMath = {link = "Delimiter"},
+    latexTSTitle = {link = "Title"},
+    latexTSType = {link = "TSType"},
 }
 
 hl.langs08.tex = {
-    ["@include.latex"] = fgs.blue,
-    ["@function.macro.latex"] = {fg = c.red, gui = bold},
+    ["@include.latex"] = {link = "@include"},
+    ["@function.macro.latex"] = {link = "@function.macro"},
     ["@text.environment.latex"] = {fg = c.aqua, gui = "bold"},
-    ["@text.environment.name.latex"] = fgs.yellow,
-    ["@text.math.latex"] = fgs.purple,
-    ["@text.title.latex"] = fgs.orange,
-    ["@type.latex"] = fgs.green,
+    ["@text.environment.name.latex"] = {fg = c.blue, gui = italic},
+    ["@text.math.latex"] = {link = "Delimiter"},
+    ["@text.title.latex"] = {link = "Title"},
+    ["@type.latex"] = {link = "@type"},
 }
 
 --  ╭────────────╮
@@ -673,202 +678,202 @@ hl.langs08.tex = {
 --  ╰────────────╯
 hl.langs.javascript = {
     -- vim-javascript: https://github.com/pangloss/vim-javascript
-    jsThis = fgs.purple,
-    jsUndefined = fgs.aqua,
-    jsNull = fgs.aqua,
-    jsNan = fgs.aqua,
-    jsSuper = fgs.purple,
-    jsPrototype = fgs.purple,
-    jsFunction = {fg = c.red, gui = italic},
-    jsGlobalNodeObjects = {fg = c.purple, gui = italic},
-    jsGlobalObjects = fgs.green,
-    jsArrowFunction = fgs.purple,
-    jsArrowFuncArgs = fgs.blue,
-    jsFuncArgs = fgs.blue,
-    jsObjectProp = fgs.aqua,
-    jsVariableDef = fgs.blue,
-    jsObjectKey = fgs.aqua,
-    jsParen = fgs.blue,
-    jsParenIfElse = fgs.blue,
-    jsParenRepeat = fgs.blue,
-    jsParenSwitch = fgs.blue,
-    jsParenCatch = fgs.blue,
-    jsBracket = fgs.blue,
-    jsBlockLabel = fgs.aqua,
-    jsFunctionKey = {fg = c.yellow, gui = bold},
-    jsClassDefinition = fgs.green,
-    jsDot = fgs.coyote_brown1,
-    jsDestructuringBlock = fgs.blue,
-    jsSpreadExpression = fgs.purple,
-    jsSpreadOperator = fgs.yellow,
-    jsModuleKeyword = fgs.green,
-    jsObjectValue = fgs.blue,
-    jsTemplateExpression = fgs.green,
-    jsTemplateBraces = fgs.green,
-    jsClassMethodType = fgs.orange,
+    jsThis = {link = "TSVariableBuiltin"},
+    jsUndefined = {link = "TSConstBuiltin"},
+    jsNull = {link = "TSConstBuiltin"},
+    jsNan = {link = "TSConstBuiltin"},
+    jsSuper = {link = "TSVariableBuiltin"},
+    jsPrototype = {link = "TSField"},
+    jsFunction = {link = "Keyword"},
+    jsGlobalNodeObjects = {link = "TSVariableBuiltin"},
+    jsGlobalObjects = {link = "TSVariableBuiltin"},
+    jsArrowFunction = {link = "Function"},
+    jsArrowFuncArgs = {link = "TSParameter"},
+    jsFuncArgs = {link = "TSParameter"},
+    jsObjectProp = {link = "TSField"},
+    jsVariableDef = {link = "TSVariable"},
+    jsObjectKey = {link = "TSField"},
+    jsParen = {link = "TSPunctBracket"},
+    jsParenIfElse = {link = "TSPunctBracket"},
+    jsParenRepeat = {link = "TSPunctBracket"},
+    jsParenSwitch = {link = "TSPunctBracket"},
+    jsParenCatch = {link = "TSPunctBracket"},
+    jsBracket = {link = "TSPunctBracket"},
+    jsBlockLabel = {link = "TSLabel"},
+    jsFunctionKey = {link = "Function"},
+    jsClassDefinition = {link = "TSType"},
+    jsDot = {link = "Operator"},
+    jsDestructuringBlock = {link = "Operator"},
+    jsSpreadExpression = {link = "Operator"},
+    jsSpreadOperator = {link = "Operator"},
+    jsModuleKeyword = {link = "Keyword"},
+    jsObjectValue = {link = "TSField"},
+    jsTemplateExpression = {link = "SpecialChar"},
+    jsTemplateBraces = {link = "TSPunctBracket"},
+    jsClassMethodType = {link = "TSMethod"},
     -- yajs: https://github.com/othree/yajs.vim
-    javascriptEndColons = fgs.fg0,
-    javascriptOpSymbol = fgs.orange,
-    javascriptOpSymbols = fgs.orange,
-    javascriptIdentifierName = fgs.blue,
-    javascriptVariable = fgs.orange,
-    javascriptObjectLabel = fgs.aqua,
-    javascriptObjectLabelColon = fgs.coyote_brown1,
-    javascriptPropertyNameString = fgs.aqua,
-    javascriptFuncArg = fgs.blue,
+    javascriptEndColons = {link = "typescriptEndColons"},
+    javascriptOpSymbol = {link = "Operator"},
+    javascriptOpSymbols = {link = "Operator"},
+    javascriptIdentifierName = {link = "TSVariable"},
+    javascriptVariable = {link = "TSVariable"},
+    javascriptObjectLabel = {link = "TSField"},
+    javascriptObjectLabelColon = {link = "typescriptObjectColon"},
+    javascriptPropertyNameString = {link = "TSField"},
+    javascriptFuncArg = {link = "TSParameter"},
     javascriptIdentifier = fgs.purple,
-    javascriptArrowFunc = fgs.purple,
-    javascriptTemplate = fgs.green,
-    javascriptTemplateSubstitution = fgs.green,
-    javascriptTemplateSB = fgs.green,
-    javascriptNodeGlobal = {fg = c.purple, gui = italic},
+    javascriptArrowFunc = {link = "Function"},
+    javascriptTemplate = {link = "SpecialChar"},
+    javascriptTemplateSubstitution = {link = "SpecialChar"},
+    javascriptTemplateSB = {link = "SpecialChar"},
+    javascriptNodeGlobal = {link = "TSVariableBuiltin"},
     javascriptDocTags = {fg = c.purple, gui = italic},
     javascriptDocNotation = fgs.purple,
-    javascriptClassSuper = fgs.purple,
-    javascriptClassName = fgs.green,
-    javascriptClassSuperName = fgs.green,
-    javascriptBrackets = fgs.purple,
-    javascriptBraces = fgs.purple,
-    javascriptLabel = fgs.purple,
-    javascriptDotNotation = fgs.coyote_brown1,
-    javascriptGlobalArrayDot = fgs.coyote_brown1,
-    javascriptGlobalBigIntDot = fgs.coyote_brown1,
-    javascriptGlobalDateDot = fgs.coyote_brown1,
-    javascriptGlobalJSONDot = fgs.coyote_brown1,
-    javascriptGlobalMathDot = fgs.coyote_brown1,
-    javascriptGlobalNumberDot = fgs.coyote_brown1,
-    javascriptGlobalObjectDot = fgs.coyote_brown1,
-    javascriptGlobalPromiseDot = fgs.coyote_brown1,
-    javascriptGlobalRegExpDot = fgs.coyote_brown1,
-    javascriptGlobalStringDot = fgs.coyote_brown1,
-    javascriptGlobalSymbolDot = fgs.coyote_brown1,
-    javascriptGlobalURLDot = fgs.coyote_brown1,
-    javascriptMethod = {fg = c.yellow, gui = bold},
-    javascriptMethodName = {fg = c.yellow, gui = bold},
-    javascriptObjectMethodName = {fg = c.yellow, gui = bold},
-    javascriptGlobalMethod = {fg = c.yellow, gui = bold},
-    javascriptDOMStorageMethod = {fg = c.yellow, gui = bold},
-    javascriptFileMethod = {fg = c.yellow, gui = bold},
-    javascriptFileReaderMethod = {fg = c.yellow, gui = bold},
-    javascriptFileListMethod = {fg = c.yellow, gui = bold},
-    javascriptBlobMethod = {fg = c.yellow, gui = bold},
-    javascriptURLStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptNumberStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptNumberMethod = {fg = c.yellow, gui = bold},
-    javascriptDOMNodeMethod = {fg = c.yellow, gui = bold},
-    javascriptES6BigIntStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptBOMWindowMethod = {fg = c.yellow, gui = bold},
-    javascriptHeadersMethod = {fg = c.yellow, gui = bold},
-    javascriptRequestMethod = {fg = c.yellow, gui = bold},
-    javascriptResponseMethod = {fg = c.yellow, gui = bold},
-    javascriptES6SetMethod = {fg = c.yellow, gui = bold},
-    javascriptReflectMethod = {fg = c.yellow, gui = bold},
-    javascriptPaymentMethod = {fg = c.yellow, gui = bold},
-    javascriptPaymentResponseMethod = {fg = c.yellow, gui = bold},
-    javascriptTypedArrayStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptGeolocationMethod = {fg = c.yellow, gui = bold},
-    javascriptES6MapMethod = {fg = c.yellow, gui = bold},
-    javascriptServiceWorkerMethod = {fg = c.yellow, gui = bold},
-    javascriptCacheMethod = {fg = c.yellow, gui = bold},
-    javascriptFunctionMethod = {fg = c.yellow, gui = bold},
-    javascriptXHRMethod = {fg = c.yellow, gui = bold},
-    javascriptBOMNavigatorMethod = {fg = c.yellow, gui = bold},
-    javascriptDOMEventTargetMethod = {fg = c.yellow, gui = bold},
-    javascriptDOMEventMethod = {fg = c.yellow, gui = bold},
-    javascriptIntlMethod = {fg = c.yellow, gui = bold},
-    javascriptDOMDocMethod = {fg = c.yellow, gui = bold},
-    javascriptStringStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptStringMethod = {fg = c.yellow, gui = bold},
-    javascriptSymbolStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptRegExpMethod = {fg = c.yellow, gui = bold},
-    javascriptObjectStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptObjectMethod = {fg = c.yellow, gui = bold},
-    javascriptBOMLocationMethod = {fg = c.yellow, gui = bold},
-    javascriptJSONStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptGeneratorMethod = {fg = c.yellow, gui = bold},
-    javascriptEncodingMethod = {fg = c.yellow, gui = bold},
-    javascriptPromiseStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptPromiseMethod = {fg = c.yellow, gui = bold},
-    javascriptBOMHistoryMethod = {fg = c.yellow, gui = bold},
-    javascriptDOMFormMethod = {fg = c.yellow, gui = bold},
-    javascriptClipboardMethod = {fg = c.yellow, gui = bold},
-    javascriptBroadcastMethod = {fg = c.yellow, gui = bold},
-    javascriptDateStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptDateMethod = {fg = c.yellow, gui = bold},
-    javascriptConsoleMethod = {fg = c.yellow, gui = bold},
-    javascriptArrayStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptArrayMethod = {fg = c.yellow, gui = bold},
-    javascriptMathStaticMethod = {fg = c.yellow, gui = bold},
-    javascriptSubtleCryptoMethod = {fg = c.yellow, gui = bold},
-    javascriptCryptoMethod = {fg = c.yellow, gui = bold},
-    javascriptProp = fgs.aqua,
-    javascriptBOMWindowProp = fgs.aqua,
-    javascriptDOMStorageProp = fgs.aqua,
-    javascriptFileReaderProp = fgs.aqua,
-    javascriptURLUtilsProp = fgs.aqua,
-    javascriptNumberStaticProp = fgs.aqua,
-    javascriptDOMNodeProp = fgs.aqua,
-    javascriptRequestProp = fgs.aqua,
-    javascriptResponseProp = fgs.aqua,
-    javascriptES6SetProp = fgs.aqua,
-    javascriptPaymentProp = fgs.aqua,
-    javascriptPaymentResponseProp = fgs.aqua,
-    javascriptPaymentAddressProp = fgs.aqua,
-    javascriptPaymentShippingOptionProp = fgs.aqua,
-    javascriptTypedArrayStaticProp = fgs.aqua,
-    javascriptServiceWorkerProp = fgs.aqua,
-    javascriptES6MapProp = fgs.aqua,
-    javascriptRegExpStaticProp = fgs.aqua,
-    javascriptRegExpProp = fgs.aqua,
-    javascriptXHRProp = fgs.aqua,
-    javascriptBOMNavigatorProp = {fg = c.yellow, gui = bold},
-    javascriptDOMEventProp = fgs.aqua,
-    javascriptBOMNetworkProp = fgs.aqua,
-    javascriptDOMDocProp = fgs.aqua,
-    javascriptSymbolStaticProp = fgs.aqua,
-    javascriptSymbolProp = fgs.aqua,
-    javascriptBOMLocationProp = fgs.aqua,
-    javascriptEncodingProp = fgs.aqua,
-    javascriptCryptoProp = fgs.aqua,
-    javascriptBOMHistoryProp = fgs.aqua,
-    javascriptDOMFormProp = fgs.aqua,
-    javascriptDataViewProp = fgs.aqua,
-    javascriptBroadcastProp = fgs.aqua,
-    javascriptMathStaticProp = fgs.aqua,
+    javascriptClassSuper = {link = "TSVariableBuiltin"},
+    javascriptClassName = {link = "TSType"},
+    javascriptClassSuperName = {link = "TSType"},
+    javascriptBrackets = {link = "TSPunctBracket"},
+    javascriptBraces = {link = "TSPunctBracket"},
+    javascriptLabel = {link = "TSLabel"},
+    javascriptDotNotation = {link = "Operator"},
+    javascriptGlobalArrayDot = {link = "Operator"},
+    javascriptGlobalBigIntDot = {link = "Operator"},
+    javascriptGlobalDateDot = {link = "Operator"},
+    javascriptGlobalJSONDot = {link = "Operator"},
+    javascriptGlobalMathDot = {link = "Operator"},
+    javascriptGlobalNumberDot = {link = "Operator"},
+    javascriptGlobalObjectDot = {link = "Operator"},
+    javascriptGlobalPromiseDot = {link = "Operator"},
+    javascriptGlobalRegExpDot = {link = "Operator"},
+    javascriptGlobalStringDot = {link = "Operator"},
+    javascriptGlobalSymbolDot = {link = "Operator"},
+    javascriptGlobalURLDot = {link = "Operator"},
+    javascriptMethod = {link = "TSMethod"},
+    javascriptMethodName = {link = "TSMethod"},
+    javascriptObjectMethodName = {link = "TSMethod"},
+    javascriptGlobalMethod = {link = "TSMethod"},
+    javascriptDOMStorageMethod = {link = "TSMethod"},
+    javascriptFileMethod = {link = "TSMethod"},
+    javascriptFileReaderMethod = {link = "TSMethod"},
+    javascriptFileListMethod = {link = "TSMethod"},
+    javascriptBlobMethod = {link = "TSMethod"},
+    javascriptURLStaticMethod = {link = "TSMethod"},
+    javascriptNumberStaticMethod = {link = "TSMethod"},
+    javascriptNumberMethod = {link = "TSMethod"},
+    javascriptDOMNodeMethod = {link = "TSMethod"},
+    javascriptES6BigIntStaticMethod = {link = "TSMethod"},
+    javascriptBOMWindowMethod = {link = "TSMethod"},
+    javascriptHeadersMethod = {link = "TSMethod"},
+    javascriptRequestMethod = {link = "TSMethod"},
+    javascriptResponseMethod = {link = "TSMethod"},
+    javascriptES6SetMethod = {link = "TSMethod"},
+    javascriptReflectMethod = {link = "TSMethod"},
+    javascriptPaymentMethod = {link = "TSMethod"},
+    javascriptPaymentResponseMethod = {link = "TSMethod"},
+    javascriptTypedArrayStaticMethod = {link = "TSMethod"},
+    javascriptGeolocationMethod = {link = "TSMethod"},
+    javascriptES6MapMethod = {link = "TSMethod"},
+    javascriptServiceWorkerMethod = {link = "TSMethod"},
+    javascriptCacheMethod = {link = "TSMethod"},
+    javascriptFunctionMethod = {link = "TSMethod"},
+    javascriptXHRMethod = {link = "TSMethod"},
+    javascriptBOMNavigatorMethod = {link = "TSMethod"},
+    javascriptDOMEventTargetMethod = {link = "TSMethod"},
+    javascriptDOMEventMethod = {link = "TSMethod"},
+    javascriptIntlMethod = {link = "TSMethod"},
+    javascriptDOMDocMethod = {link = "TSMethod"},
+    javascriptStringStaticMethod = {link = "TSMethod"},
+    javascriptStringMethod = {link = "TSMethod"},
+    javascriptSymbolStaticMethod = {link = "TSMethod"},
+    javascriptRegExpMethod = {link = "TSMethod"},
+    javascriptObjectStaticMethod = {link = "TSMethod"},
+    javascriptObjectMethod = {link = "TSMethod"},
+    javascriptBOMLocationMethod = {link = "TSMethod"},
+    javascriptJSONStaticMethod = {link = "TSMethod"},
+    javascriptGeneratorMethod = {link = "TSMethod"},
+    javascriptEncodingMethod = {link = "TSMethod"},
+    javascriptPromiseStaticMethod = {link = "TSMethod"},
+    javascriptPromiseMethod = {link = "TSMethod"},
+    javascriptBOMHistoryMethod = {link = "TSMethod"},
+    javascriptDOMFormMethod = {link = "TSMethod"},
+    javascriptClipboardMethod = {link = "TSMethod"},
+    javascriptBroadcastMethod = {link = "TSMethod"},
+    javascriptDateStaticMethod = {link = "TSMethod"},
+    javascriptDateMethod = {link = "TSMethod"},
+    javascriptConsoleMethod = {link = "TSMethod"},
+    javascriptArrayStaticMethod = {link = "TSMethod"},
+    javascriptArrayMethod = {link = "TSMethod"},
+    javascriptMathStaticMethod = {link = "TSMethod"},
+    javascriptSubtleCryptoMethod = {link = "TSMethod"},
+    javascriptCryptoMethod = {link = "TSMethod"},
+    javascriptProp = {link = "TSField"},
+    javascriptBOMWindowProp = {link = "TSField"},
+    javascriptDOMStorageProp = {link = "TSField"},
+    javascriptFileReaderProp = {link = "TSField"},
+    javascriptURLUtilsProp = {link = "TSField"},
+    javascriptNumberStaticProp = {link = "TSField"},
+    javascriptDOMNodeProp = {link = "TSField"},
+    javascriptRequestProp = {link = "TSField"},
+    javascriptResponseProp = {link = "TSField"},
+    javascriptES6SetProp = {link = "TSField"},
+    javascriptPaymentProp = {link = "TSField"},
+    javascriptPaymentResponseProp = {link = "TSField"},
+    javascriptPaymentAddressProp = {link = "TSField"},
+    javascriptPaymentShippingOptionProp = {link = "TSField"},
+    javascriptTypedArrayStaticProp = {link = "TSField"},
+    javascriptServiceWorkerProp = {link = "TSField"},
+    javascriptES6MapProp = {link = "TSField"},
+    javascriptRegExpStaticProp = {link = "TSField"},
+    javascriptRegExpProp = {link = "TSField"},
+    javascriptXHRProp = {link = "TSField"},
+    javascriptBOMNavigatorProp = {link = "TSField"},
+    javascriptDOMEventProp = {link = "TSField"},
+    javascriptBOMNetworkProp = {link = "TSField"},
+    javascriptDOMDocProp = {link = "TSField"},
+    javascriptSymbolStaticProp = {link = "TSField"},
+    javascriptSymbolProp = {link = "TSField"},
+    javascriptBOMLocationProp = {link = "TSField"},
+    javascriptEncodingProp = {link = "TSField"},
+    javascriptCryptoProp = {link = "TSField"},
+    javascriptBOMHistoryProp = {link = "TSField"},
+    javascriptDOMFormProp = {link = "TSField"},
+    javascriptDataViewProp = {link = "TSField"},
+    javascriptBroadcastProp = {link = "TSField"},
+    javascriptMathStaticProp = {link = "TSField"},
     -- vim-jsx-pretty: https://github.com/maxmellon/vim-jsx-pretty
-    jsxTagName = {fg = c.orange, gui = italic},
-    jsxTag = {fg = c.purple, gui = bold},
-    jsxOpenPunct = fgs.yellow,
-    jsxClosePunct = fgs.blue,
-    jsxEscapeJs = fgs.blue,
-    jsxAttrib = fgs.green,
+    jsxTagName = {link = "tsxTSTag"},
+    jsxTag = {link = "tsxTSTag"},
+    jsxOpenPunct = {link = "TSPunctBracket"},
+    jsxClosePunct = {link = "TSPunctBracket"},
+    jsxEscapeJs = {link = "SpecialChar"},
+    jsxAttrib = {link = "tsxTSTagAttribute"},
     jsxCloseTag = {fg = c.aqua, gui = bold},
     jsxComponentName = {fg = c.blue, gui = bold},
     -- === Treesitter ===
-    javascriptTSConstructor = {fg = c.wave_red, gui = bold},
-    javascriptTSException = {fg = c.orange, gui = italic},
-    javascriptTSKeyword = {link = "TSKeyword"},
+    javascriptTSConstructor = {link = "TSConstructor"},
+    javascriptTSException = {link = "TSException"},
+    javascriptTSKeyword = {link = "Keyword"},
     javascriptTSKeywordReturn = {link = "TSKeywordReturn"},
-    javascriptTSMethodCall = {link = "TSFunction"},
-    javascriptTSMethod = {link = "TSFunction"},
-    javascriptTSParameter = fgs.aqua,
-    javascriptTSProperty = fgs.aqua,
-    javascriptTSPunctBracket = fgs.purple,
+    javascriptTSMethodCall = {link = "Function"},
+    javascriptTSMethod = {link = "Function"},
+    javascriptTSParameter = {link = "TSParameter"},
+    javascriptTSProperty = {link = "TSField"},
+    javascriptTSPunctBracket = {link = "TSPunctBracket"},
     javascriptTSPunctSpecial = {link = "TSPunctSpecial"},
     javascriptTSTypeBuiltin = {link = "TSTypeBuiltin"},
     javascriptTSVariableBuiltin = {link = "TSVariableBuiltin"},
 }
 
 hl.langs08.javascript = {
-    ["@constructor.javascript"] = {fg = c.wave_red, gui = bold},
-    ["@exception.javascript"] = {fg = c.orange, gui = italic},
+    ["@constructor.javascript"] = {link = "@constructor"},
+    ["@exception.javascript"] = {link = "@exception"},
     ["@keyword.javascript"] = {link = "@keyword"},
     ["@keyword.return.javascript"] = {link = "@keyword.return"},
     ["@method.call.javascript"] = {link = "@function.call"},
     ["@method.javascript"] = {link = "@function"},
-    ["@parameter.javascript"] = fgs.aqua,
-    ["@property.javascript"] = fgs.aqua,
-    ["@punctuation.bracket.javascript"] = fgs.purple,
+    ["@parameter.javascript"] = {link = "@parameter"},
+    ["@property.javascript"] = {link = "@field"},
+    ["@punctuation.bracket.javascript"] = {link = "@punctuation.bracket"},
     ["@punctuation.special.javascript"] = {link = "@punctuation.special"},
     ["@type.builtin.javascript"] = {link = "@type.builtin"},
     ["@variable.builtin.javascript"] = {link = "@variable.builtin"},
@@ -884,12 +889,12 @@ hl.langs.typescript = {
     typescriptGlobalObjects = {link = "TSVariableGlobal"},
     typescriptInterpolation = fgs.green,
     typescriptInterpolationDelimiter = fgs.green,
-    typescriptTypeBrackets = fgs.purple,
-    typescriptBraces = fgs.purple,
-    typescriptParens = fgs.purple,
+    typescriptTypeBrackets = {link = "TSPunctBracket"},
+    typescriptBraces = {link = "TSPunctBracket"},
+    typescriptParens = {link = "TSPunctBracket"},
     -- yats: https://github.com/HerringtonDarkholme/yats.vim
     typescriptVariable = {link = "TSVariable"},
-    typescriptVariableDeclaration = fgs.aqua,
+    typescriptVariableDeclaration = {link = "TSVariable"},
     typescriptAliasDeclaration = {link = "Type"},
     typescriptTypeReference = {link = "Type"},
     typescriptBoolean = {link = "Boolean"},
@@ -904,7 +909,7 @@ hl.langs.typescript = {
     typescriptArrowFunc = {link = "Function"},
     typescriptCall = {link = "Function"},
     typescriptIdentifierName = fgs.aqua,
-    typescriptProp = fgs.aqua,
+    typescriptProp = {link = "TSField"},
     typescriptMember = {link = "TSField"},
     typescriptMemberOptionality = {link = "Operator"},
     typescriptMethodAccessor = {link = "Operator"},
@@ -914,7 +919,7 @@ hl.langs.typescript = {
     typescriptObjectLabel = {link = "Type"},
     typescriptObjectColon = fgs.coyote_brown1,
     typescriptEndColons = fgs.fg0,
-    typescriptFuncTypeArrow = fgs.purple,
+    typescriptFuncTypeArrow = {link = "Function"},
     typescriptFuncComma = fgs.fg0,
     typescriptFunctionMethod = {link = "Function"},
     typescriptFuncName = {link = "Function"},
@@ -925,24 +930,24 @@ hl.langs.typescript = {
     typescriptIdentifier = {link = "TSTypeBuiltin"},
     typescriptGlobal = {link = "TSVariableGlobal"},
     typescriptNodeGlobal = {link = "TSVariableGlobal"},
-    typescriptOperator = {link = "TSOperator"},
-    typescriptExport = {link = "TSKeyword"},
+    typescriptOperator = {link = "Operator"},
+    typescriptExport = {link = "Keyword"},
     typescriptDefaultParam = fgs.orange,
-    typescriptImport = {fg = c.red, gui = italic},
-    typescriptTypeParameter = fgs.green,
-    typescriptReadonlyModifier = fgs.orange,
-    typescriptAccessibilityModifier = fgs.orange,
+    typescriptImport = {link = "Include"},
+    typescriptTypeParameter = {link = "TSType"},
+    typescriptReadonlyModifier = {link = "Keyword"},
+    typescriptAccessibilityModifier = {link = "Keyword"},
     typescriptAmbientDeclaration = {fg = c.red, gui = italic},
-    typescriptTemplateSubstitution = fgs.green,
-    typescriptTemplateSB = fgs.green,
-    typescriptExceptions = fgs.green,
-    typescriptCastKeyword = {fg = c.red, gui = italic},
-    typescriptOptionalMark = fgs.orange,
-    typescriptNull = fgs.aqua,
+    typescriptTemplateSubstitution = {link = "SpecialChar"},
+    typescriptTemplateSB = {link = "SpecialChar"},
+    typescriptExceptions = {link = "TSException"},
+    typescriptCastKeyword = {link = "Keyword"},
+    typescriptOptionalMark = {link = "Operator"},
+    typescriptNull = {link = "TSConstBuiltin"},
     typescriptMappedIn = {fg = c.red, gui = italic},
     typescriptTernaryOp = {link = "Function"},
-    typescriptParenExp = fgs.blue,
-    typescriptIndexExpr = fgs.blue,
+    typescriptParenExp = {link = "Operator"},
+    typescriptIndexExpr = {link = "Operator"},
     typescriptDotNotation = {link = "Operator"},
     typescriptGlobalNumberDot = {link = "Operator"},
     typescriptGlobalStringDot = {link = "Operator"},
@@ -1036,133 +1041,129 @@ hl.langs.typescript = {
     typescriptBOMHistoryProp = {link = "TSField"},
     typescriptMathStaticProp = {link = "TSField"},
     -- === Treesitter ===
-    typescriptTSParameter = fgs.aqua,
-    typescriptTSTypeBuiltin = {fg = c.green, gui = bold},
-    typescriptTSKeywordReturn = {fg = c.red, gui = bold},
-    typescriptTSPunctBracket = fgs.purple,
-    typescriptTSPunctSpecial = fgs.green,
-    typescriptTSPunctDelimiter = fgs.purple,
-    typescriptTSVariableBuiltin = fgs.blue,
-    typescriptTSException = {fg = c.orange, gui = italic},
-    typescriptTSConstructor = {fg = c.wave_red, gui = bold},
-    typescriptTSProperty = fgs.aqua,
-    typescriptTSMethod = {fg = c.magenta, gui = bold},
-    typescriptTSKeyword = fgs.red,
+    typescriptTSParameter = {link = "TSParameter"},
+    typescriptTSTypeBuiltin = {link = "TSTypeBuiltin"},
+    typescriptTSKeywordReturn = {link = "TSKeywordReturn"},
+    typescriptTSPunctBracket = {link = "TSPunctBracket"},
+    typescriptTSPunctSpecial = {link = "TSPunctSpecial"},
+    typescriptTSPunctDelimiter = {link = "TSPunctBracket"},
+    typescriptTSVariableBuiltin = {link = "TSVariableBuiltin"},
+    typescriptTSException = {link = "TSException"},
+    typescriptTSConstructor = {link = "TSConstructor"},
+    typescriptTSProperty = {link = "TSField"},
+    typescriptTSMethod = {link = "Function"},
+    typescriptTSMethodCall = {link = "TSFuncCall"},
+    typescriptTSKeyword = {link = "Keyword"},
 }
 
 hl.langs08.typescript = {
-    ["@parameter.typescript"] = fgs.aqua,
-    ["@type.builtin.typescript"] = {fg = c.green, gui = bold},
-    ["@keyword.return.typescript"] = {fg = c.red, gui = bold},
-    ["@punctuation.bracket.typescript"] = fgs.purple,
-    ["@punctuation.special.typescript"] = fgs.green,
-    ["@punctuation.delimiter.typescript"] = fgs.purple,
-    ["@variable.builtin.typescript"] = fgs.blue,
-    ["@exception.typescript"] = {fg = c.orange, gui = italic},
-    ["@constructor.typescript"] = {fg = c.wave_red, gui = bold},
-    ["@property.typescript"] = fgs.aqua,
-    ["@method.typescript"] = {fg = c.magenta, gui = bold},
-    ["@method.call.typescript"] = {fg = c.magenta, gui = bold},
-    ["@keyword.typescript"] = fgs.red,
+    ["@parameter.typescript"] = {link = "@parameter"},
+    ["@type.builtin.typescript"] = {link = "@type.builtin"},
+    ["@keyword.return.typescript"] = {link = "@keyword.return"},
+    ["@punctuation.bracket.typescript"] = {link = "@punctuation.bracket"},
+    ["@punctuation.special.typescript"] = {link = "@punctuation.special"},
+    ["@punctuation.delimiter.typescript"] = {link = "@punctuation.bracket"},
+    ["@variable.builtin.typescript"] = {link = "@variable.builtin"},
+    ["@exception.typescript"] = {link = "@exception"},
+    ["@constructor.typescript"] = {link = "@constructor"},
+    ["@property.typescript"] = {link = "@field"},
+    ["@method.typescript"] = {link = "@function"},
+    ["@method.call.typescript"] = {link = "@function.call"},
+    ["@keyword.typescript"] = {link = "@keyword"},
 }
 
 --  ╭─────╮
 --  │ tsx │
 --  ╰─────╯
 hl.langs.tsx = {
-    tsxTSMethod = {fg = c.magenta, gui = bold},
-    tsxTSConstructor = {fg = c.wave_red, gui = bold},
-    tsxTSProperty = fgs.aqua,
-    tsxTSPunctBracket = fgs.purple,
-    tsxTSTagAttribute = fgs.aqua,
-    tsxTSTag = {fg = c.orange, gui = italic},
-    tsxTSVariableBuiltin = fgs.blue,
-    tsxTSException = {fg = c.orange, gui = italic},
-    -- jsxTag = {fg = c.purple, gui = bold},
-    -- jsxOpenPunct = fgs.yellow,
-    -- jsxClosePunct = fgs.blue,
-    -- jsxEscapeJs = fgs.blue,
-    -- jsxAttrib = fgs.green,
-    -- jsxCloseTag = {fg = c.aqua, gui = bold},
-    -- jsxComponentName = {fg = c.blue, gui = bold},
+    tsxTSMethod = {link = "TSFunction"},
+    tsxTSMethodCall = {link = "TSFunction"},
+    tsxTSConstructor = {link = "TSConstructor"},
+    tsxTSProperty = {link = "TSField"},
+    tsxTSPunctBracket = {link = "TSPunctBracket"},
+    tsxTSTagAttribute = {link = "TSField"},
+    tsxTSTag = {fg = c.orange, gui = bold},
+    tsxTSVariableBuiltin = {link = "TSVariableBuiltin"},
+    tsxTSException = {link = "TSException"},
 }
 
 hl.langs08.tsx = {
-    ["@method.tsx"] = {fg = c.magenta, gui = bold},
-    ["@method.call.tsx"] = {fg = c.magenta, gui = bold},
-    ["@constructor.tsx"] = {fg = c.wave_red, gui = bold},
-    ["@property.tsx"] = fgs.aqua,
-    ["@punctuation.bracket.tsx"] = fgs.purple,
-    ["@tag.attribute.tsx"] = fgs.aqua,
-    ["@tag.tsx"] = {fg = c.orange, gui = italic},
-    ["@variable.builtin.tsx"] = fgs.blue,
-    ["@exception.tsx"] = {fg = c.orange, gui = italic},
+    ["@method.tsx"] = {link = "@function"},
+    ["@method.call.tsx"] = {link = "@function.call"},
+    ["@constructor.tsx"] = {link = "@constructor"},
+    ["@property.tsx"] = {link = "@field"},
+    ["@punctuation.bracket.tsx"] = {link = "@punctuation.bracket"},
+    ["@tag.attribute.tsx"] = {link = "@field"},
+    ["@tag.tsx"] = {fg = c.orange, gui = bold},
+    ["@variable.builtin.tsx"] = {link = "@variable.builtin"},
+    ["@exception.tsx"] = {link = "@exception"},
 }
 
 --  ╭────────╮
 --  │ Python │
 --  ╰────────╯
 hl.langs.python = {
-    pythonBuiltin = fgs.green,
-    pythonExceptions = fgs.purple,
-    pythonDecoratorName = fgs.blue,
+    pythonBuiltin = {link = "TSVariableBuiltin"},
+    pythonExceptions = {link = "TSException"},
+    pythonDecoratorName = {link = "Function"},
     -- python-syntax: https://github.com/vim-python/python-syntax
-    pythonExClass = fgs.purple,
-    pythonBuiltinType = fgs.green,
-    pythonBuiltinObj = fgs.blue,
-    pythonDottedName = {fg = c.purple, gui = italic},
-    pythonBuiltinFunc = {fg = c.yellow, gui = bold},
-    pythonFunction = {fg = c.aqua, gui = bold},
-    pythonDecorator = fgs.orange,
-    pythonInclude = {fg = c.purple, gui = italic},
-    pythonImport = {fg = c.purple, gui = italic},
+    pythonExClass = {link = "TSType"},
+    pythonBuiltinType = {link = "TSTypeBuiltin"},
+    pythonBuiltinObj = {link = "TSVariableBuiltin"},
+    pythonDottedName = {link = "TSField"},
+    pythonBuiltinFunc = {link = "TSFuncBuiltin"},
+    pythonFunction = {link = "Function"},
+    pythonDecorator = {link = "Function"},
+    pythonInclude = {link = "Include"},
+    pythonImport = {link = "Include"},
     pythonRun = fgs.blue,
     pythonCoding = fgs.coyote_brown1,
-    pythonOperator = fgs.orange,
-    pythonConditional = {fg = c.red, gui = italic},
-    pythonRepeat = {fg = c.red, gui = italic},
-    pythonException = {fg = c.red, gui = italic},
-    pythonNone = fgs.aqua,
+    pythonOperator = {link = "Operator"},
+    pythonConditional = {link = "Conditional"},
+    pythonRepeat = {link = "Repeat"},
+    pythonException = {link = "Exception"},
+    pythonNone = {link = "Type"},
     pythonDot = fgs.coyote_brown1,
     -- semshi: https://github.com/numirias/semshi
     semshiUnresolved = {fg = c.green, gui = undercurl},
-    semshiImported = fgs.purple,
-    semshiParameter = fgs.blue,
-    semshiParameterUnused = fgs.coyote_brown1,
-    semshiSelf = {fg = c.purple, gui = italic},
-    semshiGlobal = fgs.green,
-    semshiBuiltin = fgs.green,
-    semshiAttribute = fgs.aqua,
-    semshiLocal = fgs.red,
-    semshiFree = fgs.red,
-    semshiErrorSign = fgs.red,
-    semshiErrorChar = fgs.red,
+    semshiImported = {link = "Include"},
+    semshiParameter = {link = "TSParameter"},
+    semshiParameterUnused = fgs.wenge_grey,
+    semshiSelf = {link = "TSVariableBuiltin"},
+    semshiGlobal = {link = "TSVariableBuiltin"},
+    semshiBuiltin = {link = "TSVariableBuiltin"},
+    semshiAttribute = {link = "TSAttribute"},
+    semshiLocal = {link = "Keyword"},
+    semshiFree = {link = "Keyword"},
+    semshiErrorSign = {link = "Error"},
+    semshiErrorChar = {link = "Error"},
     semshiSelected = {bg = c.fg2},
     -- === Treesitter ===
-    pythonTSType = {fg = c.green, gui = bold},
-    pythonTSConstructor = fgs.magenta,
-    pythonTSKeywordFunction = {fg = c.red, gui = bold},
-    pythonTSConstBuiltin = fgs.purple,
-    pythonTSMethod = {fg = c.purple, gui = bold},
+    pythonTSConstant = {link = "TSConstant"},
+    pythonTSConstBuiltin = {link = "TSConstBuiltin"},
+    pythonTSConstructor = {link = "TSConstructor"},
+    pythonTSField = {link = "TSField"},
+    pythonTSKeywordFunction = {link = "TSKeywordReturn"},
+    pythonTSMethod = {link = "TSFunction"},
+    pythonTSMethodCall = {link = "TSFuncCall"},
     pythonTSParameter = fgs.orange,
-    pythonTSConstant = {fg = c.sea_green, gui = bold},
-    pythonTSField = fgs.fg0,
-    pythonTSStringEscape = fgs.green,
-    pythonTSPunctBracket = fgs.purple,
+    pythonTSPunctBracket = {link = "TSPunctBracket"},
+    pythonTSStringEscape = {link = "TSStringEscape"},
+    pythonTSType = {link = "TSType"},
 }
 
 hl.langs08.python = {
-    ["@constant.python"] = {fg = c.sea_green, gui = bold},
-    ["@constant.builtin.python"] = fgs.purple,
-    ["@constructor.python"] = fgs.magenta,
-    ["@field.python"] = fgs.aqua,
-    ["@keyword.function.python"] = {fg = c.red, gui = bold},
-    ["@method.call.python"] = {fg = c.magenta, gui = bold},
-    ["@method.python"] = {fg = c.purple, gui = bold},
+    ["@constant.python"] = {link = "@constant"},
+    ["@constant.builtin.python"] = {link = "@constant.builtin"},
+    ["@constructor.python"] = {link = "@constructor"},
+    ["@field.python"] = {link = "@field"},
+    ["@keyword.function.python"] = {link = "@keyword.return"},
+    ["@method.python"] = {link = "@function"},
+    ["@method.call.python"] = {link = "@function.call"},
     ["@parameter.python"] = fgs.orange,
-    ["@punctuation.bracket.python"] = fgs.purple,
-    ["@string.escape.python"] = fgs.green,
-    ["@type.python"] = {fg = c.green, gui = bold},
+    ["@punctuation.bracket.python"] = {link = "@punctuation.bracket"},
+    ["@string.escape.python"] = {link = "@string.escape"},
+    ["@type.python"] = {link = "@type"},
 }
 
 --  ╭────╮
@@ -1170,38 +1171,39 @@ hl.langs08.python = {
 --  ╰────╯
 hl.langs.go = {
     goDirective = {fg = c.purple, gui = italic},
-    goConstants = fgs.aqua,
-    goTypeDecl = {fg = c.purple, gui = italic},
-    goDeclType = {fg = c.orange, gui = italic},
-    goFunctionCall = {fg = c.green, gui = bold},
+    goConstants = {link = "Constant"},
+    goTypeDecl = {link = "Keyword"},
+    goDeclType = {link = "Type"},
+    goFunctionCall = {link = "Function"},
     goSpaceError = {fg = c.coyote_brown1, bg = c.teaberry},
-    goVarArgs = fgs.blue,
-    goBuiltins = fgs.purple,
-    goPredefinedIdentifiers = fgs.orange,
-    goVar = fgs.orange,
-    goField = fgs.aqua,
+    goVarArgs = {link = "Type"},
+    goBuiltins = {link = "TSVariableBuiltin"},
+    goPredefinedIdentifiers = {link = "TSConstBuiltin"},
+    goVar = {link = "TSVariable"},
+    goField = {link = "TSField"},
     goDeclaration = fgs.blue,
-    goConst = fgs.orange,
-    goParamName = fgs.aqua,
+    goConst = {link = "TSConstant"},
+    goParamName = {link = "TSParameter"},
     -- === Treesitter ===
-    goTSProperty = fgs.blue,
-    goTSField = fgs.aqua,
-    goTSMethod = {fg = c.purple, gui = bold},
+    goTSField = {link = "TSField"},
+    goTSMethod = {link = "TSFunction"},
+    goTSMethodCall = {link = "TSFuncCall"},
     goTSNamespace = {fg = c.jade_green, gui = bold},
-    goTSType = {fg = c.green, gui = bold},
-    goTSTypeBuiltin = {fg = c.green, gui = bold},
-    goTSPunctBracket = fgs.purple,
+    goTSProperty = {link = "TSField"},
+    goTSPunctBracket = {link = "TSPunctBracket"},
+    goTSType = {link = "TSType"},
+    goTSTypeBuiltin = {link = "TSTypeBuiltin"},
 }
 
 hl.langs08.go = {
-    ["@property.go"] = fgs.aqua,
-    ["@field.go"] = fgs.aqua,
-    ["@method.go"] = {fg = c.purple, gui = bold},
-    ["@method.call.go"] = {fg = c.magenta, gui = bold},
+    ["@field.go"] = {link = "@field"},
+    ["@method.go"] = {link = "@function"},
+    ["@method.call.go"] = {link = "@function.call"},
     ["@namespace.go"] = {fg = c.jade_green, gui = bold},
-    ["@type.go"] = {fg = c.green, gui = bold},
-    ["@type.builtin.go"] = {fg = c.green, gui = bold},
-    ["@punctuation.bracket.go"] = fgs.purple,
+    ["@property.go"] = {link = "@field"},
+    ["@punctuation.bracket.go"] = {link = "@punctuation.bracket"},
+    ["@type.go"] = {link = "@type"},
+    ["@type.builtin.go"] = {link = "@type.builtin"},
 }
 
 --  ╭──────╮
@@ -1209,52 +1211,52 @@ hl.langs08.go = {
 --  ╰──────╯
 hl.langs.rust = {
     -- rust.vim: https://github.com/rust-lang/rust.vim
-    rustStructure = fgs.orange,
+    rustStructure = {link = "Structure"},
     rustIdentifier = fgs.purple,
-    rustModPath = fgs.orange,
-    rustModPathSep = fgs.coyote_brown1,
-    rustSelf = fgs.blue,
-    rustSuper = fgs.blue,
-    rustDeriveTrait = {fg = c.purple, gui = italic},
-    rustEnumVariant = fgs.purple,
-    rustMacroVariable = fgs.blue,
-    rustAssert = fgs.aqua,
-    rustPanic = fgs.aqua,
-    rustPubScopeCrate = {fg = c.purple, gui = italic},
-    rustArrowCharacter = fgs.orange,
-    rustOperator = fgs.orange,
+    rustModPath = {link = "TSNamespace"},
+    rustModPathSep = {link = "Delimiter"},
+    rustSelf = {link = "TSVariableBuiltin"},
+    rustSuper = {link = "TSVariableBuiltin"},
+    rustDeriveTrait = {link = "Type"},
+    rustEnumVariant = {link = "TSConstant"},
+    rustMacroVariable = {link = "Macro"},
+    rustAssert = {link = "Macro"},
+    rustPanic = {link = "Macro"},
+    rustPubScopeCrate = {link = "Namespace"},
+    rustArrowCharacter = {link = "Operator"},
+    rustOperator = {link = "Operator"},
     -- === Treesitter ===
+    rustTSConstant = {link = "TSConstBuiltin"},
     rustTSConstBuiltin = fgs.purple,
-    rustTSConstant = {fg = c.sea_green, gui = bold},
-    rustTSField = fgs.aqua, -- fg0
-    rustTSFuncMacro = fgs.aqua,
-    rustTSInclude = {fg = c.red, gui = italic},
+    rustTSField = {link = "TSField"},
+    rustTSFuncMacro = {link = "TSFuncMacro"},
+    rustTSInclude = {link = "TSInclude"},
     rustTSLabel = fgs.green,
-    rustTSNamespace = fgs.orange,
-    rustTSParameter = fgs.orange,
-    rustTSPunctBracket = fgs.purple,
+    rustTSNamespace = {link = "TSNamespace"},
+    rustTSParameter = {link = "TSParameter"},
+    rustTSPunctBracket = {link = "TSPunctBracket"},
     rustTSPunctSpecial = fgs.magenta,
-    rustTSStringEscape = fgs.green,
-    rustTSType = {fg = c.green, gui = bold},
-    rustTSTypeBuiltin = {fg = c.green, gui = bold},
-    rustTSVariableBuiltin = fgs.blue,
+    rustTSStringEscape = {link = "TSStringEscape"},
+    rustTSType = {link = "TSTypeBuiltin"},
+    rustTSTypeBuiltin = {link = "TSTypeBuiltin"},
+    rustTSVariableBuiltin = {link = "TSVariableBuiltin"},
 }
 
 hl.langs08.rust = {
+    ["@constant.rust"] = {link = "@constant"},
     ["@constant.builtin.rust"] = fgs.purple,
-    ["@constant.rust"] = {fg = c.sea_green, gui = bold},
-    ["@field.rust"] = fgs.aqua, -- fg0
-    ["@function.macro.rust"] = fgs.aqua,
-    ["@include.rust"] = {fg = c.red, gui = italic},
+    ["@field.rust"] = {link = "@field"},
+    ["@function.macro.rust"] = {link = "@function.macro"},
+    ["@include.rust"] = {link = "@include"},
     ["@label.rust"] = fgs.green,
-    ["@namespace.rust"] = fgs.orange,
-    ["@parameter.rust"] = fgs.orange,
-    ["@punctuation.bracket.rust"] = fgs.purple,
+    ["@namespace.rust"] = {link = "@namespace"},
+    ["@parameter.rust"] = {link = "@parameter"},
+    ["@punctuation.bracket.rust"] = {link = "@punctuation.bracket"},
     ["@punctuation.special.rust"] = fgs.magenta,
-    ["@string.escape.rust"] = fgs.green,
-    ["@type.rust"] = {fg = c.green, gui = bold},
-    ["@type.builtin.rust"] = {fg = c.green, gui = bold},
-    ["@variable.builtin.rust"] = fgs.blue,
+    ["@string.escape.rust"] = {link = "@string.escape"},
+    ["@type.rust"] = {link = "@type.builtin"},
+    ["@type.builtin.rust"] = {link = "@type.builtin"},
+    ["@variable.builtin.rust"] = {link = "@variable.builtin"},
 }
 
 --  ╭──────╮
@@ -1263,38 +1265,38 @@ hl.langs08.rust = {
 hl.langs.ruby = {
     -- builtin: https://github.com/vim-ruby/vim-ruby
     rubyStringDelimiter = fgs.yellow,
-    rubyModuleName = fgs.purple,
-    rubyMacro = {fg = c.red, gui = italic},
-    rubyKeywordAsMethod = {fg = c.yellow, gui = bold},
-    rubyInterpolationDelimiter = fgs.green,
-    rubyInterpolation = fgs.green,
-    rubyDefinedOperator = fgs.orange,
-    rubyDefine = {fg = c.red, gui = italic},
-    rubyBlockParameterList = fgs.blue,
-    rubyAttribute = fgs.green,
-    rubyArrayDelimiter = fgs.orange,
-    rubyCurlyBlockDelimiter = fgs.orange,
-    rubyAccess = fgs.orange,
+    rubyModuleName = {link = "Include"},
+    rubyMacro = {link = "Macro"},
+    rubyKeywordAsMethod = {link = "Keyword"},
+    rubyInterpolationDelimiter = {link = "SpecialChar"},
+    rubyInterpolation = {link = "SpecialChar"},
+    rubyDefinedOperator = {link = "Operator"},
+    rubyDefine = {link = "Keyword"},
+    rubyBlockParameterList = {link = "TSParameter"},
+    rubyAttribute = {link = "Type"},
+    rubyArrayDelimiter = {link = "Delimiter"},
+    rubyCurlyBlockDelimiter = {link = "Delimiter"},
+    rubyAccess = {link = "Operator"},
     -- === Treesitter ===
-    rubyTSLabel = fgs.blue,
-    rubyTSString = fgs.yellow,
-    rubyTSPunctSpecial = fgs.green,
-    rubyTSPunctBracket = fgs.green,
-    rubyTSParameter = fgs.orange,
-    rubyTSSymbol = fgs.aqua,
+    rubyTSLabel = {link = "TSLabel"},
     rubyTSNone = fgs.blue,
-    rubyTSType = {fg = c.green, gui = bold},
+    rubyTSParameter = {link = "TSParameter"},
+    rubyTSPunctBracket = {link = "TSPunctBracket"},
+    rubyTSPunctSpecial = {link = "TSPunctSpecial"},
+    rubyTSString = {link = "TSString"},
+    rubyTSSymbol = fgs.aqua,
+    rubyTSType = {link = "TSTypeBuiltin"},
 }
 
 hl.langs08.ruby = {
-    ["@label.ruby"] = fgs.blue,
-    ["@string.ruby"] = fgs.yellow,
-    ["@punctuation.special.ruby"] = fgs.green,
-    ["@punctuation.bracket.ruby"] = fgs.green,
-    ["@parameter.ruby"] = fgs.orange,
-    ["@symbol.ruby"] = fgs.aqua,
+    ["@label.ruby"] = {link = "@label"},
     ["@none.ruby"] = fgs.blue,
-    ["@type.ruby"] = {fg = c.green, gui = bold},
+    ["@parameter.ruby"] = {link = "@parameter"},
+    ["@punctuation.bracket.ruby"] = {link = "@punctuation.bracket"},
+    ["@punctuation.special.ruby"] = {link = "@punctuation.special"},
+    ["@string.ruby"] = {link = "@string"},
+    ["@symbol.ruby"] = fgs.aqua,
+    ["@type.ruby"] = {link = "@type.builtin"},
 }
 
 --  ╭──────╮
@@ -1302,33 +1304,41 @@ hl.langs08.ruby = {
 --  ╰──────╯
 hl.langs.perl = {
     -- builtin: https://github.com/vim-perl/vim-perl
-    perlStatementPackage = {fg = c.purple, gui = italic},
-    perlStatementInclude = {fg = c.purple, gui = italic},
+    perlStatementPackage = {link = "Type"},
+    perlStatementInclude = {link = "Include"},
     perlStatementStorage = fgs.orange,
     perlStatementList = fgs.orange,
     perlMatchStartEnd = fgs.orange,
-    perlVarSimpleMemberName = fgs.aqua,
-    perlVarSimpleMember = fgs.fg0,
-    perlMethod = {fg = c.yellow, gui = bold},
-    perlOperator = fgs.red,
+    perlVarSimpleMemberName = {link = "TSField"},
+    perlVarSimpleMember = {link = "TSField"},
+    perlMethod = {link = "Function"},
+    perlOperator = {link = "Operator"},
     podVerbatimLine = fgs.yellow,
     podCmdText = fgs.green,
     perlDATA = {fg = c.orange, gui = italic},
-    perlBraces = fgs.purple,
+    perlBraces = {link = "Delimiter"},
     -- === Treesitter ===
     perlTSVariable = fgs.blue,
+    perlTSKeywordFunction = {link = "TSKeywordReturn"},
+    perlTSConditionalTernary = {link = "TSFunction"},
+    perlTSInclude = {fg = c.red, gui = bold},
+    perlTSType = {link = "TSTypeBuiltin"},
+    perlTSNamespace = fgs.blue,
+    perlTSVariableBuiltin = {fg = c.sea_green, gui = bold},
+    perlTSStringRegex = fgs.salmon,
+    perlTSParameter = {link = "TSParameter"},
 }
 
 hl.langs08.perl = {
     ["@variable.perl"] = fgs.blue,
-    ["@keyword.function.perl"] = {fg = c.red, gui = bold},
+    ["@keyword.function.perl"] = {link = "@keyword.return"},
     ["@conditional.ternary.perl"] = {link = "@function"},
     ["@include.perl"] = {fg = c.red, gui = bold},
-    ["@type.perl"] = {fg = c.green, gui = bold},
+    ["@type.perl"] = {link = "@type.builtin"},
     ["@namespace.perl"] = fgs.blue,
     ["@variable.builtin.perl"] = {fg = c.sea_green, gui = bold},
     ["@string.regex.perl"] = fgs.salmon,
-    ["@parameter.perl"] = fgs.salmon,
+    ["@parameter.perl"] = {link = "@parameter"},
     -- === Custom ===
     ["@function.exit.perl"] = {fg = c.red, gui = bold},
     ["@function.other.perl"] = {fg = c.red, gui = bold},
@@ -1341,20 +1351,21 @@ hl.langs08.perl = {
 --  │ Teal │
 --  ╰──────╯
 hl.langs.teal = {
-    tealTSOperator = fgs.orange, -- when not and as are not considered operators, i think it'd be better
-    tealTSParameter = fgs.aqua,
-    tealTSPunctBracket = fgs.purple,
-    tealTSFunction = {fg = c.magenta, gui = bold},
-    tealTSConstant = {fg = c.wave_red, gui = bold},
+    tealTSOperator = {link = "TSOperator"},
+    tealTSParameter = {link = "TSParameter"},
+    tealTSPunctBracket = {link = "TSPunctBracket"},
+    tealTSFunction = {link = "TSFunction"},
+    tealTSConstant = {link = "TSTypeBuiltin"},
+    tealTSConstBuiltin = {link = "TSConstBuiltin"},
 }
 
 hl.langs08.teal = {
-    ["@operator.teal"] = fgs.orange,
-    ["@parameter.teal"] = fgs.aqua,
-    ["@punctuation.bracket.teal"] = fgs.purple,
-    ["@function.teal"] = {fg = c.magenta, gui = bold},
-    ["@constant.teal"] = {fg = c.green, gui = bold},
-    ["@constant.builtin.teal"] = fgs.orange,
+    ["@operator.teal"] = {link = "@operator"},
+    ["@parameter.teal"] = {link = "@parameter"},
+    ["@punctuation.bracket.teal"] = {link = "@punctuation.bracket"},
+    ["@function.teal"] = {link = "@function"},
+    ["@constant.teal"] = {link = "@type.builtin"},
+    ["@constant.builtin.teal"] = {link = "@constant.builtin"},
     -- === Custom ===
     ["@keyword.coroutine.teal"] = {fg = c.oni_violet, gui = bold},
     ["@field.builtin.teal"] = fgs.wave_red,
@@ -1367,21 +1378,19 @@ hl.langs08.teal = {
 --  │ Lua │
 --  ╰─────╯
 hl.langs.lua = {
-    -- When cursorholding for Coc.nvim
-    -- Mimic treesitter as much as possible
-    luaTable = fgs.aqua,
-    luaConstant = fgs.orange,
-    luaParens = fgs.blue,
-    luaFuncParens = fgs.blue,
+    luaTable = {link = "TSField"},
+    luaConstant = {link = "TSConstBuiltin"},
+    luaParens = {link = "Delimiter"},
+    luaFuncParens = {link = "Delimiter"},
     luaLocal = {link = "Statement"},
     luaStatement = {link = "Statement"},
     luaSpecialValue = {link = "Function"},
     luaFuncCall = {link = "Function"},
     luaFuncId = {link = "Function"},
     luaFuncName = {link = "Function"},
-    luaFuncKeyword = fgs.red,
+    luaFuncKeyword = {link = "Keyword"},
     luaFuncTable = {link = "Type"},
-    luaEllipsis = {link = "Special"},
+    luaEllipsis = {link = "Type"},
     luaSpecialTable = {link = "Type"},
     luaOperator = fgs.red,
     luaSymbolOperator = fgs.orange,
@@ -1389,20 +1398,20 @@ hl.langs.lua = {
     luaErrHand = {link = "Exception"},
     -- === Treesitter ===
     luaTSConstant = {fg = c.green, gui = bold},
-    luaTSConstBuiltin = fgs.orange,
-    luaTSConstructor = {fg = c.wave_red, gui = bold},
+    luaTSConstBuiltin = {link = "TSConstBuiltin"},
+    luaTSConstructor = {link = "TSConstructor"},
     luaTSProperty = fgs.green,
-    luaTSLabel = {fg = c.orange, gui = bold},
-    luaTSField = fgs.aqua,
+    luaTSLabel = {link = "TSLabel"},
+    luaTSField = {link = "TSField"},
     luaTSPreproc = fgs.purple,
-    luaTSMethod = fgs.blue,
-    luaTSMethodCall = fgs.blue,
-    luaTSPunctBracket = fgs.purple,
-    luaTSNamespaceBuiltin = fgs.russian_green,
-    luaTSVariableBuiltin = fgs.blue,
-    luaTSFunction = {fg = c.magenta, gui = bold},
-    luaTSFuncBuiltin = {fg = c.magenta, gui = bold},
-    luaTSKeywordFunction = fgs.red,
+    luaTSMethod = {link = "TSMethod"},
+    luaTSMethodCall = {link = "TSMethod"},
+    luaTSPunctBracket = {link = "TSPunctBracket"},
+    luaTSNamespaceBuiltin = {link = "TSNamespaceBuiltin"},
+    luaTSVariableBuiltin = {link = "TSVariableBuiltin"},
+    luaTSFunction = {link = "TSFunction"},
+    luaTSFuncBuiltin = {link = "TSFunction"},
+    luaTSKeywordFunction = {link = "TSKeywordFunction"},
     luaTSKeywordCoroutine = {fg = c.oni_violet, gui = bold},
 }
 
@@ -1411,20 +1420,20 @@ hl.langs08.lua = {
     -- ["@function.builtin.lua"] = {fg = c.russian_green, gui = bold},
     -- ["@comment.documentation.lua"] = fgs.blue,
     ["@constant.lua"] = {fg = c.green, gui = bold},
-    ["@constant.builtin.lua"] = fgs.orange,
-    ["@constructor.lua"] = {fg = c.wave_red, gui = bold},
+    ["@constant.builtin.lua"] = {link = "@constant.builtin"},
+    ["@constructor.lua"] = {link = "@constructor"},
     ["@property.lua"] = fgs.green,
-    ["@field.lua"] = fgs.aqua,
+    ["@field.lua"] = {link = "@field"},
     ["@preproc.lua"] = fgs.purple,
-    ["@label.lua"] = {fg = c.orange, gui = bold},
-    ["@method.lua"] = fgs.blue,
-    ["@method.call.lua"] = fgs.blue,
-    ["@punctuation.bracket.lua"] = fgs.purple,
-    ["@namespace.builtin.lua"] = fgs.russian_green,
-    ["@variable.builtin.lua"] = fgs.blue,
-    ["@function.lua"] = {fg = c.magenta, gui = bold},
-    ["@function.builtin.lua"] = {fg = c.magenta, gui = bold},
-    ["@keyword.function.lua"] = fgs.red,
+    ["@label.lua"] = {link = "@label"},
+    ["@method.lua"] = {link = "@method"},
+    ["@method.call.lua"] = {link = "@method.call"},
+    ["@punctuation.bracket.lua"] = {link = "@punctuation.bracket"},
+    ["@namespace.builtin.lua"] = {link = "@namespace.builtin"},
+    ["@variable.builtin.lua"] = {link = "@variable.builtin"},
+    ["@function.lua"] = {link = "@function"},
+    ["@function.builtin.lua"] = {link = "@function"},
+    ["@keyword.function.lua"] = {link = "@keyword.function"},
     ["@keyword.coroutine.lua"] = {fg = c.oni_violet, gui = bold},
     -- === Custom ===
     ["@field.builtin.lua"] = fgs.wave_red,
@@ -1446,7 +1455,7 @@ hl.langs.luadoc = {
     luadocTSType = {link = "TSType"},
     luadocTSTypeBuiltin = {link = "TSTypeBuiltin"},
     luadocTSOperator = {fg = c.orange, gui = bold},
-    luadocTSPunctBracket = fgs.purple,
+    luadocTSPunctBracket = {link = "TSPunctBracket"},
     luadocTSPunctDelimiter = {fg = c.orange, gui = bold},
     luadocTSPunctSpecial = {link = "TSPunctSpecial"},
 }
@@ -1462,7 +1471,7 @@ hl.langs08.luadoc = {
     ["@type.luadoc"] = {link = "@type"},
     ["@type.builtin.luadoc"] = {link = "@type.builtin"},
     ["@operator.luadoc"] = {fg = c.orange, gui = bold},
-    ["@punctuation.bracket.luadoc"] = fgs.purple,
+    ["@punctuation.bracket.luadoc"] = {link = "@punctuation.bracket"},
     ["@punctuation.delimiter.luadoc"] = {fg = c.orange, gui = bold},
     ["@punctuation.special.luadoc"] = {link = "@punctuation.special"},
     -- === Custom ===
@@ -1479,15 +1488,15 @@ hl.langs08.luadoc = {
 hl.langs.luap = {
     luapTSPunctSpecial = fgs.green,
     luapTSPunctBracket = fgs.blue,
-    luapTSOperator = fgs.orange,
-    luapTSKeyword = fgs.red,
+    luapTSOperator = {link = "Operator"},
+    luapTSKeyword = {link = "Keyword"},
 }
 
 hl.langs08.luap = {
     ["@punctuation.special.luap"] = fgs.green,
     ["@punctuation.bracket.luap"] = fgs.blue,
-    ["@operator.luap"] = fgs.orange,
-    ["@keyword.luap"] = fgs.red,
+    ["@operator.luap"] = {link = "@operator"},
+    ["@keyword.luap"] = {link = "@keyword"},
 }
 
 --  ╭───────╮
@@ -2500,19 +2509,35 @@ hl.plugins.lsp = {
     DiagnosticInfo = fgs.blue,
     DiagnosticHint = fgs.aqua,
     DiagnosticVirtualTextError = {
-        bg = utils.tern(cfg.diagnostics.background, utils.darken(c.red, 0.1, c.bg0), c.none),
+        bg = utils.tern(
+            cfg.diagnostics.background,
+            utils.darken(c.red, 0.1, c.bg0),
+            c.none
+        ),
         fg = c.red,
     },
     DiagnosticVirtualTextWarn = {
-        bg = utils.tern(cfg.diagnostics.background, utils.darken(c.yellow, 0.1, c.bg0), c.none),
+        bg = utils.tern(
+            cfg.diagnostics.background,
+            utils.darken(c.yellow, 0.1, c.bg0),
+            c.none
+        ),
         fg = c.yellow,
     },
     DiagnosticVirtualTextInfo = {
-        bg = utils.tern(cfg.diagnostics.background, utils.darken(c.aqua, 0.1, c.bg0), c.none),
+        bg = utils.tern(
+            cfg.diagnostics.background,
+            utils.darken(c.aqua, 0.1, c.bg0),
+            c.none
+        ),
         fg = c.aqua,
     },
     DiagnosticVirtualTextHint = {
-        bg = utils.tern(cfg.diagnostics.background, utils.darken(c.purple, 0.1, c.bg0), c.none),
+        bg = utils.tern(
+            cfg.diagnostics.background,
+            utils.darken(c.purple, 0.1, c.bg0),
+            c.none
+        ),
         fg = c.purple,
     },
     -- DiagnosticVirtualTextError = {
@@ -2541,7 +2566,8 @@ hl.plugins.lsp.LspDiagnosticsUnderlineInformation = hl.plugins.lsp.DiagnosticUnd
 hl.plugins.lsp.LspDiagnosticsUnderlineWarning = hl.plugins.lsp.DiagnosticUnderlineWarn
 hl.plugins.lsp.LspDiagnosticsVirtualTextError = hl.plugins.lsp.DiagnosticVirtualTextError
 hl.plugins.lsp.LspDiagnosticsVirtualTextWarning = hl.plugins.lsp.DiagnosticVirtualTextWarn
-hl.plugins.lsp.LspDiagnosticsVirtualTextInformation = hl.plugins.lsp.DiagnosticVirtualTextInfo
+hl.plugins.lsp.LspDiagnosticsVirtualTextInformation =
+    hl.plugins.lsp.DiagnosticVirtualTextInfo
 hl.plugins.lsp.LspDiagnosticsVirtualTextHint = hl.plugins.lsp.DiagnosticVirtualTextHint
 
 -- https://github.com/folke/lsp-trouble.nvim
@@ -3308,7 +3334,9 @@ end
 
 function M.setup()
     if utils.needs_api_fix() then
-        utils.highlight.alt({Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}})
+        utils.highlight.alt({
+            Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
+        })
     else
         utils.highlight({Normal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}})
     end
