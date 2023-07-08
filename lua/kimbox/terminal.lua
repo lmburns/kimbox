@@ -1,8 +1,8 @@
 local M = {}
 
----@type KimboxConfig
+---@type Kimbox.Config
 local cfg = require("kimbox.config").user or vim.g.kimbox_config
----@type KimboxColors
+---@type Kimbox.Colors
 local c = require("kimbox.colors")
 
 function M.setup()

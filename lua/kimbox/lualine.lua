@@ -1,11 +1,11 @@
 local M = {}
 
----@return KimboxLualineConfig
+---@return Kimbox.LualineConfig
 function M.theme()
   return require("lualine.themes.kimbox")
 end
 
----@return KimboxColors|{[string]: string}
+---@return Kimbox.Colors|{[string]: string}
 function M.colors()
   local c = require("kimbox.colors")
   return {

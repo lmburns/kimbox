@@ -6,10 +6,10 @@ local api = vim.api
 M.bg = "#000000"
 M.fg = "#ffffff"
 
----@alias KimboxLogLevels { TRACE: 0, DEBUG: 1, INFO: 2, WARN: 3, ERROR: 4, OFF: 5 }
+---@alias Kimbox.Log.Levels { TRACE: 0, DEBUG: 1, INFO: 2, WARN: 3, ERROR: 4, OFF: 5 }
 
 M.log = {
-    ---@type KimboxLogLevels
+    ---@type Kimbox.Log.Levels
     levels = vim.log.levels,
 }
 
@@ -47,7 +47,7 @@ M.has_api = (function()
         end
         return has_api
     end
-end)
+end)()
 
 ---BUG: There is a bug in the API that returns true as a key in the table
 ---https://github.com/neovim/neovim/issues/18024
@@ -61,7 +61,7 @@ M.needs_api_fix = (function()
         end
         return needs_api_fix
     end
-end)
+end)()
 
 ---Echo a message with `nvim_echo`
 ---@param msg string message
@@ -125,7 +125,7 @@ end
 ---@param x T Value to check if not `nil`
 ---@param default V Default value to return if `x` is `nil`
 ---@return T | V
-M.get_default = function(x, default)
+function M.get_default(x, default)
     return M.ife_nil(x, default, x)
 end
 
@@ -135,7 +135,7 @@ end
 ---@param is_nil T Value to return if `x` is `nil`
 ---@param is_not_nil V Value to return if `x` is not `nil`
 ---@return T | V
-M.ife_nil = function(x, is_nil, is_not_nil)
+function M.ife_nil(x, is_nil, is_not_nil)
     if x == nil then
         return is_nil
     else
@@ -149,7 +149,7 @@ end
 ---@param is_if T Return if condition is truthy
 ---@param is_else V Return if condition is not truthy
 ---@return T | V
-M.tern = function(condition, is_if, is_else)
+function M.tern(condition, is_if, is_else)
     if condition then
         return is_if
     else
@@ -160,7 +160,7 @@ end
 ---Check if `string` is empty or `nil`
 ---@param str string
 ---@return boolean
-M.is_empty = function(str)
+function M.is_empty(str)
     return str == "" or str == nil
 end
 
@@ -168,15 +168,12 @@ end
 ---@param count number? of messages to get
 ---@param str boolean whether to return as a string or table
 ---@return string
-M.messages = function(count, str)
+function M.messages(count, str)
     local messages = fn.execute("messages")
     local lines = vim.split(messages, "\n")
-    lines = vim.tbl_filter(
-        function(line)
-            return line ~= ""
-        end,
-        lines
-    )
+    lines = vim.tbl_filter(function(line)
+        return line ~= ""
+    end, lines)
     count = count and tonumber(count) or nil
     count = (count ~= nil and count >= 0) and count - 1 or #lines
     local slice = vim.list_slice(lines, #lines - count)
@@ -188,63 +185,90 @@ end
 -- ╰──────────────────────────────────────────────────────────╯
 
 ---Convert a hex color (i.e., `#FFFFFF`) into an RGB(255, 255, 255)
----@param hex HexColor
----@return KimboxRGB
-M.hex2rgb = function(hex)
-    local p = "[abcdef0-9][abcdef0-9]"
-    local pat = ("^#(%s)(%s)(%s)$"):format(p, p, p)
-
-    hex = hex:lower()
-    assert(hex:match(pat) ~= nil, "hex_to_rgb: invalid hex_str: " .. tostring(hex))
+---@param hex Kimbox.Color.S_t
+---@return Kimbox.Color.RGB_t
+function M.hex2rgb(hex)
+    local pat = "^(%x%x)(%x%x)(%x%x)$"
+    hex = hex:gsub("#", ""):gsub("0x", ""):lower()
+    assert(hex:match(pat) ~= nil, ("hex2rgb: invalid string: %s"):format(hex))
 
     local r, g, b = hex:match(pat)
-
     return {
-        tonumber(r, 16),
-        tonumber(g, 16),
-        tonumber(b, 16),
+        r = tonumber(r, 16),
+        g = tonumber(g, 16),
+        b = tonumber(b, 16),
     }
 end
 
----
----@param fg HexColor foreground color
----@param bg HexColor background color
----@param alpha number number between 0 and 1. 0 results in bg, 1 results in fg
----@return HexColor
-M.blend = function(fg, bg, alpha)
+---Convert RGB decimal (RGB) to hexadecimal (#RRGGBB)
+---@param dec integer
+---@return string color @#RRGGBB
+function M.rgb2hex(dec)
+    return ("#%s"):format(bit.tohex(dec, 6))
+end
+
+---Blend foreground and background colors together.
+---@param fg Kimbox.Color.S_t foreground color
+---@param bg Kimbox.Color.S_t background color
+---@param alpha float number between 0 and 1. 0 results in bg, 1 results in fg
+---@return Kimbox.Color.S_t
+function M.blend(fg, bg, alpha)
     local bg_rgb = M.hex2rgb(bg)
     local fg_rgb = M.hex2rgb(fg)
 
-    local blend_channel = function(i)
+    local blend = function(i)
         local ret = (alpha * fg_rgb[i] + ((1 - alpha) * bg_rgb[i]))
         return math.floor(math.min(math.max(0, ret), 255) + 0.5)
     end
 
-    return ("#%02X%02X%02X"):format(blend_channel(1), blend_channel(2), blend_channel(3))
+    return ("#%02X%02X%02X"):format(blend("r"), blend("g"), blend("b"))
+end
+
+---Alter a color's brightness
+---@param color Kimbox.Color.S_t|fun():Kimbox.Color.S_t hex color
+---@param percent float negative darkens; positive brightens
+---@return Kimbox.Color.S_t
+function M.alter(color, percent)
+    assert(color and percent, "unable to alter color without a color and percentage to alter by")
+    color = type(color) == "function" and color() or color
+    local c = M.hex2rgb(color)
+    if not c.r or not c.g or not c.b then
+        return "NONE"
+    end
+    local function blend(comp)
+        comp = math.floor(comp * (1 + percent))
+        return math.min(math.max(comp, 0), 255)
+        -- return math.floor(math.min(math.max(comp, 0), 255) + 0.5)
+    end
+    return ("#%02x%02x%02x"):format(blend(c.r), blend(c.g), blend(c.b))
 end
 
 ---
----@param hex HexColor Color to blend
+---@param hex Kimbox.Color.S_t Color to blend
 ---@param amount number Number between 0 and 1. 0 results in bg, 1 results in fg
----@param bg? HexColor Background color
----@return HexColor
-M.darken = function(hex, amount, bg)
+---@param bg? Kimbox.Color.S_t Background color
+---@return Kimbox.Color.S_t
+function M.darken(hex, amount, bg)
     return M.blend(hex, bg or M.bg, math.abs(amount))
 end
 
+function M.darken1(hex, amount)
+    return M.alter(hex, amount)
+end
+
 ---
----@param hex HexColor Color to blend
+---@param hex Kimbox.Color.S_t Color to blend
 ---@param amount number Number between 0 and 1. 0 results in bg, 1 results in fg
----@param fg? HexColor Foreground color
----@return HexColor
-M.lighten = function(hex, amount, fg)
+---@param fg? Kimbox.Color.S_t Foreground color
+---@return Kimbox.Color.S_t
+function M.lighten(hex, amount, fg)
     return M.blend(hex, fg or M.fg, math.abs(amount))
 end
 
 ---Convert a `gui=...` into valid arguments for `api.nvim_set_hl`
 ---@param style string
 ---@return table
-M.convert_gui = function(style)
+function M.convert_gui(style)
     if not style or style:lower() == "none" then
         return {}
     end
@@ -259,9 +283,9 @@ M.convert_gui = function(style)
 end
 
 ---Highlight using Vim's language
----@param highlights KimboxHighlightMap
+---@param highlights Kimbox.Highlight.Map
 local function vim_highlights(highlights)
-    ---@type KimboxHighlightMap
+    ---@type Kimbox.Highlight.Map
     local to_highlight = {}
     for group, opts in pairs(highlights) do
         if opts.link then
@@ -284,7 +308,7 @@ local function vim_highlights(highlights)
 end
 
 ---Highlight using the Nvim API
----@param highlights KimboxHighlightMap
+---@param highlights Kimbox.Highlight.Map
 local function nvim_highlights(highlights)
     for group, opts in pairs(highlights) do
         if not M.is_empty(opts.link) then
@@ -299,23 +323,17 @@ local function nvim_highlights(highlights)
     end
 end
 
----@class KimboxHighlight
----@operator call(KimboxHighlightMap): nil
----@field alt fun(h: KimboxHighlightMap)
-M.highlight =
-    setmetatable(
-        {
-            alt = vim_highlights,
-        },
-        {
-            ---
-            ---@param _ KimboxHighlight
-            ---@param ... KimboxHighlightMap
-            __call = function(_, ...)
-                local hl = M.tern(M.has_api(), nvim_highlights, vim_highlights)
-                hl(...)
-            end,
-        }
-    )
+---@class Kimbox.Highlight.Fn
+---@operator call(Kimbox.Highlight.Map): nil
+---@field alt fun(h: Kimbox.Highlight.Map)
+M.highlight = setmetatable({alt = vim_highlights}, {
+    ---
+    ---@param _ Kimbox.Highlight.Fn
+    ---@param ... Kimbox.Highlight.Map
+    __call = function(_, ...)
+        local hl = M.tern(M.has_api(), nvim_highlights, vim_highlights)
+        hl(...)
+    end,
+})
 
 return M

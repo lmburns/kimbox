@@ -1,4 +1,4 @@
----@class KimboxBGs
+---@class Kimbox.BG
 local bgs = {
     burnt_coffee = "#231A0C",
     cannon = "#221A02",
@@ -14,7 +14,7 @@ bgs.vscode = bgs.used_oil
 bgs.chinese_black = bgs.deep
 bgs.darker = bgs.zinnwaldite
 
----@class KimboxFGs
+---@class Kimbox.FG
 ---@field bg0 string
 local fgs = {
     none = "none",

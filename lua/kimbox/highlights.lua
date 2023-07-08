@@ -37,7 +37,7 @@ local underbold = (function()
     end
 end)()
 
----@class KimboxShortFGs
+---@class Kimbox.FG.Short
 local fgs = {
     fg0 = {fg = c.fg0},
     fg1 = {fg = c.fg1},
@@ -233,11 +233,12 @@ hl.syntax = {
     Title4 = {fg = c.green, gui = "bold"},         -- CUSTOM: markdown heading 4
     Title5 = {fg = c.purple, gui = "bold"},        -- CUSTOM: markdown heading 5
     Title6 = {fg = "#458588", gui = "bold"},       -- CUSTOM: markdown heading 6
+    Code = fgs.puce,
     -- === Custom ===
     Bold = {fg = c.deep_lilac, gui = "bold"},
     BoldItalic = {fg = c.jade_green, gui = "bold,italic"},
     Italic = {fg = c.morning_blue, gui = "italic"},
-    Code = fgs.puce,
+    Strikethrough = {fg = c.beaver, gui = "strikethrough"},
 }
 
 hl.treesitter = {
@@ -313,44 +314,50 @@ hl.treesitter = {
     TSNamespaceBuiltin = fgs.russian_green,
     TSSymbol = fgs.fg0,                             -- symbols or atoms
 
-    -- === Text ===
-    TSText = fgs.yellow,                             -- non-structured text
-    TSStrong = {fg = c.deep_lilac, gui = bold},      -- bold text
-    TSEmphasis = {fg = c.deep_lilac, gui = bold},    -- text with emphasis
-    TSUnderline = {link = "Underlined"},             -- underlined text
-    TSStrike = {fg = c.none, gui = "strikethrough"}, -- strikethrough text
-    TSTitle = {link = "Title"},                      -- text that is part of a title
-    TSTextQuote = {link = "TSString"},               -- text quotations (NOTE: unsure if correct)
-    TSURI = {fg = c.amethyst, gui = "underline"},    -- URIs (e.g. hyperlinks)
-    TSMath = fgs.green,                              -- math environments
-    TSEnviroment = fgs.fg0,                          -- text environments of markup languages
-    TSEnviromentName = fgs.green,                    -- text indicating the type of an environment
-    TSTextReference = fgs.blue,                      -- text references, footnotes, citations, etc.
-    TSLiteral = {link = "TSCode"},                   -- literal or verbatim text (e.g., inline code)
-    TSLiteralBlock = fgs.purple,                     -- literal or verbatim text as a stand-alone block
-    TSTodo = {fg = c.purple, gui = bold},
-    TSNote = {fg = c.blue, gui = bold},
-    TSWarning = {fg = c.yellow, gui = bold},
-    TSDanger = {fg = c.red, gui = bold},
-    TSDiffAdd = {fg = c.none, bg = c.diff_add},
-    TSDiffChange = {fg = c.none, bg = c.diff_change},
-    TSDiffDelete = {fg = c.none, bg = c.diff_delete},
-    TSAnnotation = {fg = c.blue, gui = italic},
-    TSTextAttribute = {fg = c.green, gui = bold},
-
     -- === Tags ===
     TSTag = {fg = c.magenta, gui = bold},        -- XML tag names
     TSTagAttribute = {fg = c.green, gui = bold}, -- XML tag attributes
     TSTagDelimiter = {link = "Delimiter"},       -- XML tag delimiters
 
+    -- === Text ===
+    TSAnnotation = {fg = c.blue, gui = italic},
+    TSTextAttribute = {fg = c.green, gui = bold},
+
+    TSText = fgs.yellow,                          -- non-structured text
+    TSTextQuote = {link = "String"},              -- text quotations (NOTE: unsure if correct)
+    TSURI = {fg = c.amethyst, gui = "underline"}, -- URIs (e.g. hyperlinks)
+    TSMath = fgs.green,                           -- math environments
+    TSEnviroment = fgs.fg0,                       -- text environments of markup languages
+    TSEnviromentName = fgs.green,                 -- text indicating the type of an environment
+    TSTextReference = fgs.blue,                   -- text references, footnotes, citations, etc.
+    TSLiteral = {link = "TSCode"},                  -- literal or verbatim text (e.g., inline code)
+    TSLiteralBlock = fgs.purple,                  -- literal or verbatim text as a stand-alone block
+    TSDiffAdd = {fg = c.none, bg = c.diff_add},
+    TSDiffChange = {fg = c.none, bg = c.diff_change},
+    TSDiffDelete = {fg = c.none, bg = c.diff_delete},
+
+    TSStrong = {link = "Bold"},          -- bold text
+    TSEmphasis = {link = "Italic"},      -- text with emphasis
+    TSUnderline = {link = "Underlined"}, -- underlined text
+    TSStrike = {link = "Strikethrough"}, -- strikethrough text
+    TSTitle = {link = "Title"},          -- text that is part of a title
+
+    TSTodo = {link = "Todo"},
+    TSNote = {fg = c.blue, gui = bold},
+    TSWarning = {fg = c.yellow, gui = bold},
+    TSDanger = {fg = c.infra_red, gui = bold},
+
     -- === Custom ===
-    TSCode = {link = "Code"},
     TSBold = {link = "Bold"},
-    TSTextError = {fg = c.red, gui = bold},
-    TSTextHint = {fg = c.amethyst, gui = bold},
-    TSTextInfo = {fg = c.blue, gui = bold},
-    TSTextDebug = {fg = c.orange, gui = bold},
-    TSTextTrace = {fg = c.deep_lilac, gui = bold},
+    TSItalic = {link = "Italic"},
+    TSCode = {link = "Code"},
+
+    TSError = {fg = c.red, gui = bold},
+    TSWarn = {link = "TSWarning"},
+    TSnfo = {fg = c.blue, gui = bold},
+    TSHint = {fg = c.amethyst, gui = bold},
+    TSDebug = {fg = c.orange, gui = bold},
+    TSTrace = {fg = c.deep_lilac, gui = bold},
 }
 
 hl.langs08.treesitter = {
@@ -426,56 +433,62 @@ hl.langs08.treesitter = {
     ["@namespace.builtin"] = fgs.russian_green,
     ["@symbol"] = fgs.fg0,                                 -- symbols or atoms
 
+    -- === Tags ===
+    ["@tag"] = {fg = c.magenta, gui = bold},         -- XML tag names
+    ["@tag.attribute"] = {fg = c.green, gui = bold}, -- XML tag attributes
+    ["@tag.delimiter"] = {link = "Delimiter"},       -- XML tag delimiters
+
     -- === Text ===
-    ["@text"] = fgs.yellow,                                  -- non-structured text
-    ["@text.strong"] = {fg = c.deep_lilac, gui = bold},      -- bold text
-    ["@text.emphasis"] = {fg = c.deep_lilac, gui = bold},    -- text with emphasis
-    ["@text.underline"] = {link = "Underlined"},             -- underlined text
-    ["@text.strike"] = {fg = c.none, gui = "strikethrough"}, -- strikethrough text
-    ["@text.title"] = {link = "Title"},                      -- text that is part of a title
-    ["@text.title.1"] = {link = "Title1"},
-    ["@text.title.2"] = {link = "Title2"},
-    ["@text.title.3"] = {link = "Title3"},
-    ["@text.title.4"] = {link = "Title4"},
-    ["@text.title.5"] = {link = "Title5"},
-    ["@text.title.6"] = {link = "Title6"},
+    ["@text.annotation"] = {fg = c.blue, gui = italic},
+    ["@text.attribute"] = {fg = c.green, gui = bold},
+
+    ["@text"] = fgs.yellow,                               -- non-structured text
     ["@text.quote"] = fgs.yellow,                         -- text quotations
     ["@text.uri"] = {fg = c.amethyst, gui = "underline"}, -- URIs (e.g. hyperlinks)
     ["@text.math"] = fgs.green,                           -- math environments
     ["@text.environment"] = fgs.fg0,                      -- text environments of markup languages
     ["@text.environment.name"] = fgs.green,               -- text indicating the type of an environment
     ["@text.reference"] = fgs.blue,                       -- text references, footnotes, citations, etc.
-    ["@text.literal"] = {link = "@code"},                 -- literal or verbatim text (e.g., inline code)
+    ["@text.literal"] = {link = "TSCode"},                  -- literal or verbatim text (e.g., inline code)
     ["@text.literal.block"] = fgs.purple,                 -- literal or verbatim text as a stand-alone block
-    ["@text.todo"] = {fg = c.purple, gui = bold},
-    ["@text.note"] = {fg = c.blue, gui = bold},
-    ["@text.warning"] = {fg = c.yellow, gui = bold},
-    ["@text.danger"] = {fg = c.red, gui = bold},
     ["@text.diff.add"] = {fg = c.none, bg = c.diff_add},
     ["@text.diff.change"] = {fg = c.none, bg = c.diff_change},
     ["@text.diff.delete"] = {fg = c.none, bg = c.diff_delete},
 
-    ["@text.annotation"] = {fg = c.blue, gui = italic},
-    ["@text.attribute"] = {fg = c.green, gui = bold},
+    ["@text.strong"] = {link = "Bold"},          -- bold text
+    ["@text.emphasis"] = {link = "Italic"},      -- text with emphasis
+    ["@text.underline"] = {link = "Underlined"}, -- underlined text
+    ["@text.strike"] = {link = "Strikethrough"}, -- strikethrough text
+    ["@text.title"] = {link = "Title"},          -- text that is part of a title
+    ["@text.title.1"] = {link = "Title1"},
+    ["@text.title.2"] = {link = "Title2"},
+    ["@text.title.3"] = {link = "Title3"},
+    ["@text.title.4"] = {link = "Title4"},
+    ["@text.title.5"] = {link = "Title5"},
+    ["@text.title.6"] = {link = "Title6"},
 
-    -- === Tags ===
-    ["@tag"] = {fg = c.magenta, gui = bold},         -- XML tag names
-    ["@tag.attribute"] = {fg = c.green, gui = bold}, -- XML tag attributes
-    ["@tag.delimiter"] = {link = "Delimiter"},       -- XML tag delimiters
+    ["@text.todo"] = {link = "Todo"},
+    ["@text.note"] = {fg = c.blue, gui = bold},
+    ["@text.warning"] = {fg = c.yellow, gui = bold},
+    ["@text.danger"] = {fg = c.infra_red, gui = bold},
+
+    -- === Custom ===
+    ["@bold"] = {link = "Bold"},
+    ["@italic"] = {link = "Italic"},
+    ["@underline"] = {link = "Underlined"},
+    ["@strike"] = {link = "Strikethrough"},
+    ["@code"] = {link = "Code"},
+
+    ["@text.error"] = {fg = c.red, gui = bold},
+    ["@text.warn"] = {link = "@text.warning"},
+    ["@text.info"] = {fg = c.blue, gui = bold},
+    ["@text.hint"] = {fg = c.amethyst, gui = bold},
+    ["@text.debug"] = {fg = c.orange, gui = bold},
+    ["@text.trace"] = {fg = c.deep_lilac, gui = bold},
 
     -- ["@conceal"] = {},                               -- for captures that are only used for concealing
     -- ["@spell"] = {},                                 -- for defining regions to be spellchecked
     -- ["@nospell"] = {},                               -- for defining regions to be spellchecked
-
-    -- === Custom ===
-    ["@underline"] = {link = "Underlined"},
-    ["@code"] = {link = "Code"},
-    ["@bold"] = {link = "Bold"},
-    ["@text.error"] = {fg = c.red, gui = bold},
-    ["@text.hint"] = {fg = c.amethyst, gui = bold},
-    ["@text.info"] = {fg = c.blue, gui = bold},
-    ["@text.debug"] = {fg = c.orange, gui = bold},
-    ["@text.trace"] = {fg = c.deep_lilac, gui = bold},
 }
 
 --  ╭──────────╮
@@ -559,7 +572,7 @@ hl.langs08.vimdoc = {
 --  │ Markdown │
 --  ╰──────────╯
 hl.langs.markdown = {
-    markdownH1 = {link = "Title1"},
+    markdownH1 = {link = "Title1"}, -- affects code hover documentation
     markdownH2 = {link = "Title2"},
     markdownH3 = {link = "Title3"},
     markdownH4 = {link = "Title4"},
@@ -572,7 +585,7 @@ hl.langs.markdown = {
     markdownItalicDelimiter = {fg = c.coyote_brown1, gui = "italic"},
     markdownBold = {link = "Bold"},
     markdownBoldDelimiter = fgs.coyote_brown1,
-    markdownCode = {link = "Code"},
+    markdownCode = fgs.yellow, -- affects code hover documentation
     markdownCodeBlock = fgs.purple,
     markdownCodeDelimiter = fgs.aqua,
     markdownBlockquote = fgs.coyote_brown1,
@@ -2667,36 +2680,69 @@ hl.plugins.aerial = {
 
 -- https://github.com/neoclide/coc.nvim
 hl.plugins.coc = {
-    -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
-    CocHoverRange = {fg = c.none, gui = underbold}, -- range of current hovered symbol
-    CocHighlightText = {bg = c.fg2},                -- Coc cursorhold event
     CocErrorHighlight = {fg = c.none, gui = undercurl, sp = c.red},
     CocWarningHighlight = {fg = c.none, gui = undercurl, sp = c.yellow},
     CocInfoHighlight = {fg = c.none, gui = undercurl, sp = c.blue},
     CocHintHighlight = {fg = c.none, gui = undercurl, sp = c.aqua},
-
-    CocFloating = {fg = c.fg1, bg = c.bg3},
-    CocFloatDividingLine = fgs.beaver,
-    CocFloatActive = fgs.orange, -- currently typed text
-    CocErrorFloat = {fg = c.red, bg = c.bg3},
-    CocWarningFloat = {fg = c.green, bg = c.bg3},
-    CocInfoFloat = {fg = c.blue, bg = c.bg3},
-    CocHintFloat = {fg = c.aqua, bg = c.bg3},
 
     CocErrorSign = fgs.red,
     CocWarningSign = fgs.yellow,
     CocInfoSign = fgs.blue,
     CocHintSign = fgs.amethyst,
 
-    CocInlayHint = fgs.russian_green,
-    CocInlayHintParameter = fgs.russian_green,
-    CocInlayHintType = fgs.amethyst,
-
     CocErrorVirtualText = fgs.coyote_brown1,
     CocWarningVirtualText = fgs.coyote_brown1,
     CocInfoVirtualText = fgs.coyote_brown1,
     CocHintVirtualText = fgs.coyote_brown1,
 
+    CocErrorFloat = {fg = c.red, bg = c.bg3},
+    CocWarningFloat = {fg = c.green, bg = c.bg3},
+    CocInfoFloat = {fg = c.blue, bg = c.bg3},
+    CocHintFloat = {fg = c.aqua, bg = c.bg3},
+
+    CocFloating = {fg = c.fg1, bg = c.bg3},
+    CocFloatDividingLine = fgs.beaver,
+    CocFloatActive = fgs.orange, -- currently typed text
+    CocFloatThumb = {link = "PmenuThumb"}, -- thumb of scrollbar
+    CocFloatSbar = {link = "PmenuSbar"}, -- scrollbar
+
+    CocSearch = fgs.orange,                 -- for matched input characters
+    CocDisabled = fgs.grullo_grey,
+    CocFadeOut = fgs.wenge_grey,            -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
+    CocCursorRange = {fg = c.bg1, bg = c.fuzzy_wuzzy},
+    CocHoverRange = {fg = c.none, gui = underbold}, -- range of current hovered symbol
+    CocHighlightText = {bg = c.fg2},                -- Coc cursorhold event
+    CocHighlightRead = {bg = c.fg2},                -- Coc cursorhold event (Read types)
+    CocHighlightWrite = {bg = c.fg2},                -- Coc cursorhold event (Write types)
+    -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
+
+    CocMenuSel = {fg = c.none, bg = c.bg1}, -- current menu item in menu dialog
+    CocCodeLens = fgs.coyote_brown1,
+    CocInlayHint = fgs.russian_green,
+    CocInlayHintParameter = fgs.russian_green,
+    CocInlayHintType = fgs.amethyst,
+
+    CocPumSearch = {fg = c.orange}, -- for menu of complete items
+    CocPumMenu = {fg = c.fg1},      -- items at the end like [LS]
+    CocPumDeprecated = fgs.red,
+    CocPumVirtualText = {fg = c.coyote_brown1},
+
+    CocTreeTitle = {fg = c.red, gui = "bold"},
+    -- Notification
+    CocNotificationButton = {fg = c.red, gui = "bold"},
+    CocNotificationProgress = {fg = c.blue, bg = "none"},
+    CocNotificationError = fgs.red,
+    CocNotificationWarning = fgs.yellow,
+    CocNotificationInfo = fgs.blue,
+    -- Markdown
+    CocBold = {link = "bold"},
+    CocItalic = {link = "italic"},
+    CocUnderline = {link = "Underline"},
+    CocStrikeThrough = {link = "Strikethrough"},
+    CocMarkdownCode = {link = "markdownCode"},
+    CocMarkdownHeader = {fg = c.russian_green, gui = bold},
+    CocMarkdownLink = {link = "markdownLinkText"},
+    -- Symbols
     CocSymbolFile = fgs.green,
     CocSymbolModule = fgs.red,
     CocSymbolNamespace = {link = "TSNamespace"},
@@ -2725,25 +2771,6 @@ hl.plugins.coc = {
     CocSymbolTypeParameter = fgs.green,
     CocSymbolDefault = fgs.teaberry,
 
-    CocSearch = fgs.orange,                 -- for matched input characters
-    CocDisabled = fgs.grullo_grey,
-    CocFadeOut = fgs.wenge_grey,            -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
-    CocCursorRange = {fg = c.bg1, bg = c.fuzzy_wuzzy},
-    CocMenuSel = {fg = c.none, bg = c.bg1}, -- current menu item in menu dialog
-    CocCodeLens = fgs.coyote_brown1,
-
-    CocPumSearch = {fg = c.orange}, -- for menu of complete items
-    CocPumMenu = {fg = c.fg1},      -- items at the end like [LS]
-    CocPumDeprecated = fgs.red,
-    CocPumVirtualText = {fg = c.coyote_brown1},
-
-    CocTreeTitle = {fg = c.red, gui = "bold"},
-
-    CocNotificationButton = {fg = c.red, gui = "bold"},
-    CocNotificationProgress = {fg = c.blue, bg = "none"},
-    CocNotificationError = fgs.red,
-    CocNotificationWarning = fgs.yellow,
-    CocNotificationInfo = fgs.blue,
     -- === Custom ===
     CocSuggestFloating = {fg = c.fg0, bg = c.bg3}, -- bg0
 }
@@ -2926,7 +2953,7 @@ hl.plugins.vimwiki = {
     VimwikiBold = {link = "Bold"},
     VimwikiBoldItalic = {link = "BoldItalic"},
     VimwikiItalicBold = {link = "BoldItalic"},
-    VimwikiCode = {link = "Code"},
+    VimwikiCode = {link = "TSCode"},
     VimwikiItalic = {link = "Italic"},
     VimwikiPre = fgs.purple,
     VimwikiPreDelim = {link = "PreProc"},
@@ -3412,11 +3439,11 @@ function M.setup()
         utils.highlight(to_hl)
     end
 
-    ---@class KimboxHighlightLangs
+    ---@class Kimbox.Highlight.Langs
     M.langs = vim.tbl_keys(hl.langs)
-    ---@class KimboxHighlightLangs08
+    ---@class Kimbox.Highlight.Langs08
     M.langs08 = vim.tbl_keys(hl.langs08)
-    ---@class KimboxHighlightPlugins
+    ---@class Kimbox.Highlight.Plugins
     M.plugins = vim.tbl_keys(hl.plugins)
 end
 

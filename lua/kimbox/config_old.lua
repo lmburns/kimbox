@@ -4,7 +4,7 @@ local Config = require("kimbox.config")
 local utils = require("kimbox.utils")
 local log = utils.log
 
----@return KimboxConfig?
+---@return Kimbox.Config?
 function M.load()
     local opts = {
         "background",
@@ -42,7 +42,7 @@ function M.load()
             end
         )
 
-        ---@class KimboxConfig
+        ---@class Kimbox.Config
         local new_config = {
             style = cfg.background,
             transparent = cfg.transparent_background,
@@ -85,7 +85,7 @@ function M.load()
             end
         )
 
-        ---@class KimboxConfig
+        ---@class Kimbox.Config
         local new_config = {
             toggle_style = {
                 key = cfg.toggle_style_keymap,

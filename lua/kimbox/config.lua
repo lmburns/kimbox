@@ -6,8 +6,8 @@ local api = vim.api
 
 local DEFAULT_STYLE = "cannon"
 
----@class KimboxContainer
----@field user KimboxConfig
+---@class Kimbox.Container
+---@field user Kimbox.Config
 ---@field group integer Autocmd id
 ---@field __did_hl boolean
 ---@field __loaded boolean
@@ -27,7 +27,7 @@ Config.bg_colors = {
     "eerie",
 }
 
----@class KimboxConfig
+---@class Kimbox.Config
 ---@field toggle_style.index integer
 local default = {
     ---Background color:
@@ -70,23 +70,23 @@ local default = {
     ending_tildes = false, -- show the end-of-buffer tildes
     -- ━━━ Custom Highlights ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ---Override default colors
-    ---@type table<string, string>
+    ---@type table<Kimbox.Color.S_t, string>
     colors = {},
     ---Override highlight groups
-    ---@type table<string, KimboxHighlightMap>
+    ---@type Kimbox.Highlight.Map
     highlights = {},
     ---Plugins and langauges that can be disabled
     ---To view options: print(require("kimbox.highlights").{langs,langs08,plugins})
-    ---@type {langs: string[], langs08: string[], plugins: string[]}
+    ---@type {langs: Kimbox.Highlight.Langs[], langs08: Kimbox.Highlight.Langs08[], plugins: Kimbox.Highlight.Plugins[]}
     disabled = {
         ---Disabled languages
-        ---@see KimboxHighlightLangs
+        ---@see Kimbox.Highlight.Langs
         langs = {},
         ---Disabled languages with '@' treesitter highlights
-        ---@see KimboxHighlightLangs08
+        ---@see Kimbox.Highlight.Langs08
         langs08 = {},
         ---Disabled plugins
-        ---@see KimboxHighlightPlugins
+        ---@see Kimbox.Highlight.Plugins
         plugins = {},
     },
     ---Run a function before the colorscheme is loaded
@@ -98,8 +98,8 @@ local default = {
 }
 
 ---Validate configuration values
----@param c KimboxConfig
----@return KimboxConfig
+---@param c Kimbox.Config
+---@return Kimbox.Config
 local function validate(c)
     vim.validate({
         style = {c.style, "s", false},
@@ -138,17 +138,17 @@ local function validate(c)
 end
 
 ---Set a configuration value later, after `.setup()`
----@param cfg? KimboxConfig configuration options
+---@param cfg? Kimbox.Config configuration options
 function Config:set(cfg)
     if type(cfg) == "table" then
-        self.user = vim.tbl_deep_extend("force", self.user, cfg) --[[@as KimboxConfig]]
+        self.user = vim.tbl_deep_extend("force", self.user, cfg) --[[@as Kimbox.Config]]
         self.user = validate(self.user)
     end
 end
 
 ---Return the configuration
 ---@param key? string
----@return KimboxConfig
+---@return Kimbox.Config
 function Config:get(key)
     if key then
         return self.user[key]
@@ -200,13 +200,13 @@ function Config.init()
     end
 
     local kimbox = require("kimbox")
-    Config.user = vim.tbl_deep_extend("keep", kimbox.__conf, default) --[[@as KimboxConfig]]
+    Config.user = vim.tbl_deep_extend("keep", kimbox.__conf, default) --[[@as Kimbox.Config]]
     Config.user = validate(Config.user)
     kimbox.__conf = nil
 
     Config:process()
 
-    Config.group = api.nvim_create_augroup("Kimbox", {clear = true})
+    Config.group = api.nvim_create_augroup("Kimbox", {clear = true}) --[[@as integer]]
     api.nvim_create_autocmd("ColorSchemePre", {
         group = Config.group,
         pattern = "kimbox",

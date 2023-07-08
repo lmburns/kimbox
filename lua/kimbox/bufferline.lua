@@ -1,11 +1,11 @@
 local M = {}
 
----@return KimboxBufferlineConfig
+---@return Kimbox.BufferlineConfig
 function M.theme()
   return require("bufferline.themes.kimbox")
 end
 
----@return KimboxColors|{[string]: string}
+---@return Kimbox.Colors|{[string]: Kimbox.Color.S_t}
 function M.colors()
   local c = require("kimbox.colors")
   return {

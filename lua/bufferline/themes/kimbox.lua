@@ -1,6 +1,6 @@
 local c = require("kimbox.bufferline").colors()
 
----@class KimboxBufferlineConfig
+---@class Kimbox.BufferlineConfig
 local kimbox = {
     fill = {bg = c.bg},
     background = {fg = c.fg, bg = c.bg},

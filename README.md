@@ -115,23 +115,23 @@ require("kimbox").setup({
     ending_tildes = false, -- show the end-of-buffer tildes
     -- ━━━ Custom Highlights ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ---Override default colors
-    ---@type table<string, string>
+    ---@type table<Kimbox.Color.S_t, string>
     colors = {},
     ---Override highlight groups
-    ---@type table<string, KimboxHighlightMap>
+    ---@type Kimbox.Highlight.Map
     highlights = {},
     ---Plugins and langauges that can be disabled
     ---To view options: print(require("kimbox.highlights").{langs,langs08,plugins})
-    ---@type {langs: string[], langs08: string[], plugins: string[]}
+    ---@type {langs: Kimbox.Highlight.Langs[], langs08: Kimbox.Highlight.Langs08[], plugins: Kimbox.Highlight.Plugins[]}
     disabled = {
         ---Disabled languages
-        ---@see KimboxHighlightLangs
+        ---@see Kimbox.Highlight.Langs
         langs = {},
         ---Disabled languages with '@' treesitter highlights
-        ---@see KimboxHighlightLangs08
+        ---@see Kimbox.Highlight.Langs08
         langs08 = {},
         ---Disabled plugins
-        ---@see KimboxHighlightPlugins
+        ---@see Kimbox.Highlight.Plugins
         plugins = {},
     },
     ---Run a function before the colorscheme is loaded

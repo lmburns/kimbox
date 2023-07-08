@@ -13,7 +13,7 @@ local function extend(original, to_add)
 end
 
 ---Merge theme colors with user configured colors
----@return KimboxColors
+---@return Kimbox.Colors
 return (function()
     local selected = {}
     -- An alternative is given in case this file is
