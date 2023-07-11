@@ -101,8 +101,9 @@ local fgs = {
 
     army_green = "#445321", -- "#4c5c25",
     vivid_burgundy = "#961134",
-    royal_brown = "#543739",
-    royal_pine = "#325C59", -- dark_slate_grey
+    royal_brown = "#543739", -- #5d4059 #473b59
+    royal_pine = "#325C59", -- #3f5958
+    fresh_cinnamon = "#95570f",
     ----------------------------------------------------------------------------
     -- These are duplicates because they are both used and might be changed at some point
     coyote_brown = "#7E602C",

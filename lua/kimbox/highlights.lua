@@ -69,6 +69,7 @@ local fgs = {
     old_rose = {fg = c.old_rose},
     puce = {fg = c.puce},
     ube = {fg = c.ube},
+    paisley_purple = {fg = c.paisley_purple},
     deep_lilac = {fg = c.deep_lilac},
     heliotrope = {fg = c.heliotrope},
     jasper_orange = {fg = c.jasper_orange},
@@ -122,10 +123,10 @@ hl.common = {
     LineNr = {fg = c.coyote_brown},                    -- line num for ":number" and ":#" commands, 'nu'/'rnu'
     LineNrAbove = {fg = c.coyote_brown},               -- SignColumn numbers above curent line
     LineNrBelow = {fg = c.coyote_brown},               -- SignColumn numbers below curent line
-    diffAdded = fgs.yellow,
-    diffRemoved = fgs.red,
+    diffAdded = {fg = c.green, gui = bold},
+    diffRemoved = {fg = c.red, gui = bold},
     diffChanged = fgs.blue,
-    diffOldFile = fgs.green,
+    diffOldFile = fgs.yellow,
     diffNewFile = fgs.orange,
     diffFile = fgs.aqua,
     diffLine = fgs.coyote_brown1,
@@ -134,7 +135,7 @@ hl.common = {
     DiffChange = {fg = c.none, bg = c.diff_change},  -- diff mode: Changed line
     DiffDelete = {fg = c.none, bg = c.diff_delete},  -- diff mode: Deleted line
     DiffText = {fg = c.none, bg = c.diff_text},      -- diff mode: Changed text within a changed line
-    DiffFile = {fg = c.aqua},
+    DiffFile = {fg = c.aqua, gui = bold},
     Directory = {fg = c.salmon, gui = bold},         -- directory names (and other special names in listings)
     ErrorMsg = {fg = c.red, gui = underbold},        -- error messages on the command line
     WarningMsg = {fg = c.green, gui = bold},         -- warning messages
@@ -244,7 +245,7 @@ hl.syntax = {
 hl.treesitter = {
     -- === Miscellaneous ===
     TSComment = {link = "Comment"},             -- Line comments and block comments
-    TSCommentDocumentation = fgs.jasper_orange, -- comments documenting code
+    -- TSCommentDocumentation = fgs.jasper_orange, -- comments documenting code
     -- TSError = {link = "Error"},              -- syntax/parser errors (NOTE: maybe change)
     TSNone = fgs.fg0,                           -- completely disable the highlight
     TSPreproc = {link = "PreProc"},             -- various preprocessor directives & shebangs
@@ -288,7 +289,6 @@ hl.treesitter = {
     TSConditional = {link = "Conditional"},     -- keywords related to conditionals (`if`/`then`/`elif`...)
     TSConditionalTernary = {link = "Function"}, -- ternary operator (`?`/`:`)
     TSRepeat = {link = "Repeat"},               -- keywords related to loops (`for`/`while`/`break`)
-    TSDebug = fgs.slate_grey,                   -- keywords related to debugging (NOTE: maybe change)
     TSLabel = {link = "Label"},                 -- goto and other labels
     TSInclude = {link = "Include"},             -- keywords for including modules
     TSException = {link = "Exception"},         -- keywords related to exceptions (`throw`/`catch`)
@@ -330,7 +330,7 @@ hl.treesitter = {
     TSEnviroment = fgs.fg0,                       -- text environments of markup languages
     TSEnviromentName = fgs.green,                 -- text indicating the type of an environment
     TSTextReference = fgs.blue,                   -- text references, footnotes, citations, etc.
-    TSLiteral = {link = "TSCode"},                  -- literal or verbatim text (e.g., inline code)
+    TSLiteral = {link = "TSCode"},                -- literal or verbatim text (e.g., inline code)
     TSLiteralBlock = fgs.purple,                  -- literal or verbatim text as a stand-alone block
     TSDiffAdd = {fg = c.none, bg = c.diff_add},
     TSDiffChange = {fg = c.none, bg = c.diff_change},
@@ -363,7 +363,7 @@ hl.treesitter = {
 hl.langs08.treesitter = {
     -- === Miscellaneous ===
     ["@comment"] = {link = "Comment"},              -- line and block comments
-    ["@comment.documentation"] = fgs.jasper_orange, -- comments documenting code
+    -- ["@comment.documentation"] = fgs.jasper_orange, -- comments documenting code
     -- ["@error"] = {link = "Error"},                  -- syntax/parser errors (NOTE: maybe change)
     ["@none"] = fgs.fg0,                            -- completely disable the highlight
     ["@preproc"] = {link = "PreProc"},              -- various preprocessor directives & shebangs
@@ -449,7 +449,7 @@ hl.langs08.treesitter = {
     ["@text.environment"] = fgs.fg0,                      -- text environments of markup languages
     ["@text.environment.name"] = fgs.green,               -- text indicating the type of an environment
     ["@text.reference"] = fgs.blue,                       -- text references, footnotes, citations, etc.
-    ["@text.literal"] = {link = "TSCode"},                  -- literal or verbatim text (e.g., inline code)
+    ["@text.literal"] = {link = "TSCode"},                -- literal or verbatim text (e.g., inline code)
     ["@text.literal.block"] = fgs.purple,                 -- literal or verbatim text as a stand-alone block
     ["@text.diff.add"] = {fg = c.none, bg = c.diff_add},
     ["@text.diff.change"] = {fg = c.none, bg = c.diff_change},
@@ -627,6 +627,35 @@ hl.langs08.markdown = {
 
     ["@text.todo.checked"] = {link = "markdownTSTodoChecked"},
     ["@text.todo.unchecked"] = {link = "markdownTSTodoUnchecked"},
+}
+
+-- https://github.com/vimwiki/vimwiki
+hl.plugins.vimwiki = {
+    VimwikiBold = {link = "Bold"},
+    VimwikiBoldItalic = {link = "BoldItalic"},
+    VimwikiItalicBold = {link = "BoldItalic"},
+    VimwikiCode = {link = "TSCode"},
+    VimwikiItalic = {link = "Italic"},
+    VimwikiPre = fgs.purple,
+    VimwikiPreDelim = {link = "PreProc"},
+    VimwikiTag = fgs.red,
+    VimwikiDelText = {fg = c.salmon, gui = "strikethrough"},
+    VimwikiListTodo = {link = "markdownTSTodoUnchecked"},
+    VimwikiCheckBoxDone = {link = "markdownTSTodoChecked"},
+    VimwikiHeader1 = {link = "Title1"},
+    VimwikiHeader2 = {link = "Title2"},
+    VimwikiHeader3 = {link = "Title3"},
+    VimwikiHeader4 = {link = "Title4"},
+    VimwikiHeader5 = {link = "Title5"},
+    VimwikiHeader6 = {link = "Title6"},
+    VimwikiWeblink1 = {fg = c.aqua, gui = "underline"},
+    VimwikiWeblink1Char = {fg = c.orange, gui = underline},
+    VimwikiWikiLink1 = {fg = c.orange, gui = "underline"},
+    VimwikiNoExistsLink = {fg = c.red, gui = "underline,bold"},
+    VimwikiImage = {fg = c.blue, gui = "underline"},
+    VimwikiMarkers = {link = "Comment"},
+    VimwikiCellSeparator = {link = "markdownTSPunctSpecial"},
+    VimwikiTableRow = {link = "Title"},
 }
 
 --  ╭─────╮
@@ -1403,6 +1432,10 @@ hl.langs.lua = {
     luaFuncName = {link = "Function"},
     luaFuncKeyword = {link = "Keyword"},
     luaFuncTable = {link = "Type"},
+    luaFuncArgName = {link = "TSParameter"},
+    -- luaFuncArgs = {fg = c.ube},
+    -- luaFunc = {fg = c.green, gui = bold},
+    -- luaFuncSig = {fg = c.yellow, gui = bold},
     luaEllipsis = {link = "Type"},
     luaSpecialTable = {link = "Type"},
     luaOperator = fgs.red,
@@ -2494,20 +2527,6 @@ hl.langs08.gitconfig = {
     ["@string.special.git_config"] = fgs.green,
 }
 
---  ╭───────────╮
---  │ GitCommit │
---  ╰───────────╯
-hl.langs.gitcommit = {
-    gitcommitSummary = fgs.red,
-    gitcommitUntracked = fgs.coyote_brown1,
-    gitcommitDiscarded = fgs.coyote_brown1,
-    gitcommitSelected = fgs.coyote_brown1,
-    gitcommitUnmerged = fgs.coyote_brown1,
-    gitcommitOnBranch = fgs.coyote_brown1,
-    gitcommitArrow = fgs.coyote_brown1,
-    gitcommitFile = fgs.yellow,
-}
-
 -- ============================== Plugins =============================
 -- ====================================================================
 local diag_under = utils.tern(undercurl == "undercurl", undercurl, "underline")
@@ -2702,18 +2721,18 @@ hl.plugins.coc = {
 
     CocFloating = {fg = c.fg1, bg = c.bg3},
     CocFloatDividingLine = fgs.beaver,
-    CocFloatActive = fgs.orange, -- currently typed text
-    CocFloatThumb = {link = "PmenuThumb"}, -- thumb of scrollbar
-    CocFloatSbar = {link = "PmenuSbar"}, -- scrollbar
+    CocFloatActive = fgs.orange,                    -- currently typed text
+    CocFloatThumb = {link = "PmenuThumb"},          -- thumb of scrollbar
+    CocFloatSbar = {link = "PmenuSbar"},            -- scrollbar
 
-    CocSearch = fgs.orange,                 -- for matched input characters
+    CocSearch = fgs.orange,                         -- for matched input characters
     CocDisabled = fgs.grullo_grey,
-    CocFadeOut = fgs.wenge_grey,            -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
+    CocFadeOut = fgs.wenge_grey,                    -- faded text (i.e., not used) CocUnusedHighlight CocDeprecatedHighlight
     CocCursorRange = {fg = c.bg1, bg = c.fuzzy_wuzzy},
     CocHoverRange = {fg = c.none, gui = underbold}, -- range of current hovered symbol
     CocHighlightText = {bg = c.fg2},                -- Coc cursorhold event
     CocHighlightRead = {bg = c.fg2},                -- Coc cursorhold event (Read types)
-    CocHighlightWrite = {bg = c.fg2},                -- Coc cursorhold event (Write types)
+    CocHighlightWrite = {bg = c.fg2},               -- Coc cursorhold event (Write types)
     -- CocSnippetVisual = {bg = c.bg4}, -- highlight snippet placeholders
 
     CocMenuSel = {fg = c.none, bg = c.bg1}, -- current menu item in menu dialog
@@ -2735,8 +2754,8 @@ hl.plugins.coc = {
     CocNotificationWarning = fgs.yellow,
     CocNotificationInfo = fgs.blue,
     -- Markdown
-    CocBold = {link = "bold"},
-    CocItalic = {link = "italic"},
+    CocBold = {link = "Bold"},
+    CocItalic = {link = "Italic"},
     CocUnderline = {link = "Underline"},
     CocStrikeThrough = {link = "Strikethrough"},
     CocMarkdownCode = {link = "markdownCode"},
@@ -2777,11 +2796,11 @@ hl.plugins.coc = {
 
 -- https://github.com/neoclide/coc-git
 hl.plugins.coc_git = {
-    CocGitAddedSign = fgs.yellow,
-    CocGitChangeRemovedSign = fgs.purple,
-    CocGitChangedSign = fgs.blue,
-    CocGitRemovedSign = fgs.red,
-    CocGitTopRemovedSign = fgs.red,
+    CocGitAddedSign = {link = "GitSignsAdd"},
+    CocGitChangedSign = {link = "GitSignsChange"},
+    CocGitChangeRemovedSign = {link = "GitSignsChangedelete"},
+    CocGitRemovedSign = {link = "GitSignsDelete"},
+    CocGitTopRemovedSign = {link = "GitSignsTopdelete"},
 }
 
 -- https://github.com/weirongxu/coc-explorer
@@ -2872,14 +2891,14 @@ hl.plugins.vista = {
 
 -- https://github.com/airblade/vim-gitgutter
 hl.plugins.gitgutter = {
-    GitGutterAdd = {fg = c.yellow, gui = bold},
-    GitGutterChange = {fg = c.blue, gui = bold},
-    GitGutterDelete = {fg = c.red, gui = bold},
-    GitGutterChangeDelete = {fg = c.purple, gui = bold},
-    GitGutterAddLineNr = fgs.green,
-    GitGutterChangeLineNr = fgs.blue,
-    GitGutterDeleteLineNr = fgs.red,
-    GitGutterChangeDeleteLineNr = fgs.purple,
+    GitGutterAdd = {link = "GitSignsAdd"},
+    GitGutterChange = {link = "GitSignsChange"},
+    GitGutterChangeDelete = {link = "GitSignsChangedelete"},
+    GitGutterDelete = {link = "GitSignsDelete"},
+    GitGutterAddLineNr = {link = "GitSignsAddNr"},
+    GitGutterChangeLineNr = {link = "GitSignsChangeNr"},
+    GitGutterChangeDeleteLineNr = {link = "GitSignsChangedeleteNr"},
+    GitGutterDeleteLineNr = {link = "GitSignsDeleteNr"},
 }
 
 -- https://github.com/preservim/nerdtree
@@ -2948,35 +2967,7 @@ hl.plugins.floaterm = {
     FloatermBorder = {fg = c.magenta, bg = c.none},
 }
 
--- https://github.com/vimwiki/vimwiki
-hl.plugins.vimwiki = {
-    VimwikiBold = {link = "Bold"},
-    VimwikiBoldItalic = {link = "BoldItalic"},
-    VimwikiItalicBold = {link = "BoldItalic"},
-    VimwikiCode = {link = "TSCode"},
-    VimwikiItalic = {link = "Italic"},
-    VimwikiPre = fgs.purple,
-    VimwikiPreDelim = {link = "PreProc"},
-    VimwikiTag = fgs.red,
-    VimwikiDelText = {fg = c.salmon, gui = "strikethrough"},
-    VimwikiListTodo = {link = "markdownTSTodoUnchecked"},
-    VimwikiCheckBoxDone = {link = "markdownTSTodoChecked"},
-    VimwikiHeader1 = {link = "Title1"},
-    VimwikiHeader2 = {link = "Title2"},
-    VimwikiHeader3 = {link = "Title3"},
-    VimwikiHeader4 = {link = "Title4"},
-    VimwikiHeader5 = {link = "Title5"},
-    VimwikiHeader6 = {link = "Title6"},
-    VimwikiWeblink1 = {fg = c.aqua, gui = "underline"},
-    VimwikiWeblink1Char = {fg = c.orange, gui = underline},
-    VimwikiWikiLink1 = {fg = c.orange, gui = "underline"},
-    VimwikiNoExistsLink = {fg = c.red, gui = "underline,bold"},
-    VimwikiImage = {fg = c.blue, gui = "underline"},
-    VimwikiCellSeparator = {link = "Conceal"},
-    VimwikiMarkers = {link = "Comment"},
-}
-
--- https://github.com/kevinhwang91/nvim-bqf
+-- https://githi.com/kevinhwang91/nvim-bqf
 hl.plugins.bqf = {
     BqfSign = {fg = c.deep_lilac, gui = bold},
     BqfPreviewBorder = {link = "Parameter"},
@@ -2998,8 +2989,8 @@ hl.plugins.diffview = {
     DiffviewFilePanelDeletions = fgs.red,
     DiffviewFilePanelFileName = fgs.russian_green,
     DiffviewFilePanelInsertions = fgs.green,
-    DiffviewFilePanelPath = {link = "Title"},
-    DiffviewFilePanelRootPath = fgs.coyote_brown1,
+    DiffviewFilePanelPath = {link = "TSConstant"},
+    DiffviewFilePanelRootPath = {link = "Directory"},
     DiffviewFilePanelTitle = {fg = c.blue, gui = bold},
     DiffviewStatusAdded = {link = "Type"},
     DiffviewStatusBroken = {fg = c.red, gui = "bold"},
@@ -3015,57 +3006,139 @@ hl.plugins.diffview = {
 
 -- https://github.com/TimUntersberger/neogit
 hl.plugins.neogit = {
-    NeogitBranch = {link = "Title"},
     NeogitDiffAdd = {link = "Type"},
+    NeogitDiffAddHighlight = {link = "DiffAdd"},
     NeogitDiffDelete = {link = "ErrorMsg"},
-    -- NeogitDiffAddHighlight = {bg = c.green},
-    NeogitDiffContextHighlight = {fg = c.philippine_silver},
-    -- NeogitDiffDeleteHighlight = {bg = c.teaberry},
-    NeogitHunkHeaderHighlight = fgs.orange,
-    NeogitHunkHeader = {fg = c.magenta, gui = bold},
-    NeogitNotificationInfo = fgs.blue,
-    NeogitNotificationWarning = fgs.yellow,
-    NeogitNotificationError = fgs.teaberry,
-    NeogitRemote = fgs.amethyst,
-    -- NeogitStashes
-    NeogitUnstagedChanges = {link = "Tag"},
+    NeogitDiffDeleteHighlight = {link = "DiffDelete"},
+    NeogitDiffContextHighlight = {link = "CursorLine"},
+    NeogitNotificationInfo = {link = "NotifyINFOTitle"},
+    NeogitNotificationWarning = {link = "NotifyWARNTitle"},
+    NeogitNotificationError = {link = "NotifyERRORTitle"},
+    NeogitObjectId = {link = "Function"},
+    NeogitDiffHeader = {fg = c.aqua, gui = bold},
+    NeogitHunkHeader = {link = "Title"}, -- diffLine
+    -- NeogitHunkHeaderHighlight = {link = "Title"},
+    NeogitCommitViewHeader = {fg = c.blue, bg = c.bg2, gui = bold},
+    -- NeogitCommitViewDescription = {fg = "#FFFFFF"},
+    NeogitCommitMessage = {link = "String"},
+    NeogitRecentcommits = {fg = c.aqua, gui = bold},
+    NeogitFilePath = {link = "TSConstant"},
+    NeogitBranch = {link = "Title"},
+    NeogitRemote = {link = "PreProc"},
+    NeogitStash = {fg = c.glorious_sunset, gui = bold},
+    NeogitRebaseDone = {fg = c.salmon, gui = bold},
+    NeogitUnmergedInto = {fg = c.teaberry, gui = bold},
+    NeogitUnpulledFrom = {fg = c.russian_green, gui = bold},
+    NeogitUnstagedChanges = {fg = c.slate_grey, gui = bold},
+    NeogitCommandCodeNormal = {link = "Type"},
+    NeogitCommandCodeError = {link = "ErrorMsg"},
+    -- NeogitCommandText = {},
+}
+
+--  ╭───────────╮
+--  │ GitCommit │
+--  ╰───────────╯
+hl.langs.gitcommit = {
+    gitcommitSummary = fgs.red,
+    gitcommitUntracked = fgs.coyote_brown1,
+    gitcommitDiscarded = fgs.coyote_brown1,
+    gitcommitSelected = fgs.coyote_brown1,
+    gitcommitUnmerged = fgs.coyote_brown1,
+    gitcommitOnBranch = {link = "Title"},
+    gitcommitArrow = {fg = c.magenta, gui = bold},
+    gitcommitFile = {fg = c.aqua, gui = bold},
 }
 
 -- https://github.com/lewis6991/gitsigns.nvim
 hl.plugins.gitsigns = {
+    -- Text of signs
     GitSignsAdd = {link = "Type"},
-    GitSignsAddLn = {link = "DiffAdd"},
-    GitSignsAddNr = {link = "Type"},
-    GitSignsAddInline = {link = "DiffAdd"},
-    GitSignsAddLnInline = {link = "Type"},
-    GitSignsChange = {link = "Constant"},
-    GitSignsChangeLn = {link = "DiffText"},
-    GitSignsChangeNr = {link = "Constant"},
-    GitSignsChangeInline = {link = "DiffText"},
-    GitSignsChangeLnInline = {link = "Constant"},
+    GitSignsChange = {fg = c.aqua, gui = bold},
+    GitSignsChangedelete = {fg = c.drama_violet, gui = bold},
     GitSignsDelete = {link = "ErrorMsg"},
+    GitSignsTopdelete = {fg = c.paisley_purple, gui = bold},
+    GitSignsUntracked = {fg = c.yellow, gui = bold},
+    -- Number column of signs (`numhl == true`)
+    GitSignsAddNr = {link = "GitSignsAdd"},
+    GitSignsChangeNr = {link = "GitSignsChange"},
+    GitSignsChangedeleteNr = {link = "GitSignsChangedelete"},
+    GitSignsDeleteNr = {link = "GitSignsDelete"},
+    GitSignsTopdeleteNr = {link = "GitSignsTopdelete"},
+    GitSignsUntrackedNr = {link = "GitSignsUntracked"},
+    -- Buffer line of signs (`linehl == true`)
+    GitSignsAddLn = {link = "DiffAdd"},
+    GitSignsChangeLn = {link = "DiffText"},
+    GitSignsChangedeleteLn = {link = "GitSignsChangeLn"},
     GitSignsDeleteLn = {link = "DiffDelete"},
-    GitSignsDeleteNr = {link = "ErrorMsg"},
+    GitSignsUntrackedLn = {fg = c.none, bg = c.fresh_cinnamon},
+    -- Word diff regions in inline previews
+    GitSignsAddInline = {link = "DiffAdd"},
+    GitSignsChangeInline = {link = "DiffText"},
     GitSignsDeleteInline = {link = "DiffDelete"},
-    GitSignsDeleteLnInline = {link = "ErrorMsg"},
+    -- Word diff regions in buffer (`.word_diff == true`)
+    GitSignsAddLnInline = {link = "GitSignsAdd"},
+    GitSignsChangeLnInline = {link = "GitSignsChange"},
+    GitSignsDeleteLnInline = {link = "GitSignsDelete"},
+    -- Word diff in lines with preview_hunk_inline()/show_deleted()
+    GitSignsAddVirtLnInline = {link = "DiffAdd"},
+    GitSignsChangeVirtLnInline = {link = "DiffText"},
+    GitSignsDeleteVirtLnInline = {link = "DiffDelete"},
+    -- Lines in preview
+    GitSignsAddPreview = {link = "DiffAdd"},
+    GitSignsDeletePreview = {link = "DiffDelete"},
+    GitSignsVirtLnum = {fg = c.magenta},           -- line numbers in inline hunks previews
+    GitSignsDeleteVirtLn = {link = "DiffDelete"},
+    GitSignsCurrentLineBlame = {link = "NonText"}, -- current line blame
+    -- Staged text of signs
+    GitSignsStagedAdd = {link = "GitSignsAdd"},
+    GitSignsStagedChange = {link = "GitSignsChange"},
+    GitSignsStagedChangedelete = {link = "GitSignsChangedelete"},
+    GitSignsStagedDelete = {link = "GitSignsDelete"},
+    GitSignsStagedTopdelete = {link = "GitSignsTopdelete"},
+    -- Staged number column of signs (`numhl == true`)
+    GitSignsStagedAddNr = fgs.green,
+    GitSignsStagedChangeNr = fgs.aqua,
+    GitSignsStagedChangedeleteNr = fgs.drama_violet,
+    GitSignsStagedDeleteNr = fgs.red,
+    GitSignsStagedTopdeleteNr = fgs.paisley_purple,
+    -- Staged buffer line of signs (`linehl == true`)
+    GitSignsStagedAddLn = {link = "GitSignsAddLn"},
+    GitSignsStagedChangeLn = {link = "GitSignsChangeLn"},
+    GitSignsStagedChangedeleteLn = {link = "GitSignsChangedeleteLn"},
+    GitSignsStagedDeleteLn = {link = "GitSignsDeleteLn"},
+    GitSignsStagedTopdeleteLn = {link = "GitSignsTopdeleteLn"},
+    -- GitSignsTopdeleteLn = {link = "DiffDelete"},
+    -- GitSignsAddVirtLn = {link = "DiffAdd"},
+    -- GitSignsChangeVirtLn = {link = "DiffText"},
 }
 
 -- https://github.com/ibhagwan/fzf-lua
 hl.plugins.fzf_lua = {
-    FzfLuaBorder = {link = "FloatBorder"},
-    -- FzfLuaNormal = { "Normal" },
-    -- FzfLuaBorder = { "Normal" },
-    -- FzfLuaCursor = { "Cursor" },
-    -- FzfLuaCursorLine = { "CursorLine" },
-    -- FzfLuaCursorLineNr = { "CursorLineNr" },
-    -- FzfLuaSearch = { "IncSearch" },
-    -- FzfLuaTitle = { "FzfLuaNormal" },
-    -- FzfLuaScrollBorderEmpty = { "FzfLuaBorder" },
-    -- FzfLuaScrollBorderFull  = { "FzfLuaBorder" },
-    -- FzfLuaScrollFloatEmpty  = { "PmenuSbar" },
-    -- FzfLuaScrollFloatFull   = { "PmenuThumb" },
-    -- FzfLuaHelpNormal = { "FzfLuaNormal" },
-    -- FzfLuaHelpBorder = { "FzfLuaBorder" },
+    FzfLuaNormal = {link = "Normal"},                    -- main fg/bg
+    FzfLuaBorder = {link = "FloatBorder"},               -- main border
+    FzfLuaTitle = {fg = c.purple, gui = bold},           -- main title
+    FzfLuaPreviewNormal = {link = "FzfLuaNormal"},       -- builtin preview fg/bg
+    FzfLuaPreviewBorder = {link = "FzfLuaBorder"},       -- builtin preview border
+    FzfLuaPreviewTitle = {link = "FzfLuaTitle"},         -- builtin preview title
+    FzfLuaCursor = {link = "Cursor"},                    -- builtin preview `Cursor`
+    FzfLuaCursorLine = {link = "CursorLine"},            -- builtin preview `Cursorline`
+    FzfLuaCursorLineNr = {link = "CursorLineNr"},        -- builtin preview `CursorLineNr`
+    FzfLuaSearch = {link = "IncSearch"},                 -- builtin preview search matches
+    FzfLuaScrollBorderEmpty = {fg = c.red, gui = bold},  -- builtin preview `border` scroll empty
+    FzfLuaScrollBorderFull = {fg = c.green, gui = bold}, -- builtin preview `border` scroll full
+    FzfLuaScrollFloatEmpty = {link = "PmenuSbar"},       -- builtin preview `float` scroll empty
+    FzfLuaScrollFloatFull = {link = "PmenuThumb"},       -- builtin preview `float` scroll full
+    FzfLuaHelpNormal = {link = "FzfLuaNormal"},          -- help win `fg/bg`
+    FzfLuaHelpBorder = {fg = c.salmon, gui = bold},      -- help win border
+    FzfLuaHeaderBind = {fg = c.beaver},                  -- header keybind
+    FzfLuaHeaderText = {fg = c.slate_grey},              -- header text
+    FzfLuaBufName = {link = "Title"},                    -- buffer name (`lines`)
+    FzfLuaBufNr = {link = "Type"},                       -- buffer number (all buffers)
+    FzfLuaBufLineNr = {link = "CursorLineNr"},           -- buffer line (`lines`)
+    FzfLuaBufFlagCur = {link = "Constant"},              -- buffer line (`buffers`)
+    FzfLuaBufFlagAlt = {link = "Tag"},                   -- buffer line (`buffers`)
+    FzfLuaTabTitle = {link = "Title"},                   -- tab title (`tabs`)
+    FzfLuaTabMarker = {link = "Constant"},               -- tab marker (`tabs`)
 }
 
 -- https://github.com/kyazdani42/nvim-tree.lua
