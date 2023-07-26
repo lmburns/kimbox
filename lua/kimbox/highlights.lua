@@ -623,6 +623,7 @@ hl.langs08.markdown = {
     ["@text.strong.markdown"] = {link = "Bold"},
     ["@text.reference.markdown"] = {fg = c.blue, gui = underline},
     ["@text.quote.markdown"] = {link = "@string"},
+    ["@tag.markdown"] = {link = "@tag.html"},
     ["@punctuation.special.markdown"] = {fg = c.red, gui = bold},
 
     ["@text.todo.checked"] = {link = "markdownTSTodoChecked"},

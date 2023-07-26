@@ -5,6 +5,7 @@ local cmd = vim.cmd
 local api = vim.api
 
 local DEFAULT_STYLE = "cannon"
+local DEFAULT_TOGGLE_KEY = "<Leader>ts"
 
 ---@class Kimbox.Container
 ---@field user Kimbox.Config
@@ -41,7 +42,7 @@ local default = {
     ---Allow changing background color
     toggle_style = {
         ---Key used to cycle through the backgrounds in `toggle_style.bgs`
-        key = "<Leader>ts",
+        key = DEFAULT_TOGGLE_KEY,
         ---List of background names
         bgs = Config.bg_colors,
     },
@@ -103,7 +104,7 @@ local default = {
 local function validate(c)
     vim.validate({
         style = {c.style, "s", false},
-        toggle_style_key = {c.toggle_style.key, "s", false},
+        toggle_style_key = {c.toggle_style.key, {"s", "b"}, false},
         toggle_style_bgs = {c.toggle_style.bgs, "t", false},
         langs08 = {c.langs08, "b", false},
         popup = {c.popup, "t", false},
@@ -167,13 +168,19 @@ function Config:process()
         self:set({toggle_style = {index = 0}})
     end
 
-    if not utils.is_empty(self.user.toggle_style.key) then
+    if not utils.is_empty(self.user.toggle_style.key) and self.user.toggle_style.key ~= false then
         if vim.keymap and vim.keymap.set then
+            local mapping =
+                utils.tern(
+                    self.user.toggle_style.key == true,
+                    DEFAULT_TOGGLE_KEY,
+                    self.user.toggle_style.key
+                )
             vim.keymap.set(
                 "n",
-                self.user.toggle_style.key,
+                mapping,
                 [[<Cmd>lua require('kimbox').toggle()<CR>]],
-                {noremap = true, silent = true}
+                {noremap = true, silent = true, desc = "Kimbox: toggle bg"}
             )
         end
     end
