@@ -244,13 +244,13 @@ hl.syntax = {
 
 hl.treesitter = {
     -- === Miscellaneous ===
-    TSComment = {link = "Comment"},             -- Line comments and block comments
+    TSComment = {link = "Comment"}, -- Line comments and block comments
     -- TSCommentDocumentation = fgs.jasper_orange, -- comments documenting code
     -- TSError = {link = "Error"},              -- syntax/parser errors (NOTE: maybe change)
-    TSNone = fgs.fg0,                           -- completely disable the highlight
-    TSPreproc = {link = "PreProc"},             -- various preprocessor directives & shebangs
-    TSDefine = {link = "TSPreproc"},            -- preprocessor definition directives
-    TSOperator = {link = "Operator"},           -- symbolic operators (e.g. `+` / `*`)
+    TSNone = fgs.fg0,                 -- completely disable the highlight
+    TSPreproc = {link = "PreProc"},   -- various preprocessor directives & shebangs
+    TSDefine = {link = "TSPreproc"},  -- preprocessor definition directives
+    TSOperator = {link = "Operator"}, -- symbolic operators (e.g. `+` / `*`)
 
     -- === Punctuation ===
     TSPunctBracket = {link = "Delimiter"}, -- brackets (e.g. `()` / `{}` / `[]`)
@@ -362,13 +362,13 @@ hl.treesitter = {
 
 hl.langs08.treesitter = {
     -- === Miscellaneous ===
-    ["@comment"] = {link = "Comment"},              -- line and block comments
+    ["@comment"] = {link = "Comment"}, -- line and block comments
     -- ["@comment.documentation"] = fgs.jasper_orange, -- comments documenting code
     -- ["@error"] = {link = "Error"},                  -- syntax/parser errors (NOTE: maybe change)
-    ["@none"] = fgs.fg0,                            -- completely disable the highlight
-    ["@preproc"] = {link = "PreProc"},              -- various preprocessor directives & shebangs
-    ["@define"] = {link = "@preproc"},              -- preprocessor definition directives
-    ["@operator"] = {link = "Operator"},            -- symbolic operators (e.g. `+` / `*`)
+    ["@none"] = fgs.fg0,                 -- completely disable the highlight
+    ["@preproc"] = {link = "PreProc"},   -- various preprocessor directives & shebangs
+    ["@define"] = {link = "@preproc"},   -- preprocessor definition directives
+    ["@operator"] = {link = "Operator"}, -- symbolic operators (e.g. `+` / `*`)
 
     -- === Punctuation ===
     ["@punctuation.bracket"] = {link = "Delimiter"}, -- brackets (e.g. `()` / `{}` / `[]`)
@@ -655,6 +655,7 @@ hl.plugins.vimwiki = {
     VimwikiNoExistsLink = {fg = c.red, gui = "underline,bold"},
     VimwikiImage = {fg = c.blue, gui = "underline"},
     VimwikiMarkers = {link = "Comment"},
+    VimwikiDelimiter = {link = "Comment"},
     VimwikiCellSeparator = {link = "markdownTSPunctSpecial"},
     VimwikiTableRow = {link = "Title"},
 }
@@ -2548,6 +2549,20 @@ hl.langs08.gitconfig = {
     ["@string.special.git_config"] = fgs.green,
 }
 
+--  ╭───────────╮
+--  │ GitCommit │
+--  ╰───────────╯
+hl.langs.gitcommit = {
+    gitcommitSummary = fgs.red,
+    gitcommitUntracked = fgs.coyote_brown1,
+    gitcommitDiscarded = fgs.coyote_brown1,
+    gitcommitSelected = fgs.coyote_brown1,
+    gitcommitUnmerged = fgs.coyote_brown1,
+    gitcommitOnBranch = {link = "Title"},
+    gitcommitArrow = {fg = c.magenta, gui = bold},
+    gitcommitFile = {fg = c.aqua, gui = bold},
+}
+
 -- ============================== Plugins =============================
 -- ====================================================================
 local diag_under = utils.tern(undercurl == "undercurl", undercurl, "underline")
@@ -2684,38 +2699,6 @@ hl.plugins.cmp = {
     CmpItemKindReference = fgs.orange,
     CmpItemKindSnippet = fgs.jade_green,
     CmpItemKindUnit = fgs.green,
-}
-
--- https://github.com/stevearc/aerial.nvim
-hl.plugins.aerial = {
-    AerialLine = {link = "QuickFixLine"},
-    AerialGuide = {link = "LineNr"},
-    AerialFileIcon = {link = "CocSymbolFile"},
-    AerialModuleIcon = {link = "CocSymbolModule"},
-    AerialNamespaceIcon = {link = "CocSymbolNamespace"},
-    AerialPackageIcon = {link = "CocSymbolPackage"},
-    AerialClassIcon = {link = "CocSymbolClass"},
-    AerialMethodIcon = {link = "CocSymbolMethod"},
-    AerialPropertyIcon = {link = "CocSymbolProperty"},
-    AerialFieldIcon = {link = "CocSymbolField"},
-    AerialConstructorIcon = {link = "CocSymbolConstructor"},
-    AerialEnumIcon = {link = "CocSymbolEnum"},
-    AerialEnumMemberIcon = {link = "CocSymbolEnumMember"},
-    AerialInterfaceIcon = {link = "CocSymbolInterface"},
-    AerialFunctionIcon = {link = "CocSymbolFunction"},
-    AerialVariableIcon = {link = "CocSymbolVariable"},
-    AerialConstantIcon = {link = "CocSymbolConstant"},
-    AerialStringIcon = {link = "CocSymbolString"},
-    AerialNumberIcon = {link = "CocSymbolNumber"},
-    AerialBooleanIcon = {link = "CocSymbolBoolean"},
-    AerialArrayIcon = {link = "CocSymbolArray"},
-    AerialObjectIcon = {link = "CocSymbolObject"},
-    AerialKeyIcon = {link = "CocSymbolKey"},
-    AerialNullIcon = {link = "CocSymbolNull"},
-    AerialStructIcon = {link = "CocSymbolStruct"},
-    AerialEventIcon = {link = "CocSymbolEvent"},
-    AerialOperatorIcon = {link = "CocSymbolOperator"},
-    AerialTypeParameterIcon = {link = "CocSymbolTypeParameter"},
 }
 
 -- https://github.com/neoclide/coc.nvim
@@ -2859,13 +2842,36 @@ hl.plugins.ale = {
     ALEVirtualTextStyleWarning = fgs.coyote_brown1,
 }
 
--- https://github.com/ghillb/cybu.nvim
-hl.plugins.cybu = {
-    CybuFocus = {fg = c.green, gui = bold},                               -- Current / Selected Buffer
-    CybuAdjacent = {fg = c.red, gui = bold},                              -- Buffers not in focus
-    CybuBackground = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}, -- Window Background
-    CybuBorder = {link = "FloatBoarder"},                                 -- Border of the window
-    CybuInfobar = {link = "StatusLine"},
+-- https://github.com/stevearc/aerial.nvim
+hl.plugins.aerial = {
+    AerialLine = {link = "QuickFixLine"},
+    AerialGuide = {link = "LineNr"},
+    AerialFileIcon = {link = "CocSymbolFile"},
+    AerialModuleIcon = {link = "CocSymbolModule"},
+    AerialNamespaceIcon = {link = "CocSymbolNamespace"},
+    AerialPackageIcon = {link = "CocSymbolPackage"},
+    AerialClassIcon = {link = "CocSymbolClass"},
+    AerialMethodIcon = {link = "CocSymbolMethod"},
+    AerialPropertyIcon = {link = "CocSymbolProperty"},
+    AerialFieldIcon = {link = "CocSymbolField"},
+    AerialConstructorIcon = {link = "CocSymbolConstructor"},
+    AerialEnumIcon = {link = "CocSymbolEnum"},
+    AerialEnumMemberIcon = {link = "CocSymbolEnumMember"},
+    AerialInterfaceIcon = {link = "CocSymbolInterface"},
+    AerialFunctionIcon = {link = "CocSymbolFunction"},
+    AerialVariableIcon = {link = "CocSymbolVariable"},
+    AerialConstantIcon = {link = "CocSymbolConstant"},
+    AerialStringIcon = {link = "CocSymbolString"},
+    AerialNumberIcon = {link = "CocSymbolNumber"},
+    AerialBooleanIcon = {link = "CocSymbolBoolean"},
+    AerialArrayIcon = {link = "CocSymbolArray"},
+    AerialObjectIcon = {link = "CocSymbolObject"},
+    AerialKeyIcon = {link = "CocSymbolKey"},
+    AerialNullIcon = {link = "CocSymbolNull"},
+    AerialStructIcon = {link = "CocSymbolStruct"},
+    AerialEventIcon = {link = "CocSymbolEvent"},
+    AerialOperatorIcon = {link = "CocSymbolOperator"},
+    AerialTypeParameterIcon = {link = "CocSymbolTypeParameter"},
 }
 
 -- https://github.com/neomake/neomake
@@ -2882,6 +2888,103 @@ hl.plugins.neomake = {
     NeomakeVirtualtextWarning = fgs.coyote_brown1,
     NeomakeVirtualtextInfo = fgs.coyote_brown1,
     NeomakeVirtualtextMessag = fgs.coyote_brown1,
+}
+
+-- https://github.com/mhinz/vim-startify
+hl.plugins.startify = {
+    StartifyBracket = fgs.coyote_brown1,
+    StartifyFile = fgs.fg0,
+    StartifyNumber = fgs.red,
+    StartifyPath = fgs.yellow,
+    StartifySlash = fgs.yellow,
+    StartifySection = fgs.blue,
+    StartifyHeader = fgs.orange,
+    StartifySpecial = fgs.coyote_brown1,
+    StartifyFooter = fgs.coyote_brown1,
+}
+
+-- https://github.com/glepnir/dashboard-nvim
+hl.plugins.dashboard = {
+    DashboardShortCut = {fg = c.red, gui = bold},
+    DashboardFooter = {fg = c.purple, gui = bold},
+    DashboardHeader = {fg = c.blue, gui = bold},
+    DashboardCenter = fgs.aqua,
+}
+
+-- https://github.com/Shougo/defx.nvim
+hl.plugins.defx = {
+    DefxIconsParentDirectory = fgs.orange,
+    Defx_filename_directory = fgs.blue,
+    Defx_filename_root = fgs.red,
+}
+
+-- https://github.com/easymotion/vim-easymotion
+hl.plugins.easymotion = {
+    EasyMotionTarget = {fg = c.bg0, bg = c.green},
+    EasyMotionShade = fgs.coyote_brown1,
+}
+
+-- https://github.com/phaazon/hop.nvim
+hl.plugins.hop = {
+    HopNextKey = {fg = c.red, gui = bold},
+    HopNextKey1 = {fg = c.deep_lilac, gui = bold},
+    HopNextKey2 = {fg = utils.darken(c.deep_lilac, 0.7)},
+    HopUnmatched = {fg = "#666666", sp = "#666666"},
+}
+
+-- https://github.com/mfussenegger/nvim-treehopper
+hl.plugins.treehopper = {
+    TSNodeUnmatched = {link = "HopUnmatched"},
+    TSNodeKey = {link = "HopNextKey"},
+}
+
+-- https://github.com/ggandor/lightspeed.nvim
+hl.plugins.lightspeed = {
+    LightspeedCursor = {link = "Cursor"},
+    -- LightspeedGreyWash = {fg = c.dark3},
+    -- LightspeedLabel = {fg = c.magenta2, style = "bold,underline"},
+    -- LightspeedLabelDistant = {fg = c.green1, style = "bold,underline"},
+    -- LightspeedLabelDistantOverlapped = {fg = c.green2, style = "underline"},
+    -- LightspeedLabelOverlapped = {fg = c.magenta2, style = "underline"},
+    -- LightspeedMaskedChar = {fg = c.orange},
+    -- LightspeedOneCharMatch = {bg = c.magenta2, fg = c.fg, style = "bold"},
+    -- LightspeedPendingOpArea = {bg = c.magenta2, fg = c.fg},
+    -- LightspeedShortcut = {bg = c.magenta2, fg = c.fg, style = "bold,underline"},
+    -- LightspeedShortcutOverlapped = { link = "LightspeedShortcut" },
+    -- LightspeedUniqueChar = { link = "LightspeedUnlabeledMatch" },
+    -- LightspeedUnlabeledMatch = {fg = c.blue2, style = "bold"}
+}
+
+-- https://github.com/justinmk/vim-sneak
+hl.plugins.sneak = {
+    Sneak = {fg = c.deep_lilac, gui = bold},
+    SneakScope = {bg = c.bg4},
+}
+
+-- https://github.com/romgrk/barbar.nvim
+hl.plugins.barbar = {
+    BufferCurrent = c.fg0,
+    -- BufferCurrentIndex = {bg = c.fg_gutter, fg = c.info},
+    -- BufferCurrentMod = {bg = c.fg_gutter, fg = c.warning},
+    -- BufferCurrentSign = {bg = c.fg_gutter, fg = c.info},
+    -- BufferCurrentTarget = {bg = c.fg_gutter, fg = c.red},
+    -- BufferVisible = {bg = c.bg_statusline, fg = c.fg},
+    -- BufferVisibleIndex = {bg = c.bg_statusline, fg = c.info},
+    -- BufferVisibleMod = {bg = c.bg_statusline, fg = c.warning},
+    -- BufferVisibleSign = {bg = c.bg_statusline, fg = c.info},
+    -- BufferVisibleTarget = {bg = c.bg_statusline, fg = c.red},
+    -- BufferInactive = {bg = c.bg_statusline, fg = c.dark5},
+    -- BufferInactiveIndex = {bg = c.bg_statusline, fg = c.dark5},
+    -- BufferInactiveMod = {bg = c.bg_statusline, fg = utils.darken(c.warning, 0.7)},
+    -- BufferInactiveSign = {bg = c.bg_statusline, fg = c.border_highlight},
+    -- BufferInactiveTarget = {bg = c.bg_statusline, fg = c.red},
+    -- BufferTabpages = {bg = c.bg_statusline, fg = c.none},
+    -- BufferTabpage = {bg = c.bg_statusline, fg = c.border_highlight}
+}
+
+-- https://github.com/lambdalisue/fern.vim
+hl.plugins.fern = {
+    FernBranchText = {fg = c.blue},
 }
 
 -- https://github.com/b0o/incline.nvim
@@ -2910,54 +3013,6 @@ hl.plugins.vista = {
     FZFVistaBracket = fgs.blue,
 }
 
--- https://github.com/airblade/vim-gitgutter
-hl.plugins.gitgutter = {
-    GitGutterAdd = {link = "GitSignsAdd"},
-    GitGutterChange = {link = "GitSignsChange"},
-    GitGutterChangeDelete = {link = "GitSignsChangedelete"},
-    GitGutterDelete = {link = "GitSignsDelete"},
-    GitGutterAddLineNr = {link = "GitSignsAddNr"},
-    GitGutterChangeLineNr = {link = "GitSignsChangeNr"},
-    GitGutterChangeDeleteLineNr = {link = "GitSignsChangedeleteNr"},
-    GitGutterDeleteLineNr = {link = "GitSignsDeleteNr"},
-}
-
--- https://github.com/preservim/nerdtree
-hl.plugins.nerdtree = {
-    NERDTreeDir = fgs.yellow,
-    NERDTreeDirSlash = fgs.aqua,
-    NERDTreeOpenable = fgs.orange,
-    NERDTreeClosable = fgs.orange,
-    NERDTreeFile = fgs.fg0,
-    NERDTreeExecFile = fgs.green,
-    NERDTreeUp = fgs.coyote_brown1,
-    NERDTreeCWD = fgs.aqua,
-    NERDTreeToggleOn = fgs.yellow,
-    NERDTreeToggleOff = fgs.red,
-    NERDTreeFlags = fgs.orange,
-    NERDTreeLinkFile = fgs.coyote_brown1,
-    NERDTreeLinkTarget = fgs.yellow,
-}
-
--- https://github.com/easymotion/vim-easymotion
-hl.plugins.easymotion = {
-    EasyMotionTarget = {fg = c.bg0, bg = c.green},
-    EasyMotionShade = fgs.coyote_brown1,
-}
-
--- https://github.com/mhinz/vim-startify
-hl.plugins.startify = {
-    StartifyBracket = fgs.coyote_brown1,
-    StartifyFile = fgs.fg0,
-    StartifyNumber = fgs.red,
-    StartifyPath = fgs.yellow,
-    StartifySlash = fgs.yellow,
-    StartifySection = fgs.blue,
-    StartifyHeader = fgs.orange,
-    StartifySpecial = fgs.coyote_brown1,
-    StartifyFooter = fgs.coyote_brown1,
-}
-
 -- https://github.com/folke/which-key.nvim
 hl.plugins.whichkey = {
     WhichKey = {fg = c.begonia},
@@ -2970,31 +3025,16 @@ hl.plugins.whichkey = {
     WhichKeySeparator = fgs.beaver,
 }
 
--- https://github.com/folke/noice.nvim
-hl.plugins.noice = {
-    NoiceConfirmBorder = fgs.red,
-}
-
--- https://github.com/Shougo/defx.nvim
-hl.plugins.defx = {
-    DefxIconsParentDirectory = fgs.orange,
-    Defx_filename_directory = fgs.blue,
-    Defx_filename_root = fgs.red,
-}
-
--- https://github.com/voldikss/vim-floaterm
-hl.plugins.floaterm = {
-    Floaterm = {fg = c.none, bg = c.bg0},
-    FloatermBorder = {fg = c.magenta, bg = c.none},
-}
-
--- https://githi.com/kevinhwang91/nvim-bqf
-hl.plugins.bqf = {
-    BqfSign = {fg = c.deep_lilac, gui = bold},
-    BqfPreviewBorder = {link = "Parameter"},
-    -- BqfPreviewRange = {},
-    -- BqfPreviewCursorLine = {},
-    -- BqfPreviewBufLabel = {},
+-- https://github.com/airblade/vim-gitgutter
+hl.plugins.gitgutter = {
+    GitGutterAdd = {link = "GitSignsAdd"},
+    GitGutterChange = {link = "GitSignsChange"},
+    GitGutterChangeDelete = {link = "GitSignsChangedelete"},
+    GitGutterDelete = {link = "GitSignsDelete"},
+    GitGutterAddLineNr = {link = "GitSignsAddNr"},
+    GitGutterChangeLineNr = {link = "GitSignsChangeNr"},
+    GitGutterChangeDeleteLineNr = {link = "GitSignsChangedeleteNr"},
+    GitGutterDeleteLineNr = {link = "GitSignsDeleteNr"},
 }
 
 -- https://github.com/sindrets/diffview.nvim
@@ -3072,20 +3112,6 @@ hl.plugins.neogit = {
     -- NeogitCommandText = {},
 }
 
---  ╭───────────╮
---  │ GitCommit │
---  ╰───────────╯
-hl.langs.gitcommit = {
-    gitcommitSummary = fgs.red,
-    gitcommitUntracked = fgs.coyote_brown1,
-    gitcommitDiscarded = fgs.coyote_brown1,
-    gitcommitSelected = fgs.coyote_brown1,
-    gitcommitUnmerged = fgs.coyote_brown1,
-    gitcommitOnBranch = {link = "Title"},
-    gitcommitArrow = {fg = c.magenta, gui = bold},
-    gitcommitFile = {fg = c.aqua, gui = bold},
-}
-
 -- https://github.com/lewis6991/gitsigns.nvim
 hl.plugins.gitsigns = {
     -- Text of signs
@@ -3149,6 +3175,42 @@ hl.plugins.gitsigns = {
     -- GitSignsChangeVirtLn = {link = "DiffText"},
 }
 
+-- https://github.com/preservim/nerdtree
+hl.plugins.nerdtree = {
+    NERDTreeDir = fgs.yellow,
+    NERDTreeDirSlash = fgs.aqua,
+    NERDTreeOpenable = fgs.orange,
+    NERDTreeClosable = fgs.orange,
+    NERDTreeFile = fgs.fg0,
+    NERDTreeExecFile = fgs.green,
+    NERDTreeUp = fgs.coyote_brown1,
+    NERDTreeCWD = fgs.aqua,
+    NERDTreeToggleOn = fgs.yellow,
+    NERDTreeToggleOff = fgs.red,
+    NERDTreeFlags = fgs.orange,
+    NERDTreeLinkFile = fgs.coyote_brown1,
+    NERDTreeLinkTarget = fgs.yellow,
+}
+
+-- https://github.com/kyazdani42/nvim-tree.lua
+hl.plugins.nvim_tree = {
+    NvimTreeNormal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
+    NvimTreeVertSplit = {fg = c.bg2, bg = utils.tern(trans, c.none, c.bg0)},
+    NvimTreeEndOfBuffer = {
+        fg = utils.tern(cfg.ending_tildes, c.bg3, c.bg0),
+        bg = utils.tern(trans, c.none, c.bg0),
+    },
+    NvimTreeRootFolder = {fg = c.orange, gui = "bold"},
+    NvimTreeGitDirty = fgs.yellow,
+    NvimTreeGitNew = fgs.green,
+    NvimTreeGitDeleted = fgs.red,
+    NvimTreeSpecialFile = {fg = c.yellow, gui = "underline"},
+    NvimTreeIndentMarker = fgs.fg0,
+    NvimTreeImageFile = fgs.puce,
+    NvimTreeSymlink = fgs.purple,
+    NvimTreeFolderName = fgs.blue,
+}
+
 -- https://github.com/ibhagwan/fzf-lua
 hl.plugins.fzf_lua = {
     FzfLuaNormal = {link = "Normal"},                    -- main fg/bg
@@ -3176,25 +3238,6 @@ hl.plugins.fzf_lua = {
     FzfLuaBufFlagAlt = {link = "Tag"},                   -- buffer line (`buffers`)
     FzfLuaTabTitle = {link = "Title"},                   -- tab title (`tabs`)
     FzfLuaTabMarker = {link = "Constant"},               -- tab marker (`tabs`)
-}
-
--- https://github.com/kyazdani42/nvim-tree.lua
-hl.plugins.nvim_tree = {
-    NvimTreeNormal = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)},
-    NvimTreeVertSplit = {fg = c.bg2, bg = utils.tern(trans, c.none, c.bg0)},
-    NvimTreeEndOfBuffer = {
-        fg = utils.tern(cfg.ending_tildes, c.bg3, c.bg0),
-        bg = utils.tern(trans, c.none, c.bg0),
-    },
-    NvimTreeRootFolder = {fg = c.orange, gui = "bold"},
-    NvimTreeGitDirty = fgs.yellow,
-    NvimTreeGitNew = fgs.green,
-    NvimTreeGitDeleted = fgs.red,
-    NvimTreeSpecialFile = {fg = c.yellow, gui = "underline"},
-    NvimTreeIndentMarker = fgs.fg0,
-    NvimTreeImageFile = fgs.puce,
-    NvimTreeSymlink = fgs.purple,
-    NvimTreeFolderName = fgs.blue,
 }
 
 -- https://github.com/nvim-telescope/telescope.nvim
@@ -3233,38 +3276,6 @@ hl.plugins.telescope = {
     -- TelescopePreviewLine = {link = "Visual"},
 }
 
--- https://github.com/RRethy/vim-illuminate
-hl.plugins.illuminate = {
-    illuminatedWord = {link = "LspReferenceText"},
-    illuminatedCurWord = {link = "LspReferenceText"},
-}
-
--- https://github.com/mvllow/modes.nvim
-hl.plugins.modes = {
-    ModesCopy = {bg = c.yellow},
-    ModesDelete = {bg = c.red},
-    ModesInsert = {bg = c.aqua},
-    ModesVisual = {bg = c.magenta},
-}
-
--- https://github.com/glepnir/dashboard-nvim
-hl.plugins.dashboard = {
-    DashboardShortCut = {fg = c.red, gui = bold},
-    DashboardFooter = {fg = c.purple, gui = bold},
-    DashboardHeader = {fg = c.blue, gui = bold},
-    DashboardCenter = fgs.aqua,
-}
-
--- https://github.com/simrat39/symbols-outline.nvim
-hl.plugins.symbols_outline = {
-    FocusedSymbol = {fg = c.bg1, bg = c.yellow, gui = bold},
-}
-
--- https://github.com/m-demare/hlargs.nvim
-hl.plugins.hlargs = {
-    Hlargs = fgs.salmon,
-}
-
 -- https://github.com/p00f/nvim-ts-rainbow
 -- https://github.com/HiPhish/nvim-ts-rainbow2
 hl.plugins.ts_rainbow = {
@@ -3285,6 +3296,11 @@ hl.plugins.ts_rainbow = {
     TSRainbowGreen = {fg = c.green, gui = bold},
     TSRainbowViolet = {fg = c.purple, gui = bold},
     TSRainbowCyan = {fg = c.coyote_brown1, gui = bold},
+}
+
+-- https://github.com/m-demare/hlargs.nvim
+hl.plugins.hlargs = {
+    Hlargs = fgs.salmon,
 }
 
 -- https://github.com/lukas-reineke/indent-blankline.nvim
@@ -3330,43 +3346,6 @@ hl.plugins.packer = {
     packerTimeLow = fgs.green,
 }
 
--- https://github.com/phaazon/hop.nvim
-hl.plugins.hop = {
-    HopNextKey = {fg = c.red, gui = bold},
-    HopNextKey1 = {fg = c.deep_lilac, gui = bold},
-    HopNextKey2 = {fg = utils.darken(c.deep_lilac, 0.7)},
-    HopUnmatched = {fg = "#666666", sp = "#666666"},
-}
-
--- https://github.com/mfussenegger/nvim-treehopper
-hl.plugins.treehopper = {
-    TSNodeUnmatched = {link = "HopUnmatched"},
-    TSNodeKey = {link = "HopNextKey"},
-}
-
--- https://github.com/ggandor/lightspeed.nvim
-hl.plugins.lightspeed = {
-    LightspeedCursor = {link = "Cursor"},
-    -- LightspeedGreyWash = {fg = c.dark3},
-    -- LightspeedLabel = {fg = c.magenta2, style = "bold,underline"},
-    -- LightspeedLabelDistant = {fg = c.green1, style = "bold,underline"},
-    -- LightspeedLabelDistantOverlapped = {fg = c.green2, style = "underline"},
-    -- LightspeedLabelOverlapped = {fg = c.magenta2, style = "underline"},
-    -- LightspeedMaskedChar = {fg = c.orange},
-    -- LightspeedOneCharMatch = {bg = c.magenta2, fg = c.fg, style = "bold"},
-    -- LightspeedPendingOpArea = {bg = c.magenta2, fg = c.fg},
-    -- LightspeedShortcut = {bg = c.magenta2, fg = c.fg, style = "bold,underline"},
-    -- LightspeedShortcutOverlapped = { link = "LightspeedShortcut" },
-    -- LightspeedUniqueChar = { link = "LightspeedUnlabeledMatch" },
-    -- LightspeedUnlabeledMatch = {fg = c.blue2, style = "bold"}
-}
-
--- https://github.com/justinmk/vim-sneak
-hl.plugins.sneak = {
-    Sneak = {fg = c.deep_lilac, gui = bold},
-    SneakScope = {bg = c.bg4},
-}
-
 -- https://github.com/rcarriga/nvim-notify
 hl.plugins.notify = {
     NotifyBackground = {link = "NormalFloat"},
@@ -3394,30 +3373,86 @@ hl.plugins.notify = {
     -- NotifyLogTitle = fgs.deep_lilac,
 }
 
--- https://github.com/romgrk/barbar.nvim
-hl.plugins.barbar = {
-    BufferCurrent = c.fg0,
-    -- BufferCurrentIndex = {bg = c.fg_gutter, fg = c.info},
-    -- BufferCurrentMod = {bg = c.fg_gutter, fg = c.warning},
-    -- BufferCurrentSign = {bg = c.fg_gutter, fg = c.info},
-    -- BufferCurrentTarget = {bg = c.fg_gutter, fg = c.red},
-    -- BufferVisible = {bg = c.bg_statusline, fg = c.fg},
-    -- BufferVisibleIndex = {bg = c.bg_statusline, fg = c.info},
-    -- BufferVisibleMod = {bg = c.bg_statusline, fg = c.warning},
-    -- BufferVisibleSign = {bg = c.bg_statusline, fg = c.info},
-    -- BufferVisibleTarget = {bg = c.bg_statusline, fg = c.red},
-    -- BufferInactive = {bg = c.bg_statusline, fg = c.dark5},
-    -- BufferInactiveIndex = {bg = c.bg_statusline, fg = c.dark5},
-    -- BufferInactiveMod = {bg = c.bg_statusline, fg = utils.darken(c.warning, 0.7)},
-    -- BufferInactiveSign = {bg = c.bg_statusline, fg = c.border_highlight},
-    -- BufferInactiveTarget = {bg = c.bg_statusline, fg = c.red},
-    -- BufferTabpages = {bg = c.bg_statusline, fg = c.none},
-    -- BufferTabpage = {bg = c.bg_statusline, fg = c.border_highlight}
+-- https://github.com/tversteeg/registers.nvim
+hl.plugins.registers = {
+    RegistersEscaped = {link = "SpecialChar"},
+    RegistersWhitespace = {link = "Comment"},
+    RegistersString = {link = "String"},
+    RegistersNumber = {link = "Number"},
+    -- NOTE: these need to be used manually within registers.nvim setup() function
+    RegistersCursorline = {fg = c.purple, bg = c.royal_brown, gui = "bold,underline"}, -- when the cursor is over the line
+    RegistersSelection = {fg = c.salmon, gui = bold},                                  -- selection registers, `*+`
+    RegistersDefault = {link = "@bold"},                                               -- default register, `"`
+    RegistersUnnamed = {link = "@function"},                                           -- unnamed register, `\\`
+    RegistersReadOnly = {link = "Statement"},                                          -- read only registers, `:.%`
+    RegistersExpression = {link = "@text.title"},                                      -- expression register, `=`
+    RegistersBlackHole = {fg = c.amethyst},                                            -- black hole register, `_`
+    RegistersAlternateBuffer = {fg = c.glorious_sunset, gui = bold},                   -- alternate buffer register, `#` [@property]
+    RegistersLastSearch = {fg = c.vista_blue},                                         -- last search register, `/` [Search]
+    RegistersDelete = {fg = c.fg0, bg = c.diff_delete},                                -- delete register, `-`
+    RegistersYank = {link = "@type"},                                                  -- yank register, `0`
+    RegistersHistory = {link = "Number"},                                              -- history registers, `1-9`
+    RegistersNamed = {fg = c.slate_grey},                                              -- named registers, `a-z`
 }
 
--- https://github.com/lambdalisue/fern.vim
-hl.plugins.fern = {
-    FernBranchText = {fg = c.blue},
+-- https://github.com/folke/noice.nvim
+hl.plugins.noice = {
+    NoiceConfirmBorder = fgs.red,
+}
+
+-- https://github.com/stevearc/overseer.nvim
+hl.plugins.overseer = {
+    OverseerPENDING = {link = "@text.info"},
+    OverseerRUNNING = {link = "@text.hint"},
+    OverseerSUCCESS = {link = "Type"},
+    OverseerCANCELED = {link = "@text.warning"},
+    OverseerFAILURE = {link = "@text.error"},
+    OverseerTask = {link = "Title"},
+    OverseerTaskBorder = {link = "FloatBorder"},
+    OverseerOutput = {link = "Normal"},
+    OverseerComponent = {link = "Function"},
+    OverseerField = {link = "Field"},
+}
+
+-- https://github.com/rcarriga/neotest
+hl.plugins.neotest = {
+    NeotestPassed = {default = true, link = "Type"},
+    NeotestRunning = {default = true, link = "@text.hint"},
+    NeotestFailed = {default = true, link = "@text.error"},
+    NeotestSkipped = {default = true, link = "@text.warning"},
+    NeotestUnknown = {link = "@text.info"},
+    NeotestTest = {default = true, link = "Title"},
+    NeotestNamespace = {default = true, link = "@namespace"},
+    NeotestFocused = {default = true, link = "QuickFixLine"},
+    NeotestFile = {default = true, link = "@text.uri"},     -- @text.strong, @bold
+    NeotestDir = {default = true, link = "Function"},
+    NeotestIndent = {default = true, link = "Conceal"},
+    NeotestExpandMarker = {default = true, link = "Conceal"},
+    NeotestAdapterName = {default = true, link = "@constructor"},
+}
+
+-- https://github.com/voldikss/vim-floaterm
+hl.plugins.floaterm = {
+    Floaterm = {fg = c.none, bg = c.bg0},
+    FloatermBorder = {fg = c.magenta, bg = c.none},
+}
+
+-- https://githi.com/kevinhwang91/nvim-bqf
+hl.plugins.bqf = {
+    BqfSign = {fg = c.deep_lilac, gui = bold},
+    BqfPreviewBorder = {link = "Parameter"},
+    -- BqfPreviewRange = {},
+    -- BqfPreviewCursorLine = {},
+    -- BqfPreviewBufLabel = {},
+}
+
+-- https://github.com/ghillb/cybu.nvim
+hl.plugins.cybu = {
+    CybuFocus = {fg = c.green, gui = bold},                               -- Current / Selected Buffer
+    CybuAdjacent = {fg = c.red, gui = bold},                              -- Buffers not in focus
+    CybuBackground = {fg = c.fg0, bg = utils.tern(trans, c.none, c.bg0)}, -- Window Background
+    CybuBorder = {link = "FloatBoarder"},                                 -- Border of the window
+    CybuInfobar = {link = "StatusLine"},
 }
 
 -- https://github.com/chentau/marks.nvim
@@ -3442,26 +3477,23 @@ hl.plugins.spellcheck = {
     qfSpellErrorWord = {link = "SpellBad"},
 }
 
--- https://github.com/tversteeg/registers.nvim
-hl.plugins.registers = {
-    RegistersEscaped = {link = "SpecialChar"},
-    RegistersWhitespace = {link = "Comment"},
-    RegistersString = {link = "String"},
-    RegistersNumber = {link = "Number"},
-    -- NOTE: these need to be used manually within registers.nvim setup() function
-    RegistersCursorline = {fg = c.purple, bg = c.royal_brown, gui = "bold,underline"}, -- when the cursor is over the line
-    RegistersSelection = {fg = c.salmon, gui = bold},                                  -- selection registers, `*+`
-    RegistersDefault = {link = "@bold"},                                               -- default register, `"`
-    RegistersUnnamed = {link = "@function"},                                           -- unnamed register, `\\`
-    RegistersReadOnly = {link = "Statement"},                                          -- read only registers, `:.%`
-    RegistersExpression = {link = "@text.title"},                                      -- expression register, `=`
-    RegistersBlackHole = {fg = c.amethyst},                                            -- black hole register, `_`
-    RegistersAlternateBuffer = {fg = c.glorious_sunset, gui = bold},                   -- alternate buffer register, `#` [@property]
-    RegistersLastSearch = {fg = c.vista_blue},                                         -- last search register, `/` [Search]
-    RegistersDelete = {fg = c.fg0, bg = c.diff_delete},                                -- delete register, `-`
-    RegistersYank = {link = "@type"},                                                  -- yank register, `0`
-    RegistersHistory = {link = "Number"},                                              -- history registers, `1-9`
-    RegistersNamed = {fg = c.slate_grey},                                              -- named registers, `a-z`
+-- https://github.com/RRethy/vim-illuminate
+hl.plugins.illuminate = {
+    illuminatedWord = {link = "LspReferenceText"},
+    illuminatedCurWord = {link = "LspReferenceText"},
+}
+
+-- https://github.com/mvllow/modes.nvim
+hl.plugins.modes = {
+    ModesCopy = {bg = c.yellow},
+    ModesDelete = {bg = c.red},
+    ModesInsert = {bg = c.aqua},
+    ModesVisual = {bg = c.magenta},
+}
+
+-- https://github.com/simrat39/symbols-outline.nvim
+hl.plugins.symbols_outline = {
+    FocusedSymbol = {fg = c.bg1, bg = c.yellow, gui = bold},
 }
 
 function M.toggle_bg()
