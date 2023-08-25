@@ -1662,10 +1662,61 @@ hl.langs08.vim = {
 --  │ C │
 --  ╰───╯
 hl.langs.c = {
-    cInclude = fgs.blue,
-    cStorageClass = fgs.purple,
-    cTypedef = fgs.purple,
-    cDefine = fgs.aqua,
+    cInclude = fgs.red,
+    cConstant = {link = "Constant"},
+    cDefine = {link = "Macro"},
+    cOperator = {link = "Operator"},
+    cRepeat = fgs.blue,
+    cType = {link = "Type"},
+    cTypedef = {link = "Typedef"},
+    cStructure = {link = "Structure"},
+    cStorageClass = {link = "StorageClass"},
+    cFormat = {link = "SpecialChar"},
+    cLabel = {link = "Label"},
+    cUserLabel = {link = "Label"},
+    -- cCommentL = {}, -- cComment
+    -- cCommentStart = {}, -- cComment
+    -- cConditional = {}, -- Conditional
+    -- cCharacter = {}, -- Character
+    -- cSpecialCharacter = {}, -- cSpecial
+    -- cNumber = {}, -- Number
+    -- cOctal = {}, -- Number
+    -- cOctalZero = {}, -- PreProc  " link this to Error if you want
+    -- cFloat = {}, -- Float
+    -- cOctalError = {}, -- cError
+    -- cParenError = {}, -- cError
+    -- cErrInParen = {}, -- cError
+    -- cErrInBracket = {}, -- cError
+    -- cCommentError = {}, -- cError
+    -- cCommentStartError = {}, -- cError
+    -- cSpaceError = {}, -- cError
+    -- cWrongComTail = {}, -- cError
+    -- cSpecialError = {}, -- cError
+    -- cCurlyError = {}, -- cError
+    -- cInclude = {}, -- Include
+    -- cPreProc = {}, -- PreProc
+    -- cIncluded = {}, -- cString
+    -- cError = {}, -- Error
+    -- cStatement = {}, -- Statement
+    -- cPreConditMatch = {}, -- cPreCondit
+    -- cPreCondit = {}, -- PreCondit
+    -- cCommentString = {}, -- cString
+    -- cComment2String = {}, -- cString
+    -- cCommentSkip = {}, -- cComment
+    -- cString = {}, -- String
+    -- cComment = {}, -- Comment
+    -- cSpecial = {}, -- SpecialChar
+    -- cTodo = {}, -- Todo
+    -- cBadContinuation = {}, -- Error
+
+    -- cCppString = {}, -- cString
+    -- cCppInWrapper = {}, -- cCppOutWrapper
+    -- cCppOutWrapper = {}, -- cPreCondit
+    -- cCppOutSkip = {}, -- cCppOutIf2
+    -- cCppInElse2 = {}, -- cCppOutIf2
+    -- cCppOutIf2 = {}, -- cCppOut
+    -- cCppOut = {}, --     Comment
+
     -- === Treesitter ===
     cTSInclude = fgs.red,
     cTSProperty = fgs.aqua,
@@ -1675,7 +1726,7 @@ hl.langs.c = {
     cTSRepeat = fgs.blue,
     cTSType = {fg = c.green, gui = bold},
     cTSPunctBracket = fgs.purple,
-    -- cTSInclude = fgs.blue,
+    cTSAttribute = {fg = c.glorious_sunset, gui = bold},
     -- cTSFuncMacro = fgs.yellow,
 }
 
@@ -2794,6 +2845,8 @@ hl.plugins.coc = {
     CocSymbolTypeParameter = fgs.green,
     CocSymbolDefault = fgs.teaberry,
 
+    CodeBlock1 = {fg = c.beaver},
+
     -- === Custom ===
     CocSuggestFloating = {fg = c.fg0, bg = c.bg3}, -- bg0
 }
@@ -3083,34 +3136,13 @@ hl.plugins.diffview = {
 
 -- https://github.com/TimUntersberger/neogit
 hl.plugins.neogit = {
-    NeogitDiffAdd = {link = "Type"},
-    NeogitDiffAddHighlight = {link = "DiffAdd"},
-    NeogitDiffDelete = {link = "ErrorMsg"},
-    NeogitDiffDeleteHighlight = {link = "DiffDelete"},
-    NeogitDiffContextHighlight = {link = "CursorLine"},
-    NeogitNotificationInfo = {link = "NotifyINFOTitle"},
-    NeogitNotificationWarning = {link = "NotifyWARNTitle"},
-    NeogitNotificationError = {link = "NotifyERRORTitle"},
-    NeogitObjectId = {link = "Function"},
-    NeogitDiffHeader = {fg = c.aqua, gui = bold},
-    NeogitHunkHeader = {link = "Title"}, -- diffLine
-    -- NeogitHunkHeaderHighlight = {link = "Title"},
-    NeogitCommitViewHeader = {fg = c.blue, bg = c.bg2, gui = bold},
-    -- NeogitCommitViewDescription = {fg = "#FFFFFF"},
-    NeogitCommitMessage = {link = "String"},
-    NeogitRecentcommits = {fg = c.aqua, gui = bold},
-    NeogitFilePath = {link = "TSConstant"},
-    NeogitBranch = {link = "Title"},
-    NeogitRemote = {link = "PreProc"},
-    NeogitStash = {fg = c.glorious_sunset, gui = bold},
-    NeogitRebaseDone = {fg = c.salmon, gui = bold},
-    NeogitUnmergedInto = {fg = c.teaberry, gui = bold},
-    NeogitUnpulledFrom = {fg = c.russian_green, gui = bold},
-    NeogitUnstagedChanges = {fg = c.slate_grey, gui = bold},
-    NeogitCommandCodeNormal = {link = "Type"},
-    NeogitCommandCodeError = {link = "ErrorMsg"},
-    -- NeogitCommandText = {},
-}
+    -- STATUS BUFFER
+    NeogitBranch               = {link = "Title"},                     -- current branch
+    NeogitRemote               = {link = "PreProc"},                   -- current branch remote
+    NeogitObjectId             = {link = "Function"},                  -- object hash
+    NeogitStash                = {fg = c.glorious_sunset, gui = bold}, -- stash name
+    NeogitRebaseDone           = {fg = c.salmon, gui = bold},          -- current position within rebase
+    -- NeogitFold = {},
 
 -- https://github.com/lewis6991/gitsigns.nvim
 hl.plugins.gitsigns = {
