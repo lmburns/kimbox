@@ -2845,7 +2845,8 @@ hl.plugins.coc = {
     CocSymbolTypeParameter = fgs.green,
     CocSymbolDefault = fgs.teaberry,
 
-    CodeBlock1 = {fg = c.beaver},
+    -- CodeBlock1 = {fg = c.beaver},
+    -- CodeBlock2 = {fg = c.purple},
 
     -- === Custom ===
     CocSuggestFloating = {fg = c.fg0, bg = c.bg3}, -- bg0
@@ -3310,6 +3311,7 @@ hl.plugins.telescope = {
 
 -- https://github.com/p00f/nvim-ts-rainbow
 -- https://github.com/HiPhish/nvim-ts-rainbow2
+-- https://gitlab.com/HiPhish/rainbow-delimiters.nvim
 hl.plugins.ts_rainbow = {
     rainbowcol1 = fgs.coyote_brown1,
     rainbowcol2 = fgs.yellow,
@@ -3328,6 +3330,14 @@ hl.plugins.ts_rainbow = {
     TSRainbowGreen = {fg = c.green, gui = bold},
     TSRainbowViolet = {fg = c.purple, gui = bold},
     TSRainbowCyan = {fg = c.coyote_brown1, gui = bold},
+
+    RainbowDelimiterRed = {fg = c.red, gui = bold},
+    RainbowDelimiterYellow = {fg = c.yellow, gui = bold},
+    RainbowDelimiterBlue = {fg = c.blue, gui = bold},
+    RainbowDelimiterOrange = {fg = c.orange, gui = bold},
+    RainbowDelimiterGreen = {fg = c.green, gui = bold},
+    RainbowDelimiterViolet = {fg = c.purple, gui = bold},
+    RainbowDelimiterCyan = {fg = c.coyote_brown1, gui = bold},
 }
 
 -- https://github.com/m-demare/hlargs.nvim
