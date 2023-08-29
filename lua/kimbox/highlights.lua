@@ -1,4 +1,4 @@
----@diagnostic disable:need-check-nil
+
 local M = {}
 local hl = {
     langs = {},
@@ -3144,6 +3144,97 @@ hl.plugins.neogit = {
     NeogitStash                = {fg = c.glorious_sunset, gui = bold}, -- stash name
     NeogitRebaseDone           = {fg = c.salmon, gui = bold},          -- current position within rebase
     -- NeogitFold = {},
+
+    -- STATUS BUFFER SECTION HEADERS
+    -- NeogitCommitViewDescription = {fg = "#FFFFFF"},
+    NeogitSectionHeader        = {fg = c.philippine_green, gui = bold},
+    NeogitCommitMessage        = {link = "String"},
+    NeogitRecentcommits        = {fg = c.aqua, gui = bold},
+    NeogitUnpushedTo           = {link = "NeogitSectionHeader"},
+    NeogitUnmergedInto         = {fg = c.teaberry, gui = bold},
+    NeogitUnpulledFrom         = {fg = c.russian_green, gui = bold},
+    NeogitUntrackedfiles       = {fg = c.yellow, gui = bold},
+    NeogitUnstagedChanges      = {fg = c.sea_green, gui = bold},
+    NeogitUnmergedchanges      = {fg = c.fuzzy_wuzzy, gui = bold},
+    NeogitUnpulledchanges      = {fg = c.glorious_sunset, gui = bold},
+    NeogitStagedchanges        = {fg = c.green, gui = bold},
+    NeogitStashes              = {link = "Function"},
+    NeogitRebasing             = {link = "Function"},
+    NeogitReverting            = {link = "Function"},
+    NeogitPicking              = {link = "Function"},
+
+    NeogitChangeModified       = {fg = c.slate_grey, gui = bold},
+    NeogitChangeAdded          = {link = "NeogitChangeModified"},
+    NeogitChangeDeleted        = {link = "ErrorMsg"},
+    NeogitChangeRenamed        = {fg = c.paisley_purple, gui = bold},
+    NeogitChangeUpdated        = {link = "NeogitChangeModified"},
+    NeogitChangeCopied         = {link = "NeogitChangeModified"},
+    NeogitChangeBothModified   = {link = "NeogitChangeModified"},
+    NeogitChangeNewFile        = {link = "NeogitChangeModified"},
+
+    NeogitDiffHeader           = {fg = c.aqua, gui = bold},
+    NeogitDiffHeaderHighlight  = {fg = c.aqua, gui = bold, bg = c.bg1},
+    NeogitHunkHeader           = {fg = c.orange, gui = bold},
+    NeogitHunkHeaderHighlight  = {fg = c.orange, gui = bold, bg = c.bg1},
+    NeogitDiffContext          = {fg = c.purple, gui = bold},
+    NeogitDiffContextHighlight = {fg = c.purple, gui = bold, bg = c.bg1},
+    NeogitDiffAdd              = {fg = c.green, gui = bold},
+    NeogitDiffAddHighlight     = {fg = c.green, gui = bold, bg = c.bg1},
+    NeogitDiffDelete           = {fg = c.red, gui = bold},
+    NeogitDiffDeleteHighlight  = {fg = c.red, gui = bold, bg = c.bg1},
+
+    NeogitCursorLine           = {fg = c.none, bg = c.bg1},
+
+    NeogitFilePath             = {link = "TSConstant"},
+    NeogitCommitViewHeader     = {fg = c.blue, bg = c.bg2, gui = bold},
+
+    NeogitPopupSectionTitle    = {fg = c.amethyst, gui = bold},
+    NeogitPopupBranchName      = {link = "NeogitBranch"},
+    NeogitPopupBold            = {fg = c.philippine_green},
+
+    NeogitPopupSwitchKey       = {fg = c.orange},               -- Applied to the key that will toggle switch
+    NeogitPopupSwitchEnabled   = {fg = c.philippine_green},     -- Applied to the flag if enabled
+    NeogitPopupSwitchDisabled  = {link = "NonText"},            -- Applied to the flag if disabled
+
+    NeogitPopupOptionKey       = {fg = c.blue},                 -- Applied to the key that will trigger option
+    NeogitPopupOptionEnabled   = {fg = c.purple},               -- Applied if option is set
+    NeogitPopupOptionDisabled  = {link = "NonText"},            -- Applied if option has no value
+
+    NeogitPopupConfigKey       = {fg = c.teaberry, gui = bold}, -- Applied to the key that triggers config
+    NeogitPopupConfigEnabled   = {fg = c.philippine_green},     -- Applied to enabled config value
+    NeogitPopupConfigDisabled  = {link = "NonText"},            -- Applied to config without value
+
+    NeogitPopupActionKey       = {fg = c.red},                  -- Applied to key that triggers function
+    NeogitPopupActionDisabled  = {link = "NonText"},            -- Applied to key when function is unimplemented
+
+    -- NOTIFICATIONS
+    NeogitNotificationInfo     = {link = "NotifyINFOTitle"},
+    NeogitNotificationWarning  = {link = "NotifyWARNTitle"},
+    NeogitNotificationError    = {link = "NotifyERRORTitle"},
+
+    -- COMMAND HISTORY BUFFER
+    NeogitCommandText          = {fg = c.yellow},
+    NeogitCommandTime          = {fg = c.purple},
+    NeogitCommandCodeNormal    = {link = "Type"},
+    NeogitCommandCodeError     = {link = "ErrorMsg"},
+
+    -- NeogitGraphBlack            Used when --colors is enabled for graph
+    -- NeogitGraphBlackBold
+    -- NeogitGraphRed
+    -- NeogitGraphRedBold
+    -- NeogitGraphGreen
+    -- NeogitGraphGreenBold
+    -- NeogitGraphYellow
+    -- NeogitGraphYellowBold
+    -- NeogitGraphBlue
+    -- NeogitGraphBlueBold
+    -- NeogitGraphPurple
+    -- NeogitGraphPurpleBold
+    -- NeogitGraphCyan
+    -- NeogitGraphCyanBold
+    -- NeogitGraphWhite
+    -- NeogitGraphWhiteBold
+}
 
 -- https://github.com/lewis6991/gitsigns.nvim
 hl.plugins.gitsigns = {
