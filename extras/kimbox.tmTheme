@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC '-//Apple//DTD PLIST 1.0//EN' 'http://www.apple.com/DTDs/PropertyList-1.0.dtd'>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
     <dict>
         <key>name</key>
@@ -33,6 +33,7 @@
                     <string>#988ba2</string>
                     <key>selectionForeground</key>
                     <string>#D9AE80</string>
+                    <!-- Line selection highlight -->
                     <key>lineHighlight</key>
                     <string>#39260E</string>
                     <key>findHighlight</key>
@@ -43,12 +44,14 @@
                     <string>#EF1D55</string>
                     <key>gutter</key>
                     <string>#222222</string>
+                    <!-- Gutter numbers on the side -->
                     <key>gutterForeground</key>
                     <string>#a89984</string>
                     <key>gutterForegroundHighlight</key>
                     <string>#a57a4c</string>
                     <key>guide</key>
                     <string>#2a2a2a</string>
+                    <!-- Unsure -->
                     <key>activeGuide</key>
                     <string>#a57a4c</string>
                     <key>stackGuide</key>
@@ -70,10 +73,12 @@
                 <string>none</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ?? -->
+                    <!-- #d3af86 -->
                     <key>foreground</key>
                     <string>#d3af86</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -83,10 +88,11 @@
                 <string>keyword.operator</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: = == => & -->
                     <key>foreground</key>
                     <string>#FF5813</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -96,10 +102,11 @@
                 <string>keyword.operator.range</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: = == => & -->
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -109,10 +116,11 @@
                 <string>keyword.operator, punctuation.accessor</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: M.sep M:sep M::sep -->
                     <key>foreground</key>
                     <string>#FF5813</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -122,10 +130,11 @@
                 <string>keyword.control.import.include</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: #include and others similar -->
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -135,10 +144,11 @@
                 <string>punctuation.separator</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ,/= -->
                     <key>foreground</key>
                     <string>#D9AE80</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -148,10 +158,11 @@
                 <string>punctuation.terminator</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ; -->
                     <key>foreground</key>
                     <string>#D9AE80</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -161,6 +172,7 @@
                 <string>keyword</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: use, crate (in rust)-->
                     <key>foreground</key>
                     <string>#4C96A8</string>
                 </dict>
@@ -172,8 +184,9 @@
                 <string>keyword.control</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: if else for match (in rust) end (in lua) -->
                     <key>foreground</key>
-                    <string>#EF1D55</string>
+                    <string>#98676A</string>
                 </dict>
             </dict>
             <dict>
@@ -183,6 +196,7 @@
                 <string>keyword.declaration.class</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: class keyword -->
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
@@ -196,10 +210,11 @@
                 <string>keyword.declaration.function</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ?? -->
                     <key>foreground</key>
                     <string>#A06469</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -209,10 +224,11 @@
                 <string>keyword.control.loop, keyword.control.conditional, keyword.control.c++</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: if else for use (not in rust) -->
                     <key>foreground</key>
                     <string>#A06469</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -225,7 +241,7 @@
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -238,7 +254,7 @@
                     <key>foreground</key>
                     <string>#988ba2</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -248,12 +264,27 @@
                 <string>keyword.other.special-method</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ?? -->
                     <key>foreground</key>
                     <string>#8ab1b0</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>Other keywords</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>keyword.other</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!-- IS: where/for keyword (rust) -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#EF1D55</string> -->
+            <!--         <key>fontStyle</key> -->
+            <!--         <string></string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
             <dict>
                 <key>name</key>
                 <string>Comments</string>
@@ -277,7 +308,7 @@
                     <key>foreground</key>
                     <string>#dc3958</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -290,7 +321,7 @@
                     <key>foreground</key>
                     <string>#f79a32</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -303,7 +334,7 @@
                     <key>foreground</key>
                     <string>#4c96a8</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -319,6 +350,20 @@
                     <string>#d3af86</string>
                 </dict>
             </dict>
+            <!-- TODO: -->
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>Functions</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>entity.name.function, meta.require, support.function.any-method</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#A06469</string> -->
+            <!--         <key>fontStyle</key> -->
+            <!--         <string>bold</string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
             <dict>
                 <key>name</key>
                 <string>Macro name</string>
@@ -326,10 +371,11 @@
                 <string>support.macro</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: format!() -->
                     <key>foreground</key>
                     <string>#7EB2B1</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -339,6 +385,7 @@
                 <string>entity.name.function</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: function names -->
                     <key>foreground</key>
                     <string>#A06469</string>
                     <key>fontStyle</key>
@@ -352,6 +399,7 @@
                 <string>variable.function</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: .methods() -->
                     <key>foreground</key>
                     <string>#A06469</string>
                     <key>fontStyle</key>
@@ -378,6 +426,7 @@
                 <string>entity.name.function.preprocessor</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: #define ff() -->
                     <key>foreground</key>
                     <string>#7EB2B1</string>
                     <key>fontStyle</key>
@@ -391,10 +440,11 @@
                 <string>keyword.control.import</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: #ifdef -->
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -404,10 +454,11 @@
                 <string>entity.name.namespace, meta.path</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: item::in::path -->
                     <key>foreground</key>
                     <string>#FF5813</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -417,10 +468,11 @@
                 <string>meta.class, entity.name.type.class</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ?? -->
                     <key>foreground</key>
                     <string>#f06431</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -430,6 +482,7 @@
                 <string>support.type, support.class</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: Ok Box Result -->
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
@@ -444,7 +497,7 @@
                 <key>settings</key>
                 <dict>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -454,10 +507,11 @@
                 <string>support.constant</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ?? -->
                     <key>foreground</key>
                     <string>#4c96a8</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -467,10 +521,11 @@
                 <string>support.function</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: macro_rules -->
                     <key>foreground</key>
                     <string>#8ab1b0</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -480,6 +535,7 @@
                 <string>entity.name.class, meta.toc-list.full-identifier</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: class name -->
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
@@ -509,7 +565,7 @@
                     <key>foreground</key>
                     <string>#4c96a8</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -519,10 +575,11 @@
                 <string>constant.language</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: nil, etc-->
                     <key>foreground</key>
                     <string>#FF5813</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -534,8 +591,6 @@
                 <dict>
                     <key>foreground</key>
                     <string>#4c96a8</string>
-                    <key>fontStyle</key>
-                    <string></string>
                 </dict>
             </dict>
             <dict>
@@ -551,6 +606,17 @@
                     <string>bold</string>
                 </dict>
             </dict>
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>Arguments to options in bash</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>meta.function-call</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#aaaaaa</string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
             <dict>
                 <key>name</key>
                 <string>Derive hashtag</string>
@@ -561,9 +627,20 @@
                     <key>foreground</key>
                     <string>#A06469</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>Boolean</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>none</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#f06431</string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
             <dict>
                 <key>name</key>
                 <string>Boolean</string>
@@ -574,7 +651,7 @@
                     <key>foreground</key>
                     <string>#f06431</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -587,7 +664,7 @@
                     <key>foreground</key>
                     <string>#7e5053</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -600,7 +677,7 @@
                     <key>foreground</key>
                     <string>#7E5053</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -614,6 +691,7 @@
                     <string>#98676A</string>
                     <key>fontStyle</key>
                     <string>bold</string>
+                    <!-- <string>#8ab1b0</string> -->
                 </dict>
             </dict>
             <dict>
@@ -626,7 +704,7 @@
                     <key>foreground</key>
                     <string>#733e8b</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -636,10 +714,11 @@
                 <string>variable.parameter.function</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ?? -->
                     <key>foreground</key>
                     <string>#d3af86</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -649,10 +728,11 @@
                 <string>comment, punctuation.definition.comment</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: // # etc -->
                     <key>foreground</key>
                     <string>#a57a4c</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -662,10 +742,11 @@
                 <string>punctuation.definition.generic</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: <T> generic -->
                     <key>foreground</key>
                     <string>#FF5813</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -675,10 +756,11 @@
                 <string>punctuation.definition.tag</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ?? -->
                     <key>foreground</key>
-                    <string>#e8a2af</string>
+                    <string>#FF5D62</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -688,10 +770,11 @@
                 <string>punctuation.definition.string, punctuation.definition.variable, punctuation.definition.string, punctuation.definition.parameters, punctuation.definition.string, punctuation.definition.array</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: quotes -->
                     <key>foreground</key>
                     <string>#d3af86</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -704,7 +787,7 @@
                     <key>foreground</key>
                     <string>#8ab1b0</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -714,10 +797,11 @@
                 <string>storage</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: impl pub fn -->
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -727,10 +811,11 @@
                 <string>storage.type</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: builtin function keyword -->
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -740,10 +825,11 @@
                 <string>storage.type.modules</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: mod (rust)-->
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -753,6 +839,7 @@
                 <string>storage.type.class</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: class keyword -->
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
@@ -766,10 +853,11 @@
                 <string>storage.modifier</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: pub async const -->
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -779,10 +867,11 @@
                 <string>storage.modifier.lifetime</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: 'a -->
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -795,7 +884,7 @@
                     <key>foreground</key>
                     <string>#FF9500</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -811,6 +900,22 @@
                     <string>bold</string>
                 </dict>
             </dict>
+            <!-- [> TODO: needs restriction <] -->
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>Int bool char</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>storage.type.struct</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!--         [> IS: type <] -->
+            <!--         [> #889b4a <] -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#FFFFFF</string> -->
+            <!--         <key>fontStyle</key> -->
+            <!--         <string>bold</string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
             <dict>
                 <key>name</key>
                 <string>Number</string>
@@ -821,7 +926,7 @@
                     <key>foreground</key>
                     <string>#98676A</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -831,6 +936,8 @@
                 <string>support</string>
                 <key>settings</key>
                 <dict>
+                    <!-- TODO: separate these -->
+                    <!-- IS: Ok() Some() eprintln -->
                     <key>foreground</key>
                     <string>#889b4a</string>
                     <key>fontStyle</key>
@@ -844,10 +951,11 @@
                 <string>variable.parameter</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: variable names to functions -->
                     <key>foreground</key>
                     <string>#FF5813</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -857,10 +965,11 @@
                 <string>variable.other</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: basically all other variables -->
                     <key>foreground</key>
                     <string>#D9AE80</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -870,10 +979,11 @@
                 <string>variable.other.member</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: variable names in structs -->
                     <key>foreground</key>
                     <string>#D9ae80</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -883,6 +993,8 @@
                 <string>entity.name.enum</string>
                 <key>settings</key>
                 <dict>
+                    <!-- meta.enum storage.type.enum -->
+                    <!-- IS: variable names in structs -->
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
@@ -896,6 +1008,8 @@
                 <string>entity.name.struct</string>
                 <key>settings</key>
                 <dict>
+                    <!-- meta.enum storage.type.enum -->
+                    <!-- IS: variable names in structs -->
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
@@ -909,6 +1023,8 @@
                 <string>entity.name.impl</string>
                 <key>settings</key>
                 <dict>
+                    <!-- meta.enum storage.type.enum -->
+                    <!-- IS: variable names in structs -->
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
@@ -935,10 +1051,11 @@
                 <string>variable.language</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ?? -->
                     <key>foreground</key>
                     <string>#D9AE80</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -948,10 +1065,11 @@
                 <string>variable.annotation</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: derive macro -->
                     <key>foreground</key>
                     <string>#8ab1b0</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -961,12 +1079,30 @@
                 <string>meta.function.parameters, meta.function.return-type</string>
                 <key>settings</key>
                 <dict>
+                    <!-- TODO: split meta.function.parameters better -->
+                    <!-- IS: function parameter after colon e.g., name: HERE -->
+                    <!-- IS: Result<()> (the <()>) -->
+                    <!-- meta.generic is also <()> -->
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
                     <string>bold</string>
                 </dict>
             </dict>
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>Closure pipes</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>punctuation.section.parameters.begin, punctuation.section.parameters.end</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!-- IS: |pipes: String| -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#FF5813</string> -->
+            <!--         <key>fontStyle</key> -->
+            <!--         <string></string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
             <dict>
                 <key>name</key>
                 <string>Module path</string>
@@ -974,10 +1110,11 @@
                 <string>meta.path</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ::path::here -->
                     <key>foreground</key>
                     <string>#FF5813</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -987,10 +1124,11 @@
                 <string>keyword.other.unit</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ?? -->
                     <key>foreground</key>
                     <string>#f79a32</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1003,7 +1141,7 @@
                     <key>foreground</key>
                     <string>#f79a32</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1016,7 +1154,7 @@
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1026,6 +1164,7 @@
                 <string>entity.other.inherited-class</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: extended class -->
                     <key>foreground</key>
                     <string>#ea6962</string>
                     <key>fontStyle</key>
@@ -1042,7 +1181,7 @@
                     <key>foreground</key>
                     <string>#7e602c</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1055,7 +1194,7 @@
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1068,7 +1207,7 @@
                     <key>foreground</key>
                     <string>#D9AE80</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1078,10 +1217,11 @@
                 <string>punctuation.section</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: ({}) -->
                     <key>foreground</key>
                     <string>#98676A</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1094,7 +1234,7 @@
                     <key>foreground</key>
                     <string>#088649</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1117,10 +1257,11 @@
                 <string>entity.name.label</string>
                 <key>settings</key>
                 <dict>
+                    <!-- IS: 'break label -->
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1133,9 +1274,283 @@
                     <key>foreground</key>
                     <string>#FF5813</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
+            <!-- ╭──────────────────────────────────────────────────────────╮
+                 │                           Rust                           │
+                 ╰──────────────────────────────────────────────────────────╯
+            -->
+            <dict>
+                <key>name</key>
+                <string>Rust lifetimes</string>
+                <key>scope</key>
+                <string>storage.modifier.lifetime.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#dc3958</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust functions</string>
+                <key>scope</key>
+                <string>entity.name.function.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#A06469</string>
+                    <key>fontStyle</key>
+                    <string>bold</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust pub mut / enum struct</string>
+                <key>scope</key>
+                <string>storage.modifier.rust, storage.type.rust, storage.type.trait.rust, storage.type.impl.rust, storage.type.function.rust, storage.type.type.rust, storage.type.enum.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#EF1D55</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust crate, extern, use, where /as in box</string>
+                <key>scope</key>
+                <string>keyword.other.rust, keyword.operator.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#EF1D55</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust boolean</string>
+                <key>scope</key>
+                <string>constant.language.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#FF5813</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust control chars</string>
+                <key>scope</key>
+                <string>keyword.control.rust, constant.numeric.float.rust, storage.type.numeric.rust, constant.numeric.integer.decimal.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#98676a</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust function calls</string>
+                <key>scope</key>
+                <string>support.function.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#A06469</string>
+                    <key>fontStyle</key>
+                    <string>bold</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust macro name</string>
+                <key>scope</key>
+                <string>entity.name.macro.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#7EB2B1</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust builtin macro</string>
+                <key>scope</key>
+                <string>support.macro.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#7EB2B1</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust brackets / ; / -> / ,</string>
+                <key>scope</key>
+                <string>punctuation.section.group.begin.rust, punctuation.section.group.end.rust, punctuation.terminator.rust, punctuation.separator.rust, punctuation.separator.generic.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#7E5053</string>
+                    <!-- <string>#988ba2</string> -->
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust angle brackets / ::</string>
+                <key>scope</key>
+                <string>punctuation.definition.generic.begin.rust, punctuation.definition.generic.end.rust, punctuation.accessor.double-colon.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#FF5813</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust path start</string>
+                <key>scope</key>
+                <string>punctuation.definition.modifier-scope.begin.rust, punctuation.definition.modifier-scope.end.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#FFFFFF</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust .</string>
+                <key>scope</key>
+                <string>punctuation.accessor.dot.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#D9AE80</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust operators</string>
+                <key>scope</key>
+                <string>keyword.operator.assignment.rust, keyword.operator.comparison.rust, keyword.operator.range.rust, keyword.operator.logical.rust, keyword.operator.arithmetic.rust, keyword.operator.bitwise.rust, keyword.operator.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#f06431</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust # in #[derive()]</string>
+                <key>scope</key>
+                <string>punctuation.definition.annotation.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#7E5053</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust [derive()] / $a:expr</string>
+                <key>scope</key>
+                <string>variable.annotation.rust, variable.function.rust, variable.parameter.macro.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#7EB2B1</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust builtin type</string>
+                <key>scope</key>
+                <string>support.type.rust, meta.generic.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#819C3B</string>
+                    <key>fontStyle</key>
+                    <string>bold</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust struct / trait / impl / S as SSS</string>
+                <key>scope</key>
+                <!-- meta.impl.rust -->
+                <string>entity.name.trait.rust, entity.name.struct.rust, entity.name.impl.rust, meta.function.return-type.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#819C3B</string>
+                    <key>fontStyle</key>
+                    <string>bold</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust path start</string>
+                <key>scope</key>
+                <string>meta.path.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#FF5813</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust parameters</string>
+                <key>scope</key>
+                <string>variable.parameter.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#EA6962</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust escaped char</string>
+                <key>scope</key>
+                <string>constant.character.escape.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#088649</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust string</string>
+                <key>scope</key>
+                <string>string.quoted.single.rust, string.quoted.double.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#FF9500</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>name</key>
+                <string>Rust constant</string>
+                <key>scope</key>
+                <string>constant.other.rust, meta.enum.rust</string>
+                <key>settings</key>
+                <dict>
+                    <key>foreground</key>
+                    <string>#77A172</string>
+                    <key>fontStyle</key>
+                    <string>bold</string>
+                </dict>
+            </dict>
+            <!-- storage.type.string.rust -->
+            <!-- punctuation.definition.comment.rust -->
+            <!-- comment.block.documentation.rust -->
+            <!-- comment.line.documentation.rust -->
+
             <!-- ╭──────────────────────────────────────────────────────────╮ -->
             <!-- │                          Markup                          │ -->
             <!-- ╰──────────────────────────────────────────────────────────╯ -->
@@ -1147,7 +1562,7 @@
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string>#8ab1b0</string>
+                    <string>#A25BC4</string>
                     <key>fontStyle</key>
                     <string>bold</string>
                 </dict>
@@ -1162,7 +1577,7 @@
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1175,7 +1590,7 @@
                     <key>foreground</key>
                     <string>#FF9500</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1188,7 +1603,7 @@
                     <key>foreground</key>
                     <string>#889b4a</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1201,7 +1616,7 @@
                     <key>foreground</key>
                     <string>#D9AE80</string>
                     <key>fontStyle</key>
-                    <string>italic underline</string>
+                    <string>underline</string>
                 </dict>
             </dict>
             <dict>
@@ -1227,7 +1642,7 @@
                     <key>foreground</key>
                     <string>#8ab1b0</string>
                     <key>fontStyle</key>
-                    <string>italic</string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1240,7 +1655,7 @@
                     <key>foreground</key>
                     <string>#98676A</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1253,7 +1668,7 @@
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1266,7 +1681,7 @@
                     <key>foreground</key>
                     <string>#f06431</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1279,7 +1694,7 @@
                     <key>foreground</key>
                     <string>#222222</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1292,7 +1707,7 @@
                     <key>foreground</key>
                     <string>#FF9500</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1305,7 +1720,7 @@
                     <key>foreground</key>
                     <string>#889b4a</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1347,9 +1762,61 @@
                     <key>foreground</key>
                     <string>#FF9500</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>CSS property</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>support.type.property-name.css</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#f2cdcd</string> -->
+            <!--         <key>fontStyle</key> -->
+            <!--         <string>italic</string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>CSS constant</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>support.constant.property-value.css</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#d9e0ee</string> -->
+            <!--         <key>fontStyle</key> -->
+            <!--         <string></string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>CSS suffix</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>constant.numeric.suffix.css, keyword.other.unit.css</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#b5e8e0</string> -->
+            <!--         <key>fontStyle</key> -->
+            <!--         <string>italic</string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>CSS variable property</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>variable.other.custom-property.name.css, support.type.custom-property.name.css, punctuation.definition.custom-property.css</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#b5e8e0</string> -->
+            <!--         <key>fontStyle</key> -->
+            <!--         <string></string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
             <!-- ╭──────────────────────────────────────────────────────────╮ -->
             <!-- │                           Java                           │ -->
             <!-- ╰──────────────────────────────────────────────────────────╯ -->
@@ -1379,7 +1846,7 @@
                     <key>foreground</key>
                     <string>#7EB2B1</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1392,20 +1859,33 @@
                     <key>foreground</key>
                     <string>#7EB2B1</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
+            <!-- <dict> -->
+            <!--     <key>name</key> -->
+            <!--     <string>Lua constructor (field)</string> -->
+            <!--     <key>scope</key> -->
+            <!--     <string>entity.name.tag.documentation.lua</string> -->
+            <!--     <key>settings</key> -->
+            <!--     <dict> -->
+            <!--         <key>foreground</key> -->
+            <!--         <string>#FFFFFF</string> -->
+            <!--         <key>fontStyle</key> -->
+            <!--         <string></string> -->
+            <!--     </dict> -->
+            <!-- </dict> -->
             <dict>
                 <key>name</key>
                 <string>Lua constructor (field)</string>
                 <key>scope</key>
-                <string>entity.name.tag.documentation.lua</string>
+                <string>punctuation.section.block.begin.lua, punctuation.section.block.end.lua</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
-                    <string>#FFFFFF</string>
+                    <string>#819C3B</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string>bold</string>
                 </dict>
             </dict>
             <!-- ╭──────────────────────────────────────────────────────────╮ -->
@@ -1421,7 +1901,7 @@
                     <key>foreground</key>
                     <string>#A06469</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1467,7 +1947,7 @@
                     <key>background</key>
                     <string>#FF9500</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <!-- ╭──────────────────────────────────────────────────────────╮ -->
@@ -1483,7 +1963,7 @@
                     <key>foreground</key>
                     <string>#a89984</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1496,7 +1976,7 @@
                     <key>foreground</key>
                     <string>#EF1D55</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1509,7 +1989,7 @@
                     <key>foreground</key>
                     <string>#819C3B</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1522,7 +2002,7 @@
                     <key>foreground</key>
                     <string>#FF9500</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <!-- ╭──────────────────────────────────────────────────────────╮ -->
@@ -1538,7 +2018,7 @@
                     <key>foreground</key>
                     <string>#F92672</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1551,7 +2031,7 @@
                     <key>foreground</key>
                     <string>#A6E22E</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1575,7 +2055,7 @@
                     <key>foreground</key>
                     <string>#565656</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
             <dict>
@@ -1588,7 +2068,7 @@
                     <key>foreground</key>
                     <string>#565656</string>
                     <key>fontStyle</key>
-                    <string></string>
+                    <string />
                 </dict>
             </dict>
         </array>
