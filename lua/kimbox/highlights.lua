@@ -1512,6 +1512,7 @@ hl.langs08.lua = {
     ["@variable.member.lua"] = {link = "@field"},
     ["@function.lua"] = {link = "@function"},
     ["@function.builtin.lua"] = {link = "@function"},
+    ["@function.method.call.lua"] = {link = "@method.call"},
     ["@keyword.function.lua"] = {link = "@keyword.function"},
     ["@keyword.coroutine.lua"] = {fg = c.oni_violet, gui = bold},
     -- === Custom ===
@@ -1559,6 +1560,12 @@ hl.langs08.luadoc = {
     ["@keyword.info.luadoc"] = {fg = c.ube, gui = bold},
     ["@keyword.deprecated.luadoc"] = {fg = c.infra_red, gui = bold},
     ["@keyword.meta.luadoc"] = {fg = c.peach_red, gui = bold},
+    -- === Newest ===
+    -- ["@comment.luadoc"] = {fg = c.peach_red, gui = bold},
+    ["@comment.luadoc"] = {link = "Comment"},
+
+    -- ["@tag.comment"] = fgs.peach_red,
+    -- ["@constant.comment"] = fgs.jasper_orange,
 }
 
 --  ╭──────╮
