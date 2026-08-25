@@ -168,7 +168,7 @@ hl.common = {
     TabLineSel = {fg = c.purple, bg = c.bg1, gui = bold},    -- tabpages line, active tabpage label
     TabLineFill = {gui = "none"},                            -- tabpages line, where there are no labels
     -- When last status=2 or 3
-    StatusLine = {fg = c.none, bg = c.none},                 -- status line of current window
+    StatusLine = {fg = c.purple, bg = c.bg1, gui = bold},                 -- status line of current window
     StatusLineNC = {fg = c.coyote_brown1, bg = c.bg0},       -- status lines of not-current windows
     StatusLineTerm = {fg = c.fg0, bg = c.bg0},
     StatusLineTermNC = {fg = c.beaver, bg = c.bg0},
@@ -557,10 +557,21 @@ hl.langs08.vimdoc = {
     ["@text.title.vimdoc"] = {fg = c.red, gui = bold},
     ["@text.literal.vimdoc"] = fgs.purple,
     ["@text.reference.vimdoc"] = {link = "@type.builtin"},
-    ["@label.vimdoc"] = fgs.blue,
+    ["@label.vimdoc"] = {fg = c.blue, gui = bold},
     ["@string.vimdoc"] = {link = "@string"},
+    ["@string.special.url.vimdoc"] = {link = "TSURI"},
+    ["@comment.note.vimdoc"] = {fg = c.blue, gui = bold},
     ["@text.uri.vimdoc"] = {link = "@text.uri"},
     ["@parameter.vimdoc"] = {link = "@paramter"},
+    ["@variable.parameter.vimdoc"] = {link = "@parameter"},
+    ["@markup.raw.vimdoc"] = {fg = c.green, gui = bold},
+    ["@markup.raw.block.vimdoc"] = fgs.purple,
+    ["@markup.heading.1.vimdoc"] = {link = "Title"},
+    ["@markup.heading.2.vimdoc"] = {link = "Title2"},
+    ["@markup.heading.3.vimdoc"] = {fg = c.red, gui = bold},
+    ["@markup.heading.4.vimdoc"] = {fg = c.ube, gui = bold},
+    ["@markup.heading.5.vimdoc"] = {link = "Title5"},
+    ["@markup.link.vimdoc"] = {fg = c.purple, gui = underline},
     -- old
     ["@text.title.help"] = fgs.red,
     ["@label.help"] = fgs.blue,
