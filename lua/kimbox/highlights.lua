@@ -1224,12 +1224,17 @@ hl.langs08.python = {
     ["@constructor.python"] = {link = "@constructor"},
     ["@field.python"] = {link = "@field"},
     ["@keyword.function.python"] = {link = "@keyword.return"},
+    ["@keyword.import.python"] = {link = "@keyword.return"},
     ["@method.python"] = {link = "@function"},
     ["@method.call.python"] = {link = "@function.call"},
     ["@parameter.python"] = fgs.orange,
     ["@punctuation.bracket.python"] = {link = "@punctuation.bracket"},
     ["@string.escape.python"] = {link = "@string.escape"},
     ["@type.python"] = {link = "@type"},
+    ["@variable.parameter.python"] = {link = "@parameter.python"},
+    ["@variable.member.python"] = {link = "@field"},
+    ["@module.python"] = fgs.purple,
+    ["@keyword.directive.python"] = {link = "PreProc"},
 }
 
 --  ╭────╮
