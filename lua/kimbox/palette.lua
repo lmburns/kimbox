@@ -75,6 +75,10 @@ local fgs = {
     glorious_sunset = "#FE8019",
     surimi_orange = "#FFA066",
     jasper_orange = "#E78A4E",
+
+    vintage_blue = "#88B7B5",
+    fountain_blue = "#76C1D2",
+    pastel_meadow = "#A7CAB1",
     ----------------------------------------------------------------------------
     cranberry_sauce = "#A43A57",
     watermelon = "#EC5F91",
@@ -137,8 +141,6 @@ local fgs = {
     dusk_wine = "#9E7682",
     orchid_grey = "#605770",
     garden_violet = "#847996",
-    vintage_blue = "#88B7B5",
-    pastel_meadow = "#A7CAB1",
 }
 
 fgs.diff_add = fgs.army_green
