@@ -943,6 +943,7 @@ hl.langs08.javascript = {
     ["@punctuation.special.javascript"] = {link = "@punctuation.special"},
     ["@type.builtin.javascript"] = {link = "@type.builtin"},
     ["@variable.builtin.javascript"] = {link = "@variable.builtin"},
+    ["@variable.member.javascript"] = {link = "@field"},
 }
 
 --  ╭────────────╮
