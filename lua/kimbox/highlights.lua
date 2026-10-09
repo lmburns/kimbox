@@ -3022,6 +3022,14 @@ hl.plugins.hop = {
     HopUnmatched = {fg = "#666666", sp = "#666666"},
 }
 
+-- https://github.com/folke/flash.nvim
+hl.plugins.flash = {
+    FlashCurrent = {fg = c.red, gui = bold},
+    FlashMatch = {fg = c.deep_lilac, gui = bold},
+    FlashLabel = {fg = c.jade_green, gui = bold},
+    FlashBackdrop = {fg = utils.darken("#666666", 0.8), sp = utils.darken("#666666", 0.8)},
+}
+
 -- https://github.com/mfussenegger/nvim-treehopper
 hl.plugins.treehopper = {
     TSNodeUnmatched = {link = "HopUnmatched"},
